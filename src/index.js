@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './index.scss';
+import "./styles/common.scss";
+import "./styles/utilities.scss";
+import "./styles/screen-media-query.scss";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
