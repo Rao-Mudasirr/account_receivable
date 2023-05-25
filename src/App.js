@@ -1,9 +1,10 @@
 import './App.scss';
+import UserManagements from './pages/user-managements';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='primary-color'>Accounts Recievable</h1>
+      <UserManagements/>
     </div>
   );
 }
