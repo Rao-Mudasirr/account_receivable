@@ -1,10 +1,13 @@
 import './App.scss';
+import Clientdetails from './pages/client-details';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='primary-color'>Accounts Recievable</h1>
-    </div>
+    <>    
+ <Clientdetails/>
+    
+    </>
+
   );
 }
 
