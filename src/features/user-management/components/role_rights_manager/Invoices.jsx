@@ -2,7 +2,7 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Invoices = ({checkDisabled, checkboxData, onClickBtn}) => {
+const Invoices = ({checkboxData, onClickBtn}) => {
     // console.log(checkboxData, "formControlData")
     return (
         <FormGroup>
@@ -12,7 +12,6 @@ const Invoices = ({checkDisabled, checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                     onClick={onClickBtn}
-                        disabled={checkDisabled}
                         required control={<Checkbox />}
                         label={item.label} />
                 )
