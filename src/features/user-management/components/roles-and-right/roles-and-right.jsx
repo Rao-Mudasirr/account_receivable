@@ -72,6 +72,7 @@ export const RolesRightsTable = () => {
     ];
   return (
     <>
+    
       <Card sx={{ p: 1 }}>
         <TableHeader
           ref={tableHeaderRef}
