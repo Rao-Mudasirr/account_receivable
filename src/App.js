@@ -10,6 +10,7 @@ function App() {
       <TotalInvoices />
       <br/>
       <RecentNotify />
+      <br/>
       <UserManagements/>
     </div>
   );
