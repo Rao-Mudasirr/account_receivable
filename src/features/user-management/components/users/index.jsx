@@ -90,7 +90,7 @@ export const USERS_DATA = [
     Id: "01",
     userName: "John Doe",
     role: "Manager",
-    status:"Active",
+    
     createdOn: 30 / 4 / 2011,
   },
   {
@@ -98,7 +98,7 @@ export const USERS_DATA = [
     Id: "02",
     userName: "John Doe",
     role: "Admin",
-    status:"Inactive",
+    
     createdOn: 30 / 4 / 2011,
   },
 ];

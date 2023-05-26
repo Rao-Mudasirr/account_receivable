@@ -59,36 +59,6 @@ export const UsersTable = () => {
       // isSortable: true,
     },
     {
-      accessorFn: (row) =>
-          row.status ? (
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Status
-                title={row.status}
-                color={
-                  row.status === 'Active'
-                    ? '#065F46'
-                    : row.status === 'Inactive'
-                    ? '#FF624E'
-                    : '-'
-                }
-                bgColor={
-                  row.status === 'Active'
-                    ? 'rgba(209, 250, 229, 1)'
-                    : row.status === 'Inactive'
-                    ? 'rgba(255, 98, 78, 0.12)'
-                    : '-'
-                }
-              />
-            </Box>
-          ) : (
-            '-'
-          ),
-      id: "status",
-      cell: (info) => info.getValue(),
-      header: "Status",
-      // isSortable: true,
-    },
-    {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>

@@ -10,6 +10,7 @@ import FormDialog from '../../../../components/modal/ModalPractice';
 
 import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
+import { Status } from '../../../../components/status/status';
 
 export const UserAccessTable = () => {
   const {
@@ -55,6 +56,36 @@ export const UserAccessTable = () => {
       id: "createdOn",
       cell: (info) => dayjs(info.getValue()).format("DD MMM, YYYY"),
       header: "Created On",
+      // isSortable: true,
+    },
+        {
+      accessorFn: (row) =>
+          row.status ? (
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Status
+                title={row.status}
+                color={
+                  row.status === 'Active'
+                    ? '#065F46'
+                    : row.status === 'Inactive'
+                    ? '#FF624E'
+                    : '-'
+                }
+                bgColor={
+                  row.status === 'Active'
+                    ? 'rgba(209, 250, 229, 1)'
+                    : row.status === 'Inactive'
+                    ? 'rgba(255, 98, 78, 0.12)'
+                    : '-'
+                }
+              />
+            </Box>
+          ) : (
+            '-'
+          ),
+      id: "status",
+      cell: (info) => info.getValue(),
+      header: "Status",
       // isSortable: true,
     },
     {
