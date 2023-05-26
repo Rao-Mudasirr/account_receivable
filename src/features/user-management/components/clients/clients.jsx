@@ -109,12 +109,12 @@ export const ClientsTable = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-      <CustomModel open={openModel}
+      {/* <CustomModel open={openModel}
         setOpen={setOpenModel}
         styleModal={{ width: { xs: '90%', sm: '80%', md: '70%', xl: '60%' } }}>
           <ClientsModal/>
-          jytjuyujnmuyjnm
-      </CustomModel>
+        
+      </CustomModel> */}
     </>
   );
 };
