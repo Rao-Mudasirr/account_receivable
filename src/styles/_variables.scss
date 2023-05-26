@@ -1,8 +1,6 @@
 // all color, text-sizes, border-radius etc  should be initialize here as variables and use them in styling
 // do not write explicitly values.
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 //colors
 $primary-color: #ff611d;
 $secondary-color: #333333;
@@ -72,5 +70,5 @@ $font-weight-800: 800;
 $font-weight-900: 900;
 
 //font-family
-$font-family-montserrat: "Montserrat", "Roboto", "sans-serif";
+$font-family-Exo: 'Exo 2', "Roboto", "sans-serif";
 $font-family-roboto: "Roboto", "sans-serif", "Montserrat";
