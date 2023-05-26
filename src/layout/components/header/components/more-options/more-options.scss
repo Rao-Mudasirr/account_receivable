@@ -1,0 +1,55 @@
+.header-profile-name{
+  margin-right: 16px;
+}
+.dropdown-menu {
+  width: 192px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding:10px;
+  padding-left:15px;
+}
+
+.dropdown-menu .dropdown-menu-row {
+  height: 39px;
+  gap: 15px;
+  color: #4e4b66;
+  font-size: 14px;
+  font-weight: 400;
+}
+.name-and-role {
+  color: #6e7191;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0px 20px;
+}
+.more-options{
+  margin-top: 7px;
+}
+.more-options-button .profile-picture{
+  display:none;
+}
+.role {
+  font-weight: 400;
+  font-size: 12px;
+}
+.dropdown-menu .dropdown-menu-row:hover .dropdown-menu-row-icon{
+  filter: brightness(0) saturate(100%) invert(76%) sepia(8%) saturate(3737%)
+    hue-rotate(166deg) brightness(103%) contrast(88%);
+  -webkit-filter: brightness(0) saturate(100%) invert(76%) sepia(8%)
+    saturate(3737%) hue-rotate(166deg) brightness(103%) contrast(88%);
+}
+.dropdown-menu .dropdown-menu-row:hover .menu-title{
+  font-weight: 600;
+  color:#000;
+}
+@media screen and (max-width: 700px) {
+  .more-options-main{
+    display:none !important;
+  }
+  .more-options-button .profile-picture{
+    display:flex;
+  }
+  .dropdown-menu .dropdown-menu-row{
+  font-size: 12px;
+  }
+}
