@@ -3,13 +3,17 @@ import { Box, IconButton, darken } from "@mui/material";
 
 // @mui icons
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DownloadIcon from "@mui/icons-material/Download";
-import AddIcon from "@mui/icons-material/Add";
 import ShareIcon from "@mui/icons-material/Share";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import DiagreamIcon from "../../assests/svg/diagram.svg";
+import ViewIcon from "../../assests/svg/eye.png";
+import DeleteIcon from "../../assests/svg/trash.png"
+import EditIcon from "../../assests/svg/edit.png"
+import SettingIcon from "../../assests/svg/setting-4.png"
+import AddIcon from "../../assests/svg/add-circle.png"
+
 
 import PrintIcon from "@mui/icons-material/Print";
 // import { ShareIcon } from "react-icons/fa";
@@ -97,34 +101,19 @@ const styles = {
 // Icons Object
 const icons = {
   edit: (
-    <ModeEditIcon
-      fontSize="small"
-      sx={(theme) => styles.iconStyles(theme, "#21130d")}
-    />
-  ),
-  add: (
-    <AddIcon
-      fontSize="small"
-      sx={(theme) => styles.iconStyles(theme, "#21130d")}
-    />
+    <img src={EditIcon} alt="edit" />
   ),
   delete: (
-    <DeleteIcon
-      fontSize="small"
-      sx={(theme) => styles.iconStyles(theme, "#21130d")}
-    />
+    <img src={DeleteIcon} alt="delete" />
   ),
   view: (
-    <VisibilityIcon
-      fontSize="small"
-      sx={(theme) => styles.iconStyles(theme, "#21130d")}
-    />
+    <img src={ViewIcon} alt="view" />
   ),
-  download: (
-    <DownloadIcon
-      fontSize="small"
-      sx={(theme) => styles.iconStyles(theme, "#fff")}
-    />
+  setting: (
+    <img src={SettingIcon} alt="view" />
+  ),
+  add: (
+    <img src={AddIcon} alt="add" />
   ),
   refresh: (
     <RefreshIcon

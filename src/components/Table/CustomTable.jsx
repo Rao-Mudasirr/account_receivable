@@ -237,13 +237,13 @@ export default CustomTable;
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "unset",
-    color: "#637381",
+    color: "#6B6B80",
     textAlign: "center",
     fontFamily: "Montserrat, Public Sans, sans-serif",
     fontWeight: 600,
     backgroundImage: "unset",
     textTransform: "capitalize",
-    fontSize: 14,
+    fontSize: 16,
     whiteSpace: "nowrap",
     borderBottom: "none",
     cursor: "pointer",
@@ -254,12 +254,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 13,
-    color: "#637381",
+    fontSize: "16px",
+    color: "#40404D",
     fontFamily: "Montserrat, Public Sans, sans-serif",
-    fontWeight: 600,
+    fontWeight: 400,
     textAlign: "center",
-    borderBottom: "none",
+    borderBottom: "1px solid #BEBEBE",
     whiteSpace: "pre-wrap",
   },
 }));
@@ -276,15 +276,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   " &:last-child th": {
     backgroundColor:
       theme.palette.mode === "light"
-        ? alpha("#6B6B80", 0.12)
+        ? alpha("#BEBEBE", 0.12)
         : "#454F5B",
     backdropFilter: " blur(20px)",
 
-    border: 0,
+    // border: 0,
   },
-  "&:first-of-type": {
-    boxShadow: "unset",
-  },
+  // "&:first-of-type": {
+  //   boxShadow: "unset",
+  // },
 }));
 
 // ----------------------------------------------------------------------
@@ -298,13 +298,13 @@ const styles = {
     },
 
     "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#18938D",
+      backgroundColor: "#BEBEBE",
       borderRadius: 2,
     },
     maxHeight: 560,
     mt: theme.palette.mode === "dark" ? 0.5 : 0,
     backgroundColor:
-      theme.palette.mode === "light" ? "#F8FCFF" : "#212B36",
+      theme.palette.mode === "light" ? "#fff" : "#212B36",
     ...tableContainerSX,
   }),
   cell: {

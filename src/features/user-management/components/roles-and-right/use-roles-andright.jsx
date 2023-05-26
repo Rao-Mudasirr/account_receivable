@@ -7,6 +7,15 @@ export const useRolesRights = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const theme = useTheme();
+    const [openForm, setOpenForm] = React.useState(false);
+
+  const handleFormDialog = () => {
+    setOpenForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setOpenForm(false);
+  };
 //   const router = useRouter();
   const tableHeaderRef = useRef();
   return {
@@ -14,6 +23,10 @@ export const useRolesRights = () => {
     setOpen,
     handleOpen,
     handleClose,
+    openForm,
+    setOpenForm,
+    handleFormDialog,
+    handleCloseForm,
     theme,
     // router,
     tableHeaderRef,

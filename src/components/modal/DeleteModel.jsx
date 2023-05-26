@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useTheme } from "@emotion/react";
 import { Backdrop, Button, Grid, Typography } from "@mui/material";
-import DeleteIcon from "../../assests/svg/delete-icon.svg";
+import DeleteIcon from "../../assests/svg/trash-red.png";
 //---icons
 
 const DeleteModel = (props) => {
@@ -30,11 +30,14 @@ const DeleteModel = (props) => {
           <Grid container>
             <Grid xs={12} item>
               <Box sx={Styles.innerBox(theme)}>
+           
+              <Box sx={{ border: "1px solid black", p: 2.5, borderRadius: "50%", bgcolor:"#fff"}}>
                 <img src={DeleteIcon} alt="" />
+              </Box>
                 <Box sx={{ pt: "24px", textAlign: "center" }}>
                   <Typography variant="h3" sx={Styles.heading}>Are you sure ?</Typography>
-                  <Typography variant="h5" sx={{ fontWeight: "500" }}>
-                    You won’t be able to revert this !
+                  <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", pt:3 }}>
+                    You want to Delete
                   </Typography>
                 </Box>
                 <Box sx={Styles.buttonWrapper}>
@@ -42,7 +45,7 @@ const DeleteModel = (props) => {
                     onClick={onDeleteClick}
                     sx={Styles.buttonError(theme)}
                   >
-                    Yes, delete it
+                    Yes, Sure
                   </Button>
                   <Button
                     onClick={handleClose}
@@ -70,7 +73,6 @@ const Styles = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: { xs: "95%", sm: 500 },
-    bgcolor: "background.paper",
     borderRadius: "4px",
     boxShadow: 24,
     px: 2,
@@ -81,7 +83,7 @@ const Styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    pt: "10px"
+    // pt: "10px"
   }),
   buttonWrapper: (theme) => ({
     display: "flex",
@@ -91,21 +93,24 @@ const Styles = {
     mb: 1
   }),
   buttonError: (theme) => ({
-    bgcolor: theme.palette.error.darker,
-    color: theme.palette.primary.contrastText,
-    "&:hover": { bgcolor: theme.palette.error.darker },
+    bgcolor: "#2B2B33",
+    color: "#fff",
+    "&:hover": { bgcolor: "#2B2B33" },
     px: 2,
     py: 1,
     fontSize: "16px !important",
-    fontWeight: "600"
+    textTransform: 'capitalize',
+    fontWeight: "400"
   }),
   buttonSuccess: (theme) => ({
-    bgcolor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
+    bgcolor: "#fff",
+    color: "#2B2B33",
     minWidth: "100px",
-    "&:hover": { bgcolor: theme.palette.primary.main },
+    "&:hover": { bgcolor: "#fff" },
     fontSize: "16px !important",
-    fontWeight: "600"
+    border: "1px solid #2B2B33",
+    fontWeight: "400",
+    textTransform: 'capitalize'
   }),
-  heading: { fontSize: "24px", fontWeight: "600" }
+  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33" }
 };

@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material";
 
 import React, { useRef } from "react";
 
-export const useClients = () => {
+export const useClientModel = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
