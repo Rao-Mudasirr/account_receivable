@@ -7,25 +7,37 @@ import Dashboard from './Dashboard';
 import Invoices from './Invoices';
 import Clients from './Clients';
 import Performance from './Performance';
-import { formControlData } from './formControlData';
+import { formControlData } from './data'
 import './manager.css';
 
+
 const Manager = () => {
+
   const [checkDisabled, setCheckDisabled] = useState(true);
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('dashboard');
+  const [dashboardEnabled, setDashboardEnabled] = useState(true);
+
 
   useEffect(() => {
     setActive('1');
   }, []);
 
+
   const handleLiClick = (id) => {
     setActive(id);
   };
 
+
   const handleDashboardClick = () => {
-    setCheckDisabled(!checkDisabled);
+    // console.log('Dashboard clicked');
   };
+  const handleDashboardSwitch = () => {
+    setDashboardEnabled(!dashboardEnabled);
+    if (switchOption === 'dashboard') {
+      setCheckDisabled(!dashboardEnabled);
+    }
+  };  
 
   const renderDataComponent = () => {
     switch (active) {
@@ -42,14 +54,14 @@ const Manager = () => {
           />
         );
       case '3':
-        return <Cashflow />;
+        return <Cashflow />
       case '4':
         return (
           <AdminRights
             checkDisabled={checkDisabled}
             setCheckDisabled={setCheckDisabled}
           />
-        );
+      );
       default:
         return null;
     }
@@ -62,6 +74,8 @@ const Manager = () => {
           <Dashboard
             checkboxData={formControlData.find((data) => data.id === 'dashboard').switchOptions}
             onClickBtn={handleDashboardClick}
+            onSwitchToggle={handleDashboardSwitch}
+            enabled={dashboardEnabled}
             checkDisabled={checkDisabled}
           />
         );
@@ -72,14 +86,14 @@ const Manager = () => {
             onClickBtn={handleDashboardClick}
           />
         );
-        case 'clients':
-          return (
-            <Clients
-              checkboxData={formControlData.find((data) => data.id === 'Clients').switchOptions}
-              onClickBtn={handleDashboardClick}
-            />
-          );
-          default:
+      case 'clients':
+        return (
+          <Clients
+            checkboxData={formControlData.find((data) => data.id === 'clients').switchOptions}
+            onClickBtn={handleDashboardClick}
+          />
+        );
+      default:
         return null;
     }
   };
@@ -87,7 +101,7 @@ const Manager = () => {
   return (
     <div className="container">
       <p>Manager</p>
-      <div className="line"></div>
+      <div className="line" />
       <div className="manager_container">
         <div className="left">
           <div className="left_name">
@@ -125,15 +139,21 @@ const Manager = () => {
           <div className="line2"></div>
         </div>
         <div className="right">
-          <div className="left_details">
-            {renderDataComponent()}
+          <div className="left_details">{renderDataComponent()}
             <div className="line2"></div>
           </div>
-          <div className="right_side">{renderSwitchComponents(switchOption)}</div>
+          <div className="right_side">
+            {renderSwitchComponents(switchOption)}
+          </div>
+
+
         </div>
       </div>
     </div>
   );
 };
+
+
+
 
 export default Manager;

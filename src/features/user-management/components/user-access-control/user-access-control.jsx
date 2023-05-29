@@ -1,8 +1,10 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Card, Box } from "@mui/material";
+import { Card, Box, FormControlLabel } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
+import Switch from '@mui/material/Switch';
+import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
 import TableAction from '../../../../components/Table/TableAction';
 import DeleteModel from '../../../../components/modal/DeleteModel';
@@ -11,6 +13,7 @@ import FormDialog from '../../../../components/modal/ModalPractice';
 import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
 import { Status } from '../../../../components/status/status';
+
 
 export const UserAccessTable = () => {
   const {
@@ -26,6 +29,32 @@ export const UserAccessTable = () => {
     // router,
     tableHeaderRef,
   } = useUserAccess();
+
+
+  const Android12Switch = styled(Switch)(({ theme }) => ({
+    padding: 8,
+    '& .MuiSwitch-track': {
+      borderRadius: 22 / 2,
+      border: "1px solid black",
+      opacity: 1,
+      backgroundColor:
+        theme.palette.mode === 'dark' ? 'dark' : 'white',
+      boxSizing: 'border-box',
+    },
+    '& .MuiSwitch-thumb': {
+      boxShadow: 'none',
+      backgroundColor: 'black',
+      border: "3px solid dark",
+      width: 16,
+      height: 16,
+      margin: 2,
+    },
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      backgroundColor: 'dark',
+    },
+  }));
+
+
 
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
@@ -58,31 +87,27 @@ export const UserAccessTable = () => {
       header: "Created On",
       // isSortable: true,
     },
-        {
+    {
       accessorFn: (row) =>
-          row.status ? (
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Status
-                title={row.status}
-                color={
-                  row.status === 'Active'
-                    ? '#065F46'
-                    : row.status === 'Inactive'
-                    ? '#FF624E'
-                    : '-'
-                }
-                bgColor={
-                  row.status === 'Active'
-                    ? 'rgba(209, 250, 229, 1)'
-                    : row.status === 'Inactive'
+        row.status ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Status
+              title={row.status}
+              color={
+                row.status === 'Active' ? '#065F46' : row.status === 'Inactive' ? '#FF624E' : '-'
+              }
+              bgColor={
+                row.status === 'Active'
+                  ? 'rgba(209, 250, 229, 1)'
+                  : row.status === 'Inactive'
                     ? 'rgba(255, 98, 78, 0.12)'
                     : '-'
-                }
-              />
-            </Box>
-          ) : (
-            '-'
-          ),
+              }
+            />
+          </Box>
+        ) : (
+          '-'
+        ),
       id: "status",
       cell: (info) => info.getValue(),
       header: "Status",
@@ -92,8 +117,15 @@ export const UserAccessTable = () => {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="delete" onClicked={handleOpen} />
-          <TableAction type="edit" onClicked={handleFormDialog} />
+          {/* <TableAction type="delete" onClicked={handleOpen} />
+          <TableAction type="edit" onClicked={handleFormDialog} /> */}
+          <FormControlLabel
+            control={
+              <Android12Switch
+
+              />
+            }
+          />
         </Box>
       ),
       header: () => <span>Actions</span>,
@@ -121,10 +153,10 @@ export const UserAccessTable = () => {
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
-          isPagination={true}
+        // isPagination={true}
         />
       </Card>
-      <DeleteModel
+      {/* <DeleteModel
         open={open}
         handleClose={handleClose}
         onDeleteClick={handleClose}
@@ -132,7 +164,7 @@ export const UserAccessTable = () => {
       <FormDialog openForm={openForm}
         setOpenForm={setOpenForm}
         handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} />
+        handleCloseForm={handleCloseForm} /> */}
     </>
   );
 };
