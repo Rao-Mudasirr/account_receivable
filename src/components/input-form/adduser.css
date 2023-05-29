@@ -1,0 +1,71 @@
+.users_container {
+  margin: 2rem auto;
+  width: fit-content;
+
+  @media screen and (min-width: 600px) {
+    max-width: 480px;
+  }
+
+  @media screen and (min-width: 960px) {
+    max-width: 720px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 960px;
+  }
+}
+
+.users_card {
+  margin: 0 1rem;
+}
+
+
+
+.adduser_header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+}
+
+.adduser_header > button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.adduser_heading h2 {
+padding-top: 1rem;
+}
+
+.usersform_textfield {
+  height: 48px;
+  width: 240px;
+  text-align: start;
+}
+
+.adduser_form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 960px) {
+    gap: 1rem;
+  }
+}
+
+.useradd_btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 4rem 0 1rem 0;
+
+  @media screen and (min-width: 960px) {
+    gap: 1rem;
+  }
+}

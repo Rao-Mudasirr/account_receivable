@@ -30,30 +30,33 @@ const DeleteModel = (props) => {
           <Grid container>
             <Grid xs={12} item>
               <Box sx={Styles.innerBox(theme)}>
-           
-              <Box sx={{ border: "1px solid black", p: 2.5, borderRadius: "50%", bgcolor:"#fff"}}>
-                <img src={DeleteIcon} alt="" />
-              </Box>
-                <Box sx={{ pt: "24px", textAlign: "center" }}>
-                  <Typography variant="h3" sx={Styles.heading}>Are you sure ?</Typography>
-                  <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", pt:3 }}>
-                    You want to Delete
-                  </Typography>
+                <div style={{marginBottom: -35}}>
+                <Box sx={{ p: 3, mt: 4, borderRadius: "50%", bgcolor: "#fff", position: "relative", boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)" }}>
+                  <img src={DeleteIcon} alt="" />
                 </Box>
-                <Box sx={Styles.buttonWrapper}>
-                  <Button
-                    onClick={onDeleteClick}
-                    sx={Styles.buttonError(theme)}
-                  >
-                    Yes, Sure
-                  </Button>
-                  <Button
-                    onClick={handleClose}
-                    sx={Styles.buttonSuccess(theme)}
-                  >
-                    Cancel
-                  </Button>
-                </Box>
+                </div>
+                <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
+                  <Box sx={{ pt: "40px", textAlign: "center" }}>
+                    <Typography variant="h3" sx={Styles.heading}>Are you sure?</Typography>
+                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", pt: 3 }}>
+                      You want to Delete
+                    </Typography>
+                  </Box>
+                  <Box sx={Styles.buttonWrapper}>
+                    <Button
+                      onClick={onDeleteClick}
+                      sx={Styles.buttonError(theme)}
+                    >
+                      Yes, Sure
+                    </Button>
+                    <Button
+                      onClick={handleClose}
+                      sx={Styles.buttonSuccess(theme)}
+                    >
+                      Cancel
+                    </Button>
+                  </Box>
+                </div>
               </Box>
             </Grid>
           </Grid>
@@ -73,10 +76,10 @@ const Styles = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: { xs: "95%", sm: 500 },
-    borderRadius: "4px",
+    borderRadius: "8px",
     boxShadow: 24,
-    px: 2,
-    py: 2,
+    backgroundColor: "#2B2B33", // Top half color 
+
   }),
   innerBox: (theme) => ({
     display: "flex",
@@ -89,8 +92,8 @@ const Styles = {
     display: "flex",
     justifyContent: "center",
     gap: "12px",
-    mt: 3.5,
-    mb: 1
+    mt: 6,
+    mb: 3.5
   }),
   buttonError: (theme) => ({
     bgcolor: "#2B2B33",
@@ -112,5 +115,5 @@ const Styles = {
     fontWeight: "400",
     textTransform: 'capitalize'
   }),
-  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33" }
+  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", pt: 3 }
 };
