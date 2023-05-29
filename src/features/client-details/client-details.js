@@ -197,7 +197,7 @@ const ClientDetails = () => {
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline" }}
+                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
                   >
                     Due Invoices
                   </Typography>
@@ -218,7 +218,7 @@ const ClientDetails = () => {
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline" }}
+                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
                   >
                     Overdue Invoices
                   </Typography>
@@ -239,7 +239,7 @@ const ClientDetails = () => {
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline" }}
+                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
                   >
                     Paid Invoices
                   </Typography>

@@ -1,15 +1,19 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,  } from '@mui/material';
 import { invoicestableheading, invoicestabledata } from './due-invoices-data';
 import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter';
 import Button from '@mui/material/Button';
+import srIcon from '../../../assests/images/client/sricon.png';
+import "./due-invoices.scss";
+
 
 
 import filterIcon  from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
 
 const DueInvoices = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   const filteredRows = invoicestabledata.filter(row =>
     row.invoiceid.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -20,6 +24,11 @@ const DueInvoices = () => {
   const SearchClickhandler = (event) => {
     setSearchTerm(event.target.value);
   };
+
+ 
+  
+  
+  
 
   
   return (
@@ -61,26 +70,39 @@ const DueInvoices = () => {
     </div>
     </div>
  
-      <TableContainer component={Paper} sx={{mt:2}}>
-        <Table>
+      <TableContainer  sx={{mt:2}}>
+        <Table sx={{border:'0'}} >
         <TableHead>
       <TableRow>
-        {invoicestableheading.map((item, index) => (
-          <TableCell key={index} sx={{ background: '#F0F0F2' }}>
-            {/* {item.icon && <img src={item.icon} alt={item.label} />} 
-            {item.label} */}
-            {item}
-           
-          </TableCell>
-        ))}
+      {invoicestableheading.map((header, index) => (
+            <TableCell key={index} sx={{background:'#F0F0F2'}}>
+              {index === 0 ? (
+                <>
+                   {header}
+                  <img src={srIcon} alt="icon" style={{marginLeft:5,width:'7px', }} />
+                 
+                </>
+              ) : (
+                header
+              )}
+            </TableCell>
+          ))}
+
+    
       </TableRow>
     </TableHead>
-          <TableBody sx={{border:'1px solid black'}}>
+          <TableBody >
             {filteredRows.map((row, index) => (
               <TableRow key={index}>
                 <TableCell>{row.srno}</TableCell>
-                <TableCell>{row.invoiceid}</TableCell>
-                <TableCell>{row.status}</TableCell>
+                <TableCell sx={{textDecoration:'underline',cursor:'pointer'}} className='invoice-id'>{row.invoiceid} </TableCell>
+                <TableCell>
+                  <span
+                    className={`status-cell ${row.status.toLowerCase()}`}
+                  >
+                    {row.status}</span>
+                
+                </TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.dateissue}</TableCell>
                 <TableCell>{row.duedate}</TableCell>

@@ -1,0 +1,27 @@
+@import "../../../styles/variables";
+
+.invoice-id{
+    color:$blue-color;
+}
+.status-cell {
+    padding: 5px 10px;
+    border-radius: 8px;
+    opacity: 0.24;
+    font-weight: bold;
+  }
+  
+  .status-cell.paid {
+    background-color: #E9F4EC;
+  color: green;
+  }
+  
+  .status-cell.due {
+    background-color:#FFBF00ed;
+    color: white;
+  }
+  
+  .status-cell.overdue {
+    background-color: #FF3F3F;
+    color: black;
+  }
+  
