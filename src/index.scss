@@ -1,6 +1,5 @@
+@import "./styles/variables";
 body {
   margin: 0;
-  font-family:'Exo 2', "Roboto", "sans-serif";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-Exo !important;
 }

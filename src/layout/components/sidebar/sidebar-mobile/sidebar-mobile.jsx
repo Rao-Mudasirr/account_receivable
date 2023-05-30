@@ -1,9 +1,6 @@
 // Components
 import Sidebar from "../sidebar";
 
-// SCSS
-import "./sidebar-mobile.scss";
-
 // MUI
 import { Grid, SwipeableDrawer } from "@mui/material";
 
@@ -23,7 +20,7 @@ const HeaderMobile = ({mobDrawer,setMobDrawer}) => {
         onOpen={() => setMobDrawer(!mobDrawer)}
         disableSwipeToOpen={false}
       >
-        <Grid height="100%" className='sidebar-mob-scroll'>
+        <Grid height="100%" >
           <Sidebar />
         </Grid>
       </SwipeableDrawer>

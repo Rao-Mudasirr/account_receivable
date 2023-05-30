@@ -1,53 +1,16 @@
 .header {
-  display: flex;
   padding: 7px 40px;
   width: 100%;
   height: 70px;
-  background: #FFFFFF;
-}
-.header-body {
-  display: flex;
-  align-items: center;
-}
-.user-details {
-  display: flex;
-  align-items: center;
 }
 .profile-picture {
   width: 40px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 2px solid #40404D;
-  // background: #40404D;
-  border-radius: 50%;
 }
 .profile-picture-img {
   width: 38px;
   height: 38px;
-}
-.open-close-sidebar {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  color: #65cdf0;
-  background: #fffafc;
-  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.21);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 55px;
-  left: -12px;
-  z-index: 1220;
-}
-.arrow {
-  transition: rotate 0.2s linear;
-}
-.arrow-rotate {
-  rotate: 180deg;
 }
 @media screen and (max-width: 600px) {
   .header {
@@ -56,9 +19,6 @@
   .ap-logo{
     width: 200px;
   }
-  .open-close-sidebar {
-    display: none;
-  }
   .profile-picture-img {
     width: 38px;
     height: 38px;
@@ -66,10 +26,6 @@
   .profile-picture {
     width: 38px;
     height: 38px;
-  }
-  .search-icon svg {
-    width: 20px;
-    height: 20px;
   }
 }
 @media screen and (max-width: 400px) {

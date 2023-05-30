@@ -18,7 +18,7 @@ const NotificationCard = () => {
   const { OPEN, handleClickMUITooltip, handleCloseMUITooltip } = useMUITooltip();
 
 
-  const NotoficationData = (<div className="notification-card-parent ">
+  const NotoficationData = (<div className="notification-card-parent font-family-Exo">
     {
       Object.keys(notificationData).map((item) => {
         return <div className='notifications-sub-container' key={item}>
