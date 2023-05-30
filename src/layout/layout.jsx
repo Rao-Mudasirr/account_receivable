@@ -3,21 +3,21 @@ import { Outlet } from "react-router-dom";
 // MUI
 import CssBaseline from "@mui/material/CssBaseline";
 
-// Components
-// import Header from "../header/header";
-// import Sidebar from "../sidebar/sidebar";
-// import HeaderMobile from "../sidebar/sidebar-mobile/sidebar-mobile";
 
 
 // SCSS
 import "./layout.scss";
 import { Grid } from "@mui/material";
 // import { AlertBreadcrumbs } from "../../components/alert-breadcrumbs/alert-breadcrumbs";
-import { AppBar, body, Drawer, DrawerHeader, mainContainer, mobScreen, xsNonesmFlex } from "./layout-mui-style";
+import { AppBar, body, Drawer, DrawerHeader, mainContainer, xsNonesmFlex } from "./layout-mui-style";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
+import Sidebar from "./components/sidebar/sidebar";
+import HeaderMobile from "./components/sidebar/sidebar-mobile/sidebar-mobile";
+import { useState } from "react";
 // Component start here
 export default function Layout() {
+  const [openMobDrawer, setOpenMobDrawer] = useState(false)
   return (
     <div className="main-layout">
       <CssBaseline />
@@ -28,15 +28,15 @@ export default function Layout() {
         <Grid
         >
           <AppBar className="app-bar" >
-            <Header  />
+            <Header openMobHeader={setOpenMobDrawer} />
           </AppBar>
 
-          {/* <Drawer sx={xsNonesmFlex}
-            className="drawer" variant="permanent" open={openDrawer}>
+          <Drawer sx={xsNonesmFlex}
+            className="drawer" variant="permanent" open={true}>
             <Sidebar />
-          </Drawer> */}
+          </Drawer>
 
-          {/* <HeaderMobile /> */}
+          <HeaderMobile mobDrawer={openMobDrawer} setMobDrawer={setOpenMobDrawer} />
 
         </Grid>
 
@@ -46,7 +46,7 @@ export default function Layout() {
             <Grid
               sx={body}
             >
-              <DrawerHeader />
+              <DrawerHeader  />
             </Grid>
             <div className="margin-outlet-x" >
               {/* <AlertBreadcrumbs /> */}
@@ -55,11 +55,11 @@ export default function Layout() {
               </div>
             </div>
           </div>
+        </div>
+      </Grid>
           <div className="body-footer">
             <Footer />
           </div>
-        </div>
-      </Grid>
     </div>
   );
 }
