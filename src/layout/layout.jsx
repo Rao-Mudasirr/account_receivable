@@ -16,7 +16,7 @@ import Sidebar from "./components/sidebar/sidebar";
 import HeaderMobile from "./components/sidebar/sidebar-mobile/sidebar-mobile";
 import { useState } from "react";
 // Component start here
-export default function Layout() {
+export default function Layout({children}) {
   const [openMobDrawer, setOpenMobDrawer] = useState(false)
   return (
     <div className="main-layout">
@@ -53,6 +53,9 @@ export default function Layout() {
               <div >
               <Outlet />
               </div>
+              <br/>
+              <br/>
+              <main className="flex-grow">{children}</main>
             </div>
           </div>
         </div>

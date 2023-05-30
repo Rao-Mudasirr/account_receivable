@@ -7,6 +7,64 @@ import { useTableParams } from "../../../components/Table/useTableParams";
 // import DeleteModel from '../../../../components/modal/DeleteModel';
 // import FormDialog from '../../../../components/modal/ModalPractice';
 
+const INVOICE_DATA = [
+  {
+    id: 1,
+    Id: "01",
+    invoiceNo: "2345",
+    client: "Ali",
+    invoice_status: 'Paid',
+    issue_date: 30 / 4 / 2011,
+    due_date: 30 / 4 / 2011,
+    overdue_days: '12',
+    total_amount: '$7200'
+  },
+  {
+    id: 2,
+    Id: "02",
+    invoiceNo: "2345",
+    client: "Ali",
+    invoice_status: 'Paid',
+    issue_date: 30 / 4 / 2011,
+    due_date: 30 / 4 / 2011,
+    overdue_days: '12',
+    total_amount: '$7200'
+  },
+  {
+    id: 3,
+    Id: "03",
+    invoiceNo: "2345",
+    client: "Ali",
+    invoice_status: 'Paid',
+    issue_date: 30 / 4 / 2011,
+    due_date: 30 / 4 / 2011,
+    overdue_days: '12',
+    total_amount: '$7200'
+  },
+  {
+    id: 4,
+    Id: "04",
+    invoiceNo: "2345",
+    client: "Ali",
+    invoice_status: 'Paid',
+    issue_date: 30 / 4 / 2011,
+    due_date: 30 / 4 / 2011,
+    overdue_days: '12',
+    total_amount: '$7200'
+  },
+  {
+    id: 5,
+    Id: "05",
+    invoiceNo: "2345",
+    client: "Ali",
+    invoice_status: 'Paid',
+    issue_date: 30 / 4 / 2011,
+    due_date: 30 / 4 / 2011,
+    overdue_days: '12',
+    total_amount: '$7200'
+  },
+];
+
 export default function InvoiceListing() {
   //  const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
   //   useTableParams();
@@ -19,49 +77,49 @@ export default function InvoiceListing() {
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.roleName,
+        accessorFn: (row) => row.invoiceNo,
         id: "invoiceNo",
         cell: (info) => info.getValue(),
         header: "Invoice No.",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.client,
         id: "client",
         cell: (info) => info.getValue(),
         header: "Client",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.invoice_status,
         id: "invoice_status",
         cell: (info) => info.getValue(),
         header: "Invoice Status",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.issue_date,
         id: "issue_date",
         cell: (info) => info.getValue(),
         header: "Issue Date",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.due_date,
         id: "due_date",
         cell: (info) => info.getValue(),
         header: "Due Date",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.overdue_days,
         id: "overdue_days",
         cell: (info) => info.getValue(),
         header: "Overdue Days",
         // isSortable: true,
       },
       {
-        accessorFn: (row) => row.description,
+        accessorFn: (row) => row.total_amount,
         id: "total_amount",
         cell: (info) => info.getValue(),
         header: "Total Amount",
@@ -82,32 +140,15 @@ export default function InvoiceListing() {
     ];
   return (
     <React.Fragment>
-      <Box style={{margin: '20px'}}>
-        {/* Title */}
-        <Grid container>
-          <br />
-          <Grid item xs={12} sm={12} md={12}>
+     
             <div className="invoice-title">Invoices</div>
-          </Grid>
-        </Grid>
+        
         {/* Search field */}
-          {/* <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <span>
-              Search field
-            </span>
-            <span>
-              <span>From</span>
-              <span>To</span>
-              <span>
-                <button>More Filters</button>
-              </span>
-            </span>
-          </div> */}
 
           {/* Table */}
 
           <CustomTable
-            // data={ROLE_RIGHTS_DATA}
+            data={INVOICE_DATA}
             columns={columns}
             // showSerialNo
             // onPageChange={pageChangeHandler}
@@ -115,8 +156,6 @@ export default function InvoiceListing() {
             isSuccess={true}
             isPagination={true}
           />
-
-      </Box>
     </React.Fragment>
   );
 }
