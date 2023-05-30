@@ -1,5 +1,5 @@
 // MUI
-import { ClickAwayListener, Tooltip } from "@mui/material";
+import { Box, ClickAwayListener, Tooltip } from "@mui/material";
 
 // Data
 import { moreOptionsData } from "./more-options-data";
@@ -46,14 +46,14 @@ export const MoreOptions = () => {
             title={MenuCard}
           >
             <div className="flex align-center">
-              <div className="header-profile-name flex flex-column font-weight-600 primary-color secondary-title center-text">
+              <Box sx={{display:{md:'flex',xs:'none'}}} className="header-profile-name flex-column font-weight-600 primary-color secondary-title center-text">
                 <span>
                   Scott
                 </span>
                 <span>
                   Fisher
                 </span>
-              </div>
+              </Box>
               <div className="profile-picture cursor-pointer" onClick={handleClickMUITooltip}>
                 <img src={UserAvatar} className='profile-picture-img' alt="" />
               </div>

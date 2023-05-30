@@ -29,7 +29,7 @@ export const body = {
     width: "100%",
 }
 
-const DRAWERWIDTH = 265;
+const DRAWERWIDTH = 320;
 
 // Styled components
 const openedMixin = (theme) => ({
@@ -89,6 +89,7 @@ export const Drawer = styled(MuiDrawer, {
     shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
     width: DRAWERWIDTH,
+    
     [theme.breakpoints.up("sm")]: {
         flexShrink: 0,
         whiteSpace: "nowrap",
