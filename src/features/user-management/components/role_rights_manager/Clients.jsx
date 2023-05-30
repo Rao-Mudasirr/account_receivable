@@ -1,22 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Clients = ({checkboxData, onClickBtn}) => {
-    // console.log(checkboxData, "formControlData")
-    return (
-        <FormGroup>
-            {checkboxData.map((item, index) => {
-                return (
+import { TreeView, TreeItem } from '@mui/lab'
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Margin, Padding } from '@mui/icons-material';
+import { Box } from '@mui/material';
+const Clients = ({ checkboxData, onClickBtn }) => {
 
-                    <FormControlLabel id={item.id}
-                    key={index}
-                    onClick={onClickBtn}
-                        required control={<Checkbox />}
-                        label={item.label} />
-                )
-            })}
-        </FormGroup>                                     
-    )
-}
-export default Clients
+   
+    return (
+        <>
+        <Box sx={{ml: 3.8}}>
+            <FormGroup>
+                {checkboxData.map((item, index) => {
+                    return (
+                        <FormControlLabel
+                            id={item.id}
+                            key={index}
+                            onClick={onClickBtn}
+                            control={<Checkbox />}
+                            label={item.label}
+                        />
+                    );
+                })}
+            </FormGroup>
+            </Box>
+            <TreeView
+                aria-label="file system navigator"
+                defaultCollapseIcon={<RemoveIcon />}
+                defaultExpandIcon={<AddIcon/>}
+            >
+                <TreeItem nodeId="1" label={
+                   <FormControlLabel control={<Checkbox/>} label="Label" />
+                }>
+                    <TreeItem nodeId="2" label={
+                        <FormControlLabel control={<Checkbox/>} label="Label" />
+                    } />
+                </TreeItem>
+            </TreeView>
+        </>
+    );
+};
+
+export default Clients;
+

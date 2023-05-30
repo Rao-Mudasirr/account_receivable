@@ -3,7 +3,6 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 const Invoices = ({checkboxData, onClickBtn}) => {
-    // console.log(checkboxData, "formControlData")
     return (
         <FormGroup>
             {checkboxData.map((item, index) => {
@@ -12,7 +11,7 @@ const Invoices = ({checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                     onClick={onClickBtn}
-                        required control={<Checkbox />}
+                        control={<Checkbox />}
                         label={item.label} />
                 )
             })}

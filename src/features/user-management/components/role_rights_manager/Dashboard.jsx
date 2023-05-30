@@ -2,9 +2,8 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Dashboard = ({checkDisabled,checkboxData, onClickBtn}) => {
-    // console.log(checkDisabled,'checkDisabled')
-    // console.log(checkboxData,"checkboxData")
+const Dashboard = ({checkboxData, onClickBtn}) => {
+
     return (
         <FormGroup>
             {checkboxData.map((item, index) => {
@@ -14,8 +13,7 @@ const Dashboard = ({checkDisabled,checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                         onClick={onClickBtn}
-                        disabled={checkDisabled}
-                        required control={<Checkbox />}
+                        control={<Checkbox />}
                         label={item.label} />
                 )
             })}

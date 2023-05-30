@@ -6,38 +6,27 @@ import AdminRights from './Admin_Rights';
 import Dashboard from './Dashboard';
 import Invoices from './Invoices';
 import Clients from './Clients';
-import Performance from './Performance';
 import { formControlData } from './data'
 import './manager.css';
 
 
 const Manager = () => {
-
-  const [checkDisabled, setCheckDisabled] = useState(true);
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('dashboard');
-  const [dashboardEnabled, setDashboardEnabled] = useState(true);
+  const [switchEnabled, setSwitchEnabled] = useState(false);
 
+  const handleSwitchChange = () => {
+    setSwitchEnabled(!switchEnabled);
+  };
 
   useEffect(() => {
     setActive('1');
   }, []);
-
+   
 
   const handleLiClick = (id) => {
     setActive(id);
   };
-
-
-  const handleDashboardClick = () => {
-    // console.log('Dashboard clicked');
-  };
-  const handleDashboardSwitch = () => {
-    setDashboardEnabled(!dashboardEnabled);
-    if (switchOption === 'dashboard') {
-      setCheckDisabled(!dashboardEnabled);
-    }
-  };  
 
   const renderDataComponent = () => {
     switch (active) {
@@ -49,8 +38,6 @@ const Manager = () => {
             formControlData={formControlData}
             setSwitchOption={setSwitchOption}
             switchOption={switchOption}
-            checkDisabled={checkDisabled}
-            setCheckDisabled={setCheckDisabled}
           />
         );
       case '3':
@@ -58,8 +45,9 @@ const Manager = () => {
       case '4':
         return (
           <AdminRights
-            checkDisabled={checkDisabled}
-            setCheckDisabled={setCheckDisabled}
+          formControlData={formControlData}
+          setSwitchOption={setSwitchOption}
+          switchOption={switchOption}
           />
       );
       default:
@@ -68,35 +56,38 @@ const Manager = () => {
   };
 
   const renderSwitchComponents = (active) => {
-    switch (active) {
-      case 'dashboard':
-        return (
-          <Dashboard
-            checkboxData={formControlData.find((data) => data.id === 'dashboard').switchOptions}
-            onClickBtn={handleDashboardClick}
-            onSwitchToggle={handleDashboardSwitch}
-            enabled={dashboardEnabled}
-            checkDisabled={checkDisabled}
-          />
-        );
-      case 'invoices':
-        return (
-          <Invoices
-            checkboxData={formControlData.find((data) => data.id === 'invoices').switchOptions}
-            onClickBtn={handleDashboardClick}
-          />
-        );
-      case 'clients':
-        return (
-          <Clients
-            checkboxData={formControlData.find((data) => data.id === 'clients').switchOptions}
-            onClickBtn={handleDashboardClick}
-          />
-        );
-      default:
-        return null;
-    }
-  };
+  switch (active) {
+    case 'dashboard':
+      return (
+        <Dashboard
+          checkboxData={formControlData.find((data) =>
+            data.id === 'dashboard'
+          ).switchOptions}
+          switchEnabled={switchEnabled}
+        />
+      );
+    case 'invoices':
+      return (
+        <Invoices
+          checkboxData={formControlData.find((data) =>
+            data.id === 'invoices'
+          ).switchOptions}
+          switchEnabled={switchEnabled}
+        />
+      );
+    case 'clients':
+      return (
+        <Clients
+          checkboxData={formControlData.find((data) =>
+            data.id === 'clients'
+          ).switchOptions}
+          switchEnabled={switchEnabled}
+        />
+      );
+    default:
+      return null;
+  }
+};
 
   return (
     <div className="container">
