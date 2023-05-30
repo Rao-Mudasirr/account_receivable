@@ -15,14 +15,17 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import DueInvoices from "./due-invoices/due-invoices";
 import WorkflowDetails from "./workflow-details/workflow-details";
 
-const TabData = [
-  { label: "Invoices", content: <DueInvoices /> },
-  { label: "Workflow Details", content: <WorkflowDetails /> },
-];
+
 
 const ClientDetails = () => {
+
   const [openInvoices, setOpenInvoices] = useState(true);
   const [clientDetails, setClientDetails] = useState(true);
+  const[activestatus,setActivestatus]=useState('All');
+
+  const invoicesStatusChangeHandler=(status)=>{
+    setActivestatus(status)
+  }
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -37,6 +40,12 @@ const ClientDetails = () => {
   const clientDetailsClickHandler = () => {
     setClientDetails(!clientDetails);
   };
+
+  const TabData = [
+    { label: "Invoices", content: <DueInvoices status={activestatus} /> },
+    { label: "Workflow Details", content: <WorkflowDetails /> },
+  ];
+  
 
   return (
     <>
@@ -198,6 +207,7 @@ const ClientDetails = () => {
                   <Typography
                     variant="h6"
                     sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
+                    onClick={()=>invoicesStatusChangeHandler("Due")}
                   >
                     Due Invoices
                   </Typography>
@@ -219,6 +229,7 @@ const ClientDetails = () => {
                   <Typography
                     variant="h6"
                     sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
+                    onClick={()=>invoicesStatusChangeHandler("Overdue")}
                   >
                     Overdue Invoices
                   </Typography>
@@ -240,6 +251,7 @@ const ClientDetails = () => {
                   <Typography
                     variant="h6"
                     sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
+                    onClick={()=>invoicesStatusChangeHandler('Paid')}
                   >
                     Paid Invoices
                   </Typography>

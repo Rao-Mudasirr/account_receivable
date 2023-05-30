@@ -11,14 +11,14 @@ import "./due-invoices.scss";
 import filterIcon  from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
 
-const DueInvoices = () => {
+const DueInvoices = ({ status }) => {
   const [searchTerm, setSearchTerm] = useState('');
-
-
+  
   const filteredRows = invoicestabledata.filter(row =>
-    row.invoiceid.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (status === 'All' || row.status === status) &&
+    (row.invoiceid.toLowerCase().includes(searchTerm.toLowerCase()) ||
     row.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    row.status.toLowerCase().includes(searchTerm.toLowerCase())
+    row.status.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const SearchClickhandler = (event) => {
