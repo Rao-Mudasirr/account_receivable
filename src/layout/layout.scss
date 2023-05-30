@@ -34,9 +34,9 @@
   .body-footer {
     position: sticky;
     top: 100%;
-    padding: 0px 13px;
     background: $white-color;
     margin-top: 34px;
+    z-index: 1200;
   }
 }
 

@@ -53,6 +53,9 @@
   .header {
     padding: 7px 10px;
   }
+  .ap-logo{
+    width: 200px;
+  }
   .open-close-sidebar {
     display: none;
   }
@@ -67,5 +70,10 @@
   .search-icon svg {
     width: 20px;
     height: 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .ap-logo{
+    width: 170px;
   }
 }

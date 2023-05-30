@@ -1,6 +1,3 @@
-// MUI
-import Drawer from "@mui/material/Drawer";
-
 // Components
 import Sidebar from "../sidebar";
 

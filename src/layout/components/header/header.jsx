@@ -8,18 +8,20 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import "./header.scss";
 
 
-export const Header = ({openMobHeader}) => {
+export const Header = ({ openMobHeader }) => {
   return (
     <>
       <Grid container justifyContent="space-between" className="header">
         <Grid item display="flex" justifyContent="center" alignItems="center">
-          <img className="cursor-pointer" src={AppLogo} alt="Accountants Pact" />
-          <MenuOpenIcon sx={{display:{sm:'none',xs:'flex'}}} onClick={()=>openMobHeader(true)} />
+            <img className="ap-logo cursor-pointer" src={AppLogo} alt="Accountants Pact" />
         </Grid>
         <Grid item display="flex" justifyContent="center" alignItems="center">
-          <Grid container className="header-body" spacing={2}>
-            <Grid item sx={{display:{md:'flex',xs:'none'}}} className="search-icon">
+          <Grid container className="header-body" spacing={{sm:2,xs:0}}>
+            <Grid item sx={{ display: { md: 'flex', xs: 'none' } }} className="search-icon">
               <SearchCard />
+            </Grid>
+            <Grid item sx={{ display: { md: 'none', xs: 'flex' } }} className="search-icon">
+              <MenuOpenIcon  onClick={() => openMobHeader(true)} />
             </Grid>
             <Grid item className="notification-icon">
               <NotificationCard />
