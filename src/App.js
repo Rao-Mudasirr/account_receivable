@@ -6,6 +6,7 @@ import Layout from './layout/layout';
 import Dashboard from './pages/Dashboard';
 import InvoiceListing from './features/Invoices/components/InvoiceListing';
 import Clientdetails from './pages/client-details';
+import Overdue_Invoice from './pages/Overdue_Invoice';
 
 function App() {
   return (
@@ -26,6 +27,13 @@ function App() {
               <InvoiceListing/>
           }
         />
+      <Route
+          exact
+          path={"/overdue-invoices"}
+          element={
+              <Overdue_Invoice/>
+          }
+        />
       
       <Route
           exact
@@ -36,7 +44,7 @@ function App() {
         />
         <Route
           exact
-          path={"/client-details"}
+          path={"/clients"}
           element={
               <Clientdetails/>
           }
