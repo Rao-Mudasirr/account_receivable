@@ -2,15 +2,18 @@
 // do not write explicitly values.
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 //colors
-$primary-color: #ff611d;
-$secondary-color: #333333;
+$primary-color:#2B2B33;
+$secondary-color: #6B6B80;
+$tertiary-color: #40404D;
+$blue-color:#0084AD;
+
 
 $black-color: #000000;
 $white-color: #ffffff;
 $dark-gray-color: #3c3c3c;
 $grey-color: #747070;
 $orange-color: #ff8908;
-$yellow-color: #ffb80e;
+$yellow-color: #FFBF00;
 $link-color: #59a9ff;
 $orange-yellowish-color: #ffa412;
 $mid-green-color: #00d27a;
@@ -20,7 +23,7 @@ $mix-grey-color: linear-gradient(180deg, #464c52 0%, #464c5299 100%);
 $orange-color-300: #FFA300;
 
 $solitude-color:#E9EFFD;
-$error-color: #dc3545;
+$error-color: #FF0000;
 $alert-text-color:#81222C;
 $success-color: #165c27;
 $alertgreen-color: #d0e7d6;
