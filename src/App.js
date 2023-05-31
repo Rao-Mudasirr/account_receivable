@@ -1,9 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import "./App.scss";
-import RecentNotify from "./features/RecentNotification/RecentNotify";
-import { TotalInvoices } from "./features/Total_Invoices/TotalInvoices";
-import Invoices from "./pages/Invoices";
 import UserManagements from "./pages/user-managements";
 import Layout from "./layout/layout";
 import Dashboard from "./pages/Dashboard";

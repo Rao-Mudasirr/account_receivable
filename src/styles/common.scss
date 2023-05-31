@@ -1,6 +1,15 @@
 @import "./variables";
 
 //fontfamilies
+
+.font-family-exo2 {
+  font-family: 'Exo 2', sans-serif !important;
+}
+
+
+// .font-family-montserrat {
+//   font-family: $font-family-montserrat !important;
+// }
 .font-family-Exo {
   font-family: $font-family-Exo !important;
 }
@@ -83,6 +92,12 @@
   color: $primary-color !important;
 }
 
+.tertiary-color{
+  $tertiary-color: #8C8C9E;
+}
+.yellow-color{
+  color:$yellow-color;
+}
 .bg-primary-color {
   background-color: $primary-color !important;
 }
