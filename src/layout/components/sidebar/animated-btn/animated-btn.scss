@@ -16,7 +16,7 @@
     background-color: #A6A6B3;
     display: block;
     position: absolute;
-    transition: 150ms linear;
+    transition: .1s linear;
     transform: scale(1.1);
 }
 
@@ -52,7 +52,7 @@
 }
 
 .nav-icon-1.open span {
-    transition-delay: 200ms;
+    transition-delay: .1s;
     background-color: #fff;
     transform: rotate(45deg);
 }

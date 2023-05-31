@@ -1,6 +1,6 @@
 
 export const mobSidebarDrawer = {
-    display: { xs: "flex", sm: "none" },
+    display: { xs: "flex", md: "none" },
     width: "300px",
     overflow: 'hidden',
     '& .MuiDrawer-paper':

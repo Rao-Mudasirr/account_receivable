@@ -8,14 +8,15 @@ import "./sidebar-menu.scss";
 import { useSidebarMenu } from "./use-sidebar-menu";
 
 // MUI Styles
-import { DropdownLink, NavLinkMenu, SidebarLabel } from "./sidebar-menu-mui-style";
+import { NavLinkMenu, SidebarLabel } from "./sidebar-menu-mui-style";
 import { useMatch, useResolvedPath } from "react-router-dom";
 
 // Component Function Starts Here
 const SidebarMenu = ({ item }) => {
-  const { openDrawer, subNav, sidebarLinkHandler, dropdownLinkHandler } = useSidebarMenu({ item })
-  let resolved = useResolvedPath(item.path);
-  let match = useMatch({ path: resolved.pathname, end: true });
+  const { sidebarLinkHandler } = useSidebarMenu({ item })
+  const resolved = useResolvedPath(item.path);
+  const match = useMatch({ path: resolved.pathname, end: true });
+
   console.log(match);
   return (
     <>
@@ -24,52 +25,21 @@ const SidebarMenu = ({ item }) => {
           <div className="sidebar-menu-top">
             <div>
               <NavLinkMenu
-                className={`sidebar-menu font-family-Exo ${!openDrawer ? "sidebar-menu-open" : "centerItems"
-                  }`}
+                className={`sidebar-menu font-family-Exo sidebar-menu-open`}
                 to={item.path}
                 onClick={sidebarLinkHandler}
                 key={item.path}
               >
                 <div
-                  className={`sidebar-menu-items ${!openDrawer
-                    ? "sidebar-menu-items-open"
-                    : "sidebar-menu-items-closed"
-                    }`}
+                  className={`sidebar-menu-items sidebar-menu-items-open`}
                 >
                   <div className="icon">{match ? item.hoverdIcon : item.icon}</div>
                   <SidebarLabel className="primary-title font-weight-500">
-                    {!openDrawer && item.title}
+                    {item.title}
                   </SidebarLabel>
                 </div>
-                {!openDrawer && (
-                  <div className="icon-hover">
-                    {item.subNav && subNav
-                      ? item.iconOpened
-                      : item.subNav
-                        ? item.iconClosed
-                        : null}
-                  </div>
-                )}
               </NavLinkMenu>
-              <div className="sidebar-menu-dropdwon-parent">
-                {subNav && !openDrawer &&
-                  item.subNav?.map((item) => {
-                    return (
-                      <div key={item.id}>
-                        <DropdownLink
-                          onClick={dropdownLinkHandler}
-                          className="sidebar-menu-drop"
-                          to={item.path}
-                          key={item.id}
-                        >
-                          <div className="secondary-title font-weight-400">{item.title}</div>
-                        </DropdownLink>
-                      </div>
-                    );
-                  })}
-              </div>
             </div>
-
           </div>
         </>
       }
