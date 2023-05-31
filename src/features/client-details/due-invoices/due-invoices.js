@@ -25,13 +25,6 @@ const DueInvoices = ({ status }) => {
   const SearchClickhandler = (event) => {
     setSearchTerm(event.target.value);
   };
-
- 
-  
-  
-  
-
-  
   return (
     <div>
     <div style={{ margin: '5px', display: 'flex', alignItems: 'center' ,marginTop:'10px'}}>
