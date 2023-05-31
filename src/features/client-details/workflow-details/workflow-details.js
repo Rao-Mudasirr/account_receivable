@@ -7,6 +7,7 @@ import filterIcon from '../../../assests/images/client/filter.png';
 import exportIcon from '../../../assests/images/client/export.png';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CheckIcon from '@mui/icons-material/Check';
+import checkTic from "../../../assests/images/client/check.png"
 
 const WorkflowDetails = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -71,7 +72,14 @@ const WorkflowDetails = () => {
       {workflowtableheading.map((header, index) => (
             <TableCell key={index} sx={{background:'#F0F0F2'}}>
               
-               { header}
+              {index === 0 ? (
+      <>
+        <img src={checkTic} alt="icon" style={{ marginLeft: 4, width: '20px' }} />
+        {header}
+      </>
+    ) : (
+      header
+    )}
              
             </TableCell>
           ))}
