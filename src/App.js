@@ -1,50 +1,27 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
-import './App.scss';
-import UserManagements from './pages/user-managements';
-import Layout from './layout/layout';
-import Dashboard from './pages/Dashboard';
-import InvoiceListing from './features/Invoices/components/InvoiceListing';
-import Clientdetails from './pages/client-details';
+import "./App.scss";
+import UserManagements from "./pages/user-managements";
+import Layout from "./layout/layout";
+import Dashboard from "./pages/Dashboard";
+import InvoiceListing from "./features/Invoices/components/InvoiceListing";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-    <Routes>
-          <Route exact path={"/"} element={<Layout />}>
+      <Routes>
+        <Route exact path={"/"} element={<Layout />}>
+          <Route exact path={"/"} element={<Dashboard />} />
+          <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route
-          exact
-          path={"/"}
-          element={
-              <Dashboard />
-          }
-        />
-      <Route
-          exact
-          path={"/invoices"}
-          element={
-              <InvoiceListing/>
-          }
-        />
-      
-      <Route
-          exact
-          path={"/user-management"}
-          element={
-              <UserManagements/>
-          }
-        />
-        <Route
-          exact
-          path={"/client-details"}
-          element={
-              <Clientdetails/>
-          }
-        />
-            <Route path="/not-found" element={<h1>Not Found</h1>}/>
-            <Route path="*" element={<Navigate to="/not-found"/>} />
-          </Route>
-    </Routes>
+            exact
+            path={"/user-management"}
+            element={<UserManagements />}
+          />
+          <Route path="/not-found" element={<h1>Not Found</h1>} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
+        </Route>
+      </Routes>
     </Suspense>
   );
 }

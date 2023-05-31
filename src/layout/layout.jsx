@@ -7,7 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 // SCSS
 import "./layout.scss";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 // import { AlertBreadcrumbs } from "../../components/alert-breadcrumbs/alert-breadcrumbs";
 import { AppBar, body, Drawer, DrawerHeader, mainContainer, xsNonesmFlex } from "./layout-mui-style";
 import { Footer } from "./components/footer/footer";
@@ -16,7 +16,7 @@ import Sidebar from "./components/sidebar/sidebar";
 import HeaderMobile from "./components/sidebar/sidebar-mobile/sidebar-mobile";
 import { useState } from "react";
 // Component start here
-export default function Layout({children}) {
+export default function Layout({ children }) {
   const [openMobDrawer, setOpenMobDrawer] = useState(false)
   return (
     <div className="main-layout">
@@ -46,23 +46,23 @@ export default function Layout({children}) {
             <Grid
               sx={body}
             >
-              <DrawerHeader  />
+              <DrawerHeader />
             </Grid>
             <div className="margin-outlet-x" >
               {/* <AlertBreadcrumbs /> */}
-              <div >
-              <Outlet />
-              </div>
-              <br/>
-              <br/>
+              <Box sx={{my:'50px'}} >
+                <Outlet />
+              </Box>
+              <br />
+              <br />
               <main className="flex-grow">{children}</main>
             </div>
           </div>
         </div>
       </Grid>
-          <div className="body-footer">
-            <Footer />
-          </div>
+      <div className="body-footer">
+        <Footer />
+      </div>
     </div>
   );
 }

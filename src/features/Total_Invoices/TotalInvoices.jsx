@@ -17,10 +17,6 @@ export const TotalInvoices = () => {
   }));
   return (
     <div className="card-invoices">
-      <div className="card-invoices-top">
-        <span className="left-text">Total Invoices</span>
-        <span className="right-text">1350</span>
-      </div>
       <div className="card-invoices-middle">
         <span>£ 17500.00</span>
       </div>
