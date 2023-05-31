@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Suspense } from "react";
 import './App.scss';
 import RecentNotify from './features/RecentNotification/RecentNotify';
 import { TotalInvoices } from './features/Total_Invoices/TotalInvoices';
@@ -10,23 +11,21 @@ import InvoiceListing from './features/Invoices/components/InvoiceListing';
 
 function App() {
   return (
+    <Suspense fallback={<h1>Loading</h1>}>
     <Routes>
-      <Route
+          <Route exact path={"/"} element={<Layout />}>
+          <Route
           exact
           path={"/"}
           element={
-            <Layout>
               <Dashboard />
-            </Layout>
           }
         />
       <Route
           exact
           path={"/invoices"}
           element={
-            <Layout>
               <InvoiceListing/>
-            </Layout>
           }
         />
       
@@ -34,12 +33,14 @@ function App() {
           exact
           path={"/user-management"}
           element={
-            <Layout>
               <UserManagements/>
-            </Layout>
           }
         />
+            <Route path="/not-found" element={<h1>Not Found</h1>}/>
+            <Route path="*" element={<Navigate to="/not-found"/>} />
+          </Route>
     </Routes>
+    </Suspense>
   );
 }
 

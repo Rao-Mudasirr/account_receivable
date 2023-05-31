@@ -1,5 +1,3 @@
-import { NavLink } from "react-router-dom";
-
 // Sidebar Data
 import { sidebarData } from "./sidebar-data"
 
@@ -24,7 +22,7 @@ const Sidebar = () => {
   const { openDrawer } = useSidebar();
   const [open, setOpen] = useState(false)
   return (
-    <Grid container height="100%" position="relative" sx={{ mt: {sm: '70px'}, overflowX: 'hidden', flexWrap: 'nowrap' }} className="sidebar">
+    <Grid container height="100%" position="relative" sx={{ mt: {md: '70px'}, overflowX: 'hidden', flexWrap: 'nowrap' }} className="sidebar">
       <Grid height="100%" width="100%" sx={{ background: '#2B2B33', }}>
         <Box sx={{ position: 'relative' }}>
           <Box position={"absolute"} zIndex={'1'}>
@@ -42,7 +40,7 @@ const Sidebar = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid height="99%" width="100%" sx={{ top: '5px', left: open ? '264px' : '10px', transition: 'all .3s linear', zIndex: '3' }} position={"absolute"}>
+      <Grid height={{md:'94.9%',xs:"98.7%"}} width="100%" sx={{ top: '5px', left: open ? '264px' : '10px', transition: 'all .3s linear', zIndex: '3' }} position={"absolute"}>
         {/* Sidebar logo */}
         <div className="sidebar-container">
           <div className="sidebar-logo " >

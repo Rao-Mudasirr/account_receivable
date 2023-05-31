@@ -4,7 +4,7 @@ import { Autocomplete, TextField } from "@mui/material";
 
 import { AUTOCOMPLETEINPUT, ListBoxPaper } from "./search-card-mui-style";
 import { Link } from "react-router-dom";
-
+import "./search-card.scss"
 // Component Function Starts Here
 const SearchCard = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
@@ -28,7 +28,7 @@ const SearchCard = () => {
           </Link>
         );
       }}
-      options={[]}
+      options={[1,2,2,2,2,2,2,2,2,2,2]}
       getOptionLabel={(option) => option.title}
       renderInput={(params) => (
         <TextField

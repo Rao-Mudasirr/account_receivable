@@ -8,12 +8,8 @@
   padding: 22px 24px;
 }
 .notification-card-parent::-webkit-scrollbar {
-  width: 4px;
+  width: 0px;
   background-color: transparent !important;
-}
-.notification-card-parent::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background-color: #65cdf0 !important;
 }
 .notifications-sub-container{
   margin-bottom: 25px;
@@ -73,7 +69,7 @@
   color: #6e7191;
 }
 .notification-row:hover {
-  background-color: #65cdf038;
+  background-color: #a6a6b329;
 }
 .day-stream {
   font-size: 14px;
@@ -82,5 +78,5 @@
   margin-bottom: 10px;
 }
 .day-stream .noti-length {
-  color: #65cdf0;
+  color: #40404D;
 }
