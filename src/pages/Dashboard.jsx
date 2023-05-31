@@ -4,7 +4,7 @@ import RecentNotify from '../features/RecentNotification/RecentNotify'
 
 export default function Dashboard() {
   return (
-    <div>
+    <div style={{marginTop: '60px'}}>
         <TotalInvoices/>
         <RecentNotify />
     </div>
