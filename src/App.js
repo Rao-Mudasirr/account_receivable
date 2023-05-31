@@ -36,7 +36,7 @@ function App() {
         />
         <Route
           exact
-          path={"/client-details"}
+          path={"/clients"}
           element={
               <Clientdetails/>
           }

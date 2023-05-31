@@ -11,9 +11,11 @@ import "./due-invoices.scss";
 import filterIcon  from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
 import DateRangeFilter from '../components/date-range-filter/date-range-filter';
+import ExportModal from '../components/date-range-filter/export-modal/export-modal';
 
 const DueInvoices = ({ status }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
   
   const filteredRows = invoicestabledata.filter(row =>
     (status === 'All' || row.status === status) &&
@@ -24,6 +26,18 @@ const DueInvoices = ({ status }) => {
 
   const SearchClickhandler = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleExportButtonClick = () => {
+    setModalOpen(true);
+  };
+  
+ 
+
+ 
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
   return (
     <div>
@@ -59,10 +73,14 @@ const DueInvoices = ({ status }) => {
             background: '#2B2B33',
           },
         }}
+        onClick={handleExportButtonClick}
         endIcon={<img src={exportIcon} alt="Export Text" />}
       >
         Export Text
       </Button>
+     <div>
+     <ExportModal open={modalOpen} onClose={handleCloseModal}/>
+     </div>
     </div>
     </div>
  
