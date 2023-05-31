@@ -1,0 +1,42 @@
+
+.Paid {
+    width: 49px;
+    height: 32px;
+    background: #48995D;
+    opacity: 0.24;
+    border-radius: 8px;
+    width: 33px;
+height: 24px;
+
+/* BodyText/Default/Bold - 16 */
+
+font-family: 'Exo 2';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+display: flex;
+align-items: center;
+text-align: right;
+
+/* Indication/Success */
+
+color: #48995D !important;
+}
+.Due {
+    width: 49px;
+    height: 32px;
+    background: #FFBF00;
+    opacity: 0.24;
+    border-radius: 8px;
+}
+
+.Overdue {
+    width: 49px;
+    height: 32px;
+    background: #FF3F3F;
+    opacity: 0.24;
+    border-radius: 8px;
+}

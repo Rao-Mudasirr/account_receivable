@@ -1,11 +1,10 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import CustomTable from '../../../components/Table/CustomTable';
 import { useTableParams } from "../../../components/Table/useTableParams";
 // import TableAction from '../../../components/Table/TableAction';
 // import DeleteModel from '../../../../components/modal/DeleteModel';
 // import FormDialog from '../../../../components/modal/ModalPractice';
+import './invoice_listing.scss';
 
 const INVOICE_DATA = [
   {
@@ -14,8 +13,8 @@ const INVOICE_DATA = [
     invoiceNo: "2345",
     client: "Ali",
     invoice_status: 'Paid',
-    issue_date: 30 / 4 / 2011,
-    due_date: 30 / 4 / 2011,
+    issue_date: '19 Oct, 2023',
+    due_date: '19 Oct, 2023',
     overdue_days: '12',
     total_amount: '$7200'
   },
@@ -25,8 +24,8 @@ const INVOICE_DATA = [
     invoiceNo: "2345",
     client: "Ali",
     invoice_status: 'Paid',
-    issue_date: 30 / 4 / 2011,
-    due_date: 30 / 4 / 2011,
+    issue_date: "19 Oct, 2023",
+    due_date: "19 Oct, 2023",
     overdue_days: '12',
     total_amount: '$7200'
   },
@@ -36,8 +35,8 @@ const INVOICE_DATA = [
     invoiceNo: "2345",
     client: "Ali",
     invoice_status: 'Paid',
-    issue_date: 30 / 4 / 2011,
-    due_date: 30 / 4 / 2011,
+    issue_date: "19 Oct, 2023",
+    due_date: "19 Oct, 2023",
     overdue_days: '12',
     total_amount: '$7200'
   },
@@ -47,8 +46,8 @@ const INVOICE_DATA = [
     invoiceNo: "2345",
     client: "Ali",
     invoice_status: 'Paid',
-    issue_date: 30 / 4 / 2011,
-    due_date: 30 / 4 / 2011,
+    issue_date: "19 Oct, 2023",
+    due_date: "19 Oct, 2023",
     overdue_days: '12',
     total_amount: '$7200'
   },
@@ -58,8 +57,8 @@ const INVOICE_DATA = [
     invoiceNo: "2345",
     client: "Ali",
     invoice_status: 'Paid',
-    issue_date: 30 / 4 / 2011,
-    due_date: 30 / 4 / 2011,
+    issue_date: "19 Oct, 2023",
+    due_date: "19 Oct, 2023",
     overdue_days: '12',
     total_amount: '$7200'
   },
@@ -93,7 +92,7 @@ export default function InvoiceListing() {
       {
         accessorFn: (row) => row.invoice_status,
         id: "invoice_status",
-        cell: (info) => info.getValue(),
+        cell: (info) => <div className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</div>,
         header: "Invoice Status",
         // isSortable: true,
       },
