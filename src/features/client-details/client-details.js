@@ -295,7 +295,8 @@ const ClientDetails = () => {
           <Divider sx={{ backgroundColor: "#000000" }} />
         </div>
       </div>
-        <div  style={{ padding: '5px' ,marginTop:'5px'}}>  {TabData[activeTab].content}</div></Grid>
+        <div  style={{ padding: '5px' ,marginTop:'5px'}}>  {TabData[activeTab].content}</div>
+      </Grid>
      
     </>
   );

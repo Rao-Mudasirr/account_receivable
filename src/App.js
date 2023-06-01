@@ -1,10 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
-import "./App.scss";
-import UserManagements from "./pages/user-managements";
-import Layout from "./layout/layout";
-import Dashboard from "./pages/Dashboard";
-import InvoiceListing from "./features/Invoices/components/InvoiceListing";
+import './App.scss';
+import UserManagements from './pages/user-managements';
+import Layout from './layout/layout';
+import Dashboard from './pages/Dashboard';
+import InvoiceListing from './features/Invoices/components/InvoiceListing';
+import Clientdetails from './pages/client-details';
+import Overdue_Invoice from './pages/Overdue_Invoice';
 
 function App() {
   return (
@@ -14,14 +16,45 @@ function App() {
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route
-            exact
-            path={"/user-management"}
-            element={<UserManagements />}
-          />
-          <Route path="/not-found" element={<h1>Not Found</h1>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
-        </Route>
-      </Routes>
+          exact
+          path={"/"}
+          element={
+              <Dashboard />
+          }
+        />
+      <Route
+          exact
+          path={"/invoices"}
+          element={
+              <InvoiceListing/>
+          }
+        />
+      <Route
+          exact
+          path={"/overdue-invoices"}
+          element={
+              <Overdue_Invoice/>
+          }
+        />
+      
+      <Route
+          exact
+          path={"/user-management"}
+          element={
+              <UserManagements/>
+          }
+        />
+        <Route
+          exact
+          path={"/clients"}
+          element={
+              <Clientdetails/>
+          }
+        />
+            <Route path="/not-found" element={<h1>Not Found</h1>}/>
+            <Route path="*" element={<Navigate to="/not-found"/>} />
+          </Route>
+    </Routes>
     </Suspense>
   );
 }

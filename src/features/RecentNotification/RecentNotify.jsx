@@ -4,13 +4,13 @@ import './recent_notify.scss';
 
 export default function RecentNotify() {
   return (
-      <div className="card-notification">
-        <div className="card-top">
-          <div className="row-top1">
-            <span className="top-heading">Recent Notification</span>
-          </div>
-        </div>
-        <br />
+      // <div className="card-notification">
+      //   <div className="card-top">
+      //     <div className="row-top1">
+      //       <span className="top-heading">Recent Notification</span>
+      //     </div>
+      //   </div>
+      //   <br />
         <div className="card-body">
             {
                 notify_data?.map((item, i) => (
@@ -24,6 +24,6 @@ export default function RecentNotify() {
                 ))
             }
         </div>
-      </div>
+      // </div>
   );
 }
