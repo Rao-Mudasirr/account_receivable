@@ -8,8 +8,8 @@ import "./due-invoices.scss";
 
 import filterIcon from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
-import DateRangeFilter from '../components/date-range-filter/date-range-filter';
 import ExportModal from '../components/date-range-filter/export-modal/export-modal';
+import DateRangeFilter from '../components/date-range-filter/date-range-filter';
 
 const DueInvoices = ({ status }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -49,7 +49,7 @@ const DueInvoices = ({ status }) => {
       <div style={{ margin: '5px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
         <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} />
         <div>
-          <DateRangeFilter />
+        {/* <DateRangeFilter open={isFilterModalOpen} onClose={handleCloseFilterModal} /> */}
         </div>
         <div style={{ marginLeft: 'auto' }}>
           <Button
