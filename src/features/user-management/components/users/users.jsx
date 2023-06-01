@@ -8,7 +8,8 @@ import TableAction from '../../../../components/Table/TableAction';
 import DeleteModel from '../../../../components/modal/DeleteModel';
 import FormDialog from '../../../../components/modal/ModalPractice';
 import { Status } from "../../../../components/status/status";
-import AddUser from '../../../../components/input-form/AddUser';
+import AddUser from '../../../../components/addusers-input-form/AddUser';
+import ViewInvoice from '../../../../features/Invoices/components/view-invoice/ViewInvoice'
 
 import { USERS_DATA } from ".";
 import { useUsers } from "./use-user";
@@ -100,10 +101,10 @@ export const UsersTable = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-      {/* <AddUser openForm={openForm}
+      <ViewInvoice openForm={openForm}
         setOpenForm={setOpenForm}
         handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} /> */}
+        handleCloseForm={handleCloseForm} />
     </>
   );
 };

@@ -16,7 +16,7 @@
   }
 
   .main-layout-body {
-    background-color: $dark-white-smoke-color;
+    background-color: $white-color;
     height: 100%;
     width: 100%;
     display: flex;
@@ -27,16 +27,15 @@
   }
 
   .body-outlet {
-    // margin: 13px;
     height: 100%
   }
 
   .body-footer {
     position: sticky;
     top: 100%;
-    padding: 0px 13px;
     background: $white-color;
     margin-top: 34px;
+    z-index: 1200;
   }
 }
 

@@ -7,20 +7,20 @@ export const mainContainer = {
     display: "flex",
     flexDirection: {
         xs: "column",
-        sm: "row",
+        md: "row",
     },
 }
 
 export const xsNonesmFlex = {
     display: {
         xs: "none",
-        sm: "flex",
+        md: "flex",
 
     }
 }
 
 export const mobScreen = {
-    display: { xs: "flex", sm: "none" },
+    display: { xs: "flex", md: "none" },
     width: "100%",
     overflow: 'hidden'
 }
@@ -29,7 +29,7 @@ export const body = {
     width: "100%",
 }
 
-const DRAWERWIDTH = 265;
+const DRAWERWIDTH = 320;
 
 // Styled components
 const openedMixin = (theme) => ({
@@ -46,7 +46,7 @@ const closedMixin = (theme) => ({
         duration: theme.transitions.duration.leavingScreen,
     }),
     width: `calc(${theme.spacing(7)} + 1px)`,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
         width: `calc(86px)`,
     },
 });
@@ -60,7 +60,7 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== "open",})(({ theme, open }) => ({
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(["width", "margin"], {
             easing: theme.transitions.easing.sharp,
@@ -75,12 +75,12 @@ export const AppBar = styled(MuiAppBar, {shouldForwardProp: (prop) => prop !== "
             }),
         }),
         ...(!open && {
-            [theme.breakpoints.up("sm")]: {
+            [theme.breakpoints.up("md")]: {
                 width: `calc(100%)`,
             },
         }),
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         width: '100%',
     },
 }));
@@ -89,7 +89,8 @@ export const Drawer = styled(MuiDrawer, {
     shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
     width: DRAWERWIDTH,
-    [theme.breakpoints.up("sm")]: {
+    
+    [theme.breakpoints.up("md")]: {
         flexShrink: 0,
         whiteSpace: "nowrap",
         boxSizing: "border-box",
@@ -103,7 +104,7 @@ export const Drawer = styled(MuiDrawer, {
             "& .MuiDrawer-paper": closedMixin(theme),
         }),
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
         anchor: 'left'
     },
 
