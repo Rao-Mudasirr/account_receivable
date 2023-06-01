@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomTable from '../../../components/Table/CustomTable';
 import { useTableParams } from "../../../components/Table/useTableParams";
 // import TableAction from '../../../components/Table/TableAction';
 // import DeleteModel from '../../../../components/modal/DeleteModel';
 // import FormDialog from '../../../../components/modal/ModalPractice';
 import './invoice_listing.scss';
+import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
+import filterIcon from "../../../assests/images/client/filter.png";
+import exportIcon from "../../../assests/images/client/export.png";
+import Button from "@mui/material/Button";
 
 const INVOICE_DATA = [
   {
@@ -23,7 +27,7 @@ const INVOICE_DATA = [
     Id: "02",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Paid',
+    invoice_status: 'Due',
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: '12',
@@ -34,7 +38,7 @@ const INVOICE_DATA = [
     Id: "03",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Paid',
+    invoice_status: 'Overdue',
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: '12',
@@ -56,7 +60,7 @@ const INVOICE_DATA = [
     Id: "05",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Paid',
+    invoice_status: 'Overdue',
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: '12',
@@ -78,7 +82,7 @@ export default function InvoiceListing() {
       {
         accessorFn: (row) => row.invoiceNo,
         id: "invoiceNo",
-        cell: (info) => info.getValue(),
+        cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
         header: "Invoice No.",
         // isSortable: true,
       },
@@ -92,7 +96,7 @@ export default function InvoiceListing() {
       {
         accessorFn: (row) => row.invoice_status,
         id: "invoice_status",
-        cell: (info) => <div className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</div>,
+        cell: (info) => <span className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</span>,
         header: "Invoice Status",
         // isSortable: true,
       },
@@ -143,7 +147,51 @@ export default function InvoiceListing() {
             <div className="invoice-title">Invoices</div>
         
         {/* Search field */}
+        <div
+        style={{
+          margin: "5px",
+          display: "flex",
+          alignItems: "center",
+          marginTop: "10px",
+        }}
+        >
+        <GlobalSearchBar />
+        <div style={{ marginLeft: "auto" }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{
+              mr: 2,
+              color: "#40404D",
+              borderColor: "#40404D",
+              borderRadius:'8px',
+              "&:hover": {
+                borderColor: "black",
+                color: "black",
+              },
+            }}
+            endIcon={<img src={filterIcon} alt="More Filter" />}
+          >
+            More Filter
+          </Button>
 
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              background: "#2B2B33",
+              borderRadius: '8px',
+              "&:hover": {
+                background: "#2B2B33",
+              },
+            }}
+            endIcon={<img src={exportIcon} alt="Export Text" />}
+          >
+            Export Text
+          </Button>
+        </div>
+      </div>
+      <br/>
           {/* Table */}
 
           <CustomTable

@@ -1,42 +1,72 @@
-
 .Paid {
-    width: 49px;
-    height: 32px;
-    background: #48995D;
-    opacity: 0.24;
-    border-radius: 8px;
-    width: 33px;
-height: 24px;
+  width: 49px;
+  height: 32px;
+  padding: 7px;
+  background: #D3E7D8;
+//   opacity: 0.74;
+  border-radius: 8px;
 
-/* BodyText/Default/Bold - 16 */
-
-font-family: 'Exo 2';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-/* identical to box height, or 150% */
-
-display: flex;
-align-items: center;
-text-align: right;
-
-/* Indication/Success */
-
-color: #48995D !important;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #48995D;
 }
 .Due {
-    width: 49px;
-    height: 32px;
-    background: #FFBF00;
-    opacity: 0.24;
-    border-radius: 8px;
+  padding: 7px;
+  width: 49px;
+  height: 32px;
+  background: #fff0c2;
+//   opacity: 0.74;
+  border-radius: 8px;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFC518;
 }
 
 .Overdue {
-    width: 49px;
-    height: 32px;
-    background: #FF3F3F;
-    opacity: 0.24;
-    border-radius: 8px;
+  padding: 7px;
+  width: 49px;
+  height: 32px;
+  background: #FFD1D1;
+//   opacity: 0.74;
+  border-radius: 8px;
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ff3f3f;
+}
+
+.invoice-title {
+  width: 77px;
+  height: 28px;
+    margin-top: 60px;
+    margin-bottom: 58px;
+  /* Heading/Sub 2 - H4 - 20 */
+
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  /* identical to box height, or 140% */
+
+  display: flex;
+  align-items: center;
+
+  /* Text/Default */
+
+  color: #40404d;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }

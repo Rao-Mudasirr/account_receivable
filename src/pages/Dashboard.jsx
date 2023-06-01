@@ -17,7 +17,7 @@ export default function Dashboard() {
               </DashboardCard>
             </Grid>
             <Grid item xs={3}>
-              <DashboardCard heading={"Total Invoices"} headingSize={'18px'} headingWeight={400} paddingForMd='16px' paddingForSm={"10px"} headingSibling={<span className="right-text">1350</span>} >
+              <DashboardCard heading={"Overdue Invoices"} headingSize={'18px'} headingWeight={400} paddingForMd='16px' paddingForSm={"10px"} headingSibling={<span className="right-text">1350</span>} >
                 <TotalInvoices />
               </DashboardCard>
             </Grid>
@@ -53,10 +53,10 @@ export default function Dashboard() {
         </Grid>
         <Grid item xl={4} xs={12}>
           <DashboardCard heading="Recent Notifications">
+            {/* <RecentNotify /> */}
           </DashboardCard>
         </Grid>
         <Grid item xs={12}>
-
         </Grid>
       </Grid>
     </React.Fragment>
