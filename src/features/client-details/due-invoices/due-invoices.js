@@ -132,6 +132,6 @@ const DueInvoices = ({ status }) => {
       </TableContainer>
     </div>
   );
-}
+};
 
 export default DueInvoices;

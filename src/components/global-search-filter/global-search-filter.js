@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import "./global-search-filter.scss"
+import { BorderBottom } from '@mui/icons-material';
 
 export const GlobalSearchBar = ({ value, onChange }) => {
   const [isFocused, setIsFocused] = React.useState(false);
@@ -29,20 +30,20 @@ export const GlobalSearchBar = ({ value, onChange }) => {
         '& .MuiInputBase-root': {
           color: isFocused ? 'black' : 'inherit',
           '&::before': {
-            borderBottomColor: isFocused ? 'black' : 'inherit',
+            borderBottomColor: isFocused ? 'black' : '#C4C4CC',
           },
           '&::after': {
-            borderBottomColor: isFocused ? 'black' : 'inherit',
+            borderBottomColor: isFocused ? 'black' : '#C4C4CC',
           },
           '&:hover::before': {
-            borderBottomColor: isFocused ? 'black' : 'inherit',
+            borderBottomColor: isFocused ? 'black' : '#C4C4CC',
           },
         },
       }}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
-            <SearchIcon sx={{ width: 19, height: 19, color: '#777777' }} />
+            <SearchIcon sx={{ width: 20, height: 20, color: '#777777'}} />
           </InputAdornment>
         ),
         classes: {

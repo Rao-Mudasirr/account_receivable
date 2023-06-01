@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import './App.scss';
 import UserManagements from './pages/user-managements';
@@ -6,12 +6,15 @@ import Layout from './layout/layout';
 import Dashboard from './pages/Dashboard';
 import InvoiceListing from './features/Invoices/components/InvoiceListing';
 import Clientdetails from './pages/client-details';
+import Overdue_Invoice from './pages/Overdue_Invoice';
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-    <Routes>
-          <Route exact path={"/"} element={<Layout />}>
+      <Routes>
+        <Route exact path={"/"} element={<Layout />}>
+          <Route exact path={"/"} element={<Dashboard />} />
+          <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route
           exact
           path={"/"}
@@ -24,6 +27,13 @@ function App() {
           path={"/invoices"}
           element={
               <InvoiceListing/>
+          }
+        />
+      <Route
+          exact
+          path={"/overdue-invoices"}
+          element={
+              <Overdue_Invoice/>
           }
         />
       

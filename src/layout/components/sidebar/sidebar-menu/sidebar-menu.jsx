@@ -16,8 +16,6 @@ const SidebarMenu = ({ item }) => {
   const { sidebarLinkHandler } = useSidebarMenu({ item })
   const resolved = useResolvedPath(item.path);
   const match = useMatch({ path: resolved.pathname, end: true });
-
-  console.log(match);
   return (
     <>
       {
