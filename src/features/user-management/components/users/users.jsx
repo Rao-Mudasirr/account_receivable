@@ -100,10 +100,10 @@ export const UsersTable = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-      <AddUser openForm={openForm}
+      {/* <AddUser openForm={openForm}
         setOpenForm={setOpenForm}
         handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} />
+        handleCloseForm={handleCloseForm} /> */}
     </>
   );
 };
