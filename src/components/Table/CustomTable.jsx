@@ -193,7 +193,7 @@ const CustomTable = (props) => {
         </Box>
 
         {/* Pagination */}
-        <Grid container>
+        {/* <Grid container>
           <Grid xs={12} item>
             {isSuccess && Boolean(table?.getRowModel()?.rows?.length) && (
               <Box sx={styles.currentPageBox}>
@@ -224,7 +224,7 @@ const CustomTable = (props) => {
               </Box>
             )}
           </Grid>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Grid>
   );
