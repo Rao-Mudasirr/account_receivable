@@ -26,8 +26,13 @@ export const UserAccessTable = () => {
     handleFormDialog,
     handleCloseForm,
     theme,
+    userData,
     // router,
     tableHeaderRef,
+    tableData,
+    setStatus,
+    status,
+    updateStatus
   } = useUserAccess();
 
 
@@ -118,10 +123,12 @@ export const UserAccessTable = () => {
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
           <FormControlLabel
+             
             control={
               <Android12Switch
-
-              />
+              value={info.cell.row.original.status}
+               checked={info.cell.row.original.status === 'Active' ? true : false} 
+                onChange={(e)=>updateStatus(e, info.cell.row.original.id)} />
             }
           />
         </Box>
@@ -145,7 +152,7 @@ export const UserAccessTable = () => {
         // selectFilters={SELECT_FILTERS}
         />
         <CustomTable
-          data={USER_ACCESS_DATA}
+          data={userData}
           columns={columns}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}

@@ -1,10 +1,10 @@
-export const USER_ACCESS_DATA = [
+export const USER_ACCESS_DATA= (status) => [
   {
     id: 1,
     Id: "01",
     userName: "John Doe",
     role: "Manager",
-    status:"Active",
+    status:"Inactive",
     createdOn: 30 / 4 / 2011,
   },
   {
@@ -12,7 +12,7 @@ export const USER_ACCESS_DATA = [
     Id: "02",
     userName: "John Doe",
     role: "Admin",
-    status:"Inactive",
+    status:"Active",
     createdOn: 30 / 4 / 2011,
   },
   {
