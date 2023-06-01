@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+// eslint-disable @typescript-eslint/no-unused-expressions
 import React from "react";
 
 // SCSS
