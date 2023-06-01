@@ -4,6 +4,8 @@ import RecentNotify from '../features/RecentNotification/RecentNotify'
 import { Grid } from '@mui/material'
 import { DashboardCard } from '../components/dashboard-card/dashboard-card'
 import { UnifiedDSOAPD } from '../features/unified-dso-apd/unified-dso-apd'
+import { TopClientsStackedBarChart } from '../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart'
+import { AgingBucketBarChart } from '../features/aging-bucket-bar-chart/aging-bucket-bar-chart'
 
 export default function Dashboard() {
   return (
@@ -18,7 +20,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={3}>
               <DashboardCard heading={"Overdue Invoices"} headingSize={'18px'} headingWeight={400} paddingForMd='16px' paddingForSm={"10px"} headingSibling={<span className="right-text">1350</span>} >
-                <TotalInvoices title = 'Overdue_invoices' />
+                <TotalInvoices title='Overdue_invoices' />
               </DashboardCard>
             </Grid>
             <Grid item xs={3}>
@@ -39,21 +41,31 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xl={8} xs={12}>
-          <DashboardCard heading="Apis">
+        <Grid item xl={6.5} xs={12}>
+          <DashboardCard heading="Top Clients">
+            <TopClientsStackedBarChart />
           </DashboardCard>
         </Grid>
-        <Grid item xl={4} xs={12}>
-          <DashboardCard heading="Total Users">
+        <Grid item xl={5.5} xs={12}>
+          <DashboardCard heading="Aging Bucket">
+            {/* <AgingBucketBarChart/> */}
           </DashboardCard>
         </Grid>
-        <Grid item xl={8} xs={12}>
-          <DashboardCard heading="Verification Status">
+        <Grid item xl={6.5} xs={12}>
+          <DashboardCard heading="Payment Collection">
           </DashboardCard>
         </Grid>
-        <Grid item xl={4} xs={12}>
+        <Grid item xl={5.5} xs={12}>
+          <DashboardCard heading="Payment Forecasting">
+          </DashboardCard>
+        </Grid>
+        <Grid item xl={6} xs={12}>
           <DashboardCard heading="Recent Notifications">
             <RecentNotify />
+          </DashboardCard>
+        </Grid>
+        <Grid item xl={6} xs={12}>
+          <DashboardCard heading="Verification Status">
           </DashboardCard>
         </Grid>
         <Grid item xs={12}>
