@@ -1,23 +1,23 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-
+import './manager.css';
+import { FormControlLabel } from '@mui/material';
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
   padding: 8,
-  '& .MuiSwitch-track': {
+  '& .MuiSwitch-track' : {
     borderRadius: 22 / 2,
-    border: "3px solid rgba(255,255,255,.35)",
+    border: "1px solid black",
     opacity: 1,
     backgroundColor:
-      theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
+      theme.palette.mode === 'black' ? 'gray' : 'white',
     boxSizing: 'border-box',
   },
   '& .MuiSwitch-thumb': {
     boxShadow: 'none',
-    backgroundColor: 'dark',
+    backgroundColor: 'black',
     border: "3px solid dark",
     width: 16,
     height: 16,
@@ -34,18 +34,20 @@ export default function Cashflow() {
 
   return (
     <FormGroup>
-    <FormControlLabel
-    control={<Android12Switch defaultChecked color='default'/>}
-    label="Dashboard"
-  />
-  <FormControlLabel
-    control={<Android12Switch defaultChecked color='default'/>}
-    label="Notifications"
-  />
-  <FormControlLabel
-    control={<Android12Switch defaultChecked color='default'/>}
-    label="Reports"
-  />
+      <div>
+        
+            <div>
+              <FormControlLabel
+                control={<Android12Switch
+                color='default' />}
+              />
+              <span>
+                CashFlow
+              </span>
+            </div>
+         
+      </div>
+
     </FormGroup>
   );
 }

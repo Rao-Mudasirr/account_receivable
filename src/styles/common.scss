@@ -98,6 +98,9 @@
 .yellow-color{
   color:$yellow-color;
 }
+.link-color{
+  color:$link-color;
+}
 .bg-primary-color {
   background-color: $primary-color !important;
 }
@@ -367,4 +370,11 @@ a {
   &:hover{
     background-color:rgba(255, 97, 29, 0.2) !important;
   }
+}
+
+.lined-bg{
+  --w:1px; /* Thiclness of the line */
+  --n:12;   /* number of lines */
+  background: linear-gradient(90deg, #0000 calc(100% - var(--w)), #F0F0F2 0);
+  background-size: calc((100% - var(--n)*var(--w))/(var(--n) + 1) + var(--w)) 100%;
 }

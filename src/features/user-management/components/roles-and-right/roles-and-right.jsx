@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Card, Box } from "@mui/material";
+import { Card, Box, Modal, Typography } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -10,6 +10,20 @@ import FormDialog from '../../../../components/modal/ModalPractice';
 
 import { ROLE_RIGHTS_DATA } from ".";
 import { useRolesRights } from "./use-roles-andright";
+import { BasicInformationForm } from '../basic-information';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  // border: '2px solid #000',
+  borderRadius: "10px",
+  boxShadow: 24,
+  p: 4,
+};
 
 export const RolesRightsTable = () => {
   const {
@@ -28,6 +42,9 @@ export const RolesRightsTable = () => {
 
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
+    const [openFormModal, setOpenFormModal] = React.useState(false);
+  const handleOpenFormModal = () => setOpenFormModal(true);
+  const handleCloseFormModal = () => setOpenFormModal(false);
  const columns = [
       {
         accessorFn: (row) => row.Id,
@@ -62,8 +79,8 @@ export const RolesRightsTable = () => {
         cell: (info) => (
           <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
             <TableAction type="delete" onClicked={handleOpen} />
-             <TableAction type="edit" onClicked={handleFormDialog} />
-            <TableAction type="setting" onClicked={handleFormDialog} />
+             <TableAction type="edit" onClicked={handleOpenFormModal} />
+            <TableAction type="setting" onClicked={handleOpenFormModal} />
           </Box>
         ),
         header: () => <span>Actions</span>,
@@ -81,7 +98,7 @@ export const RolesRightsTable = () => {
           title="Health & Safety"
           searchKey="search"
           showAddBtn
-          onAdd={handleFormDialog}
+          onAdd={handleOpenFormModal}
           onChanged={headerChangeHandler}
           // selectFilters={SELECT_FILTERS}
         />
@@ -104,6 +121,19 @@ export const RolesRightsTable = () => {
         setOpenForm={setOpenForm}
         handleFormDialog={handleFormDialog}
         handleCloseForm={handleCloseForm} />
+        <Modal
+        open={openFormModal}
+        onClose={handleCloseFormModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <BasicInformationForm/>
+          </Typography>
+        </Box>
+      </Modal>
     </>
+    
   );
 };

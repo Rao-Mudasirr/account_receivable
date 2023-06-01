@@ -1,0 +1,105 @@
+.users_container {
+  justify-content: center;
+  margin: 2rem auto;
+  height: 592px;
+  width: 586px;
+  border-radius: 8px;
+  font-family: 'Exo 2';
+
+  @media screen and (min-width: 600px) {
+    max-width: 480px;
+  }
+
+  @media screen and (min-width: 960px) {
+    max-width: 720px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 960px;
+  }
+}
+
+.adduser_header {
+  margin: 0 0 0 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  align-items: center;
+  color: rgba(43, 43, 51, 1);
+}
+
+.adduser_header>button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(64, 64, 77, 1);
+}
+
+.usersform_textfield {
+  width: 240px;
+  text-align: start;
+}
+
+.input_label {
+  display: flex;
+  color: #6B6B80;
+  margin-bottom: 1rem;
+}
+
+.textfield_bold:hover {
+  font-weight: 600;
+}
+
+.hide_label .asterisk {
+  display: none;
+}
+
+.adduser_forminputs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  text-align: center;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 960px) {
+    gap: 1rem;
+  }
+}
+
+.adduser_form {
+  height: 470px;
+  width: 544px;
+  margin-left: 24px;
+  margin-top: 30px;
+}
+
+.pointer_user {
+  cursor: pointer;
+}
+
+.useradd_btn {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 1rem;
+  margin-top: 5rem;
+
+  @media screen and (min-width: 960px) {
+    gap: 1rem;
+  }
+}
+
+.useradd_btn>Button:nth-child(1) {
+  color: rgba(43, 43, 51, 1);
+  border-color: rgba(43, 43, 51, 1);
+  border-radius: 8px;
+  font-family: "Exo 2";
+}
+
+.useradd_btn>Button:nth-child(2) {
+  background: rgba(43, 43, 51, 1);
+  border-radius: 8px;
+  font-family: "Exo 2";
+}
