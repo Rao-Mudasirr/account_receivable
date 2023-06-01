@@ -18,7 +18,7 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={3}>
               <DashboardCard heading={"Overdue Invoices"} headingSize={'18px'} headingWeight={400} paddingForMd='16px' paddingForSm={"10px"} headingSibling={<span className="right-text">1350</span>} >
-                <TotalInvoices />
+                <TotalInvoices title = 'Overdue_invoices' />
               </DashboardCard>
             </Grid>
             <Grid item xs={3}>
