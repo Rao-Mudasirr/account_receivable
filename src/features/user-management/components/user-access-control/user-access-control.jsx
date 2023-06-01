@@ -33,12 +33,12 @@ export const UserAccessTable = () => {
 
   const Android12Switch = styled(Switch)(({ theme }) => ({
     padding: 8,
-    '& .MuiSwitch-track': {
+    '& .MuiSwitch-track' : {
       borderRadius: 22 / 2,
       border: "1px solid black",
       opacity: 1,
       backgroundColor:
-        theme.palette.mode === 'dark' ? 'dark' : 'white',
+        theme.palette.mode === 'black' ? 'gray' : 'white',
       boxSizing: 'border-box',
     },
     '& .MuiSwitch-thumb': {
@@ -117,8 +117,6 @@ export const UserAccessTable = () => {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          {/* <TableAction type="delete" onClicked={handleOpen} />
-          <TableAction type="edit" onClicked={handleFormDialog} /> */}
           <FormControlLabel
             control={
               <Android12Switch
@@ -149,22 +147,11 @@ export const UserAccessTable = () => {
         <CustomTable
           data={USER_ACCESS_DATA}
           columns={columns}
-          // showSerialNo
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
-        // isPagination={true}
         />
       </Card>
-      {/* <DeleteModel
-        open={open}
-        handleClose={handleClose}
-        onDeleteClick={handleClose}
-      />
-      <FormDialog openForm={openForm}
-        setOpenForm={setOpenForm}
-        handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} /> */}
     </>
   );
 };

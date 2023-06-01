@@ -13,7 +13,7 @@ const Dashboard = ({checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                         onClick={onClickBtn}
-                        control={<Checkbox />}
+                        control={<Checkbox disabled={true} />}
                         label={item.label} />
                 )
             })}

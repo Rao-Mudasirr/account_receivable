@@ -5,8 +5,8 @@ import Manager from '../features/user-management/components/role_rights_manager/
 const UserManagements = () => {
   return (
     <div>
-        {/* <UserManagement/> */}
-        <Manager/>
+        <UserManagement/>
+        {/* <Manager/> */}
     </div>
   )
 }

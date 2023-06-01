@@ -5,7 +5,6 @@ import Checkbox from '@mui/material/Checkbox';
 import { TreeView, TreeItem } from '@mui/lab'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Margin, Padding } from '@mui/icons-material';
 import { Box } from '@mui/material';
 const Clients = ({ checkboxData, onClickBtn }) => {
 
