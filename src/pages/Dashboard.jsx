@@ -53,7 +53,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xl={4} xs={12}>
           <DashboardCard heading="Recent Notifications">
-            {/* <RecentNotify /> */}
+            <RecentNotify />
           </DashboardCard>
         </Grid>
         <Grid item xs={12}>
