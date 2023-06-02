@@ -8,8 +8,11 @@ import "./due-invoices.scss";
 
 import filterIcon from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
-import ExportModal from '../components/date-range-filter/export-modal/export-modal';
+import ExportModal from '../components/export-modal/export-modal';
 import DateRangeFilter from '../components/date-range-filter/date-range-filter';
+import DateRangePicker from '../../../components/date-range-picker/date-range-picker';
+
+
 
 const DueInvoices = ({ status }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,12 +47,23 @@ const DueInvoices = ({ status }) => {
     setModalOpen(false);
   };
 
+  const handleApplyDate = (date) => {
+    console.log('Selected date:', date);
+    // Do something with the selected date
+  };
+
   return (
     <div>
+
       <div style={{ margin: '5px', display: 'flex', alignItems: 'center', marginTop: '10px' }}>
         <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} />
         <div>
-        {/* <DateRangeFilter open={isFilterModalOpen} onClose={handleCloseFilterModal} /> */}
+          <DateRangePicker
+            isOpenDatePicker={isFilterModalOpen}
+            onCloseDatePicker={handleCloseFilterModal}
+            onApplyDate={handleApplyDate}
+          
+          />
         </div>
         <div style={{ marginLeft: 'auto' }}>
           <Button
@@ -86,7 +100,11 @@ const DueInvoices = ({ status }) => {
           </Button>
           <Box sx={{ position: 'absolute', bottom: 0, right: 0 }}>
             <ExportModal open={modalOpen} onClose={handleCloseModal} />
-            <DateRangeFilter open={isFilterModalOpen} onClose={handleCloseFilterModal} />
+            <DateRangeFilter
+            
+            open={isFilterModalOpen} onClose={handleCloseFilterModal}
+            
+            />
           </Box>
         </div>
       </div>
