@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TotalInvoices } from '../features/Total_Invoices/TotalInvoices'
 import RecentNotify from '../features/RecentNotification/RecentNotify'
 import { Grid } from '@mui/material'
@@ -6,8 +6,16 @@ import { DashboardCard } from '../components/dashboard-card/dashboard-card'
 import { UnifiedDSOAPD } from '../features/unified-dso-apd/unified-dso-apd'
 import { TopClientsStackedBarChart } from '../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart'
 import { AgingBucketBarChart } from '../features/aging-bucket-bar-chart/aging-bucket-bar-chart'
+import { PaymentShowcaseAreaChart } from '../features/payment-showcase-area-chart/payment-showcase-area-chart'
+import { PaymentForecastingChartSwitch } from '../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch'
+import { DashboardChartSwitch } from '../features/dashboard-chart-switch/dashboard-chart-switch'
+import { WorkflowSuccessSpeedometer } from '../features/workflow-success-speedometer/workflow-success-speedometer'
 
 export default function Dashboard() {
+  const [paymentForecastSwitch, setPaymentForecastSwitch] = useState("This Month");
+  const [PCVal, setPCVal] = useState("2020");
+  const [WFVal, setWFVal] = useState("UK Workflow");
+
   return (
     <React.Fragment>
       <Grid container spacing={3}>
@@ -52,11 +60,19 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={6.5} xs={12}>
-          <DashboardCard heading="Payment Collection">
+          <DashboardCard heading="Payment Collection" headingSibling={<DashboardChartSwitch switchName="Year" data={['2020', '2030', '2040']} selectVal={PCVal} setSelectVal={setPCVal} />}>
+            <PaymentShowcaseAreaChart categories={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec"]} series={[{
+              name: "Payment Collection",
+              data: [31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51]
+            }]} />
           </DashboardCard>
         </Grid>
         <Grid item xl={5.5} xs={12}>
-          <DashboardCard heading="Payment Forecasting">
+          <DashboardCard heading="Payment Forecasting" headingSibling={<PaymentForecastingChartSwitch chartSwitch={paymentForecastSwitch} setSwitch={setPaymentForecastSwitch} />}>
+            <PaymentShowcaseAreaChart categories={paymentForecastSwitch === "This Month" ? ["Week 1", "Week 2", "Week 3", "Week 4"] : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",]} series={[{
+              name: "Payment Forecasting",
+              data: paymentForecastSwitch === "This Month" ? [31, 40, 28, 51] : [31, 40, 28, 51, 42, 109, 100,]
+            }]} />
           </DashboardCard>
         </Grid>
         <Grid item xl={6} xs={12}>
@@ -65,10 +81,9 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={6} xs={12}>
-          <DashboardCard heading="Verification Status">
+          <DashboardCard heading="Workflow Success Rate" headingSibling={<DashboardChartSwitch switchName="Workflow" data={['UK Workflow', 'New Workflow 1', 'New Workflow 2']} selectVal={WFVal} setSelectVal={setWFVal} />}>
+            <WorkflowSuccessSpeedometer />
           </DashboardCard>
-        </Grid>
-        <Grid item xs={12}>
         </Grid>
       </Grid>
     </React.Fragment>
