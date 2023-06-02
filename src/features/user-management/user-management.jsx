@@ -8,6 +8,7 @@ import { UserAccessTable } from './components/user-access-control/user-access-co
 import { ClientsModal } from './components/clients/client-modal/client-modal'
 import { BasicInformationForm } from './components/basic-information'
 import Manager from './components/role_rights_manager/Manager';
+import './user-management.scss'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,10 +65,10 @@ const UserManagement = () => {
               marginTop: 5
             }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="Role & Rights" {...a11yProps(0)} />
-                <Tab label="User Access Control" {...a11yProps(1)} />
-                <Tab label="Users" {...a11yProps(2)} />
-                <Tab label="Clients" {...a11yProps(3)} />
+                <Tab className={`${value === 0 && "manager-tab-active"} manager-tab`} label="Role & Rights" {...a11yProps(0)} sx={{  }} />
+                <Tab className={`${value === 1 && "manager-tab-active"} manager-tab`} label="User Access Control" {...a11yProps(1)} />
+                <Tab className={`${value === 2 && "manager-tab-active"} manager-tab`} label="Users" {...a11yProps(2)} />
+                <Tab className={`${value === 3 && "manager-tab-active"} manager-tab`} label="Clients" {...a11yProps(3)} />
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
