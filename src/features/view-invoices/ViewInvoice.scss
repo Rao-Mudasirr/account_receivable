@@ -1,0 +1,217 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0 !important;
+}
+
+.model {
+  padding: 20px;
+  overflow: auto;
+  
+}
+.modal-body {
+  background-color: white;
+  padding: 20px 40px;
+  padding-top: 50px;
+  position: relative;
+  outline: 0;
+  min-height: calc(100vh - 100px);
+}
+.modal-body .close-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: black;
+  cursor: pointer;
+}
+.model .modal-body .model-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+.model .modal-body .model-header .left-section h5 {
+  color: black;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.model .modal-body .model-header .left-section {
+  /* width: 100%; */
+}
+
+.model .modal-body .model-header .left-section p {
+  color: black;
+  margin-bottom: 2px;
+}
+.model .modal-body .model-header .right-section {
+  display: flex;
+  /* width: 100%; */
+  flex-direction: column;
+}
+.model .modal-body .model-header .right-section img {
+  display: block;
+  max-width: 100%;
+}
+.model .modal-body .model-header .right-section button {
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+  min-width: 120px;
+}
+.model .modal-body .model-mid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.model .modal-body h4 {
+  margin-top: 20px;
+  color: #5DA6D8;
+}
+
+.model .modal-body .model-mid .left-section {
+  flex: 0 0 50%;
+}
+.model .modal-body .model-mid .left-section .box-to {
+  margin-top: 16px;
+}
+.model .modal-body .model-mid .left-section .box-to h6 {
+  font-size: 13px;
+}
+.model .modal-body .model-mid .left-section .box-to p {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.model .modal-body .model-mid .left-section .two-parent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.model .modal-body .model-mid .right-section {
+  margin-top: 16px;
+  flex: 0 0 50%;
+
+  
+}
+
+.model .modal-body .model-mid .right-section .box-2 {
+  display: flex;
+  align-items: center;
+  /* gap: 20px; */
+  padding-left: 30px;
+justify-content: center;
+column-gap: 80px;
+max-width: 300px;
+margin: auto;
+}
+
+
+.model .modal-body .model-mid .right-section .box-2 h6 {
+  margin: 0 !important;
+  font-size: 16px;
+  color: gray;
+  
+  flex: 0 0 50%;
+  
+  }
+
+.model .modal-body .model-mid .right-section .box-2 p {
+margin: 0 !important;
+font-size: 16px;
+color: black;
+/* flex: 0 0 50%; */
+}
+
+
+
+.model .modal-body .model-table{
+  margin-top: 20px;
+}
+
+.model .modal-body .model-table th{
+  border-bottom: 0px;
+  background-color: #DCE9F1;
+  color: #5DA6D8;
+  text-transform: uppercase;
+}
+.model .modal-body .model-table td{
+  border-bottom: 0px;
+ 
+}
+.model .modal-body .model-table tbody tr:last-child{
+  border-bottom: 1px dotted #BDC1C7;
+ 
+}
+
+.model .modal-body .model-calculation{
+  max-width: 500px;
+  margin-left: auto;
+}
+.model .modal-body .model-calculation .box-3{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+margin-top: 16px;
+}
+
+.model .modal-body .model-calculation .box-3:first-child{
+  border-bottom: 1px dotted #BDC1C7;
+  padding-bottom: 10px;
+
+}
+.model .modal-body .model-calculation .box-3 h4{
+  font-size: 14px;
+  margin: 0;
+
+}
+.model .modal-body .model-calculation .box-3 p{
+  font-size: 14px;
+  margin: 0;
+}
+.model .modal-body .model-calculation .box-3 h6{
+  font-size: 18px;
+  margin: 0;
+  color: #30A029;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+
+
+
+
+.model .modal-body .model-payment-instruction .box-4{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+margin-top: 16px;
+/* column-gap: 100px */
+}
+
+
+.model .modal-body .model-payment-instruction .box-4 h4{
+  font-size: 14px;
+  margin: 0;
+  color: #ADAFB3;
+  flex:0 0 25%;
+
+}
+.model .modal-body .model-payment-instruction .box-4 p{
+  font-size: 14px;
+  margin: 0;
+  color: #ADAFB3;
+}
+.model .modal-body .model-payment-instruction .box-4 h6{
+  font-size: 18px;
+  margin: 0;
+  color: #30A029;
+  font-weight: 900;
+  text-transform: uppercase;
+}

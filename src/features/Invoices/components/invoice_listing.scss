@@ -71,8 +71,14 @@
   flex-grow: 0;
 }
 
-.pagination-style{
+.pagination-style {
   position: relative;
-  top: 90px;
-
+  top: 250px;
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // width: 100%;
+  // background-color: #f5f5f5;
+  // padding: 10px;
+  // box-sizing: border-box;
 }
