@@ -3,10 +3,16 @@ import AccountReceivable from './Account_Receivable';
 import AccountPayable from './Account_Payable';
 import Cashflow from './Cashflow';
 import AdminRights from './Admin_Rights';
-import Dashboard from './Dashboard';
-import Invoices from './Invoices';
-import Clients from './Clients';
-import { formControlData } from './data'
+import Dashboard from './Accounts_receivable_data/Dashboard';
+import Invoices from './Accounts_receivable_data/Invoices';
+import Clients from './Accounts_receivable_data/Clients';
+import Performance_analysis from './Accounts_receivable_data/Performance_analysis';
+import Workflows from './Accounts_receivable_data/Workflows';
+import Notifications from './Accounts_receivable_data/Notifications';
+import Reports from './Accounts_receivable_data/Reports';
+import { formControlData } from './Accounts_receivable_data/data';
+import User_management from './Admin_Rights_data/User_management';
+import { FormControlData } from './Admin_Rights_data/Data'
 import './manager.css';
 
 
@@ -22,7 +28,7 @@ const Manager = () => {
   useEffect(() => {
     setActive('1');
   }, []);
-   
+
 
   const handleLiClick = (id) => {
     setActive(id);
@@ -45,49 +51,96 @@ const Manager = () => {
       case '4':
         return (
           <AdminRights
-          formControlData={formControlData}
-          setSwitchOption={setSwitchOption}
-          switchOption={switchOption}
+          FormControlData={FormControlData}
+            setSwitchOption={setSwitchOption}
+            switchOption={switchOption}
           />
-      );
+        );
       default:
         return null;
     }
   };
 
   const renderSwitchComponents = (active) => {
-  switch (active) {
-    case 'dashboard':
-      return (
-        <Dashboard
-          checkboxData={formControlData.find((data) =>
-            data.id === 'dashboard'
-          ).switchOptions}
-          switchEnabled={switchEnabled}
-        />
-      );
-    case 'invoices':
-      return (
-        <Invoices
-          checkboxData={formControlData.find((data) =>
-            data.id === 'invoices'
-          ).switchOptions}
-          switchEnabled={switchEnabled}
-        />
-      );
-    case 'clients':
-      return (
-        <Clients
-          checkboxData={formControlData.find((data) =>
-            data.id === 'clients'
-          ).switchOptions}
-          switchEnabled={switchEnabled}
-        />
-      );
-    default:
-      return null;
-  }
-};
+    switch (active) {
+      case 'dashboard':
+        return (
+          <Dashboard
+            checkboxData={formControlData.find((data) =>
+              data.id === 'dashboard'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'invoices':
+        return (
+          <Invoices
+            checkboxData={formControlData.find((data) =>
+              data.id === 'invoices'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'clients':
+        return (
+          <Clients
+            checkboxData={formControlData.find((data) =>
+              data.id === 'clients'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'performance_analysis':
+        return (
+          <Performance_analysis
+            checkboxData={formControlData.find((data) =>
+              data.id === 'performance_analysis'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'workflows':
+        return (
+          <Workflows
+            checkboxData={formControlData.find((data) =>
+              data.id === 'workflows'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'notification':
+        return (
+          <Notifications
+            checkboxData={formControlData.find((data) =>
+              data.id === 'notification'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      case 'reports':
+        return (
+          <Reports
+            checkboxData={formControlData.find((data) =>
+              data.id === 'reports'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+
+      case 'user_management':
+        return (
+          <User_management
+            checkboxData={FormControlData.find((data) =>
+              data.id === 'user_management'
+            ).switchOptions}
+            switchEnabled={switchEnabled}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
 
   return (
     <div className="container">

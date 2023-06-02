@@ -11,7 +11,7 @@ const Invoices = ({checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                     onClick={onClickBtn}
-                        control={<Checkbox />}
+                        control={<Checkbox disabled/>}
                         label={item.label} />
                 )
             })}
