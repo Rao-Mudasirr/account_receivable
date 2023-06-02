@@ -36,7 +36,7 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 
 
-export default function Account_Receivable({ setCheckDisabled, checkDisabled,switchOption,setSwitchOption}) {
+export default function Admin_Rights({ setCheckDisabled, checkDisabled,switchOption,setSwitchOption}) {
 
   return (
     <FormGroup>
