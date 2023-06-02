@@ -67,6 +67,15 @@ export const invoicestableheading = [
           duedate:'19 Oct,2023',
           amount:'£10245',
       },
+      {
+        srno:"08",
+        invoiceid:'1234',
+        status:'Overdue',
+        name:'Chris',
+        dateissue:'19 jan,2020',
+        duedate:'19 Oct,2023',
+        amount:'£10245',
+    },
   ]
   
     

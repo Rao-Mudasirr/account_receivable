@@ -1,0 +1,49 @@
+.container_card {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 80vh; 
+  }
+  .tags_email {
+    margin-left: -1rem;
+  }
+ .card_data ul{
+   display: flex;
+   gap: 0.6rem;
+ }
+ .card_data li {
+  list-style: none;
+ }
+
+ .editor_content {
+  height: 45vh;
+ }
+ .editor_scroll {
+  height: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+ }
+
+ .btns {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin-top: 1rem;
+  gap: 1rem;
+ }
+ .tags_bar ul {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transform: translate(-1.8rem, -1.5rem);
+  cursor: pointer;
+ }
+ .tags_bar li {
+  list-style: none;
+ }
+
+ .ql-editor {
+  overflow-y: hidden;
+  resize: vertical;
+}

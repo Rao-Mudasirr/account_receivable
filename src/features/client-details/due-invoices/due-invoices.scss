@@ -6,29 +6,29 @@
 .status-cell {
     padding: 5px 10px;
     border-radius: 8px;
-    opacity: 0.24;
+    // opacity: 0.24;
     font-weight: bold;
   }
   
   .status-cell.paid {
-    color:green;
+    color:rgb(72,153,93);
     font-size: 16px;
     font-weight: '800';
     font-weight: bold;
-    background-color: rgba(15, 210, 67, 0.494);
+    background-color: rgb(211,231,216);
   }
   
   .status-cell.due {
-    background-color: rgba(255, 191, 0, 0.24);
-    z-index: 1;
-    color: black;
+    background-color:rgb(253,238,194);
+    // z-index: 1;
+    color: rgb(255,191,0);
     font-size: 16px;
     font-weight: '800';
     font-weight: bold;
   }
   
   .status-cell.overdue {
-    background-color: #FF3F3F;
-    color: black;
+    background-color: rgb(253,207,209);
+    color: #FF3F3F;
   }
   

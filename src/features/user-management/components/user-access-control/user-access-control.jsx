@@ -1,44 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, FormControlLabel } from "@mui/material";
+import { Card, Box, FormControlLabel, Switch } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
-import TableHeader from "../../../../components/Table/TableHeader";
-import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
-import TableAction from '../../../../components/Table/TableAction';
-import DeleteModel from '../../../../components/modal/DeleteModel';
-import FormDialog from '../../../../components/modal/ModalPractice';
 
 import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
 import { Status } from '../../../../components/status/status';
-
+import { GlobalSearchBar } from '../../../../components/global-search-filter/global-search-filter';
 
 export const UserAccessTable = () => {
   const {
-    open,
-    setOpen,
-    handleOpen,
-    handleClose,
-    openForm,
-    setOpenForm,
-    handleFormDialog,
-    handleCloseForm,
-    theme,
     userData,
-    // router,
-    tableHeaderRef,
     tableData,
-    setStatus,
-    status,
     updateStatus
   } = useUserAccess();
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredData = tableData.filter((data) =>
+    Object.values(data).some((value) =>
+      String(value).toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   const Android12Switch = styled(Switch)(({ theme }) => ({
     padding: 8,
-    '& .MuiSwitch-track' : {
+    '& .MuiSwitch-track': {
       borderRadius: 22 / 2,
       border: "1px solid black",
       opacity: 1,
@@ -59,38 +52,33 @@ export const UserAccessTable = () => {
     },
   }));
 
-
-
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
+
   const columns = [
     {
       accessorFn: (row) => row.Id,
       id: "Id",
       cell: (info) => info.getValue(),
       header: () => <span>Id</span>,
-      // isSortable: true,
     },
     {
       accessorFn: (row) => row.userName,
       id: "userName",
       cell: (info) => info.getValue(),
       header: "User Name",
-      // isSortable: true,
     },
     {
       accessorFn: (row) => row.role,
       id: "role",
       cell: (info) => info.getValue(),
       header: "Role",
-      // isSortable: true,
     },
     {
       accessorFn: (row) => row.createdOn,
       id: "createdOn",
       cell: (info) => dayjs(info.getValue()).format("DD MMM, YYYY"),
       header: "Created On",
-      // isSortable: true,
     },
     {
       accessorFn: (row) =>
@@ -116,19 +104,18 @@ export const UserAccessTable = () => {
       id: "status",
       cell: (info) => info.getValue(),
       header: "Status",
-      // isSortable: true,
     },
     {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
           <FormControlLabel
-             
             control={
               <Android12Switch
-              value={info.cell.row.original.status}
-               checked={info.cell.row.original.status === 'Active' ? true : false} 
-                onChange={(e)=>updateStatus(e, info.cell.row.original.id)} />
+                value={info.cell.row.original.status}
+                checked={info.cell.row.original.status === 'Active'}
+                onChange={(e) => updateStatus(e, info.cell.row.original.id)}
+              />
             }
           />
         </Box>
@@ -137,20 +124,16 @@ export const UserAccessTable = () => {
       isSortable: false,
     },
   ];
+
   return (
     <>
-      <Card sx={{ p: 1 }}>
-        <TableHeader
-          ref={tableHeaderRef}
-          // showSelectFilters
-          // disabled={isLoading}
-          title="Health & Safety"
-          searchKey="search"
-          showAddBtn
-          onAdd={handleFormDialog}
-          onChanged={headerChangeHandler}
-        // selectFilters={SELECT_FILTERS}
+      <Card sx={{ p: 1}}>
+        <div style={{marginBottom: '10px'}}>
+        <GlobalSearchBar
+          value={searchQuery}
+          onChange={handleSearchChange}
         />
+        </div>
         <CustomTable
           data={userData}
           columns={columns}

@@ -50,9 +50,9 @@ const ClientDetails = () => {
   return (
     <>
       {" "}
-      <Grid container spacing={3} sx={{ p: 2 }}>
+      <Grid container spacing={3} >
         <Grid item xs={12} md={10}>
-          <Typography variant="h6" sx={{ fontSize: "20px", mt: 5, mb: 5 }}>
+          <Typography variant="h6" sx={{ fontSize: "22px", mb: 5 }}>
             Client Details
           </Typography>
           <div
@@ -66,7 +66,7 @@ const ClientDetails = () => {
                 sx={{ width: "80px", height: "80px" }}
               />
               <div style={{ padding: "8px", marginTop: "5px" }}>
-                <Typography variant="h6" sx={{ fontSize: "20px" }}>
+                <Typography variant="h6" sx={{ fontSize: "22px" }}>
                   Jacob Bills
                 </Typography>
                 <Typography variant="body1" sx={{ fontSize: "14px" }}>
@@ -90,10 +90,12 @@ const ClientDetails = () => {
           </div>
 
           {clientDetails && (
-            <div>
+            <div style={{   }}>
               <div
                 style={{
                   marginTop: "25px",
+
+               
                   display: "flex",
                   justifyContent: "space-between",
                   alignContent: "center",
@@ -137,7 +139,7 @@ const ClientDetails = () => {
             </div>
           )}
         </Grid>
-        <Grid item xs={12} md={2} sx={{ mt: 18, height: "180px" }}>
+        <Grid item xs={12} md={2} sx={{  height: "275px" }}>
           <div style={{}} className="invoices">
             <div
               className=""
@@ -196,74 +198,80 @@ const ClientDetails = () => {
 
             {/* invoice section */}
             {openInvoices && (
-              <div>
-                <div
-                  className="invoice-title"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
-                    onClick={()=>invoicesStatusChangeHandler("Due")}
-                  >
-                    Due Invoices
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: "14px", ml: -2 }}
-                    className="yellow-color"
-                  >
-                    120
-                  </Typography>
-                </div>
-                <div
-                  className="invoice-title"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
-                    onClick={()=>invoicesStatusChangeHandler("Overdue")}
-                  >
-                    Overdue Invoices
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: "14px" }}
-                    className="error-color"
-                  >
-                    60
-                  </Typography>
-                </div>
-                <div
-                  className="invoice-title"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{ fontSize: "14px", textDecoration: "underline",cursor:'pointer' }}
-                    onClick={()=>invoicesStatusChangeHandler('Paid')}
-                  >
-                    Paid Invoices
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontSize: "14px" }}
-                    className="invoice-title"
-                  >
-                    60
-                  </Typography>
-                </div>
-              </div>
+               <div style={{ display: 'flex', flexDirection: 'column',zIndex:'100' }}>
+               <div
+                 className="client-details-invoice-title"
+                 style={{
+                   display: "flex",
+                   justifyContent: "space-between",
+                   marginTop:'22px'
+                   // marginBottom: '10px', // Add margin at the bottom for spacing
+                 }}
+               >
+                 <Typography
+                   variant="h6" 
+                   sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
+                   onClick={() => invoicesStatusChangeHandler("Due")}
+                 >
+                   Due Invoices
+                 </Typography>
+                 <Typography
+                   variant="body1"
+                   sx={{ fontSize: "14px", ml: -2 }}
+                   className="yellow-color"
+                 >
+                   120
+                 </Typography>
+               </div>
+               <div
+                 className="client-details-invoice-title"
+                 style={{
+                   display: "flex",
+                   justifyContent: "space-between",
+                   // marginBottom: '10px', // Add margin at the bottom for spacing
+                   marginTop:'22px'
+                 }}
+               >
+                 <Typography
+                   variant="h6"
+                   sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
+                   onClick={() => invoicesStatusChangeHandler("Overdue")}
+                 >
+                   Overdue Invoices
+                 </Typography>
+                 <Typography
+                   variant="body1"
+                   sx={{ fontSize: "14px" }}
+                   className="error-color"
+                 >
+                   60
+                 </Typography>
+               </div>
+               <div
+                 className="client-details-invoice-title"
+                 style={{
+                   display: "flex",
+                   justifyContent: "space-between",
+                   marginTop:'22px'
+                   // marginBottom: '10px', // Add margin at the bottom for spacing
+                 }}
+               >
+                 <Typography
+                   variant="h6"
+                   sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
+                   onClick={() => invoicesStatusChangeHandler('Paid')}
+                 >
+                   Paid Invoices
+                 </Typography>
+                 <Typography
+                   variant="body1"
+                   sx={{ fontSize: "14px"}}
+                   className="client-details-invoice-title"
+                 >
+                   60
+                 </Typography>
+               </div>
+             </div>
             )}
           </Grid>
         </Grid>
