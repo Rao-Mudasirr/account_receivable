@@ -9,6 +9,9 @@ import { GlobalSearchBar } from "../../../components/global-search-filter/global
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const INVOICE_DATA = [
   {
@@ -67,17 +70,15 @@ const INVOICE_DATA = [
     total_amount: '$7200'
   },
 ];
-
 export default function InvoiceListing() {
-  //  const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
-  //   useTableParams();
+
  const columns = [
       {
         accessorFn: (row) => row.Id,
         id: "Id",
         cell: (info) => info.getValue(),
         header: () => <span>Sr.#</span>,
-        // isSortable: true,
+        isSortable: true,
       },
       {
         accessorFn: (row) => row.invoiceNo,
@@ -157,6 +158,13 @@ export default function InvoiceListing() {
         >
         <GlobalSearchBar />
         <div style={{ marginLeft: "auto" }}>
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker />
+          </LocalizationProvider>
+          &nbsp;
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker />
+          </LocalizationProvider> */}
           <Button
             variant="outlined"
             color="primary"
@@ -174,7 +182,6 @@ export default function InvoiceListing() {
           >
             More Filter
           </Button>
-
           <Button
             variant="contained"
             color="primary"
@@ -201,7 +208,7 @@ export default function InvoiceListing() {
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}
             isSuccess={true}
-            isPagination={true}
+            // isPagination={true}
           />
     </React.Fragment>
   );

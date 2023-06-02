@@ -1,20 +1,13 @@
 import { Box } from '@mui/material';
-import React from 'react';
-import NorthRoundedIcon from '@mui/icons-material/NorthRounded';
 import Chart from 'react-apexcharts';
+import React from 'react'
+
 const options = {
     chart: {
         height: 350,
         type: 'bar',
         toolbar: {
             show: false,
-        },
-    },
-    states: {
-        hover: {
-            filter: {
-                type: 'none',
-            }
         },
     },
     grid: {
@@ -92,35 +85,20 @@ const options = {
         }
     ]
 }
-export const UnifiedDSOAPD = ({days,percentile,series,isGood}) => {
+
+export const AgingBucketBarChart = () => {
     return (
         <>
-            <Box sx={{ height: '66px' }} className="flex justify-space-between">
-                <div className="flex justify-end flex-column">
-                    <div>
-                        {days} days
-                    </div>
-                    <div className="flex align-center">
-                        <div>
-                            <NorthRoundedIcon sx={{ mt: '6px', color: isGood ? '#1FB563' : '#FF6B6B', rotate: isGood ? '180deg' : '0deg' }} fontSize='20px' />
-                        </div>
-                        <Box color={isGood ? '#1FB563' : '#FF6B6B'}>
-                            {percentile}%
-                        </Box>
-                    </div>
-                </div>
-                <div>
-                    <Box sx={{ mt: '-50px' }}>
-                        <Chart
-                            series={series ?? []}
-                            height={140}
-                            width={200}
-                            options={options ?? {}}
-                            type="bar"
-                        />
-                    </Box>
-                </div>
-            </Box>
+            <div>
+                <Box sx={{ mt: '-50px' }}>
+                    <Chart
+                        series={[25, 200, 100] ?? []}
+                        height={436}
+                        options={options ?? {}}
+                        type="bar"
+                    />
+                </Box>
+            </div>
         </>
     )
 }
