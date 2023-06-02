@@ -208,7 +208,7 @@ export default function InvoiceListing() {
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}
             isSuccess={true}
-            // isPagination={true}
+            isPagination={true}
           />
     </React.Fragment>
   );

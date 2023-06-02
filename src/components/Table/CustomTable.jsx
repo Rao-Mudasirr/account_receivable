@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-
+// import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 // Tantack table
 import {
   flexRender,
@@ -193,18 +194,13 @@ const CustomTable = (props) => {
         </Box>
 
         {/* Pagination */}
-        {/* <Grid container>
+        <Grid container>
           <Grid xs={12} item>
             {isSuccess && Boolean(table?.getRowModel()?.rows?.length) && (
               <Box sx={styles.currentPageBox}>
                 {isPagination && (
-                  <Typography sx={styles.currentPage(theme)} component={"span"}>
-                    Showing {currentPage} of {totalPages}
-                  </Typography>
-                )}
-                {isPagination && (
-                  <Box sx={{ marginLeft: "auto" }}>
-                    <Pagination
+                  <Box sx={{ marginRight: "auto" }}>
+                    {/* <Pagination
                       sx={styles.pagination}
                       showFirstButton
                       showLastButton
@@ -218,13 +214,23 @@ const CustomTable = (props) => {
                       onChange={(e, page) => {
                         onPageChange(page);
                       }}
-                    />
+                    /> */}
+                    <div className="pagination-style">
+                      <Stack spacing={2}>
+                        <Pagination count={10} />
+                      </Stack>
+                    </div>
                   </Box>
                 )}
+                     {isPagination && (
+                        <Typography className="pagination-style" sx={styles.currentPage(theme)} component={"span"}>
+                          Showing {currentPage} of {totalPages}
+                        </Typography>
+                      )}
               </Box>
             )}
           </Grid>
-        </Grid> */}
+        </Grid>
       </Grid>
     </Grid>
   );
