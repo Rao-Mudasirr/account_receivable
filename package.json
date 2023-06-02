@@ -9,16 +9,13 @@
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.131",
-<<<<<<< HEAD
-    "@mui/material": "^5.13.2",
-=======
     "@mui/material": "^5.13.3",
->>>>>>> e73b916b53a62c4237af5b4a220246da6bd2e1a7
     "@mui/x-date-pickers": "^6.6.0",
     "@tanstack/react-table": "^8.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "apexcharts": "^3.40.0",
     "dayjs": "^1.11.8",
     "formik": "^2.2.9",
     "formik-material-ui": "^4.0.0-alpha.2",
