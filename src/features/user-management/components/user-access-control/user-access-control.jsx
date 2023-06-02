@@ -128,10 +128,12 @@ export const UserAccessTable = () => {
   return (
     <>
       <Card sx={{ p: 1}}>
+        <div style={{marginBottom: '10px'}}>
         <GlobalSearchBar
           value={searchQuery}
           onChange={handleSearchChange}
         />
+        </div>
         <CustomTable
           data={userData}
           columns={columns}

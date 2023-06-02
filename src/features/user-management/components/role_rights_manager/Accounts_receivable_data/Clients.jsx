@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 
 const Clients = ({ checkboxData, onClickBtn }) => {
   const [data, setData] = useState([checkboxData]);
-  console.log(data);
+//   console.log(data);
 
   const renderSimpleData = () => {
     return checkboxData
@@ -19,7 +19,7 @@ const Clients = ({ checkboxData, onClickBtn }) => {
           id={item.id}
           key={index}
           onClick={onClickBtn}
-          control={<Checkbox disabled />}
+          control={<Checkbox />}
           label={item.label}
         />
       ));
