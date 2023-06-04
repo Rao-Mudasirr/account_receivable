@@ -24,7 +24,11 @@
     animation: icon-rotate 0.3s ease-in-out forwards;
   }
 
-  
+  .toast-container {
+    width: 320px;
+    top: 20px;
+    right: 20px;
+  }
 
   .dropdown-content.opendata {
     max-height: 100px; /* Set the desired height */
