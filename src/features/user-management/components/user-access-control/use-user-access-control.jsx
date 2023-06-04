@@ -54,6 +54,6 @@ export const useUserAccess = () => {
     userData,
     tableHeaderRef,
     tableData, setStatus, status,
-    updateStatus
+    updateStatus,
   };
 };
