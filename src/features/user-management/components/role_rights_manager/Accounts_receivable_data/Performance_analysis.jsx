@@ -4,9 +4,9 @@ import Checkbox from '@mui/material/Checkbox';
 import { TreeView, TreeItem } from '@mui/lab'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-const Performance_analysis = ({ checkboxData, onClickBtn }) => {
+const Performance_analysis = ({ checkboxData }) => {
     const [data, setData] = useState([checkboxData])
-    console.log(data);
+    // console.log(data);
 
  
 

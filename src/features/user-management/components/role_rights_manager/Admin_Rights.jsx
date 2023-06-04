@@ -5,15 +5,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import './manager.css';
 
-const Data = [
-  {
-    id: "admin Right",
-    heading: "Admin Right"
-  }
-]
+
 const Android12Switch = styled(Switch)(({ theme }) => ({
   padding: 8,
-  '& .MuiSwitch-track' : {
+  '& .MuiSwitch-track': {
     borderRadius: 22 / 2,
     border: "1px solid black",
     opacity: 1,
@@ -36,17 +31,21 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 
 
-export default function Admin_Rights({ setCheckDisabled, checkDisabled,switchOption,setSwitchOption}) {
-
+export default function Admin_Rights({ switchOption, setSwitchOption, FormControlData2 }) {
   return (
     <FormGroup>
       <div>
-        {Data.map((item, index) => {
+        {FormControlData2.map((item, index) => {
           return (
             <div key={index}>
               <FormControlLabel
-                control={<Android12Switch
-                color='default' />}
+                control={
+                  <Android12Switch
+                    checked={item.id === switchOption}
+                    onChange={() => setSwitchOption(item.id)}
+                    color="default"
+                  />
+                }
               />
               <span
                 id={item.id}
@@ -56,11 +55,9 @@ export default function Admin_Rights({ setCheckDisabled, checkDisabled,switchOpt
                 {item.heading}
               </span>
             </div>
-          )
+          );
         })}
-         
       </div>
-
     </FormGroup>
   );
 }

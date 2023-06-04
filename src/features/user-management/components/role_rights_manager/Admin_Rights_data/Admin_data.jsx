@@ -1,7 +1,7 @@
-export const FormControlData = [
+export const FormControlData2 = [
     {
-        id: 'user_management',
-        heading: 'User_management',
+        id: 'userManagement',
+        heading: 'User management',
         switchOptions: [
           {
             id: '1',
@@ -89,5 +89,20 @@ export const FormControlData = [
             }
           }
         ]
+      },
+      {
+        id: 'admin',
+        heading: 'Admin',
+        switchOptions: [
+          {
+            id: 'Checkbox1',
+            label: 'The tab and view dashboard with own user data',
+            value: true
+          },
+          {
+            id: 'Checkbox2',
+            label: 'The tab and view dashboard wkkith own user data',
+          },
+        ],
       },
 ]
