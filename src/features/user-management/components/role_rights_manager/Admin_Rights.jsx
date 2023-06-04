@@ -12,8 +12,7 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
     borderRadius: 22 / 2,
     border: "1px solid black",
     opacity: 1,
-    backgroundColor:
-      theme.palette.mode === 'black' ? 'gray' : 'white',
+    backgroundColor: 'black' ? 'white' : 'gray',
     boxSizing: 'border-box',
   },
   '& .MuiSwitch-thumb': {
@@ -27,11 +26,16 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase.Mui-checked': {
     backgroundColor: 'dark',
   },
+
+  "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+    backgroundColor: 'gray'
+  },
 }));
 
 
 
-export default function Admin_Rights({ switchOption, setSwitchOption, FormControlData2 }) {
+export default function Admin_Rights({ switchOption, setSwitchOption, FormControlData2, handleSwitchChange, switchEnabled  }) {
+  console.log(FormControlData2)
   return (
     <FormGroup>
       <div>
@@ -41,8 +45,10 @@ export default function Admin_Rights({ switchOption, setSwitchOption, FormContro
               <FormControlLabel
                 control={
                   <Android12Switch
-                    checked={item.id === switchOption}
-                    onChange={() => setSwitchOption(item.id)}
+                    // checked={item.id === switchOption}
+                    // onChange={() => setSwitchOption(item.id)}
+                    checked={switchEnabled}
+                    onChange={handleSwitchChange}
                     color="default"
                   />
                 }

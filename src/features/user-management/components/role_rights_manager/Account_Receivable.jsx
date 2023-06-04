@@ -11,8 +11,7 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
     borderRadius: 22 / 2,
     border: "1px solid black",
     opacity: 1,
-    backgroundColor:
-      theme.palette.mode === 'black' ? 'gray' : 'white',
+    backgroundColor: 'black' ? 'white' : 'gray',
     boxSizing: 'border-box',
   },
   '& .MuiSwitch-thumb': {
@@ -25,6 +24,10 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
   },
   '& .MuiSwitch-switchBase.Mui-checked': {
     backgroundColor: 'dark',
+  },
+
+  "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+    backgroundColor: 'gray'
   },
 }));
 

@@ -2,7 +2,7 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Admin = ({ checkboxData2, switchEnabled }) => {
+const Settings = ({ checkboxData2, switchEnabled }) => {
 
     return (
         <FormGroup>
@@ -17,4 +17,4 @@ const Admin = ({ checkboxData2, switchEnabled }) => {
     )
 }
 
-export default Admin
+export default Settings

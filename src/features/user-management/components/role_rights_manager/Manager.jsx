@@ -14,9 +14,7 @@ import { formControlData } from './Accounts_receivable_data/data';
 import UserManagement from './Admin_rights_data/User_management';
 import { FormControlData2 } from './Admin_rights_data/Admin_data';
 import './manager.css';
-import Admin from './Admin_rights_data/Admin';
-
-
+import Settings from './Admin_rights_data/Settings';
 
 
 const Manager = () => {
@@ -122,29 +120,27 @@ const Manager = () => {
 
 
   const renderSwitchComponents2 = (active) => {
-    let component;
-
-    if (active === 'userManagement') {
-      component = (
-        <UserManagement
-          checkboxData2={FormControlData2.find((data) =>
-            data.id === 'userManagement').checkboxData2}
-        />
-      );
-    } else if (active === 'admin') {
-      component = (
-        <Admin
-          checkboxData2={FormControlData2.find((data) =>
-            data.id === 'admin').checkboxData2}
-        />
-      );
-    } else {
-      component = null;
+    switch (active) {
+      case 'userManagement':
+        return (
+          <UserManagement
+            checkboxData2={
+              FormControlData2.find((data) =>
+                data.id === 'userManagement')?.checkboxData2
+            }
+          />
+        );
+      case 'Settings':
+        return (
+          <Settings
+            checkboxData2={FormControlData2.find((data) =>
+              data.id === 'Settings').checkboxData2}
+          />
+        );
+      default:
+        return null;
     }
-
-    return component;
   };
-
 
   return (
     <div className="container">
@@ -192,9 +188,12 @@ const Manager = () => {
             <div className="line2"></div>
           </div>
           <div className="right_side">
-            {active === '2'
-              ? renderSwitchComponents(switchOption)
-              : renderSwitchComponents2(switchOption)}</div>
+            {active === '2' ? (
+              renderSwitchComponents(switchOption)
+            ) : active === '4' ? (
+              renderSwitchComponents2(switchOption)
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
