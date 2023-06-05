@@ -244,7 +244,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "unset",
     color: "#6B6B80",
-    textAlign: "center",
+    textAlign: "left",
     fontFamily: "Montserrat, Public Sans, sans-serif",
     fontWeight: 600,
     backgroundImage: "unset",
@@ -264,7 +264,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: "#40404D",
     fontFamily: "Montserrat, Public Sans, sans-serif",
     fontWeight: 400,
-    textAlign: "center",
+    textAlign: "left",
     borderBottom: "1px solid #BEBEBE",
     whiteSpace: "pre-wrap",
   },
@@ -315,7 +315,7 @@ const styles = {
   }),
   cell: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "left",
   },
   currentPageBox: {
     display: "flex",
