@@ -126,15 +126,16 @@ const Manager = () => {
           <UserManagement
             checkboxData2={
               FormControlData2.find((data) =>
-                data.id === 'userManagement')?.checkboxData2
+              data.id=== 'userManagement').switchOptions
+                // console.log(data.id=== 'userManagement'.switchOptions) 
             }
           />
         );
-      case 'Settings':
+      case 'settings':
         return (
           <Settings
             checkboxData2={FormControlData2.find((data) =>
-              data.id === 'Settings').checkboxData2}
+              data.id === 'settings').switchOptions}
           />
         );
       default:

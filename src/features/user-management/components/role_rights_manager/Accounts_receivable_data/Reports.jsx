@@ -8,7 +8,6 @@ const Reports = ({ checkboxData, onClickBtn }) => {
     const [data, setData] = useState([checkboxData])
     console.log(data);
 
- 
 
     return (
             <TreeView 

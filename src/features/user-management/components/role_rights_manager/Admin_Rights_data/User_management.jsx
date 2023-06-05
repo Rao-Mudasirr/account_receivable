@@ -5,38 +5,39 @@ import { TreeView, TreeItem } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-const UserManagement = ({ checkboxData2 }) => {
-  console.log(checkboxData2)
+const UserManagement = (checkboxData2) => {
+  // console.log(checkboxData2.checkboxData2)
+  const data = checkboxData2.checkboxData2;
   return (
     <>
       <TreeView
-        aria-label="user management tree"
+        aria-label="file system navigator"
         defaultCollapseIcon={<RemoveIcon />}
         defaultExpandIcon={<AddIcon />}
       >
-        {checkboxData2?.map((section) => (
-          <TreeItem key={section.id} nodeId={section.id} label={section.heading}>
-            {section.switchOptions?.map((item) => (
-              <TreeItem key={item.id} nodeId={item.id} label={item.label}>
-                {item.parent.childData?.map((childItem) => (
-                  <TreeItem
-                    key={childItem.id}
-                    nodeId={childItem.id}
-                    label={
-                      <FormControlLabel
-                        control={<Checkbox />}
-                        label={childItem.label}
-                      />
-                    }
-                  />
-                ))}
-              </TreeItem>
-            ))}
-          </TreeItem>
-        ))}
+        {data.map((item) => {
+          return (
+            <TreeItem
+              nodeId={item.id} label={
+                <FormControlLabel
+                  control={<Checkbox />} label={item.label} />
+              }>
+              {item.parent.childData?.map((item2) => {
+                return (
+
+                  <TreeItem nodeId={item2.id} label={
+                    <FormControlLabel control={<Checkbox />}
+                      label={item2.label} />
+                  } />
+                )
+              })}
+            </TreeItem>
+          )
+        })}
       </TreeView>
     </>
   );
 };
+
 
 export default UserManagement;
