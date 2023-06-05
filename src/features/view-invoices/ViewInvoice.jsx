@@ -17,6 +17,37 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Modal from "@mui/material/Modal";
 import './ViewInvoice.scss';
 
+const invoice_data = [
+  {
+    activity: 'HCA Weekday Night (Excelcare Homes)',
+    description: 'HCA Weekday Night (Excelcare Homes)',
+    qty: 88,
+    rate: 15.00,
+    amount: 1320.00,
+  },
+  {
+    activity: 'HCA Weekday Night (Excelcare Homes)',
+    description: 'HCA Weekday Night (Excelcare Homes)',
+    qty: 88,
+    rate: 15.00,
+    amount: 1320.00,
+  },
+  {
+    activity: 'HCA Weekday Night (Excelcare Homes)',
+    description: 'HCA Weekday Night (Excelcare Homes)',
+    qty: 88,
+    rate: 15.00,
+    amount: 1320.00,
+  },
+  {
+    activity: 'HCA Weekday Night (Excelcare Homes)',
+    description: 'HCA Weekday Night (Excelcare Homes)',
+    qty: 88,
+    rate: 15.00,
+    amount: 1320.00,
+  },
+]
+
 function ViewInvoice() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -35,16 +66,15 @@ function ViewInvoice() {
           <CancelOutlinedIcon className="close-icon" onClick={handleClose} />
           <Box className="model-header">
             <Box className="left-section">
-              <Typography variant={"h5"}>CARE Library</Typography>
-              <Typography>suit 6 office i-k</Typography>
-              <Typography>suit 6 office i-k</Typography>
-              <Typography>suit 6 office i-k</Typography>
-              <Typography>suit 6 office i-k</Typography>
-              <Typography>suit 6 office i-k</Typography>
+              <Typography variant={"h5"}>ORCALO HOLDINGS LTD</Typography>
+              <Typography>Uxbridge</Typography>
+              <Typography>UB11 1FW</Typography>
+              <Typography>accounts@ceative.co.uk</Typography>
+              <Typography>Company Registration No #12345</Typography>
             </Box>
             <Box className="right-section">
-              <img src='/logo192.png' alt="react logo" />
-              <Button>Download</Button>
+              <img style={{width: '100px', height: '100px'}} src='/logo192.png' alt="react logo" />
+              <Button style={{width:'70%'}}>Download</Button>
             </Box>
           </Box>
           <Typography variant="h4">INVOICE</Typography>
@@ -52,7 +82,7 @@ function ViewInvoice() {
             <Box className="left-section">
               <Box className="box-to">
                 <Typography variant="h6">INVOICE TO</Typography>
-                <Typography>address</Typography>
+                <Typography>FilzWilliam House, 89 Rooks St, Cottenham</Typography>
                 <Typography>Cambridge</Typography>
                 <Typography>CB24 Z</Typography>
               </Box>
@@ -63,26 +93,26 @@ function ViewInvoice() {
                 </Box>
                 <Box className="box-to">
                   <Typography variant="h6">MONTH WEEK</Typography>
-                  <Typography> 2-3 Weeks </Typography>
+                  <Typography> Week - 39 </Typography>
                 </Box>
               </Box>
             </Box>
             <Box className="right-section">
               <Box className="box-2">
-                <Typography variant="h6">Invoice:</Typography>
-                <Typography>Invoice</Typography>
+                <Typography variant="h6">Invoice</Typography>
+                <Typography>1140</Typography>
               </Box>
               <Box className="box-2">
-                <Typography variant="h6">Date:</Typography>
-                <Typography>Invoice</Typography>
+                <Typography variant="h6">Date</Typography>
+                <Typography>27/12/2023</Typography>
               </Box>
               <Box className="box-2">
-                <Typography variant="h6">Terms:</Typography>
-                <Typography>Invoice</Typography>
+                <Typography variant="h6">Terms</Typography>
+                <Typography>Net 30</Typography>
               </Box>
               <Box className="box-2">
-                <Typography variant="h6">Due Date:</Typography>
-                <Typography>Invoice</Typography>
+                <Typography variant="h6">Due Date</Typography>
+                <Typography>27/12/2023</Typography>
               </Box>
             </Box>
           </Box>
@@ -99,80 +129,63 @@ function ViewInvoice() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell>HCA</TableCell>
-                    <TableCell>HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
+                {
+                  invoice_data?.map((value,index)=>(
+                  <TableRow key={index}>
+                    <TableCell>{value?.activity}</TableCell>
+                    <TableCell>{value?.description}</TableCell>
+                    <TableCell align="right">{value?.qty}</TableCell>
+                    <TableCell align="right">{value?.rate}</TableCell>
+                    <TableCell align="right">{value?.amount}</TableCell>
                   </TableRow>
-                  <TableRow>
-                    <TableCell>HCA</TableCell>
-                    <TableCell>HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>HCA</TableCell>
-                    <TableCell>HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>HCA</TableCell>
-                    <TableCell>HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                    <TableCell align="right">HCA</TableCell>
-                  </TableRow>
+                  ))
+                }
                 </TableBody>
               </Table>
             </TableContainer>
           </Box>
           <Box className="model-calculation">
             <Box className="box-3">
-              <Typography variant="h4">CALCULATION</Typography>
-              <Typography>$12312</Typography>
+              <Typography variant="h5">PAYMENT</Typography>
+              <Typography>2,112.00</Typography>
             </Box>
             <Box className="box-3">
-              <Typography variant="h4">CALCULATION</Typography>
+              <Typography variant="h5">BALANCE DUE</Typography>
               <Box>
                 <Typography>$12312</Typography>
-                <Typography variant="h6">Paid</Typography>
+                <Typography variant="h6">PAID</Typography>
               </Box>
             </Box>
           </Box>
           <Box className="model-payment-instruction">
-            <Typography variant="h4">Payment Information</Typography>
-
+            <Typography variant="h5" className='payment-info-title'>Payment Information</Typography>
+              <br/>
             <Box className="box-4">
-              <Typography variant="h4">Account Name</Typography>
-              <Typography>$12312</Typography>
+              <Typography variant="h4">Account Name: </Typography>
+              <Typography>ORCALO HOLDING Ltd</Typography>
             </Box>
             <Box className="box-4">
-              <Typography variant="h4">Account Number</Typography>
+              <Typography variant="h4">Account No: </Typography>
               <Box>
-                <Typography>$12312</Typography>
+                <Typography>46205129</Typography>
               </Box>
             </Box>
             <Box className="box-4">
-              <Typography variant="h4">Account Number</Typography>
+              <Typography variant="h4">Sort Code: </Typography>
               <Box>
-                <Typography>$12312</Typography>
+                <Typography>23-14-70</Typography>
               </Box>
             </Box>
             <Box className="box-4">
-              <Typography variant="h4">Account Number</Typography>
+              <Typography variant="h4">IBAN No: </Typography>
               <Box>
-                <Typography>$12312</Typography>
+                <Typography>GB33 TRWI 2314 7046 2051 69</Typography>
               </Box>
             </Box>
             <Box className="box-4">
-              <Typography variant="h4">Account Number</Typography>
+              <Typography variant="h4">Wises Bank Address: </Typography>
               <Box>
-                <Typography>$12312</Typography>
+                <Typography>56 Shoreditch High Street, London E1 6JJ, United Kingdom</Typography>
               </Box>
             </Box>
           </Box>

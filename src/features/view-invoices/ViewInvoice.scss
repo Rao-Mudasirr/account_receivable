@@ -39,6 +39,7 @@ h6 {
 }
 .model .modal-body .model-header .left-section h5 {
   color: black;
+  font-weight: 600;
   margin-bottom: 4px;
   text-transform: uppercase;
 }
@@ -72,6 +73,8 @@ h6 {
 }
 .model .modal-body h4 {
   margin-top: 20px;
+  font-weight: bold;
+  font-size: medium;
   color: #5DA6D8;
 }
 
@@ -83,6 +86,7 @@ h6 {
 }
 .model .modal-body .model-mid .left-section .box-to h6 {
   font-size: 13px;
+  color: #B7BDC9;
 }
 .model .modal-body .model-mid .left-section .box-to p {
   font-size: 13px;
@@ -97,8 +101,6 @@ h6 {
 .model .modal-body .model-mid .right-section {
   margin-top: 16px;
   flex: 0 0 50%;
-
-  
 }
 
 .model .modal-body .model-mid .right-section .box-2 {
@@ -151,7 +153,7 @@ color: black;
 }
 
 .model .modal-body .model-calculation{
-  max-width: 500px;
+  max-width: 350px;
   margin-left: auto;
 }
 .model .modal-body .model-calculation .box-3{
@@ -166,8 +168,9 @@ margin-top: 16px;
   padding-bottom: 10px;
 
 }
-.model .modal-body .model-calculation .box-3 h4{
+.model .modal-body .model-calculation .box-3 h5{
   font-size: 14px;
+  color: #B7BDC9;
   margin: 0;
 
 }
@@ -187,11 +190,17 @@ margin-top: 16px;
 
 
 
+.model .modal-body .model-payment-instruction .payment-info-title{
+  color: #B7BDC9;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .model .modal-body .model-payment-instruction .box-4{
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
-margin-top: 16px;
+margin-top: 7px;
 /* column-gap: 100px */
 }
 
@@ -199,7 +208,7 @@ margin-top: 16px;
 .model .modal-body .model-payment-instruction .box-4 h4{
   font-size: 14px;
   margin: 0;
-  color: #ADAFB3;
+  color: #B7BDC9;
   flex:0 0 25%;
 }
 .model .modal-body .model-payment-instruction .box-4 p{
