@@ -7,8 +7,8 @@ const UserManagements = () => {
   return (
     <div>
         {/* <UserManagement/> */}
-        <Manager/>
-        {/* <Compose_email/> */}
+        {/* <Manager/> */}
+        <Compose_email/>
     </div>
   )
 }
