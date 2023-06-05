@@ -2,21 +2,19 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Dashboard = ({checkboxData, onClickBtn}) => {
+const Dashboard = ({ checkboxData, onClickBtn, switchEnabled,setSwitchOption,switchOption }) => {
 
     return (
         <FormGroup>
-            {checkboxData.map((item, index) => {
-               
-                return (
-
-                    <FormControlLabel id={item.id}
+            {checkboxData.map((item, index) => (
+                <FormControlLabel
                     key={index}
-                        onClick={onClickBtn}
-                        control={<Checkbox disabled={true} />}
-                        label={item.label} />
-                )
-            })}
+                    control={<Checkbox disabled={!switchEnabled} />}
+                    label={item.label}
+                    onClick={() => setSwitchOption(item.id)}
+                    className={`text ${switchOption === item.id ? 'active' : ''}`}
+                />
+            ))}
         </FormGroup>
     )
 }
