@@ -5,7 +5,7 @@ import { useTheme } from "@emotion/react";
 import { Backdrop, Button, Grid, Typography } from "@mui/material";
 
 const GlobalModal = (props) => {
-  const { open, handleClose, onSureClick, modalText, modalIcon,modalImage } = props;
+  const { open, handleClose, onSureClick, modalText, modalIcon, } = props;
   const theme = useTheme();
 
   return (
@@ -38,7 +38,7 @@ const GlobalModal = (props) => {
                       boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
                     }}
                   >
-                    <img src={modalIcon} alt="" />
+                    <img src={modalIcon} alt=""  />
                   </Box>
                 </div>
                 <div

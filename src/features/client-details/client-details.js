@@ -21,6 +21,8 @@ import GlobalModal from "../../components/global-modal/global-modal";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { green,pink } from '@mui/material/colors';
+import playicon from '../../../src/assests/images/client/playicon.png';
+import pauseicon from '../../../src/assests/images/client/pauseicon.png';
 
 
 
@@ -48,11 +50,11 @@ const ClientDetails = () => {
   const handleSureClick = () => {
     const toastText = isPlaying ? 'Collection has been paused' : 'Collection has been restarted';
     setOpenModal(false);
-    toast.success(toastText); // Display the toast message
+    toast.success(toastText); 
   };
 
   const modalText = isPlaying ? "You want to Pause Colllection" : "You want to start Collection";
-  const modalIcon = isPlaying ? PauseCircleFilledIcon : PlayCircleFilledWhiteIcon;
+  const modalIconimage = isPlaying ? playicon : pauseicon;
 
   const invoicesStatusChangeHandler=(status)=>{
     setActivestatus(status)
@@ -111,7 +113,7 @@ const ClientDetails = () => {
               handleClose={handleModalClose}
               onSureClick={handleSureClick}
               modalText={modalText}
-              modalIcon={modalIcon}
+              modalIcon={modalIconimage}
             />
           </div>
 
