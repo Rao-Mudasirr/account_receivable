@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material";
 
 import React, { useRef } from "react";
 
-export const useUsers = () => {
+export const useClients = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -16,7 +16,6 @@ export const useUsers = () => {
   const handleCloseForm = () => {
     setOpenForm(false);
   };
-
 //   const router = useRouter();
   const tableHeaderRef = useRef();
   return {
