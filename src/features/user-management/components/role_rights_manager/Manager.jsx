@@ -11,10 +11,10 @@ import Workflows from './Accounts_receivable_data/Workflows';
 import Notifications from './Accounts_receivable_data/Notifications';
 import Reports from './Accounts_receivable_data/Reports';
 import { formControlData } from './Accounts_receivable_data/data';
-import UserManagement from './Admin_rights_data/User_management';
-import { FormControlData2 } from './Admin_rights_data/Admin_data';
+import User_management from './Admin_Rights_data/User_management'
+import { FormControlData2 } from './Admin_Rights_data/Admin_data';
 import './manager.css';
-import Settings from './Admin_rights_data/Settings';
+import Settings from './Admin_Rights_data/Settings';
 
 
 const Manager = () => {
@@ -68,6 +68,7 @@ const Manager = () => {
           <Dashboard
             checkboxData={formControlData.find((data) =>
               data.id === 'dashboard').switchOptions}
+            className={active === 'dashboard' ? 'active' : ''}
           />
         );
       case 'invoices':
@@ -75,6 +76,7 @@ const Manager = () => {
           <Invoices
             checkboxData={formControlData.find((data) =>
               data.id === 'invoices').switchOptions}
+            className={active === 'invoices' ? 'active' : ''}
           />
         );
       case 'clients':
@@ -82,6 +84,7 @@ const Manager = () => {
           <Clients
             checkboxData={formControlData.find((data) =>
               data.id === 'clients').switchOptions}
+            className={active === 'clients' ? 'active' : ''}
           />
         );
       case 'performance_analysis':
@@ -90,6 +93,7 @@ const Manager = () => {
             checkboxData={formControlData.find((data) =>
               data.id === 'performance_analysis'
             ).switchOptions}
+            className={active === 'performance_analysis' ? 'active' : ''}
           />
         );
       case 'workflows':
@@ -97,6 +101,7 @@ const Manager = () => {
           <Workflows
             checkboxData={formControlData.find((data) =>
               data.id === 'workflows').switchOptions}
+            className={active === 'workflows' ? 'active' : ''}
           />
         );
       case 'notification':
@@ -104,6 +109,7 @@ const Manager = () => {
           <Notifications
             checkboxData={formControlData.find((data) =>
               data.id === 'notification').switchOptions}
+            className={active === 'notification' ? 'active' : ''}
           />
         );
       case 'reports':
@@ -111,24 +117,24 @@ const Manager = () => {
           <Reports
             checkboxData={formControlData.find((data) =>
               data.id === 'reports').switchOptions}
+            className={active === 'reports' ? 'active' : ''}
           />
         );
       default:
         return null;
     }
   };
-
-
+  
   const renderSwitchComponents2 = (active) => {
     switch (active) {
       case 'userManagement':
         return (
-          <UserManagement
+          <User_management
             checkboxData2={
               FormControlData2.find((data) =>
-              data.id=== 'userManagement').switchOptions
-                // console.log(data.id=== 'userManagement'.switchOptions) 
+                data.id === 'userManagement').switchOptions
             }
+            className={active === 'userManagement' ? 'active' : ''}
           />
         );
       case 'settings':
@@ -136,13 +142,14 @@ const Manager = () => {
           <Settings
             checkboxData2={FormControlData2.find((data) =>
               data.id === 'settings').switchOptions}
+            className={active === 'settings' ? 'active' : ''}
           />
         );
       default:
         return null;
     }
   };
-
+  
   return (
     <div className="container">
       <p>Manager</p>
