@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Link } from "react-router-dom";
 
 const INVOICE_DATA = [
   {
@@ -81,7 +82,7 @@ export default function InvoiceListing() {
         isSortable: true,
       },
       {
-        accessorFn: (row) => row.invoiceNo,
+        accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,
         id: "invoiceNo",
         cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
         header: "Invoice No.",

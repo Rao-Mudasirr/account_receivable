@@ -9,16 +9,8 @@ import {
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
-import "./adduser.css";
+import "./edituser.css";
 
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.string().required("Phone is required"),
-  company: Yup.string().required("Company is required"),
-  role: Yup.string().required("Role is required"),
-});
 
 const initialValues = {
   firstName: "",
@@ -41,24 +33,9 @@ const roleOptions = [
   { value: "Admin", label: "Admin" },
 ];
 
-const AddUserInputs = () => {
+const EditUserInputs = () => {
   const [hiddenLabels, setHiddenLabels] = useState([]);
 
-  const handleLabelHover = (index) => {
-    setHiddenLabels((prevHiddenLabels) => {
-      const updatedHiddenLabels = [...prevHiddenLabels];
-      updatedHiddenLabels[index] = true;
-      return updatedHiddenLabels;
-    });
-  };
-
-  const handleLabelMouseLeave = (index) => {
-    setHiddenLabels((prevHiddenLabels) => {
-      const updatedHiddenLabels = [...prevHiddenLabels];
-      updatedHiddenLabels[index] = false;
-      return updatedHiddenLabels;
-    });
-  };
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values); // Handle form submission logic here
@@ -72,33 +49,19 @@ const AddUserInputs = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       {(props) => {
         const { values, resetForm } = props;
 
         return (
-          <Form noValidate autoComplete="off" className="adduser_form">
-            <Grid sx={{ gap: 5 }} className="adduser_forminputs">
+          <Form noValidate autoComplete="off" className="edituser_form">
+            <Grid sx={{ gap: 5 }} className="edituser_forminputs">
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[0] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(0)}
-                onMouseLeave={() => handleLabelMouseLeave(0)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[0] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   First Name
                 </label>
                 <Field
@@ -113,21 +76,8 @@ const AddUserInputs = () => {
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[1] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(1)}
-                onMouseLeave={() => handleLabelMouseLeave(1)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[1] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   Last Name
                 </label>
                 <Field
@@ -142,21 +92,8 @@ const AddUserInputs = () => {
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[2] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(2)}
-                onMouseLeave={() => handleLabelMouseLeave(2)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[2] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   Email
                 </label>
                 <Field
@@ -172,21 +109,8 @@ const AddUserInputs = () => {
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[3] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(3)}
-                onMouseLeave={() => handleLabelMouseLeave(3)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[3] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   Phone
                 </label>
                 <Field
@@ -207,21 +131,8 @@ const AddUserInputs = () => {
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[4] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(4)}
-                onMouseLeave={() => handleLabelMouseLeave(4)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[4] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   Company
                 </label>
                 <Field
@@ -249,21 +160,8 @@ const AddUserInputs = () => {
               <Grid
                 item
                 xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[5] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(5)}
-                onMouseLeave={() => handleLabelMouseLeave(5)}
-              >
+                className="textfield_bold">
                 <label className="input_label">
-                  {hiddenLabels[5] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
                   Role
                 </label>
                 <Field
@@ -288,12 +186,12 @@ const AddUserInputs = () => {
                 </Field>
               </Grid>
             </Grid>
-            <Grid className="useradd_btn">
+            <Grid className="useredit_btn">
               <Button variant="outlined" onClick={() => handleClear(resetForm)}>
                 Clear
               </Button>
               <Button variant="contained" type="submit">
-                Add
+                Update
               </Button>
             </Grid>
           </Form>
@@ -303,4 +201,4 @@ const AddUserInputs = () => {
   );
 };
 
-export default AddUserInputs;
+export default EditUserInputs;
