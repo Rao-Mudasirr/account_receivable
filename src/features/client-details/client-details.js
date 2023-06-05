@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useState,useEffect } from "react";
 import {
   Avatar,
   Grid,
@@ -14,6 +15,14 @@ import "./client-details.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import DueInvoices from "./due-invoices/due-invoices";
 import WorkflowDetails from "./workflow-details/workflow-details";
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
+import GlobalModal from "../../components/global-modal/global-modal";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { green,pink } from '@mui/material/colors';
+import playicon from '../../../src/assests/images/client/playicon.png';
+import pauseicon from '../../../src/assests/images/client/pauseicon.png';
 
 
 
@@ -22,13 +31,36 @@ const ClientDetails = () => {
   const [openInvoices, setOpenInvoices] = useState(true);
   const [clientDetails, setClientDetails] = useState(true);
   const[activestatus,setActivestatus]=useState('All');
+  const [openModal, setOpenModal] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+  const [statusText, setStatusText] = useState('');
+  const [showStatusText, setShowStatusText] = useState(false);
+
+
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+    setOpenModal(true);
+  };
+
+  const handleModalClose = () => {
+    setOpenModal(false);
+  };
+  const handleSureClick = () => {
+    const toastText = isPlaying ? 'Collection has been paused' : 'Collection has been restarted';
+    setOpenModal(false);
+    toast.success(toastText); 
+  };
+
+  const modalText = isPlaying ? "You want to Pause Colllection" : "You want to start Collection";
+  const modalIconimage = isPlaying ? playicon : pauseicon;
 
   const invoicesStatusChangeHandler=(status)=>{
     setActivestatus(status)
   }
 
-  const [activeTab, setActiveTab] = useState(0);
-
+  
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
@@ -41,6 +73,7 @@ const ClientDetails = () => {
     setClientDetails(!clientDetails);
   };
 
+
   const TabData = [
     { label: "Invoices", content: <DueInvoices status={activestatus} /> },
     { label: "Workflow Details", content: <WorkflowDetails /> },
@@ -51,13 +84,50 @@ const ClientDetails = () => {
     <>
       {" "}
       <Grid container spacing={3} >
-        <Grid item xs={12} md={10}>
-          <Typography variant="h6" sx={{ fontSize: "22px", mb: 5 }}>
+        <Grid item xs={12} md={12} sx={{height:'8vh'}}>
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+          <Typography variant="h6" sx={{ fontSize: "22px"}}>
             Client Details
           </Typography>
+        
+   {activeTab === 1 && (
+        <div>
+          {isPlaying ? (
+            <PauseCircleFilledIcon
+              fontSize="large"
+              color='red'
+              sx={{ color: pink[500] }}
+              onClick={handlePlayPause}
+            />
+          ) : (
+            <PlayCircleFilledWhiteIcon
+              fontSize="large"
+              sx={{ color: green[500] }}
+              onClick={handlePlayPause}
+            />
+          )}
+
+          <div>
+            <GlobalModal
+              open={openModal}
+              handleClose={handleModalClose}
+              onSureClick={handleSureClick}
+              modalText={modalText}
+              modalIcon={modalIconimage}
+            />
+          </div>
+
+          <ToastContainer position="top-right" closeButton={false} autoClose={1000} />
+
+          {showStatusText && toast.success(statusText)}
+        </div>
+      )}
+      </div>
+        </Grid>
+        <Grid item xs={12} xl={10} md={12} sm={12} sx={{}}>
           <div
             className=""
-            style={{ display: "flex", justifyContent: "space-between" }}
+            style={{ display: "flex", justifyContent: "space-between",marginTop:'2px'}}
           >
             <div style={{ display: "flex", alignItems: "center" }}>
               <Avatar
@@ -90,56 +160,69 @@ const ClientDetails = () => {
           </div>
 
           {clientDetails && (
-            <div style={{   }}>
-              <div
-                style={{
-                  marginTop: "25px",
-
-               
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignContent: "center",
-                }}
-              >
-                <div className="" style={{ display: "flex", gap: "10px" }}>
-                  <Typography variant="h6" sx={{ fontSize: "14px" }}>
-                    Designation
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: "14px" }}>
-                    C.T.O
-                  </Typography>
-                </div>
-                <div className="" style={{ display: "flex", gap: "10px" }}>
-                  <Typography variant="h6" sx={{ fontSize: "14px" }}>
-                    Phone
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: "14px" }}>
-                    +44 667788
-                  </Typography>
-                </div>
-                <div className="" style={{ display: "flex", gap: "10px" }}>
-                  <Typography variant="h6" sx={{ fontSize: "14px" }}>
-                    Postal code
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: "14px" }}>
-                    +44 667788
-                  </Typography>
-                </div>
-              </div>
-              <div style={{ marginTop: "25px" }}>
-                <div className="" style={{ display: "flex", gap: "50px" }}>
+            <Grid sx={{   }}>
+        <Box
+      sx={{
+        marginTop: "30px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignContent: "center",
+        '@media (max-width: 600px)': {
+          display: 'block',
+          width: '100%',
+        },
+      }}
+    >
+      <Box
+        className=""
+        sx={{
+          display: "flex",
+          gap: "10px",
+          '@media (max-width: 600px)': {
+            display: 'block',
+            gap: "40px",
+            // backgroundColor: 'blue',
+          },
+        }}
+      >
+        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+          Designation
+        </Typography>
+        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+          C.T.O
+        </Typography>
+      </Box>
+      <Box className="" style={{ display: "flex", gap: "10px" }}>
+        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+          Phone
+        </Typography>
+        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+          +44 667788
+        </Typography>
+      </Box>
+      <Box className="" style={{ display: "flex", gap: "10px" }}>
+        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+          Postal code
+        </Typography>
+        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+          +44 667788
+        </Typography>
+      </Box>
+    </Box>
+              <div style={{ marginTop: "28px" }}>
+                <Box className="" style={{ display: "flex", gap: "50px" }}>
                   <Typography variant="h6" sx={{ fontSize: "14px" }}>
                     Address
                   </Typography>
                   <Typography variant="body1" sx={{ fontSize: "14px" }}>
                     96 Richmond Road London EC35 7CX
                   </Typography>
-                </div>
+                </Box>
               </div>
-            </div>
+            </Grid>
           )}
         </Grid>
-        <Grid item xs={12} md={2} sx={{  height: "275px" }}>
+        <Grid item xs={12} xl={2} md={12} sm={12} sx={{  }}>
           <div style={{}} className="invoices">
             <div
               className=""
@@ -204,7 +287,7 @@ const ClientDetails = () => {
                  style={{
                    display: "flex",
                    justifyContent: "space-between",
-                   marginTop:'22px'
+                   marginTop:'11px'
                    // marginBottom: '10px', // Add margin at the bottom for spacing
                  }}
                >
@@ -229,7 +312,7 @@ const ClientDetails = () => {
                    display: "flex",
                    justifyContent: "space-between",
                    // marginBottom: '10px', // Add margin at the bottom for spacing
-                   marginTop:'22px'
+                   marginTop:'11px'
                  }}
                >
                  <Typography
@@ -252,7 +335,8 @@ const ClientDetails = () => {
                  style={{
                    display: "flex",
                    justifyContent: "space-between",
-                   marginTop:'22px'
+                   marginTop:'11px'
+                  
                    // marginBottom: '10px', // Add margin at the bottom for spacing
                  }}
                >

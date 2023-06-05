@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import dayjs from 'dayjs';
-import { Modal, Button, Typography } from '@mui/material';
+// import dayjs from 'dayjs';
+import { Popper, Typography, Button, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate }) => {
+const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate,anchorEl  }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [error, setError] = useState(null);
@@ -37,19 +37,19 @@ const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate }) =
   };
 
   return (
-    <Modal
-      open={isOpenDatePicker}
-      onClose={onCloseDatePicker}
-      BackdropProps={{ style: { backgroundColor: 'transparent', } }}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        bottom: '16px',
-        right: '16px',
-      }}
-    >
+    <Popper
+    open={isOpenDatePicker}
+    anchorEl={anchorEl}
+    placement="bottom"
+    modifiers={[
+      {
+        name: 'preventOverflow',
+        options: {
+          boundary: 'scrollParent',
+        },
+      },
+    ]}
+  >
       <div
         style={{
           height: '316px',
@@ -142,7 +142,7 @@ const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate }) =
           </Button>
         </div>
       </div>
-    </Modal>
+      </Popper>
   );
 };
 
