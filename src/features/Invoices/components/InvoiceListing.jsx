@@ -17,6 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { Link } from "react-router-dom";
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 // import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -154,98 +155,83 @@ const input_filter = [
   },
 ];
 export default function InvoiceListing() {
-  const columns = [
-    {
-      accessorFn: (row) => row.Id,
-      id: "Id",
-      cell: (info) => info.getValue(),
-      header: () => <span>Sr.#</span>,
-      isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.invoiceNo,
-      id: "invoiceNo",
-      cell: (info) => (
-        <span style={{ color: "#0084AD", textDecoration: "underline" }}>
-          {info.getValue()}
-        </span>
-      ),
-      header: "Invoice No.",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.client,
-      id: "client",
-      cell: (info) => info.getValue(),
-      header: "Client",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.invoice_status,
-      id: "invoice_status",
-      cell: (info) => (
-        <span
-          className={
-            info.getValue() === "Paid"
-              ? "Paid"
-              : info.getValue() === "Due"
-              ? "Due"
-              : "Overdue"
-          }
-        >
-          {info.getValue()}
-        </span>
-      ),
-      header: "Invoice Status",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.issue_date,
-      id: "issue_date",
-      cell: (info) => info.getValue(),
-      header: "Issue Date",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.due_date,
-      id: "due_date",
-      cell: (info) => info.getValue(),
-      header: "Due Date",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.overdue_days,
-      id: "overdue_days",
-      cell: (info) => info.getValue(),
-      header: "Overdue Days",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.total_amount,
-      id: "total_amount",
-      cell: (info) => info.getValue(),
-      header: "Total Amount",
-      // isSortable: true,
-    },
-    // {
-    //   id: "Actions",
-    //   cell: (info) => (
-    //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-    //       {/* <TableAction type="delete" onClicked={handleOpen} />
-    //        <TableAction type="edit" onClicked={handleFormDialog} />
-    //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
-    //     </Box>
-    //   ),
-    //   header: () => <span>Actions</span>,
-    //   isSortable: false,
-    // },
-  ];
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
+ const columns = [
+      {
+        accessorFn: (row) => row.Id,
+        id: "Id",
+        cell: (info) => info.getValue(),
+        header: () => <span>Sr.#</span>,
+        isSortable: true,
+      },
+      {
+        accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,
+        id: "invoiceNo",
+        cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
+        header: "Invoice No.",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.client,
+        id: "client",
+        cell: (info) => info.getValue(),
+        header: "Client",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.invoice_status,
+        id: "invoice_status",
+        cell: (info) => <span className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</span>,
+        header: "Invoice Status",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.issue_date,
+        id: "issue_date",
+        cell: (info) => info.getValue(),
+        header: "Issue Date",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.due_date,
+        id: "due_date",
+        cell: (info) => info.getValue(),
+        header: "Due Date",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.overdue_days,
+        id: "overdue_days",
+        cell: (info) => info.getValue(),
+        header: "Overdue Days",
+        // isSortable: true,
+      },
+      {
+        accessorFn: (row) => row.total_amount,
+        id: "total_amount",
+        cell: (info) => info.getValue(),
+        header: "Total Amount",
+        // isSortable: true,
+      },
+      // {
+      //   id: "Actions",
+      //   cell: (info) => (
+      //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+      //       {/* <TableAction type="delete" onClicked={handleOpen} />
+      //        <TableAction type="edit" onClicked={handleFormDialog} />
+      //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
+      //     </Box>
+      //   ),
+      //   header: () => <span>Actions</span>,
+      //   isSortable: false,
+      // },
+    ];
   return (
     <React.Fragment>
       <div className="invoice-title">Invoices</div>

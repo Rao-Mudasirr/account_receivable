@@ -4,7 +4,8 @@ import { Card, Box, FormControlLabel, Switch } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
-
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
 import { Status } from '../../../../components/status/status';
@@ -35,8 +36,7 @@ export const UserAccessTable = () => {
       borderRadius: 22 / 2,
       border: "1px solid black",
       opacity: 1,
-      backgroundColor:
-        theme.palette.mode === 'black' ? 'gray' : 'white',
+      backgroundColor: 'black' ? 'white' : 'gray',
       boxSizing: 'border-box',
     },
     '& .MuiSwitch-thumb': {
@@ -49,6 +49,10 @@ export const UserAccessTable = () => {
     },
     '& .MuiSwitch-switchBase.Mui-checked': {
       backgroundColor: 'dark',
+    },
+
+    "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+      backgroundColor: 'gray'
     },
   }));
 
@@ -124,15 +128,37 @@ export const UserAccessTable = () => {
       isSortable: false,
     },
   ];
-
+  const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 1}}>
-        <div style={{marginBottom: '10px'}}>
-        <GlobalSearchBar
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
+      <Card sx={{ p: 2, mt: -4 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <GlobalSearchBar
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <TextField sx={{
+            width: 333, mb: 2, borderRadius : 5,
+            '& .MuiInputBase-root': {
+              color: isFocused ? 'black' : 'inherit',
+              '&::before': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+              '&::after': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+              '&:hover::before': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+            },
+          }}
+            select
+            variant = {isFocused ? 'filled' : 'standard'}
+          >
+            <MenuItem value='Role'>
+              Role
+            </MenuItem>
+          </TextField>
         </div>
         <CustomTable
           data={userData}

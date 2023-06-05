@@ -6,19 +6,20 @@ import AdminRights from './Admin_Rights';
 import Dashboard from './Accounts_receivable_data/Dashboard';
 import Invoices from './Accounts_receivable_data/Invoices';
 import Clients from './Accounts_receivable_data/Clients';
-import Performance_analysis from './Accounts_receivable_data/Performance_analysis';
+import PerformanceAnalysis from './Accounts_receivable_data/Performance_analysis';
 import Workflows from './Accounts_receivable_data/Workflows';
 import Notifications from './Accounts_receivable_data/Notifications';
 import Reports from './Accounts_receivable_data/Reports';
 import { formControlData } from './Accounts_receivable_data/data';
-import User_management from './Admin_Rights_data/User_management';
-import { FormControlData } from './Admin_Rights_data/Data'
+import User_management from './Admin_Rights_data/User_management'
+import { FormControlData2 } from './Admin_Rights_data/Admin_data';
 import './manager.css';
+import Settings from './Admin_Rights_data/Settings';
 
 
 const Manager = () => {
   const [active, setActive] = useState('');
-  const [switchOption, setSwitchOption] = useState('dashboard');
+  const [switchOption, setSwitchOption] = useState('');
   const [switchEnabled, setSwitchEnabled] = useState(false);
 
   const handleSwitchChange = () => {
@@ -28,7 +29,6 @@ const Manager = () => {
   useEffect(() => {
     setActive('1');
   }, []);
-
 
   const handleLiClick = (id) => {
     setActive(id);
@@ -47,11 +47,11 @@ const Manager = () => {
           />
         );
       case '3':
-        return <Cashflow />
+        return <Cashflow />;
       case '4':
         return (
           <AdminRights
-          FormControlData={FormControlData}
+            FormControlData2={FormControlData2}
             setSwitchOption={setSwitchOption}
             switchOption={switchOption}
           />
@@ -67,81 +67,89 @@ const Manager = () => {
         return (
           <Dashboard
             checkboxData={formControlData.find((data) =>
-              data.id === 'dashboard'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'dashboard').switchOptions}
+            className={active === 'dashboard' ? 'active' : ''}
           />
         );
       case 'invoices':
         return (
           <Invoices
             checkboxData={formControlData.find((data) =>
-              data.id === 'invoices'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'invoices').switchOptions}
+            className={active === 'invoices' ? 'active' : ''}
           />
         );
       case 'clients':
         return (
           <Clients
             checkboxData={formControlData.find((data) =>
-              data.id === 'clients'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'clients').switchOptions}
+            className={active === 'clients' ? 'active' : ''}
           />
         );
       case 'performance_analysis':
         return (
-          <Performance_analysis
+          <PerformanceAnalysis
             checkboxData={formControlData.find((data) =>
               data.id === 'performance_analysis'
             ).switchOptions}
-            switchEnabled={switchEnabled}
+            className={active === 'performance_analysis' ? 'active' : ''}
           />
         );
       case 'workflows':
         return (
           <Workflows
             checkboxData={formControlData.find((data) =>
-              data.id === 'workflows'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'workflows').switchOptions}
+            className={active === 'workflows' ? 'active' : ''}
           />
         );
       case 'notification':
         return (
           <Notifications
             checkboxData={formControlData.find((data) =>
-              data.id === 'notification'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'notification').switchOptions}
+            className={active === 'notification' ? 'active' : ''}
           />
         );
       case 'reports':
         return (
           <Reports
             checkboxData={formControlData.find((data) =>
-              data.id === 'reports'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
-          />
-        );
-
-      case 'user_management':
-        return (
-          <User_management
-            checkboxData={FormControlData.find((data) =>
-              data.id === 'user_management'
-            ).switchOptions}
-            switchEnabled={switchEnabled}
+              data.id === 'reports').switchOptions}
+            className={active === 'reports' ? 'active' : ''}
           />
         );
       default:
         return null;
     }
   };
-
-
+  
+  const renderSwitchComponents2 = (active) => {
+    switch (active) {
+      case 'userManagement':
+        return (
+          <User_management
+            checkboxData2={
+              FormControlData2.find((data) =>
+                data.id === 'userManagement').switchOptions
+            }
+            className={active === 'userManagement' ? 'active' : ''}
+          />
+        );
+      case 'settings':
+        return (
+          <Settings
+            checkboxData2={FormControlData2.find((data) =>
+              data.id === 'settings').switchOptions}
+            className={active === 'settings' ? 'active' : ''}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+  
   return (
     <div className="container">
       <p>Manager</p>
@@ -183,21 +191,21 @@ const Manager = () => {
           <div className="line2"></div>
         </div>
         <div className="right">
-          <div className="left_details">{renderDataComponent()}
+          <div className="left_details">
+            {renderDataComponent()}
             <div className="line2"></div>
           </div>
           <div className="right_side">
-            {renderSwitchComponents(switchOption)}
+            {active === '2' ? (
+              renderSwitchComponents(switchOption)
+            ) : active === '4' ? (
+              renderSwitchComponents2(switchOption)
+            ) : null}
           </div>
-
-
         </div>
       </div>
     </div>
   );
 };
-
-
-
 
 export default Manager;

@@ -20,6 +20,8 @@ dist/
 *.jar
 package-lock.json
 
+package-lock.json
+
 # Maven
 target/
 dist/

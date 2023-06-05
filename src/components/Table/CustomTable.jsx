@@ -130,7 +130,7 @@ const CustomTable = (props) => {
   if (isLoading) return <TableSkeleton />;
 
   return (
-    <Grid container sx={{ position: "relative", ...rootSX }}>
+    <Grid container sx={{ position: "relative", ...rootSX}}>
       <IsFetching isFetching={isFetching} />
       <Grid xs={12} item>
         {/* Table Container */}

@@ -8,6 +8,7 @@ import InvoiceListing from './features/Invoices/components/InvoiceListing';
 import Clientdetails from './pages/client-details';
 import Overdue_Invoice from './pages/Overdue_Invoice';
 import View_Invoice from "./pages/View_invoice_details";
+import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
         />
             <Route path="/not-found" element={<h1>Not Found</h1>}/>
             <Route path="*" element={<Navigate to="/not-found"/>} />
+            <Route path="/invoice-no-detail" element={<InvoiceNoDetail/>} />
           </Route>
     </Routes>
     </Suspense>

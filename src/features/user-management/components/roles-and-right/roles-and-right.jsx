@@ -8,6 +8,8 @@ import TableAction from '../../../../components/Table/TableAction';
 import DeleteModel from '../../../../components/modal/DeleteModel';
 import FormDialog from '../../../../components/modal/ModalPractice';
 
+import Manager from '../role_rights_manager/Manager'
+
 import { ROLE_RIGHTS_DATA } from ".";
 import { useRolesRights } from "./use-roles-andright";
 import { BasicInformationForm } from '../basic-information';
@@ -80,7 +82,7 @@ export const RolesRightsTable = () => {
           <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
             <TableAction type="delete" onClicked={handleOpen} />
              <TableAction type="edit" onClicked={handleOpenFormModal} />
-            <TableAction type="setting" onClicked={handleOpenFormModal} />
+            <TableAction type="setting" onClicked={() => <Manager />} />
           </Box>
         ),
         header: () => <span>Actions</span>,
