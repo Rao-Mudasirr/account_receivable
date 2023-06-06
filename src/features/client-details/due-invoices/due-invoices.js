@@ -10,6 +10,8 @@ import filterIcon from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
 import ExportModal from '../components/export-modal/export-modal';
 import DateRangePicker from '../../../components/date-range-picker/date-range-picker';
+import Popper from '@mui/material/Popper';
+import Fade from '@mui/material/Fade';
 
 
 
@@ -42,12 +44,15 @@ const DueInvoices = ({ status }) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleExportButtonClick = () => {
-    setModalOpen(true);
+  const handleExportButtonClick = (event) => {
+    // setModalOpen(true);
+     setAnchorEl(event.currentTarget);
+     setModalOpen((previousOpen) => !previousOpen);
   };
 
   const handleCloseModal = () => {
     setModalOpen(false);
+
   };
 
   const handleApplyDate = (date) => {
@@ -55,6 +60,8 @@ const DueInvoices = ({ status }) => {
     // Do something with the selected date
   };
 
+  const canBeOpen = modalOpen && Boolean(anchorEl);
+  const id = canBeOpen ? 'transition-popper' : undefined;
   return (
     <div>
 
@@ -109,30 +116,41 @@ const DueInvoices = ({ status }) => {
         >
           More Filter
         </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
+        <div>
+      <Button
+        aria-describedby={id}
+        variant="contained"
+        color="primary"
+        sx={{
+          background: '#2B2B33',
+          '&:hover': {
             background: '#2B2B33',
-            '&:hover': {
-              background: '#2B2B33',
-            },
-            '@media (max-width: 1200px)': {
-              marginTop: '25px',
-              alignSelf: 'flex-end',
-            },
-            '@media (max-width: 600px)': {
-              marginTop: '25px',
-              // alignSelf: 'flex-start',
-              fontSize:'7px'
-            },
-          }}
-          onClick={handleExportButtonClick}
-          endIcon={<img src={exportIcon} alt="Export Text" />}
-        >
-          Export Text
-        </Button>
-    <Box sx={{
+          },
+          '@media (max-width: 1200px)': {
+            marginTop: '25px',
+            alignSelf: 'flex-end',
+          },
+          '@media (max-width: 600px)': {
+            marginTop: '25px',
+            fontSize: '7px',
+          },
+        }}
+        onClick={handleExportButtonClick}
+        endIcon={<img src={exportIcon} alt="Export Text" />}
+      >
+        Export Text
+      </Button>
+      <Popper id={id} open={modalOpen} anchorEl={anchorEl} placement="bottom-start" transition>
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+              <ExportModal open={modalOpen} onClose={handleCloseModal} />
+            </Box>
+          </Fade>
+        )}
+      </Popper>
+    </div>
+    {/* <Box sx={{
       // position: 'absolute',
       // bottom: 0,
       // right: 0,
@@ -140,10 +158,11 @@ const DueInvoices = ({ status }) => {
       '@media (max-width: 1200px)': {
         // display: 'block',
       },
-    }}>
-      <ExportModal open={modalOpen} onClose={handleCloseModal} />
+    }}> */}
+      
+    
 
-    </Box>
+    {/* </Box> */}
     <Box>
           <DateRangePicker
             isOpenDatePicker={isFilterModalOpen}
