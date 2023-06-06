@@ -7,11 +7,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-const DateRangePicker = ({
-  isOpenDatePicker,
-  onCloseDatePicker,
-  onApplyDate,
-}) => {
+const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [error, setError] = useState(null);
@@ -44,14 +40,14 @@ const DateRangePicker = ({
     <Modal
       open={isOpenDatePicker}
       onClose={onCloseDatePicker}
-      BackdropProps={{ style: { backgroundColor: "transparent" } }}
+      BackdropProps={{ style: { backgroundColor: 'transparent', } }}
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "absolute",
-        bottom: "16px",
-        right: "16px",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: '16px',
+        right: '16px',
       }}
     >
       <div
@@ -151,7 +147,7 @@ const DateRangePicker = ({
           </Button>
         </div>
       </div>
-    </Modal>
+      </Popper>
   );
 };
 

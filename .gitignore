@@ -19,6 +19,8 @@ dist/
 # Package files
 *.jar
 
+package-lock.json
+
 # Maven
 target/
 dist/
