@@ -124,6 +124,7 @@ export const RolesRightsTable = () => {
         onDeleteClick={handleClose}
       />
 
+
       <Modal
         open={openFormModal}
         onClose={handleCloseFormModal}
