@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
 import {workflowtableheading,workflowtabledata} from './workflow-details-data'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Button ,Box} from '@mui/material';
 import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter';
 import filterIcon from '../../../assests/images/client/filter.png';
-import exportIcon from '../../../assests/images/client/export.png';
+// import exportIcon from '../../../assests/images/client/export.png';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CheckIcon from '@mui/icons-material/Check';
 import checkTic from "../../../assests/images/client/check.png"
@@ -24,46 +24,105 @@ const WorkflowDetails = () => {
 
   return (
     <div>
-    <div style={{ margin: '5px', display: 'flex', alignItems: 'center' ,marginTop:'10px'}}>
-      <GlobalSearchBar
-      value={searchQuery}
-      onChange={handleSearchChange}
-       
-       />
-
-      <div style={{ marginLeft: 'auto' }}>
-      <Button
-        variant="outlined"
-        color="primary"
+   <Box
+      sx={{
+        margin: '5px',
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: '10px',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        '@media (max-width: 1200px)': {
+          display: 'flex',
+          flexDirection:'column',
+          
+        },
+      }}
+    >
+      <GlobalSearchBar value={searchQuery} onChange={handleSearchChange} />
+      <Box
         sx={{
-          mr: 2,
-          color: '#40404D',
-          borderColor: 'black',
-          '&:hover': {
+          display: 'flex',
+          gap: '10px',
+          '@media (max-width: 1100px)': {
+            // display: 'none',
+         
+          },
+        }}
+      >
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{
+            color: '#40404D',
             borderColor: 'black',
-            color: 'black',
-          },
-        }}
-        endIcon={<img src={filterIcon} alt="More Filter" />}
-      >
-        More Filter
-      </Button>
-
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{
-          background: '#2B2B33',
-          '&:hover': {
+            '&:hover': {
+              borderColor: 'black',
+              color: 'black',
+            },
+            '@media (max-width: 1200px)': {
+              marginTop: '25px',
+              // alignSelf: 'flex-start',
+            },
+            '@media (max-width: 600px)': {
+              marginTop: '25px',
+              // alignSelf: 'flex-start',
+              fontSize:'8px'
+            },
+          }}
+          endIcon={<img src={filterIcon} alt="More Filter" />}
+          // onClick={handleOpenFilterModal}
+        >
+          More Filter
+        </Button>
+        {/* <Button
+          variant="contained"
+          color="primary"
+          sx={{
             background: '#2B2B33',
-          },
-        }}
-        endIcon={<img src={exportIcon} alt="Export Text" />}
-      >
-        Export Text
-      </Button>
-    </div>
-    </div>
+            '&:hover': {
+              background: '#2B2B33',
+            },
+            '@media (max-width: 1200px)': {
+              marginTop: '25px',
+              alignSelf: 'flex-end',
+            },
+            '@media (max-width: 600px)': {
+              marginTop: '25px',
+              // alignSelf: 'flex-start',
+              fontSize:'8px'
+            },
+          }}
+          onClick={handleExportButtonClick}
+          endIcon={<img src={exportIcon} alt="Export Text" />}
+        >
+          Export Text
+        </Button> */}
+    <Box sx={{
+      
+      // position: 'absolute',
+      // bottom: 0,
+      // right: 0,
+      // display: 'none',
+      '@media (max-width: 1200px)': {
+        // display: 'block',
+      },
+    }}>
+      {/* <ExportModal open={modalOpen} onClose={handleCloseModal} /> */}
+
+    </Box>
+    {/* <Box>
+          <DateRangePicker
+            isOpenDatePicker={isFilterModalOpen}
+            onCloseDatePicker={handleCloseFilterModal}
+            onApplyDate={handleApplyDate}
+            anchorEl={anchorEl}
+          
+          />
+        </Box> */}
+  </Box>
+
+</Box>
  
       <TableContainer  sx={{mt:2}}>
         <Table sx={{border:'0'}} >
