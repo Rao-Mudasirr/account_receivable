@@ -12,7 +12,7 @@ export const DashboardCard = ({
   headingSize = "14px",
   headingWeight = "600",
   headingColor ="#40404D",
-  tooltipMessage
+  tooltipMessage,
 }) => {
   return (
     <Box

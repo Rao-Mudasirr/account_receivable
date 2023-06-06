@@ -25,8 +25,7 @@ export default function Layout({ children }) {
         sx={mainContainer}
       >
         {/* header and sidebar for sm to  x-large screens */}
-        <Grid
-        >
+        <Grid>
           <AppBar className="app-bar" >
             <Header openMobHeader={setOpenMobDrawer} />
           </AppBar>
