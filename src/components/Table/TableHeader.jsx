@@ -1,4 +1,6 @@
 import React from 'react';
+import { GlobalSearchBar } from '../../components/global-search-filter/global-search-filter';
+import { useUserAccess } from "../../features/user-management/components/user-access-control/use-user-access-control";
 import { forwardRef, useImperativeHandle, useState } from "react";
 // @mui
 import {
@@ -105,6 +107,24 @@ const TableHeader = forwardRef(function TableHeader(
     onChanged({});
   }
 
+  const {
+    userData,
+    tableData,
+    updateStatus
+  } = useUserAccess();
+  
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  const filteredData = tableData.filter((data) =>
+    Object.values(data).some((value) =>
+      String(value).toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+  
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <Stack sx={styles.rootBoxStyles}>
       {/* Title and Searchbar */}
@@ -117,22 +137,12 @@ const TableHeader = forwardRef(function TableHeader(
           {title}
         </Typography> */}
         {!hideSearch && (
-          <TextField
-            disabled={disabled}
-            size={searchSize}
-            name={searchKey}
-            placeholder={searchLabel}
-            value={params[searchKey]}
-            onChange={changeHandler}
-            sx={styles.searchStyles}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
+          <div style={{marginBottom: '10px'}}>
+          <GlobalSearchBar
+            value={searchQuery}
+            onChange={handleSearchChange}
           />
+          </div>
         )}
       </Stack>
 
@@ -140,23 +150,12 @@ const TableHeader = forwardRef(function TableHeader(
       {showSelectFilters && (
         <Stack sx={styles.selectStackStyles}>
           {selectFilters.map(({ key, label, options = [] }) => (
-            <TextField
-              disabled={disabled}
-              select
-              size={selectSize}
-              key={key}
-              name={key}
-              label={label}
-              value={params[key]}
-              onChange={changeHandler}
-              sx={styles.selectFieldStyles}
-            >
-              {options.map(({ label, value }) => (
-                <MenuItem key={value} value={value}>
-                  {label}
-                </MenuItem>
-              ))}
-            </TextField>
+            <div style={{marginBottom: '10px'}}>
+            <GlobalSearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            </div>
           ))}
         </Stack>
       )}
