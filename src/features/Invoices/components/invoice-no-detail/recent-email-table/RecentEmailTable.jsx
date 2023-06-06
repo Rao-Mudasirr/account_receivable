@@ -96,7 +96,8 @@ const RecentEmailTable = () => {
       <div style={{
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "flex-end"
+        alignItems: "flex-end",
+        marginTop: "6px"
       }}>
         <h2>Recent Emails</h2>
         <Button

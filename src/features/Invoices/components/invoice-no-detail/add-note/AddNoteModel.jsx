@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useTheme } from "@emotion/react";
-import { Backdrop, Button, Grid, TextField, Typography,Textarea } from "@mui/material";
+import { Backdrop, Button, Grid, TextField, Typography, Textarea } from "@mui/material";
 import CloseIcon from "../../../../../assests/svg/close-circle.png";
 import { CheckBox, Maximize } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -41,14 +41,14 @@ const AddNoteModel = (props) => {
                             <CheckBox />
                             Send Email Remainder
                         </div>
-                        <div style={{ textAlign: "center", marginTop: "2rem"}}>
+                        <div style={{ textAlign: "center", marginTop: "2rem" }}>
                             <TextareaAutosize
-                            minRows={10}
-                                style={{backgroundColor: "#F2F2F2", width: "100%", resize: "none", borderRadius: "4px"}}
+                                minRows={10}
                                 placeholder="Write your note"
+                                style={{ backgroundColor: "#F2F2F2", width: "100%", resize: "none", borderRadius: "4px", border: "none" }}
                             ></TextareaAutosize>
                         </div>
-                        <div style={{marginTop: "2rem", textAlign: "end"}}>
+                        <div style={{ marginTop: "2rem", textAlign: "end" }}>
                             <Button
                                 onClick={onDeleteClick}
                                 sx={Styles.buttonError(theme)}
@@ -89,5 +89,5 @@ const Styles = {
         textTransform: 'capitalize',
         fontWeight: "400",
         borderRadius: "8px"
-      }),
+    }),
 };
