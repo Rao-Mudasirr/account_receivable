@@ -12,6 +12,10 @@ export const formControlData = [
         id: 'Checkbox2',
         label: 'The tab and view dashboard wkkith own user data',
       },
+      {
+        id: 'Checkbox3',
+        label: 'Update dashboard',
+      },
     ],
   },
   ///////////////////// Invoices ////////////////////////////////
@@ -346,12 +350,5 @@ export const formControlData = [
       }
     ]
   },
-
-
-
-
-
-
-  //////////////////////////////////////Admin Rights ///////////////////////////////////////
 
 ]

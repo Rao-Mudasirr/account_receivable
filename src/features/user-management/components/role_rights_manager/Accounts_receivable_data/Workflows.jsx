@@ -2,7 +2,20 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { withStyles } from '@material-ui/core';
+
 const Workflows = ({checkboxData, onClickBtn}) => {
+
+    const checkBoxStyles = theme => ({
+        root: {
+          '&$checked': {
+            color: 'black',
+          },
+        },
+        checked: {},
+       })
+    
+    const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
     return (
         <FormGroup>
             {checkboxData.map((item, index) => {
@@ -11,7 +24,7 @@ const Workflows = ({checkboxData, onClickBtn}) => {
                     <FormControlLabel id={item.id}
                     key={index}
                     onClick={onClickBtn}
-                        control={<Checkbox disabled/>}
+                        control={<CustomCheckbox />}
                         label={item.label} />
                 )
             })}

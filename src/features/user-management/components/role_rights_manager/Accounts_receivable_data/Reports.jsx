@@ -5,10 +5,23 @@ import { TreeView, TreeItem } from '@mui/lab'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { styled } from '@mui/material/styles';
+import { withStyles } from '@material-ui/core';
 
 
 
 const Reports = ({ checkboxData, onClickBtn }) => {
+
+    const checkBoxStyles = theme => ({
+        root: {
+          '&$checked': {
+            color: 'black',
+          },
+        },
+        checked: {},
+       })
+    
+    const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+
     const [data, setData] = useState([checkboxData])
     // console.log(data);
 
@@ -17,11 +30,6 @@ const Reports = ({ checkboxData, onClickBtn }) => {
     background-color:white;
     .MuiTreeItem-content {
       background-color:white
-    }
-  
-    .MuiTreeItem-label:hover{
-      background-color:white
-      color:white
     }
   
     .MuiTreeItem-content.Mui-selected{
@@ -43,13 +51,13 @@ const Reports = ({ checkboxData, onClickBtn }) => {
                     <TreeItemStyled
                         nodeId={item.id} label={
                             <FormControlLabel
-                                control={<Checkbox disabled/>} label={item.label} />
+                                control={<CustomCheckbox/>} label={item.label} />
                         }>
                         {item.parent.childData?.map((item2) => {
                             return (
 
                                 <TreeItemStyled nodeId={item2.id} label={
-                                    <FormControlLabel control={<Checkbox disabled/>}
+                                    <FormControlLabel control={<CustomCheckbox/>}
                                         label={item2.label} />
                                 } />
                             )

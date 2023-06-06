@@ -5,32 +5,40 @@ export const FormControlData2 = [
         switchOptions: [
           {
             id: '1',
-            label: 'DSO Report',
+            label: 'Roles and Rights',
             parent: {
               childData: [
                 {
                   id: 'Checkbox1_1',
-                  label: 'Export to Excel',
+                  label: 'Add Role',
                 },
                 {
                   id: 'Checkbox1_2',
-                  label: 'Export to PDF',
+                  label: 'Edit Role',
+                },
+                {
+                  id: 'Checkbox1_3',
+                  label: 'Delete Role',
+                },
+                {
+                  id: 'Checkbox1_4',
+                  label: 'Assign Rights',
                 },
               ],
             },
           },
           {
             id: '2',
-            label: 'Cashflow Forecasting Report',
+            label: 'User Access Control',
             parent: {
               childData: [
                 {
                   id: 'Checkbox2_1',
-                  label: 'Export to Excel',
+                  label: 'Active User',
                 },
                 {
                   id: 'Checkbox2_2',
-                  label: 'Export to PDF',
+                  label: 'Deactive User',
                 },
               ],
             },
@@ -42,11 +50,15 @@ export const FormControlData2 = [
               childData: [
                 {
                   id: 'Checkbox3_1',
-                  label: 'Export to Excel',
+                  label: 'Add User',
                 },
                 {
                   id: 'Checkbox3_2',
-                  label: 'Export to PDF',
+                  label: 'Edit User',
+                },
+                {
+                  id: 'Checkbox3_3',
+                  label: 'Delete User',
                 },
               ],
             },
@@ -58,11 +70,7 @@ export const FormControlData2 = [
               childData: [
                 {
                   id: 'Checkbox4_1',
-                  label: 'Export to Excel',
-                },
-                {
-                  id: 'Checkbox4_2',
-                  label: 'Export to PDF',
+                  label: 'Assign Clients',
                 },
               ],
             },
