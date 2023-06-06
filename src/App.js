@@ -8,6 +8,7 @@ import InvoiceListing from './features/Invoices/components/InvoiceListing';
 import Clientdetails from './pages/client-details';
 import Overdue_Invoice from './pages/Overdue_Invoice';
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
+import Manager from "./features/user-management/components/role_rights_manager/Manager";
 
 function App() {
   return (
@@ -37,7 +38,13 @@ function App() {
               <Overdue_Invoice/>
           }
         />
-      
+      <Route
+          exact
+          path={"/user-management/role-right-manager"}
+          element={
+              <Manager/>
+          }
+        />
       <Route
           exact
           path={"/user-management"}

@@ -14,6 +14,7 @@ import {
 // @mui icons
 import SearchIcon from "@mui/icons-material/Search";
 import TableAction from "./TableAction";
+import Add_role from '../../features/user-management/components/roles-and-right/Add_Update_cards/Add_Update_cards/Add_role';
 
 // ----------------------------------------------------------------------
 // Variables
@@ -166,11 +167,13 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <Box sx={{ px:1.5, borderRadius: 2, bgcolor: "#2B2B33", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+        <Box sx={{ p:1, borderRadius: 2, bgcolor: "#2B2B33", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
           <Typography variant="subtitle" sx={{fontSize:"14px"}}>Add</Typography>
           <TableAction disabled={disabled} onClicked={onAdd} type="add" />
         </Box>
       )}
+      
+
 
       {/* Share Button */}
       {showShareBtn && (

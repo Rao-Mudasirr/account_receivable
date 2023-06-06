@@ -7,6 +7,7 @@ import { INVOICE_DETAIL_DATA } from ".";
 import { useClients } from "./use-resent-email";
 import EmailIcon from '../../../../../assests/svg/email.png'
 import DeleteModel from '../../../../../components/modal/DeleteModel';
+import Compose_email from '../../Compose_email/Compose_email';
 
 const RecentEmailTable = () => {
   const {
@@ -92,7 +93,6 @@ const RecentEmailTable = () => {
   ];
   return (
     <>
-
       <div style={{
         display: "flex",
         justifyContent: "space-between",
@@ -110,10 +110,12 @@ const RecentEmailTable = () => {
               background: "#2B2B33",
             },
           }}
-          endIcon={<img src={EmailIcon} alt="Compose Email" />}
+          endIcon={<img src={EmailIcon} alt="Compose Email"/>}
+          onClick={handleOpen}
         >
           Compose Email
         </Button>
+        
       </div>
       <br />
       <CustomTable
@@ -125,11 +127,10 @@ const RecentEmailTable = () => {
         isSuccess={true}
         isPagination={true}
       />
-      {/* <DeleteModel
+      <Compose_email
         open={open}
         handleClose={handleClose}
-        onDeleteClick={handleClose}
-      /> */}
+      />
       {/* <CustomModel open={openModel}
         setOpen={setOpenModel}
         styleModal={{ width: { xs: '90%', sm: '80%', md: '70%', xl: '60%' } }}>
