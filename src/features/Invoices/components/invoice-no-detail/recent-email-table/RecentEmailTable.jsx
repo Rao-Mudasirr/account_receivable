@@ -7,6 +7,7 @@ import { INVOICE_DETAIL_DATA } from ".";
 import { useClients } from "./use-resent-email";
 import EmailIcon from '../../../../../assests/svg/email.png'
 import DeleteModel from '../../../../../components/modal/DeleteModel';
+import Compose_email from '../../Compose_email/Compose_email';
 
 const RecentEmailTable = () => {
   const {
@@ -110,9 +111,9 @@ const RecentEmailTable = () => {
               background: "#2B2B33",
             },
           }}
-          endIcon={<img src={EmailIcon} alt="Compose Email" />}
+          endIcon={<img src={EmailIcon} alt="Compose Email" onClicked={<Compose_email/>} />}
         >
-          Compose Email
+          Compose 
         </Button>
       </div>
       <br />

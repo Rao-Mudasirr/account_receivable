@@ -14,6 +14,9 @@ import { ROLE_RIGHTS_DATA } from ".";
 import { useRolesRights } from "./use-roles-andright";
 import { BasicInformationForm } from '../basic-information';
 
+import { Link } from "react-router-dom";
+
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -82,7 +85,7 @@ export const RolesRightsTable = () => {
           <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
             <TableAction type="delete" onClicked={handleOpen} />
              <TableAction type="edit" onClicked={handleOpenFormModal} />
-            <TableAction type="setting" onClicked={() => <Manager />} />
+             <Link to="/user-management/role-right-manager"><TableAction type="setting" /></Link>
           </Box>
         ),
         header: () => <span>Actions</span>,
