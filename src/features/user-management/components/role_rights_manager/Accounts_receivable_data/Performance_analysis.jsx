@@ -26,7 +26,7 @@ const TreeItemStyled = styled(TreeItem)`
   .MuiTreeItem-content {
     background-color:white
   }
-.MuiTreeItem-label:hover  
+
   .MuiTreeItem-label:hover{
     background-color:white
     color:white
