@@ -7,7 +7,6 @@ import {  Card, Button, Dialog } from "@mui/material";
 const AddUser = (props) => {
   const { openForm, handleCloseForm } = props;
 
-
   return (
     <Dialog open={openForm} onClose={handleCloseForm}>
     <div className="users_container">
