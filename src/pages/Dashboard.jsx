@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
-import { TotalInvoices } from '../features/Total_Invoices/TotalInvoices'
-import RecentNotify from '../features/RecentNotification/RecentNotify'
-import { Grid } from '@mui/material'
-import { DashboardCard } from '../components/dashboard-card/dashboard-card'
-import { UnifiedDSOAPD } from '../features/unified-dso-apd/unified-dso-apd'
-import { TopClientsStackedBarChart } from '../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart'
-import { AgingBucketBarChart } from '../features/aging-bucket-bar-chart/aging-bucket-bar-chart'
-import { PaymentShowcaseAreaChart } from '../features/payment-showcase-area-chart/payment-showcase-area-chart'
-import { PaymentForecastingChartSwitch } from '../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch'
-import { DashboardChartSwitch } from '../features/dashboard-chart-switch/dashboard-chart-switch'
-import { WorkflowSuccessSpeedometer } from '../features/workflow-success-speedometer/workflow-success-speedometer'
+import React, { useState } from 'react';
+import { TotalInvoices } from '../features/Total_Invoices/TotalInvoices';
+import RecentNotify from '../features/RecentNotification/RecentNotify';
+import { Grid } from '@mui/material';
+import { DashboardCard } from '../components/dashboard-card/dashboard-card';
+import { UnifiedDSOAPD } from '../features/unified-dso-apd/unified-dso-apd';
+import { TopClientsStackedBarChart } from '../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart';
+import { AgingBucketBarChart } from '../features/aging-bucket-bar-chart/aging-bucket-bar-chart';
+import { PaymentShowcaseAreaChart } from '../features/payment-showcase-area-chart/payment-showcase-area-chart';
+import { PaymentForecastingChartSwitch } from '../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch';
+import { DashboardChartSwitch } from '../features/dashboard-chart-switch/dashboard-chart-switch';
+import { WorkflowSuccessSpeedometer } from '../features/workflow-success-speedometer/workflow-success-speedometer';
+import { DashboardToggleIcon } from '../features/dashboard-toggle-icon/dashboard-toggle-icon';
+import { DashboardDateRange } from '../features/dashboard-date-range/dashboard-date-range';
 
 export default function Dashboard() {
   const [paymentForecastSwitch, setPaymentForecastSwitch] = useState("This Month");
   const [PCVal, setPCVal] = useState("2020");
   const [WFVal, setWFVal] = useState("UK Workflow");
+  const [agingBucketVal, setAgingBucketVal] = useState("0");
 
   return (
     <React.Fragment>
@@ -50,13 +53,13 @@ export default function Dashboard() {
           </Grid>
         </Grid>
         <Grid item xl={6.5} xs={12}>
-          <DashboardCard heading="Top Clients">
+          <DashboardCard heading="Top Clients" headingSibling={<DashboardDateRange />}>
             <TopClientsStackedBarChart />
           </DashboardCard>
         </Grid>
         <Grid item xl={5.5} xs={12}>
-          <DashboardCard heading="Aging Bucket">
-            {/* <AgingBucketBarChart/> */}
+          <DashboardCard heading="Aging Bucket" headingSibling={<DashboardToggleIcon chartSwitch={agingBucketVal} setSwitch={setAgingBucketVal}/>}>
+            <AgingBucketBarChart chartSwitch={agingBucketVal}/>
           </DashboardCard>
         </Grid>
         <Grid item xl={6.5} xs={12}>
