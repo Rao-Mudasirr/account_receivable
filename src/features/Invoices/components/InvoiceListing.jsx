@@ -169,7 +169,7 @@ export default function InvoiceListing() {
         id: "Id",
         cell: (info) => info.getValue(),
         header: () => <span>Sr.#</span>,
-        isSortable: true,
+        // isSortable: true,
       },
       {
         accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,

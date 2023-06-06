@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GlobalSearchBar } from '../../components/global-search-filter/global-search-filter';
 import { Button } from '@mui/material';
 import CustomTable from '../../components/Table/CustomTable';
 import filterIcon from "../../assests/images/client/filter.png";
 import exportIcon from "../../assests/images/client/export.png";
 import './overdue_invoices.scss';
+import ShowFilters from './ShowFilters';
 
 const INVOICE_DATA = [
     {
@@ -122,6 +123,14 @@ function OverdueInvoices() {
         //   isSortable: false,
         // },
       ];
+
+      const [isOpen, setIsOpen] = useState(false);
+      const [type, setType] = useState("");
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <React.Fragment>
      
@@ -152,6 +161,10 @@ function OverdueInvoices() {
               },
             }}
             endIcon={<img src={filterIcon} alt="More Filter" />}
+            onClick={()=> {
+              setType("More")
+              handleClick()
+            }}
           >
             More Filter
           </Button>
@@ -167,9 +180,18 @@ function OverdueInvoices() {
               },
             }}
             endIcon={<img src={exportIcon} alt="Export Text" />}
+            onClick={()=> {
+                setType("Export")
+                handleClick()
+              }}
           >
             Export Text
           </Button>
+          <ShowFilters 
+            filter_type = {type}
+            handleClick = {handleClick}
+            isOpen = {isOpen}
+             />
         </div>
       </div>
       <br/>
