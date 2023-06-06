@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from "react";
 // import reactLogo from "./logo192.png";
 // import viteLogo from "/vite.svg";
 
@@ -48,13 +47,10 @@ const invoice_data = [
   },
 ]
 
-function ViewInvoice() {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+function ViewInvoice({open, handleClose, handleOpen}) {
+    
   return (
     <>
-        <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
