@@ -93,7 +93,6 @@ const RecentEmailTable = () => {
   ];
   return (
     <>
-
       <div style={{
         display: "flex",
         justifyContent: "space-between",
@@ -111,10 +110,12 @@ const RecentEmailTable = () => {
               background: "#2B2B33",
             },
           }}
-          endIcon={<img src={EmailIcon} alt="Compose Email" onClicked={<Compose_email/>} />}
+          endIcon={<img src={EmailIcon} alt="Compose Email"/>}
+          onClick={handleOpen}
         >
-          Compose 
+          Compose Email
         </Button>
+        
       </div>
       <br />
       <CustomTable
@@ -126,11 +127,10 @@ const RecentEmailTable = () => {
         isSuccess={true}
         isPagination={true}
       />
-      {/* <DeleteModel
+      <Compose_email
         open={open}
         handleClose={handleClose}
-        onDeleteClick={handleClose}
-      /> */}
+      />
       {/* <CustomModel open={openModel}
         setOpen={setOpenModel}
         styleModal={{ width: { xs: '90%', sm: '80%', md: '70%', xl: '60%' } }}>

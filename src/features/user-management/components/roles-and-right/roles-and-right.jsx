@@ -15,6 +15,8 @@ import { useRolesRights } from "./use-roles-andright";
 import { BasicInformationForm } from '../basic-information';
 
 import { Link } from "react-router-dom";
+import Add_role from './Add_Update_cards/Add_Update_cards/Add_role';
+import Update_role from './Add_Update_cards/Add_Update_cards/Update_role';
 
 
 const style = {
@@ -22,7 +24,6 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   // border: '2px solid #000',
   borderRadius: "10px",
@@ -47,65 +48,65 @@ export const RolesRightsTable = () => {
 
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
-    const [openFormModal, setOpenFormModal] = React.useState(false);
+  const [openFormModal, setOpenFormModal] = React.useState(false);
+  const [addRoleModal, setAddRoleModal] = React.useState(false);
   const handleOpenFormModal = () => setOpenFormModal(true);
   const handleCloseFormModal = () => setOpenFormModal(false);
- const columns = [
-      {
-        accessorFn: (row) => row.Id,
-        id: "Id",
-        cell: (info) => info.getValue(),
-        header: () => <span>Id</span>,
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.roleName,
-        id: "roleName",
-        cell: (info) => info.getValue(),
-        header: "Role Name",
-        // isSortable: true,
-      },
-        {
-        accessorFn: (row) => row.createdOn,
-        id: "createdOn",
-        cell: (info) => dayjs(info.getValue()).format("DD MMM, YYYY"),
-        header: "Created On",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.description,
-        id: "description",
-        cell: (info) => info.getValue(),
-        header: "Description",
-        // isSortable: true,
-      },
-      {
-        id: "Actions",
-        cell: (info) => (
-          <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-            <TableAction type="delete" onClicked={handleOpen} />
-             <TableAction type="edit" onClicked={handleOpenFormModal} />
-             <Link to="/user-management/role-right-manager"><TableAction type="setting" /></Link>
-          </Box>
-        ),
-        header: () => <span>Actions</span>,
-        isSortable: false,
-      },
-    ];
+  const columns = [
+    {
+      accessorFn: (row) => row.Id,
+      id: "Id",
+      cell: (info) => info.getValue(),
+      header: () => <span>Id</span>,
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.roleName,
+      id: "roleName",
+      cell: (info) => info.getValue(),
+      header: "Role Name",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.createdOn,
+      id: "createdOn",
+      cell: (info) => dayjs(info.getValue()).format("DD MMM, YYYY"),
+      header: "Created On",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.description,
+      id: "description",
+      cell: (info) => info.getValue(),
+      header: "Description",
+      // isSortable: true,
+    },
+    {
+      id: "Actions",
+      cell: (info) => (
+        <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+          <TableAction type="delete" onClicked={handleOpen} />
+          <TableAction type="edit" onClicked={handleOpenFormModal} />
+          <Link to="/user-management/role-right-manager"><TableAction type="setting" /></Link>
+        </Box>
+      ),
+      header: () => <span>Actions</span>,
+      isSortable: false,
+    },
+  ];
   return (
     <>
-    
+
       <Card sx={{ p: 1 }}>
         <TableHeader
           ref={tableHeaderRef}
-          // showSelectFilters
-          // disabled={isLoading}
           title="Health & Safety"
           searchKey="search"
           showAddBtn
-          onAdd={handleOpenFormModal}
-          onChanged={headerChangeHandler}
-          // selectFilters={SELECT_FILTERS}
+          open={openForm}
+          onClose={handleCloseForm}
+          onAdd={() => { console.log('dddd') }}
+        // selectFilters={SELECT_FILTERS}
         />
         <CustomTable
           data={ROLE_RIGHTS_DATA}
@@ -122,11 +123,8 @@ export const RolesRightsTable = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-      <FormDialog openForm={openForm}
-        setOpenForm={setOpenForm}
-        handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} />
-        <Modal
+
+      <Modal
         open={openFormModal}
         onClose={handleCloseFormModal}
         aria-labelledby="modal-modal-title"
@@ -134,11 +132,26 @@ export const RolesRightsTable = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <BasicInformationForm/>
+            {/* <BasicInformationForm/> */}
+            <Update_role handleCloseFormModal={setOpenFormModal} />
           </Typography>
         </Box>
       </Modal>
+
+      {/* <Modal
+        open={() => setAddRoleModal(true)}
+        onClose={()=> setAddRoleModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <BasicInformationForm/>
+            <Add_role />
+          </Typography>
+        </Box>
+      </Modal> */}
     </>
-    
+
   );
 };

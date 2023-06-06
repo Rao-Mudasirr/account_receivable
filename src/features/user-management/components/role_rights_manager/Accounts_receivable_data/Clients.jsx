@@ -33,7 +33,7 @@ const Clients = ({ checkboxData, onClickBtn }) => {
   .MuiTreeItem-content {
     background-color:white
   }
-.MuiTreeItem-label:hover  
+
   .MuiTreeItem-label:hover{
     background-color:white
     color:white

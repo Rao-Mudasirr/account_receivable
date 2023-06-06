@@ -11,9 +11,9 @@ import Workflows from './Accounts_receivable_data/Workflows';
 import Notifications from './Accounts_receivable_data/Notifications';
 import Reports from './Accounts_receivable_data/Reports';
 import { formControlData } from './Accounts_receivable_data/data';
-import User_management from './Admin_rights_data/User_management'
-import { FormControlData2 } from './Admin_rights_data/Admin_data';
-import Settings from './Admin_rights_data/Settings';
+import User_management from './Admin_Rights_data/User_management'
+import { FormControlData2 } from './Admin_Rights_data/Admin_data';
+import Settings from './Admin_Rights_data/Settings';
 import './manager.css';
 
 

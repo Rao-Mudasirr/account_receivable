@@ -1,9 +1,9 @@
-.container_card {
+/* .container_card {
     display: flex;
     justify-content: center; 
     align-items: center; 
     height: 80vh; 
-  }
+  } */
   .tags_email {
     margin-left: -1rem;
   }
@@ -16,10 +16,12 @@
  }
 
  .editor_content {
-  height: 45vh;
+  height: 45vh !important;
+
  }
  .editor_scroll {
-  height: 100%;
+  /* height: 46vh; */
+  /* border: 1px solid red; */
   overflow: auto;
   scroll-behavior: smooth;
  }
@@ -46,4 +48,5 @@
  .ql-editor {
   overflow-y: hidden;
   resize: vertical;
+  height:40.3vh !important;
 }
