@@ -39,6 +39,9 @@ export const GlobalSearchBar = ({ value, onChange }) => {
             borderBottomColor: isFocused ? 'black' : '#C4C4CC',
           },
         },
+        '@media (max-width: 600px)': {
+          width: '100%', 
+        },
       }}
       InputProps={{
         startAdornment: (

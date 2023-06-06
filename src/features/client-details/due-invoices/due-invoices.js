@@ -58,80 +58,106 @@ const DueInvoices = ({ status }) => {
   return (
     <div>
 
-<Box sx={{
-  margin: '5px',
-  display: 'flex',
-  alignItems: 'center',
-  marginTop: '10px',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  '@media (max-width: 1200px)': {
-    display: 'block',
- border:'1px solid black'
-  },
-}}>
-  <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} />
-  <div style={{
-    display: 'flex',
-    gap: '10px',
-  }}>
-    <Button
-      variant="outlined"
-      color="primary"
+<Box
       sx={{
-        color: '#40404D',
-        borderColor: 'black',
-        '&:hover': {
-          borderColor: 'black',
-          color: 'black',
-        },
+        margin: '5px',
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: '10px',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         '@media (max-width: 1200px)': {
-          // display: 'none',
+          display: 'flex',
+          flexDirection:'column',
+          
         },
       }}
-      endIcon={<img src={filterIcon} alt="More Filter" />}
-      onClick={handleOpenFilterModal}
     >
-      More Filter
-    </Button>
-    <Button
-      variant="contained"
-      color="primary"
-      sx={{
-        background: '#2B2B33',
-        '&:hover': {
-          background: '#2B2B33',
-        },
-      }}
-      onClick={handleExportButtonClick}
-      endIcon={<img src={exportIcon} alt="Export Text" />}
-    >
-      Export Text
-    </Button>
+      <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} />
+      <Box
+        sx={{
+          display: 'flex',
+          gap: '10px',
+          '@media (max-width: 1100px)': {
+            // display: 'none',
+         
+          },
+        }}
+      >
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{
+            color: '#40404D',
+            borderColor: 'black',
+            '&:hover': {
+              borderColor: 'black',
+              color: 'black',
+            },
+            '@media (max-width: 1200px)': {
+              marginTop: '25px',
+            
+            },
+            '@media (max-width: 600px)': {
+            
+              
+              fontSize:'7px'
+            },
+          }}
+          endIcon={<img src={filterIcon} alt="More Filter" />}
+          onClick={handleOpenFilterModal}
+        >
+          More Filter
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{
+            background: '#2B2B33',
+            '&:hover': {
+              background: '#2B2B33',
+            },
+            '@media (max-width: 1200px)': {
+              marginTop: '25px',
+              alignSelf: 'flex-end',
+            },
+            '@media (max-width: 600px)': {
+              marginTop: '25px',
+              // alignSelf: 'flex-start',
+              fontSize:'7px'
+            },
+          }}
+          onClick={handleExportButtonClick}
+          endIcon={<img src={exportIcon} alt="Export Text" />}
+        >
+          Export Text
+        </Button>
     <Box sx={{
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      display: 'none',
+      // position: 'absolute',
+      // bottom: 0,
+      // right: 0,
+      // display: 'none',
       '@media (max-width: 1200px)': {
         // display: 'block',
       },
     }}>
       <ExportModal open={modalOpen} onClose={handleCloseModal} />
+
     </Box>
-  </div>
-</Box>
-
-
-      <div>
+    <Box>
           <DateRangePicker
             isOpenDatePicker={isFilterModalOpen}
             onCloseDatePicker={handleCloseFilterModal}
             onApplyDate={handleApplyDate}
-            anchorEl={anchorEl}
           
           />
-        </div>
+        </Box>
+  </Box>
+
+</Box>
+
+
+     
 
       <TableContainer sx={{ mt: 2 }}>
         <Table sx={{ border: '0' }} >

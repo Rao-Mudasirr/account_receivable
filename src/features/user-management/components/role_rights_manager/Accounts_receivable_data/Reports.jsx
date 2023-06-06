@@ -13,22 +13,22 @@ const Reports = ({ checkboxData, onClickBtn }) => {
     // console.log(data);
 
     const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-.MuiTreeItem-label:hover  
-  .MuiTreeItem-label:hover{
-    background-color:white
-    color:white
-  }
-
-  .MuiTreeItem-content.Mui-selected{
+    color: black;
     background-color:white;
-  }
-
-`;
+    .MuiTreeItem-content {
+      background-color:white
+    }
+  
+    .MuiTreeItem-label:hover{
+      background-color:white
+      color:white
+    }
+  
+    .MuiTreeItem-content.Mui-selected{
+      background-color:white;
+    }
+  
+  `;
 
 
     return (

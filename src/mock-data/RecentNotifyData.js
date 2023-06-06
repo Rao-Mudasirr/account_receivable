@@ -29,9 +29,4 @@ export const notify_data = [
         title: 'Work Flow Created',
         time: '04:00 a.m.'
     },
-    {
-        id: 7,
-        title: 'Work Flow Created',
-        time: '04:00 a.m.'
-    },
 ]

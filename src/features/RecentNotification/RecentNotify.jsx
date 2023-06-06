@@ -10,7 +10,7 @@ export default function RecentNotify() {
       //       <span className="top-heading">Recent Notification</span>
       //     </div>
       //   </div>
-      <div className="card-body" style={{overflow: 'auto', height:'344px'}}>
+      <div className="card-body" style={{overflow: 'auto', height:'300px'}}>
             <br />
             {
                 notify_data?.map((item, i) => (

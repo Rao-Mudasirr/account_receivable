@@ -128,7 +128,7 @@ const ExportModal = ({ open, onClose, onApply }) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={handleApplyClick}
+            onClick={onClose}
             disabled={!selectedFormat}
             sx={{
               color: '#FFFFFF',
