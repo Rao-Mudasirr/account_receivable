@@ -21,7 +21,7 @@ const EmailEditor = () => {
   const modules = {
     toolbar: [
       [{ header: '1' }, { header: '2' }, { font: [] }],
-      [{ size: [] }],
+      [{ size: ['small', false, 'large', 'huge'] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ color: [] }, { background: [] }],
       [{ list: 'ordered' }, { list: 'bullet' }],
@@ -42,7 +42,21 @@ const EmailEditor = () => {
       <div className="btns">
         <Button variant="outlined" color="inherit" onClick={cancelEmail}>
           Cancel</Button>
-        <Button sx={{ background: "black", color: "white" }} onClick={sendEmail}>Send</Button>
+        <Button
+          sx={{
+            background: "black",
+            color: "white",
+            "&:hover": {
+              background:'white',
+              color: "inherit",
+              border: '1px solid black'
+            }
+          }}
+          onClick={sendEmail}
+        >
+          Send
+        </Button>
+
       </div>
     </>
   );

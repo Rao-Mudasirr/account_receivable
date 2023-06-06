@@ -6,9 +6,9 @@ import Compose_email from '../features/Invoices/components/Compose_email/Compose
 const UserManagements = () => {
   return (
     <div>
-        {/* <UserManagement/> */}
+        <UserManagement/>
         {/* <Manager/> */}
-        <Compose_email/>
+        {/* <Compose_email/> */}
     </div>
   )
 }

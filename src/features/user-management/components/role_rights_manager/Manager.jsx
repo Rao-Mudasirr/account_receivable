@@ -13,8 +13,8 @@ import Reports from './Accounts_receivable_data/Reports';
 import { formControlData } from './Accounts_receivable_data/data';
 import User_management from './Admin_Rights_data/User_management'
 import { FormControlData2 } from './Admin_Rights_data/Admin_data';
-import './manager.css';
 import Settings from './Admin_Rights_data/Settings';
+import './manager.css';
 
 
 const Manager = () => {

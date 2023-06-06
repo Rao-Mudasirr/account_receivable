@@ -1,14 +1,14 @@
 .invoice-no_container {
     display: grid;
-    grid-template-columns: 1.8fr 0.25fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: flex-end;
 }
 
 .invoice-no_mid {
     display: grid;
-    grid-template-columns: 1.8fr 0.2fr;
-    gap: 10rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 .invoice-no_details {
@@ -23,4 +23,16 @@
 
 .overdue_inner {
     margin: 2rem;
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 600px) {
+    .invoice-no_container {
+        grid-template-columns: 1.8fr 0.25fr;
+    }
+
+    .invoice-no_mid {
+        grid-template-columns: 1.8fr 0.2fr;
+        gap: 10rem;
+    }
 }
