@@ -19,7 +19,7 @@ const dashboardToggleIconData = [
 export const DashboardToggleIcon = ({ chartSwitch, setSwitch }) => {
   return (
     <>
-      <div className="flex justify-between align-center">
+      <div className="flex justify-between align-center margin-left-1">
         {
           dashboardToggleIconData.map(item => <div key={item.id} className='margin-right-0 cursor-pointer' onClick={() => setSwitch(item.id)} >
             <img src={item.id === chartSwitch ? item.activeIcon : item.icon} alt="money-trees" />

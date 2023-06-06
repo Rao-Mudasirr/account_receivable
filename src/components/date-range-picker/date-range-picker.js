@@ -25,7 +25,8 @@ const DateRangePicker = ({ isOpenDatePicker, onCloseDatePicker, onApplyDate,anch
         setError('Please select a valid date range.');
         return;
       }
-  
+      console.log(startDate);
+      console.log(endDate);
       onApplyDate({ startDate, endDate });
       onCloseDatePicker();
   };
