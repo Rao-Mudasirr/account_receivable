@@ -2,6 +2,7 @@ export const formControlData = [
   {
     id: 'dashboard',
     heading: 'Dashboard',
+    checked:true,
     switchOptions: [
       {
         id: 'Checkbox1',
