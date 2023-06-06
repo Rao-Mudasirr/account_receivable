@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import Chart from 'react-apexcharts';
 import React from 'react'
 
-const options = {
+const optionsAgingBucketBarChart = {
     chart: {
         height: 350,
         type: 'bar',
@@ -10,51 +10,48 @@ const options = {
             show: false,
         },
     },
-    grid: {
-        show: false,
-    },
     plotOptions: {
         bar: {
             borderRadius: 6,
             borderRadiusApplication: 'end',
-            columnWidth: '50%',
+            columnWidth: '30%',
             barHeight: '50%',
-            dataLabels: {
-                position: 'top',
-            }
         }
     },
     dataLabels: {
-        enabled: true,
-        offsetY: -20,
-        style: {
-            fontSize: '10px',
-            colors: ["#6B6B80"],
-            fontFamily: 'Exo 2'
-        }
+        enabled: false,
     },
     xaxis: {
-        categories: ["Jan", "Feb", "Mar"],
+        categories: ["1 - 30", "31 - 60", "61 - 90", "> 90"],
         position: 'bottom',
         labels: {
             style: {
-                fontSize: '10px',
+                fontSize: '12px',
                 colors: ["#6B6B80"],
                 fontFamily: 'Exo 2'
             },
-            offsetY: -5,
         },
         axisBorder: {
-            show: false
+            color: '#6B6B80',
+            height: 1,
         },
         axisTicks: {
             show: false
         },
         tooltip: {
             enabled: false,
-        }
+        },
     },
     yaxis: {
+        labels: {
+            style: {
+                fontSize: '12px',
+                colors: ["#6B6B80"],
+                fontFamily: 'Exo 2',
+                fontWeight: 400,
+            },
+            formatter: (value) => { return `£${value}` },
+        },
         axisBorder: {
             show: false
         },
@@ -63,41 +60,108 @@ const options = {
         },
         tooltip: {
             enabled: false,
-        },
-        max: (max) => {
-            return max + (max / 2);
-        },
-        labels: {
-            show: false,
         }
     },
-    tooltip: {
-        enabled: false,
+    colors: ["#FF9898"]
+}
+const optionsAgingBucketPieChart = {
+    chart: {
+        type: 'donut',
     },
-    colors: [
-        function ({ value, seriesIndex, w }) {
-            console.log(value,seriesIndex,w,w?.config?.series?.[0].data?.[2]);
-            if (w?.config?.series?.[0].data?.[2] === value) {
-                return '#FF9898'
-            } else {
-                return '#E5E5E5'
+    plotOptions: {
+        pie: {
+            donut: {
+                size: '50%',
+                labels: {
+                    show: true,
+                    value: {
+                        fontSize: '13.5px',
+                        color: "#40404D",
+                        fontFamily: 'Exo 2',
+                        fontWeight: 600,
+                        offsetY: -8,
+                        formatter: function (val) {
+                            return "£ " + val
+                        }
+                    },
+                    total: {
+                        showAlways: false,
+                        show: true,
+                        label:'',
+                        fontSize: '13.5px',
+                        color: "#6B6B80",
+                        fontFamily: 'Exo 2',
+                        fontWeight: 700,
+                        formatter: function (w) {
+                            let result = w.globals.seriesTotals.reduce((a, b) => a + b, 0)
+                            return "£ " + (Math.round(result * 100) / 100).toLocaleString();
+                        }
+                    }
+                }
             }
         }
-    ]
+    },
+    labels: ["1-30d", "31-60d", "61-90d", ">90d"],
+    legend: {
+        show: true,
+        fontSize: '11.0759px',
+        color: "#6B6B80",
+        fontFamily: 'Exo 2',
+        fontWeight: 400,
+        itemMargin: {
+            horizontal: 15,
+            vertical: 0
+        },
+    },
+    dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+            return val.toFixed(0) + "%";
+        },
+        style: {
+            fontSize: '12px',
+            fontFamily: 'Exo 2',
+            fontWeight: '400',
+        },
+    },
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }],
+    colors: ["#B54C02", "#E88750", "#E8BD50", "#FF3F3F"]
 }
-
-export const AgingBucketBarChart = () => {
+export const AgingBucketBarChart = ({ chartSwitch }) => {
     return (
         <>
             <div>
-                <Box sx={{ mt: '-50px' }}>
-                    <Chart
-                        series={[25, 200, 100] ?? []}
-                        height={436}
-                        options={options ?? {}}
-                        type="bar"
-                    />
-                </Box>
+                {
+                    chartSwitch === '0' ? <Box >
+                        <Chart
+                            series={[{
+                                name: 'Aging Bucket',
+                                data: [25, 200, 100, 300]
+                            }] ?? []}
+                            height={265}
+                            options={optionsAgingBucketBarChart ?? {}}
+                            type="bar"
+                        />
+                    </Box>
+                        : <Box >
+                            <Chart
+                                series={[2050, 2000, 1000, 3000] ?? []}
+                                height={265}
+                                options={optionsAgingBucketPieChart ?? {}}
+                                type="donut"
+                            />
+                        </Box>
+                }
             </div>
         </>
     )
