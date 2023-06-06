@@ -10,8 +10,8 @@ export const TopClientsStackedBarChart = () => {
 
     return (
         <>
-            <Grid container >
-                <Grid item xs={12} height={254} sx={{ overflow: 'auto' }}>
+            <Grid container sx={{ overflow: 'auto' }} >
+                <Grid className='no-scrollbar' item xs={12} height={254} sx={{ width:'254px',overflow: 'auto' }}>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(item => <Grid key={item} container className='flex align-center' spacing={2}>
                         <Grid item xs={2} className='flex align-center'>
                             <Box>

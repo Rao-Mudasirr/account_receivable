@@ -8,9 +8,9 @@ export const DashboardDateRange = () => {
     const [value, setValue] = useState(dayjs('2022-04-17'));
     return (
         <>
-            <div className="flex" style={{marginTop:'1px'}}>
+            <div style={{marginTop:'1px'}}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer sx={{ p: 0 }} components={['DatePicker', 'DatePicker']}>
+                    <DemoContainer sx={{ p: 0,flexDirection:'row !important' }} components={['DatePicker', 'DatePicker']}>
                         <div className="secondary-title secondary-color">
                             From:
                         </div>
@@ -28,7 +28,7 @@ export const DashboardDateRange = () => {
                                 openPickerIcon: CalendarMonthRoundedIcon
                             }}
                         />
-                        <div className="secondary-title secondary-color">
+                        <div className="secondary-title secondary-color margin-left-0">
                             To:
                         </div>
                         <DatePicker
