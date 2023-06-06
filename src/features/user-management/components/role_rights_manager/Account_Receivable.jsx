@@ -7,12 +7,11 @@ import './manager.css';
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
   padding: 8,
-  '& .MuiSwitch-track' : {
+  '& .MuiSwitch-track': {
     borderRadius: 22 / 2,
     border: "1px solid black",
     opacity: 1,
-    backgroundColor:
-      theme.palette.mode === 'black' ? 'gray' : 'white',
+    backgroundColor: 'black' ? 'white' : 'gray',
     boxSizing: 'border-box',
   },
   '& .MuiSwitch-thumb': {
@@ -26,19 +25,21 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase.Mui-checked': {
     backgroundColor: 'dark',
   },
+
+  "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+    backgroundColor: 'gray'
+  },
 }));
 
 
 
-export default function Account_Receivable(
-  {switchOption,
-    setSwitchOption,
-    formControlData,
-    switchEnabled,
-    handleSwitchChange
-
-  }
-    ) {
+export default function Account_Receivable({
+  switchOption,
+  setSwitchOption,
+  formControlData,
+  switchEnabled,
+  handleSwitchChange,
+}) {
 
   return (
     <FormGroup>
@@ -50,7 +51,7 @@ export default function Account_Receivable(
                 control={<Android12Switch
                   checked={switchEnabled}
                   onChange={handleSwitchChange}
-                color='default' />}
+                  color='default' />}
               />
               <span
                 id={item.id}
@@ -62,7 +63,7 @@ export default function Account_Receivable(
             </div>
           )
         })}
-         
+
       </div>
 
     </FormGroup>

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Button,
-  MenuItem,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { Grid, Button, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
@@ -42,31 +36,26 @@ const roleOptions = [
 ];
 
 const AddUserInputs = () => {
-  const [hiddenLabels, setHiddenLabels] = useState([]);
+  const [filledFields, setFilledFields] = useState({});
 
-  const handleLabelHover = (index) => {
-    setHiddenLabels((prevHiddenLabels) => {
-      const updatedHiddenLabels = [...prevHiddenLabels];
-      updatedHiddenLabels[index] = true;
-      return updatedHiddenLabels;
-    });
-  };
-
-  const handleLabelMouseLeave = (index) => {
-    setHiddenLabels((prevHiddenLabels) => {
-      const updatedHiddenLabels = [...prevHiddenLabels];
-      updatedHiddenLabels[index] = false;
-      return updatedHiddenLabels;
-    });
+  const handleInputChange = (e, formik) => {
+    const { name, value } = e.target;
+    formik.setFieldValue(name, value);
+    setFilledFields((prevFilledFields) => ({
+      ...prevFilledFields,
+      [name]: value.trim() !== "",
+    }));
   };
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values); // Handle form submission logic here
     resetForm();
+    setFilledFields({});
   };
 
   const handleClear = (resetForm) => {
     resetForm();
+    setFilledFields({});
   };
 
   return (
@@ -81,24 +70,10 @@ const AddUserInputs = () => {
         return (
           <Form noValidate autoComplete="off" className="adduser_form">
             <Grid sx={{ gap: 5 }} className="adduser_forminputs">
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[0] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(0)}
-                onMouseLeave={() => handleLabelMouseLeave(0)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.firstName ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[0] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.firstName ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   First Name
                 </label>
                 <Field
@@ -107,27 +82,14 @@ const AddUserInputs = () => {
                   name="firstName"
                   variant="standard"
                   placeholder="First Name"
+                  onChange={(e) => handleInputChange(e, props)}
                 />
               </Grid>
 
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[1] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(1)}
-                onMouseLeave={() => handleLabelMouseLeave(1)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.lastName ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[1] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.lastName ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   Last Name
                 </label>
                 <Field
@@ -136,27 +98,14 @@ const AddUserInputs = () => {
                   name="lastName"
                   variant="standard"
                   placeholder="Last Name"
+                  onChange={(e) => handleInputChange(e, props)}
                 />
               </Grid>
 
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[2] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(2)}
-                onMouseLeave={() => handleLabelMouseLeave(2)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.email ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[2] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.email ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   Email
                 </label>
                 <Field
@@ -166,27 +115,14 @@ const AddUserInputs = () => {
                   variant="standard"
                   placeholder="Email"
                   type="email"
+                  onChange={(e) => handleInputChange(e, props)}
                 />
               </Grid>
 
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[3] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(3)}
-                onMouseLeave={() => handleLabelMouseLeave(3)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.phone ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[3] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.phone ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   Phone
                 </label>
                 <Field
@@ -201,27 +137,14 @@ const AddUserInputs = () => {
                     inputMode: "numeric",
                     pattern: "[0-9]*",
                   }}
+                  onChange={(e) => handleInputChange(e, props)}
                 />
               </Grid>
 
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[4] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(4)}
-                onMouseLeave={() => handleLabelMouseLeave(4)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.company ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[4] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.company ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   Company
                 </label>
                 <Field
@@ -229,16 +152,12 @@ const AddUserInputs = () => {
                   component={Select}
                   name="company"
                   variant="standard"
+                  onChange={(e) => handleInputChange(e, props)}
                 >
                   {companyOptions.map((option, index) => (
                     <MenuItem key={option.value} value={option.value}>
                       <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={option.value === values.company}
-                            color="primary"
-                          />
-                        }
+                        control={<Checkbox checked={option.value === values.company} color="primary" />}
                         label={option.label}
                       />
                     </MenuItem>
@@ -246,24 +165,10 @@ const AddUserInputs = () => {
                 </Field>
               </Grid>
 
-              <Grid
-                item
-                xs={6}
-                className={` textfield_bold ${
-                  hiddenLabels[5] ? "hide_label" : ""
-                }`}
-                onMouseEnter={() => handleLabelHover(5)}
-                onMouseLeave={() => handleLabelMouseLeave(5)}
-              >
+              <Grid item xs={6} className={`textfield_bold ${filledFields.role ? "hide_label" : ""}`}>
                 <label className="input_label">
-                  {hiddenLabels[5] ? null : (
-                    <span
-                      className="asterisk"
-                      style={{ color: "red", marginTop: "-5px" }}
-                    >
-                      *
-                    </span>
-                  )}
+                  {filledFields.role ? null : <span className="asterisk"
+                  style={{color: "red", marginTop: "-3px"}}>*</span>}
                   Role
                 </label>
                 <Field
@@ -271,16 +176,12 @@ const AddUserInputs = () => {
                   component={Select}
                   name="role"
                   variant="standard"
+                  onChange={(e) => handleInputChange(e, props)}
                 >
                   {roleOptions.map((option, index) => (
                     <MenuItem key={option.value} value={option.value}>
                       <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={option.value === values.role}
-                            color="primary"
-                          />
-                        }
+                        control={<Checkbox checked={option.value === values.role} color="primary" />}
                         label={option.label}
                       />
                     </MenuItem>
