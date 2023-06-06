@@ -18,9 +18,10 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Link } from "react-router-dom";
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const INVOICE_DATA = [
   {
@@ -232,6 +233,35 @@ export default function InvoiceListing() {
       //   isSortable: false,
       // },
     ];
+
+    const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleDateChange = (date, label) => {
+    if (label === "Start date") {
+      setStartDate(date);
+    } else if (label === "End Date") {
+      setEndDate(date);
+    }
+  };
+
+  // const handleApplyClick = () => {
+  //   if (startDate && endDate && startDate.isAfter(endDate)) {
+  //     setError("Please select a valid date range.");
+  //     return;
+  //   }
+
+  //   onApplyDate({ startDate, endDate });
+  //   onCloseDatePicker();
+  // };
+
+  const handleClearClick = () => {
+    setStartDate(null);
+    setEndDate(null);
+    setError(null);
+  };
+
   return (
     <React.Fragment>
       <div className="invoice-title">Invoices</div>
@@ -247,13 +277,23 @@ export default function InvoiceListing() {
       >
         <GlobalSearchBar />
         <div style={{ marginLeft: "auto" }}>
-          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
+              <DatePicker
+                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                label="From"
+                variant="standared"
+                value={startDate}
+                onChange={(date) => handleDateChange(date, "Start date")}
+              />
+              <DatePicker
+                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                label="To"
+                value={endDate}
+                onChange={(date) => handleDateChange(date, "End Date")}
+              />
+            {/* </DemoContainer> */}
           </LocalizationProvider>
-          &nbsp;
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker />
-          </LocalizationProvider> */}
           <Button
             onClick={handleClick}
             variant="outlined"
