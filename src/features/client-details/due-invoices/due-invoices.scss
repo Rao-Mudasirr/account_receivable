@@ -31,4 +31,44 @@
     background-color: rgb(253,207,209);
     color: #FF3F3F;
   }
+
+ 
+@media (max-width: 1100px) {
+  .container-table {
+    flex-direction: column;
+ 
+  }
+
+  .search-bar {
+    align-self: center;
+  }
+  .tabal-header {
+    margin-top: 10px !important;
+}
+  .container-table .filter-btn,
+  .container-table.export-btn {
+    margin-left: auto;
+  
+  }
+}
+@media (max-width: 425px) {
+  .container-table {
+    flex-direction: column;
+    display: table-cell;
+ 
+  }
+  .search-bar {
+    align-self: center;
+    width: 100%;
+  }
+  .tabal-header {
+    margin-top: 10px !important;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px !important;
+}
+  .export-btn {
+    margin-top: 10px !important;
+  }
+}
   
