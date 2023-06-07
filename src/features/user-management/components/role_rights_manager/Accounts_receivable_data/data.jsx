@@ -2,6 +2,7 @@ export const formControlData = [
   {
     id: 'dashboard',
     heading: 'Dashboard',
+    checked:true,
     switchOptions: [
       {
         id: 'Checkbox1',
@@ -11,6 +12,10 @@ export const formControlData = [
       {
         id: 'Checkbox2',
         label: 'The tab and view dashboard wkkith own user data',
+      },
+      {
+        id: 'Checkbox3',
+        label: 'Update dashboard',
       },
     ],
   },
@@ -346,12 +351,5 @@ export const formControlData = [
       }
     ]
   },
-
-
-
-
-
-
-  //////////////////////////////////////Admin Rights ///////////////////////////////////////
 
 ]

@@ -10,8 +10,8 @@ export default function RecentNotify() {
       //       <span className="top-heading">Recent Notification</span>
       //     </div>
       //   </div>
-      //   <br />
-        <div className="card-body">
+      <div className="card-body" style={{overflow: 'auto', height:'300px'}}>
+            <br />
             {
                 notify_data?.map((item, i) => (
                     <React.Fragment key={item?.id}>

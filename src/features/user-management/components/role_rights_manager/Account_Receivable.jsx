@@ -40,7 +40,7 @@ export default function Account_Receivable({
   switchEnabled,
   handleSwitchChange,
 }) {
-
+console.log(formControlData);
   return (
     <FormGroup>
       <div>
@@ -49,7 +49,7 @@ export default function Account_Receivable({
             <div key={index}>
               <FormControlLabel
                 control={<Android12Switch
-                  checked={switchEnabled}
+                  checked={formControlData.checked}
                   onChange={handleSwitchChange}
                   color='default' />}
               />

@@ -1,5 +1,5 @@
 .addnote_container {
-    height: 80vh;
+    height: 75vh;
     width: 296px;
     border-radius: 8px;
     margin: 0 auto;
@@ -15,6 +15,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.addnote_header button {
+    border: none;
+    background: transparent;
 }
 
 .addnote_header img {

@@ -2,7 +2,21 @@ import React from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-const Settings = (checkboxData2, switchOption, setSwitchOption) => {
+import { withStyles } from '@material-ui/core';
+
+
+const Settings = (checkboxData2) => {
+    const checkBoxStyles = theme => ({
+        root: {
+          '&$checked': {
+            color: 'black',
+          },
+        },
+        checked: {},
+       })
+    
+    const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+
     const data = checkboxData2.checkboxData2
     console.log(checkboxData2.checkboxData2)
     return (
@@ -11,9 +25,7 @@ const Settings = (checkboxData2, switchOption, setSwitchOption) => {
                 return (
                     <FormControlLabel
                         key={index}
-                        control={<Checkbox />}
-                        onClick={() => setSwitchOption(item.id)}
-                        className={`text ${switchOption === item.id ? 'active' : ''}`}
+                        control={<CustomCheckbox />}
                         label={item.label}
                     />
                 )

@@ -80,7 +80,7 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={6} xs={12}>
-          <DashboardCard heading="Recent Notifications">
+          <DashboardCard heading="Recent Notifications" headingSibling={<span className="right-text" style={{color: '#6B9DE9'}}>View All</span>}>
             <RecentNotify />
           </DashboardCard>
         </Grid>
