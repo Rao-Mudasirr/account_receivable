@@ -150,7 +150,6 @@ function OverdueInvoices() {
             <GlobalSearchBar />
           </div>
         </Grid>
-
         <Grid xs={12} md={6} lg={6} xl={6}>
         <div style={{ marginLeft: "auto", float: 'right' }}>
           <Button
