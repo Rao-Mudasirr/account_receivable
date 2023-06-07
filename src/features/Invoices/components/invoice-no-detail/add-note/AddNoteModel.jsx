@@ -37,15 +37,16 @@ const AddNoteModel = (props) => {
                                 <img src={CloseIcon} alt="close" />
                             </Link>
                         </div>
-                        <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+                        <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "2rem" }}>
                             <CheckBox />
-                            Send Email Remainder
+                            Send Email Reminder
                         </div>
                         <div style={{ textAlign: "center", marginTop: "2rem" }}>
                             <TextareaAutosize
-                                minRows={10}
+                                minRows={11}
+                                className="add-model_textarea"
                                 placeholder="Write your note"
-                                style={{ backgroundColor: "#F2F2F2", width: "100%", resize: "none", borderRadius: "4px", border: "none" }}
+                                style={Styles.textArea(theme)}
                             ></TextareaAutosize>
                         </div>
                         <div style={{ marginTop: "2rem", textAlign: "end" }}>
@@ -59,8 +60,8 @@ const AddNoteModel = (props) => {
                     </div>
 
                 </Box>
-            </Modal>
-        </Box>
+            </Modal >
+        </Box >
     );
 };
 
@@ -89,5 +90,16 @@ const Styles = {
         textTransform: 'capitalize',
         fontWeight: "400",
         borderRadius: "8px"
+    }),
+    textArea: (theme) => ({
+        backgroundColor: "#F2F2F2",
+        width: "100%",
+        resize: "none",
+        borderRadius: "4px",
+        border: "none",
+        "::placeholder": {
+            padding: "0.8rem",
+            fontFamily: "Exo 2"
+        }
     }),
 };
