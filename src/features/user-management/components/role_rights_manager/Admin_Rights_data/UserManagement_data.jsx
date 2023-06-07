@@ -5,6 +5,7 @@ import { TreeView, TreeItem } from '@mui/lab';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { styled } from '@mui/material/styles';
+import { withStyles } from '@material-ui/core';
 
 
 
@@ -14,18 +15,23 @@ const TreeItemStyled = styled(TreeItem)`
   .MuiTreeItem-content {
     background-color:white
   }
-
-  .MuiTreeItem-label:hover{
-    background-color:white
-    color:white
-  }
-
   .MuiTreeItem-content.Mui-selected{
     background-color:white;
   }
 
 `;
-const UserManagement = (checkboxData2) => {
+const UserManagement_data = (checkboxData2) => {
+  const checkBoxStyles = theme => ({
+    root: {
+      '&$checked': {
+        color: 'black',
+      },
+    },
+    checked: {},
+   })
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+
   const data = checkboxData2.checkboxData2;
   return (
     <>
@@ -39,7 +45,7 @@ const UserManagement = (checkboxData2) => {
             <TreeItemStyled
               nodeId={item.id} label={
                 <FormControlLabel
-                  control={<Checkbox />} label={item.label} />
+                  control={<CustomCheckbox />} label={item.label} />
               }>
               {item.parent.childData?.map((item2) => {
                 return (
@@ -47,7 +53,7 @@ const UserManagement = (checkboxData2) => {
                   <TreeItemStyled nodeId={item2.id}
 
                     label={
-                      <FormControlLabel control={<Checkbox />}
+                      <FormControlLabel control={<CustomCheckbox />}
                         label={item2.label} />
                     } />
                 )
@@ -61,4 +67,4 @@ const UserManagement = (checkboxData2) => {
 };
 
 
-export default UserManagement;
+export default UserManagement_data;
