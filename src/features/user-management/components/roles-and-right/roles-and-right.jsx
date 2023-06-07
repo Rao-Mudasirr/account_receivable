@@ -48,10 +48,13 @@ export const RolesRightsTable = () => {
 
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
+    
   const [openFormModal, setOpenFormModal] = React.useState(false);
   const [addRoleModal, setAddRoleModal] = React.useState(false);
   const handleOpenFormModal = () => setOpenFormModal(true);
   const handleCloseFormModal = () => setOpenFormModal(false);
+  const openAddRoleModal = () => setAddRoleModal(true)
+  const closeAddRoleModal = () => setAddRoleModal(false)
   const columns = [
     {
       accessorFn: (row) => row.Id,
@@ -134,24 +137,15 @@ export const RolesRightsTable = () => {
         <Box sx={style}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {/* <BasicInformationForm/> */}
-            <Update_role handleCloseFormModal={setOpenFormModal} />
+        
+            {openFormModal && <Update_role handleCloseFormModal={setOpenFormModal} />}
+
+            {/* <Add_role /> */}
           </Typography>
         </Box>
       </Modal>
 
-      {/* <Modal
-        open={() => setAddRoleModal(true)}
-        onClose={()=> setAddRoleModal(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <BasicInformationForm/>
-            <Add_role />
-          </Typography>
-        </Box>
-      </Modal> */}
+
     </>
 
   );

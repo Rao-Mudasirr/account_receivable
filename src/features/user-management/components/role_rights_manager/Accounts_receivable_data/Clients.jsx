@@ -7,9 +7,35 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { withStyles } from '@material-ui/core';
+
+const TreeItemStyled = styled(TreeItem)`
+  color: black;
+  background-color:white;
+  .MuiTreeItem-content {
+    background-color:white
+  }
+  .MuiTreeItem-content.Mui-selected{
+    background-color:white;
+  }
+
+`;
 
 
 const Clients = ({ checkboxData, onClickBtn }) => {
+
+  const checkBoxStyles = theme => ({
+    root: {
+      '&$checked': {
+        color: 'black',
+      },
+    },
+    checked: {},
+   })
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+
+
   const [data, setData] = useState([checkboxData]);
 //   console.log(data);
 
@@ -21,29 +47,13 @@ const Clients = ({ checkboxData, onClickBtn }) => {
           id={item.id}
           key={index}
           onClick={onClickBtn}
-          control={<Checkbox />}
+          control={<CustomCheckbox />}
           label={item.label}
         />
       ));
   };
 
-  const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-
-  .MuiTreeItem-label:hover{
-    background-color:white
-    color:white
-  }
-
-  .MuiTreeItem-content.Mui-selected{
-    background-color:white;
-  }
-
-`;
+  
 
   const renderTreeViewData = () => {
     return checkboxData
@@ -52,7 +62,7 @@ const Clients = ({ checkboxData, onClickBtn }) => {
         <TreeItemStyled
           nodeId={item.id}
           label={
-            <FormControlLabel control={<Checkbox />} label={item.label} />
+            <FormControlLabel control={<CustomCheckbox />} label={item.label} />
           }
         >
           {item.parent.childData.map((item2, index) => (
@@ -61,7 +71,7 @@ const Clients = ({ checkboxData, onClickBtn }) => {
               key={index}
               label={
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={<CustomCheckbox />}
                   label={item2.label}
                 />
               }

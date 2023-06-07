@@ -137,7 +137,7 @@ export const UserAccessTable = () => {
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <TextField sx={{
+          <TextField defaultValue='Role' sx={{
             width: 333, mb: 2, borderRadius : 5,
             '& .MuiInputBase-root': {
               color: isFocused ? 'black' : 'inherit',
@@ -155,8 +155,14 @@ export const UserAccessTable = () => {
             select
             variant = {isFocused ? 'filled' : 'standard'}
           >
-            <MenuItem value='Role'>
+            <MenuItem disabled value='Role'>
               Role
+            </MenuItem>
+            <MenuItem value='Assigned'>
+              Assigned
+            </MenuItem>
+            <MenuItem value='Unassigned'>
+              Unassigned
             </MenuItem>
           </TextField>
         </div>
