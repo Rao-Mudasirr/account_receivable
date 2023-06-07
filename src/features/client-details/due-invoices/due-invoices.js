@@ -1,36 +1,28 @@
 import React, { useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, } from '@mui/material';
 import { invoicestableheading, invoicestabledata } from './due-invoices-data';
 import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter';
 import Button from '@mui/material/Button';
 import srIcon from '../../../assests/images/client/sricon.png';
 import "./due-invoices.scss";
-
 import filterIcon from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
-import ExportModal from '../components/export-modal/export-modal';
-import DateRangePicker from '../../../components/date-range-picker/date-range-picker';
-
+import CardFilter from '../components/card-filter/card-filter';
 
 
 
 const DueInvoices = ({ status }) => {
+  // states   
   const [searchTerm, setSearchTerm] = useState('');
-  const [modalOpen, setModalOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState("");
 
-  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+  // Modal Function 
+const modalClickHandlar = () => {
+setIsOpen(!isOpen);
+};
 
-  const handleOpenFilterModal = (event) => {
-    setFilterModalOpen(true);
-    setAnchorEl(event.currentTarget);
-
-  };
-
-  const handleCloseFilterModal = () => {
-    setFilterModalOpen(false);
-  };
-
+ 
   const filteredRows = invoicestabledata.filter(row =>
     (status === 'All' || row.status === status) &&
     (row.invoiceid.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -42,129 +34,88 @@ const DueInvoices = ({ status }) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleExportButtonClick = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
-  const handleApplyDate = (date) => {
-    console.log('Selected date:', date);
-    // Do something with the selected date
-  };
-
   return (
     <div>
-
-<Box
-      sx={{
-        margin: '5px',
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '10px',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        '@media (max-width: 1200px)': {
-          display: 'flex',
-          flexDirection:'column',
+      
+      <div className='container-table'
+        style={{
+          margin: "5px",
+          display: "flex",
+          alignItems: "center",
+          marginTop: "10px",
           
-        },
-      }}
-    >
-      <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} />
-      <Box
-        sx={{
-          display: 'flex',
-          gap: '10px',
-          '@media (max-width: 1100px)': {
-            // display: 'none',
-         
-          },
         }}
-      >
-        <Button
-          variant="outlined"
-          color="primary"
-          sx={{
-            color: '#40404D',
-            borderColor: 'black',
-            '&:hover': {
-              borderColor: 'black',
-              color: 'black',
-            },
-            '@media (max-width: 1200px)': {
-              marginTop: '25px',
-            
-            },
-            '@media (max-width: 600px)': {
-            
-              
-              fontSize:'7px'
-            },
-          }}
-          endIcon={<img src={filterIcon} alt="More Filter" />}
-          onClick={handleOpenFilterModal}
         >
-          More Filter
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            background: '#2B2B33',
-            '&:hover': {
-              background: '#2B2B33',
-            },
-            '@media (max-width: 1200px)': {
-              marginTop: '25px',
-              alignSelf: 'flex-end',
-            },
-            '@media (max-width: 600px)': {
-              marginTop: '25px',
-              // alignSelf: 'flex-start',
-              fontSize:'7px'
-            },
-          }}
-          onClick={handleExportButtonClick}
-          endIcon={<img src={exportIcon} alt="Export Text" />}
-        >
-          Export Text
-        </Button>
-    <Box sx={{
-      // position: 'absolute',
-      // bottom: 0,
-      // right: 0,
-      // display: 'none',
-      '@media (max-width: 1200px)': {
-        // display: 'block',
-      },
-    }}>
-      <ExportModal open={modalOpen} onClose={handleCloseModal} />
+      <div style={{alignSelf: "flex-start"}} className='search-bar'> <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} /></div>
+        <div style={{ marginLeft: "auto" }} className='tabal-header'>
+          <Button
+            variant="outlined"
+            // color="primary"
+            className="outlined-filter-btn tertiary-color filter-btn font-family-exo2"
+            sx={{
+              mr: 2,
+              color: "#40404D",
+              borderColor: "#40404D",
+              width:'122px',
+              padding:'8px',
+              height:'32px',
+              border:'1.5px solid #40404D',
+              fontWeight:400,
+              fontSize:"0.75rem",
+              borderRadius:'8px',
+              textTransform: 'capitalize',
+              "&:hover": {
+                borderColor: "black",
+                color: "black",
+              },
+            }}
+            endIcon={<img src={filterIcon} alt="More Filter" width={16} height ={16}/>}
+            onClick={()=> {
+              setType("More")
+              modalClickHandlar()
+            }}
+            
+          >
+            More Filters
+          </Button>
 
-    </Box>
-    <Box>
-          <DateRangePicker
-            isOpenDatePicker={isFilterModalOpen}
-            onCloseDatePicker={handleCloseFilterModal}
-            onApplyDate={handleApplyDate}
-          
-          />
-        </Box>
-  </Box>
-
-</Box>
-
-
-     
-
+          <Button
+              className="export-btn  font-family-exo2"
+            variant="contained"
+             width="93px"
+             height="32px"
+            sx={{
+              background: "#2B2B33",
+              fontWeight:400,
+              fontSize:"0.75rem",
+              borderRadius:'8px',
+              textTransform: 'capitalize',
+              "&:hover": {
+                background: "#2B2B33",
+              },
+            }}
+            endIcon={<img src={exportIcon} alt="Export Text"  width={16} height ={16} />}
+            onClick={()=> {
+                setType("Export")
+                modalClickHandlar()
+              }}
+             
+          >
+            Export Text
+          </Button>
+          <CardFilter 
+            filter_type = {type}
+            handleClick = {modalClickHandlar}
+            isOpen = {isOpen}
+             />
+        </div>
+      </div>
       <TableContainer sx={{ mt: 2 }}>
         <Table sx={{ border: '0' }} >
           <TableHead>
             <TableRow>
               {invoicestableheading.map((header, index) => (
-                <TableCell key={index} sx={{ background: '#F0F0F2' }}>
+                <TableCell key={index} sx={{ background: '#F0F0F2',fontWeight:600 }} className='secondary-color font-family-exo2 primary-title'>
                   {index === 0 ? (
                     <>
                       {header}
@@ -182,17 +133,18 @@ const DueInvoices = ({ status }) => {
             {filteredRows.map((row, index) => (
               <TableRow key={index}>
                 <TableCell>{row.srno}</TableCell>
-                <TableCell sx={{ textDecoration: 'underline', cursor: 'pointer' }} className='invoice-id'>{row.invoiceid} </TableCell>
+                <TableCell sx={{ textDecoration: 'underline', cursor: 'pointer',color:'#0084AD' }}  ><span   style={{color:'#0084AD'}}>{row.invoiceid}</span> </TableCell>
                 <TableCell>
                   <span
-                    className={`status-cell ${row.status.toLowerCase()}`}
+                    className={`status-cell  ${row.status.toLowerCase()}`}
+                  
                   >
                     {row.status}</span>
                 </TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.dateissue}</TableCell>
-                <TableCell>{row.duedate}</TableCell>
-                <TableCell>{row.amount}</TableCell>
+                <TableCell className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.name}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.dateissue}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.duedate}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.amount}</TableCell>
               </TableRow>
             ))}
           </TableBody>
