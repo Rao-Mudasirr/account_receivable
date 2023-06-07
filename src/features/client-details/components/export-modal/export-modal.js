@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CheckIcon from '@mui/icons-material/Check';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CloseIcon from '@mui/icons-material/Close';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 function ExportModal() {
 
@@ -35,16 +35,18 @@ function ExportModal() {
         //   position: 'relative',
         // }}
       >
-        <p>Export this report as</p>
+        <Typography className='font-family-exo2 secondary-color primary-title' sx={{mt:5}}>Export this report as</Typography>
         <div>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex' ,marginTop:'35px'}}>
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 cursor: 'pointer',
                 flexBasis: '50%',
+                // marginTop:'30px'
               }}
+              className='font-family-exo2 secondary-color primary-title'
               onClick={() => handleFormatChange('pdf')}
             >
               {selectedFormat === 'pdf' ? (
@@ -52,7 +54,7 @@ function ExportModal() {
               ) : (
                 <CheckIcon />
               )}
-              <span style={{ marginLeft: '8px' }}>PDF</span>
+              <span style={{ marginLeft: '8px',}} className='font-family-exo2 tertiary-colo primary-title'>PDF</span>
             </div>
             <div
               style={{
@@ -68,7 +70,7 @@ function ExportModal() {
               ) : (
                 <CheckIcon />
               )}
-              <span style={{ marginLeft: '8px' }}>Excel</span>
+              <span style={{ marginLeft: '8px' }} className='font-family-exo2 tertiary-colo primary-title'>Excel</span>
             </div>
           </div>
         </div>

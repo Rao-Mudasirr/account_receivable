@@ -1,42 +1,55 @@
-
-import React, { useState } from 'react';
-import {workflowtableheading,workflowtabledata} from './workflow-details-data'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Button ,Box} from '@mui/material';
-import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter';
-import filterIcon from '../../../assests/images/client/filter.png';
-import exportIcon from '../../../assests/images/client/export.png';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import CheckIcon from '@mui/icons-material/Check';
-import checkTic from "../../../assests/images/client/check.png"
-import CardFilter from '../components/card-filter/card-filter';
-import GlobalModal from '../../../components/global-modal/global-modal';
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useState } from "react";
+import {
+  workflowtableheading,
+  workflowtabledata,
+} from "./workflow-details-data";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Button,
+} from "@mui/material";
+import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
+import filterIcon from "../../../assests/images/client/filter.png";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import CheckIcon from "@mui/icons-material/Check";
+import checkTic from "../../../assests/images/client/check.png";
+import CardFilter from "../components/card-filter/card-filter";
+import GlobalModal from "../../../components/global-modal/global-modal";
+import { toast } from "react-toastify";
+import editIcon from "../../../assests/images/client/editIcon.png";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const WorkflowDetails = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  
+  const [clickedRowIndex, setClickedRowIndex] = useState(-1);
 
-  // Modal Function 
-const modalClickHandlar = () => {
-setIsOpen(!isOpen);
-};
+  const handleWorkStatusClick = (index) => {
+    setClickedRowIndex(index);
+  };
+  // Modal Function
+  const modalClickHandlar = () => {
+    setIsOpen(!isOpen);
+  };
 
-const openModalClickHandler = () => {
- 
-  setOpenModal(true);
-};
+  const openModalClickHandler = () => {
+    setOpenModal(true);
+  };
 
-const handleModalClose = () => {
-  setOpenModal(false);
-};
-const handleSureClick = () => {
-  const toastText ='Work Flow has been changed';
-  setOpenModal(false);
-  toast.success(toastText); 
-};
+  const handleModalClose = () => {
+    setOpenModal(false);
+  };
+  const handleSureClick = () => {
+    const toastText = "Workflow has been Changed";
+    setOpenModal(false);
+    toast.success(toastText);
+  };
   const filteredData = workflowtabledata.filter((data) =>
     Object.values(data).some((value) =>
       String(value).toLowerCase().includes(searchQuery.toLowerCase())
@@ -49,119 +62,134 @@ const handleSureClick = () => {
 
   return (
     <div>
-   <div className='container-table'
+      <div
+        className="container-table"
         style={{
           margin: "5px",
           display: "flex",
           alignItems: "center",
           marginTop: "10px",
-          
         }}
+      >
+        <div style={{ alignSelf: "flex-start" }} className="search-bar">
+          {" "}
+          <GlobalSearchBar value={searchQuery} onChange={handleSearchChange} />
+        </div>
+        <div
+          style={{ marginLeft: "auto", gap: "10px" }}
+          className="tabal-header"
         >
-      <div style={{alignSelf: "flex-start"}} className='search-bar'> <GlobalSearchBar value={searchQuery} onChange={handleSearchChange} /></div>
-        <div style={{ marginLeft: "auto" }} className='tabal-header'>
+          {clickedRowIndex !== -1 && (
+            <Button
+              className="change-workflow-btn  font-family-exo2"
+              variant="contained"
+              width="122px"
+              height="32px"
+              sx={{
+                mr: 2,
+                background: "#2B2B33",
+                fontWeight: 400,
+                fontSize: "0.75rem",
+                borderRadius: "8px",
+                textTransform: "capitalize",
+                "&:hover": {
+                  background: "#2B2B33",
+                },
+                '@media (max-width: 425px)': {
+                  width:'100%'
+                },
+              }}
+              onClick={openModalClickHandler}
+            >
+              Change Workflow
+            </Button>
+          )}
           <Button
             variant="outlined"
-            color="primary"
+            className="outlined-filter-btn tertiary-color filter-btn font-family-exo2"
             sx={{
               mr: 2,
               color: "#40404D",
               borderColor: "#40404D",
-              borderRadius:'8px',
+              width: "122px",
+              padding: "8px",
+              height: "32px",
+              border: "1.5px solid #40404D",
+              fontWeight: 400,
+              fontSize: "0.75rem",
+              borderRadius: "8px",
+              textTransform: "capitalize",
               "&:hover": {
                 borderColor: "black",
                 color: "black",
               },
             }}
-            endIcon={<img src={filterIcon} alt="More Filter" />}
-            onClick={()=> {
-              setType("More")
-              modalClickHandlar()
+            endIcon={
+              <img src={filterIcon} alt="More Filter" width={16} height={16} />
+            }
+            onClick={() => {
+              setType("More");
+              modalClickHandlar();
             }}
-            className='filter-btn'
           >
             More Filter
           </Button>
+          <CardFilter
+            filter_type={type}
+            handleClick={modalClickHandlar}
+            isOpen={isOpen}
+          />
 
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              background: "#2B2B33",
-              borderRadius: '8px',
-              "&:hover": {
-                background: "#2B2B33",
-              },
-            }}
-            endIcon={<img src={exportIcon} alt="Export Text" />}
-              className='export-btn'
-            onClick={openModalClickHandler}
-          >
-            Change Text
-          </Button>
-          <CardFilter 
-            filter_type = {type}
-            handleClick = {modalClickHandlar}
-            isOpen = {isOpen}
-             />
-
-             <GlobalModal
-             
-             open={openModal}
-             handleClose={handleModalClose}
-
-             onSureClick={handleSureClick}
-             modalText="You Want to Change Work Flow"
-            //  modalIcon={modalIconimage}
-             
-             />
+          <GlobalModal
+            open={openModal}
+            handleClose={handleModalClose}
+            onSureClick={handleSureClick}
+            modalText="You want to change Workflow"
+            modalIcon={editIcon}
+          />
         </div>
       </div>
-      <TableContainer  sx={{mt:2}}>
-        <Table sx={{border:'0'}} >
-        <TableHead>
-      <TableRow>
-      {workflowtableheading.map((header, index) => (
-            <TableCell key={index} sx={{background:'#F0F0F2'}}>
-              
-              {index === 0 ? (
-      <>
-        <img src={checkTic} alt="icon" style={{ marginLeft: 4, width: '20px' }} />
-        {header}
-      </>
-    ) : (
-      header
-    )}
-             
-            </TableCell>
-          ))}
-
-    
-      </TableRow>
-    </TableHead>
-          <TableBody >
+      <TableContainer sx={{ mt: 2 }}>
+        <Table sx={{ border: "0" }}>
+          <TableHead>
+            <TableRow>
+              {workflowtableheading.map((header, index) => (
+                <TableCell key={index}  sx={{ background: '#F0F0F2',fontWeight:600 }} className='secondary-color font-family-exo2 primary-title'>
+                  {index === 0 ? (
+                    <>
+                      <img
+                        src={checkTic}
+                        alt="icon"
+                        style={{ marginLeft: 4, width: "20px" }}
+                      />
+                      {header}
+                    </>
+                  ) : (
+                    header
+                  )}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {filteredData.map((row, index) => (
-             <TableRow key={index}>
-            <TableCell>
-              {row.workstatus === ' ' ? (
-               <CheckIcon/>
-              ) : (
-                row.workstatus
-              )}
-            </TableCell>
-            <TableCell>{row.id}</TableCell>
-            <TableCell>{row.workflowname}</TableCell>
-            <TableCell>{row.rules}</TableCell>
-            <TableCell>{row.percentage}</TableCell>
-            <TableCell>{row.description}</TableCell>
-            <TableCell>
-              {row.action === '' ? (
-               <VisibilityIcon/>
-              ) : (
-                row.action
-              )}
-            </TableCell>
-          </TableRow>
+              <TableRow key={index}>
+                <TableCell onClick={() => handleWorkStatusClick(index)}>
+                  {clickedRowIndex === index ? (
+                    <CheckCircleIcon />
+                  ) : (
+                    <CheckIcon />
+                  )}
+                </TableCell>
+                <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.id}</TableCell>
+                <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.workflowname}</TableCell>
+                <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.rules}</TableCell>
+                <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.percentage}</TableCell>
+                <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}} >{row.description}</TableCell>
+                <TableCell sx={{}} className="tertiary-color">
+                  {row.action === "" ? <VisibilityIcon /> : row.action}
+                </TableCell>
+              </TableRow>
             ))}
           </TableBody>
         </Table>
@@ -171,4 +199,3 @@ const handleSureClick = () => {
 };
 
 export default WorkflowDetails;
-

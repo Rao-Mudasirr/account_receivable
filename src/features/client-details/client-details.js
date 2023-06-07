@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Grid,
@@ -20,7 +20,7 @@ import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import GlobalModal from "../../components/global-modal/global-modal";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { green,pink } from '@mui/material/colors';
+import { green} from '@mui/material/colors';
 import playicon from '../../../src/assests/images/client/playicon.png';
 import pauseicon from '../../../src/assests/images/client/pauseicon.png';
 
@@ -371,6 +371,7 @@ const ClientDetails = () => {
             sx={{
               "& .MuiTabs-indicator": {
                 backgroundColor: "#40404D",
+                textTransform: 'capitalize',
               },
              
             }}
@@ -383,7 +384,8 @@ const ClientDetails = () => {
                   "&.Mui-selected": {
                     color: "#40404D",
                     fontSize:'16px',
-                    fontWeight:'400'
+                    fontWeight:'400',
+                    textTransform: 'capitalize',
                   },
                 }}
                 className="font-family-exo2"

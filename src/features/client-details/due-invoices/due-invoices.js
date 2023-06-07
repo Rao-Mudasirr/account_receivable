@@ -50,43 +50,56 @@ setIsOpen(!isOpen);
         <div style={{ marginLeft: "auto" }} className='tabal-header'>
           <Button
             variant="outlined"
-            color="primary"
+            // color="primary"
+            className="outlined-filter-btn tertiary-color filter-btn font-family-exo2"
             sx={{
               mr: 2,
               color: "#40404D",
               borderColor: "#40404D",
+              width:'122px',
+              padding:'8px',
+              height:'32px',
+              border:'1.5px solid #40404D',
+              fontWeight:400,
+              fontSize:"0.75rem",
               borderRadius:'8px',
+              textTransform: 'capitalize',
               "&:hover": {
                 borderColor: "black",
                 color: "black",
               },
             }}
-            endIcon={<img src={filterIcon} alt="More Filter" />}
+            endIcon={<img src={filterIcon} alt="More Filter" width={16} height ={16}/>}
             onClick={()=> {
               setType("More")
               modalClickHandlar()
             }}
-            className='filter-btn'
+            
           >
-            More Filter
+            More Filters
           </Button>
 
           <Button
+              className="export-btn  font-family-exo2"
             variant="contained"
-            color="primary"
+             width="93px"
+             height="32px"
             sx={{
               background: "#2B2B33",
-              borderRadius: '8px',
+              fontWeight:400,
+              fontSize:"0.75rem",
+              borderRadius:'8px',
+              textTransform: 'capitalize',
               "&:hover": {
                 background: "#2B2B33",
               },
             }}
-            endIcon={<img src={exportIcon} alt="Export Text" />}
+            endIcon={<img src={exportIcon} alt="Export Text"  width={16} height ={16} />}
             onClick={()=> {
                 setType("Export")
                 modalClickHandlar()
               }}
-              className='export-btn'
+             
           >
             Export Text
           </Button>
@@ -102,7 +115,7 @@ setIsOpen(!isOpen);
           <TableHead>
             <TableRow>
               {invoicestableheading.map((header, index) => (
-                <TableCell key={index} sx={{ background: '#F0F0F2' }}>
+                <TableCell key={index} sx={{ background: '#F0F0F2',fontWeight:600 }} className='secondary-color font-family-exo2 primary-title'>
                   {index === 0 ? (
                     <>
                       {header}
@@ -120,17 +133,18 @@ setIsOpen(!isOpen);
             {filteredRows.map((row, index) => (
               <TableRow key={index}>
                 <TableCell>{row.srno}</TableCell>
-                <TableCell sx={{ textDecoration: 'underline', cursor: 'pointer' }} className='invoice-id'>{row.invoiceid} </TableCell>
+                <TableCell sx={{ textDecoration: 'underline', cursor: 'pointer',color:'#0084AD' }}  ><span   style={{color:'#0084AD'}}>{row.invoiceid}</span> </TableCell>
                 <TableCell>
                   <span
-                    className={`status-cell ${row.status.toLowerCase()}`}
+                    className={`status-cell  ${row.status.toLowerCase()}`}
+                  
                   >
                     {row.status}</span>
                 </TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.dateissue}</TableCell>
-                <TableCell>{row.duedate}</TableCell>
-                <TableCell>{row.amount}</TableCell>
+                <TableCell className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.name}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.dateissue}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.duedate}</TableCell>
+                <TableCell  className='font-family-exo2 tertiary-color primary-title' sx={{fontWeight:400}}>{row.amount}</TableCell>
               </TableRow>
             ))}
           </TableBody>

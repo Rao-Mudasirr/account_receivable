@@ -5,6 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Typography} from '@mui/material';
   import "./date-picker-modal.scss"
+import { ClassNames } from '@emotion/react';
 
 
 const DatePickerModal=( )=> {
@@ -23,12 +24,12 @@ const DatePickerModal=( )=> {
 
   return (
     <div>
-       <div style={{ marginTop: '20px' }}>
+       <div style={{ marginTop: '20px'}} className='date-picker-modal'>
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <DemoContainer components={['DatePicker', 'DatePicker']}>
       <div style={{ display: 'flex',gap:'10px' }}>
         <div style={{ flex: '1' }}>
-          <Typography>From</Typography>
+          <Typography className='font-family-exo2 secondary-color primary-title'>From</Typography>
           <DatePicker
             label="Start date"
             variant="standared"
@@ -39,7 +40,7 @@ const DatePickerModal=( )=> {
           />
         </div>
         <div style={{ flex: '1' }}>
-          <Typography>To</Typography>
+          <Typography className='font-family-exo2 secondary-color primary-title'>To</Typography>
           <DatePicker
             label="End Date"
             value={endDate}

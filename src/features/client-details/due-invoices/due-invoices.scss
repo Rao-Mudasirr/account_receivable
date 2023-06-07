@@ -45,7 +45,7 @@
   .tabal-header {
     margin-top: 10px !important;
 }
-  .container-table .filter-btn,
+  .container-table .outlined-filter-btn,
   .container-table.export-btn {
     margin-left: auto;
   
@@ -67,8 +67,14 @@
     flex-direction: column;
     margin-left: 0px !important;
 }
+.container-table .outlined-filter-btn,
+  .container-table.export-btn {
+    width: 100%;
+  
+  }
   .export-btn {
     margin-top: 10px !important;
+    
   }
 }
   
