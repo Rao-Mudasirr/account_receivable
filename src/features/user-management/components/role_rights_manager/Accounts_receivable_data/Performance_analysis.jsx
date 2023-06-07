@@ -21,6 +21,9 @@ const styles = {
         backgroundColor: 'white',
         color: 'black',
       },
+      '& .MuiFormControlLabel-label': {
+        fontSize: '14px',
+      },
     },
   };
   

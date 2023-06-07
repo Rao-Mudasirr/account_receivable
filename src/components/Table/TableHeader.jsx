@@ -152,6 +152,7 @@ const TableHeader = forwardRef(function TableHeader(
           {selectFilters.map(({ key, label, options = [] }) => (
             <div style={{marginBottom: '10px'}}>
             <GlobalSearchBar
+            placeholder="Search"
               value={searchQuery}
               onChange={handleSearchChange}
             />

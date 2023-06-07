@@ -6,9 +6,11 @@ import { useTheme } from "@emotion/react";
 import { Chip, Modal } from '@mui/material';
 import Editor_page from './editor'
 
+
+
 export default function Compose_email(props) {
 
-  const { open, handleClose, } = props;
+  const { open, handleClose, setOpenModel } = props;
   const theme = useTheme();
 
   const handleClick = () => {
@@ -24,9 +26,9 @@ export default function Compose_email(props) {
     <Modal
       open={open}
       onClose={handleClose}
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p:1 }}
     >
-      <Card sx={{ width: 900, height: 700, }}>
+      <Card sx={{ width: 900, height: 720,}}>
         <CardContent sx={{ ml: 0 }}>
           <div className="tags_email">
             <div className="card_data">
@@ -69,7 +71,7 @@ export default function Compose_email(props) {
             </div>
           </CardContent>
           <div className="email_card">
-            <Editor_page />
+            <Editor_page handleClose={handleClose}/>
           </div>
         </CardContent>
       </Card>

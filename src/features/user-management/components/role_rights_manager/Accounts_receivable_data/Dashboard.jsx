@@ -5,6 +5,16 @@ import Checkbox from '@mui/material/Checkbox';
 import { withStyles } from '@material-ui/core';
 const Dashboard = ({ checkboxData,}) => {
 
+    const labelstyles = theme => ({
+        root: {
+          '& .MuiFormControlLabel-label': {
+            fontSize: '14px',
+          },
+        },
+      });
+      
+      const LabelStyle = withStyles(labelstyles)(FormControlLabel);
+
     const checkBoxStyles = theme => ({
         root: {
           '&$checked': {
@@ -19,7 +29,7 @@ const Dashboard = ({ checkboxData,}) => {
     return (
         <FormGroup>
             {checkboxData.map((item, index) => (
-                <FormControlLabel
+                <LabelStyle
                     key={index}
                     control={<CustomCheckbox/>}
                     label={item.label}
