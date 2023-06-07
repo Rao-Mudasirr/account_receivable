@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GlobalSearchBar } from '../../components/global-search-filter/global-search-filter';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import CustomTable from '../../components/Table/CustomTable';
 import filterIcon from "../../assests/images/client/filter.png";
 import exportIcon from "../../assests/images/client/export.png";
@@ -135,18 +135,24 @@ function OverdueInvoices() {
     <React.Fragment>
      
         <div className="invoice-title">Overdue Invoices</div>
-        
+
         {/* Search field */}
-        <div
-        style={{
-          margin: "5px",
-          display: "flex",
-          alignItems: "center",
-          marginTop: "10px",
-        }}
-        >
-        <GlobalSearchBar />
-        <div style={{ marginLeft: "auto" }}>
+        <Grid container>
+        <Grid xs={12} md={6} lg={6} xl={6}>
+          <div
+            style={{
+              margin: "5px",
+              display: "flex",
+              alignItems: "center",
+              marginTop: "10px",
+            }}
+          >
+            <GlobalSearchBar />
+          </div>
+        </Grid>
+
+        <Grid xs={12} md={6} lg={6} xl={6}>
+        <div style={{ marginLeft: "auto", float: 'right' }}>
           <Button
             variant="outlined"
             color="primary"
@@ -193,7 +199,9 @@ function OverdueInvoices() {
             isOpen = {isOpen}
              />
         </div>
-      </div>
+        </Grid>
+        </Grid>
+        
       <br/>
           {/* Table */}
 
