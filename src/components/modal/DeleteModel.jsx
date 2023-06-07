@@ -38,7 +38,7 @@ const DeleteModel = (props) => {
                 <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
                   <Box sx={{ pt: "40px", textAlign: "center" }}>
                     <Typography variant="h3" sx={Styles.heading}>Are you sure?</Typography>
-                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", pt: 3 }}>
+                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3 }}>
                       You want to Delete
                     </Typography>
                   </Box>
@@ -91,7 +91,7 @@ const Styles = {
   buttonWrapper: (theme) => ({
     display: "flex",
     justifyContent: "center",
-    gap: "12px",
+    gap: "1rem",
     mt: 6,
     mb: 3.5
   }),
@@ -103,7 +103,8 @@ const Styles = {
     py: 1,
     fontSize: "16px !important",
     textTransform: 'capitalize',
-    fontWeight: "400"
+    fontWeight: "400",
+    borderRadius: "8px"
   }),
   buttonSuccess: (theme) => ({
     bgcolor: "#fff",
@@ -113,7 +114,8 @@ const Styles = {
     fontSize: "16px !important",
     border: "1px solid #2B2B33",
     fontWeight: "400",
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    borderRadius: "8px"
   }),
-  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", pt: 3 }
+  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3 }
 };

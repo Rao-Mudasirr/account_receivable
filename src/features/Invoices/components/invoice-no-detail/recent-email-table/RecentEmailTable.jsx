@@ -96,7 +96,8 @@ const RecentEmailTable = () => {
       <div style={{
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "flex-end"
+        alignItems: "flex-end",
+        marginTop: "3rem"
       }}>
         <h2>Recent Emails</h2>
         <Button
@@ -104,6 +105,7 @@ const RecentEmailTable = () => {
           color="primary"
           sx={{
             height: "40px",
+            fontFamily: "Exo 2",
             background: "#2B2B33",
             borderRadius: '8px',
             "&:hover": {
