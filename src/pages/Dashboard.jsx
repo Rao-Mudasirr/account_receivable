@@ -18,9 +18,10 @@ export default function Dashboard() {
   const [PCVal, setPCVal] = useState("2020");
   const [WFVal, setWFVal] = useState("UK Workflow");
   const [agingBucketVal, setAgingBucketVal] = useState("0");
-
+  
   return (
     <React.Fragment>
+      
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Grid container spacing={3}>
@@ -58,8 +59,8 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={5.5} xs={12}>
-          <DashboardCard heading="Aging Bucket" headingSibling={<DashboardToggleIcon chartSwitch={agingBucketVal} setSwitch={setAgingBucketVal}/>}>
-            <AgingBucketBarChart chartSwitch={agingBucketVal}/>
+          <DashboardCard heading="Aging Bucket" headingSibling={<div className='flex'><DashboardDateRange/><DashboardToggleIcon chartSwitch={agingBucketVal} setSwitch={setAgingBucketVal} /></div>}>
+            <AgingBucketBarChart chartSwitch={agingBucketVal} />
           </DashboardCard>
         </Grid>
         <Grid item xl={6.5} xs={12}>
@@ -79,7 +80,7 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={6} xs={12}>
-          <DashboardCard heading="Recent Notifications">
+          <DashboardCard heading="Recent Notifications" headingSibling={<span className="right-text" style={{color: '#6B9DE9'}}>View All</span>}>
             <RecentNotify />
           </DashboardCard>
         </Grid>

@@ -3,8 +3,18 @@ import AddNote from './add-note/AddNote';
 import RecentEmailTable from './recent-email-table/RecentEmailTable';
 import "./invoice_no_detail.css";
 import { Card, Button } from '@mui/material';
+import { useState } from "react";
+import ViewInvoice from '../../../view-invoices/ViewInvoice';
+import { useNavigate } from 'react-router';
 
 const InvoiceNoDetail = () => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const navigate = useNavigate()
+    const AllOverdue = () => {
+        navigate('/overdue-invoices');
+    }
     return (
         <div className='invoice-no_container'>
             <div>
@@ -22,6 +32,7 @@ const InvoiceNoDetail = () => {
                             <Button
                                 variant="outlined"
                                 color="primary"
+                                onClick={handleOpen}
                                 sx={{
                                     color: "#40404D",
                                     borderColor: "#40404D",
@@ -34,6 +45,11 @@ const InvoiceNoDetail = () => {
                             >
                                 View Invoice
                             </Button>
+                            <ViewInvoice 
+                                open = {open}
+                                handleClose={handleClose}
+                                handleOpen={handleOpen}
+                             />
                             <p>19/07/2022</p>
                             <p>19/07/2023</p>
                             <h4>£ 7100.00</h4>
@@ -60,6 +76,7 @@ const InvoiceNoDetail = () => {
                                 <Button
                                     variant="outlined"
                                     color="primary"
+                                    onClick={AllOverdue}
                                     sx={{
                                         backgroundColor: "#fff",
                                         color: "#40404D",
