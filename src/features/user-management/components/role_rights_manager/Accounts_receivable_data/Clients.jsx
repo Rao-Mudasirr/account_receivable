@@ -9,17 +9,24 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { withStyles } from '@material-ui/core';
 
-const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-  .MuiTreeItem-content.Mui-selected{
-    background-color:white;
-  }
+const styles = {
+  root: {
+    color: 'black',
+    backgroundColor: 'white',
+    '& .MuiTreeItem-content': {
+      backgroundColor: 'white',
+    },
+    '& .MuiTreeItem-content.Mui-selected': {
+      backgroundColor: 'white',
+    },
+    '& .MuiTreeItem-label:hover': {
+      backgroundColor: 'white',
+      color: 'black',
+    },
+  },
+};
 
-`;
+const StyledTreeItem = withStyles(styles)(TreeItem);
 
 
 const Clients = ({ checkboxData, onClickBtn }) => {
@@ -59,14 +66,14 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
     return checkboxData
       .filter(item => item.parent)
       .map(item => (
-        <TreeItemStyled
+        <StyledTreeItem
           nodeId={item.id}
           label={
             <FormControlLabel control={<CustomCheckbox />} label={item.label} />
           }
         >
           {item.parent.childData.map((item2, index) => (
-            <TreeItemStyled
+            <StyledTreeItem
               nodeId={item2.id}
               key={index}
               label={
@@ -77,11 +84,11 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
               }
             />
           ))}
-        </TreeItemStyled>
+        </StyledTreeItem>
       ));
   };
 
-  return (
+  return ( 
     <>
       <Box sx={{ ml: 3.8 }}>
         <FormGroup>{renderSimpleData()}</FormGroup>
