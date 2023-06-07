@@ -18,10 +18,10 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Link } from "react-router-dom";
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const INVOICE_DATA = [
   {
@@ -156,85 +156,100 @@ const input_filter = [
   },
 ];
 export default function InvoiceListing() {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
- const columns = [
-      {
-        accessorFn: (row) => row.Id,
-        id: "Id",
-        cell: (info) => info.getValue(),
-        header: () => <span>Sr.#</span>,
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,
-        id: "invoiceNo",
-        cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
-        header: "Invoice No.",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.client,
-        id: "client",
-        cell: (info) => info.getValue(),
-        header: "Client",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.invoice_status,
-        id: "invoice_status",
-        cell: (info) => <span className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</span>,
-        header: "Invoice Status",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.issue_date,
-        id: "issue_date",
-        cell: (info) => info.getValue(),
-        header: "Issue Date",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.due_date,
-        id: "due_date",
-        cell: (info) => info.getValue(),
-        header: "Due Date",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.overdue_days,
-        id: "overdue_days",
-        cell: (info) => info.getValue(),
-        header: "Overdue Days",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.total_amount,
-        id: "total_amount",
-        cell: (info) => info.getValue(),
-        header: "Total Amount",
-        // isSortable: true,
-      },
-      // {
-      //   id: "Actions",
-      //   cell: (info) => (
-      //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-      //       {/* <TableAction type="delete" onClicked={handleOpen} />
-      //        <TableAction type="edit" onClicked={handleFormDialog} />
-      //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
-      //     </Box>
-      //   ),
-      //   header: () => <span>Actions</span>,
-      //   isSortable: false,
-      // },
-    ];
+  const columns = [
+    {
+      accessorFn: (row) => row.Id,
+      id: "Id",
+      cell: (info) => info.getValue(),
+      header: () => <span>Sr.#</span>,
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,
+      id: "invoiceNo",
+      cell: (info) => (
+        <span style={{ color: "#0084AD", textDecoration: "underline" }}>
+          {info.getValue()}
+        </span>
+      ),
+      header: "Invoice No.",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.client,
+      id: "client",
+      cell: (info) => info.getValue(),
+      header: "Client",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.invoice_status,
+      id: "invoice_status",
+      cell: (info) => (
+        <span
+          className={
+            info.getValue() === "Paid"
+              ? "Paid"
+              : info.getValue() === "Due"
+              ? "Due"
+              : "Overdue"
+          }
+        >
+          {info.getValue()}
+        </span>
+      ),
+      header: "Invoice Status",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.issue_date,
+      id: "issue_date",
+      cell: (info) => info.getValue(),
+      header: "Issue Date",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.due_date,
+      id: "due_date",
+      cell: (info) => info.getValue(),
+      header: "Due Date",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.overdue_days,
+      id: "overdue_days",
+      cell: (info) => info.getValue(),
+      header: "Overdue Days",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.total_amount,
+      id: "total_amount",
+      cell: (info) => info.getValue(),
+      header: "Total Amount",
+      // isSortable: true,
+    },
+    // {
+    //   id: "Actions",
+    //   cell: (info) => (
+    //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+    //       {/* <TableAction type="delete" onClicked={handleOpen} />
+    //        <TableAction type="edit" onClicked={handleFormDialog} />
+    //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
+    //     </Box>
+    //   ),
+    //   header: () => <span>Actions</span>,
+    //   isSortable: false,
+    // },
+  ];
 
-    const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [error, setError] = useState(null);
 
@@ -267,148 +282,159 @@ export default function InvoiceListing() {
       <div className="invoice-title">Invoices</div>
 
       {/* Search field */}
-      <div
-        style={{
-          margin: "5px",
-          display: "flex",
-          alignItems: "center",
-          marginTop: "10px",
-        }}
-      >
-        <GlobalSearchBar />
-        <div style={{ marginLeft: "auto" }}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
+      <Grid container>
+        <Grid xs={12} md={6} lg={6} xl={6}>
+          <div
+            style={{
+              margin: "5px",
+              display: "flex",
+              alignItems: "center",
+              marginTop: "10px",
+            }}
+          >
+            <GlobalSearchBar />
+          </div>
+        </Grid>
+
+        <Grid xs={12} md={6} lg={6} xl={6}>
+          <div style={{ marginLeft: "auto", display: "flex" }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
               <DatePicker
-                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                sx={{
+                  paddingRight: "20px",
+                }}
                 label="From"
                 variant="standared"
                 value={startDate}
                 onChange={(date) => handleDateChange(date, "Start date")}
               />
               <DatePicker
-                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                sx={{
+                  paddingRight: "20px",
+                }}
                 label="To"
                 value={endDate}
                 onChange={(date) => handleDateChange(date, "End Date")}
               />
-            {/* </DemoContainer> */}
-          </LocalizationProvider>
-          <Button
-            onClick={handleClick}
-            variant="outlined"
-            color="primary"
-            sx={{
-              mr: 2,
-              color: "#40404D",
-              borderColor: "#40404D",
-              borderRadius: "8px",
-              "&:hover": {
-                borderColor: "black",
-                color: "black",
-              },
-            }}
-            endIcon={<img src={filterIcon} alt="More Filter" />}
-          >
-            More Filter
-          </Button>
-          {isOpen && (
-            <Card
-              style={{
-                width: "592px",
-                // height: '376px',
-                position: "absolute",
-                right: "50px",
-                zIndex: 10,
-                padding: "24px",
-                marginTop: "7px",
-                boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
+              {/* </DemoContainer> */}
+            </LocalizationProvider>
+            <Button
+              onClick={handleClick}
+              variant="outlined"
+              color="primary"
+              sx={{
+                mr: 2,
+                color: "#40404D",
+                borderColor: "#40404D",
                 borderRadius: "8px",
+                "&:hover": {
+                  borderColor: "black",
+                  color: "black",
+                },
               }}
+              endIcon={<img src={filterIcon} alt="More Filter" />}
             >
-              {/* <ul> */}
-              <div className="filter-heading">
-                <div className="title-filter">Filters</div>
-                <div className="icon-filter" onClick={handleClick}>
-                  <CancelOutlinedIcon />{" "}
-                </div>
-              </div>
-              <br />
-              <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={1}>
-                  {input_filter?.map((val, index) => (
-                    <Grid
-                      style={{ marginBottom: "40px" }}
-                      spacing={2}
-                      key={index}
-                      item
-                      xs={12}
-                      md={6}
-                      lg={6}
-                    >
-                      <InputLabel
-                        id="demo-simple-select-filled-label"
-                        className="field-label"
-                      >
-                        {val?.field}
-                      </InputLabel>
-                      <FormControl
-                        variant="standard"
-                        style={{ width: "260px", height: "48px" }}
-                      >
-                        <InputLabel id="demo-simple-select-filled-label">
-                          Select
-                        </InputLabel>
-                        <Select
-                          placeholder="Select"
-                          labelId="demo-simple-select-filled-label"
-                          // id="demo-simple-select-filled"
-                          // value={value}
-                          // onChange={handleChange}
-                        >
-                          <MenuItem value="">
-                            <em>None</em>
-                          </MenuItem>
-                          {val?.Items?.map((data, i) => (
-                            <React.Fragment key={i}>
-                              <MenuItem
-                                value={data?.item}
-                                style={{
-                                  color:
-                                    data?.item === "Paid"
-                                      ? "#48995D"
-                                      : data?.item === "Due"
-                                      ? "#FFBF00"
-                                      : data?.item === "Overdue"
-                                      ? "#FF3F3F"
-                                      : "#6B6B80",
-                                }}
-                              >
-                                {data?.item}
-                              </MenuItem>
-                            </React.Fragment>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
-              {/* </ul> */}
-              <div
-                className="filter-below-btn"
-                style={{ display: "flex", float: "right" }}
+              More Filter
+            </Button>
+            {isOpen && (
+              <Card
+                style={{
+                  width: "592px",
+                  // height: '376px',
+                  position: "absolute",
+                  right: "50px",
+                  zIndex: 10,
+                  padding: "24px",
+                  marginTop: "7px",
+                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
+                  borderRadius: "8px",
+                }}
               >
-                <Button className="btn1" onClick={handleClick}>
-                  Clear
-                </Button>
-                &nbsp;
-                <Button className="btn2">Apply</Button>
-              </div>
-            </Card>
-          )}
-        </div>
-      </div>
+                {/* <ul> */}
+                <div className="filter-heading">
+                  <div className="title-filter">Filters</div>
+                  <div className="icon-filter" onClick={handleClick}>
+                    <CancelOutlinedIcon />{" "}
+                  </div>
+                </div>
+                <br />
+                <Box sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={1}>
+                    {input_filter?.map((val, index) => (
+                      <Grid
+                        style={{ marginBottom: "40px" }}
+                        spacing={2}
+                        key={index}
+                        item
+                        xs={12}
+                        md={6}
+                        lg={6}
+                      >
+                        <InputLabel
+                          id="demo-simple-select-filled-label"
+                          className="field-label"
+                        >
+                          {val?.field}
+                        </InputLabel>
+                        <FormControl
+                          variant="standard"
+                          style={{ width: "260px", height: "48px" }}
+                        >
+                          <InputLabel id="demo-simple-select-filled-label">
+                            Select
+                          </InputLabel>
+                          <Select
+                            placeholder="Select"
+                            labelId="demo-simple-select-filled-label"
+                            // id="demo-simple-select-filled"
+                            // value={value}
+                            // onChange={handleChange}
+                          >
+                            <MenuItem value="">
+                              <em>None</em>
+                            </MenuItem>
+                            {val?.Items?.map((data, i) => (
+                              <React.Fragment key={i}>
+                                <MenuItem
+                                  value={data?.item}
+                                  style={{
+                                    color:
+                                      data?.item === "Paid"
+                                        ? "#48995D"
+                                        : data?.item === "Due"
+                                        ? "#FFBF00"
+                                        : data?.item === "Overdue"
+                                        ? "#FF3F3F"
+                                        : "#6B6B80",
+                                  }}
+                                >
+                                  {data?.item}
+                                </MenuItem>
+                              </React.Fragment>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
+                {/* </ul> */}
+                <div
+                  className="filter-below-btn"
+                  style={{ display: "flex", float: "right" }}
+                >
+                  <Button className="btn1" onClick={handleClick}>
+                    Clear
+                  </Button>
+                  &nbsp;
+                  <Button className="btn2">Apply</Button>
+                </div>
+              </Card>
+            )}
+          </div>
+        </Grid>
+      </Grid>
       <br />
       {/* Table */}
 
