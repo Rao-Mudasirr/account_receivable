@@ -88,7 +88,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
       ));
   };
 
-  return (
+  return ( 
     <>
       <Box sx={{ ml: 3.8 }}>
         <FormGroup>{renderSimpleData()}</FormGroup>
