@@ -6,12 +6,12 @@ export const formControlData = [
     switchOptions: [
       {
         id: 'Checkbox1',
-        label: 'The tab and view dashboard with own user data',
+        label: 'The tab and view dashboard with all user data',
         value: true
       },
       {
         id: 'Checkbox2',
-        label: 'The tab and view dashboard wkkith own user data',
+        label: 'The tab and view dashboard with own user data',
       },
       {
         id: 'Checkbox3',
@@ -71,7 +71,7 @@ export const formControlData = [
     switchOptions: [
       {
         id: 'Checkbox1',
-        label: 'column Sorting'
+        label: 'Column Sorting'
       },
       {
         id: 'Checkbox2',
@@ -93,38 +93,42 @@ export const formControlData = [
           childData: [
             {
               id: 'Checkbox1',
-              label: 'Column Sorting',
+              label: 'Export to Excel',
             },
             {
               id: 'Checkbox2',
-              label: 'Invoice Details',
+              label: 'Export to PDF',
             },
             {
               id: 'Checkbox3',
-              label: 'View/Download Invoice',
+              label: 'Invoice Details',
             },
             {
               id: 'Checkbox4',
-              label: 'View Overdue Invoices',
+              label: 'View/Download Invoice',
             },
             {
               id: 'Checkbox5',
-              label: 'Add Note',
+              label: 'View Overdue Invoices',
             },
             {
               id: 'Checkbox6',
-              label: 'Edit Note',
+              label: 'Add Note',
             },
             {
               id: 'Checkbox7',
-              label: 'Delete Note',
+              label: 'Edit Note',
             },
             {
               id: 'Checkbox8',
-              label: 'Compose Email',
+              label: 'Delete Note',
             },
             {
               id: 'Checkbox9',
+              label: 'Compose Email',
+            },
+            {
+              id: 'Checkbox10',
               label: 'View Recent Emails',
             },
           ]
@@ -223,27 +227,23 @@ export const formControlData = [
     switchOptions: [
       {
         id: 'Checkbox1',
-        label: 'Column Sorting',
+        label: 'Change Default Workflow',
       },
       {
         id: 'Checkbox2',
-        label: 'Invoice Details',
+        label: 'Add Workflow',
       },
       {
         id: 'Checkbox3',
-        label: 'View/Download Invoice',
+        label: 'Edit Workflow',
       },
       {
         id: 'Checkbox4',
-        label: 'View Overdue Invoices',
+        label: 'Delete Workflow',
       },
       {
         id: 'Checkbox5',
-        label: 'Add Note',
-      },
-      {
-        id: 'Checkbox6',
-        label: 'Edit Note',
+        label: 'View Workflow',
       },
     ]
   },

@@ -130,6 +130,7 @@ const RecentEmailTable = () => {
       <Compose_email
         open={open}
         handleClose={handleClose}
+        setOpenModel={setOpenModel}
       />
       {/* <CustomModel open={openModel}
         setOpen={setOpenModel}

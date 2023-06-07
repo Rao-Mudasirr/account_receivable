@@ -17,13 +17,24 @@ const Settings = (checkboxData2) => {
     
     const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
+    const labelstyles = theme => ({
+        root: {
+          '& .MuiFormControlLabel-label': {
+            fontSize: '14px',
+          },
+        },
+      });
+      
+      const LabelStyle = withStyles(labelstyles)(FormControlLabel);
+      
+
     const data = checkboxData2.checkboxData2
     console.log(checkboxData2.checkboxData2)
     return (
         <FormGroup>
             {data.map((item, index) => {
                 return (
-                    <FormControlLabel
+                    <LabelStyle
                         key={index}
                         control={<CustomCheckbox />}
                         label={item.label}

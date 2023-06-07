@@ -34,11 +34,11 @@ export const FormControlData2 = [
               childData: [
                 {
                   id: 'Checkbox2_1',
-                  label: 'Active User',
+                  label: 'Activate User',
                 },
                 {
                   id: 'Checkbox2_2',
-                  label: 'Deactive User',
+                  label: 'Deactivate User',
                 },
               ],
             },
@@ -71,6 +71,10 @@ export const FormControlData2 = [
                 {
                   id: 'Checkbox4_1',
                   label: 'Assign Clients',
+                },
+                {
+                  id: 'Checkbox4_2',
+                  label: 'Un-assign Clients',
                 },
               ],
             },
