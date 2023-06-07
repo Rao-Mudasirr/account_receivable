@@ -78,7 +78,7 @@ import dayjs from "dayjs";
 //   },
 // ];
 
-export const CLIENT_MANAGEMENT_DATA = [
+export const CLIENT_MANAGEMENT_DATA = (status)=> [
   {
     id: 1,
     Id: "123",

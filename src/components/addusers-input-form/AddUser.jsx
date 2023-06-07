@@ -8,7 +8,7 @@ const AddUser = (props) => {
   const { openForm, handleCloseForm } = props;
 
   return (
-    <Dialog open={openForm} onClose={handleCloseForm}>
+    <Dialog open={openForm} onClose={handleCloseForm} sx={{backgroundColor: "transparent"}}>
     <div className="users_container">
       <div className="users_card">
       <div className="adduser_header">

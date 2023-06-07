@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Box } from "@mui/material";
+import { Card, Box, TextField, MenuItem } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -8,6 +8,7 @@ import TableAction from "../../../../components/Table/TableAction";
 import { CLIENT_MANAGEMENT_DATA } from ".";
 import { useClients } from "./use-clients";
 import DeleteModel from "../../../../components/modal/DeleteModel";
+import { GlobalSearchBar } from '../../../../components/global-search-filter/global-search-filter';
 import FormDialog from '../../../../components/modal/ModalPractice';
 import { CustomModel } from '../../../../components/custom-model/custom-model';
 import { ClientsModal } from './client-modal/client-modal';
@@ -18,6 +19,8 @@ export const ClientsTable = () => {
     setOpen,
     handleOpen,
     handleClose,
+    userData,
+    tableData,
     openForm,
     setOpenForm,
     handleFormDialog,
@@ -26,6 +29,19 @@ export const ClientsTable = () => {
     // router,
     tableHeaderRef,
   } = useClients();
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredData = tableData.filter((data) =>
+    Object.values(data).some((value) =>
+      String(value).toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   const [openModel, setOpenModel] = useState(false);
   const handleCustomModel = ()=>{
     setOpenModel(true);
@@ -33,6 +49,7 @@ export const ClientsTable = () => {
 
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
+    
   const columns = [
     {
       accessorFn: (row) => row.Id,
@@ -80,22 +97,46 @@ export const ClientsTable = () => {
       // isSortable: false,
     },
   ];
+  const isFocused = false;
   return (
     <>
       <Card sx={{ p: 1 }}>
-        <TableHeader
-          ref={tableHeaderRef}
-          // showSelectFilters
-          // disabled={isLoading}
-          title="Health & Safety"
-          searchKey="search"
-          showAddBtn
-          onAdd={handleOpen}
-          onChanged={headerChangeHandler}
-        // selectFilters={SELECT_FILTERS}
-        />
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <GlobalSearchBar
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <TextField defaultValue='Role' sx={{
+            width: 333, mb: 2, borderRadius : 5,
+            '& .MuiInputBase-root': {
+              color: isFocused ? 'black' : 'inherit',
+              '&::before': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+              '&::after': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+              '&:hover::before': {
+                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+              },
+            },
+          }}
+            select
+            variant = {isFocused ? 'filled' : 'standard'}
+          >
+            <MenuItem disabled value='Role'>
+              Role
+            </MenuItem>
+            <MenuItem value='Assigned'>
+              Assigned
+            </MenuItem>
+            <MenuItem value='Unassigned'>
+              Unassigned
+            </MenuItem>
+          </TextField>
+        </div>
         <CustomTable
-          data={CLIENT_MANAGEMENT_DATA}
+          data={userData}
           columns={columns}
           // showSerialNo
           onPageChange={pageChangeHandler}

@@ -9,12 +9,11 @@ const EditUser = (props) => {
 
 
   return (
-    <>
     <Dialog open={openForm} onClose={handleCloseForm}>
       <div className="users_container">
       <div className="users_card">
       <div className="edituser_header">
-        <h2>Edit User Details</h2>
+        <h3>Edit User Details</h3>
         <button onClick={handleCloseForm}>
         <HighlightOffIcon />
         </button>
@@ -25,7 +24,6 @@ const EditUser = (props) => {
       </div>
       </div>
       </Dialog>
-    </>
   );
 };
 
