@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import CustomTable from '../../../components/Table/CustomTable';
+import CustomTable from "../../../components/Table/CustomTable";
 import { useTableParams } from "../../../components/Table/useTableParams";
 // import TableAction from '../../../components/Table/TableAction';
 // import DeleteModel from '../../../../components/modal/DeleteModel';
 // import FormDialog from '../../../../components/modal/ModalPractice';
-import './invoice_listing.scss';
+import "./invoice_listing.scss";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Card } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Link } from "react-router-dom";
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const INVOICE_DATA = [
   {
@@ -20,58 +29,139 @@ const INVOICE_DATA = [
     Id: "01",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Paid',
-    issue_date: '19 Oct, 2023',
-    due_date: '19 Oct, 2023',
-    overdue_days: '12',
-    total_amount: '$7200'
+    invoice_status: "Paid",
+    issue_date: "19 Oct, 2023",
+    due_date: "19 Oct, 2023",
+    overdue_days: "12",
+    total_amount: "$7200",
   },
   {
     id: 2,
     Id: "02",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Due',
+    invoice_status: "Due",
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
-    overdue_days: '12',
-    total_amount: '$7200'
+    overdue_days: "12",
+    total_amount: "$7200",
   },
   {
     id: 3,
     Id: "03",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Overdue',
+    invoice_status: "Overdue",
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
-    overdue_days: '12',
-    total_amount: '$7200'
+    overdue_days: "12",
+    total_amount: "$7200",
   },
   {
     id: 4,
     Id: "04",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Paid',
+    invoice_status: "Paid",
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
-    overdue_days: '12',
-    total_amount: '$7200'
+    overdue_days: "12",
+    total_amount: "$7200",
   },
   {
     id: 5,
     Id: "05",
     invoiceNo: "2345",
     client: "Ali",
-    invoice_status: 'Overdue',
+    invoice_status: "Overdue",
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
-    overdue_days: '12',
-    total_amount: '$7200'
+    overdue_days: "12",
+    total_amount: "$7200",
+  },
+];
+
+const input_filter = [
+  {
+    field: "Branch",
+    Items: [
+      {
+        id: "1",
+        item: "Item 1",
+      },
+      {
+        id: "2",
+        item: "Item 2",
+      },
+      {
+        id: "3",
+        item: "Item 3",
+      },
+    ],
+  },
+  {
+    field: "Client",
+    Items: [
+      {
+        id: "1",
+        item: "Item 1",
+      },
+      {
+        id: "2",
+        item: "Item 2",
+      },
+      {
+        id: "3",
+        item: "Item 3",
+      },
+    ],
+  },
+  {
+    field: "Status",
+    Items: [
+      {
+        id: "1",
+        item: "Paid",
+      },
+      {
+        id: "2",
+        item: "Due",
+      },
+      {
+        id: "3",
+        item: "Overdue",
+      },
+    ],
+  },
+  {
+    field: "Aging Bucket",
+    Items: [
+      {
+        id: "1",
+        item: "Amount overdue < 30d",
+      },
+      {
+        id: "2",
+        item: "Amount overdue 30 - 60d",
+      },
+      {
+        id: "3",
+        item: "Amount overdue 60 - 90d",
+      },
+      {
+        id: "4",
+        item: "Amount overdue > 90d",
+      },
+    ],
   },
 ];
 export default function InvoiceListing() {
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
  const columns = [
       {
@@ -79,7 +169,7 @@ export default function InvoiceListing() {
         id: "Id",
         cell: (info) => info.getValue(),
         header: () => <span>Sr.#</span>,
-        isSortable: true,
+        // isSortable: true,
       },
       {
         accessorFn: (row) => <Link to="/invoice-no-detail">{row.invoiceNo}</Link>,
@@ -143,37 +233,76 @@ export default function InvoiceListing() {
       //   isSortable: false,
       // },
     ];
+
+    const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleDateChange = (date, label) => {
+    if (label === "Start date") {
+      setStartDate(date);
+    } else if (label === "End Date") {
+      setEndDate(date);
+    }
+  };
+
+  // const handleApplyClick = () => {
+  //   if (startDate && endDate && startDate.isAfter(endDate)) {
+  //     setError("Please select a valid date range.");
+  //     return;
+  //   }
+
+  //   onApplyDate({ startDate, endDate });
+  //   onCloseDatePicker();
+  // };
+
+  const handleClearClick = () => {
+    setStartDate(null);
+    setEndDate(null);
+    setError(null);
+  };
+
   return (
     <React.Fragment>
-     
-            <div className="invoice-title">Invoices</div>
-        
-        {/* Search field */}
-        <div
+      <div className="invoice-title">Invoices</div>
+
+      {/* Search field */}
+      <div
         style={{
           margin: "5px",
           display: "flex",
           alignItems: "center",
           marginTop: "10px",
         }}
-        >
+      >
         <GlobalSearchBar />
         <div style={{ marginLeft: "auto" }}>
-          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
+              <DatePicker
+                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                label="From"
+                variant="standared"
+                value={startDate}
+                onChange={(date) => handleDateChange(date, "Start date")}
+              />
+              <DatePicker
+                sx={{paddingRight:'20px', position: 'relative', top: '-10px'}}
+                label="To"
+                value={endDate}
+                onChange={(date) => handleDateChange(date, "End Date")}
+              />
+            {/* </DemoContainer> */}
           </LocalizationProvider>
-          &nbsp;
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker />
-          </LocalizationProvider> */}
           <Button
+            onClick={handleClick}
             variant="outlined"
             color="primary"
             sx={{
               mr: 2,
               color: "#40404D",
               borderColor: "#40404D",
-              borderRadius:'8px',
+              borderRadius: "8px",
               "&:hover": {
                 borderColor: "black",
                 color: "black",
@@ -183,34 +312,115 @@ export default function InvoiceListing() {
           >
             More Filter
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              background: "#2B2B33",
-              borderRadius: '8px',
-              "&:hover": {
-                background: "#2B2B33",
-              },
-            }}
-            endIcon={<img src={exportIcon} alt="Export Text" />}
-          >
-            Export Text
-          </Button>
+          {isOpen && (
+            <Card
+              style={{
+                width: "592px",
+                // height: '376px',
+                position: "absolute",
+                right: "50px",
+                zIndex: 10,
+                padding: "24px",
+                marginTop: "7px",
+                boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
+                borderRadius: "8px",
+              }}
+            >
+              {/* <ul> */}
+              <div className="filter-heading">
+                <div className="title-filter">Filters</div>
+                <div className="icon-filter" onClick={handleClick}>
+                  <CancelOutlinedIcon />{" "}
+                </div>
+              </div>
+              <br />
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={1}>
+                  {input_filter?.map((val, index) => (
+                    <Grid
+                      style={{ marginBottom: "40px" }}
+                      spacing={2}
+                      key={index}
+                      item
+                      xs={12}
+                      md={6}
+                      lg={6}
+                    >
+                      <InputLabel
+                        id="demo-simple-select-filled-label"
+                        className="field-label"
+                      >
+                        {val?.field}
+                      </InputLabel>
+                      <FormControl
+                        variant="standard"
+                        style={{ width: "260px", height: "48px" }}
+                      >
+                        <InputLabel id="demo-simple-select-filled-label">
+                          Select
+                        </InputLabel>
+                        <Select
+                          placeholder="Select"
+                          labelId="demo-simple-select-filled-label"
+                          // id="demo-simple-select-filled"
+                          // value={value}
+                          // onChange={handleChange}
+                        >
+                          <MenuItem value="">
+                            <em>None</em>
+                          </MenuItem>
+                          {val?.Items?.map((data, i) => (
+                            <React.Fragment key={i}>
+                              <MenuItem
+                                value={data?.item}
+                                style={{
+                                  color:
+                                    data?.item === "Paid"
+                                      ? "#48995D"
+                                      : data?.item === "Due"
+                                      ? "#FFBF00"
+                                      : data?.item === "Overdue"
+                                      ? "#FF3F3F"
+                                      : "#6B6B80",
+                                }}
+                              >
+                                {data?.item}
+                              </MenuItem>
+                            </React.Fragment>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+              {/* </ul> */}
+              <div
+                className="filter-below-btn"
+                style={{ display: "flex", float: "right" }}
+              >
+                <Button className="btn1" onClick={handleClick}>
+                  Clear
+                </Button>
+                &nbsp;
+                <Button className="btn2">Apply</Button>
+              </div>
+            </Card>
+          )}
         </div>
       </div>
-      <br/>
-          {/* Table */}
+      <br />
+      {/* Table */}
 
-          <CustomTable
-            data={INVOICE_DATA}
-            columns={columns}
-            // showSerialNo
-            // onPageChange={pageChangeHandler}
-            // onSortByChange={sortChangeHandler}
-            isSuccess={true}
-            // isPagination={true}
-          />
+      <CustomTable
+        data={INVOICE_DATA}
+        columns={columns}
+        // showSerialNo
+        // onPageChange={pageChangeHandler}
+        // onSortByChange={sortChangeHandler}
+        isSuccess={true}
+        isPagination={true}
+      />
     </React.Fragment>
   );
 }

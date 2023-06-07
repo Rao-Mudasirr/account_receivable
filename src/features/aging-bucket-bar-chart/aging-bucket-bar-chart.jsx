@@ -153,7 +153,7 @@ export const AgingBucketBarChart = ({ chartSwitch }) => {
                             type="bar"
                         />
                     </Box>
-                        : <Box >
+                        : <Box sx={{my:'27px'}}>
                             <Chart
                                 series={[2050, 2000, 1000, 3000] ?? []}
                                 height={265}

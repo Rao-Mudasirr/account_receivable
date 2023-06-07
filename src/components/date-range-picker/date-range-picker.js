@@ -15,6 +15,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import './DatePicker.scss';
 
 
 
@@ -91,16 +92,16 @@ const DateRangePicker = ({
       >
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '16px',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "16px",
           }}
         >
-          <h3 style={{ color: '#000000', margin: 0 }}>Filters</h3>
+          <h3 style={{ color: "#000000", margin: 0 }}>Filters</h3>
           <CloseIcon
             onClick={onCloseDatePicker}
-            style={{ cursor: 'pointer', color: '#000000' }}
+            style={{ cursor: "pointer", color: "#000000" }}
           />
         </div>
 <div style={{ marginTop: '20px' }}>
@@ -136,9 +137,42 @@ const DateRangePicker = ({
         </Typography>
         <div
           style={{
-            position: 'absolute',
-            bottom: '16px',
-            right: '16px',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          <Typography style={{ flex: "1", marginLeft: "2px" }}>From</Typography>
+          <Typography style={{ flex: "1" }}>To</Typography>
+        </div>
+
+        <div style={{ marginTop: "20px" }}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DatePicker", "DatePicker"]}>
+              <DatePicker
+                sx={{borderTop: '0px solid'}}
+                label="Start date"
+                variant="standared"
+                value={startDate}
+                onChange={(date) => handleDateChange(date, "Start date")}
+              />
+              <DatePicker
+              
+                label="End Date"
+                value={endDate}
+                onChange={(date) => handleDateChange(date, "End Date")}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
+        </div>
+        <Typography style={{ color: "red", marginBottom: "8px" }}>
+          {error}
+        </Typography>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "16px",
+            right: "16px",
           }}
         >
           <Button
@@ -146,12 +180,12 @@ const DateRangePicker = ({
             color="primary"
             onClick={handleClearClick}
             sx={{
-              color: '#000000',
-              borderColor: '#000000',
-              marginRight: '8px',
-              '&:hover': {
-                borderColor: '#000000',
-                color: '#000000',
+              color: "#000000",
+              borderColor: "#000000",
+              marginRight: "8px",
+              "&:hover": {
+                borderColor: "#000000",
+                color: "#000000",
               },
             }}
           >
@@ -163,11 +197,11 @@ const DateRangePicker = ({
             onClick={handleApplyClick}
             disabled={!startDate || !endDate}
             sx={{
-              color: '#FFFFFF',
-              background: '#000000',
-              '&:hover': {
-                background: '#000000',
-                color: '#FFFFFF',
+              color: "#FFFFFF",
+              background: "#000000",
+              "&:hover": {
+                background: "#000000",
+                color: "#FFFFFF",
               },
             }}
           >
