@@ -10,12 +10,10 @@
  }
 
  .editor_content {
-  height: 45vh !important;
+  height: 43vh !important;
 
  }
  .editor_scroll {
-  /* height: 46vh; */
-  /* border: 1px solid red; */
   overflow: auto;
   scroll-behavior: smooth;
  }
@@ -42,5 +40,39 @@
  .ql-editor {
   overflow-y: hidden;
   resize: vertical;
-  height:40.3vh !important;
+  height:38.3vh !important;
+}
+
+@media (max-width: 768px) {
+ 
+  .tags_bar li {
+    margin-bottom: 0.6rem;
+  }
+  .editor_content {
+    height: 38vh !important;
+
+   }
+  .btns {
+    margin-bottom: 10px;
+  }
+
+  .ql-editor {
+    height: 30vh !important; 
+  }
+}
+
+@media (max-width: 1024px) {
+ 
+  .tags_bar li {
+    margin-bottom: 0.6rem;
+    font-size: 12px;
+  }
+  .editor_content {
+    height: 37vh !important;
+
+   }
+
+  .ql-editor {
+    height: 28vh !important; 
+  }
 }

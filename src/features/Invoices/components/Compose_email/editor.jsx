@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import './compose_email.css'
+import './compose_email.css';
 import { Button } from '@mui/material';
-const EmailEditor = () => {
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const EmailEditor = ({handleClose}) => {
   const [editorContent, setEditorContent] = useState('');
 
+
   const handleEditorChange = (content) => {
-    setEditorContent(content);
+    try {
+      setEditorContent(content);
+    } catch (error) {
+      console.error('Error setting editor content:', error);
+    }
+  };
+
+  const handleSureClick = () => {
+    const toastText = 'Email sent successfully';
+    sendEmail();
+    toast.success(toastText);
   };
 
   const sendEmail = () => {
-    alert('Email send successfully');
+    console.log('Sending email:', editorContent);
   };
 
-  const cancelEmail = () => {
-    setEditorContent('');
-  };
+  // const cancelEmail = () => {
+  //   handleClose(false);
+  // };
 
   const modules = {
     toolbar: [
@@ -32,7 +46,7 @@ const EmailEditor = () => {
 
   return (
     <>
-      <div className='editor_content editor_scroll'>
+      <div className="editor_content editor_scroll">
         <ReactQuill
           value={editorContent}
           onChange={handleEditorChange}
@@ -40,24 +54,25 @@ const EmailEditor = () => {
         />
       </div>
       <div className="btns">
-        <Button variant="outlined" color="inherit" onClick={cancelEmail}>
-          Cancel</Button>
+        <Button variant="outlined" color="inherit" onClick={()=> handleClose()}>
+          Cancel
+        </Button>
         <Button
           sx={{
-            background: "black",
-            color: "white",
-            "&:hover": {
-              background:'white',
-              color: "inherit",
-              border: '1px solid black'
-            }
+            background: 'black',
+            color: 'white',
+            '&:hover': {
+              background: 'white',
+              color: 'inherit',
+              border: '1px solid black',
+            },
           }}
-          onClick={sendEmail}
+          onClick={handleSureClick}
         >
           Send
         </Button>
-
       </div>
+      <ToastContainer />
     </>
   );
 };

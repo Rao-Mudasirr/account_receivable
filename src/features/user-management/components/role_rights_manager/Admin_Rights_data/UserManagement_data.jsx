@@ -21,10 +21,14 @@ const styles = {
       backgroundColor: 'white',
       color: 'black',
     },
+    '& .MuiFormControlLabel-label': {
+      fontSize: '14px',
+    },
   },
 };
-
 const StyledTreeItem = withStyles(styles)(TreeItem);
+
+
 
 const checkBoxStyles = theme => ({
   root: {
@@ -41,13 +45,14 @@ const UserManagement_data = ({ checkboxData2 }) => {
   const data = checkboxData2;
 
   return (
-    <TreeView
+    <TreeView 
       aria-label="file system navigator"
       defaultCollapseIcon={<RemoveIcon />}
       defaultExpandIcon={<AddIcon />}
     >
       {data.map((item) => (
         <StyledTreeItem
+        sx={{fontSize: '1px'}}
           key={item.id}
           nodeId={item.id}
           label={

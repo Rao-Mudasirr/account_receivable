@@ -19,14 +19,20 @@ const styles = {
     '& .MuiTreeItem-content.Mui-selected': {
       backgroundColor: 'white',
     },
-    '& .MuiTreeItem-label:hover': {
-      backgroundColor: 'white',
-      color: 'black',
-    },
   },
 };
 
 const StyledTreeItem = withStyles(styles)(TreeItem);
+
+const labelstyles = theme => ({
+  root: {
+    '& .MuiFormControlLabel-label': {
+      fontSize: '14px',
+    },
+  },
+});
+
+const LabelStyle = withStyles(labelstyles)(FormControlLabel);
 
 
 const Clients = ({ checkboxData, onClickBtn }) => {
@@ -50,7 +56,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
     return checkboxData
       .filter(item => !item.parent)
       .map((item, index) => (
-        <FormControlLabel
+        <LabelStyle
           id={item.id}
           key={index}
           onClick={onClickBtn}
@@ -69,7 +75,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
         <StyledTreeItem
           nodeId={item.id}
           label={
-            <FormControlLabel control={<CustomCheckbox />} label={item.label} />
+            <LabelStyle control={<CustomCheckbox />} label={item.label} />
           }
         >
           {item.parent.childData.map((item2, index) => (
@@ -77,7 +83,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
               nodeId={item2.id}
               key={index}
               label={
-                <FormControlLabel
+                <LabelStyle
                   control={<CustomCheckbox />}
                   label={item2.label}
                 />

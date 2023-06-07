@@ -61,7 +61,8 @@ const UserManagement = () => {
           <Box sx={{ width: '100%' }}>
             <Box sx={{
               borderColor: 'divider',
-              marginTop: 5
+              marginTop: 5,
+              fontWeight: 400
             }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                 <Tab className={`${value === 0 && "manager-tab-active"} manager-tab`} label="Role & Rights" {...a11yProps(0)} sx={{  }} />
