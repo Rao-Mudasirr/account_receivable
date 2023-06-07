@@ -20,7 +20,7 @@ const TreeItemStyled = styled(TreeItem)`
   }
 
 `;
-const UserManagement = (checkboxData2) => {
+const UserManagement_data = (checkboxData2) => {
   const checkBoxStyles = theme => ({
     root: {
       '&$checked': {
@@ -67,4 +67,4 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 };
 
 
-export default UserManagement;
+export default UserManagement_data;

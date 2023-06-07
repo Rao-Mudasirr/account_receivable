@@ -10,6 +10,19 @@ import { styled } from '@mui/material/styles';
 import { withStyles } from '@material-ui/core';
 
 
+const TreeItemStyled = styled(TreeItem)`
+  color: black;
+  background-color:white;
+  .MuiTreeItem-content {
+    background-color:white
+  }
+
+  .MuiTreeItem-content.Mui-selected{
+    background-color:white;
+  }
+
+`;
+
 const Clients = ({ checkboxData, onClickBtn }) => {
 
   const checkBoxStyles = theme => ({
@@ -40,18 +53,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
       ));
   };
 
-  const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-
-  .MuiTreeItem-content.Mui-selected{
-    background-color:white;
-  }
-
-`;
+  
 
   const renderTreeViewData = () => {
     return checkboxData

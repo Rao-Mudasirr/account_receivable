@@ -8,6 +8,18 @@ import { styled } from '@mui/material/styles';
 import { withStyles } from '@material-ui/core';
 
 
+const TreeItemStyled = styled(TreeItem)`
+  color: black;
+  background-color:white;
+  .MuiTreeItem-content {
+    background-color:white
+  }
+  .MuiTreeItem-content.Mui-selected{
+    background-color:white;
+  }
+
+`;
+
 
 const Reports = ({ checkboxData, onClickBtn }) => {
 
@@ -24,19 +36,6 @@ const Reports = ({ checkboxData, onClickBtn }) => {
 
     const [data, setData] = useState([checkboxData])
     // console.log(data);
-
-    const TreeItemStyled = styled(TreeItem)`
-    color: black;
-    background-color:white;
-    .MuiTreeItem-content {
-      background-color:white
-    }
-  
-    .MuiTreeItem-content.Mui-selected{
-      background-color:white;
-    }
-  
-  `;
 
 
     return (

@@ -140,7 +140,7 @@ export const RolesRightsTable = () => {
         
             {openFormModal && <Update_role handleCloseFormModal={setOpenFormModal} />}
 
-            <Add_role />
+            {/* <Add_role /> */}
           </Typography>
         </Box>
       </Modal>

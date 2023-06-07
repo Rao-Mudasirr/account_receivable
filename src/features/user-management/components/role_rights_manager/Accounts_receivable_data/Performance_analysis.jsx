@@ -7,6 +7,17 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { withStyles } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 
+const TreeItemStyled = styled(TreeItem)`
+  color: black;
+  background-color:white;
+  .MuiTreeItem-content {
+    background-color:white
+  }
+  .MuiTreeItem-content.Mui-selected{
+    background-color:white;
+  }
+
+`;
 
 const checkBoxStyles = theme => ({
     root: {
@@ -19,23 +30,6 @@ const checkBoxStyles = theme => ({
 
 const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
-const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-
-  .MuiTreeItem-label:hover{
-    background-color:white
-    color:white
-  }
-
-  .MuiTreeItem-content.Mui-selected{
-    background-color:white;
-  }
-
-`;
 
 const Performance_analysis = ({ checkboxData }) => {
     const [data, setData] = useState([checkboxData])
