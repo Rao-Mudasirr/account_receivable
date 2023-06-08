@@ -10,6 +10,7 @@ import Overdue_Invoice from './pages/Overdue_Invoice';
 import View_Invoice from "./pages/View_invoice_details";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
+import Report from "./pages/Report";
 
 function App() {
   return (
@@ -66,6 +67,13 @@ function App() {
           path={"/clients"}
           element={
               <Clientdetails/>
+          }
+        />
+        <Route
+          exact
+          path={"/reports"}
+          element={
+              <Report />
           }
         />
             <Route path="/not-found" element={<h1>Not Found</h1>}/>
