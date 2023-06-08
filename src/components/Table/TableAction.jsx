@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Box, IconButton, darken } from "@mui/material";
 
 // @mui icons
@@ -9,22 +9,17 @@ import ShareIcon from "@mui/icons-material/Share";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import DiagreamIcon from "../../assests/svg/diagram.svg";
 import ViewIcon from "../../assests/svg/eye.png";
-import DeleteIcon from "../../assests/svg/trash.png"
-import EditIcon from "../../assests/svg/edit.png"
-import SettingIcon from "../../assests/svg/setting-4.png"
-import AddIcon from "../../assests/svg/add-circle.png"
-
+import DeleteIcon from "../../assests/svg/trash.png";
+import EditIcon from "../../assests/svg/edit.png";
+import SettingIcon from "../../assests/svg/setting-4.png";
+import AddIcon from "../../assests/svg/add-circle.png";
 
 import PrintIcon from "@mui/icons-material/Print";
 // import { ShareIcon } from "react-icons/fa";
 
 // ----------------------------------------------------------------------
 
-const TableAction = ({
-  type = "edit",
-  onClicked = () => {},
-  ...other
-}) => {
+const TableAction = ({ type = "edit", onClicked = () => {}, ...other }) => {
   return (
     <IconButton
       onClick={onClicked}
@@ -44,7 +39,6 @@ export default TableAction;
 const styles = {
   btnStyle: (theme, type) => {
     let backgroundColor = "#919EAB";
-    
 
     // switch (type) {
     //   case "add":
@@ -100,21 +94,11 @@ const styles = {
 // ----------------------------------------------------------------------
 // Icons Object
 const icons = {
-  edit: (
-    <img src={EditIcon} alt="edit" />
-  ),
-  delete: (
-    <img src={DeleteIcon} alt="delete" />
-  ),
-  view: (
-    <img src={ViewIcon} alt="view" />
-  ),
-  setting: (
-    <img src={SettingIcon} alt="view" />
-  ),
-  add: (
-    <img src={AddIcon} alt="add" />
-  ),
+  edit: <img src={EditIcon} alt="edit" />,
+  delete: <img src={DeleteIcon} alt="delete" />,
+  view: <img src={ViewIcon} alt="view" />,
+  setting: <img src={SettingIcon} alt="view" />,
+  add: <img src={AddIcon} alt="add" />,
   refresh: (
     <RefreshIcon
       fontSize="small"
@@ -142,8 +126,6 @@ const icons = {
   ),
   // header share icon
   headerShare: (
-    <ShareIcon
-      sx={{ color: "#fff", padding: "1px", fontSize: "25px" }}
-    />
+    <ShareIcon sx={{ color: "#fff", padding: "1px", fontSize: "25px" }} />
   ),
 };
