@@ -3,6 +3,7 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     align-items: flex-end;
+    overflow: auto;
 }
 
 .invoice-no_container h1 {

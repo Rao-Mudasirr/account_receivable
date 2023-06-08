@@ -1,9 +1,9 @@
 .users_container {
   max-width: fit-content;
+  max-height: fit-content;
   width: 620px;
   border-radius: 8px;
   font-family: 'Exo 2';
-  margin: 1rem 0;
 }
 
 @media (max-width: 600px) {

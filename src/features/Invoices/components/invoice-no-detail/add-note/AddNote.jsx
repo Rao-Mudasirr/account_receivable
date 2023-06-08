@@ -16,7 +16,7 @@ const AddNote = () => {
 
   return (
     <>
-      <h5>Note History</h5>
+      <h5 style={{marginBottom: "1rem"}}>Note History</h5>
       <Card className='addnote_container'>
         <div className='addnote_main'>
           <div className="addnote_header">

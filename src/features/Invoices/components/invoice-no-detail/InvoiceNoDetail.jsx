@@ -101,7 +101,7 @@ const InvoiceNoDetail = () => {
                 </div>
                 <RecentEmailTable />
             </div>
-            <div>
+            <div style={{height: "95%"}}>
                 <AddNote />
             </div>
         </div>
