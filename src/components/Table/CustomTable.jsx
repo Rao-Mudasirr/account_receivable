@@ -63,6 +63,7 @@ const EMPTY_ARRAY = [];
 // component
 const CustomTable = (props) => {
   const {
+    pageData,
     columns,
     data,
     isFetching = false,
@@ -206,52 +207,73 @@ const CustomTable = (props) => {
         </Box>
 
         {/* Pagination */}
-        <Grid container>
-          <Grid xs={12} item>
-            {isSuccess && Boolean(table?.getRowModel()?.rows?.length) && (
-              <Box sx={styles.currentPageBox}>
-                {isPagination && (
-                  <Box sx={{ marginRight: "auto" }}>
-                    <div className="pagination-style">
-                      <Stack spacing={2}>
-                        <Pagination
-                          count={10}
-                          shape="rounded"
-                          defaultPage={1}
-                          sx={{
-                            '& .MuiPaginationItem-rounded.Mui-selected': { backgroundColor: '#40404D', color: '#ffffff', border: '1px solid #777777', borderRadius: '7px', fontSize: '16px', fontFamily: 'Exo 2', fontStyle: 'normal', fontWeight: '400' }, // Change the font color of the selected number
-                            '& .MuiPaginationItem-root': { fontSize: '16px', fontFamily: 'Exo 2', fontStyle: 'normal', fontWeight: '400' }, // Change the font size of the numbers
-                            '& .MuiPaginationItem-icon': { color: '#777777', borderRadius: '10px' }, // Change the color of the next and previous icons
-                            '& .MuiPaginationItem-previousNext': { border: '1px solid #777777', borderRadius: '10px' }, // Example: Change the border radius of the next and previous buttons
-                          }}
-                      
-                        />
-                      </Stack>
-                    </div>
-                  </Box>
-                )}
-                {isPagination && (
-                   <TablePagination
-                   className="pagination-style"
-                   component="div"
-                   count={20}
-                   page={page}
-                   onPageChange={handleChangePage}
-                   rowsPerPage={rowsPerPage}
-                   onRowsPerPageChange={handleChangeRowsPerPage}
-                   labelRowsPerPage="Show: "
-                   labelDisplayedRows={({ from, to, count }) =>
-                     `Showing ${from}-${to} out of ${count}`
-                   }
-                   sx={{
-                    '& .MuiTablePagination-actions': {display: 'none'}
-                   }}
-                 />
-                )}
-              </Box>
-            )}
+        {pageData !== "clients-view" && (
+          <Grid container>
+            <Grid xs={12} item>
+              {isSuccess && Boolean(table?.getRowModel()?.rows?.length) && (
+                <Box sx={styles.currentPageBox}>
+                  {isPagination && (
+                    <Box sx={{ marginRight: "auto" }}>
+                      <div className="pagination-style">
+                        <Stack spacing={2}>
+                          <Pagination
+                            count={10}
+                            shape="rounded"
+                            defaultPage={1}
+                            sx={{
+                              "& .MuiPaginationItem-rounded.Mui-selected": {
+                                backgroundColor: "#40404D",
+                                color: "#ffffff",
+                                border: "1px solid #777777",
+                                borderRadius: "7px",
+                                fontSize: "16px",
+                                fontFamily: "Exo 2",
+                                fontStyle: "normal",
+                                fontWeight: "400",
+                              }, // Change the font color of the selected number
+                              "& .MuiPaginationItem-root": {
+                                fontSize: "16px",
+                                fontFamily: "Exo 2",
+                                fontStyle: "normal",
+                                fontWeight: "400",
+                              }, // Change the font size of the numbers
+                              "& .MuiPaginationItem-icon": {
+                                color: "#777777",
+                                borderRadius: "10px",
+                              }, // Change the color of the next and previous icons
+                              "& .MuiPaginationItem-previousNext": {
+                                border: "1px solid #777777",
+                                borderRadius: "10px",
+                              }, // Example: Change the border radius of the next and previous buttons
+                            }}
+                          />
+                        </Stack>
+                      </div>
+                    </Box>
+                  )}
+                  {isPagination && (
+                    <TablePagination
+                      className="pagination-style"
+                      component="div"
+                      count={20}
+                      page={page}
+                      onPageChange={handleChangePage}
+                      rowsPerPage={rowsPerPage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                      labelRowsPerPage="Show: "
+                      labelDisplayedRows={({ from, to, count }) =>
+                        `Showing ${from}-${to} out of ${count}`
+                      }
+                      sx={{
+                        "& .MuiTablePagination-actions": { display: "none" },
+                      }}
+                    />
+                  )}
+                </Box>
+              )}
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </Grid>
   );
