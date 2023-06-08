@@ -10,7 +10,7 @@ import {
   Grid,
   Box
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -99,7 +99,7 @@ const DateRangePicker = ({
           }}
         >
           <h3 style={{ color: "#000000", margin: 0 }}>Filters</h3>
-          <CloseIcon
+          <CancelOutlinedIcon
             onClick={onCloseDatePicker}
             style={{ cursor: "pointer", color: "#000000" }}
           />
@@ -135,36 +135,7 @@ const DateRangePicker = ({
         <Typography style={{ color: 'red', marginBottom: '8px' }}>
           {error}
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
-          <Typography style={{ flex: "1", marginLeft: "2px" }}>From</Typography>
-          <Typography style={{ flex: "1" }}>To</Typography>
-        </div>
-
-        <div style={{ marginTop: "20px" }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker", "DatePicker"]}>
-              <DatePicker
-                sx={{borderTop: '0px solid'}}
-                label="Start date"
-                variant="standared"
-                value={startDate}
-                onChange={(date) => handleDateChange(date, "Start date")}
-              />
-              <DatePicker
-              
-                label="End Date"
-                value={endDate}
-                onChange={(date) => handleDateChange(date, "End Date")}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
-        </div>
+      
         <Typography style={{ color: "red", marginBottom: "8px" }}>
           {error}
         </Typography>

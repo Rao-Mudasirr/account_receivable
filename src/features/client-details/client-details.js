@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Grid,
@@ -20,7 +20,7 @@ import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import GlobalModal from "../../components/global-modal/global-modal";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { green,pink } from '@mui/material/colors';
+import { green} from '@mui/material/colors';
 import playicon from '../../../src/assests/images/client/playicon.png';
 import pauseicon from '../../../src/assests/images/client/pauseicon.png';
 
@@ -86,7 +86,7 @@ const ClientDetails = () => {
       <Grid container spacing={3} >
         <Grid item xs={12} md={12} sx={{height:'8vh'}}>
         <div style={{display:'flex',justifyContent:'space-between'}}>
-          <Typography variant="h6" sx={{ fontSize: "22px"}}>
+          <Typography variant="h6" sx={{ fontSize: "20px",fontWeight:'600' }} className="font-family-exo2 tertiary-color">
             Client Details
           </Typography>
         
@@ -96,7 +96,7 @@ const ClientDetails = () => {
             <PauseCircleFilledIcon
               fontSize="large"
               color='red'
-              sx={{ color: pink[500] }}
+              sx={{ color: '#FF3F3F' }}
               onClick={handlePlayPause}
             />
           ) : (
@@ -127,19 +127,19 @@ const ClientDetails = () => {
         <Grid item xs={12} xl={10} md={12} sm={12} sx={{}}>
           <div
             className=""
-            style={{ display: "flex", justifyContent: "space-between",marginTop:'2px'}}
+            style={{ display: "flex", justifyContent: "space-between",marginTop:'2px',}}
           >
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center"}}>
               <Avatar
                 alt="Remy Sharp"
                 src={clientImage}
                 sx={{ width: "80px", height: "80px" }}
               />
-              <div style={{ padding: "8px", marginTop: "5px" }}>
-                <Typography variant="h6" sx={{ fontSize: "22px" }}>
+              <div style={{ padding: "8px", marginTop: "5px" ,marginLeft:'15px'}}>
+                <Typography variant="h6" sx={{ fontSize: "20px",fontWeight:'600' }} className="font-family-exo2 primary-color">
                   Jacob Bills
                 </Typography>
-                <Typography variant="body1" sx={{ fontSize: "14px" }}>
+                <Typography variant="body1" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
                   xyz@gmail.com
                 </Typography>
               </div>
@@ -177,7 +177,7 @@ const ClientDetails = () => {
         className=""
         sx={{
           display: "flex",
-          gap: "10px",
+          gap: "20px",
           '@media (max-width: 600px)': {
             display: 'block',
             gap: "40px",
@@ -185,36 +185,36 @@ const ClientDetails = () => {
           },
         }}
       >
-        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+        <Typography variant="body1" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
           Designation
         </Typography>
-        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+        <Typography variant="body1" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
           C.T.O
         </Typography>
       </Box>
-      <Box className="" style={{ display: "flex", gap: "10px" }}>
-        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+      <Box className="" style={{ display: "flex",   gap: "20px", }}>
+        <Typography variant="h6" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
           Phone
         </Typography>
-        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+        <Typography variant="body1" sx={{ fontSize: "14px" }}className="font-family-exo2 secondary-color">
           +44 667788
         </Typography>
       </Box>
-      <Box className="" style={{ display: "flex", gap: "10px" }}>
-        <Typography variant="h6" sx={{ fontSize: "14px" }}>
+      <Box  style={{ display: "flex",   gap: "20px", }} >
+        <Typography variant="h6" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
           Postal code
         </Typography>
-        <Typography variant="body1" sx={{ fontSize: "14px" }}>
+        <Typography variant="body1" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
           +44 667788
         </Typography>
       </Box>
     </Box>
               <div style={{ marginTop: "28px" }}>
-                <Box className="" style={{ display: "flex", gap: "50px" }}>
-                  <Typography variant="h6" sx={{ fontSize: "14px" }}>
+                <Box className="" style={{ display: "flex", gap: "20px" }}>
+                  <Typography variant="h6" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
                     Address
                   </Typography>
-                  <Typography variant="body1" sx={{ fontSize: "14px" }}>
+                  <Typography variant="body1" sx={{ fontSize: "14px" }} className="font-family-exo2 secondary-color">
                     96 Richmond Road London EC35 7CX
                   </Typography>
                 </Box>
@@ -228,13 +228,13 @@ const ClientDetails = () => {
               className=""
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Typography variant="h6" sx={{ fontSize: "14px" }}>
+              <Typography variant="body1" sx={{ fontSize: "16px" ,fontWeight:'400'}} className="font-family-exo2 primary-color">
                 Outstanding Amount
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ fontSize: "14px" }}
-                className="yellow-color"
+                sx={{ fontSize: "16px" ,fontWeight:'400'}}
+                className="yellow-color font-family-exo2"
               >
                 £10245
               </Typography>
@@ -246,13 +246,13 @@ const ClientDetails = () => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="h6" sx={{ fontSize: "14px" }}>
+              <Typography variant="body1"sx={{ fontSize: "16px" ,fontWeight:'400'}} className="font-family-exo2 primary-color">
                 Overdue Amount
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ fontSize: "14px" }}
-                className="error-color"
+                className="error-color font-family-exo2"
               >
                 £1245
               </Typography>
@@ -292,16 +292,17 @@ const ClientDetails = () => {
                  }}
                >
                  <Typography
-                   variant="h6" 
+                   variant="body1" 
                    sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
                    onClick={() => invoicesStatusChangeHandler("Due")}
+                   className="font-family-exo2"
                  >
                    Due Invoices
                  </Typography>
                  <Typography
                    variant="body1"
                    sx={{ fontSize: "14px", ml: -2 }}
-                   className="yellow-color"
+                   className="yellow-color font-family-exo2"
                  >
                    120
                  </Typography>
@@ -316,8 +317,8 @@ const ClientDetails = () => {
                  }}
                >
                  <Typography
-                   variant="h6"
-                   sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
+                   variant="body1"
+                   sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer',className:'font-family-exo2'}}
                    onClick={() => invoicesStatusChangeHandler("Overdue")}
                  >
                    Overdue Invoices
@@ -325,7 +326,7 @@ const ClientDetails = () => {
                  <Typography
                    variant="body1"
                    sx={{ fontSize: "14px" }}
-                   className="error-color"
+                   className="error-color font-family-exo2"
                  >
                    60
                  </Typography>
@@ -341,16 +342,17 @@ const ClientDetails = () => {
                  }}
                >
                  <Typography
-                   variant="h6"
+                   variant="body1"
                    sx={{ fontSize: "14px", textDecoration: "underline", cursor: 'pointer' }}
                    onClick={() => invoicesStatusChangeHandler('Paid')}
+                   className="font-family-exo2"
                  >
                    Paid Invoices
                  </Typography>
                  <Typography
                    variant="body1"
                    sx={{ fontSize: "14px"}}
-                   className="client-details-invoice-title"
+                   className="client-details-invoice-title font-family-exo2"
                  >
                    60
                  </Typography>
@@ -368,8 +370,10 @@ const ClientDetails = () => {
             onChange={handleTabChange}
             sx={{
               "& .MuiTabs-indicator": {
-                backgroundColor: "#000000",
+                backgroundColor: "#40404D",
+                textTransform: 'capitalize',
               },
+             
             }}
           >
             {TabData.map((tab, index) => (
@@ -378,9 +382,13 @@ const ClientDetails = () => {
                 label={tab.label}
                 sx={{
                   "&.Mui-selected": {
-                    color: "#000000",
+                    color: "#40404D",
+                    fontSize:'16px',
+                    fontWeight:'400',
+                    textTransform: 'capitalize',
                   },
                 }}
+                className="font-family-exo2"
               />
             ))}
           </Tabs>

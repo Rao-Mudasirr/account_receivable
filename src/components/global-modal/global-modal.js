@@ -49,7 +49,7 @@ const GlobalModal = (props) => {
                   }}
                 >
                   <Box sx={{ pt: "40px", textAlign: "center" }}>
-                    <Typography variant="h3" sx={Styles.heading}>
+                    <Typography variant="h3" sx={Styles.heading} className="font-family-exo2" >
                       Are you sure?
                     </Typography>
                     <Typography
@@ -58,8 +58,9 @@ const GlobalModal = (props) => {
                         fontWeight: "400",
                         color: "#2B2B33",
                         fontSize: "14px",
-                        pt: 3,
-                      }}
+                        mt: 3,
+                      }} 
+                      className="font-family-exo2"
                     >
                       {modalText}
                     </Typography>
@@ -68,12 +69,14 @@ const GlobalModal = (props) => {
                     <Button
                       onClick={onSureClick}
                       sx={Styles.buttonError(theme)}
+                      className="font-family-exo2"
                     >
                       Yes, Sure
                     </Button>
                     <Button
                       onClick={handleClose}
                       sx={Styles.buttonSuccess(theme)}
+                      className="font-family-exo2"
                     >
                       Cancel
                     </Button>
@@ -107,12 +110,12 @@ const Styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    // pt: "10px"
+    pt: "10px"
   }),
   buttonWrapper: (theme) => ({
     display: "flex",
     justifyContent: "center",
-    gap: "12px",
+    gap: "14px",
     mt: 6,
     mb: 3.5,
   }),

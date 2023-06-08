@@ -16,12 +16,24 @@ const Notifications = ({checkboxData, onClickBtn}) => {
        })
     
     const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+
+    const labelstyles = theme => ({
+        root: {
+          '& .MuiFormControlLabel-label': {
+            fontSize: '14px',
+          },
+        },
+      });
+      
+      const LabelStyle = withStyles(labelstyles)(FormControlLabel);
+
+
     return (
         <FormGroup>
             {checkboxData.map((item, index) => {
                 return (
 
-                    <FormControlLabel id={item.id}
+                    <LabelStyle id={item.id}
                     key={index}
                     onClick={onClickBtn}
                         control={<CustomCheckbox/>}

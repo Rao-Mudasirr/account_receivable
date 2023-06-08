@@ -131,7 +131,7 @@ export const UserAccessTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 2, mt: -4 }}>
+      <Card sx={{ p: 2, mt: -2 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <GlobalSearchBar
             value={searchQuery}

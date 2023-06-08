@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 // import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 // Tantack table
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 // components
 import TableSkeleton from "./TableSkeleton";
 import NoContentFound from "./NoContentFound";
@@ -27,11 +26,13 @@ import {
   Table,
   Box,
   tableCellClasses,
+  TablePagination,
 } from "@mui/material";
 
 // @mui icons
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Padding } from "@mui/icons-material";
 
 // ----------------------------------------------------------------------
 // types
@@ -79,6 +80,17 @@ const CustomTable = (props) => {
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
+  const [page, setPage] = React.useState(2);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
   const theme = useTheme();
   // Handling sort using useRef
   const refSortData = (() => {
@@ -130,7 +142,7 @@ const CustomTable = (props) => {
   if (isLoading) return <TableSkeleton />;
 
   return (
-    <Grid container sx={{ position: "relative", ...rootSX}}>
+    <Grid container sx={{ position: "relative", ...rootSX }}>
       <IsFetching isFetching={isFetching} />
       <Grid xs={12} item>
         {/* Table Container */}
@@ -200,33 +212,42 @@ const CustomTable = (props) => {
               <Box sx={styles.currentPageBox}>
                 {isPagination && (
                   <Box sx={{ marginRight: "auto" }}>
-                    {/* <Pagination
-                      sx={styles.pagination}
-                      showFirstButton
-                      showLastButton
-                      hidePrevButton
-                      hideNextButton
-                      size="small"
-                      variant="outlined"
-                      shape="rounded"
-                      count={totalPages}
-                      page={currentPage}
-                      onChange={(e, page) => {
-                        onPageChange(page);
-                      }}
-                    /> */}
                     <div className="pagination-style">
                       <Stack spacing={2}>
-                        <Pagination count={10} />
+                        <Pagination
+                          count={10}
+                          shape="rounded"
+                          defaultPage={1}
+                          sx={{
+                            '& .MuiPaginationItem-rounded.Mui-selected': { backgroundColor: '#40404D', color: '#ffffff', border: '1px solid #777777', borderRadius: '7px', fontSize: '16px', fontFamily: 'Exo 2', fontStyle: 'normal', fontWeight: '400' }, // Change the font color of the selected number
+                            '& .MuiPaginationItem-root': { fontSize: '16px', fontFamily: 'Exo 2', fontStyle: 'normal', fontWeight: '400' }, // Change the font size of the numbers
+                            '& .MuiPaginationItem-icon': { color: '#777777', borderRadius: '10px' }, // Change the color of the next and previous icons
+                            '& .MuiPaginationItem-previousNext': { border: '1px solid #777777', borderRadius: '10px' }, // Example: Change the border radius of the next and previous buttons
+                          }}
+                      
+                        />
                       </Stack>
                     </div>
                   </Box>
                 )}
-                     {isPagination && (
-                        <Typography className="pagination-style" sx={styles.currentPage(theme)} component={"span"}>
-                          Showing {currentPage} of {totalPages}
-                        </Typography>
-                      )}
+                {isPagination && (
+                   <TablePagination
+                   className="pagination-style"
+                   component="div"
+                   count={20}
+                   page={page}
+                   onPageChange={handleChangePage}
+                   rowsPerPage={rowsPerPage}
+                   onRowsPerPageChange={handleChangeRowsPerPage}
+                   labelRowsPerPage="Show: "
+                   labelDisplayedRows={({ from, to, count }) =>
+                     `Showing ${from}-${to} out of ${count}`
+                   }
+                   sx={{
+                    '& .MuiTablePagination-actions': {display: 'none'}
+                   }}
+                 />
+                )}
               </Box>
             )}
           </Grid>
@@ -281,9 +302,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   // hide last border
   " &:last-child th": {
     backgroundColor:
-      theme.palette.mode === "light"
-        ? alpha("#BEBEBE", 0.12)
-        : "#454F5B",
+      theme.palette.mode === "light" ? alpha("#BEBEBE", 0.12) : "#454F5B",
     backdropFilter: " blur(20px)",
 
     // border: 0,
@@ -309,8 +328,7 @@ const styles = {
     },
     maxHeight: 560,
     mt: theme.palette.mode === "dark" ? 0.5 : 0,
-    backgroundColor:
-      theme.palette.mode === "light" ? "#fff" : "#212B36",
+    backgroundColor: theme.palette.mode === "light" ? "#fff" : "#212B36",
     ...tableContainerSX,
   }),
   cell: {
