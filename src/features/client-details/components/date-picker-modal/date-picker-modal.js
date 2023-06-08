@@ -5,8 +5,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Typography,Box} from '@mui/material';
   import "./date-picker-modal.scss"
-import { ClassNames } from '@emotion/react';
-
 
 const DatePickerModal=( )=> {
   const [startDate, setStartDate] = useState(null);
