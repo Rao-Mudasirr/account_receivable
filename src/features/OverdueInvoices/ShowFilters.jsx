@@ -14,11 +14,18 @@ function ShowFilters({handleClick, filter_type, isOpen}) {
                 // height: '376px',
                 position: "absolute",
                 right: "50px",
-                zIndex: 10,
+                zIndex: 999,
                 padding: "24px",
-                marginTop: "7px",
-                boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
-                borderRadius: "8px",
+                marginTop: "12px",
+                background: '#FFFFFF',
+                boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.16)',
+                borderRadius: '8px',
+                
+                '@media (max-width: 768px)': {
+                  width: 'auto',
+                  padding:'20px',
+                  margin:'10px',
+                },
               }}
             >
               {/* <ul> */}
