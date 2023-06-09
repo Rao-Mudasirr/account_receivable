@@ -131,7 +131,7 @@ const ViewWorkflow = () => {
       accessorFn: (row) => row.clients,
       id: "clients",
       cell: (info) => (
-        <Link style={{ color: "#0084AD" }} to={"/clients"}>
+        <Link style={{ color: "#0084AD" }} to={`/workflows/clients/${info.row.id}`}>
           ({info.getValue()})
         </Link>
       ),

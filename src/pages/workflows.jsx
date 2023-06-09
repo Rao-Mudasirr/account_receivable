@@ -1,12 +1,11 @@
 import React from "react";
+import { Outlet, useOutlet } from "react-router-dom";
 import WorkflowPage from "../features/workflows-page/WorkflowPage";
 
 const Workflow = () => {
-  return (
-    <div>
-      <WorkflowPage />
-    </div>
-  );
+  const outlet = useOutlet();
+
+  return <>{outlet ? <Outlet /> : <WorkflowPage />}</>;
 };
 
 export default Workflow;
