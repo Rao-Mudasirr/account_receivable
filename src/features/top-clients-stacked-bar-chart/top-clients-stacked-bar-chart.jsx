@@ -10,16 +10,16 @@ export const TopClientsStackedBarChart = () => {
 
     return (
         <>
-            <Grid container sx={{ overflow: 'auto' }} >
-                <Grid className='no-scrollbar' item xs={12} height={254} sx={{ width:'254px',overflow: 'auto' }}>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(item => <Grid key={item} container className='flex align-center' spacing={2}>
-                        <Grid item xs={2} className='flex align-center'>
+            <Grid container >
+                <Grid className='no-scrollbar' item xs={12} height={254} sx={{ overflowY: 'auto' }}>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(item => <Grid key={item} container className='flex align-center justify-space-between' spacing={2}>
+                        <Grid item md={2} sm={2.5} xs={3.5} className='flex align-center'>
                             <Box>
                                 <img width={24} height={24} src={TempImage} alt='Client Name' className='border-radius-rounded' />
                             </Box>
                             <Box sx={{ ml: '8px' }} className="secondary-color tertiary-title">Client Name</Box>
                         </Grid>
-                        <Grid item xs={9} >
+                        <Grid item md={9} sm={8} xs={7}>
                             <Grid container className='lined-bg' sx={{ borderRadius: '12px', py: '10px' }}>
                                 {
                                     [44, 55, 41].map((item, i) => <AppTooltip key={item} className="font-family-Exo" message={`£${item}`} arrow={false} fontSize='12px'>
@@ -31,7 +31,7 @@ export const TopClientsStackedBarChart = () => {
                                 }
                             </Grid>
                         </Grid>
-                        <Grid className='tertiary-title link-color font-weight-600' item xs={1}>
+                        <Grid className='tertiary-title link-color font-weight-600 end-text' md={1} item sm={1.5} xs={1.5}>
                             £{[44, 55, 41].reduce((partialSum, val) => partialSum + val, 0)}
                         </Grid>
                     </Grid>)
