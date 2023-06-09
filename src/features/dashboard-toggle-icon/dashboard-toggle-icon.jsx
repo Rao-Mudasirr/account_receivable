@@ -4,6 +4,7 @@ import BarChartIcon from "../../assests/svg/dashboard/bar-chart-icon.svg";
 import BarChartIconActive from "../../assests/svg/dashboard/bar-chart-active.svg";
 import PieChartIcon from "../../assests/svg/dashboard/pie-chart-icon.svg";
 import PieChartIconActive from "../../assests/svg/dashboard/pie-chart-active.svg";
+import { Box } from '@mui/material';
 const dashboardToggleIconData = [
   {
     id: '0',
@@ -19,12 +20,12 @@ const dashboardToggleIconData = [
 export const DashboardToggleIcon = ({ chartSwitch, setSwitch }) => {
   return (
     <>
-      <div className="flex justify-between align-center margin-left-1">
+      <Box sx={{ml:{sm:'1.6rem',xs:'10px'}}} className="flex justify-between align-center">
         {
           dashboardToggleIconData.map(item => <div key={item.id} className='margin-right-0 cursor-pointer' onClick={() => setSwitch(item.id)} >
             <img src={item.id === chartSwitch ? item.activeIcon : item.icon} alt="money-trees" />
           </div>)}
-      </div>
+      </Box>
     </>
   )
 }
