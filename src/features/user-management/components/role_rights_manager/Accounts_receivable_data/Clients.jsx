@@ -9,17 +9,30 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { withStyles } from '@material-ui/core';
 
-const TreeItemStyled = styled(TreeItem)`
-  color: black;
-  background-color:white;
-  .MuiTreeItem-content {
-    background-color:white
-  }
-  .MuiTreeItem-content.Mui-selected{
-    background-color:white;
-  }
+const styles = {
+  root: {
+    color: 'black',
+    backgroundColor: 'white',
+    '& .MuiTreeItem-content': {
+      backgroundColor: 'white',
+    },
+    '& .MuiTreeItem-content.Mui-selected': {
+      backgroundColor: 'white',
+    },
+  },
+};
 
-`;
+const StyledTreeItem = withStyles(styles)(TreeItem);
+
+const labelstyles = theme => ({
+  root: {
+    '& .MuiFormControlLabel-label': {
+      fontSize: '14px',
+    },
+  },
+});
+
+const LabelStyle = withStyles(labelstyles)(FormControlLabel);
 
 
 const Clients = ({ checkboxData, onClickBtn }) => {
@@ -43,7 +56,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
     return checkboxData
       .filter(item => !item.parent)
       .map((item, index) => (
-        <FormControlLabel
+        <LabelStyle
           id={item.id}
           key={index}
           onClick={onClickBtn}
@@ -59,29 +72,29 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
     return checkboxData
       .filter(item => item.parent)
       .map(item => (
-        <TreeItemStyled
+        <StyledTreeItem
           nodeId={item.id}
           label={
-            <FormControlLabel control={<CustomCheckbox />} label={item.label} />
+            <LabelStyle control={<CustomCheckbox />} label={item.label} />
           }
         >
           {item.parent.childData.map((item2, index) => (
-            <TreeItemStyled
+            <StyledTreeItem
               nodeId={item2.id}
               key={index}
               label={
-                <FormControlLabel
+                <LabelStyle
                   control={<CustomCheckbox />}
                   label={item2.label}
                 />
               }
             />
           ))}
-        </TreeItemStyled>
+        </StyledTreeItem>
       ));
   };
 
-  return (
+  return ( 
     <>
       <Box sx={{ ml: 3.8 }}>
         <FormGroup>{renderSimpleData()}</FormGroup>

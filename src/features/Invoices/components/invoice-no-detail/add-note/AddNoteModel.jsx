@@ -2,12 +2,12 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useTheme } from "@emotion/react";
-import { Backdrop, Button, Grid, TextField, Typography,Textarea } from "@mui/material";
+import { Backdrop, Button, Grid, TextField, Typography, Textarea } from "@mui/material";
 import CloseIcon from "../../../../../assests/svg/close-circle.png";
 import { CheckBox, Maximize } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { TextareaAutosize } from "@material-ui/core";
-//---icons
+import './addnote.css'
 
 const AddNoteModel = (props) => {
     //---usestate handlers and themes
@@ -37,18 +37,19 @@ const AddNoteModel = (props) => {
                                 <img src={CloseIcon} alt="close" />
                             </Link>
                         </div>
-                        <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+                        <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "2rem" }}>
                             <CheckBox />
-                            Send Email Remainder
+                            Send Email Reminder
                         </div>
-                        <div style={{ textAlign: "center", marginTop: "2rem"}}>
+                        <div style={{ textAlign: "center", marginTop: "2rem" }}>
                             <TextareaAutosize
-                            minRows={10}
-                                style={{backgroundColor: "#F2F2F2", width: "100%", resize: "none", borderRadius: "4px"}}
+                                minRows={11}
+                                className="add-model_textarea"
                                 placeholder="Write your note"
+                                style={Styles.textArea(theme)}
                             ></TextareaAutosize>
                         </div>
-                        <div style={{marginTop: "2rem", textAlign: "end"}}>
+                        <div style={{ marginTop: "2rem", textAlign: "end" }}>
                             <Button
                                 onClick={onDeleteClick}
                                 sx={Styles.buttonError(theme)}
@@ -59,8 +60,8 @@ const AddNoteModel = (props) => {
                     </div>
 
                 </Box>
-            </Modal>
-        </Box>
+            </Modal >
+        </Box >
     );
 };
 
@@ -89,5 +90,12 @@ const Styles = {
         textTransform: 'capitalize',
         fontWeight: "400",
         borderRadius: "8px"
-      }),
+    }),
+    textArea: (theme) => ({
+        backgroundColor: "#F2F2F2",
+        width: "100%",
+        resize: "none",
+        borderRadius: "4px",
+        border: "none"
+    }),
 };

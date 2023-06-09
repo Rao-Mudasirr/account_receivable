@@ -1,8 +1,9 @@
 .users_container {
-  justify-content: center;
-  width: 586px;
+  max-width: fit-content;
+  width: 620px;
   border-radius: 8px;
   font-family: 'Exo 2';
+  margin: 1rem 0;
 }
 
 .edituser_header {
@@ -18,8 +19,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-bottom: 2rem;
-  margin-right: 0.5rem;
+  margin-right: -1.5rem;
+  margin-bottom: 1rem;
   color: rgba(64, 64, 77, 1);
 }
 
@@ -68,7 +69,7 @@
   display: flex;
   justify-content: flex-end; 
   gap: 1rem;
-  margin-top: 5rem;
+  margin-top: 6.5rem;
 }
 
 .useredit_btn>Button:nth-child(1) {

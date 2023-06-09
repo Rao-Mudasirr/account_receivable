@@ -23,7 +23,7 @@ const InvoiceNoDetail = () => {
                 <div className='invoice-no_mid'>
                     <div className='invoice-no_details'>
                         <div>
-                            <h3>Invoice 1345<span style={{ backgroundColor: "lightgreen", color: "#48995D", marginLeft: "10px", padding: "8px", borderRadius: "8px" }}>Paid</span></h3>
+                            <h3 style={{marginTop: "1.7rem"}}>Invoice 1345<span className='invoice-no_paid'>Paid</span></h3>
                             <p>Issue Date</p>
                             <p>Due Date</p>
                             <h4>Total Amount</h4>
@@ -34,6 +34,7 @@ const InvoiceNoDetail = () => {
                                 color="primary"
                                 onClick={handleOpen}
                                 sx={{
+                                    marginTop: "1.3rem",
                                     color: "#40404D",
                                     borderColor: "#40404D",
                                     borderRadius: '8px',
@@ -45,11 +46,11 @@ const InvoiceNoDetail = () => {
                             >
                                 View Invoice
                             </Button>
-                            <ViewInvoice 
-                                open = {open}
+                            <ViewInvoice
+                                open={open}
                                 handleClose={handleClose}
                                 handleOpen={handleOpen}
-                             />
+                            />
                             <p>19/07/2022</p>
                             <p>19/07/2023</p>
                             <h4>£ 7100.00</h4>
@@ -57,10 +58,10 @@ const InvoiceNoDetail = () => {
                     </div>
 
 
-                    <Card className='invoice-no_overdue' sx={{ backgroundColor: "#F0F0F2" }}>
+                    <Card className='invoice-no_overdue' sx={{ backgroundColor: "#F0F0F2", boxShadow: "none" }}>
                         <div className='overdue_inner'>
                             <h2>Overdue Invoices</h2>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div className='invoice-no_overdues'>
                                 <div>
                                     <p>Invoice 1140</p>
                                     <p>Invoice 1171</p>
@@ -77,11 +78,13 @@ const InvoiceNoDetail = () => {
                                     variant="outlined"
                                     color="primary"
                                     onClick={AllOverdue}
+                                    fontFamily="Exo 2"
                                     sx={{
                                         backgroundColor: "#fff",
                                         color: "#40404D",
                                         borderColor: "#40404D",
                                         paddingX: "5rem",
+                                        fontFamily: "Exo 2",
                                         mt: "1rem",
                                         borderRadius: '8px',
                                         "&:hover": {

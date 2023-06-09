@@ -3,7 +3,7 @@
 //fontfamilies
 
 .font-family-exo2 {
-  font-family: 'Exo 2', sans-serif !important;
+  font-family: $font-family-Exo !important;
 }
 
 
@@ -95,7 +95,7 @@
 }
 
 .tertiary-color{
-  $tertiary-color: #8C8C9E;
+  $tertiary-color: #40404D;
 }
 .yellow-color{
   color:$yellow-color;

@@ -107,6 +107,10 @@ export const UsersTable = () => {
         setOpenForm={setOpenForm}
         handleFormDialog={handleFormDialog}
         handleCloseForm={handleCloseForm} />
+      <AddUser openForm={openForm}
+        setOpenForm={setOpenForm}
+        handleFormDialog={handleFormDialog}
+        handleCloseForm={handleCloseForm} />
     </>
   );
 };
