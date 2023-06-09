@@ -22,6 +22,7 @@ import GlobalModal from "../../../components/global-modal/global-modal";
 import { toast } from "react-toastify";
 import editIcon from "../../../assests/images/client/editIcon.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import GlobalButton from "../../../components/global-button/global-button";
 
 const WorkflowDetails = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -77,11 +78,10 @@ const WorkflowDetails = () => {
         </div>
         <div
           style={{ marginLeft: "auto", gap: "10px" }}
-          className="tabal-header"
+          className="invoices-tabal-header"
         >
           {clickedRowIndex !== -1 && (
             <Button
-              className="change-workflow-btn  font-family-exo2"
               variant="contained"
               width="122px"
               height="32px"
@@ -95,7 +95,7 @@ const WorkflowDetails = () => {
                 "&:hover": {
                   background: "#2B2B33",
                 },
-                '@media (max-width: 425px)': {
+                '@media (max-width: 600px)': {
                   width:'100%'
                 },
               }}
@@ -104,26 +104,10 @@ const WorkflowDetails = () => {
               Change Workflow
             </Button>
           )}
-          <Button
+          <GlobalButton
             variant="outlined"
-            className="outlined-filter-btn tertiary-color filter-btn font-family-exo2"
-            sx={{
-              mr: 2,
-              color: "#40404D",
-              borderColor: "#40404D",
-              width: "122px",
-              padding: "8px",
-              height: "32px",
-              border: "1.5px solid #40404D",
-              fontWeight: 400,
-              fontSize: "0.75rem",
-              borderRadius: "8px",
-              textTransform: "capitalize",
-              "&:hover": {
-                borderColor: "black",
-                color: "black",
-              },
-            }}
+            className="invoice-second-btn"
+            btnText=" More Filter"
             endIcon={
               <img src={filterIcon} alt="More Filter" width={16} height={16} />
             }
@@ -131,9 +115,9 @@ const WorkflowDetails = () => {
               setType("More");
               modalClickHandlar();
             }}
-          >
-            More Filter
-          </Button>
+          />
+           
+         
           <CardFilter
             filter_type={type}
             handleClick={modalClickHandlar}
