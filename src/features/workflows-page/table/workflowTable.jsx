@@ -12,7 +12,7 @@ const WorkflowTable = ({ INVOICE_DATA, columns, paginationClass }) => {
         // onSortByChange={sortChangeHandler}
         paginationClass={paginationClass}
         isSuccess={true}
-        isPagination={true}
+        isPagination={false}
       />
     </>
   );

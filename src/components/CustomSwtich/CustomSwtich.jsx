@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Switch } from "@mui/material";
 import React from "react";
 
-const CustomSwitch = () => {
+const CustomSwitch = ({ ...props }) => {
   const Android12Switch = styled(Switch)(() => ({
     padding: 8,
     "& .MuiSwitch-track": {
@@ -30,7 +30,7 @@ const CustomSwitch = () => {
   }));
   return (
     <div>
-      <Android12Switch />
+      <Android12Switch {...props} />
     </div>
   );
 };

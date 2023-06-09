@@ -1,0 +1,38 @@
+.custom-input-1 {
+  .input_label {
+    display: flex;
+    color: #6b6b80;
+    margin-bottom: 10px;
+  }
+  .hide_label .asterisk {
+    display: none;
+  }
+  .usersform_textfield {
+    width: 240px;
+    text-align: start;
+    &::after {
+      display: none !important;
+    }
+
+    input {
+      padding: 4px 10px;
+      border: none;
+      .MuiInput-underline {
+        border: 0;
+      }
+    }
+  }
+
+  &:hover {
+    font-weight: 600;
+    label {
+      font-weight: 600;
+    }
+    .usersform_textfield {
+      border-bottom: 1px solid black;
+      &::before {
+        display: none !important;
+      }
+    }
+  }
+}
