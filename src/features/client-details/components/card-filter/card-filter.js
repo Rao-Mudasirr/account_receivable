@@ -1,45 +1,38 @@
 import React from 'react';
-import { Button, Card, Typography } from '@mui/material';
+import { Button, Card, Typography ,Box} from '@mui/material';
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import ExportModal from '../export-modal/export-modal';
 import DatePickerModal from '../date-picker-modal/date-picker-modal';
 import './card.scss';
 
 const CardFilter=({handleClick, filter_type, isOpen,})=> {
-  const cardStyle = {
-    zIndex: '999', // Set the desired z-index value
-       width: "592px",
-                // height: '376px',
-                position: "absolute",
-                right: "50px",
-                padding: "24px",
-                marginTop: "12px",
-                boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
-                borderRadius: "8px",
-                '@media (max-width: 600px)': {
-                  width: 'auto',
-                  padding:'20px'
-                },
-  };
+  
     
   return (
     <div>
           {isOpen && (
             <Card
-              // sx={{
+              sx={{
 
-              //   width: "592px",
-              //   // height: '376px',
-              //   position: "absolute",
-              //   right: "50px",
-              //   zIndex: 10,
-              //   padding: "24px",
-              //   marginTop: "12px",
-              //   boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
-              //   borderRadius: "8px",
+                width: "592px",
+                // height: '376px',
+                position: "absolute",
+                right: "50px",
+                zIndex: 999,
+                padding: "24px",
+                marginTop: "12px",
+                background: '#FFFFFF',
+                boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.16)',
+                borderRadius: '8px',
                 
-              // }}
-              style={cardStyle}
+                '@media (max-width: 768px)': {
+                  width: 'auto',
+                  padding:'20px',
+                  margin:'10px',
+                },
+                
+              }}
+            
             >
               {/* <ul> */}
              
@@ -61,19 +54,29 @@ const CardFilter=({handleClick, filter_type, isOpen,})=> {
             }
               {/* </ul> */}
              
-              <div
+              <Box
                 className="filter-below-btn"
-                style={{ display: "flex", float: "right",marginTop:'40px'}}
+                sx={{ display: "flex", float: "right",marginTop:'40px', '@media (max-width: 600px)': {
+                  flexDirection:'column',
+                  alignItems:'center',
+                  justifyContent:'center',
+                  float:'none',
+                },}}
               >
                 <Button className="btn1 font-family-exo2 " onClick={handleClick}
                 sx={{
-                    // color: '#000000',
-                    // borderColor: '#000000',
+                    
+
                     marginRight: '8px',
+                    '@media (max-width: 600px)': {
+                     width:'100%',
+                     
+                    },
                     '&:hover': {
                       borderColor: '#000000',
                       color: '#000000',
-                    }}}
+                    }
+                  }}
                   
                     >
                   Clear
@@ -89,7 +92,7 @@ const CardFilter=({handleClick, filter_type, isOpen,})=> {
                    },
                  }}
                  >Apply</Button>
-              </div>
+              </Box>
             </Card>
           )}
     </div>
