@@ -10,6 +10,8 @@ import Overdue_Invoice from './pages/Overdue_Invoice';
 import View_Invoice from "./pages/View_invoice_details";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
+import MainReport from "./pages/MainReport";
+import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 
 function App() {
@@ -69,6 +71,20 @@ function App() {
               <Clientdetails/>
           }
         />
+        <Route
+          exact
+          path={"/reports"}
+          element={
+              <MainReport />
+          }
+        />
+        <Route
+          exact
+          path={"/report-details/:id"}
+          element={
+              <Report_Info />
+          }
+          />
          <Route
           exact
           path={"/settings"}
