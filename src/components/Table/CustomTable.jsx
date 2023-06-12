@@ -214,7 +214,9 @@ const CustomTable = (props) => {
                 <Box sx={styles.currentPageBox}>
                   {isPagination && (
                     <Box sx={{ marginRight: "auto" }}>
-                      <div className="pagination-style">
+                      <div
+                        className={`pagination-style ${props.paginationClass}`}
+                      >
                         <Stack spacing={2}>
                           <Pagination
                             count={10}
@@ -253,7 +255,7 @@ const CustomTable = (props) => {
                   )}
                   {isPagination && (
                     <TablePagination
-                      className="pagination-style"
+                      className={`pagination-style ${props.paginationClass}`}
                       component="div"
                       count={20}
                       page={page}
