@@ -10,7 +10,8 @@ import { Button } from '@mui/material';
 const Add_role = () => {
 
     return (
-        <Box>
+        <>
+        <Box sx={{ width: '592px', height: '416px', border:'8px' }}>
             <CardContent>
                 <Typography sx={{
                     fontSize: 20,
@@ -61,11 +62,11 @@ const Add_role = () => {
                     <Button variant="outlined" color="inherit" >
                         Cancel</Button>
                     <Button sx={{
-                        background: "black",
+                        background: "#2B2B33",
                         color: "white",
                         "&:hover": {
-                            background: 'white',
-                            color: "inherit",
+                            background: 'black',
+                            color: "white",
                             border: '1px solid black'
                         }
                     }}>Add</Button>
@@ -74,6 +75,7 @@ const Add_role = () => {
             </CardContent>
 
         </Box >
+        </>
     );
 }
 

@@ -68,6 +68,7 @@ const Manager = () => {
           <Dashboard
             checkboxData={formControlData.find((data) =>
               data.id === 'dashboard').switchOptions}
+              handleSwitchChange={handleSwitchChange}
           />
         );
       case 'invoices':
