@@ -135,7 +135,6 @@ function OverdueInvoices() {
     <React.Fragment>
      
         <div className="invoice-title">Overdue Invoices</div>
-
         {/* Search field */}
         <Grid container>
         <Grid xs={12} md={6} lg={6} xl={6}>
