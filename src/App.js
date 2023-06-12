@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import MainReport from "./pages/MainReport";
 import Report_Info from "./pages/Report_Info";
-
+import DashboaedSettings from "./pages/dashboard-settings";
 
 function App() {
   return (
@@ -83,6 +83,13 @@ function App() {
           path={"/report-details/:id"}
           element={
               <Report_Info />
+          }
+          />
+         <Route
+          exact
+          path={"/settings"}
+          element={
+             <DashboaedSettings/>
           }
         />
             <Route path="/not-found" element={<h1>Not Found</h1>}/>
