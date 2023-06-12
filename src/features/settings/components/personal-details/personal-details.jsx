@@ -1,14 +1,12 @@
 import { Grid, Typography } from '@mui/material'
 import React from 'react'
+import ContactDetails from '../contact-details/contact-details'
 
 const PersonalDetails = () => {
   return (
     <Grid container>
         <Grid xs={12} sx={{p:2}}>
-
-<Typography variant='h6' className=' font-family-exo2 sub-heading tertiary-color '>
-Personal Details
-</Typography>
+        <ContactDetails/>
         </Grid>
 
     </Grid>
