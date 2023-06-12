@@ -1,9 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import CustomTable from "../../../components/Table/CustomTable";
 import { useTableParams } from "../../../components/Table/useTableParams";
-// import TableAction from '../../../components/Table/TableAction';
-// import DeleteModel from '../../../../components/modal/DeleteModel';
-// import FormDialog from '../../../../components/modal/ModalPractice';
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
@@ -24,7 +21,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DSO_Col, DSO_Data } from '../ReportsTable/DSO_Report';
 import ShowFilters from '../../OverdueInvoices/ShowFilters';
 import '../report.scss'
-
 
 const input_filter = [
   {
@@ -71,8 +67,7 @@ export default function ReportDetails () {
       setIsOpen(!isOpen);
     };
     const [isOpen2, setIsOpen2] = useState(false);
-      const [type, setType] = useState("");
-
+    const [type, setType] = useState("");
   const handleClick2 = () => {
     setIsOpen2(!isOpen2);
   };

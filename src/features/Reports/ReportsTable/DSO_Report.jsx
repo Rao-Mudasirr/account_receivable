@@ -1,10 +1,6 @@
 import { Box } from "@mui/material";
 import TableAction from "../../../components/Table/TableAction";
 
-const handleView = ({row}) => {
-  console.log("check handle function: ", row?.original)
-}
-
 export const DSO_Col = [
     {
       accessorFn: (row) => row.Id,
@@ -45,7 +41,7 @@ export const DSO_Col = [
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" onClick={() => handleView(info)} />
+          <TableAction type="view" />
         </Box>
       ),
       header: () => <span>Actions</span>,
