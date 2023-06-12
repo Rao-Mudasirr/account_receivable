@@ -10,11 +10,13 @@ import Overdue_Invoice from './pages/Overdue_Invoice';
 import View_Invoice from "./pages/View_invoice_details";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
+import Signin from './components/signin/Signin'
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
+      <Route path="/signin" element={<Signin/>} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />

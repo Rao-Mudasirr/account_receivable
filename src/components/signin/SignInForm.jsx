@@ -73,6 +73,11 @@ const SignInForm = () => {
                   placeholder="Enter Email"
                   type="email"
                   onChange={(e) => handleInputChange(e, props)}
+                  InputProps={{
+                    style: {
+                      paddingLeft: '20px'
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={6} className={`textfield_bold ${filledFields.password ? "hide_label" : ""}`} sx={{ marginTop: "3rem" }}>
@@ -97,10 +102,13 @@ const SignInForm = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {showPassword ? <RiEyeOffLine className="rotate_icon"/> : <RiEyeLine />}
+                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine className="rotate_icon"/>}
                         </IconButton>
                       </InputAdornment>
                     ),
+                    style: {
+                      paddingLeft: '20px',
+                    }
                   }}
                 />
 
@@ -129,3 +137,4 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
+
