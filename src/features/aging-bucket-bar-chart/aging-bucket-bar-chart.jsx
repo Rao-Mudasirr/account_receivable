@@ -110,7 +110,7 @@ const optionsAgingBucketPieChart = {
         fontWeight: 400,
         itemMargin: {
             horizontal: 15,
-            vertical: 0
+            vertical: 10
         },
     },
     dataLabels: {
@@ -124,17 +124,17 @@ const optionsAgingBucketPieChart = {
             fontWeight: '400',
         },
     },
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }],
+    // responsive: [{
+    //     breakpoint: 480,
+    //     options: {
+    //         chart: {
+    //             width: 200
+    //         },
+    //         legend: {
+    //             position: 'bottom'
+    //         }
+    //     }
+    // }],
     colors: ["#B54C02", "#E88750", "#E8BD50", "#FF3F3F"]
 }
 export const AgingBucketBarChart = ({ chartSwitch }) => {
