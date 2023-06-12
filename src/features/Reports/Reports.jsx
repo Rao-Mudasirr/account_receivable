@@ -5,10 +5,12 @@ import './report.scss';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Reports() {
+    
     const navigate = useNavigate();
     const GoToNext = (val) => {
         navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
     }
+
   return (
     <>
         <div className='top-heading'>Reports</div>
