@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react'
-import CustomTable from "../../components/Table/CustomTable";
-import { useTableParams } from "../../components/Table/useTableParams";
+import CustomTable from "../../../components/Table/CustomTable";
+import { useTableParams } from "../../../components/Table/useTableParams";
 // import TableAction from '../../../components/Table/TableAction';
 // import DeleteModel from '../../../../components/modal/DeleteModel';
 // import FormDialog from '../../../../components/modal/ModalPractice';
-import { GlobalSearchBar } from "../../components/global-search-filter/global-search-filter";
-import filterIcon from "../../assests/images/client/filter.png";
-import exportIcon from "../../assests/images/client/export.png";
+import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
+import filterIcon from "../../../assests/images/client/filter.png";
+import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
 import { Card } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -21,9 +21,9 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DSO_Col, DSO_Data } from './ReportsTable/DSO_Report';
-import ShowFilters from '../OverdueInvoices/ShowFilters';
-import './report.scss'
+import { DSO_Col, DSO_Data } from '../ReportsTable/DSO_Report';
+import ShowFilters from '../../OverdueInvoices/ShowFilters';
+import '../report.scss'
 
 
 const input_filter = [
