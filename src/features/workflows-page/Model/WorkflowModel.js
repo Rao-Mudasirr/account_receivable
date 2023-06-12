@@ -81,13 +81,7 @@ function WorkflowModel({
               <Grid xs={12} lg={7} item>
                 <Box sx={{ marginTop: "24px" }}>
                   {Tabbing_data?.map(
-                    (e) =>
-                      e.id === value && (
-                        <Box sx={{ p: 3 }}>
-                          <CustomInput label={"Email"} />
-                          <CustomInput label={"First Name"} type="select" />
-                        </Box>
-                      )
+                    (e) => e.id === value && <>{e?.Component}</>
                   )}
                 </Box>
               </Grid>

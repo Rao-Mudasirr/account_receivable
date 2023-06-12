@@ -33,6 +33,11 @@ import { TabContext } from "@mui/lab";
 import { Field } from "formik";
 import CustomInput from "../../../components/CustomInput";
 import WorkflowModel from "../Model/WorkflowModel";
+import InvoiceCreationDate from "../Model/InvoiceCreationDate";
+import BeforeDueDate from "../Model/BeforeDueDate";
+import OnDueDate from "../Model/OnDueDate";
+import AfterDueDate from "../Model/AfterDueDate";
+import OnPaymentCollectionDate from "../Model/OnPaymentCollectionDate";
 
 const ViewWorkflow = () => {
   const [openModel, setOpenModel] = useState(false);
@@ -258,25 +263,30 @@ const ViewWorkflow = () => {
     {
       label: "Invoice Creation Date",
       id: 1,
+      Component: <InvoiceCreationDate />,
     },
     {
       label: "Before Due Date",
       id: 21,
+      Component: <BeforeDueDate />,
     },
     {
       label: "On Due Date",
       id: 41,
+      Component: <OnDueDate />,
     },
     {
       label: "After Due Date",
       id: 11,
+      Component: <AfterDueDate />,
     },
     {
       label: "On Payment Collection Date",
       id: 15,
+      Component: <OnPaymentCollectionDate />,
     },
   ];
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = useState(1);
   const handleChange = (event, newValue) => {
     // console.log(newValue);
     setValue(newValue);
@@ -286,7 +296,6 @@ const ViewWorkflow = () => {
     <>
       <Box>
         <Box className="invoice-title">Workflows</Box>
-
         <Grid container spacing={2} marginBottom={4}>
           <Grid
             item
