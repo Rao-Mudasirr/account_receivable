@@ -8,9 +8,9 @@ import InvoiceListing from './features/Invoices/components/InvoiceListing';
 import Clientdetails from './pages/client-details';
 import Overdue_Invoice from './pages/Overdue_Invoice';
 import View_Invoice from "./pages/View_invoice_details";
+import {Notifications} from "./pages/notifications";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
-import Notifications from "./features/user-management/components/role_rights_manager/Accounts_receivable_data/Notifications";
 
 function App() {
   return (
