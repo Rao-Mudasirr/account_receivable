@@ -12,7 +12,6 @@
   margin-right: 2rem !important;
 }
 
-
 .margin-none {
   margin: 0px !important;
 }
@@ -367,4 +366,8 @@
 }
 .height-inherit{
   height: inherit !important;
+}
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent !important;
 }

@@ -12,12 +12,15 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Workflow from "./pages/workflows";
 import ClientWorkFlow from "./pages/client-workflows";
+import DashboaedSettings from "./pages/dashboard-settings";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
         <Route exact path={"/"} element={<Layout />}>
+          <Route exact path={"/"} element={<Dashboard />} />
+          <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/"} element={<Dashboard />} />
@@ -51,6 +54,12 @@ function App() {
               element={<ClientWorkFlow />}
             />
           </Route>
+
+          <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          <Route path="/not-found" element={<h1>Not Found</h1>} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
+          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
+
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

@@ -13,6 +13,9 @@
     &::after {
       display: none !important;
     }
+    .MuiSelect-select{
+      padding-left: 10px;
+    }
 
     input {
       padding: 4px 10px;
@@ -30,6 +33,15 @@
     }
     .usersform_textfield {
       border-bottom: 1px solid black;
+      .MuiOutlinedInput-notchedOutline{
+        display: none;
+      }
+    input {
+      border: 0;
+      .MuiInput-underline {
+        border: 0;
+      }
+    }
       &::before {
         display: none !important;
       }

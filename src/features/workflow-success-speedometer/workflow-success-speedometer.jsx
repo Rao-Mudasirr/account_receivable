@@ -6,7 +6,7 @@ export const WorkflowSuccessSpeedometer = () => {
     return (
         <>
             <div className="workflow-speedometer flex justify-center margin-top-2">
-                <Box className="position-relative" sx={{ width: { sm: '534px', xs: '320px' }, height: '280px' }}>
+                <Box className="position-relative circle-parent" sx={{ width: { sm: '534px', xs: '320px' }, height: { sm: '280px', xs: '180px' } }}>
                     <div className="circle"></div>
                     <ReactSpeedometer
                         value={75}

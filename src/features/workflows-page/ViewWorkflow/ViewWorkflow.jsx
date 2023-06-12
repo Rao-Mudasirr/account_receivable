@@ -32,11 +32,13 @@ import { TabPanel } from "@mui/lab";
 import { TabContext } from "@mui/lab";
 import { Field } from "formik";
 import CustomInput from "../../../components/CustomInput";
+import WorkflowModel from "../Model/WorkflowModel";
 
 const ViewWorkflow = () => {
   const [openModel, setOpenModel] = useState(false);
   const [openDeleteModel, setOpenDeleteModel] = useState(false);
   const [openAlertModel, setOpenAlertModel] = useState(false);
+  const [openEditModel, setOpenEditModel] = useState(false);
 
   const handleCloseAlert = () => {
     setOpenAlertModel(!openAlertModel);
@@ -46,6 +48,9 @@ const ViewWorkflow = () => {
   };
   const handleCloseModel = () => {
     setOpenModel(!openModel);
+  };
+  const handleCloseEditModel = () => {
+    setOpenEditModel(!openEditModel);
   };
   const INVOICE_DATA_ViEW_ALL = [
     {
@@ -214,8 +219,8 @@ const ViewWorkflow = () => {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" onClick={handleCloseModel} />
-          <TableAction type="edit" onClick={handleCloseModel} />
+          <TableAction type="view" onClick={handleCloseEditModel} />
+          <TableAction type="edit" onClick={handleCloseEditModel} />
           {info.row.index === 0 ? (
             <>
               <AppTooltip
@@ -249,7 +254,7 @@ const ViewWorkflow = () => {
     },
   ];
 
-  const Tabbing_data = [
+  const tabbing_data = [
     {
       label: "Invoice Creation Date",
       id: 1,
@@ -415,97 +420,13 @@ const ViewWorkflow = () => {
         handleClose={handleCloseAlert}
         onDeleteClick={handleCloseAlert}
       />
-
-      {/* <Box className="workflow-model">
-        <Box className="top-section">
-          <Typography variant="h2">Workflow Details</Typography>
-        </Box>
-        <Grid container spacing={2}>
-          <Grid xs={12} lg={5} item>
-            {" "}
-            <Box className="top-section">
-              <Box className="attachment-box">
-                <p>Attachment</p>
-                <Box className="attachment-checkbox">
-                  <Checkbox
-                    defaultChecked={false}
-                    sx={{
-                      marginRight: "-12px",
-                      padding: "0px",
-                      color: "black",
-                      "&.Mui-checked": {
-                        color: "black",
-                      },
-                    }}
-                  />
-                  <Box className="span">Invoice File</Box>
-                </Box>
-              </Box>
-            </Box>
-            <Box className="tabbing-section">
-              <Typography variant="h3">Rules List</Typography>
-              <Box className="tabbing">
-                <Tabs
-                  centered
-                  className="tabbing-list"
-                  onChange={handleChange}
-                  orientation="vertical"
-                  value={value}
-                >
-                  {Tabbing_data?.map((e) => (
-                    <Tab
-                      className={`tabbing-item ${
-                        value === e?.id ? "active" : ""
-                      }`}
-                      label={e.label}
-                      key={e.id}
-                      value={e?.id}
-                    />
-                  ))}
-                </Tabs>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid xs={12} lg={7} item>
-            <Box sx={{ marginTop: "24px" }}>
-              {Tabbing_data?.map(
-                (e) =>
-                  e.id === value && (
-                    <Box sx={{ p: 3 }}>
-                      <CustomInput label={"Email"} />
-
-                      <CustomInput label={"First Name"} type="select" />
-                      <Grid item xs={6} className={`textfield_bold `}>
-                        <label className="input_label">
-                          <span
-                            className="asterisk"
-                            style={{ color: "red", marginTop: "-3px" }}
-                          >
-                            *
-                          </span>
-                          First Name
-                        </label>
-                        <Select
-                          className="usersform_textfield"
-                          name="firstName"
-                          variant="standard"
-                          placeholder="First Name"
-                        >
-                          <MenuItem value="">
-                            <em>None</em>
-                          </MenuItem>
-                          <MenuItem value={10}>Ten</MenuItem>
-                          <MenuItem value={20}>Twenty</MenuItem>
-                          <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                      </Grid>
-                    </Box>
-                  )
-              )}
-            </Box>
-          </Grid>
-        </Grid>
-      </Box> */}
+      <WorkflowModel
+        open={openEditModel}
+        handleClose={handleCloseEditModel}
+        Tabbing_data={tabbing_data}
+        value={value}
+        handleChange={handleChange}
+      />
 
       <ToastContainer />
     </>
