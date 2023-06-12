@@ -7,7 +7,7 @@ const Signin = () => {
   return (
     <div className='height-100vh flex align-center justify-center'>
       <Box className='signin_container'>
-      <h2 style={{color:"#666666"}}>Sign In to <span style={{color:"black"}}>Accountants Pack!</span></h2>
+      <h1 style={{color:"#666666"}}>Sign In to <span style={{color:"black"}}>Accountants Pack!</span></h1>
       <p style={{marginTop: "20px"}}>Welcome Back</p>
       <SignInForm />
       </Box>
