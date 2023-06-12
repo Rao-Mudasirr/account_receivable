@@ -1,14 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomInput from "../../../components/CustomInput";
+import { optionsDays, optionsTime } from "./Constants";
+import GlobalButton from "../../../components/global-button/global-button";
 
-const BeforeDueDate = () => {
+const BeforeDueDate = ({ edit, editIcon }) => {
   return (
     <Box>
       <Box className="tabbing-top">
         <Box className="tabbing-dropdowns">
-          <CustomInput type="select" label="Days" />
-          <CustomInput type="select" label="Time" />
+          <CustomInput type="select" label="Days" options={optionsDays} />
+          <CustomInput type="select" label="Time" options={optionsTime} />
         </Box>
       </Box>
       <Box className="tabbing-body">
@@ -32,6 +34,18 @@ const BeforeDueDate = () => {
             <Typography>Company Name</Typography>
           </Box>
         </Box>
+        {edit && (
+          <Box sx={{ marginTop: "30px", textAlign: "end" }}>
+            <GlobalButton
+              variant="accent"
+              btnName="accent"
+              btnText="Edit "
+              endIcon={
+                <img src={editIcon} alt="Export Text" width={16} height={16} />
+              }
+            />
+          </Box>
+        )}
       </Box>
     </Box>
   );

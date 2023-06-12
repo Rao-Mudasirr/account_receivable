@@ -8,7 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import CustomInput from "../../../components/CustomInput";
+import { ReactComponent as EditSvg } from "../../../assests/svg/workflow-edit.svg";
+import editIcon from "../../../assests/images/settings/editIcon.png";
+
 import "./WorkflowModel.scss";
 
 function WorkflowModel({
@@ -17,6 +19,7 @@ function WorkflowModel({
   Tabbing_data,
   value,
   handleChange,
+  edit,
 }) {
   return (
     <div className="model-parent">
@@ -55,24 +58,39 @@ function WorkflowModel({
                   </Box>
                 </Box>
                 <Box className="tabbing-section">
-                  <Typography variant="h3">Rules List</Typography>
+                  <Typography sx={{ marginBottom: "20px" }} variant="h3">
+                    Rules List
+                  </Typography>
                   <Box className="tabbing">
                     <Tabs
                       centered
                       className="tabbing-list"
-                      onChange={handleChange}
                       orientation="vertical"
-                      value={value}
                     >
                       {Tabbing_data?.map((e) => (
-                        <Tab
-                          className={`tabbing-item ${
-                            value === e?.id ? "active" : ""
-                          }`}
-                          label={e.label}
-                          key={e.id}
-                          value={e?.id}
-                        />
+                        <Box
+                          sx={{
+                            display: edit ? "flex" : "block",
+                            alignItems: edit ? "center" : "initial",
+                            gap: edit ? "10px" : "0px",
+                            marginBottom: "20px",
+                          }}
+                        >
+                          <Box
+                            className={`tabbing-item ${
+                              value === e?.id ? "active" : ""
+                            }`}
+                            onClick={(event) => handleChange(event, e?.id)}
+                            label={e.label}
+                            key={e.id}
+                            value={e?.id}
+                          >
+                            {e.label}
+                          </Box>
+                          {edit && (
+                            <EditSvg cursor={"pointer"} className="edit-icon" />
+                          )}
+                        </Box>
                       ))}
                     </Tabs>
                   </Box>
@@ -81,7 +99,13 @@ function WorkflowModel({
               <Grid xs={12} lg={7} item>
                 <Box sx={{ marginTop: "24px" }}>
                   {Tabbing_data?.map(
-                    (e) => e.id === value && <>{e?.Component}</>
+                    ({ id, component: Component }) =>
+                      id === value && (
+                        <>
+                          {" "}
+                          <Component edit={edit} editIcon={editIcon} />
+                        </>
+                      )
                   )}
                 </Box>
               </Grid>

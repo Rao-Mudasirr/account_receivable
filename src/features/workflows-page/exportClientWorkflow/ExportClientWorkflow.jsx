@@ -19,12 +19,16 @@ import "./ExportClientWorkflow.scss";
 import WorkflowTable from "../table/workflowTable";
 import CustomSwitch from "../../../components/CustomSwtich/CustomSwtich";
 import CardFilter from "../../client-details/components/card-filter/card-filter";
+import { toast } from "react-toastify";
 
 const ExportClientWorkflow = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   // Modal Function
   const modalClickHandlar = () => {
+    if (isOpen) {
+      toast.success("Successfully Pdf Generated");
+    }
     setIsOpen(!isOpen);
   };
   const INVOICE_DATA_ViEW_ALL = [

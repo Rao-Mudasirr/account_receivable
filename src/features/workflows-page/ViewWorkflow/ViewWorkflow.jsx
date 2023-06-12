@@ -27,6 +27,7 @@ import { AppTooltip } from "../../../components/app-tooltip/app-tooltip";
 import DeleteModel from "../../../components/modal/DeleteModel";
 import { CustomModel } from "../../../components/custom-model/custom-model";
 import AlertModel from "../../../components/modal/AlertModel";
+import InfoIcon from "@mui/icons-material/Info";
 import { ToastContainer, toast } from "react-toastify";
 import { TabPanel } from "@mui/lab";
 import { TabContext } from "@mui/lab";
@@ -44,6 +45,7 @@ const ViewWorkflow = () => {
   const [openDeleteModel, setOpenDeleteModel] = useState(false);
   const [openAlertModel, setOpenAlertModel] = useState(false);
   const [openEditModel, setOpenEditModel] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const handleCloseAlert = () => {
     setOpenAlertModel(!openAlertModel);
@@ -55,8 +57,14 @@ const ViewWorkflow = () => {
     setOpenModel(!openModel);
   };
   const handleCloseEditModel = () => {
+    setEdit(true);
     setOpenEditModel(!openEditModel);
   };
+  const handleCloseViewModel = () => {
+    setEdit(false);
+    setOpenEditModel(!openEditModel);
+  };
+
   const INVOICE_DATA_ViEW_ALL = [
     {
       id: 1,
@@ -76,6 +84,7 @@ const ViewWorkflow = () => {
       Id: "02",
       name: "Default Workflow",
       description: "Default Workflow",
+      tooltip: true,
       rules: 20,
       clients: 50,
       clientsLink: `/clients`,
@@ -152,7 +161,34 @@ const ViewWorkflow = () => {
     {
       accessorFn: (row) => row.description,
       id: "description",
-      cell: (info) => info.getValue(),
+      cell: (info) => {
+        return (
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {info.getValue()}
+            {info.row.original.tooltip ? (
+              <AppTooltip message={"Custom workflow created for Nick John"}>
+                <InfoIcon
+                  style={{
+                    stroke: "#0084AD",
+                    fill: "transparent",
+                    marginLeft: "4px",
+                  }}
+                  fontSize="17px"
+                />
+              </AppTooltip>
+            ) : (
+              ""
+            )}
+          </span>
+        );
+      },
+
       header: "Description",
       // isSortable: true,
     },
@@ -224,7 +260,7 @@ const ViewWorkflow = () => {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" onClick={handleCloseEditModel} />
+          <TableAction type="view" onClick={handleCloseViewModel} />
           <TableAction type="edit" onClick={handleCloseEditModel} />
           {info.row.index === 0 ? (
             <>
@@ -263,32 +299,31 @@ const ViewWorkflow = () => {
     {
       label: "Invoice Creation Date",
       id: 1,
-      Component: <InvoiceCreationDate />,
+      component: InvoiceCreationDate,
     },
     {
       label: "Before Due Date",
       id: 21,
-      Component: <BeforeDueDate />,
+      component: BeforeDueDate,
     },
     {
       label: "On Due Date",
       id: 41,
-      Component: <OnDueDate />,
+      component: OnDueDate,
     },
     {
       label: "After Due Date",
       id: 11,
-      Component: <AfterDueDate />,
+      component: AfterDueDate,
     },
     {
       label: "On Payment Collection Date",
       id: 15,
-      Component: <OnPaymentCollectionDate />,
+      component: OnPaymentCollectionDate,
     },
   ];
   const [value, setValue] = useState(1);
   const handleChange = (event, newValue) => {
-    // console.log(newValue);
     setValue(newValue);
   };
 
@@ -341,18 +376,17 @@ const ViewWorkflow = () => {
                 }}
               >
                 <InputLabel id="demo-simple-select-filled-label">
-                  Select
+                  Select Status
                 </InputLabel>
                 <Select
-                  placeholder="Select"
+                  placeholder="Select Status"
                   labelId="demo-simple-select-filled-label"
                   // id="demo-simple-select-filled"
                   // value={value}
                   // onChange={handleChange}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
+                  <MenuItem value="active">Active</MenuItem>
+                  <MenuItem value="non-active">Non Active</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -434,10 +468,9 @@ const ViewWorkflow = () => {
         handleClose={handleCloseEditModel}
         Tabbing_data={tabbing_data}
         value={value}
+        edit={edit}
         handleChange={handleChange}
       />
-
-      <ToastContainer />
     </>
   );
 };

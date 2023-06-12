@@ -1,13 +1,6 @@
-import {
-  Box,
-  FormControl,
-  MenuItem,
-  MenuList,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Box, MenuItem, Select, TextField } from "@mui/material";
 // import { TextField } from "formik-material-ui";
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.scss";
 
 const CustomInput = ({
@@ -18,6 +11,7 @@ const CustomInput = ({
   labelClass,
   ...props
 }) => {
+  useEffect(() => {}, [options?.length]);
   return (
     <Box className={"custom-input-1"}>
       <label
@@ -43,6 +37,7 @@ const CustomInput = ({
           {" "}
           <Select
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
+            defaultValue={options[0]?.title || "Select"}
             variant="standard"
             {...props}
           >
@@ -50,7 +45,7 @@ const CustomInput = ({
               <MenuItem value="s">create a array and add them</MenuItem>
             ) : (
               options?.map((e, i) => (
-                <MenuItem key={e?.value} value={e.value}>
+                <MenuItem key={`${e?.value}${e?.id}`} value={e.value}>
                   {e?.title}
                 </MenuItem>
               ))
