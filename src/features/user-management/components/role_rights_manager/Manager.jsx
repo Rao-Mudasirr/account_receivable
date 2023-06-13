@@ -11,9 +11,9 @@ import Workflows from './Accounts_receivable_data/Workflows';
 import Notifications from './Accounts_receivable_data/Notifications';
 import Reports from './Accounts_receivable_data/Reports';
 import { formControlData } from './Accounts_receivable_data/data';
-import UserManagement_data from './Admin_Rights_data/UserManagement_data'
-import { FormControlData2 } from './Admin_Rights_data/Admin_data'
-import Settings_data from './Admin_Rights_data/Settings'
+import UserManagement_data from './Admin_rights_data/UserManagement_data'
+import { FormControlData2 } from './Admin_rights_data/Admin_data'
+import Settings_data from './Admin_rights_data/Settings'
 import './manager.css';
 
 
@@ -21,6 +21,9 @@ const Manager = () => {
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('');
   const [switchEnabled, setSwitchEnabled] = useState(false);
+  const [switchOn, setSwitchOn] = useState(false)
+  const handleSwitchOn = ()=> setSwitchOn(false)
+  const handleSwitchOff = ()=> setSwitchOn(true)
 
   const handleSwitchChange = () => {
     setSwitchEnabled(!switchEnabled);
