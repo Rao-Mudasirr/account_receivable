@@ -5,16 +5,8 @@ import { GlobalSearchBar } from "../../../components/global-search-filter/global
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
-import { Card } from "@mui/material";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import { Link, useLocation } from "react-router-dom";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { useLocation } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -25,6 +17,7 @@ import '../report.scss'
 function DSO_Month() {
     const [isOpen, setIsOpen] = useState(false);
     const {state} = useLocation()
+    console.log("state: ",state);
     const handleClick = () => {
       setIsOpen(!isOpen);
     };
@@ -47,7 +40,7 @@ function DSO_Month() {
     };
   return (
     <Fragment>
-      <div className="invoice-title">{state?.reportData?.title}</div>
+      <div className="invoice-title">Days Sales Outstanding (Month Wise) Report</div>
 
       {/* Search field */}
       <Grid container>

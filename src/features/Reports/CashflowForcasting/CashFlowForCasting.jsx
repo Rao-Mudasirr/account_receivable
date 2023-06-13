@@ -18,7 +18,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DSO_Data2 } from '../ReportsTable/DSO_Report';
+import { CASHFLOW_Col, CashFlow_Data } from '../ReportsTable/Cashflow_Data';
 import ShowFilters from '../../OverdueInvoices/ShowFilters';
 import '../report.scss'
 import TableAction from '../../../components/Table/TableAction';
@@ -60,7 +60,7 @@ const input_filter = [
   },
 ];
 
-export default function ReportDetails () {
+function CashFlowForCasting() {
 
     const [isOpen, setIsOpen] = useState(false);
     const {state} = useLocation()
@@ -84,66 +84,14 @@ export default function ReportDetails () {
         setEndDate(date);
       }
     };
-    
-    const handleView = ({row}) => {
-      navigate(`/report-details/month/${row?.original?.id}`, {state: {data: row?.original}})
-    }
-
-    const DSO_Col = [
-      {
-        accessorFn: (row) => row.Id,
-        id: "Id",
-        cell: (info) => info.getValue(),
-        header: () => <span>Client Id</span>,
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.client_name,
-        id: "client_name",
-        cell: (info) => (info.getValue()),
-        header: "Client Name",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.total_invoices,
-        id: "total_invoices",
-        cell: (info) => info.getValue(),
-        header: "Total Invoices",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.dso,
-        id: "dso",
-        cell: (info) => info.getValue(),
-        header: "DSO",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.avg_delay,
-        id: "avg_delay",
-        cell: (info) => info.getValue(),
-        header: "Avg Delay",
-        // isSortable: true,
-      },
-      {
-        id: "Actions",
-        cell: (info) => (
-          <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-            <TableAction type="view" onClick={()=>handleView(info)}/>
-          </Box>
-        ),
-        header: () => <span>Actions</span>,
-        isSortable: false,
-      },
-    ];
 
   return (
     <Fragment>
-      <div className="invoice-title">Days Sales Outstanding (Company Wise) Report</div>
+      <div className="invoice-title">Cashflow Forecasting Report</div>
 
       {/* Search field */}
       <Grid container>
-        <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
+        <Grid xs={12} md={6} lg={6} xl={6}>
           <div
             style={{
               margin: "5px",
@@ -312,8 +260,8 @@ export default function ReportDetails () {
       {/* Table */}
 
       <CustomTable
-        data={DSO_Data2}
-        columns={DSO_Col}
+        data={CashFlow_Data}
+        columns={CASHFLOW_Col}
         // showSerialNo
         // onPageChange={pageChangeHandler}
         // onSortByChange={sortChangeHandler}
@@ -323,3 +271,5 @@ export default function ReportDetails () {
     </Fragment>
   )
 }
+
+export default CashFlowForCasting
