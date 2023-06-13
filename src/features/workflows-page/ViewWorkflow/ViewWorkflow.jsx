@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TableAction from "../../../components/Table/TableAction";
 import {
   Box,
@@ -46,6 +46,7 @@ const ViewWorkflow = () => {
   const [openAlertModel, setOpenAlertModel] = useState(false);
   const [openEditModel, setOpenEditModel] = useState(false);
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate();
 
   const handleCloseAlert = () => {
     setOpenAlertModel(!openAlertModel);
@@ -433,6 +434,7 @@ const ViewWorkflow = () => {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={(e) => navigate("/workflows/add")}
                 sx={{
                   background: "#2B2B33",
                   borderRadius: "8px",

@@ -1,5 +1,12 @@
-import { Box, MenuItem, Select, TextField } from "@mui/material";
+import {
+  Box,
+  MenuItem,
+  Select,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
 // import { TextField } from "formik-material-ui";
+
 import React, { useEffect } from "react";
 import "./styles.scss";
 
@@ -32,7 +39,7 @@ const CustomInput = ({
             {...props}
           />
         </>
-      ) : (
+      ) : type.toLowerCase() === "select" ? (
         <>
           {" "}
           <Select
@@ -51,6 +58,18 @@ const CustomInput = ({
               ))
             )}
           </Select>
+        </>
+      ) : (
+        <>
+          <TextareaAutosize
+            // id="standard-basic"
+            className={`usersform_textfield textArea-common ${
+              inputClass ? inputClass : ""
+            }`}
+            // label="Standard"
+            placeholder="Standard"
+            {...props}
+          />
         </>
       )}
     </Box>

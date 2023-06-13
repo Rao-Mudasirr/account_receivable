@@ -16,6 +16,7 @@ import MainReport from "./pages/MainReport";
 import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import { ToastContainer } from "react-toastify";
+import AddWorkflow from "./pages/add-workflows";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
               path={"/workflows/clients/:id"}
               element={<ClientWorkFlow />}
             />
+            <Route exact path={"/workflows/add"} element={<AddWorkflow />} />
           </Route>
 
           <Route
