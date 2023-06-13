@@ -15,4 +15,4 @@ const Signin = () => {
   );
 };
 
-export default ASignin
+export default Signin;
