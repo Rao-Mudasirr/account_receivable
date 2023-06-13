@@ -17,6 +17,7 @@ import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
+import CustomAlert from "./components/Alert/CustomAlert";
 
 function App() {
   return (

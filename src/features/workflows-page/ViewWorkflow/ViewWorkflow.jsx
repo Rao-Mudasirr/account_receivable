@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TableAction from "../../../components/Table/TableAction";
 import {
@@ -39,12 +39,15 @@ import BeforeDueDate from "../Model/BeforeDueDate";
 import OnDueDate from "../Model/OnDueDate";
 import AfterDueDate from "../Model/AfterDueDate";
 import OnPaymentCollectionDate from "../Model/OnPaymentCollectionDate";
+import CustomAlert from "../../../components/Alert/CustomAlert";
+import { ReactComponent as Cross } from "../../../assests/svg/material-cros.svg";
 
 const ViewWorkflow = () => {
   const [openModel, setOpenModel] = useState(false);
   const [openDeleteModel, setOpenDeleteModel] = useState(false);
   const [openAlertModel, setOpenAlertModel] = useState(false);
   const [openEditModel, setOpenEditModel] = useState(false);
+  const [error, setError] = useState(false);
   const [edit, setEdit] = useState(false);
   const navigate = useNavigate();
 
@@ -65,6 +68,18 @@ const ViewWorkflow = () => {
     setEdit(false);
     setOpenEditModel(!openEditModel);
   };
+
+  useEffect(() => {
+    if (error === false) {
+      return setError(false);
+    }
+    if (error === true) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 1200);
+    }
+  }, [error]);
 
   const INVOICE_DATA_ViEW_ALL = [
     {
@@ -245,9 +260,7 @@ const ViewWorkflow = () => {
             {" "}
             <CustomSwitch
               onChange={(e) =>
-                info.row.index === 0
-                  ? toast.error("You cannot set Default Workflow as In-Active")
-                  : handleCloseAlert(e)
+                info.row.index === 0 ? setError(true) : handleCloseAlert(e)
               }
               checked={info.getValue()}
             />
@@ -335,6 +348,18 @@ const ViewWorkflow = () => {
   return (
     <>
       <Box>
+        {error && (
+          <CustomAlert
+            message={"You cannot set Default Workflow as In-Active"}
+            severity={"error"}
+            heading={"Error"}
+            variant="outlined"
+            onClose={() => setError(false)}
+            show={error}
+            icon={<Cross />}
+          />
+        )}
+
         <Box className="invoice-title">Workflows</Box>
         <Grid container spacing={2} marginBottom={4}>
           <Grid
