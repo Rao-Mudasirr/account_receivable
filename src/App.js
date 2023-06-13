@@ -14,6 +14,7 @@ import Signin from './components/signin/Signin'
 import MainReport from "./pages/MainReport";
 import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
+import WorkflowReport from './features/Reports/workflow-report/WorkflowReport'
 
 function App() {
   return (
@@ -97,6 +98,7 @@ function App() {
             <Route path="/not-found" element={<h1>Not Found</h1>}/>
             <Route path="*" element={<Navigate to="/not-found"/>} />
             <Route path="/invoice-no-detail" element={<InvoiceNoDetail/>} />
+            <Route path="/workflows-report" element={<WorkflowReport/>} />
           </Route>
     </Routes>
     </Suspense>
