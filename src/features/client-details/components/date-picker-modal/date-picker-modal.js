@@ -3,10 +3,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Typography} from '@mui/material';
+import { Typography,Box} from '@mui/material';
   import "./date-picker-modal.scss"
-import { ClassNames } from '@emotion/react';
-
 
 const DatePickerModal=( )=> {
   const [startDate, setStartDate] = useState(null);
@@ -24,10 +22,14 @@ const DatePickerModal=( )=> {
 
   return (
     <div>
-       <div style={{ marginTop: '20px'}} className='date-picker-modal'>
+       <div style={{ marginTop: '20px'}} className='date-picker-modal'>     
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <DemoContainer components={['DatePicker', 'DatePicker']}>
-      <div style={{ display: 'flex',gap:'10px' }}>
+      <Box sx={{ display: 'flex',gap:'10px',
+        '@media (max-width: 600px)': {
+                  width: 'auto',
+                  flexDirection:'column',
+                },}}>
         <div style={{ flex: '1' }}>
           <Typography className='font-family-exo2 secondary-color primary-title'>From</Typography>
           <DatePicker
@@ -48,7 +50,7 @@ const DatePickerModal=( )=> {
             sx={{mt:2}}
           />
         </div>
-      </div>
+      </Box>
     </DemoContainer>
   </LocalizationProvider>
 </div>

@@ -8,6 +8,7 @@ import "./due-invoices.scss";
 import filterIcon from '../../../assests/images/client/filter.png'
 import exportIcon from '../../../assests/images/client/export.png'
 import CardFilter from '../components/card-filter/card-filter';
+import GlobalButton from '../../../components/global-button/global-button';
 
 
 
@@ -47,62 +48,32 @@ setIsOpen(!isOpen);
         }}
         >
       <div style={{alignSelf: "flex-start"}} className='search-bar'> <GlobalSearchBar value={searchTerm} onChange={SearchClickhandler} /></div>
-        <div style={{ marginLeft: "auto" }} className='tabal-header'>
-          <Button
-            variant="outlined"
-            // color="primary"
-            className="outlined-filter-btn tertiary-color filter-btn font-family-exo2"
-            sx={{
-              mr: 2,
-              color: "#40404D",
-              borderColor: "#40404D",
-              width:'122px',
-              padding:'8px',
-              height:'32px',
-              border:'1.5px solid #40404D',
-              fontWeight:400,
-              fontSize:"0.75rem",
-              borderRadius:'8px',
-              textTransform: 'capitalize',
-              "&:hover": {
-                borderColor: "black",
-                color: "black",
-              },
-            }}
-            endIcon={<img src={filterIcon} alt="More Filter" width={16} height ={16}/>}
-            onClick={()=> {
-              setType("More")
-              modalClickHandlar()
-            }}
-            
-          >
-            More Filters
-          </Button>
+        <div style={{ marginLeft: "auto" }} className='invoices-tabal-header'>
+        <GlobalButton
+  btnName="outline"
+  btnText="More Filters"
+  endIcon={<img src={filterIcon} alt="More Filter" width={16} height={16} />}
+  onClick={() => {
+    setType('More');
+    modalClickHandlar();
+  }}
+  sx={{
+    mr:2
+  }}
+  className="invoice-filter-btn"
+  />
+          <GlobalButton
+  btnName="accent"
+  btnText="Export Text"
+  endIcon={<img src={exportIcon} alt="Export Text" width={16} height={16} />}
+  onClick={() => {
+    setType('Export');
+    modalClickHandlar();
+  }}
+  className="invoice-second-btn"
+/>
 
-          <Button
-              className="export-btn  font-family-exo2"
-            variant="contained"
-             width="93px"
-             height="32px"
-            sx={{
-              background: "#2B2B33",
-              fontWeight:400,
-              fontSize:"0.75rem",
-              borderRadius:'8px',
-              textTransform: 'capitalize',
-              "&:hover": {
-                background: "#2B2B33",
-              },
-            }}
-            endIcon={<img src={exportIcon} alt="Export Text"  width={16} height ={16} />}
-            onClick={()=> {
-                setType("Export")
-                modalClickHandlar()
-              }}
-             
-          >
-            Export Text
-          </Button>
+
           <CardFilter 
             filter_type = {type}
             handleClick = {modalClickHandlar}

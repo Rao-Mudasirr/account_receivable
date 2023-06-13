@@ -3,7 +3,7 @@ import { Grid, Button, IconButton, InputAdornment, Input } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
-import "./signin.css";
+import "./signin.scss";
 import { Error } from '@mui/icons-material';
 import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 
@@ -60,7 +60,7 @@ const SignInForm = () => {
         return (
           <Form noValidate autoComplete="off" className="signin_form">
             <Grid className="signin_forminputs">
-              <Grid item xs={6} className={`textfield_bold ${filledFields.email ? "hide_label" : ""}`} sx={{ marginTop: "3rem" }}>
+              <Grid item xs={6} className={`textfield_bold ${filledFields.email ? "hide_label" : ""}`} sx={{ marginTop: "3rem", height: "75px" }}>
                 <label className={`input_label ${touched.email && errors.email ? "error_label" : ""}`}>
                   {filledFields.email ? null : <span className="asterisk" style={{ color: "rgba(255, 85, 85, 1)", marginTop: "-5px" }}>*</span>}
                   Business Email
@@ -73,9 +73,37 @@ const SignInForm = () => {
                   placeholder="Enter Email"
                   type="email"
                   onChange={(e) => handleInputChange(e, props)}
+                  InputProps={{
+                    style: {
+                      paddingLeft: '20px'
+                    }
+                  }}
+                  sx = {{
+                    '& label': {
+                      color: 'black',
+                    },
+                    '& label.Mui-focused': {
+                      color: 'black',
+                    },
+                    '& .MuiInput-underline:after': {
+                      borderBottomColor: 'black',
+                    },
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'black',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'black',
+                        borderWidth: '0.15rem',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'black',
+                      },
+                    },
+                  }}
                 />
               </Grid>
-              <Grid item xs={6} className={`textfield_bold ${filledFields.password ? "hide_label" : ""}`} sx={{ marginTop: "3rem" }}>
+              <Grid item xs={6} className={`textfield_bold ${filledFields.password ? "hide_label" : ""}`} sx={{ marginTop: "3rem", height: "75px" }}>
                 <label className={`input_label ${touched.password && errors.password ? "error_label" : ""}`}>
                   {filledFields.password ? null : <span className="asterisk" style={{ color: "rgba(255, 85, 85, 1)", marginTop: "-5px" }}>*</span>}
                   Create Password
@@ -89,6 +117,29 @@ const SignInForm = () => {
                   onChange={(e) => handleInputChange(e, props)}
                   id="standard-adornment-password"
                   type={showPassword ? "text" : "password"}
+                  sx = {{
+                    '& label': {
+                      color: 'black',
+                    },
+                    '& label.Mui-focused': {
+                      color: 'black',
+                    },
+                    '& .MuiInput-underline:after': {
+                      borderBottomColor: 'black',
+                    },
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: 'black',
+                      },
+                      '&:hover fieldset': {
+                        borderColor: 'black',
+                        borderWidth: '0.15rem',
+                      },
+                      '&.Mui-focused fieldset': {
+                        borderColor: 'black',
+                      },
+                    },
+                  }}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -97,10 +148,13 @@ const SignInForm = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {showPassword ? <RiEyeOffLine className="rotate_icon"/> : <RiEyeLine />}
+                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine className="rotate_icon"/>}
                         </IconButton>
                       </InputAdornment>
                     ),
+                    style: {
+                      paddingLeft: '20px',
+                    }
                   }}
                 />
 
@@ -111,7 +165,7 @@ const SignInForm = () => {
                 sx={{
                   backgroundColor: "#666666",
                   color: "#fff",
-                  marginTop: "3rem",
+                  marginTop: "5rem",
                   "&:hover": {
                     backgroundColor: "black",
                   },
@@ -129,3 +183,4 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
+
