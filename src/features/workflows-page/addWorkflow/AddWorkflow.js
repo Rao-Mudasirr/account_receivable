@@ -1,10 +1,18 @@
 import { Box } from "@mui/material";
 import React from "react";
 import CustomInput from "../../../components/CustomInput";
+import GlobalButton from "../../../components/global-button/global-button";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import "./AddWorkflow.scss";
 
 const AddWorkflowComponent = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  let [searchParams, setSearchParams] = useSearchParams(location.search);
+  console.log(searchParams);
+
   return (
-    <Box>
+    <Box className="add-workflow-parent">
       <Box className="invoice-title">Add Workflow</Box>
       <Box className="add-workflow-box">
         <CustomInput
@@ -27,7 +35,32 @@ const AddWorkflowComponent = () => {
           placeholder="Placeholder"
         />
       </Box>
-      <Box className="workflow-button"></Box>
+      <Box className="workflow-button">
+        <Box
+          sx={{
+            marginTop: "120px",
+            justifyContent: "space-between",
+            display: "flex",
+            flex: "1 1 auto",
+            flexWrap: "wrap",
+            rowGap: "10px",
+          }}
+        >
+          <GlobalButton
+            variant="outlined"
+            btnName="outlined"
+            className="outlined"
+            btnText="Back"
+            onClick={() => navigate("/workflows")}
+          />
+          <GlobalButton
+            variant="accent"
+            btnName="accent"
+            btnText="Next"
+            // className="button"
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };

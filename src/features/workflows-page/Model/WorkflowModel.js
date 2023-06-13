@@ -7,11 +7,12 @@ import {
   Tabs,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { ReactComponent as EditSvg } from "../../../assests/svg/workflow-edit.svg";
 import editIcon from "../../../assests/images/settings/editIcon.png";
 
 import "./WorkflowModel.scss";
+import { useNavigate } from "react-router-dom";
 
 function WorkflowModel({
   open,
@@ -21,6 +22,8 @@ function WorkflowModel({
   handleChange,
   edit,
 }) {
+  const navigate = useNavigate();
+
   return (
     <div className="model-parent">
       <Modal
@@ -62,48 +65,55 @@ function WorkflowModel({
                     Rules List
                   </Typography>
                   <Box className="tabbing">
-                    <Tabs
-                      centered
-                      className="tabbing-list"
-                      orientation="vertical"
-                    >
-                      {Tabbing_data?.map((e) => (
+                    {Tabbing_data?.map((e) => (
+                      <Box
+                        sx={{
+                          display: edit ? "flex" : "block",
+                          alignItems: edit ? "center" : "initial",
+                          gap: edit ? "10px" : "0px",
+                          marginBottom: "20px",
+                        }}
+                      >
                         <Box
-                          sx={{
-                            display: edit ? "flex" : "block",
-                            alignItems: edit ? "center" : "initial",
-                            gap: edit ? "10px" : "0px",
-                            marginBottom: "20px",
-                          }}
+                          className={`tabbing-item ${
+                            value === e?.id ? "active" : ""
+                          }`}
+                          onClick={(event) => handleChange(event, e?.id)}
+                          label={e.label}
+                          key={e.id}
+                          value={e?.id}
                         >
-                          <Box
-                            className={`tabbing-item ${
-                              value === e?.id ? "active" : ""
-                            }`}
-                            onClick={(event) => handleChange(event, e?.id)}
-                            label={e.label}
-                            key={e.id}
-                            value={e?.id}
-                          >
-                            {e.label}
-                          </Box>
-                          {edit && (
-                            <EditSvg cursor={"pointer"} className="edit-icon" />
-                          )}
+                          {e.label}
                         </Box>
-                      ))}
-                    </Tabs>
+                        {edit && (
+                          <EditSvg
+                            cursor={"pointer"}
+                            className="edit-icon"
+                            onClick={() =>
+                              navigate(
+                                `/workflows/add?step=${e?.step}&id=${e?.id}`
+                              )
+                            }
+                          />
+                        )}
+                      </Box>
+                    ))}
                   </Box>
                 </Box>
               </Grid>
               <Grid xs={12} lg={7} item>
                 <Box sx={{ marginTop: "24px" }}>
                   {Tabbing_data?.map(
-                    ({ id, component: Component }) =>
+                    ({ id, component: Component, ...item }) =>
                       id === value && (
                         <>
                           {" "}
-                          <Component edit={edit} editIcon={editIcon} />
+                          <Component
+                            edit={edit}
+                            editIcon={editIcon}
+                            item={item}
+                            id={id}
+                          />
                         </>
                       )
                   )}

@@ -295,32 +295,36 @@ const ViewWorkflow = () => {
       isSortable: false,
     },
   ];
-
   const tabbing_data = [
     {
       label: "Invoice Creation Date",
       id: 1,
       component: InvoiceCreationDate,
+      step: 1,
     },
     {
       label: "Before Due Date",
       id: 21,
       component: BeforeDueDate,
+      step: 2,
     },
     {
       label: "On Due Date",
       id: 41,
       component: OnDueDate,
+      step: 3,
     },
     {
       label: "After Due Date",
       id: 11,
       component: AfterDueDate,
+      step: 4,
     },
     {
       label: "On Payment Collection Date",
       id: 15,
       component: OnPaymentCollectionDate,
+      step: 5,
     },
   ];
   const [value, setValue] = useState(1);

@@ -25,12 +25,6 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route
             exact
             path={"/overdue-invoices"}
@@ -64,15 +58,6 @@ function App() {
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/report-details/:id"} element={<Report_Info />} />
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
-          <Route path="/not-found" element={<h1>Not Found</h1>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
-          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
-
-          <Route exact path={"/settings"} element={<DashboaedSettings />} />
-          <Route path="/not-found" element={<h1>Not Found</h1>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
-          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
-
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
