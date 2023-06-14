@@ -7,74 +7,9 @@ import exportIcon from "../../../../assests/images/client/export.png";
 import {Button, Grid, Box} from "@mui/material";
 import ShowFilters from "../ShowFilters";
 import Date_Range from "../Date_Range";
-import SrIcon from '../../../../assests/images/client/sricon.png'
-
-const INVOICE_DATA = [
-  {
-    id: 1,
-    client_Id: "01",
-    client_name: "John Doe",
-    no_invoices: "3",
-    paid_invoices: "60%",
-    invoices_paid_duedate: "60%",
-  },
-  {
-    id: 2,
-    client_Id: "02",
-    client_name: "John Doe",
-    no_invoices: "3",
-    paid_invoices: "60%",
-    invoices_paid_duedate: "60%",
-  },
-  {
-    id: 3,
-    client_Id: "03",
-    client_name: "John Doe",
-    no_invoices: "5",
-    paid_invoices: "60%",
-    invoices_paid_duedate: "60%",
-  },
-];
+import { WORKFLOW_DETAIL_COL, WORKFLOW_DETAIL_DATA } from "../../ReportsTable/Workflow_Detail";
 
 export default function WorkflowDetail() {
-
-  const columns = [
-    {
-      accessorFn: (row) => row.client_Id,
-      id: "client_Id",
-      cell: (info) => info.getValue(),
-      header: () => <span>Client Id <img src={SrIcon} alt="Workflow Id" /></span>
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.client_name,
-      id: "client_name",
-      cell: (info) => info.getValue(),
-      header: "Client Name",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.no_invoices,
-      id: "no_invoices",
-      cell: (info) => info.getValue(),
-      header: "No. of Invoices",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.paid_invoices,
-      id: "paid_invoices",
-      cell: (info) => info.getValue(),
-      header: "% of Paid Invoices",
-      // isSortable: true,
-    },
-    {
-      accessorFn: (row) => row.invoices_paid_duedate,
-      id: "invoices_paid_duedate",
-      cell: (info) => info.getValue(),
-      header: "% of Invoices Paid on Due Date",
-      // isSortable: true,
-    },
-  ];
 
 const [isOpen, setIsOpen] = useState(false);
 const [type, setType] = useState("");
@@ -86,7 +21,7 @@ setIsOpen(!isOpen);
 
   return (
     <React.Fragment>
-      <div className="workflows-title">Workflows Report</div>
+      <div className="workflows-title">Workflow Details</div>
 
       {/* Search field */}
       <Grid container>
@@ -160,8 +95,8 @@ setIsOpen(!isOpen);
       {/* Table */}
 
       <CustomTable
-        data={INVOICE_DATA}
-        columns={columns}
+        data={WORKFLOW_DETAIL_DATA}
+        columns={WORKFLOW_DETAIL_COL}
         isSuccess={true}
         isPagination={true}
       />

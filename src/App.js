@@ -46,8 +46,8 @@ function App() {
             <Route path="/not-found" element={<h1>Not Found</h1>}/>
             <Route path="*" element={<Navigate to="/not-found"/>} />
             <Route path="/invoice-no-detail" element={<InvoiceNoDetail/>} />
-            <Route path="/workflows-report" element={<WorkflowReport/>} />
-            <Route path="/workflows-report/workflow-detail" element={<WorkflowDetail/>} />
+            <Route path="/report-details/workflows-report" element={<WorkflowReport/>} />
+            <Route path="/report-details/workflows-report/workflow-detail" element={<WorkflowDetail/>} />
           <Route
             exact
             path={"/user-management/role-right-manager"}
