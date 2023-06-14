@@ -1,6 +1,6 @@
 import React from "react";
 import AddUserForm from "./AddUserForm";
-import "./adduser.css";
+import "./adduser.scss";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Dialog } from "@mui/material";
 

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { Grid, Button, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
+import {
+  Grid,
+  Button,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
-import "./adduser.css";
+import "./adduser.scss";
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First Name is required"),
@@ -70,13 +76,26 @@ const AddUserInputs = () => {
         return (
           <Form noValidate autoComplete="off" className="adduser_form">
             <Grid sx={{ gap: 5 }} className="adduser_forminputs">
-              <Grid item xs={6} className={`textfield_bold ${filledFields.firstName ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.firstName ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.firstName ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.firstName ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   First Name
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="firstName"
@@ -86,13 +105,26 @@ const AddUserInputs = () => {
                 />
               </Grid>
 
-              <Grid item xs={6} className={`textfield_bold ${filledFields.lastName ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.lastName ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.lastName ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.lastName ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   Last Name
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="lastName"
@@ -102,13 +134,26 @@ const AddUserInputs = () => {
                 />
               </Grid>
 
-              <Grid item xs={6} className={`textfield_bold ${filledFields.email ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.email ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.email ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.email ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   Email
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="email"
@@ -119,13 +164,26 @@ const AddUserInputs = () => {
                 />
               </Grid>
 
-              <Grid item xs={6} className={`textfield_bold ${filledFields.phone ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.phone ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.phone ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.phone ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   Phone
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="phone"
@@ -141,13 +199,26 @@ const AddUserInputs = () => {
                 />
               </Grid>
 
-              <Grid item xs={6} className={`textfield_bold ${filledFields.company ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.company ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.company ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.company ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   Company
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={Select}
                   name="company"
@@ -157,7 +228,17 @@ const AddUserInputs = () => {
                   {companyOptions.map((option, index) => (
                     <MenuItem key={option.value} value={option.value}>
                       <FormControlLabel
-                        control={<Checkbox checked={option.value === values.company} color="primary" />}
+                        control={
+                          <Checkbox
+                            sx={{
+                              "&.Mui-checked": {
+                                color: "black",
+                              },
+                            }}
+                            checked={option.value === values.company}
+                            color="primary"
+                          />
+                        }
                         label={option.label}
                       />
                     </MenuItem>
@@ -165,13 +246,26 @@ const AddUserInputs = () => {
                 </Field>
               </Grid>
 
-              <Grid item xs={6} className={`textfield_bold ${filledFields.role ? "hide_label" : ""}`}>
+              <Grid
+                item
+                xs={6}
+                className={`textfield_bold ${
+                  filledFields.role ? "hide_label" : ""
+                }`}
+              >
                 <label className="input_label">
-                  {filledFields.role ? null : <span className="asterisk"
-                  style={{color: "red", marginTop: "-3px"}}>*</span>}
+                  {filledFields.role ? null : (
+                    <span
+                      className="asterisk"
+                      style={{ color: "red", marginTop: "-3px" }}
+                    >
+                      *
+                    </span>
+                  )}
                   Role
                 </label>
                 <Field
+                sx={Styles.field_color}
                   className="usersform_textfield"
                   component={Select}
                   name="role"
@@ -181,7 +275,17 @@ const AddUserInputs = () => {
                   {roleOptions.map((option, index) => (
                     <MenuItem key={option.value} value={option.value}>
                       <FormControlLabel
-                        control={<Checkbox checked={option.value === values.role} color="primary" />}
+                        control={
+                          <Checkbox
+                          sx={{
+                            "&.Mui-checked": {
+                              color: "black",
+                            },
+                          }}
+                            checked={option.value === values.role}
+                            color="primary"
+                          />
+                        }
                         label={option.label}
                       />
                     </MenuItem>
@@ -205,3 +309,30 @@ const AddUserInputs = () => {
 };
 
 export default AddUserInputs;
+
+//Style
+const Styles = {
+  field_color: (theme) => ({
+    '& label': {
+      color: 'black',
+    },
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+        borderWidth: '0.15rem',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black',
+      },
+    },
+  })
+}

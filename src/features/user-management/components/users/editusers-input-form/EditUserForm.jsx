@@ -9,7 +9,7 @@ import {
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
-import "./edituser.css";
+import "./edituser.scss";
 
 
 const initialValues = {
