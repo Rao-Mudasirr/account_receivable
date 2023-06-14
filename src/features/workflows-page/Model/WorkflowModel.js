@@ -91,7 +91,7 @@ function WorkflowModel({
                             className="edit-icon"
                             onClick={() =>
                               navigate(
-                                `/workflows/add?step=${e?.step}&id=${e?.id}`
+                                `/workflows/form?step=${e?.step}&id=${e?.id}`
                               )
                             }
                           />

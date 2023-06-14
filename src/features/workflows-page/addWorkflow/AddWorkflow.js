@@ -2,15 +2,11 @@ import { Box } from "@mui/material";
 import React from "react";
 import CustomInput from "../../../components/CustomInput";
 import GlobalButton from "../../../components/global-button/global-button";
-import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddWorkflow.scss";
 
 const AddWorkflowComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  let [searchParams, setSearchParams] = useSearchParams(location.search);
-  console.log(searchParams);
-
   return (
     <Box className="add-workflow-parent">
       <Box className="invoice-title">Add Workflow</Box>
@@ -57,6 +53,7 @@ const AddWorkflowComponent = () => {
             variant="accent"
             btnName="accent"
             btnText="Next"
+            onClick={() => navigate("/workflows/form?step=1&id=1")}
             // className="button"
           />
         </Box>

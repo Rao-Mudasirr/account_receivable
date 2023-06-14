@@ -12,6 +12,7 @@ import "./styles.scss";
 
 const CustomInput = ({
   label,
+  required = true,
   type = "Text",
   options = [],
   inputClass,
@@ -22,11 +23,18 @@ const CustomInput = ({
   return (
     <Box className={"custom-input-1"}>
       <label
+        style={{ paddingLeft: required ? "0" : "7px" }}
         className={`input_label input_label2  ${labelClass ? labelClass : ""}`}
       >
-        <span className="asterisk" style={{ color: "red", marginTop: "-3px" }}>
-          *
-        </span>
+        {required && (
+          <span
+            className="asterisk"
+            style={{ color: "red", marginTop: "-3px" }}
+          >
+            *
+          </span>
+        )}
+
         {label}
       </label>
       {type.toLowerCase() === "text" ? (

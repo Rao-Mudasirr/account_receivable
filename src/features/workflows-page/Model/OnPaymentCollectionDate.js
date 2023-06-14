@@ -42,7 +42,7 @@ const OnPaymentCollectionDate = ({ edit, editIcon, item, id }) => {
               variant="accent"
               btnName="accent"
               onClick={() =>
-                navigate(`/workflows/add?step=${item?.step}&id=${id}`)
+                navigate(`/workflows/form?step=${item?.step}&id=${id}`)
               }
               btnText="Edit "
               endIcon={

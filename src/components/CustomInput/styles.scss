@@ -1,4 +1,7 @@
 .custom-input-1 {
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
   .input_label {
     display: flex;
     color: #6b6b80;
