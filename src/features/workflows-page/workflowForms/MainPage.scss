@@ -98,7 +98,7 @@
       border: 1px solid #e1e1e6;
       border-radius: 4px;
       min-height: 410px;
-      max-height: 420px;
+      max-height: 430px;
       padding: 20px;
       overflow: auto;
       position: relative;
@@ -161,16 +161,16 @@
           border: 0;
         }
       }
-      .tabbing-form-button {
-        button {
-          background: #2b2b33;
-          border-radius: 8px;
-          min-width: 91px !important;
-          max-width: 91px !important;
-          min-height: 48px !important;
-          &.outlined {
-            background: transparent;
-          }
+    }
+    .tabbing-form-button {
+      button {
+        background: #2b2b33;
+        border-radius: 8px;
+        min-width: 91px !important;
+        max-width: 91px !important;
+        min-height: 48px !important;
+        &.outlined {
+          background: transparent;
         }
       }
     }
