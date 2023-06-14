@@ -21,10 +21,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import GlobalButton from "../../../components/global-button/global-button";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { red } from "@mui/material/colors";
-
-
 
 const validationSchema = yup.object({
   firstName: yup.string().required("First Name is required"),
@@ -134,15 +130,26 @@ const ProfileManagement = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid xs={2} sx={{ p: 5 }}>
+      <Grid xl={5}  xs={12} sx={{ p: 5 ,display:'flex',alignItems:'center'}} gap={4}>
         <Avatar
           src={profile}
           alt="profile-img"
           sx={{ width: "160px", height: "160px" }}
         />
+         <Typography
+            variant="body1"
+            className="font-family-exo2 primary-color heading-18" sx={{fontWeight:600}}
+          >
+            Nick John
+          </Typography>
       </Grid>
-      <Grid xs={10} sx={{ mt: 10 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Grid xl={7} xs={12} sx={{ mt: 10 ,'@media (max-width: 1536px)': {
+          mt:0,
+        },}}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" ,"@media (max-width: 600px)": {
+                    justifyContent: "center",
+                    ml:3
+                  },}}>
           {editMode ? (
             <>
               <Box
@@ -154,6 +161,7 @@ const ProfileManagement = () => {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
+                    width:'100%',
                     float: "none",
                   },
                 }}
@@ -192,7 +200,7 @@ const ProfileManagement = () => {
                 </Button>
               </Box>
               {emptyFields.length > 0 && (
-                <Typography variant="body2" color="error">
+                <Typography variant="body2" color="error" sx={{mt:2}}>
                   Please fill in all required fields.
                 </Typography>
               )}
@@ -209,49 +217,40 @@ const ProfileManagement = () => {
             />
           )}
         </Box>
-
-        <Box sx={{ ml: 5 }}>
-          <Typography
-            variant="body1"
-            className="font-family-exo2 primary-color sub-heading"
-          >
-            Nick John
-          </Typography>
-        </Box>
-
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
             gap: "10px",
             justifyContent: "flex-end",
+            mt:4
           }}
         >
           <Typography
             variant="body1"
             className="font-family-exo2 primary-title"
-            sx={{ color: "#166088" }}
+            sx={{ color: "#166088",cursor:'pointer' }}
           >
             Change Email
           </Typography>
           <Typography
             variant="body1"
             className="font-family-exo2 primary-title"
-            sx={{ color: "#166088" }}
+            sx={{ color: "#166088",cursor:'pointer'  }}
           >
             Change Password
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={8} >
+      <Grid item xl={8} xs={12} >
         <form onSubmit={handleSubmit}>
           <Grid xs={12} sx={{ p: 2 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography variant="h6" className="tertiary-color sub-heading font-family-exo2">Personal Details</Typography>
+                <Typography variant="h6" className="tertiary-color  heading-18 font-family-exo2" sx={{fontWeight:600}}>Personal Details</Typography>
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="firstName" className="slate-dark-color primary-title font-family-exo2">
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="firstName" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>
                   <Asterisk>*</Asterisk> First Name
                 </label>
                 <TextField
@@ -272,8 +271,8 @@ const ProfileManagement = () => {
                   sx={{ height: "48px" }}
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="lastName" className="slate-dark-color primary-title font-family-exo2">
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="lastName" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>
                   <Asterisk>*</Asterisk> Last Name
                 </label>
                 <TextField
@@ -291,20 +290,22 @@ const ProfileManagement = () => {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="dateofbirth" className="slate-dark-color primary-title font-family-exo2">Date of Birth</label>
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="dateofbirth"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Date of Birth</label>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     value={formik.values.dateOfBirth}
                     onChange={handleDateChange}
                     disabled={!editMode}
                     size="small"
-                    sx={{ width: "400px" }}
+                    sx={{ width: "400px" , "@media (max-width: 1536px)": {
+                      width: "100%",
+                    },}}
                   />
                 </LocalizationProvider>
               </Grid>
-              <Grid item xs={6} sx={{ mt: 2 }}>
-                <label htmlFor="age" className="slate-dark-color primary-title font-family-exo2">Age</label>
+              <Grid item xl={6} xs={12} sx={{ mt: 2 }}>
+                <label htmlFor="age"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Age</label>
                 <TextField
                   id="age"
                   name="age"
@@ -317,8 +318,8 @@ const ProfileManagement = () => {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="gender" className="slate-dark-color primary-title font-family-exo2">Gender</label>
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="gender"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Gender</label>
                 <TextField
                   id="gender"
                   name="gender"
@@ -337,8 +338,8 @@ const ProfileManagement = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={6}>
-                <label htmlFor="citizenship" className="slate-dark-color primary-title font-family-exo2">Citizenship</label>
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="citizenship"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Citizenship</label>
                 <TextField
                   id="citizenship"
                   name="citizenship"
@@ -367,10 +368,10 @@ const ProfileManagement = () => {
           <Grid xs={12} sx={{ p: 2 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Typography variant="h6" className="tertiary-color sub-heading font-family-exo2">Contact Details</Typography>
+                <Typography variant="h6" className="tertiary-color  heading-18 font-family-exo2" sx={{fontWeight:600}}>Contact Details</Typography>
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="email" className="slate-dark-color primary-title font-family-exo2">
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="email"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >
                   <Asterisk>*</Asterisk> Email
                 </label>
                 <TextField
@@ -398,8 +399,8 @@ const ProfileManagement = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="phone" className="slate-dark-color primary-title font-family-exo2">Phone Number</label>
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="phone"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Phone Number</label>
                 <TextField
                   id="phone"
                   name="phone"
@@ -415,9 +416,9 @@ const ProfileManagement = () => {
                 
                 />
               </Grid>
-              <Grid sx={{ mt: 2 }}> </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="postalCode" className="slate-dark-color primary-title font-family-exo2">Postal Code</label>
+              {/* <Grid sx={{ mt: 2 }}> </Grid> */}
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="postalCode"   className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Postal Code</label>
                 <TextField
                   id="postalCode"
                   name="postalCode"
@@ -429,8 +430,8 @@ const ProfileManagement = () => {
                 
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="address" className="slate-dark-color primary-title font-family-exo2">Address</label>
+              <Grid item xl={6} xs={12}>
+                <label htmlFor="address" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Address</label>
                 <TextField
                   id="address"
                   name="address"
