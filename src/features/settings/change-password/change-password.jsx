@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Grid, Typography,styled, TextField} from '@mui/material'
 import { useFormik } from "formik";
 import * as yup from "yup";
-import ProfileManagement from "../profile-management/profile-management";
-import GlobalButton from "../../../components/global-button/global-button";
 
 const validationSchema = yup.object({
    
@@ -16,16 +14,10 @@ const validationSchema = yup.object({
   });
   
 
-const ChangeEmail = () => {
+const ChangePassword = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [emptyFields, setEmptyFields] = useState([]);
-
-    const[ProfileManage,setProfileMange]=useState(false);
-
-    const handleClickUserProfile=()=>{
-      setProfileMange(true);
-    }
 
     const formik = useFormik({
         initialValues: {
@@ -58,19 +50,19 @@ const ChangeEmail = () => {
 
   return (
     <>
-    {ProfileManage ? <ProfileManagement/>:(<Grid container spacing={2}>
+    <Grid container spacing={2}>
         <Grid item xs={12} sx={{display:'flex',justifyContent:'space-between', mt:10,ml:5}} >
             <Typography>
-                Update Email
+                Update Password
             </Typography>
-            <Typography sx={{cursor:'pointer'}} onClick={handleClickUserProfile}>
+            <Typography>
                 User Profile
             </Typography>
         </Grid>
         <form onSubmit={handleSubmit}>
         <Grid item xl={12} xs={12} sx={{p:5}}>
                 <label htmlFor="email"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >
-               Current Password
+                  <Asterisk>*</Asterisk> Email
                 </label>
                 <TextField
                   id="email"
@@ -92,23 +84,15 @@ const ChangeEmail = () => {
                        border:'1px solid black'
                       },
 
+                    
+
                   }}
                 />
               </Grid>
-        </form>
-        <Grid xs={12} sx={{display:'flex',justifyContent:'flex-end'}}>
-              <GlobalButton
-              variant="accent"
-              btnName="accent"
-              btnText="Next"
-              sx={{width:'91px',height:'48px'}}
-              />
-              </Grid>
-             
-    </Grid>)}
-    
+              </form>
+    </Grid>
     </>
   )
 }
 
-export default ChangeEmail
+export default ChangePassword

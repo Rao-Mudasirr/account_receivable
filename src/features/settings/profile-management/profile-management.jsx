@@ -20,7 +20,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import GlobalButton from "../../../components/global-button/global-button";
-
+import ChangeEmail from '../change-email/change-email'
+import ChangePassword from '../change-password/change-password'
 
 const validationSchema = yup.object({
   firstName: yup.string().required("First Name is required"),
@@ -40,9 +41,20 @@ const ProfileManagement = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [emptyFields, setEmptyFields] = useState([]);
-
- 
   const [isFilled, setIsFilled] = useState(false);
+
+  const [showChangeEmail, setShowChangeEmail] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
+
+  const handleEmailClick = () => {
+    setShowChangeEmail(true);
+    setShowChangePassword(false);
+  };
+
+  const handlePasswordClick = () => {
+    setShowChangeEmail(false);
+    setShowChangePassword(true);
+  };
 
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
@@ -129,6 +141,13 @@ const ProfileManagement = () => {
   };
 
   return (
+    <Grid item xs={12}>
+        {showChangeEmail ? (
+          <ChangeEmail />
+        ) : showChangePassword ? (
+          <ChangePassword />
+        ) : (
+          <>
     <Grid container spacing={2}>
       <Grid xl={5}  xs={12} sx={{ p: 5 ,display:'flex',alignItems:'center'}} gap={4}>
         <Avatar
@@ -230,6 +249,7 @@ const ProfileManagement = () => {
             variant="body1"
             className="font-family-exo2 primary-title"
             sx={{ color: "#166088",cursor:'pointer' }}
+            onClick={handleEmailClick}
           >
             Change Email
           </Typography>
@@ -237,6 +257,7 @@ const ProfileManagement = () => {
             variant="body1"
             className="font-family-exo2 primary-title"
             sx={{ color: "#166088",cursor:'pointer'  }}
+            onClick={handlePasswordClick}
           >
             Change Password
           </Typography>
@@ -449,6 +470,9 @@ const ProfileManagement = () => {
       </Grid>
       <Grid xs={4}></Grid>
       <ToastContainer />
+       
+    </Grid>
+    </>)}
     </Grid>
   );
 };
