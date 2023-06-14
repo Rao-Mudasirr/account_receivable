@@ -16,18 +16,14 @@ import MainReport from "./pages/MainReport";
 import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import { ToastContainer } from "react-toastify";
+import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
+import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
         <Route exact path={"/"} element={<Layout />}>
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
-          <Route exact path={"/"} element={<Dashboard />} />
-          <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route
@@ -61,7 +57,8 @@ function App() {
           <Route exact path={"/clients"} element={<Clientdetails />} />
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/report-details/:id"} element={<Report_Info />} />
-          <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          <Route exact path={"/report-details/cashflow-forcasting/:id"} element={<Cashflow_Forcasting />} />
+          <Route exact path={"/report-details/month/:id"} element={<DSO_Month />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

@@ -3,17 +3,17 @@ import TableAction from "../../../components/Table/TableAction";
 
 export const DSO_Col = [
     {
-      accessorFn: (row) => row.Id,
-      id: "Id",
+      accessorFn: (row) => row.month,
+      id: "month",
       cell: (info) => info.getValue(),
-      header: () => <span>Client Id</span>,
+      header: () => <span>Month</span>,
       // isSortable: true,
     },
     {
-      accessorFn: (row) => row.client_name,
-      id: "client_name",
+      accessorFn: (row) => row.year,
+      id: "year",
       cell: (info) => (info.getValue()),
-      header: "Client Name",
+      header: "Year",
       // isSortable: true,
     },
     {
@@ -37,19 +37,43 @@ export const DSO_Col = [
       header: "Avg Delay",
       // isSortable: true,
     },
-    {
-      id: "Actions",
-      cell: (info) => (
-        <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" />
-        </Box>
-      ),
-      header: () => <span>Actions</span>,
-      isSortable: false,
-    },
+    // {
+    //   id: "Actions",
+    //   cell: (info) => (
+    //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+    //       <TableAction type="view" />
+    //     </Box>
+    //   ),
+    //   header: () => <span>Actions</span>,
+    //   isSortable: false,
+    // },
   ];
 
   export const DSO_Data =  [
+    {
+      month: 'Jan',
+      year: '2023',
+      total_invoices: 3,
+      dso: 46,
+      avg_delay: 5,
+    },
+    {
+      month: 'Feb',
+      year: '2022',
+      total_invoices: 3,
+      dso: 50,
+      avg_delay: 6,
+    },
+    {
+      month: 'Jan',
+      year: '2023',
+      total_invoices: 5,
+      dso: 66,
+      avg_delay: 7,
+    },
+  ];
+  
+  export const DSO_Data2 =  [
     {
       id: 1,
       Id: "01",
