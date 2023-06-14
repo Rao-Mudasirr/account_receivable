@@ -15,6 +15,7 @@ import MainReport from "./pages/MainReport";
 import Report_Info from "./pages/Report_Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowReport from './features/Reports/workflow-report/WorkflowReport'
+import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 
 function App() {
   return (
@@ -99,6 +100,7 @@ function App() {
             <Route path="*" element={<Navigate to="/not-found"/>} />
             <Route path="/invoice-no-detail" element={<InvoiceNoDetail/>} />
             <Route path="/workflows-report" element={<WorkflowReport/>} />
+            <Route path="/workflows-report/workflow-detail" element={<WorkflowDetail/>} />
           </Route>
     </Routes>
     </Suspense>

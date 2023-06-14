@@ -1,83 +1,78 @@
 import React, { useState } from "react";
-import CustomTable from "../../../components/Table/CustomTable";
-import "./workflow_report.scss";
-import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
-import filterIcon from "../../../assests/images/client/filter.png";
-import exportIcon from "../../../assests/images/client/export.png";
+import CustomTable from "../../../../components/Table/CustomTable";
+import "../workflow_report.scss";
+import { GlobalSearchBar } from "../../../../components/global-search-filter/global-search-filter";
+import filterIcon from "../../../../assests/images/client/filter.png";
+import exportIcon from "../../../../assests/images/client/export.png";
 import {Button, Grid, Box} from "@mui/material";
-import ShowFilters from "./ShowFilters";
-import Date_Range from "./Date_Range";
-import TableAction from "../../../components/Table/TableAction";
-import { Link } from "react-router-dom";
-import SrIcon from '../../../assests/images/client/sricon.png'
+import ShowFilters from "../ShowFilters";
+import Date_Range from "../Date_Range";
+import SrIcon from '../../../../assests/images/client/sricon.png'
 
 const INVOICE_DATA = [
   {
     id: 1,
-    workflow_Id: "01",
-    workflow_name: "Test",
-    created_by: "Alice",
-    no_assigned_clients: "2",
-    overdue_days: "12",
+    client_Id: "01",
+    client_name: "John Doe",
+    no_invoices: "3",
+    paid_invoices: "60%",
+    invoices_paid_duedate: "60%",
   },
   {
     id: 2,
-    workflow_Id: "02",
-    workflow_name: "Test",
-    created_by: "Alice",
-    no_assigned_clients: "33",
-    overdue_days: "12",
+    client_Id: "02",
+    client_name: "John Doe",
+    no_invoices: "3",
+    paid_invoices: "60%",
+    invoices_paid_duedate: "60%",
   },
   {
     id: 3,
-    workflow_Id: "03",
-    workflow_name: "Test",
-    created_by: "Alice",
-    no_assigned_clients: "33",
-    overdue_days: "12",
+    client_Id: "03",
+    client_name: "John Doe",
+    no_invoices: "5",
+    paid_invoices: "60%",
+    invoices_paid_duedate: "60%",
   },
 ];
 
-export default function WorkflowReport() {
+export default function WorkflowDetail() {
 
   const columns = [
     {
-      accessorFn: (row) => row.workflow_Id,
-      id: "workflow_Id",
+      accessorFn: (row) => row.client_Id,
+      id: "client_Id",
       cell: (info) => info.getValue(),
-      header: () => <span>Workflow Id <img src={SrIcon} alt="Workflow Id" /></span>
+      header: () => <span>Client Id <img src={SrIcon} alt="Workflow Id" /></span>
       // isSortable: true,
     },
     {
-      accessorFn: (row) => row.workflow_name,
-      id: "workflow_name",
+      accessorFn: (row) => row.client_name,
+      id: "client_name",
       cell: (info) => info.getValue(),
-      header: "Workflow Name",
+      header: "Client Name",
       // isSortable: true,
     },
     {
-      accessorFn: (row) => row.created_by,
-      id: "created_by",
+      accessorFn: (row) => row.no_invoices,
+      id: "no_invoices",
       cell: (info) => info.getValue(),
-      header: "Created By",
+      header: "No. of Invoices",
       // isSortable: true,
     },
     {
-      accessorFn: (row) => row.no_assigned_clients,
-      id: "no_assigned_clients",
+      accessorFn: (row) => row.paid_invoices,
+      id: "paid_invoices",
       cell: (info) => info.getValue(),
-      header: "No of Assigned Clients",
+      header: "% of Paid Invoices",
       // isSortable: true,
     },
     {
-      id: "Actions",
-      cell: (info) => (
-        <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-         <Link to="/workflows-report/workflow-detail"> <TableAction type="view" /> </Link>
-        </Box>
-      ),
-      header: () => <span>Actions</span>,
-      // isSortable: false,
+      accessorFn: (row) => row.invoices_paid_duedate,
+      id: "invoices_paid_duedate",
+      cell: (info) => info.getValue(),
+      header: "% of Invoices Paid on Due Date",
+      // isSortable: true,
     },
   ];
 
