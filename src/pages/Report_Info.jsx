@@ -1,5 +1,5 @@
 import React from 'react'
-import ReportDetails from '../features/Reports/ReportDetails'
+import ReportDetails from '../features/Reports/DSO_Report/ReportDetails'
 
 function Report_Info() {
   return (

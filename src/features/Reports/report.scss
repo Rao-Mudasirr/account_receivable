@@ -45,6 +45,43 @@
   }
 }
 
+@media screen and (max-width: 970px) {
+  .report-styles {
+    .report-title {
+      margin: auto;
+    width: 276px;
+    height: 24px;
+    margin-top: 52px;
+    margin-bottom: 20px;
+    font-family: "Exo 2";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #2b2b33;
+    }
+    .report-card {
+    margin: auto;
+    cursor: pointer !important;
+    width: 341px !important;
+    height: 206px !important;
+    background: #f0f0f2 !important;
+    border-radius: 8px !important;
+    padding: 30px;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
+    .report-image{
+      width: auto !important;
+      height: 142px !important;
+    }
+    }
+  }
+}
+
 .buttons-filters{
   font-family: 'Exo 2';
 font-style: normal;
