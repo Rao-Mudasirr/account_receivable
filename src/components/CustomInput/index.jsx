@@ -1,10 +1,18 @@
-import { Box, MenuItem, Select, TextField } from "@mui/material";
+import {
+  Box,
+  MenuItem,
+  Select,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
 // import { TextField } from "formik-material-ui";
+
 import React, { useEffect } from "react";
 import "./styles.scss";
 
 const CustomInput = ({
   label,
+  required = true,
   type = "Text",
   options = [],
   inputClass,
@@ -15,11 +23,18 @@ const CustomInput = ({
   return (
     <Box className={"custom-input-1"}>
       <label
+        style={{ paddingLeft: required ? "0" : "7px" }}
         className={`input_label input_label2  ${labelClass ? labelClass : ""}`}
       >
-        <span className="asterisk" style={{ color: "red", marginTop: "-3px" }}>
-          *
-        </span>
+        {required && (
+          <span
+            className="asterisk"
+            style={{ color: "red", marginTop: "-3px" }}
+          >
+            *
+          </span>
+        )}
+
         {label}
       </label>
       {type.toLowerCase() === "text" ? (
@@ -32,7 +47,7 @@ const CustomInput = ({
             {...props}
           />
         </>
-      ) : (
+      ) : type.toLowerCase() === "select" ? (
         <>
           {" "}
           <Select
@@ -51,6 +66,18 @@ const CustomInput = ({
               ))
             )}
           </Select>
+        </>
+      ) : (
+        <>
+          <TextareaAutosize
+            // id="standard-basic"
+            className={`usersform_textfield textArea-common ${
+              inputClass ? inputClass : ""
+            }`}
+            // label="Standard"
+            placeholder="Standard"
+            {...props}
+          />
         </>
       )}
     </Box>
