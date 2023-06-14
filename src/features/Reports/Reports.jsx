@@ -8,7 +8,11 @@ function Reports() {
     
     const navigate = useNavigate();
     const GoToNext = (val) => {
-        navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
+        if(val?.title == 'Cashflow Forecasting Report'){
+            navigate(`/report-details/cashflow-forcasting/${val?.id}`, {state: {reportData: val}})
+        }else{
+            navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
+        }
     }
 
   return (
@@ -17,7 +21,7 @@ function Reports() {
         <Grid container>
             {
                 ReportData?.map((val, i)=> (
-                    <Grid className='report-styles' xs={12} md={6} lg={4} key={i}>
+                    <Grid className='report-styles' xs={12} md={6} lg={6} xl={4} key={i}>
                         <div className='report-title'>{val?.title}</div>
                         {/* <Link to={'/report-details/'}> */}
                             <Card className='report-card' onClick={()=>GoToNext(val)}>

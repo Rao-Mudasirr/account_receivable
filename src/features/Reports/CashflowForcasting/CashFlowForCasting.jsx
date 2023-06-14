@@ -1,12 +1,9 @@
 import React, { Fragment, useState } from 'react'
-import CustomTable from "../../components/Table/CustomTable";
-import { useTableParams } from "../../components/Table/useTableParams";
-// import TableAction from '../../../components/Table/TableAction';
-// import DeleteModel from '../../../../components/modal/DeleteModel';
-// import FormDialog from '../../../../components/modal/ModalPractice';
-import { GlobalSearchBar } from "../../components/global-search-filter/global-search-filter";
-import filterIcon from "../../assests/images/client/filter.png";
-import exportIcon from "../../assests/images/client/export.png";
+import CustomTable from "../../../components/Table/CustomTable";
+import { useTableParams } from "../../../components/Table/useTableParams";
+import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
+import filterIcon from "../../../assests/images/client/filter.png";
+import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
 import { Card } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -16,15 +13,15 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DSO_Col, DSO_Data } from './ReportsTable/DSO_Report';
-import ShowFilters from '../OverdueInvoices/ShowFilters';
-import './report.scss'
-
+import { CASHFLOW_Col, CashFlow_Data } from '../ReportsTable/Cashflow_Data';
+import ShowFilters from '../../OverdueInvoices/ShowFilters';
+import '../report.scss'
+import TableAction from '../../../components/Table/TableAction';
 
 const input_filter = [
   {
@@ -63,16 +60,16 @@ const input_filter = [
   },
 ];
 
-export default function ReportDetails () {
+function CashFlowForCasting() {
 
     const [isOpen, setIsOpen] = useState(false);
     const {state} = useLocation()
+    const navigate = useNavigate();
     const handleClick = () => {
       setIsOpen(!isOpen);
     };
     const [isOpen2, setIsOpen2] = useState(false);
-      const [type, setType] = useState("");
-
+    const [type, setType] = useState("");
   const handleClick2 = () => {
     setIsOpen2(!isOpen2);
   };
@@ -87,9 +84,10 @@ export default function ReportDetails () {
         setEndDate(date);
       }
     };
+
   return (
     <Fragment>
-      <div className="invoice-title">{state?.reportData?.title}</div>
+      <div className="invoice-title">Cashflow Forecasting Report</div>
 
       {/* Search field */}
       <Grid container>
@@ -163,7 +161,7 @@ export default function ReportDetails () {
             onClick={()=> {
                 setType("Export")
                 handleClick2()
-              }}
+            }}
           >
             Export Text
           </Button>
@@ -262,8 +260,8 @@ export default function ReportDetails () {
       {/* Table */}
 
       <CustomTable
-        data={DSO_Data}
-        columns={DSO_Col}
+        data={CashFlow_Data}
+        columns={CASHFLOW_Col}
         // showSerialNo
         // onPageChange={pageChangeHandler}
         // onSortByChange={sortChangeHandler}
@@ -273,3 +271,5 @@ export default function ReportDetails () {
     </Fragment>
   )
 }
+
+export default CashFlowForCasting

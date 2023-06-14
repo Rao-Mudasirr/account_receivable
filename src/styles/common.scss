@@ -95,10 +95,13 @@
 }
 
 .tertiary-color{
-  $tertiary-color: #40404D;
+  color: $tertiary-color;
 }
 .yellow-color{
   color:$yellow-color;
+}
+.slate-dark-color{
+  color:$slate-dark-color;
 }
 .link-color{
   color:$link-color;
