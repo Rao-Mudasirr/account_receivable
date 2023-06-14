@@ -1,18 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomInput from "../../../components/CustomInput";
-import { optionsDays, optionsTime } from "./Constants";
+import { optionsTime } from "./Constants";
 import GlobalButton from "../../../components/global-button/global-button";
 import { useNavigate } from "react-router-dom";
 
-const BeforeDueDate = ({ edit, editIcon, item, id }) => {
+const OnDueDate = ({ edit, editIcon, item, id }) => {
   const navigate = useNavigate();
-
   return (
     <Box>
       <Box className="tabbing-top">
         <Box className="tabbing-dropdowns">
-          <CustomInput type="select" label="Days" options={optionsDays} />
           <CustomInput type="select" label="Time" options={optionsTime} />
         </Box>
       </Box>
@@ -42,10 +40,10 @@ const BeforeDueDate = ({ edit, editIcon, item, id }) => {
             <GlobalButton
               variant="accent"
               btnName="accent"
-              btnText="Edit "
               onClick={() =>
-                navigate(`/workflows/form?step=${item?.step}&id=${id}`)
+                navigate(`/workflows/add?step=${item?.step}&id=${id}`)
               }
+              btnText="Edit "
               endIcon={
                 <img src={editIcon} alt="Export Text" width={16} height={16} />
               }
@@ -57,4 +55,4 @@ const BeforeDueDate = ({ edit, editIcon, item, id }) => {
   );
 };
 
-export default BeforeDueDate;
+export default OnDueDate;
