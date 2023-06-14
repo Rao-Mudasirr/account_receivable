@@ -6,7 +6,7 @@ export const NotificationsPageHeader = () => {
     const [selectVal, setSelectVal] = useState("This day");
     return (
         <>
-            <Grid container alignItems="center" justifyContent="space-between" pb="16px" borderBottom="1px solid #C4C4CC">
+            <Grid container alignItems="center" justifyContent="space-between" pb="16px">
                 <Grid item xs={3}>
                     <TextField id="search-notifications"
                         fullWidth
