@@ -36,11 +36,7 @@ function App() {
             path={"/user-management/role-right-manager"}
             element={<Manager />}
           />
-          <Route
-            exact
-            path={"/performance-analysis"}
-            element={<View_Invoice />}
-          />
+          
           <Route exact path={"/workflows"} element={<Workflow />}>
             <Route
               exact
