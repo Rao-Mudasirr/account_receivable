@@ -15,20 +15,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import GlobalButton from "../../../components/global-button/global-button";
 
 const validationSchema = yup.object({
   businessName: yup.string().required("Business Name is required"),
-  businessDescription: yup.string().required("Last Name is required"),
-  age: yup.string().required("Age is required"),
   businessEmail: yup.string().required("Email is required"),
-  // phone: yup.string().required("Phone Nuumber is required"),
-  // BusinessWebsite: yup.string().required('Postal Code is required'),
-  // address: yup.string().required('Address is required'),
+ 
 });
 
 const Asterisk = styled("span")({
@@ -36,49 +28,33 @@ const Asterisk = styled("span")({
 });
 
 const CompanyManagement= () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+
   const [editMode, setEditMode] = useState(false);
   const [emptyFields, setEmptyFields] = useState([]);
 
- 
-  const [isFilled, setIsFilled] = useState(false);
-
-  const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-    setIsFilled(!!inputValue); // Set isFilled to true if there is any input value
-  };
-
   const formik = useFormik({
     initialValues: {
-      businessName: "Nick",
-      businessDescription: "John",
+      businessName: "",
+      businessDescription: "",
       businessEmail: "",
       phone: "",
       currency: "",
       country: "",
       BusinessWebsite: "",
-      address: "",
     
     },
     validationSchema,
     onSubmit: (values) => {
-      values.dateofbirth = selectedDate
-        ? selectedDate.toISOString().slice(0, 10)
-        : null; // Update with selected date only
       console.log("Formik valuesdd:", values);
-      // resetForm();
-
-      // Check for empty fields
       const emptyFields = [];
       if (!values.businessName) emptyFields.push("businessName");
-      if (!values.businessDescription) emptyFields.push("businessDescription");
       if (!values.businessEmail) emptyFields.push("businessEmail");
-      // if (!values.phone) emptyFields.push("phone");
+   
 
       setEmptyFields(emptyFields);
 
       if (emptyFields.length === 0) {
-        // No empty fields, perform update
+      
         toast.success("Profile updated successfully!");
         setEditMode(false);
       }
@@ -87,6 +63,7 @@ const CompanyManagement= () => {
 
   const handleEditClick = () => {
     setEditMode(true);
+    console.log("true");
   };
 
   const handleCancelClick = () => {
@@ -106,21 +83,29 @@ const CompanyManagement= () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid xs={2} sx={{p:5}} >
+      <Grid xs={12} sx={{display:'flex',justifyContent:'space-between',alignItems:'center',mt:7,ml:5,  "@media (max-width: 600px)": {
+                    flexDirection: "column",
+                    alignItems: "center",
+                  },}}  >
+       <Box sx={{display:'flex',alignItems:'center'}} gap={4}> 
         <Avatar
           src={businessIcon}
           alt="profile-img"
           sx={{ width: "80px", height: "80px" }}
         />
-      </Grid>
-      <Grid xs={10} sx={{ mt:8, display:'flex',justifyContent:'space-between'}} >
           <Typography
             variant="body1"
-            className="font-family-exo2 primary-color sub-heading"
+            className="font-family-exo2 primary-color heading-18" sx={{fontWeight:600}}
           >
-            Nick John
+      Business Name
           </Typography>
-          <Box >
+          </Box>
+          <Box sx={{
+             "@media (max-width: 600px)": {
+              mt:5,
+              width:'100%'
+            },
+          }}>
           {editMode ? (
             <>
               <Box
@@ -156,7 +141,7 @@ const CompanyManagement= () => {
                 <Button
                   className="btn2"
                   type="submit"
-                  onClick={handleSubmit} // Added onClick event handler for form submission
+                  onClick={handleSubmit}
                   sx={{
                     color: "#FFFFFF",
                     background: "#000000",
@@ -170,7 +155,7 @@ const CompanyManagement= () => {
                 </Button>
               </Box>
               {emptyFields.length > 0 && (
-                <Typography variant="body2" color="error">
+                <Typography variant="body2" color="error" sx={{mt:2}}>
                   Please fill in all required fields.
                 </Typography>
               )}
@@ -188,17 +173,17 @@ const CompanyManagement= () => {
           )}
         
         </Box>
-
+        
       </Grid>
-      <Grid item xs={8} >
+      <Grid item xl={8} xs={12} >
         <form onSubmit={handleSubmit}>
           <Grid xs={12} sx={{ p: 2 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Typography variant="h6" className="tertiary-color sub-heading font-family-exo2">Company Profile</Typography>
+              <Grid item xs={12 }>
+                <Typography variant="h6" className="tertiary-color heading-18 font-family-exo2" sx={{fontWeight:600}}>Company Profile</Typography>
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="businessName" className="slate-dark-color primary-title font-family-exo2">
+              <Grid item xl={6} xs={12}sx={{mt:2}}>
+                <label htmlFor="businessName" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>
                   <Asterisk>*</Asterisk> Business Name
                 </label>
                 <TextField
@@ -208,7 +193,7 @@ const CompanyManagement= () => {
                   value={formik.values.businessName}
                   onChange={formik.handleChange}
                   onBlur={handleBlur}
-                  disabled={!editMode}
+                  // disabled={!editMode}
                   error={
                     formik.touched.businessName && Boolean(formik.errors.businessName)
                   }
@@ -219,27 +204,27 @@ const CompanyManagement= () => {
                   sx={{ height: "48px" }}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <label htmlFor="businessDescription" className="slate-dark-color primary-title font-family-exo2">
-                  <Asterisk>*</Asterisk> Business Description
+              <Grid item xs={12} sx={{mt:2}}>
+                <label htmlFor="businessDescription" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >
+                 Business Description
                 </label>
                 <TextField
                   id="businessDescription"
                   name="businessDescription"
-                  size="small"
+                  // size="small"
                   value={formik.values.businessDescription}
                   onChange={formik.handleChange}
-                  onBlur={handleBlur}
-                  disabled={!editMode}
-                  error={
-                    formik.touched.businessDescription && Boolean(formik.errors.businessDescription)
-                  }
-                  helperText={formik.touched.businessDescription && formik.errors.businessDescription}
+                  // onBlur={handleBlur}
+                  // disabled={!editMode}
+                  // error={
+                  //   formik.touched.businessDescription && Boolean(formik.errors.businessDescription)
+                  // }
+                  // helperText={formik.touched.businessDescription && formik.errors.businessDescription}
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="businessEmail" className="slate-dark-color primary-title font-family-exo2">
+              <Grid item xl={6} xs={12} sx={{mt:2}}>
+                <label htmlFor="businessEmail" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >
                   <Asterisk>*</Asterisk>Business Email
                 </label>
                 <TextField
@@ -267,8 +252,8 @@ const CompanyManagement= () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="phone" className="slate-dark-color primary-title font-family-exo2">Business Contact Number</label>
+              <Grid item xl={6} xs={12} sx={{mt:2}}>
+                <label htmlFor="phone"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Business Contact Number</label>
                 <TextField
                   id="phone"
                   name="phone"
@@ -284,9 +269,8 @@ const CompanyManagement= () => {
                 
                 />
               </Grid>
-              <Grid sx={{ mt: 2 }}> </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="BusinessWebsite" className="slate-dark-color primary-title font-family-exo2">Business Website</label>
+              <Grid item xl={6} xs={12} sx={{mt:2}}>
+                <label htmlFor="BusinessWebsite" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>Business Website</label>
                 <TextField
                   id="BusinessWebsite"
                   name="BusinessWebsite"
@@ -300,8 +284,8 @@ const CompanyManagement= () => {
               </Grid>
          
 
-              <Grid item xs={6}>
-                <label htmlFor="country" className="slate-dark-color primary-title font-family-exo2">Country</label>
+              <Grid item xl={6} xs={12} sx={{mt:2}}>
+                <label htmlFor="country" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>Country</label>
                 <TextField
                   id="country"
                   name="country"
@@ -320,12 +304,12 @@ const CompanyManagement= () => {
                   }
                   fullWidth
                 >
-                  <MenuItem value="option1">Uk</MenuItem>
-                  <MenuItem value="option2">Sweden</MenuItem>
+                  <MenuItem value="uk" className="font-family-exo2">UK</MenuItem>
+                  <MenuItem value="sweden" className="font-family-exo2">SWEDEN</MenuItem>
                 </TextField>
               </Grid>
-              <Grid item xs={6}>
-                <label htmlFor="currency" className="slate-dark-color primary-title font-family-exo2">Currency</label>
+              <Grid item xl={6} xs={12} sx={{mt:2}}>
+                <label htmlFor="currency" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}}>Currency</label>
                 <TextField
                   id="currency"
                   name="currency"
@@ -339,8 +323,8 @@ const CompanyManagement= () => {
                   helperText={formik.touched.currency && formik.errors.currency}
                   fullWidth
                 >
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
+                  <MenuItem value="uk" className="font-family-exo2">UK</MenuItem>
+                  <MenuItem value="sweden" className="font-family-exo2">SWEDEN</MenuItem>
                 </TextField>
               </Grid>
             </Grid>
