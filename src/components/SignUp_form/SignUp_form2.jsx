@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import ErrorIcon from '@mui/icons-material/Error';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import './signUp.css'
 
 const validationSchema = Yup.object().shape({
   number: Yup.string()
@@ -200,7 +201,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment position="start" sx={{ mb: '10px', ml: '10px' }}>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{p: '15px', mb:'15px'}}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}

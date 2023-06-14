@@ -313,7 +313,7 @@ export default function BoxSx(props) {
 
                 </Grid>
                 <Grid item xs={12}>
-                  <Link to="/SignUpform2">
+                  {/* <Link to="/SignUpform2"> */}
                     <Button
                       variant="contained"
                       size="large"
@@ -333,7 +333,7 @@ export default function BoxSx(props) {
                     >
                       Continue
                     </Button>
-                  </Link>
+                  {/* </Link> */}
                 </Grid>
               </Grid>
             </Form>
