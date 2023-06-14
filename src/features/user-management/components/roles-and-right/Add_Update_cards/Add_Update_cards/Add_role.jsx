@@ -7,7 +7,7 @@ import { Box, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 
 
-const Add_role = () => {
+const Add_role = ({closeAddRoleModal}) => {
 
     return (
         <>
@@ -21,7 +21,7 @@ const Add_role = () => {
                 }}
                     gutterBottom>
                     Add New Role
-                    <CancelOutlinedIcon />
+                    <CancelOutlinedIcon onClick={() => closeAddRoleModal()} />
                 </Typography>
                 <Typography
                     sx={{
@@ -59,7 +59,7 @@ const Add_role = () => {
                     marginTop: 40,
                     gap: 10
                 }}>
-                    <Button variant="outlined" color="inherit" >
+                    <Button variant="outlined" color="inherit" onClick={() => closeAddRoleModal()}>
                         Cancel</Button>
                     <Button sx={{
                         background: "#2B2B33",

@@ -375,6 +375,7 @@ const ClientDetails = () => {
               },
              
             }}
+            className="font-family-exo2"
           >
             {TabData.map((tab, index) => (
               <Tab
