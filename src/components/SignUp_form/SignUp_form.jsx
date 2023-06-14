@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
+import './signUp.scss'
 
 const names = [
   'Oliver Hansen',
@@ -25,17 +26,16 @@ const names = [
 
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required(<div style={{
+  fullName: Yup.string().required(<span style={{
     fontFamily: 'Exo 2',
     fontSize: '14px',
-    marginTop: '8px',
     display: 'flex',
     alignItems: 'end',
     position: 'absolute',
     color: 'rgba(255, 85, 85, 1)'
   }}>
     <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-    Please Enter Full Name (First and Last Name)</div>),
+    Please Enter Full Name (First and Last Name)</span>),
   email: Yup.string()
     .email('Invalid email address')
     .required(<div style={{
@@ -97,13 +97,15 @@ export default function BoxSx(props) {
   let isAllSelected = personName.length === names.length - 1;
 
   return (
-    <div className="container">
+    <div className="height-100vh flex align-center justify-center">
       <Box
         sx={{
           width: 600,
           borderRadius: '16px',
           p: '25px',
-          boxShadow: '0 0 0 0.3px'
+          border: '1px solid rgba(204, 204, 204, 0.5)',
+          filter: 'dropShadow(0px 0px 4px rgba(204, 204, 204, 0.1))',
+          borderRadius: '16px'
         }}
       >
         <div className="heading">
@@ -121,7 +123,7 @@ export default function BoxSx(props) {
           {({ values, errors, touched, setFieldValue }) => (
             <Form>
               <Grid container spacing={7}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{height:'75px'}} >
                   <div className="fields">
                     <div className="label">
                       <label htmlFor="fullName"
@@ -172,7 +174,7 @@ export default function BoxSx(props) {
                   </div>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
                   <div>
                     <div className="label">
                       <label htmlFor="email"
@@ -199,7 +201,7 @@ export default function BoxSx(props) {
                   </div>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
                   <div>
                     <div className="label">
                       <label htmlFor="password"
@@ -242,7 +244,7 @@ export default function BoxSx(props) {
                 </Grid>
 
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
                   <Form>
                     <Box>
                       <div className="label">
@@ -313,7 +315,7 @@ export default function BoxSx(props) {
 
                 </Grid>
                 <Grid item xs={12}>
-                  {/* <Link to="/SignUpform2"> */}
+                  <Link to="/sign-up-2">
                     <Button
                       variant="contained"
                       size="large"
@@ -333,7 +335,7 @@ export default function BoxSx(props) {
                     >
                       Continue
                     </Button>
-                  {/* </Link> */}
+                  </Link>
                 </Grid>
               </Grid>
             </Form>

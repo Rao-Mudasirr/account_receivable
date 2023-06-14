@@ -14,7 +14,7 @@ import { formControlData } from './Accounts_receivable_data/data';
 import UserManagement_data from './Admin_Rights_data/UserManagement_data'
 import { FormControlData2 } from './Admin_Rights_data/Admin_data'
 import Settings_data from './Admin_Rights_data/Settings'
-import './manager.css';
+import './manager.scss';
 
 
 const Manager = () => {

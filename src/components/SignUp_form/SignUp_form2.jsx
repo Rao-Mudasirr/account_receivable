@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import ErrorIcon from '@mui/icons-material/Error';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import './signUp.css'
+import './signUp.scss'
 
 const validationSchema = Yup.object().shape({
   number: Yup.string()
@@ -21,32 +21,32 @@ const validationSchema = Yup.object().shape({
     .min(7, 'Please enter a valid registration number')
     .max(30, 'Maximum number limit exceeded')
     .required(<div style={{
-        fontFamily: 'Exo 2',
-        fontSize: '14px',
-        marginTop: '8px',
-        display: 'flex',
-        alignItems: 'end',
-        position: 'absolute',
-        color: 'rgba(255, 85, 85, 1)'
-      }}>
-        <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-        Please Enter Registration Number</div>),
+      fontFamily: 'Exo 2',
+      fontSize: '14px',
+      marginTop: '8px',
+      display: 'flex',
+      alignItems: 'end',
+      position: 'absolute',
+      color: 'rgba(255, 85, 85, 1)'
+    }}>
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      Please Enter Registration Number</div>),
 
   mobile: Yup.string()
     .matches(/^\d+$/, 'Please enter digits only')
     .min(7, 'Please enter a valid mobile number')
     .max(30, 'Maximum number limit exceeded')
     .required(<div style={{
-        fontFamily: 'Exo 2',
-        fontSize: '14px',
-        marginTop: '8px',
-        display: 'flex',
-        alignItems: 'end',
-        position: 'absolute',
-        color: 'rgba(255, 85, 85, 1)'
-      }}>
-        <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-        Please Enter your Phone Number</div>),
+      fontFamily: 'Exo 2',
+      fontSize: '14px',
+      marginTop: '8px',
+      display: 'flex',
+      alignItems: 'end',
+      position: 'absolute',
+      color: 'rgba(255, 85, 85, 1)'
+    }}>
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      Please Enter your Phone Number</div>),
 });
 
 const MyForm = () => {
@@ -75,34 +75,36 @@ const MyForm = () => {
     root: {
       '& .MuiFormControlLabel-label': {
         fontSize: '14px',
-        fontWeight:'400',
-        fontFamily:'Exo 2',
-        color:'#4C4C4C'
+        fontWeight: '400',
+        fontFamily: 'Exo 2',
+        color: '#4C4C4C'
       },
     },
   });
-  
+
   const LabelStyle = withStyles(labelstyles)(FormControlLabel);
 
-const checkBoxStyles = theme => ({
+  const checkBoxStyles = theme => ({
     root: {
       '&$checked': {
         color: 'black',
       },
     },
     checked: {},
-   })
+  })
 
-const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
+  const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="container">
+    <div className="height-100vh flex align-center justify-center">
       <Box
         sx={{
           width: 600,
           borderRadius: '16px',
           p: '25px',
-          boxShadow: '0 0 0 0.3px',
+          border: '1px solid rgba(204, 204, 204, 0.5)',
+          filter: 'dropShadow(0px 0px 4px rgba(204, 204, 204, 0.1))',
+          borderRadius: '16px'
         }}
       >
         <div className="heading">
@@ -114,8 +116,8 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
           Select Product
         </div>
         <div>
-          <FormGroup aria-label="position" row sx={{ mb: '60px',gap:'33px' }}>
-            <LabelStyle control={<CustomCheckbox  />} label="Account Payable" />
+          <FormGroup aria-label="position" row sx={{ mb: '60px', gap: '33px' }}>
+            <LabelStyle control={<CustomCheckbox />} label="Account Payable" />
             <LabelStyle control={<CustomCheckbox />} label="Account Receivable" />
             <LabelStyle control={<CustomCheckbox />} label="Cash Flow" />
           </FormGroup>
@@ -160,29 +162,29 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
                             </InputAdornment>
                           ),
                         }}
-                        sx = {{
-                            '& label': {
-                              color: 'black',
+                        sx={{
+                          '& label': {
+                            color: 'black',
+                          },
+                          '& label.Mui-focused': {
+                            color: 'black',
+                          },
+                          '& .MuiInput-underline:after': {
+                            borderBottomColor: 'black'
+                          },
+                          '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                              borderColor: 'black',
                             },
-                            '& label.Mui-focused': {
-                              color: 'black',
+                            '&:hover fieldset': {
+                              borderColor: 'black',
+                              borderWidth: '0.15rem',
                             },
-                            '& .MuiInput-underline:after': {
-                              borderBottomColor: 'black'
+                            '&.Mui-focused fieldset': {
+                              borderColor: 'black',
                             },
-                            '& .MuiOutlinedInput-root': {
-                              '& fieldset': {
-                                borderColor: 'black',
-                              },
-                              '&:hover fieldset': {
-                                borderColor: 'black',
-                                borderWidth: '0.15rem',
-                              },
-                              '&.Mui-focused fieldset': {
-                                borderColor: 'black',
-                              },
-                            },
-                          }}
+                          },
+                        }}
                       />
                     </Grid>
                   </div>
@@ -201,7 +203,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment sx={{p: '15px', mb:'15px'}}>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '15px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}
@@ -233,7 +235,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
                           paddingLeft: '20px',
                         },
                       }}
-                      sx = {{
+                      sx={{
                         '& label': {
                           color: 'black',
                         },
@@ -285,7 +287,7 @@ const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
           )}
         </Formik>
       </Box>
-    </div>
+    </div >
   );
 };
 
