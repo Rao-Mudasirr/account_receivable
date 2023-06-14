@@ -18,9 +18,6 @@ import WorkflowReport from './features/Reports/workflow-report/WorkflowReport'
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
 import ClientWorkFlow from "./pages/client-workflows";
-import MainReport from "./pages/MainReport";
-import Report_Info from "./pages/Report_Info";
-import DashboaedSettings from "./pages/dashboard-settings";
 import { ToastContainer } from "react-toastify";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
 import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
