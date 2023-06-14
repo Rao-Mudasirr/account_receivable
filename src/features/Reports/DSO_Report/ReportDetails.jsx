@@ -232,7 +232,7 @@ export default function ReportDetails () {
                   zIndex: 10,
                   padding: "24px",
                   marginTop: "7px",
-                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
+                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2)",
                   borderRadius: "8px",
                 }}
               >
