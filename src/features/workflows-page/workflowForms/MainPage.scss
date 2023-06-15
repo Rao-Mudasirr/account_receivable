@@ -26,19 +26,82 @@
   }
   .form-main-body {
     // width: 100%;
+    .tabbing {
+      margin-top: 40px;
+      border-right: 1px solid #e1e1e6;
+      height: 100%;
+      padding-right: 16px;
+      position: relative;
+      .tabbing-item {
+        display: flex;
+
+        justify-content: space-between;
+        min-height: 78px;
+        padding: 12px 16px;
+        text-align: left;
+        align-items: flex-start;
+        background: #d9d9d9;
+        cursor: pointer;
+        border-radius: 8px;
+
+        min-height: 44px;
+        text-align: left;
+        max-width: 100%;
+
+        width: 100%;
+        text-transform: capitalize;
+        font-style: normal;
+        font-weight: 400;
+
+        font-size: 16px;
+        line-height: 24px;
+        color: #6b6b80;
+        .first-item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          h5 {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 26px;
+
+            color: #ffffff;
+          }
+          p {
+            margin-top: 16px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+
+            /* Text/Disabled */
+
+            color: #a6a6b3;
+          }
+        }
+        &.active {
+          background: #40404d;
+          border-radius: 4px;
+          color: white;
+          border: 0;
+        }
+      }
+    }
     .top-section {
       display: flex;
       align-items: flex-start;
       flex-wrap: wrap;
       margin-top: 40px;
       row-gap: 10px;
+      column-gap: 40px;
       margin-bottom: 52px;
       .label-time {
         margin-bottom: 20px;
       }
       //   width: 100%;
       .attachment-box {
-        min-width: 300px;
+        min-width: 220px;
         p {
           // font-family: "Exo 2";
           font-style: normal;
