@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from "react";
 import CustomTable from "../../../components/Table/CustomTable";
 import { useTableParams } from "../../../components/Table/useTableParams";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
@@ -18,11 +18,12 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DSO_Data2 } from '../ReportsTable/DSO_Report';
-import ShowFilters from '../../OverdueInvoices/ShowFilters';
-import '../report.scss'
-import TableAction from '../../../components/Table/TableAction';
-import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import { DSO_Data2 } from "../ReportsTable/DSO_Report";
+import ShowFilters from "../../OverdueInvoices/ShowFilters";
+import "../report.scss";
+import TableAction from "../../../components/Table/TableAction";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import GlobalButton from "../../../components/global-button/global-button";
 
 const input_filter = [
   {
@@ -62,9 +63,8 @@ const input_filter = [
 ];
 
 export default function ReportDetails() {
-
   const [isOpen, setIsOpen] = useState(false);
-  const { state } = useLocation()
+  const { state } = useLocation();
   const navigate = useNavigate();
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -87,8 +87,10 @@ export default function ReportDetails() {
   };
 
   const handleView = ({ row }) => {
-    navigate(`/report-details/month/${row?.original?.id}`, { state: { data: row?.original } })
-  }
+    navigate(`/report-details/month/${row?.original?.id}`, {
+      state: { data: row?.original },
+    });
+  };
 
   const DSO_Col = [
     {
@@ -101,7 +103,7 @@ export default function ReportDetails() {
     {
       accessorFn: (row) => row.client_name,
       id: "client_name",
-      cell: (info) => (info.getValue()),
+      cell: (info) => info.getValue(),
       header: "Client Name",
       // isSortable: true,
     },
@@ -140,181 +142,128 @@ export default function ReportDetails() {
 
   return (
     <Fragment>
-      <div className="invoice-title">Days Sales Outstanding (Company Wise) Report</div>
+      <div className="invoice-title">
+        Days Sales Outstanding (Company Wise) Report
+      </div>
 
       {/* Search field */}
-      <Grid container className='align-center'>
-        <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
+      <Grid container>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={4}>
           <div
             style={{
               margin: "5px",
               display: "flex",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "14px",
             }}
           >
             <GlobalSearchBar />
           </div>
         </Grid>
 
-        <Grid xs={12} md={6} lg={6} xl={6}>
-          <div className='align-end' style={{ marginLeft: "auto", display: "flex" }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
-              <DatePicker
-                sx={{
-                  paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: '#A6A6B3' },
-                }}
-                slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon
-                }}
+        <Grid xs={12} sm={12} md={12} lg={12} xl={8}>
+          <div style={{ marginLeft: "auto" }} className="invoices-tabal-header">
+            <Grid container spacing={2} alignItems="center">
+              <Grid
+                // item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={9}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "From" } }}
+                    variant="standared"
+                    value={startDate}
+                    onChange={(date) => handleDateChange(date, "Start date")}
+                  />
+                  &nbsp; &nbsp; &nbsp;
+                  <DatePicker
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "To" } }}
+                    value={endDate}
+                    onChange={(date) => handleDateChange(date, "End Date")}
+                  />
+                </LocalizationProvider>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={3}
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <GlobalButton
+                  btnName="outline"
+                  btnText="More Filters"
+                  endIcon={
+                    <img
+                      src={filterIcon}
+                      alt="More Filter"
+                      // width={16}
+                      // height={16}
+                    />
+                  }
+                  onClick={() => {
+                    setType("More");
+                    handleClick2();
+                  }}
+                  // className="invoice-filter-btn"
+                />
+                &nbsp;
+                <GlobalButton
+                  btnName="accent"
+                  btnText="Export Text"
+                  endIcon={
+                    <img
+                      src={exportIcon}
+                      alt="Export Text"
+                      // width={16}
+                      // height={16}
+                    />
+                  }
+                  onClick={() => {
+                    setType("Export");
+                    handleClick2();
+                  }}
+                  // className="invoice-second-btn"
+                />
+              </Grid>
+            </Grid>
 
-                slotProps={{ textField: { placeholder: 'From' } }}
-                variant="standared"
-                value={startDate}
-                onChange={(date) => handleDateChange(date, "Start date")}
-              />
-              <DatePicker
-                sx={{
-                  paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: '#A6A6B3' },
-                }}
-                slotProps={{ textField: { placeholder: 'To' } }}
-                slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
-                }}
-                value={endDate}
-                onChange={(date) => handleDateChange(date, "End Date")}
-              />
-              {/* </DemoContainer> */}
-            </LocalizationProvider>
-            <Button
-              className='buttons-filters font-family-Exo font-weight-400 tertiary-title'
-              onClick={handleClick}
-              variant="outlined"
-              color="primary"
-              sx={{
-                mr: 2,
-                color: "#40404D",
-                border: "1.5px solid #40404D !important",
-                height:'32px',
-                borderRadius: "8px",
-                "&:hover": {
-                  border:'2px solid #40404D !important'
-                },
-              }}
-              endIcon={<img src={filterIcon} alt="More Filter" />}
-            >
-              More Filter
-            </Button>
-            <Button
-              className='buttons-filters font-family-Exo font-weight-400 tertiary-title'
-              variant="contained"
-              color="primary"
-              sx={{
-                background: "#2B2B33",
-                borderRadius: '8px',
-                height:'32px',
-                "&:hover": {
-                  background: "#2B2B33",
-                  borderWidth:'2px'
-                },
-              }}
-              endIcon={<img src={exportIcon} alt="Export Text" />}
-              onClick={() => {
-                setType("Export")
-                handleClick2()
-              }}
-            >
-              Export Text
-            </Button>
             <ShowFilters
+              page={"Reports"}
+              input_filter={input_filter}
               filter_type={type}
               handleClick={handleClick2}
               isOpen={isOpen2}
             />
-            {isOpen && (
-              <Card
-                style={{
-                  width: "592px",
-                  // height: '376px',
-                  position: "absolute",
-                  right: "50px",
-                  zIndex: 10,
-                  padding: "24px",
-                  marginTop: "7px",
-                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2)",
-                  borderRadius: "8px",
-                }}
-              >
-                {/* <ul> */}
-                <div className="filter-heading">
-                  <div className="title-filter">Filters</div>
-                  <div className="icon-filter" onClick={handleClick}>
-                    <CancelOutlinedIcon />{" "}
-                  </div>
-                </div>
-                <br />
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={1}>
-                    {input_filter?.map((val, index) => (
-                      <Grid
-                        style={{ marginBottom: "40px" }}
-                        spacing={2}
-                        key={index}
-                        item
-                        xs={12}
-                        md={6}
-                        lg={6}
-                      >
-                        <InputLabel
-                          id="demo-simple-select-filled-label"
-                          className="field-label"
-                        >
-                          {val?.field}
-                        </InputLabel>
-                        <FormControl
-                          variant="standard"
-                          style={{ width: "260px", height: "48px" }}
-                        >
-                          <InputLabel id="demo-simple-select-filled-label">
-                            Select
-                          </InputLabel>
-                          <Select
-                            placeholder="Select"
-                            labelId="demo-simple-select-filled-label"
-                          // id="demo-simple-select-filled"
-                          // value={value}
-                          // onChange={handleChange}
-                          >
-                            <MenuItem value="">
-                              <em>None</em>
-                            </MenuItem>
-                            {val?.Items?.map((data, i) => (
-                              <React.Fragment key={i}>
-                                <MenuItem value={data?.item}>
-                                  {data?.item}
-                                </MenuItem>
-                              </React.Fragment>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Box>
-                {/* </ul> */}
-                <div
-                  className="filter-below-btn"
-                  style={{ display: "flex", float: "right" }}
-                >
-                  <Button className="btn1" onClick={handleClick}>
-                    Clear
-                  </Button>
-                  &nbsp;
-                  <Button className="btn2">Apply</Button>
-                </div>
-              </Card>
-            )}
           </div>
         </Grid>
       </Grid>
@@ -331,5 +280,5 @@ export default function ReportDetails() {
         isPagination={true}
       />
     </Fragment>
-  )
+  );
 }
