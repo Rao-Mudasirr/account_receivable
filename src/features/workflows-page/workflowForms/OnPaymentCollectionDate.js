@@ -6,7 +6,7 @@ import GlobalButton from "../../../components/global-button/global-button";
 import { useNavigate } from "react-router-dom";
 import { optionsTime } from "../Model/Constants";
 
-const InvoiceCreationDate = ({ edit, editIcon, id, item }) => {
+const OnPaymentCollectionDate = ({ edit, editIcon, id, item }) => {
   const [checkbox, setCheckbox] = useState(false);
   const navigate = useNavigate();
   return (
@@ -82,4 +82,4 @@ const InvoiceCreationDate = ({ edit, editIcon, id, item }) => {
   );
 };
 
-export default InvoiceCreationDate;
+export default OnPaymentCollectionDate;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card } from '@mui/material';
-import "./addnote.css";
+import "./addnote.scss";
 import EditIcon from '../../../../../assests/svg/edit.png';
 import AddNoteIcon from '../../../../../assests/svg/addnote.png';
 import AddNoteModel from './AddNoteModel';

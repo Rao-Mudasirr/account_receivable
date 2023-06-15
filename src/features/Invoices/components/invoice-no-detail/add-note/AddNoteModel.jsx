@@ -7,7 +7,7 @@ import CloseIcon from "../../../../../assests/svg/close-circle.png";
 import { CheckBox, Maximize } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { TextareaAutosize } from "@material-ui/core";
-import './addnote.css'
+import './addnote.scss'
 
 const AddNoteModel = (props) => {
     //---usestate handlers and themes
