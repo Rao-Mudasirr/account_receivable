@@ -23,6 +23,7 @@ import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import "../report.scss";
 import TableAction from "../../../components/Table/TableAction";
 import GlobalButton from "../../../components/global-button/global-button";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 
 const input_filter = [
   {
@@ -91,7 +92,7 @@ function CashFlowForCasting() {
 
       {/* Search field */}
       <Grid container>
-        <Grid xs={12} sm={12} md={6} lg={4} xl={4}>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={4}>
           <div
             style={{
               margin: "5px",
@@ -104,27 +105,50 @@ function CashFlowForCasting() {
           </div>
         </Grid>
 
-        <Grid xs={12} md={6} lg={8} xl={8}>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={8}>
           <div style={{ marginLeft: "auto" }} className="invoices-tabal-header">
             <Grid container spacing={2} alignItems="center">
               <Grid
                 // item
                 xs={12}
-                md={6}
-                lg={9}
+                sm={12}
+                md={12}
+                lg={6}
                 xl={9}
                 sx={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
-                    label="From"
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "From" } }}
                     variant="standared"
                     value={startDate}
                     onChange={(date) => handleDateChange(date, "Start date")}
                   />
                   &nbsp; &nbsp; &nbsp;
                   <DatePicker
-                    label="To"
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "To" } }}
                     value={endDate}
                     onChange={(date) => handleDateChange(date, "End Date")}
                   />
@@ -133,8 +157,9 @@ function CashFlowForCasting() {
               <Grid
                 item
                 xs={12}
-                md={6}
-                lg={3}
+                sm={12}
+                md={12}
+                lg={6}
                 xl={3}
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
@@ -145,8 +170,8 @@ function CashFlowForCasting() {
                     <img
                       src={filterIcon}
                       alt="More Filter"
-                      width={16}
-                      height={16}
+                      // width={16}
+                      // height={16}
                     />
                   }
                   onClick={() => {
@@ -164,8 +189,8 @@ function CashFlowForCasting() {
                     <img
                       src={exportIcon}
                       alt="Export Text"
-                      width={16}
-                      height={16}
+                      // width={16}
+                      // height={16}
                     />
                   }
                   onClick={() => {

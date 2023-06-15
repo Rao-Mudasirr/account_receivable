@@ -36,7 +36,6 @@ export const NotificationsPageHeader = () => {
                                 </InputAdornment>
                             ),
                             className: 'font-family-Exo',
-                            shrink: false,
                         }} variant="standard" placeholder='Search' />
                 </Grid>
                 <Grid item xs={3} className='flex justify-end'>

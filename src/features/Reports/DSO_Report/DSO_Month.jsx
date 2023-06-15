@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from "react";
 import CustomTable from "../../../components/Table/CustomTable";
 import { useTableParams } from "../../../components/Table/useTableParams";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
@@ -10,42 +10,45 @@ import { useLocation } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DSO_Col, DSO_Data } from '../ReportsTable/DSO_Report';
-import ShowFilters from '../../OverdueInvoices/ShowFilters';
-import '../report.scss'
-import GlobalButton from '../../../components/global-button/global-button';
+import { DSO_Col, DSO_Data } from "../ReportsTable/DSO_Report";
+import ShowFilters from "../../OverdueInvoices/ShowFilters";
+import "../report.scss";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import GlobalButton from "../../../components/global-button/global-button";
 
 function DSO_Month() {
-    const [isOpen, setIsOpen] = useState(false);
-    const {state} = useLocation()
-    console.log("state: ",state);
-    const handleClick = () => {
-      setIsOpen(!isOpen);
-    };
-    const [isOpen2, setIsOpen2] = useState(false);
-      const [type, setType] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const { state } = useLocation();
+  console.log("state: ", state);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [type, setType] = useState("");
 
   const handleClick2 = () => {
     setIsOpen2(!isOpen2);
   };
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [error, setError] = useState(null);
-  
-    const handleDateChange = (date, label) => {
-      if (label === "Start date") {
-        setStartDate(date);
-      } else if (label === "End Date") {
-        setEndDate(date);
-      }
-    };
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleDateChange = (date, label) => {
+    if (label === "Start date") {
+      setStartDate(date);
+    } else if (label === "End Date") {
+      setEndDate(date);
+    }
+  };
   return (
     <Fragment>
-      <div className="invoice-title">Days Sales Outstanding (Month Wise) Report</div>
+      <div className="invoice-title">
+        Days Sales Outstanding (Month Wise) Report
+      </div>
 
       {/* Search field */}
       <Grid container>
-        <Grid xs={12} sm={12} md={6} lg={4} xl={4}>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={4}>
           <div
             style={{
               margin: "5px",
@@ -58,27 +61,50 @@ function DSO_Month() {
           </div>
         </Grid>
 
-        <Grid xs={12} md={6} lg={8} xl={8}>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={8}>
           <div style={{ marginLeft: "auto" }} className="invoices-tabal-header">
             <Grid container spacing={2} alignItems="center">
               <Grid
                 // item
                 xs={12}
-                md={6}
-                lg={10}
-                xl={10}
-                sx={{ display: "flex", justifyContent: 'flex-end'}}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={9}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
               >
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
-                    label="From"
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "From" } }}
                     variant="standared"
                     value={startDate}
                     onChange={(date) => handleDateChange(date, "Start date")}
                   />
                   &nbsp; &nbsp; &nbsp;
                   <DatePicker
-                    label="To"
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "To" } }}
                     value={endDate}
                     onChange={(date) => handleDateChange(date, "End Date")}
                   />
@@ -87,10 +113,11 @@ function DSO_Month() {
               <Grid
                 item
                 xs={12}
-                md={6}
-                lg={2}
-                xl={2}
-                style={{ display: "flex", justifyContent: "flex-start"}}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={3}
+                style={{ display: "flex", justifyContent: "flex-start" }}
               >
                 <GlobalButton
                   btnName="accent"
@@ -99,8 +126,8 @@ function DSO_Month() {
                     <img
                       src={exportIcon}
                       alt="Export Text"
-                      width={16}
-                      height={16}
+                      // width={16}
+                      // height={16}
                     />
                   }
                   onClick={() => {
@@ -135,7 +162,7 @@ function DSO_Month() {
         isPagination={true}
       />
     </Fragment>
-  )
+  );
 }
 
-export default DSO_Month
+export default DSO_Month;

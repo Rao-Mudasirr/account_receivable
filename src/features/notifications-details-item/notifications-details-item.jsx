@@ -33,7 +33,7 @@ export const NotificationsDetailsItem = ({ notification }) => {
                 <Grid item xs={12}>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <Grid container sx={{ mt: '18px' }}>
-                            <Grid item xs={10} className='primary-color'>
+                            <Grid item xs={8} className='primary-color'>
                                 <Grid container>
                                     <Grid item xs={4} className='primary-color'>
                                         <div className="title-1 secondary-title">
@@ -53,21 +53,21 @@ export const NotificationsDetailsItem = ({ notification }) => {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={2} >
+                            <Grid item xs={4} >
                                 <Grid container>
                                     <Grid item xs={6} className='primary-color'>
-                                        <div className="title-1 secondary-title">
+                                        <div className="title-1 secondary-title end-text">
                                             {notification?.actionType}
                                         </div>
-                                        <div className="title-2 secondary-title margin-top-0">
+                                        <div className="title-2 secondary-title margin-top-0 end-text">
                                             Role:
                                         </div>
                                     </Grid>
                                     <Grid item xs={6} className='primary-color'>
-                                        <div className="desc-1 secondary-title margin-left-0">
+                                        <div className="desc-1 secondary-title margin-left-0 end-text">
                                             {notification?.actionTypeBy}
                                         </div>
-                                        <div className="desc-2 secondary-title margin-top-0 margin-left-0">
+                                        <div className="desc-2 secondary-title margin-top-0 margin-left-0 end-text">
                                             {notification?.actionRole}
                                         </div>
                                     </Grid>
