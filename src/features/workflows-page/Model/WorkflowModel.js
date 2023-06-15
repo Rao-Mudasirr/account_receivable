@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as EditSvg } from "../../../assests/svg/workflow-edit.svg";
 import editIcon from "../../../assests/images/settings/editIcon.png";
 import { ReactComponent as Down } from "../../../assests/svg/chev-bottom.svg";
+import { ReactComponent as Close } from "../../../assests/svg/model-close.svg";
 
 import "./WorkflowModel.scss";
 import { useNavigate } from "react-router-dom";
@@ -40,6 +41,10 @@ function WorkflowModel({
           <Box className="workflow-model">
             <Box className="top-section">
               <Typography variant="h2">Workflow Details</Typography>
+              <Close
+                onClick={handleClose}
+                style={{ cursor: "pointer", zIndex: 200 }}
+              />
             </Box>
             <Grid container spacing={2}>
               <Grid xs={12} lg={5} item>
