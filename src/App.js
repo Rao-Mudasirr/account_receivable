@@ -13,7 +13,7 @@ import Manager from "./features/user-management/components/role_rights_manager/M
 import Workflow from "./pages/workflows";
 import ClientWorkFlow from "./pages/client-workflows";
 import MainReport from "./pages/MainReport";
-import Report_Info from "./pages/Report_Info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
@@ -61,7 +61,7 @@ function App() {
           />
           <Route exact path={"/clients"} element={<Clientdetails />} />
           <Route exact path={"/reports"} element={<MainReport />} />
-          <Route exact path={"/report-details/:id"} element={<Report_Info />} />
+          <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
           <Route
             exact
             path={"/report-details/cashflow-forcasting/:id"}

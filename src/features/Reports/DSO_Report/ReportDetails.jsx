@@ -5,7 +5,7 @@ import { GlobalSearchBar } from "../../../components/global-search-filter/global
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import Button from "@mui/material/Button";
-import { Card } from "@mui/material";
+import { Card, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
@@ -22,6 +22,7 @@ import { DSO_Data2 } from '../ReportsTable/DSO_Report';
 import ShowFilters from '../../OverdueInvoices/ShowFilters';
 import '../report.scss'
 import TableAction from '../../../components/Table/TableAction';
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
 
 const input_filter = [
   {
@@ -60,89 +61,89 @@ const input_filter = [
   },
 ];
 
-export default function ReportDetails () {
+export default function ReportDetails() {
 
-    const [isOpen, setIsOpen] = useState(false);
-    const {state} = useLocation()
-    const navigate = useNavigate();
-    const handleClick = () => {
-      setIsOpen(!isOpen);
-    };
-    const [isOpen2, setIsOpen2] = useState(false);
-    const [type, setType] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const { state } = useLocation()
+  const navigate = useNavigate();
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [type, setType] = useState("");
   const handleClick2 = () => {
     setIsOpen2(!isOpen2);
   };
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [error, setError] = useState(null);
-  
-    const handleDateChange = (date, label) => {
-      if (label === "Start date") {
-        setStartDate(date);
-      } else if (label === "End Date") {
-        setEndDate(date);
-      }
-    };
-    
-    const handleView = ({row}) => {
-      navigate(`/report-details/month/${row?.original?.id}`, {state: {data: row?.original}})
-    }
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [error, setError] = useState(null);
 
-    const DSO_Col = [
-      {
-        accessorFn: (row) => row.Id,
-        id: "Id",
-        cell: (info) => info.getValue(),
-        header: () => <span>Client Id</span>,
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.client_name,
-        id: "client_name",
-        cell: (info) => (info.getValue()),
-        header: "Client Name",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.total_invoices,
-        id: "total_invoices",
-        cell: (info) => info.getValue(),
-        header: "Total Invoices",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.dso,
-        id: "dso",
-        cell: (info) => info.getValue(),
-        header: "DSO",
-        // isSortable: true,
-      },
-      {
-        accessorFn: (row) => row.avg_delay,
-        id: "avg_delay",
-        cell: (info) => info.getValue(),
-        header: "Avg Delay",
-        // isSortable: true,
-      },
-      {
-        id: "Actions",
-        cell: (info) => (
-          <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-            <TableAction type="view" onClick={()=>handleView(info)}/>
-          </Box>
-        ),
-        header: () => <span>Actions</span>,
-        isSortable: false,
-      },
-    ];
+  const handleDateChange = (date, label) => {
+    if (label === "Start date") {
+      setStartDate(date);
+    } else if (label === "End Date") {
+      setEndDate(date);
+    }
+  };
+
+  const handleView = ({ row }) => {
+    navigate(`/report-details/month/${row?.original?.id}`, { state: { data: row?.original } })
+  }
+
+  const DSO_Col = [
+    {
+      accessorFn: (row) => row.Id,
+      id: "Id",
+      cell: (info) => info.getValue(),
+      header: () => <span>Client Id</span>,
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.client_name,
+      id: "client_name",
+      cell: (info) => (info.getValue()),
+      header: "Client Name",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.total_invoices,
+      id: "total_invoices",
+      cell: (info) => info.getValue(),
+      header: "Total Invoices",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.dso,
+      id: "dso",
+      cell: (info) => info.getValue(),
+      header: "DSO",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.avg_delay,
+      id: "avg_delay",
+      cell: (info) => info.getValue(),
+      header: "Avg Delay",
+      // isSortable: true,
+    },
+    {
+      id: "Actions",
+      cell: (info) => (
+        <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+          <TableAction type="view" onClick={() => handleView(info)} />
+        </Box>
+      ),
+      header: () => <span>Actions</span>,
+      isSortable: false,
+    },
+  ];
 
   return (
     <Fragment>
       <div className="invoice-title">Days Sales Outstanding (Company Wise) Report</div>
 
       {/* Search field */}
-      <Grid container>
+      <Grid container className='align-center'>
         <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
           <div
             style={{
@@ -157,41 +158,48 @@ export default function ReportDetails () {
         </Grid>
 
         <Grid xs={12} md={6} lg={6} xl={6}>
-          <div style={{ marginLeft: "auto", display: "flex" }}>
+          <div className='align-end' style={{ marginLeft: "auto", display: "flex" }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
               <DatePicker
                 sx={{
-                  paddingRight: "20px",
+                  paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: '#A6A6B3' },
                 }}
-                label="From"
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon
+                }}
+
+                slotProps={{ textField: { placeholder: 'From' } }}
                 variant="standared"
                 value={startDate}
                 onChange={(date) => handleDateChange(date, "Start date")}
               />
               <DatePicker
                 sx={{
-                  paddingRight: "20px",
+                  paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: '#A6A6B3' },
                 }}
-                label="To"
+                slotProps={{ textField: { placeholder: 'To' } }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
                 value={endDate}
                 onChange={(date) => handleDateChange(date, "End Date")}
               />
               {/* </DemoContainer> */}
             </LocalizationProvider>
             <Button
-            className='buttons-filters'
+              className='buttons-filters font-family-Exo font-weight-400 tertiary-title'
               onClick={handleClick}
               variant="outlined"
               color="primary"
               sx={{
                 mr: 2,
                 color: "#40404D",
-                borderColor: "#40404D",
+                border: "1.5px solid #40404D !important",
+                height:'32px',
                 borderRadius: "8px",
                 "&:hover": {
-                  borderColor: "black",
-                  color: "black",
+                  border:'2px solid #40404D !important'
                 },
               }}
               endIcon={<img src={filterIcon} alt="More Filter" />}
@@ -199,29 +207,31 @@ export default function ReportDetails () {
               More Filter
             </Button>
             <Button
-            className='buttons-filters'
-            variant="contained"
-            color="primary"
-            sx={{
-              background: "#2B2B33",
-              borderRadius: '8px',
-              "&:hover": {
+              className='buttons-filters font-family-Exo font-weight-400 tertiary-title'
+              variant="contained"
+              color="primary"
+              sx={{
                 background: "#2B2B33",
-              },
-            }}
-            endIcon={<img src={exportIcon} alt="Export Text" />}
-            onClick={()=> {
+                borderRadius: '8px',
+                height:'32px',
+                "&:hover": {
+                  background: "#2B2B33",
+                  borderWidth:'2px'
+                },
+              }}
+              endIcon={<img src={exportIcon} alt="Export Text" />}
+              onClick={() => {
                 setType("Export")
                 handleClick2()
-            }}
-          >
-            Export Text
-          </Button>
-          <ShowFilters
-            filter_type = {type}
-            handleClick = {handleClick2}
-            isOpen = {isOpen2}
-          />
+              }}
+            >
+              Export Text
+            </Button>
+            <ShowFilters
+              filter_type={type}
+              handleClick={handleClick2}
+              isOpen={isOpen2}
+            />
             {isOpen && (
               <Card
                 style={{
@@ -272,9 +282,9 @@ export default function ReportDetails () {
                           <Select
                             placeholder="Select"
                             labelId="demo-simple-select-filled-label"
-                            // id="demo-simple-select-filled"
-                            // value={value}
-                            // onChange={handleChange}
+                          // id="demo-simple-select-filled"
+                          // value={value}
+                          // onChange={handleChange}
                           >
                             <MenuItem value="">
                               <em>None</em>

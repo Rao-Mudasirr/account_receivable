@@ -153,8 +153,8 @@ const CustomTable = (props) => {
               <TableHead>
                 {table.getHeaderGroups().map((headerGroup) => (
                   <StyledTableRow key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => (
-                      <StyledTableCell key={header.id}>
+                    {headerGroup.headers.map((header,index) => (
+                      <StyledTableCell sx={{borderRadius: index === 0 ? '4px 0px 0px 4px' : index === headerGroup.headers.length - 1 ? '0px 4px 4px 0px' : '0px'}} key={header.id}>
                         <Box
                           onClick={() =>
                             header.column.columnDef.isSortable &&
@@ -287,7 +287,7 @@ export default CustomTable;
 // STYLED COMPONENTS
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "unset",
+    backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
     textAlign: "center",
     fontFamily: "Montserrat, Public Sans, sans-serif",

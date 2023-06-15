@@ -11,7 +11,7 @@ function Reports() {
         if(val?.title == 'Cashflow Forecasting Report'){
             navigate(`/report-details/cashflow-forcasting/${val?.id}`, {state: {reportData: val}})
         }else{
-            navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
+            navigate(`/report-details/${val?.param}`, {state: {reportData: val}})
         }
     }
 

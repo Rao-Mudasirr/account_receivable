@@ -51,12 +51,12 @@ const TableHeader = forwardRef(function TableHeader(
     showDiagramBtn = false,
     debounceTimeout = 500,
     disabled = false,
-    onDelete = () => {},
-    onAdd = () => {},
-    onShare = () => {},
-    onPrint = () => {},
-    onChanged = () => {},
-    onDiagramBtn = () => {},
+    onDelete = () => { },
+    onAdd = () => { },
+    onShare = () => { },
+    onPrint = () => { },
+    onChanged = () => { },
+    onDiagramBtn = () => { },
   },
   ref
 ) {
@@ -112,15 +112,15 @@ const TableHeader = forwardRef(function TableHeader(
     tableData,
     updateStatus
   } = useUserAccess();
-  
+
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   const filteredData = tableData.filter((data) =>
     Object.values(data).some((value) =>
       String(value).toLowerCase().includes(searchQuery.toLowerCase())
     )
   );
-  
+
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -137,11 +137,11 @@ const TableHeader = forwardRef(function TableHeader(
           {title}
         </Typography> */}
         {!hideSearch && (
-          <div style={{marginBottom: '10px'}}>
-          <GlobalSearchBar
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
+          <div style={{ marginBottom: '10px' }}>
+            <GlobalSearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
           </div>
         )}
       </Stack>
@@ -150,12 +150,12 @@ const TableHeader = forwardRef(function TableHeader(
       {showSelectFilters && (
         <Stack sx={styles.selectStackStyles}>
           {selectFilters.map(({ key, label, options = [] }) => (
-            <div style={{marginBottom: '10px'}}>
-            <GlobalSearchBar
-            placeholder="Search"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
+            <div style={{ marginBottom: '10px' }}>
+              <GlobalSearchBar
+                placeholder="Search"
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
             </div>
           ))}
         </Stack>
@@ -167,12 +167,12 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <Box sx={{ p:1, borderRadius: 2, bgcolor: "#2B2B33", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-          <Typography variant="subtitle" sx={{fontSize:"14px"}}>Add</Typography>
+        <Box sx={{ p: 1, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Typography variant="subtitle" sx={{ fontSize: "14px" }}>Add</Typography>
           <TableAction disabled={disabled} onClicked={onAdd} type="add" />
         </Box>
       )}
-      
+
 
 
       {/* Share Button */}
