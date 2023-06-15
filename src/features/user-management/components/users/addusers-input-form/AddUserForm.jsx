@@ -46,6 +46,7 @@ const AddUserInputs = () => {
 
   const handleInputChange = (e, formik) => {
     const { name, value } = e.target;
+    console.log(e.target);
     formik.setFieldValue(name, value);
     setFilledFields((prevFilledFields) => ({
       ...prevFilledFields,
@@ -75,11 +76,12 @@ const AddUserInputs = () => {
 
         return (
           <Form noValidate autoComplete="off" className="adduser_form">
-            <Grid sx={{ gap: 5 }} className="adduser_forminputs">
+            <Grid container spacing={2} className="adduser_forminputs">
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.firstName ? "hide_label" : ""
                 }`}
               >
@@ -107,8 +109,9 @@ const AddUserInputs = () => {
 
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.lastName ? "hide_label" : ""
                 }`}
               >
@@ -136,8 +139,9 @@ const AddUserInputs = () => {
 
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.email ? "hide_label" : ""
                 }`}
               >
@@ -166,8 +170,9 @@ const AddUserInputs = () => {
 
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.phone ? "hide_label" : ""
                 }`}
               >
@@ -201,8 +206,9 @@ const AddUserInputs = () => {
 
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.company ? "hide_label" : ""
                 }`}
               >
@@ -248,8 +254,9 @@ const AddUserInputs = () => {
 
               <Grid
                 item
-                xs={6}
-                className={`textfield_bold ${
+                xs={12}
+                md={6}
+                className={`adduser-textfield_bold ${
                   filledFields.role ? "hide_label" : ""
                 }`}
               >
@@ -313,6 +320,7 @@ export default AddUserInputs;
 //Style
 const Styles = {
   field_color: (theme) => ({
+    width: "100%",
     '& label': {
       color: 'black',
     },
