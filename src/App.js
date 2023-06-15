@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from './components/signin/Signin'
 import MainReport from "./pages/MainReport";
-import Report_Info from "./pages/Report_Info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowReport from './features/Reports/workflow-report/WorkflowReport'
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
@@ -56,6 +56,7 @@ function App() {
             path={"/user-management/role-right-manager"}
             element={<Manager />}
           />
+          
           <Route exact path={"/workflows"} element={<Workflow />}>
             <Route
               exact
@@ -77,7 +78,7 @@ function App() {
           />
           <Route exact path={"/clients"} element={<Clientdetails />} />
           <Route exact path={"/reports"} element={<MainReport />} />
-          <Route exact path={"/report-details/:id"} element={<Report_Info />} />
+          <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
           <Route
             exact
             path={"/report-details/cashflow-forcasting/:id"}
