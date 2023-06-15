@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField } from 'formik-material-ui';
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import * as Yup from 'yup';
 import {
   Button, Checkbox,
@@ -11,8 +12,6 @@ import {
 import { withStyles } from '@material-ui/core';
 import Box from '@mui/material/Box';
 import ErrorIcon from '@mui/icons-material/Error';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './signUp.scss'
 
 const validationSchema = Yup.object().shape({
@@ -158,7 +157,7 @@ const MyForm = () => {
                                 edge="end"
                                 sx={{ margin: 0.7, pb: 2 }}
                               >
-                                {showNumber ? <VisibilityOff /> : <Visibility />}
+                                {showNumber ? <RiEyeOffLine /> : <RiEyeLine />}
                               </IconButton>
                             </InputAdornment>
                           ),

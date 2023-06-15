@@ -9,7 +9,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Aging_Buckets_Col, Aging_Buckets_Data,Aging_Buckets_Col2 } from '../Aging_buckets_report/Aging_Buckets_Data';
+import { Aging_Buckets_Col, Aging_Buckets_Data, Aging_Buckets_Col2 } from '../Aging_buckets_report/Aging_Buckets_Data';
 import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import "../report.scss";
 import TableAction from "../../../components/Table/TableAction";
@@ -161,17 +161,17 @@ function AgingBucketsReport() {
                     <img
                       src={filterIcon}
                       alt="More Filter"
-                      // width={16}
-                      // height={16}
+                    // width={16}
+                    // height={16}
                     />
                   }
                   onClick={() => {
                     setType("More");
                     handleClick2();
                   }}
-                  // className="invoice-filter-btn"
+                // className="invoice-filter-btn"
                 />
-                
+
                 &nbsp;
                 <GlobalButton
                   btnName="accent"
@@ -180,15 +180,15 @@ function AgingBucketsReport() {
                     <img
                       src={exportIcon}
                       alt="Export Text"
-                      // width={16}
-                      // height={16}
+                    // width={16}
+                    // height={16}
                     />
                   }
                   onClick={() => {
                     setType("Export");
                     handleClick2();
                   }}
-                  // className="invoice-second-btn"
+                // className="invoice-second-btn"
                 />
               </Grid>
             </Grid>
@@ -207,31 +207,42 @@ function AgingBucketsReport() {
       {/* Table */}
 
       <Grid container >
-        <Grid xs={7} sx={{width:'100%'}}>
-        <CustomTable
-          data={Aging_Buckets_Data}
-          columns={Aging_Buckets_Col} 
-          // showSerialNo
-          // onPageChange={pageChangeHandler}
-          // onSortByChange={sortChangeHandler}
-          isSuccess={true}
-          isPagination={false}
-        />
+        <Grid item xs={7}>
+          <CustomTable
+            data={Aging_Buckets_Data}
+            columns={Aging_Buckets_Col}
+            // showSerialNo
+            // onPageChange={pageChangeHandler}
+            // onSortByChange={sortChangeHandler}
+            isSuccess={true}
+            isPagination={false}
+          />
         </Grid>
-        <Grid xs={5}>
-        <CustomTable
-          data={Aging_Buckets_Data}
-          columns={Aging_Buckets_Col2} 
-          // showSerialNo
-          // onPageChange={pageChangeHandler}
-          // onSortByChange={sortChangeHandler}
-          isSuccess={true}
-          isPagination={false}
-        />
+        <Grid item xs={5}>
+            <CustomTable
+              data={Aging_Buckets_Data}
+              columns={Aging_Buckets_Col2}
+              // showSerialNo
+              // onPageChange={pageChangeHandler}
+              // onSortByChange={sortChangeHandler}
+              isSuccess={true}
+              isPagination={false}
+            />
         </Grid>
+
       </Grid>
     </Fragment>
   )
 }
 
 export default AgingBucketsReport
+
+
+const styles = {
+  scroll__bar: () => ({
+    'MuiTableContainer-root': {
+      overflowX: 'scroll',
+
+    },
+  })
+}

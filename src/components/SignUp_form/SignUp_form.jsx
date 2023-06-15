@@ -5,8 +5,7 @@ import { Button, Select } from '@mui/material';
 import { TextField } from 'formik-material-ui'
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import InputAdornment from '@mui/material/InputAdornment';
 import Box from '@mui/material/Box';
 import ErrorIcon from '@mui/icons-material/Error';
@@ -14,13 +13,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { withStyles } from '@material-ui/core';
 import './signUp.scss'
 
 const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
+  'Account Payable (I want to pay vendors)',
+  'Account Receivable (I want to send bills)',
+  'Cash Flow (I want to manage cash)',
   'All',
 ];
 
@@ -37,7 +37,17 @@ const validationSchema = Yup.object().shape({
     <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
     Please Enter Full Name (First and Last Name)</span>),
   email: Yup.string()
-    .email('Invalid email address')
+    .email((<div style={{
+      fontFamily: 'Exo 2',
+      fontSize: '14px',
+      marginTop: '8px',
+      display: 'flex',
+      alignItems: 'end',
+      position: 'absolute',
+      color: 'rgba(255, 85, 85, 1)'
+    }}>
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      Please Enter a Valid email Address</div>))
     .required(<div style={{
       fontFamily: 'Exo 2',
       fontSize: '14px',
@@ -49,29 +59,37 @@ const validationSchema = Yup.object().shape({
     }}>
       <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>),
-  password: Yup.string()
-    .min(6, "")
-    .required(" "),
-  checkbox: Yup.array()
-    .min(1, 'Please choose at least one option')
-    .required(<div
-      style={{
-        fontFamily: 'Exo 2',
-        fontSize: '14px',
-        marginTop: '8px',
-        display: 'flex',
-        alignItems: 'end',
-        position: 'absolute',
-        color: 'rgba(255, 85, 85, 1)'
-      }}
-    >
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, transform: 'rotate(180deg)' }} />
-      Please Select an Option
-    </div>),
+  password: Yup.string().min(6, true).required(true),
+  checkbox: Yup.array().min(2, 'Please choose at least one option').required('Please select an option'),
 })
+
+const labelstyles = theme => ({
+  root: {
+    '& .MuiFormControlLabel-label': {
+      fontSize: '14px',
+      fontWeight: '400',
+      fontFamily: 'Exo 2',
+      color: '#4C4C4C'
+    },
+  },
+});
+
+const MenuItemStyle = withStyles(labelstyles)(MenuItem);
+
+const checkBoxStyles = theme => ({
+  root: {
+    '&$checked': {
+      color: 'black',
+    },
+  },
+  checked: {},
+})
+
+const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
 
 export default function BoxSx(props) {
+  const navigate = useNavigate()
   const initialValues = {
     fullName: '',
     email: '',
@@ -92,6 +110,7 @@ export default function BoxSx(props) {
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
+    navigate("/sign-up-2")
   };
 
   const [personName, setPersonName] = useState([]);
@@ -104,7 +123,6 @@ export default function BoxSx(props) {
       setPersonName(value);
     }
   };
-
 
 
   let isAllSelected = personName.length === names.length - 1;
@@ -134,7 +152,8 @@ export default function BoxSx(props) {
           validationSchema={validationSchema}
         >
           {({ values, errors, touched, setFieldValue }) => (
-            <Form>
+
+            < Form >
               <Grid container spacing={7}>
                 <Grid item xs={12} sx={{ height: '75px' }} >
                   <div className="fields">
@@ -227,7 +246,7 @@ export default function BoxSx(props) {
                               edge="end"
                               sx={{ margin: 0.7, pb: 2 }}
                             >
-                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                              {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
                             </IconButton>
                           </InputAdornment>
                         ),
@@ -247,8 +266,7 @@ export default function BoxSx(props) {
                           Why are you signing up for Accountant Pact?
                         </label>
                       </div>
-                      <Field
-                        sx={styles.field__color}
+                      <Field 
                         component={Select}
                         fullWidth
                         placeholderText="Select"
@@ -260,8 +278,12 @@ export default function BoxSx(props) {
                         InputProps={{
                           style: {
                             fontSize: '14px',
-                            paddingLeft: '20px'
+                            paddingLeft: '20px',
+                            ...styles.field__color()
                           },
+                        }}
+                        SelectDisplayProps={{
+                          style: styles.field__color() 
                         }}
                         value={values.checkbox}
                         renderValue={(selected) => {
@@ -272,7 +294,7 @@ export default function BoxSx(props) {
                         }}
                       >
                         {names.map((name) => (
-                          <MenuItem onClick={() => {
+                          <MenuItemStyle onClick={() => {
                             name === "All" ? values.checkbox.includes(name)
                               ? setFieldValue('checkbox', []) : setFieldValue('checkbox', names)
                               : values.checkbox.includes(name) ? setFieldValue('checkbox',
@@ -280,46 +302,62 @@ export default function BoxSx(props) {
                                 setFieldValue('checkbox', [...values.checkbox, name]);
                             console.log(values.checkbox);
                           }} key={name} value={name}>
-                            <Checkbox
+                            <CustomCheckbox
                               checked={values.checkbox.includes(name)}
                             />
                             <ListItemText primary={name} />
-                          </MenuItem>
+                          </MenuItemStyle>
                         ))}
                       </Field>
                     </Box>
                   </Form>
-
-                </Grid>
-                <Grid item xs={12} sx={{ mt: '40px' }}>
-                  <Link to="/sign-up-2">
-                    <Button
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                      type="submit"
-                      sx={{
-                        borderRadius: '8px',
-                        mt: 1,
-                        background: '#2B2B33',
-                        color: 'white',
-                        '&:hover': {
-                          background: 'black',
-                          color: 'white',
-                          border: '1px solid black',
-                        },
+                  {touched.checkbox && errors.checkbox && (
+                    <div
+                      style={{
+                        color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
+                        fontFamily: 'Exo 2',
+                        fontSize: '14px',
+                        marginTop: '8px',
+                        display: 'flex',
+                        alignItems: 'end',
+                        position: 'absolute',
+                        color: 'rgba(255, 85, 85, 1)'
                       }}
                     >
-                      Continue
-                    </Button>
-                  </Link>
+                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, transform: 'rotate(180deg)' }} />
+                      Please Select an Option
+                    </div>
+                  )}
+                </Grid>
+                <Grid item xs={12} sx={{ mt: '40px' }}>
+                  {/* <Link to="/sign-up-2"> */}
+                  <Button
+                    variant="contained"
+                    size="large"
+                    fullWidth
+                    type="submit"
+                    sx={{
+                      borderRadius: '8px',
+                      mt: 1,
+                      background: '#2B2B33',
+                      color: 'white',
+                      '&:hover': {
+                        background: 'black',
+                        color: 'white',
+                        border: '1px solid black',
+                      },
+                    }}
+                  >
+                    Continue
+                  </Button>
+                  {/* </Link> */}
                 </Grid>
               </Grid>
             </Form>
           )}
         </Formik>
       </Box>
-    </div>
+    </div >
   );
 }
 
