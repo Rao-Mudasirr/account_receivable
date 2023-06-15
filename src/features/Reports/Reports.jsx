@@ -11,7 +11,7 @@ function Reports() {
         if(val?.title == 'Cashflow Forecasting Report'){
             navigate(`/report-details/cashflow-forcasting/${val?.id}`, {state: {reportData: val}})
         }else{
-            navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
+            navigate(`/report-details/${val?.param}`, {state: {reportData: val}})
         }
     }
 
@@ -23,11 +23,9 @@ function Reports() {
                 ReportData?.map((val, i)=> (
                     <Grid className='report-styles' xs={12} md={6} lg={6} xl={4} key={i}>
                         <div className='report-title'>{val?.title}</div>
-                        {/* <Link to={'/report-details/'}> */}
                             <Card className='report-card' onClick={()=>GoToNext(val)}>
                                 <img className='report-image' src={val?.image} alt="Report card image" />
                             </Card>
-                        {/* </Link> */}
                     </Grid>
                 ))
             }
