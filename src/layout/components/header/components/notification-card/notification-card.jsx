@@ -32,7 +32,7 @@ const NotificationCard = () => {
           </div>
           {
             notificationData[item].map((SingleNotification) => (
-              <div key={SingleNotification.id} className=''>
+              <div key={SingleNotification.id} >
                 <div >
                   <div className="notification-row cursor-pointer">
                     <div className="profile-pic-and-notification">
@@ -54,7 +54,7 @@ const NotificationCard = () => {
   return (
     <>
       <ClickAwayListener onClickAway={handleCloseMUITooltip}>
-        <div wi>
+        <div>
           <Tooltip
             arrow
             placement="bottom-end"
