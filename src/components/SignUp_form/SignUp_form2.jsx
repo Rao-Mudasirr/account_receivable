@@ -136,6 +136,7 @@ const MyForm = () => {
                     </div>
                     <Grid item xs={12}>
                       <Field
+                        sx={styles.field__color}
                         component={TextField}
                         id="number"
                         variant="standard"
@@ -162,29 +163,6 @@ const MyForm = () => {
                             </InputAdornment>
                           ),
                         }}
-                        sx={{
-                          '& label': {
-                            color: 'black',
-                          },
-                          '& label.Mui-focused': {
-                            color: 'black',
-                          },
-                          '& .MuiInput-underline:after': {
-                            borderBottomColor: 'black'
-                          },
-                          '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                              borderColor: 'black',
-                            },
-                            '&:hover fieldset': {
-                              borderColor: 'black',
-                              borderWidth: '0.15rem',
-                            },
-                            '&.Mui-focused fieldset': {
-                              borderColor: 'black',
-                            },
-                          },
-                        }}
                       />
                     </Grid>
                   </div>
@@ -203,7 +181,7 @@ const MyForm = () => {
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '15px' }}>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10 px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}
@@ -222,6 +200,7 @@ const MyForm = () => {
                       Phone Number
                     </label>
                     <Field
+                      sx={styles.field__color}
                       component={TextField}
                       id="mobile"
                       variant="standard"
@@ -233,29 +212,6 @@ const MyForm = () => {
                         style: {
                           fontSize: '14px',
                           paddingLeft: '20px',
-                        },
-                      }}
-                      sx={{
-                        '& label': {
-                          color: 'black',
-                        },
-                        '& label.Mui-focused': {
-                          color: 'black',
-                        },
-                        '& .MuiInput-underline:after': {
-                          borderBottomColor: 'black'
-                        },
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': {
-                            borderColor: 'black',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: 'black',
-                            borderWidth: '0.15rem',
-                          },
-                          '&.Mui-focused fieldset': {
-                            borderColor: 'black',
-                          },
                         },
                       }}
                     />
@@ -292,3 +248,30 @@ const MyForm = () => {
 };
 
 export default MyForm;
+
+
+const styles = {
+  field__color: () => ({
+    '& label': {
+      color: 'black',
+    },
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black'
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+        borderWidth: '0.15rem',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black',
+      },
+    },
+  })
+}

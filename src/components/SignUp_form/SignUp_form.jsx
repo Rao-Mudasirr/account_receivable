@@ -50,12 +50,25 @@ const validationSchema = Yup.object().shape({
       <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .required(<span className="text">The password must be at least 6 characters</span>),
+    .min(6, "")
+    .required(" "),
   checkbox: Yup.array()
     .min(1, 'Please choose at least one option')
-    .required('Please choose one option'),
-});
+    .required(<div
+      style={{
+        fontFamily: 'Exo 2',
+        fontSize: '14px',
+        marginTop: '8px',
+        display: 'flex',
+        alignItems: 'end',
+        position: 'absolute',
+        color: 'rgba(255, 85, 85, 1)'
+      }}
+    >
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, transform: 'rotate(180deg)' }} />
+      Please Select an Option
+    </div>),
+})
 
 
 export default function BoxSx(props) {
@@ -63,7 +76,7 @@ export default function BoxSx(props) {
     fullName: '',
     email: '',
     password: '',
-    checkbox: [],
+    checkbox: [""],
   };
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -113,7 +126,7 @@ export default function BoxSx(props) {
           Accountants Pact!
         </div>
         <div className="text-mute">
-          Let’s Get Started
+          Let's Get Started
         </div>
         <Formik
           initialValues={initialValues}
@@ -123,7 +136,7 @@ export default function BoxSx(props) {
           {({ values, errors, touched, setFieldValue }) => (
             <Form>
               <Grid container spacing={7}>
-                <Grid item xs={12} sx={{height:'75px'}} >
+                <Grid item xs={12} sx={{ height: '75px' }} >
                   <div className="fields">
                     <div className="label">
                       <label htmlFor="fullName"
@@ -133,6 +146,7 @@ export default function BoxSx(props) {
                         Full Name</label>
                     </div>
                     <Field
+                      sx={styles.field__color}
                       component={TextField}
                       id="fullName"
                       variant="standard"
@@ -147,34 +161,11 @@ export default function BoxSx(props) {
                           paddingLeft: '20px'
                         }
                       }}
-                      sx = {{
-                        '& label': {
-                          color: 'black',
-                        },
-                        '& label.Mui-focused': {
-                          color: 'black',
-                        },
-                        '& .MuiInput-underline:after': {
-                          borderBottomColor: 'black'
-                        },
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': {
-                            borderColor: 'black',
-                          },
-                          '&:hover fieldset': {
-                            borderColor: 'black',
-                            borderWidth: '0.15rem',
-                          },
-                          '&.Mui-focused fieldset': {
-                            borderColor: 'black',
-                          },
-                        },
-                      }}
                     />
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
+                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
                     <div className="label">
                       <label htmlFor="email"
@@ -184,6 +175,7 @@ export default function BoxSx(props) {
                         Business Email</label>
                     </div>
                     <Field
+                      sx={styles.field__color}
                       component={TextField}
                       id="email"
                       variant="standard"
@@ -201,7 +193,7 @@ export default function BoxSx(props) {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
+                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
                     <div className="label">
                       <label htmlFor="password"
@@ -213,6 +205,7 @@ export default function BoxSx(props) {
 
                     </div>
                     <Field
+                      sx={styles.field__color}
                       component={TextField}
                       id="password"
                       variant="standard"
@@ -240,11 +233,12 @@ export default function BoxSx(props) {
                         ),
                       }}
                     />
+                    <span className="password__text">The password must be at least 6 characters</span>
                   </div>
                 </Grid>
 
 
-                <Grid item xs={12} sx={{height:'75px', mt:'2rem'}}>
+                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <Form>
                     <Box>
                       <div className="label">
@@ -254,8 +248,8 @@ export default function BoxSx(props) {
                         </label>
                       </div>
                       <Field
+                        sx={styles.field__color}
                         component={Select}
-                        sx={{ mt: 1.5 }}
                         fullWidth
                         placeholderText="Select"
                         variant="standard"
@@ -281,9 +275,9 @@ export default function BoxSx(props) {
                           <MenuItem onClick={() => {
                             name === "All" ? values.checkbox.includes(name)
                               ? setFieldValue('checkbox', []) : setFieldValue('checkbox', names)
-                            : values.checkbox.includes(name) ? setFieldValue('checkbox',
-                              values.checkbox.filter(item => item !== name)) :
-                              setFieldValue('checkbox', [...values.checkbox, name]);
+                              : values.checkbox.includes(name) ? setFieldValue('checkbox',
+                                values.checkbox.filter(item => item !== name)) :
+                                setFieldValue('checkbox', [...values.checkbox, name]);
                             console.log(values.checkbox);
                           }} key={name} value={name}>
                             <Checkbox
@@ -293,28 +287,11 @@ export default function BoxSx(props) {
                           </MenuItem>
                         ))}
                       </Field>
-                      {touched.checkbox && errors.checkbox && (
-                        <div
-                          style={{
-                            color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
-                            fontFamily: 'Exo 2',
-                            fontSize: '14px',
-                            marginTop: '8px',
-                            display: 'flex',
-                            alignItems: 'end',
-                            position: 'absolute',
-                            color: 'rgba(255, 85, 85, 1)'
-                          }}
-                        >
-                          <ErrorIcon fontSize="small" sx={{ mr: 0.5, transform: 'rotate(180deg)' }} />
-                          Please Select an Option
-                        </div>
-                      )}
                     </Box>
                   </Form>
 
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ mt: '40px' }}>
                   <Link to="/sign-up-2">
                     <Button
                       variant="contained"
@@ -344,4 +321,34 @@ export default function BoxSx(props) {
       </Box>
     </div>
   );
+}
+
+
+
+//style
+
+const styles = {
+  field__color: () => ({
+    '& label': {
+      color: 'black',
+    },
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black'
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+        borderWidth: '0.15rem',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black',
+      },
+    },
+  })
 }

@@ -18,7 +18,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Aging_Buckets_Col, Aging_Buckets_Data } from '../Aging_buckets_report/Aging_Buckets_Data';
+import { Aging_Buckets_Col, Aging_Buckets_Data,Aging_Buckets_Col2 } from '../Aging_buckets_report/Aging_Buckets_Data';
 import ShowFilters from '../../OverdueInvoices/ShowFilters';
 import '../report.scss'
 import TableAction from '../../../components/Table/TableAction';
@@ -259,7 +259,8 @@ function CashFlowForCasting() {
       <br />
       {/* Table */}
 
-      <div >
+      <Grid container >
+        <Grid xs={7} sx={{width:'100%'}}>
         <CustomTable
           data={Aging_Buckets_Data}
           columns={Aging_Buckets_Col} 
@@ -269,7 +270,19 @@ function CashFlowForCasting() {
           isSuccess={true}
           isPagination={true}
         />
-      </div>
+        </Grid>
+        <Grid xs={5}>
+        <CustomTable
+          data={Aging_Buckets_Data}
+          columns={Aging_Buckets_Col2} 
+          // showSerialNo
+          // onPageChange={pageChangeHandler}
+          // onSortByChange={sortChangeHandler}
+          isSuccess={true}
+          isPagination={true}
+        />
+        </Grid>
+      </Grid>
     </Fragment>
   )
 }
