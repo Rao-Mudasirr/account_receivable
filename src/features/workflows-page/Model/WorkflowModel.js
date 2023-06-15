@@ -2,14 +2,17 @@ import {
   Box,
   Checkbox,
   Grid,
+  Menu,
+  MenuItem,
   Modal,
   Tab,
   Tabs,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as EditSvg } from "../../../assests/svg/workflow-edit.svg";
 import editIcon from "../../../assests/images/settings/editIcon.png";
+import { ReactComponent as Down } from "../../../assests/svg/chev-bottom.svg";
 
 import "./WorkflowModel.scss";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +26,7 @@ function WorkflowModel({
   edit,
 }) {
   const navigate = useNavigate();
-
+  const [menu, setMenu] = useState(false);
   return (
     <div className="model-parent">
       <Modal
@@ -74,17 +77,36 @@ function WorkflowModel({
                           marginBottom: "20px",
                         }}
                       >
-                        <Box
-                          className={`tabbing-item ${
-                            value === e?.id ? "active" : ""
-                          }`}
-                          onClick={(event) => handleChange(event, e?.id)}
-                          label={e.label}
-                          key={e.id}
-                          value={e?.id}
-                        >
-                          {e.label}
+                        <Box sx={{ width: "100%" }}>
+                          <Box
+                            className={`tabbing-item ${
+                              value === e?.id ? "active" : ""
+                            }`}
+                            onClick={(event) => {
+                              handleChange(event, e?.id);
+                              setMenu(!menu);
+                            }}
+                            label={e.label}
+                            key={e.id}
+                            value={e?.id}
+                          >
+                            {e.label}
+                            {e?.template && (
+                              <Down
+                                className={`${value === e?.id ? "active" : ""}`}
+                                onClick={() => setMenu(!menu)}
+                              />
+                            )}
+                          </Box>
+                          {e?.template && menu && e?.id === value && (
+                            <Box className="template-list">
+                              <ul className="template-listing">
+                                <li className="template-item">template #1</li>
+                              </ul>
+                            </Box>
+                          )}
                         </Box>
+
                         {edit && (
                           <EditSvg
                             cursor={"pointer"}
