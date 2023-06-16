@@ -27,6 +27,7 @@ import AgingBuckets from "./pages/Aging_Buckets";
 import SignUpForm from "./components/SignUp_form/SignUp_form";
 import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";
+import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 
 function App() {
@@ -75,12 +76,14 @@ function App() {
               element={<WorkflowsForms />}
             />
           </Route>
+
+          <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/clients-details/:id"} element={<Clientdetails />} />
           <Route
             exact
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
           />
-          <Route exact path={"/clients"} element={<Clientdetails />} />
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
           <Route
