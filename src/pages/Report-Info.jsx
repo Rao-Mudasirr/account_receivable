@@ -4,6 +4,7 @@ import AgingBucketsReport from '../features/Reports/Aging_buckets_report/AgingBu
 import { useParams } from 'react-router-dom';
 import { CashCollectionReport } from '../features/Reports/cash-collection-report/cash-collection-report';
 import CashFlowForCasting from '../features/Reports/CashflowForcasting/CashFlowForCasting';
+import WorkflowReport from '../features/Reports/workflow-report/WorkflowReport';
 
 const reportsPages = {
   "dso": <ReportDetails />,
@@ -11,6 +12,7 @@ const reportsPages = {
   "cash-collection-report": <CashCollectionReport />,
   "aging-buckets-report": <AgingBucketsReport />,
   "workflows-report": <ReportDetails />,
+  "workflows-report": <WorkflowReport />,
 }
 
 function ReportInfo() {

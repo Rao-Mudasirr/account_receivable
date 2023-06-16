@@ -10,11 +10,14 @@ import Overdue_Invoice from "./pages/Overdue_Invoice";
 import { Notifications } from "./pages/notifications";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
-import Workflow from "./pages/workflows";
-import ClientWorkFlow from "./pages/client-workflows";
+import Signin from "./components/signin/Signin";
 import MainReport from "./pages/MainReport";
 import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
+import WorkflowReport from "./features/Reports/workflow-report/WorkflowReport";
+import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
+import Workflow from "./pages/workflows";
+import ClientWorkFlow from "./pages/client-workflows";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
 // import CustomAlert from "./components/Alert/CustomAlert";
@@ -29,58 +32,38 @@ function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        <Route exact path={"/sign-up"} element={<SignUpForm />}/>
-        <Route exact path={"/sign-up-2"} element={<SignUpForm2 />}/>
+        <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
+        <Route path="/signin" element={<Signin />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
-      <Route
-          exact
-          path={"/invoices"}
-          element={
-              <InvoiceListing/>
-          }
-        />
-      <Route
-          exact
-          path={"/overdue-invoices"}
-          element={
-              <Overdue_Invoice/>
-          }
-        />
-      <Route
-          exact
-          path={"/user-management/role-right-manager"}
-          element={
-              <Manager/>
-          }
-        />
-      
-      <Route
-          exact
-          path={"/user-management"}
-          element={
-              <UserManagements/>
-          }
-        />
-        <Route
-          exact
-          path={"/clients"}
-          element={
-              <Clientdetails/>
-          }
-        />
-            <Route path="/not-found" element={<h1>Not Found</h1>}/>
-            <Route path="*" element={<Navigate to="/not-found"/>} />
-            <Route path="/invoice-no-detail" element={<InvoiceNoDetail/>} />
-            
+          <Route
+            exact
+            path={"/user-management"}
+            element={<UserManagements />}
+          />
+          <Route
+            exact
+            path={"/overdue-invoices"}
+            element={<Overdue_Invoice />}
+          />
+          <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          <Route path="/not-found" element={<h1>Not Found</h1>} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
+          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
+          {/* <Route path="/report-details/workflows-report" element={<WorkflowReport/>} /> */}
+          <Route
+            path="/report-details/workflows-report/workflow-detail"
+            element={<WorkflowDetail />}
+          />
           <Route
             exact
             path={"/user-management/role-right-manager"}
             element={<Manager />}
           />
-          
+
           <Route exact path={"/workflows"} element={<Workflow />}>
             <Route
               exact

@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Grid, Typography,styled, TextField} from '@mui/material'
+import { Grid, Typography, IconButton, InputAdornment, TextField} from '@mui/material'
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 const validationSchema = yup.object({
    
-    email: yup.string().required("Email is required"),
+    password: yup.string().required("password is required"),
   
-  });
-  
-  const Asterisk = styled("span")({
-    color: "red",
   });
   
 
@@ -19,15 +16,23 @@ const ChangePassword = () => {
     const [editMode, setEditMode] = useState(false);
     const [emptyFields, setEmptyFields] = useState([]);
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+  
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault();
+    };
+
     const formik = useFormik({
         initialValues: {
-          email: "",
+          password: "",
         },
         validationSchema,
         onSubmit: (values) => {
          
           const emptyFields = [];
-          if (!values.email) emptyFields.push("email");
+          if (!values.password) emptyFields.push("password");
         
     
           setEmptyFields(emptyFields);
@@ -51,9 +56,9 @@ const ChangePassword = () => {
   return (
     <>
     <Grid container spacing={2}>
-        <Grid item xs={12} sx={{display:'flex',justifyContent:'space-between', mt:10,ml:5}} >
+        <Grid item xs={12} sx={{display:'flex',justifyContent:'space-between', mt:4,ml:3}} >
             <Typography>
-                Update Password
+                Change Password
             </Typography>
             <Typography>
                 User Profile
@@ -61,32 +66,39 @@ const ChangePassword = () => {
         </Grid>
         <form onSubmit={handleSubmit}>
         <Grid item xl={12} xs={12} sx={{p:5}}>
-                <label htmlFor="email"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >
-                  <Asterisk>*</Asterisk> Email
+                <label htmlFor="password"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:600}} >
+                 Current Password
                 </label>
                 <TextField
-                  id="email"
-                  name="email"
+                  id="password"
+                  name="password"
                   size="small"
-                  value={formik.values.email}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="********************"
+                  value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={handleBlur}
                   autoComplete={false}
                   // disabled={!editMode}
-                  error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.touched.email && formik.errors.email}
-                  fullWidth
+                  error={formik.touched.password && Boolean(formik.errors.password)}
+                  helperText={formik.touched.password && formik.errors.password}
                   
-                  sx={{
-                   
-                      ".MuiTextField-root": {
-                       height:'12px',
-                       border:'1px solid black'
-                      },
-
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine style="transform: scaleX(-1);"/>}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
                     
-
                   }}
+                  
+                  
                 />
               </Grid>
               </form>

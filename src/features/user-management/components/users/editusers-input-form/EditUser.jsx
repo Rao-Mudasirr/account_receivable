@@ -1,6 +1,6 @@
 import React from "react";
 import EditUserForm from "./EditUserForm";
-import "./edituser.css";
+import "./edituser.scss";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import {  Card, Button, Dialog } from "@mui/material";
 

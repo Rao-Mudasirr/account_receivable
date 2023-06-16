@@ -22,7 +22,6 @@ export const tabbing_data = [
   {
     label: "On Payment Collection Date",
     id: 15,
-
     step: 5,
   },
 ];
