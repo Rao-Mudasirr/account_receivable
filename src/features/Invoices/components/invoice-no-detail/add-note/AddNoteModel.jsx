@@ -7,7 +7,6 @@ import CloseIcon from "../../../../../assests/svg/close-circle.png";
 import { CheckBox, Maximize } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { TextareaAutosize } from "@material-ui/core";
-import './addnote.css'
 
 const AddNoteModel = (props) => {
     //---usestate handlers and themes
@@ -44,7 +43,6 @@ const AddNoteModel = (props) => {
                         <div style={{ textAlign: "center", marginTop: "2rem" }}>
                             <TextareaAutosize
                                 minRows={11}
-                                className="add-model_textarea"
                                 placeholder="Write your note"
                                 style={Styles.textArea(theme)}
                             ></TextareaAutosize>
@@ -96,6 +94,9 @@ const Styles = {
         width: "100%",
         resize: "none",
         borderRadius: "4px",
-        border: "none"
+        border: "none",
+        '&::placeholder' : {
+            paddingTop: "8px"
+        }
     }),
 };

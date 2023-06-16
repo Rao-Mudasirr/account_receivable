@@ -1,56 +1,82 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Checkbox } from "@mui/material";
+import React, { useState } from "react";
 import CustomInput from "../../../components/CustomInput";
-import { optionsTime } from "./Constants";
+
 import GlobalButton from "../../../components/global-button/global-button";
 import { useNavigate } from "react-router-dom";
+import { optionsTime } from "../Model/Constants";
 
-const OnPaymentCollectionDate = ({ edit, editIcon, item, id }) => {
+const OnPaymentCollectionDate = ({ edit, editIcon, id, item }) => {
+  const [checkbox, setCheckbox] = useState(false);
   const navigate = useNavigate();
   return (
-    <Box>
-      <Box className="tabbing-top">
-        <Box className="tabbing-dropdowns">
-          <CustomInput type="select" label="Time" options={optionsTime} />
+    <Box className="form-main-body">
+      <Box className="top-section">
+        <Box className="attachment-box">
+          <p>Attachment</p>
+          <Box className="attachment-checkbox">
+            <Checkbox
+              defaultChecked={false}
+              value={checkbox}
+              onChange={() => setCheckbox(!checkbox)}
+              checked={checkbox}
+              sx={{
+                marginRight: "-12px",
+                padding: "0px",
+                color: "black",
+                "&.Mui-checked": {
+                  color: "black",
+                },
+              }}
+            />
+            <Box
+              className={`span  ${checkbox ? "active" : "not-active"}`}
+              onClick={() => setCheckbox(!checkbox)}
+            >
+              Invoice File
+            </Box>
+          </Box>
         </Box>
+
+        <CustomInput
+          label={"Time"}
+          options={optionsTime}
+          type="select"
+          labelClass={"label-time"}
+        />
       </Box>
-      <Box className="tabbing-body">
+      <Box className="body-section">
         <Box className="tabbing-dropdowns">
           <CustomInput label="From" placeholder="Entered/Selected Value" />
           <CustomInput label="Subject" placeholder="Entered/Selected Value" />
         </Box>
-        <Box className="tabbing-bottom">
-          <Typography>Message</Typography>
-          <Box className="tabbing-message-box">
-            <Typography>Dear Client Name</Typography>
-
-            <Typography>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type
-            </Typography>
-
-            <Typography>Sincerely,</Typography>
-            <Typography>Company Name</Typography>
+        <Box className="tabbing-created-at">
+          <p>Create Date: </p>
+          <Box className="date-box">10/02/2023</Box>
+        </Box>
+        <Box className="tabbing-message-box">
+          <CustomInput
+            required={false}
+            label="Message"
+            type="textarea"
+            placeholder="Entered/Selected Value"
+            inputClass="message-input"
+          />
+        </Box>
+        <Box className="tabbing-form-button">
+          <Box
+            sx={{
+              marginTop: "16px",
+              justifyContent: "flex-end",
+              display: "flex",
+              flex: "1 1 auto",
+              flexWrap: "wrap",
+              rowGap: "10px",
+            }}
+          >
+            <GlobalButton variant="accent" btnName="accent" btnText="Save" />
           </Box>
         </Box>
-
-        {edit && (
-          <Box sx={{ marginTop: "30px", textAlign: "end" }}>
-            <GlobalButton
-              variant="accent"
-              btnName="accent"
-              onClick={() =>
-                navigate(`/workflows/add?step=${item?.step}&id=${id}`)
-              }
-              btnText="Edit "
-              endIcon={
-                <img src={editIcon} alt="Export Text" width={16} height={16} />
-              }
-            />
-          </Box>
-        )}
       </Box>
     </Box>
   );
