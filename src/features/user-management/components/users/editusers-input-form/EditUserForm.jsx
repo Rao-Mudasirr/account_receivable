@@ -38,7 +38,7 @@ const EditUserInputs = () => {
 
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values); // Handle form submission logic here
+    console.log(values);
     resetForm();
   };
 

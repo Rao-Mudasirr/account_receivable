@@ -148,7 +148,7 @@ const CustomTable = (props) => {
       <Grid xs={12} item>
         {/* Table Container */}
         <Box sx={{ overflowX: "auto" }}>
-          <TableContainer sx={styles.tableContainer(tableContainerSX, theme)}>
+          <TableContainer className="no-scrollbar" sx={styles.tableContainer(tableContainerSX, theme)}>
             <Table stickyHeader>
               <TableHead>
                 {table.getHeaderGroups().map((headerGroup) => (
