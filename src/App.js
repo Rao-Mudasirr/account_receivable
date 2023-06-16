@@ -27,6 +27,7 @@ import AgingBuckets from "./pages/Aging_Buckets";
 import SignUpForm from './components/SignUp_form/SignUp_form'
 import SignUpForm2 from './components/SignUp_form/SignUp_form2'
 import WorkflowsForms from "./pages/workflows-form";
+import ClientListing from "./pages/client-listing";
 
 function App() {
   return (
@@ -78,7 +79,8 @@ function App() {
             />
           </Route>
 
-          <Route exact path={"/clients"} element={<Clientdetails />} />
+          <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/clients-details/:id"} element={<Clientdetails />} />
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
           <Route exact path={"/report-details/cashflow-forcasting/:id"} element={<Cashflow_Forcasting />} />

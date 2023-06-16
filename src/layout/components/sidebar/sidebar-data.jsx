@@ -63,7 +63,7 @@ export const sidebarData = [
   {
     id: "3",
     title: "Clients",
-    path: '/clients',
+    path: '/clients-listing',
     allowedRoles: [],
     icon: <img src={ClientsIcon} alt="my-listing" />,
     hoverdIcon: <img src={ClientsActiveIcon} alt="account-settings" />,

@@ -11,7 +11,6 @@ const reportsPages = {
   "cashflow-forecasting-report": <CashFlowForCasting />,
   "cash-collection-report": <CashCollectionReport />,
   "aging-buckets-report": <AgingBucketsReport />,
-  "workflows-report": <ReportDetails />,
   "workflows-report": <WorkflowReport />,
 }
 
