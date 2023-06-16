@@ -26,38 +26,36 @@ const names = [
 
 
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required(<span style={{
+  fullName: Yup.string().required(<div style={{
     fontFamily: 'Exo 2',
-    fontSize: '14px',
+    fontSize: '12px',
     display: 'flex',
     alignItems: 'end',
     position: 'absolute',
     color: 'rgba(255, 85, 85, 1)'
   }}>
-    <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-    Please Enter Full Name (First and Last Name)</span>),
+    <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
+    Please Enter Full Name(First and Last Name)</div>),
   email: Yup.string()
     .email((<div style={{
       fontFamily: 'Exo 2',
-      fontSize: '14px',
-      marginTop: '8px',
+      fontSize: '12px',
       display: 'flex',
       alignItems: 'end',
       position: 'absolute',
       color: 'rgba(255, 85, 85, 1)'
     }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>))
     .required(<div style={{
       fontFamily: 'Exo 2',
-      fontSize: '14px',
-      marginTop: '8px',
+      fontSize: '12px',
       display: 'flex',
       alignItems: 'end',
       position: 'absolute',
       color: 'rgba(255, 85, 85, 1)'
     }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>),
   password: Yup.string().min(6, true).required(true),
   checkbox: Yup.array().min(2, 'Please choose at least one option').required('Please select an option'),
@@ -88,7 +86,7 @@ const checkBoxStyles = theme => ({
 const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
 
-export default function BoxSx(props) {
+export default function MySignUpForm(props) {
   const navigate = useNavigate()
   const initialValues = {
     fullName: '',
@@ -316,16 +314,16 @@ export default function BoxSx(props) {
                       style={{
                         color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
                         fontFamily: 'Exo 2',
-                        fontSize: '14px',
-                        marginTop: '8px',
+                        fontSize: '12px',
+                        fontWeight:'600',
                         display: 'flex',
                         alignItems: 'end',
                         position: 'absolute',
-                        color: 'rgba(255, 85, 85, 1)'
+                        color: 'rgba(255, 85, 85, 1)',
                       }}
                     >
-                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, transform: 'rotate(180deg)' }} />
-                      Please Select an Option
+                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt:'2px', transform: 'rotate(180deg)',  }} />
+                     <span style={{marginBottom:'3px'}}> Please Select an Option</span>
                     </div>
                   )}
                 </Grid>
