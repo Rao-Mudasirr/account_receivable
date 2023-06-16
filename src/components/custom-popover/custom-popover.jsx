@@ -23,7 +23,7 @@ export const CustomPopover = ({ popoverOpenerTitle, popoverOpenerProps, mainTitl
                             }}
                             sx={{ mt: '10px' }}
                         >
-                            <Box sx={{ width: '592px' }}>
+                            <Box sx={{ width: {sm:'592px'} }}>
                                 <Box sx={{ p: '20px' }}>
                                     <div className='flex justify-between margin-bottom-1'>
                                         <Box className={mainTitleClass}>
