@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card } from '@mui/material';
-import "./addnote.css";
+import "./addnote.scss";
 import EditIcon from '../../../../../assests/svg/edit.png';
 import AddNoteIcon from '../../../../../assests/svg/addnote.png';
 import AddNoteModel from './AddNoteModel';
@@ -16,7 +16,7 @@ const AddNote = () => {
 
   return (
     <>
-      <h5>Note History</h5>
+      <h5 style={{marginBottom: "1rem"}}>Note History</h5>
       <Card className='addnote_container'>
         <div className='addnote_main'>
           <div className="addnote_header">

@@ -56,4 +56,18 @@ export const INVOICE_DETAIL_DATA = [
     // nextInspectionDate: 30 / 4 / 2011,
     // status: "John Doe",
   },
+  {
+    id: 5,
+    sr: 5,
+    workflowName: "Default Workflow",
+    initiatorRole: "Manager",
+    initiatorName: "John",
+    sentDate: "19 Oct, 2022",
+    sentTime: "08:20 AM",
+    emailType: "System",
+    // social_worker: "John",
+    // createdAt: 30 / 4 / 2011,
+    // nextInspectionDate: 30 / 4 / 2011,
+    // status: "John Doe",
+  },
 ];

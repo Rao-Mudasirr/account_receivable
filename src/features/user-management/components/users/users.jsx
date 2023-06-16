@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, Box } from "@mui/material";
-import CustomTable from "../../../../components/Table/CustomTable";
-import TableHeader from "../../../../components/Table/TableHeader";
-import { useTableParams } from "../../../../components/Table/useTableParams";
+import { Card, Box} from '@mui/material';
+import CustomTable from '../../../../components/Table/CustomTable';
+import TableHeader from '../../../../components/Table/TableHeader';
+import { useTableParams } from '../../../../components/Table/useTableParams';
 import TableAction from '../../../../components/Table/TableAction';
 import DeleteModel from '../../../../components/modal/DeleteModel';
-import FormDialog from '../../../../components/modal/ModalPractice';
-import { Status } from "../../../../components/status/status";
-import AddUser from '../../../../components/addusers-input-form/AddUser';
-import EditUser from '../../../../components/editusers-input-form/EditUser'
-import { USERS_DATA } from ".";
-import { useUsers } from "./use-user";
+import AddUser from './addusers-input-form/AddUser';
+import EditUser from './editusers-input-form/EditUser';
+import { USERS_DATA } from '.';
+import { useUsers } from './use-user';
 
 export const UsersTable = () => {
-
 
   const {
     open,
@@ -25,46 +22,44 @@ export const UsersTable = () => {
     setOpenForm,
     handleFormDialog,
     handleCloseForm,
+    openAddForm,
+    setOpenAddForm,
+    handleFormAddDialog,
+    handleCloseAddForm,
     theme,
-    // router,
     tableHeaderRef,
   } = useUsers();
 
-  const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
-    useTableParams();
+  const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } = useTableParams();
   const columns = [
     {
       accessorFn: (row) => row.Id,
-      id: "Id",
+      id: 'Id',
       cell: (info) => info.getValue(),
       header: () => <span>Id</span>,
-      // isSortable: true,
     },
     {
       accessorFn: (row) => row.userName,
-      id: "userName",
+      id: 'userName',
       cell: (info) => info.getValue(),
-      header: "User Name",
-      // isSortable: true,
+      header: 'User Name',
     },
     {
       accessorFn: (row) => row.role,
-      id: "role",
+      id: 'role',
       cell: (info) => info.getValue(),
-      header: "Role",
-      // isSortable: true,
+      header: 'Role',
     },
     {
       accessorFn: (row) => row.createdOn,
-      id: "createdOn",
-      cell: (info) => dayjs(info.getValue()).format("DD MMM, YYYY"),
-      header: "Created On",
-      // isSortable: true,
+      id: 'createdOn',
+      cell: (info) => dayjs(info.getValue()).format('DD MMM, YYYY'),
+      header: 'Created On',
     },
     {
-      id: "Actions",
+      id: 'Actions',
       cell: (info) => (
-        <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+        <Box sx={{ display: 'flex', gap: '5px', justifyContent: 'center' }}>
           <TableAction type="delete" onClicked={handleOpen} />
           <TableAction type="edit" onClicked={handleFormDialog} />
         </Box>
@@ -73,44 +68,41 @@ export const UsersTable = () => {
       isSortable: false,
     },
   ];
+
   return (
     <>
       <Card sx={{ p: 1 }}>
         <TableHeader
           ref={tableHeaderRef}
-          // showSelectFilters
-          // disabled={isLoading}
           title="Health & Safety"
           searchKey="search"
           showAddBtn
-          onAdd={handleFormDialog}
+          onAdd={handleFormAddDialog}
           onChanged={headerChangeHandler}
-        // selectFilters={SELECT_FILTERS}
         />
-        
+
         <CustomTable
           data={USERS_DATA}
           columns={columns}
-          // showSerialNo
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
           isPagination={true}
         />
       </Card>
-      <DeleteModel
-        open={open}
-        handleClose={handleClose}
-        onDeleteClick={handleClose}
+      <DeleteModel open={open} handleClose={handleClose} onDeleteClick={handleClose} />
+      <EditUser
+        openForm={openForm}
+        setOpenForm={setOpenForm}
+        handleFormDialog={handleFormDialog}
+        handleCloseForm={handleCloseForm}
       />
-      <EditUser openForm={openForm}
-        setOpenForm={setOpenForm}
-        handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} />
-      <AddUser openForm={openForm}
-        setOpenForm={setOpenForm}
-        handleFormDialog={handleFormDialog}
-        handleCloseForm={handleCloseForm} />
+        <AddUser
+        openAddForm={openAddForm}
+        setOpenAddForm={setOpenAddForm}
+        handleFormAddDialog={handleFormAddDialog}
+        handleCloseAddForm={handleCloseAddForm}
+        />
     </>
   );
 };
