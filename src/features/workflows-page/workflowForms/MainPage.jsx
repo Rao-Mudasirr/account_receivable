@@ -6,8 +6,8 @@ import CustomInput from "../../../components/CustomInput";
 import { optionsTime } from "../Model/Constants";
 import GlobalButton from "../../../components/global-button/global-button";
 import InvoiceCreationDate from "./InvoiceCreationDate";
+import OnDueDate from "./OnDueDate";
 import OnPaymentCollectionDate from "./OnPaymentCollectionDate";
-import OnDueDate from './OnDueDate'
 
 const MainPage = ({ searchParams, setSearchParams, children }) => {
   const step = searchParams.get("step");

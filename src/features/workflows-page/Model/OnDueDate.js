@@ -35,6 +35,7 @@ const OnDueDate = ({ edit, editIcon, item, id }) => {
             <Typography>Company Name</Typography>
           </Box>
         </Box>
+
         {edit && (
           <Box sx={{ marginTop: "30px", textAlign: "end" }}>
             <GlobalButton
