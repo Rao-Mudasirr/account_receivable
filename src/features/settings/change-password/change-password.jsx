@@ -3,17 +3,19 @@ import { Grid, Typography, IconButton, InputAdornment, TextField} from '@mui/mat
 import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import { useFormik } from "formik";
 import * as yup from "yup";
+import GlobalButton from "../../../components/global-button/global-button";
+import { Error } from '@mui/icons-material';
+import { Link } from "react-router-dom";
 
 const validationSchema = yup.object({
    
-    password: yup.string().required("password is required"),
-  
+    password: yup.string().required(<span style={{ color: "rgba(255, 85, 85, 1)" }}><Error style={{ marginRight: "7px", marginBottom: "-3px", fontSize: "medium", color: "rgba(255, 85, 85, 1)", transform: "rotate(180deg)" }} /> Please enter a correct password</span>)
+    .min(6, <span style={{ color: "rgba(255, 85, 85, 1)" }}><Error style={{ marginRight: "7px", marginBottom: "-3px", fontSize: "medium", color: "rgba(255, 85, 85, 1)", transform: "rotate(180deg)" }} /> Password must be at least 6 characters</span>)
   });
   
 
 const ChangePassword = () => {
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [editMode, setEditMode] = useState(false);
+
     const [emptyFields, setEmptyFields] = useState([]);
 
     const [showPassword, setShowPassword] = useState(false);
@@ -55,18 +57,20 @@ const ChangePassword = () => {
 
   return (
     <>
-    <Grid container spacing={2}>
+    <Grid container spacing={2} >
         <Grid item xs={12} sx={{display:'flex',justifyContent:'space-between', mt:4,ml:3}} >
-            <Typography>
+            <Typography sx={{fontWeight:600}} className="font-family-exo2">
                 Change Password
             </Typography>
-            <Typography>
+            <Link to="/">
+            <Typography className="font-family-exo2" color="#6197E8">
                 User Profile
             </Typography>
+            </Link>
         </Grid>
         <form onSubmit={handleSubmit}>
-        <Grid item xl={12} xs={12} sx={{p:5}}>
-                <label htmlFor="password"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:600}} >
+        <Grid item xl={8} xs={8} sx={{p:5, height: "150px"}}>
+                <label htmlFor="password" className="secondary-color primary-title font-family-exo2"  >
                  Current Password
                 </label>
                 <TextField
@@ -74,7 +78,7 @@ const ChangePassword = () => {
                   name="password"
                   size="small"
                   type={showPassword ? "text" : "password"}
-                  placeholder="********************"
+                  placeholder="*************"
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={handleBlur}
@@ -82,7 +86,6 @@ const ChangePassword = () => {
                   // disabled={!editMode}
                   error={formik.touched.password && Boolean(formik.errors.password)}
                   helperText={formik.touched.password && formik.errors.password}
-                  
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -91,17 +94,19 @@ const ChangePassword = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine style="transform: scaleX(-1);"/>}
+                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine style={{transform: "scaleX(-1)"}}/>}
                         </IconButton>
                       </InputAdornment>
                     ),
                     
                   }}
-                  
-                  
                 />
+                
               </Grid>
               </form>
+              <Grid className="flex justify-end width-100">
+              <GlobalButton btnText="Next" btnName="accent" onClick={handleSubmit} />
+              </Grid>
     </Grid>
     </>
   )
