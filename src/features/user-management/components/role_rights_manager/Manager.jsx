@@ -14,13 +14,16 @@ import { formControlData } from './Accounts_receivable_data/data';
 import UserManagement_data from './Admin_Rights_data/UserManagement_data'
 import { FormControlData2 } from './Admin_Rights_data/Admin_data'
 import Settings_data from './Admin_Rights_data/Settings'
-import './manager.css';
+import './manager.scss';
 
 
 const Manager = () => {
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('');
   const [switchEnabled, setSwitchEnabled] = useState(false);
+  const [switchOn, setSwitchOn] = useState(false)
+  const handleSwitchOn = ()=> setSwitchOn(false)
+  const handleSwitchOff = ()=> setSwitchOn(true)
 
   const handleSwitchChange = () => {
     setSwitchEnabled(!switchEnabled);
@@ -68,6 +71,7 @@ const Manager = () => {
           <Dashboard
             checkboxData={formControlData.find((data) =>
               data.id === 'dashboard').switchOptions}
+              handleSwitchChange={handleSwitchChange}
           />
         );
       case 'invoices':
