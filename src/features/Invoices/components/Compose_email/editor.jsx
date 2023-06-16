@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const EmailEditor = ({handleClose}) => {
+const EmailEditor = ({ handleClose }) => {
   const [editorContent, setEditorContent] = useState('');
 
 
@@ -19,7 +19,7 @@ const EmailEditor = ({handleClose}) => {
   };
 
   const handleSureClick = () => {
-    const toastText = 'Email sent successfully';
+    const toastText = 'Email send successfully';
     sendEmail();
     toast.success(toastText);
   };
@@ -54,17 +54,17 @@ const EmailEditor = ({handleClose}) => {
         />
       </div>
       <div className="btns">
-        <Button variant="outlined" color="inherit" onClick={()=> handleClose()}>
+        <Button variant="outlined" color="inherit" onClick={() => handleClose()}>
           Cancel
         </Button>
         <Button
           sx={{
-            background: 'black',
-            color: 'white',
-            '&:hover': {
-              background: 'white',
-              color: 'inherit',
-              border: '1px solid black',
+            background: "#2B2B33",
+            color: "white",
+            "&:hover": {
+              background: 'black',
+              color: "white",
+              border: '1px solid black'
             },
           }}
           onClick={handleSureClick}
