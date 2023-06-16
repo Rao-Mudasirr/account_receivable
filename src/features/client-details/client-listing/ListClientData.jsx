@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const activeStyle = {
   color: '#48995D',
   background: '#D3E7D8',
@@ -21,7 +23,11 @@ export const list_col = [
   {
     accessorFn: (row) => row.id,
     id: "id",
-    cell: (info) => info.getValue(),
+    cell: (info) =>(
+      <span style={{ color: "#0084AD", textDecoration: "underline", cursor: 'pointer' }}>
+        <Link to={`/clients-details/${info.getValue()}`}>{info.getValue()}</Link>
+      </span>
+    ),
     header: () => <span>Id</span>,
     // isSortable: true,
   },
@@ -159,7 +165,7 @@ export const list_data = [
   {
     sr: '01',
     id: '1234',
-    client: 'John Doe',
+    client: 'Jacob',
     email: 'xyz@gmail.com',
     total_invoices: '300',
     due_invoices: '44',
@@ -185,7 +191,7 @@ export const list_data = [
   {
     sr: '02',
     id: '1234',
-    client: 'John Doe',
+    client: 'Bills',
     email: 'xyz@gmail.com',
     total_invoices: '300',
     due_invoices: '44',
@@ -211,7 +217,7 @@ export const list_data = [
   {
     sr: '03',
     id: '1234',
-    client: 'John Doe',
+    client: 'John',
     email: 'xyz@gmail.com',
     total_invoices: '300',
     due_invoices: '44',
