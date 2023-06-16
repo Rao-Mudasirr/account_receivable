@@ -1,0 +1,29 @@
+.addnote_container {
+  height: 100%;
+  width: 296px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: 2px solid rgba(240, 240, 242, 1);
+  box-sizing: border-box;
+
+  .addnote_main {
+    margin: 1rem 1rem;
+  }
+
+  .addnote_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .addnote_header button {
+    border: none;
+    background: transparent;
+  }
+
+  .addnote_header img {
+    height: 21.5px;
+    width: 21.5px;
+  }
+
+}
