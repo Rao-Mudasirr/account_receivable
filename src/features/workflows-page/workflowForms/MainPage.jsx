@@ -7,6 +7,8 @@ import { optionsTime } from "../Model/Constants";
 import GlobalButton from "../../../components/global-button/global-button";
 import InvoiceCreationDate from "./InvoiceCreationDate";
 import BeforeDueDate from "./BeforeDueDate";
+import OnPaymentCollectionDate from "./OnPaymentCollectionDate";
+import OnDueDate from "./OnDueDate";
 
 const MainPage = ({ searchParams, setSearchParams, children }) => {
   const step = searchParams.get("step");
@@ -54,8 +56,18 @@ const MainPage = ({ searchParams, setSearchParams, children }) => {
           ))}
         </Tabs>
       </Box>
-      {step === "1" ? <InvoiceCreationDate /> : ""}
-      {step === "2" ? <BeforeDueDate /> : ""}
+
+      {step === "1" ? (
+        <InvoiceCreationDate />
+      ) : step === "3" ? (
+        <OnDueDate />
+      ) : step === "5" ? (
+        <OnPaymentCollectionDate />
+      ) : step === "2" ? (
+        <BeforeDueDate />
+      ) : (
+        ""
+      )}
     </Box>
   );
 };

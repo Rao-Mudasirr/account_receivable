@@ -1,7 +1,7 @@
 import React from 'react';
 import AddNote from './add-note/AddNote';
 import RecentEmailTable from './recent-email-table/RecentEmailTable';
-import "./invoice_no_detail.css";
+import "./invoice_no_detail.scss";
 import { Card, Button } from '@mui/material';
 import { useState } from "react";
 import ViewInvoice from '../../../view-invoices/ViewInvoice';
@@ -101,7 +101,7 @@ const InvoiceNoDetail = () => {
                 </div>
                 <RecentEmailTable />
             </div>
-            <div>
+            <div style={{height: "95%"}}>
                 <AddNote />
             </div>
         </div>

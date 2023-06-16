@@ -4,7 +4,7 @@ import React from 'react'
 export const SimpleDialog = ({ open, handleClose, children, title, titleClass, titleSX }) => {
     return (
         <>
-            <Dialog onClose={handleClose} open={open}>
+            <Dialog onClose={handleClose}   open={open}>
                 <Box sx={{ p: '20px' }}>
                     <div className='flex justify-between margin-bottom-1'>
                         <Box className={titleClass} sx={titleSX}>
