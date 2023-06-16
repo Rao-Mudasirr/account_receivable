@@ -8,14 +8,7 @@ function Reports() {
     
     const navigate = useNavigate();
     const GoToNext = (val) => {
-        if(val?.title == 'Cashflow Forecasting Report'){
-            navigate(`/report-details/cashflow-forcasting/${val?.id}`, {state: {reportData: val}})
-        }else if(val?.title == "Workflows Report"){
-            navigate(`/report-details/workflows-report`, {state: {reportData: val}})
-        }
-        else{
-            navigate(`/report-details/${val?.id}`, {state: {reportData: val}})
-        }
+        navigate(`/report-details/${val?.param}`, {state: {reportData: val}})
     }
 
   return (
