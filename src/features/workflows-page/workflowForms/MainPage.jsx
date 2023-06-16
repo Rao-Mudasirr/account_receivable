@@ -6,6 +6,7 @@ import CustomInput from "../../../components/CustomInput";
 import { optionsTime } from "../Model/Constants";
 import GlobalButton from "../../../components/global-button/global-button";
 import InvoiceCreationDate from "./InvoiceCreationDate";
+import BeforeDueDate from "./BeforeDueDate";
 import OnDueDate from "./OnDueDate";
 import OnPaymentCollectionDate from "./OnPaymentCollectionDate";
 
@@ -55,7 +56,18 @@ const MainPage = ({ searchParams, setSearchParams, children }) => {
           ))}
         </Tabs>
       </Box>
-      {step === "1" ? <InvoiceCreationDate /> : step=== "3" ? <OnDueDate/> : step === "5" ? <OnPaymentCollectionDate/> : "Write Here"}
+
+      {step === "1" ? (
+        <InvoiceCreationDate />
+      ) : step === "3" ? (
+        <OnDueDate />
+      ) : step === "5" ? (
+        <OnPaymentCollectionDate />
+      ) : step === "2" ? (
+        <BeforeDueDate />
+      ) : (
+        ""
+      )}
     </Box>
   );
 };
