@@ -7,11 +7,10 @@ import {
   TextField,
 } from "@mui/material";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
-import { useFormik } from "formik";
+import { ErrorMessage, Formik, useFormik } from "formik";
 import * as yup from "yup";
 import GlobalButton from "../../../components/global-button/global-button";
 import { Error } from "@mui/icons-material";
-import ProfileManagement from "../profile-management/profile-management";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -50,22 +49,21 @@ const validationSchema = yup.object({
 });
 
 const ChangePassword = () => {
-
-  const handleUpdatePassword = () => {
-    const toastText = 'Password Updated Successfully';
-    passwordUpdated();
-    toast.success(toastText);
-  };
-
-  const passwordUpdated = () => {
-    console.log('signUp');
-  };
-
-  const [profileManage, setProfileManage] = useState(false);
+  const [ProfileManage, setProfileMange] = useState(false);
 
   const handleClickUserProfile = () => {
-    setProfileManage(true);
+    setProfileMange(true);
   };
+
+    const handleUpdatePassword = () => {
+      const toastText = 'Password Updated Successfully';
+      passwordUpdated();
+      toast.success(toastText);
+    };
+  
+    const passwordUpdated = () => {
+      console.log(formik.values);
+    };
 
   const [changePassword, setChangePassword] = useState([]);
 
@@ -96,7 +94,6 @@ const ChangePassword = () => {
       setEmptyFields(emptyFields);
     },
   });
-
   const handleBlur = (event) => {
     formik.handleBlur(event);
   };
@@ -107,10 +104,10 @@ const ChangePassword = () => {
     formik.handleSubmit(event);
     handleUpdatePassword();
   };
-
-  if (profileManage) {
-    return <ProfileManagement />;
-  }
+  const handleNext = (event) => {
+    setChangePassword();
+    formik.handleSubmit(event);
+  };
 
   return (
     <>
@@ -132,12 +129,12 @@ const ChangePassword = () => {
             className="font-family-exo2"
             sx={{ cursor: "pointer" }}
             color="#6197E8"
-            onClick={handleClickUserProfile}
+            onClicked={handleClickUserProfile}
           >
             User Profile
           </Typography>
         </Grid>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={GlobalButton.btnText === "Next" ? handleNext : handleSubmit}>
           {changePassword ? (
             <Grid item xl={12} xs={8} sx={{ p: 5, height: "150px" }}>
               <label
@@ -269,7 +266,13 @@ const ChangePassword = () => {
             <GlobalButton
               btnText="Next"
               btnName="accent"
-              onClick={handleSubmit}
+              onClick={()=>{
+                if(formik.values.password === ""){
+                ErrorMessage("Password")
+              }
+              else{handleNext()}
+              }}
+            
             />
           ) : (
             <GlobalButton
