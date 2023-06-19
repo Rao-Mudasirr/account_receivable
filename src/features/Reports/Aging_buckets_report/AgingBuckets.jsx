@@ -1,27 +1,20 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from "react";
 import CustomTable from "../../../components/Table/CustomTable";
-import { useTableParams } from "../../../components/Table/useTableParams";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
-import Button from "@mui/material/Button";
-import { Card } from "@mui/material";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Aging_Buckets_Col, Aging_Buckets_Data,Aging_Buckets_Col2 } from '../Aging_buckets_report/Aging_Buckets_Data';
-import ShowFilters from '../../OverdueInvoices/ShowFilters';
-import '../report.scss'
-import TableAction from '../../../components/Table/TableAction';
+import { Aging_Buckets_Col, Aging_Buckets_Data, Aging_Buckets_Col2 } from '../Aging_buckets_report/Aging_Buckets_Data';
+import ShowFilters from "../../OverdueInvoices/ShowFilters";
+import "../report.scss";
+import TableAction from "../../../components/Table/TableAction";
+import GlobalButton from "../../../components/global-button/global-button";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 
 const input_filter = [
   {
@@ -60,10 +53,9 @@ const input_filter = [
   },
 ];
 
-function CashFlowForCasting() {
-
+function AgingBucketsReport() {
   const [isOpen, setIsOpen] = useState(false);
-  const { state } = useLocation()
+  const { state } = useLocation();
   const navigate = useNavigate();
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -91,168 +83,123 @@ function CashFlowForCasting() {
 
       {/* Search field */}
       <Grid container>
-        <Grid xs={12} md={6} lg={6} xl={6}>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={4}>
           <div
             style={{
               margin: "5px",
               display: "flex",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "14px",
             }}
           >
             <GlobalSearchBar />
           </div>
         </Grid>
 
-        <Grid xs={12} md={6} lg={6} xl={6}>
-          <div style={{ marginLeft: "auto", display: "flex" }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
-              <DatePicker
-                sx={{
-                  paddingRight: "20px",
-                }}
-                label="From"
-                variant="standared"
-                value={startDate}
-                onChange={(date) => handleDateChange(date, "Start date")}
-              />
-              <DatePicker
-                sx={{
-                  paddingRight: "20px",
-                }}
-                label="To"
-                value={endDate}
-                onChange={(date) => handleDateChange(date, "End Date")}
-              />
-              {/* </DemoContainer> */}
-            </LocalizationProvider>
-            <Button
-              className='buttons-filters'
-              onClick={handleClick}
-              variant="outlined"
-              color="primary"
-              sx={{
-                mr: 2,
-                color: "#40404D",
-                borderColor: "#40404D",
-                borderRadius: "8px",
-                "&:hover": {
-                  borderColor: "black",
-                  color: "black",
-                },
-              }}
-              endIcon={<img src={filterIcon} alt="More Filter" />}
-            >
-              More Filter
-            </Button>
-            <Button
-              className='buttons-filters'
-              variant="contained"
-              color="primary"
-              sx={{
-                background: "#2B2B33",
-                borderRadius: '8px',
-                "&:hover": {
-                  background: "#2B2B33",
-                },
-              }}
-              endIcon={<img src={exportIcon} alt="Export Text" />}
-              onClick={() => {
-                setType("Export")
-                handleClick2()
-              }}
-            >
-              Export Text
-            </Button>
+        <Grid xs={12} sm={12} md={12} lg={12} xl={8}>
+          <div style={{ marginLeft: "auto" }} className="invoices-tabal-header">
+            <Grid container spacing={2} alignItems="center">
+              <Grid
+                // item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={9}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "From" } }}
+                    variant="standared"
+                    value={startDate}
+                    onChange={(date) => handleDateChange(date, "Start date")}
+                  />
+                  &nbsp; &nbsp; &nbsp;
+                  <DatePicker
+                    sx={{
+                      paddingRight: "20px",
+                      ".MuiInputBase-input ": {
+                        p: "13px",
+                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                        color: "#A6A6B3",
+                      },
+                    }}
+                    slots={{
+                      openPickerIcon: CalendarMonthRoundedIcon,
+                    }}
+                    slotProps={{ textField: { placeholder: "To" } }}
+                    value={endDate}
+                    onChange={(date) => handleDateChange(date, "End Date")}
+                  />
+                </LocalizationProvider>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={6}
+                xl={3}
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <GlobalButton
+                  btnName="outline"
+                  btnText="More Filters"
+                  endIcon={
+                    <img
+                      src={filterIcon}
+                      alt="More Filter"
+                    // width={16}
+                    // height={16}
+                    />
+                  }
+                  onClick={() => {
+                    setType("More");
+                    handleClick2();
+                  }}
+                // className="invoice-filter-btn"
+                />
+
+                &nbsp;
+                <GlobalButton
+                  btnName="accent"
+                  btnText="Export Text"
+                  endIcon={
+                    <img
+                      src={exportIcon}
+                      alt="Export Text"
+                    // width={16}
+                    // height={16}
+                    />
+                  }
+                  onClick={() => {
+                    setType("Export");
+                    handleClick2();
+                  }}
+                // className="invoice-second-btn"
+                />
+              </Grid>
+            </Grid>
+
             <ShowFilters
+              page={"Reports"}
+              input_filter={input_filter}
               filter_type={type}
               handleClick={handleClick2}
               isOpen={isOpen2}
             />
-            {isOpen && (
-              <Card
-                style={{
-                  width: "592px",
-                  // height: '376px',
-                  position: "absolute",
-                  right: "50px",
-                  zIndex: 10,
-                  padding: "24px",
-                  marginTop: "7px",
-                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
-                  borderRadius: "8px",
-                }}
-              >
-                {/* <ul> */}
-                <div className="filter-heading">
-                  <div className="title-filter">Filters</div>
-                  <div className="icon-filter" onClick={handleClick}>
-                    <CancelOutlinedIcon />{" "}
-                  </div>
-                </div>
-                <br />
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={1}>
-                    {input_filter?.map((val, index) => (
-                      <Grid
-                        style={{ marginBottom: "40px" }}
-                        spacing={2}
-                        key={index}
-                        item
-                        xs={12}
-                        md={6}
-                        lg={6}
-                      >
-                        <InputLabel
-                          id="demo-simple-select-filled-label"
-                          className="field-label"
-                        >
-                          {val?.field}
-                        </InputLabel>
-                        <FormControl
-                          variant="standard"
-                          style={{ width: "260px", height: "48px" }}
-                        >
-                          <InputLabel id="demo-simple-select-filled-label">
-                            Select
-                          </InputLabel>
-                          <Select
-                            placeholder="Select"
-                            labelId="demo-simple-select-filled-label"
-                          // id="demo-simple-select-filled"
-                          // value={value}
-                          // onChange={handleChange}
-                          >
-                            <MenuItem value="">
-                              <em>None</em>
-                            </MenuItem>
-                            {val?.Items?.map((data, i) => (
-                              <React.Fragment key={i}>
-                                <MenuItem value={data?.item}>
-                                  {data?.item}
-                                </MenuItem>
-                              </React.Fragment>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Box>
-                {/* </ul> */}
-                <div
-                  className="filter-below-btn"
-                  style={{ display: "flex", float: "right" }}
-                >
-                  <Button className="btn1" onClick={handleClick}>
-                    Clear
-                  </Button>
-                  &nbsp;
-                  <Button className="btn2">Apply</Button>
-                </div>
-              </Card>
-            )}
           </div>
         </Grid>
       </Grid>
@@ -260,31 +207,42 @@ function CashFlowForCasting() {
       {/* Table */}
 
       <Grid container >
-        <Grid xs={7} sx={{width:'100%'}}>
-        <CustomTable
-          data={Aging_Buckets_Data}
-          columns={Aging_Buckets_Col} 
-          // showSerialNo
-          // onPageChange={pageChangeHandler}
-          // onSortByChange={sortChangeHandler}
-          isSuccess={true}
-          isPagination={true}
-        />
+        <Grid item xs={7}>
+          <CustomTable
+            data={Aging_Buckets_Data}
+            columns={Aging_Buckets_Col}
+            // showSerialNo
+            // onPageChange={pageChangeHandler}
+            // onSortByChange={sortChangeHandler}
+            isSuccess={true}
+            isPagination={false}
+          />
         </Grid>
-        <Grid xs={5}>
-        <CustomTable
-          data={Aging_Buckets_Data}
-          columns={Aging_Buckets_Col2} 
-          // showSerialNo
-          // onPageChange={pageChangeHandler}
-          // onSortByChange={sortChangeHandler}
-          isSuccess={true}
-          isPagination={true}
-        />
+        <Grid item xs={5}>
+            <CustomTable
+              data={Aging_Buckets_Data}
+              columns={Aging_Buckets_Col2}
+              // showSerialNo
+              // onPageChange={pageChangeHandler}
+              // onSortByChange={sortChangeHandler}
+              isSuccess={true}
+              isPagination={false}
+            />
         </Grid>
+
       </Grid>
     </Fragment>
   )
 }
 
-export default CashFlowForCasting
+export default AgingBucketsReport
+
+
+const styles = {
+  scroll__bar: () => ({
+    'MuiTableContainer-root': {
+      overflowX: 'scroll',
+
+    },
+  })
+}

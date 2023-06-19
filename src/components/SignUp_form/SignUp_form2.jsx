@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField } from 'formik-material-ui';
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import * as Yup from 'yup';
 import {
   Button, Checkbox,
@@ -11,19 +12,27 @@ import {
 import { withStyles } from '@material-ui/core';
 import Box from '@mui/material/Box';
 import ErrorIcon from '@mui/icons-material/Error';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './signUp.scss'
 
 const validationSchema = Yup.object().shape({
   number: Yup.string()
     .matches(/^\d+$/, 'Please enter digits only')
-    .min(7, 'Please enter a valid registration number')
+    .min(7, <div style={{
+      fontFamily: 'Exo 2',
+      fontSize: '12px',
+      display: 'flex',
+      alignItems: 'end',
+      position: 'absolute',
+      color: 'rgba(255, 85, 85, 1)'
+    }}>
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      Please Enter Registration Number</div>)
     .max(30, 'Maximum number limit exceeded')
     .required(<div style={{
       fontFamily: 'Exo 2',
-      fontSize: '14px',
-      marginTop: '8px',
+      fontSize: '12px',
       display: 'flex',
       alignItems: 'end',
       position: 'absolute',
@@ -34,22 +43,30 @@ const validationSchema = Yup.object().shape({
 
   mobile: Yup.string()
     .matches(/^\d+$/, 'Please enter digits only')
-    .min(7, 'Please enter a valid mobile number')
-    .max(30, 'Maximum number limit exceeded')
-    .required(<div style={{
+    .min(7, <div style={{
       fontFamily: 'Exo 2',
-      fontSize: '14px',
-      marginTop: '8px',
+      fontSize: '12px',
       display: 'flex',
       alignItems: 'end',
       position: 'absolute',
       color: 'rgba(255, 85, 85, 1)'
     }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
+      Please Enter your Phone Number</div>)
+    .max(30, 'Maximum number limit exceeded')
+    .required(<div style={{
+      fontFamily: 'Exo 2',
+      fontSize: '12px',
+      display: 'flex',
+      alignItems: 'end',
+      position: 'absolute',
+      color: 'rgba(255, 85, 85, 1)'
+    }}>
+      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
       Please Enter your Phone Number</div>),
 });
 
-const MyForm = () => {
+const MySignUpForm2 = () => {
   const [showNumber, setShowNumber] = useState(false);
 
   const handleClickshowNumber = () => {
@@ -68,6 +85,17 @@ const MyForm = () => {
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
+    handleSignUp()
+  };
+
+  const handleSignUp = () => {
+    const toastText = 'Form submit successfully Please Login';
+    signUp();
+    toast.success(toastText);
+  };
+
+  const signUp = () => {
+    console.log('signUp');
   };
 
 
@@ -131,7 +159,7 @@ const MyForm = () => {
                     <div className="label">
                       <label htmlFor="number" style={{ color: touched.number && errors.number ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
                         <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
-                        Create Password
+                        Registration Number(CRN)
                       </label>
                     </div>
                     <Grid item xs={12} sx={{ height: '75px' }}>
@@ -158,7 +186,7 @@ const MyForm = () => {
                                 edge="end"
                                 sx={{ margin: 0.7, pb: 2 }}
                               >
-                                {showNumber ? <VisibilityOff /> : <Visibility />}
+                                {showNumber ? <RiEyeOffLine /> : <RiEyeLine />}
                               </IconButton>
                             </InputAdornment>
                           ),
@@ -182,7 +210,7 @@ const MyForm = () => {
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment position="start" >-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10 px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}
@@ -213,6 +241,7 @@ const MyForm = () => {
                         style: {
                           fontSize: '14px',
                           paddingLeft: '20px',
+                          marginTop: '8px'
                         },
                       }}
                     />
@@ -248,7 +277,7 @@ const MyForm = () => {
   );
 };
 
-export default MyForm;
+export default MySignUpForm2;
 
 
 const styles = {

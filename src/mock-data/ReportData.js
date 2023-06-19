@@ -9,25 +9,30 @@ export const ReportData = [
         id: 1,
         title: 'Days Sale Outstanding (DSO) Report',
         image: img1,
+        param:'dso'
     },
     {
         id: 2,
         title: 'Cashflow Forecasting Report',
         image: img2,
+        param:"cashflow-forecasting-report"
     },
     {
         id: 3,
         title: 'Cash Collection Report',
         image: img3,
+        param:"cash-collection-report"
     },
     {
         id: 4,
         title: 'Aging Buckets Report',
         image: img4,
+        param:"aging-buckets-report"
     },
     {
         id: 5,
         title: 'Workflows Report',
         image: img5,
+        param:"workflows-report"
     },
 ]

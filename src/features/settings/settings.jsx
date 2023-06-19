@@ -25,7 +25,7 @@ const Settings = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid xs={10}>
+      <Grid xl={10} xs={12}>
         <div style={{ padding: '5px', marginTop: '10px' }}>
           <div style={{ overflow: "hidden" }}>
             <Tabs

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import TableAction from "../../../components/Table/TableAction";
 import {
   Box,
@@ -39,13 +39,17 @@ import BeforeDueDate from "../Model/BeforeDueDate";
 import OnDueDate from "../Model/OnDueDate";
 import AfterDueDate from "../Model/AfterDueDate";
 import OnPaymentCollectionDate from "../Model/OnPaymentCollectionDate";
+import CustomAlert from "../../../components/Alert/CustomAlert";
+import { ReactComponent as Cross } from "../../../assests/svg/material-cros.svg";
 
 const ViewWorkflow = () => {
   const [openModel, setOpenModel] = useState(false);
   const [openDeleteModel, setOpenDeleteModel] = useState(false);
   const [openAlertModel, setOpenAlertModel] = useState(false);
   const [openEditModel, setOpenEditModel] = useState(false);
+  const [error, setError] = useState(false);
   const [edit, setEdit] = useState(false);
+  const navigate = useNavigate();
 
   const handleCloseAlert = () => {
     setOpenAlertModel(!openAlertModel);
@@ -64,6 +68,18 @@ const ViewWorkflow = () => {
     setEdit(false);
     setOpenEditModel(!openEditModel);
   };
+
+  useEffect(() => {
+    if (error === false) {
+      return setError(false);
+    }
+    if (error === true) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 1200);
+    }
+  }, [error]);
 
   const INVOICE_DATA_ViEW_ALL = [
     {
@@ -244,9 +260,7 @@ const ViewWorkflow = () => {
             {" "}
             <CustomSwitch
               onChange={(e) =>
-                info.row.index === 0
-                  ? toast.error("You cannot set Default Workflow as In-Active")
-                  : handleCloseAlert(e)
+                info.row.index === 0 ? setError(true) : handleCloseAlert(e)
               }
               checked={info.getValue()}
             />
@@ -294,32 +308,38 @@ const ViewWorkflow = () => {
       isSortable: false,
     },
   ];
-
   const tabbing_data = [
     {
       label: "Invoice Creation Date",
       id: 1,
       component: InvoiceCreationDate,
+      step: 1,
     },
     {
       label: "Before Due Date",
       id: 21,
       component: BeforeDueDate,
+      step: 2,
+      template: true,
     },
     {
       label: "On Due Date",
       id: 41,
       component: OnDueDate,
+      step: 3,
     },
     {
       label: "After Due Date",
       id: 11,
       component: AfterDueDate,
+      step: 4,
+      template: true,
     },
     {
       label: "On Payment Collection Date",
       id: 15,
       component: OnPaymentCollectionDate,
+      step: 5,
     },
   ];
   const [value, setValue] = useState(1);
@@ -330,6 +350,18 @@ const ViewWorkflow = () => {
   return (
     <>
       <Box>
+        {error && (
+          <CustomAlert
+            message={"You cannot set Default Workflow as In-Active"}
+            severity={"error"}
+            heading={"Error"}
+            variant="outlined"
+            onClose={() => setError(false)}
+            show={error}
+            icon={<Cross />}
+          />
+        )}
+
         <Box className="invoice-title">Workflows</Box>
         <Grid container spacing={2} marginBottom={4}>
           <Grid
@@ -433,6 +465,7 @@ const ViewWorkflow = () => {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={(e) => navigate("/workflows/add")}
                 sx={{
                   background: "#2B2B33",
                   borderRadius: "8px",

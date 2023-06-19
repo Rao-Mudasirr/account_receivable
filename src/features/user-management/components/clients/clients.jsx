@@ -146,9 +146,6 @@ export const ClientsTable = () => {
             select
             variant = {isFocused ? 'filled' : 'standard'}
           >
-            <MenuItem disabled value='Role'>
-              Role
-            </MenuItem>
             <MenuItem value='Assigned'>
               Assigned
             </MenuItem>

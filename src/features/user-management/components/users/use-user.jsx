@@ -8,6 +8,7 @@ export const useUsers = () => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
     const [openForm, setOpenForm] = React.useState(false);
+    const [openAddForm, setOpenAddForm] = React.useState(false);
 
   const handleFormDialog = () => {
     setOpenForm(true);
@@ -15,6 +16,14 @@ export const useUsers = () => {
 
   const handleCloseForm = () => {
     setOpenForm(false);
+  };
+
+  const handleFormAddDialog = () => {
+    setOpenAddForm(true);
+  };
+
+  const handleCloseAddForm = () => {
+    setOpenAddForm(false);
   };
 
 //   const router = useRouter();
@@ -28,6 +37,10 @@ export const useUsers = () => {
     setOpenForm,
     handleFormDialog,
     handleCloseForm,
+    openAddForm,
+    setOpenAddForm,
+    handleFormAddDialog,
+    handleCloseAddForm,
     theme,
     // router,
     tableHeaderRef,

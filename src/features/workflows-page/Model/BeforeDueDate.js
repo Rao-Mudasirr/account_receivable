@@ -3,8 +3,11 @@ import React from "react";
 import CustomInput from "../../../components/CustomInput";
 import { optionsDays, optionsTime } from "./Constants";
 import GlobalButton from "../../../components/global-button/global-button";
+import { useNavigate } from "react-router-dom";
 
-const BeforeDueDate = ({ edit, editIcon }) => {
+const BeforeDueDate = ({ edit, editIcon, item, id }) => {
+  const navigate = useNavigate();
+
   return (
     <Box>
       <Box className="tabbing-top">
@@ -40,6 +43,9 @@ const BeforeDueDate = ({ edit, editIcon }) => {
               variant="accent"
               btnName="accent"
               btnText="Edit "
+              onClick={() =>
+                navigate(`/workflows/form?step=${item?.step}&id=${id}`)
+              }
               endIcon={
                 <img src={editIcon} alt="Export Text" width={16} height={16} />
               }

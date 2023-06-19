@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Pagination from '@mui/material/Pagination';
 import Stack from "@mui/material/Stack";
 // Tantack table
@@ -27,12 +27,13 @@ import {
   Box,
   tableCellClasses,
   TablePagination,
+  Checkbox,
 } from "@mui/material";
 
 // @mui icons
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Padding } from "@mui/icons-material";
+import { ReactComponent as Filter } from "../../assests/svg/setting-box.svg";
 
 // ----------------------------------------------------------------------
 // types
@@ -83,7 +84,35 @@ const CustomTable = (props) => {
   const [rowSelection, setRowSelection] = React.useState({});
   const [page, setPage] = React.useState(2);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const checkboxInList =
+    columns?.length !== 0 &&
+    columns?.map((e) => ({
+      ...e,
+      checkbox: true,
+    }));
+  const [checkboxes, setCheckboxes] = useState(checkboxInList || []);
+  const [show, setShow] = useState(false);
+  const menu = useRef(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menu.current && !menu.current.contains(event.target)) {
+        setShow(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const handleFilterHeader = (header, i) => {
+    const items = [...checkboxes];
+    items[i]["checkbox"] = !items[i]["checkbox"];
+    setCheckboxes(items);
+  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -96,7 +125,7 @@ const CustomTable = (props) => {
   // Handling sort using useRef
   const refSortData = (() => {
     const sortDataMap = {};
-    for (const colData of columns) {
+    for (const colData of checkboxes) {
       if (colData.isSortable) sortDataMap[colData?.id] = 0;
     }
     return sortDataMap;
@@ -112,7 +141,7 @@ const CustomTable = (props) => {
     else onSortByChange({ id: colId, sortOrder: -1 });
   };
 
-  let columnsData = columns;
+  let columnsData = checkboxes;
 
   if (showSerialNo)
     columnsData = [
@@ -123,12 +152,11 @@ const CustomTable = (props) => {
         header: "Id",
         isSortable: false,
       },
-      ...columns,
+      ...checkboxes,
     ];
-
   const table = useReactTable({
     data: data ?? EMPTY_ARRAY,
-    columns: columnsData,
+    columns: columnsData?.filter((e) => e?.checkbox !== false),
     state: {
       rowSelection,
     },
@@ -148,13 +176,26 @@ const CustomTable = (props) => {
       <Grid xs={12} item>
         {/* Table Container */}
         <Box sx={{ overflowX: "auto" }}>
-          <TableContainer sx={styles.tableContainer(tableContainerSX, theme)}>
+          <TableContainer
+            className="no-scrollbar"
+            sx={styles.tableContainer(tableContainerSX, theme)}
+          >
             <Table stickyHeader>
               <TableHead>
                 {table.getHeaderGroups().map((headerGroup) => (
                   <StyledTableRow key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => (
-                      <StyledTableCell key={header.id}>
+                    {headerGroup.headers.map((header, index) => (
+                      <StyledTableCell
+                        sx={{
+                          borderRadius:
+                            index === 0
+                              ? "4px 0px 0px 4px"
+                              : index === headerGroup.headers.length - 1
+                              ? "0px 4px 4px 0px"
+                              : "0px",
+                        }}
+                        key={header.id}
+                      >
                         <Box
                           onClick={() =>
                             header.column.columnDef.isSortable &&
@@ -277,6 +318,64 @@ const CustomTable = (props) => {
           </Grid>
         )}
       </Grid>
+      <Box
+        ref={menu}
+        sx={{
+          position: "absolute",
+          right: "0",
+          top: "-26px",
+          zIndex: "200",
+          textAlign: "end",
+        }}
+      >
+        <Filter onClick={() => setShow(!show)} style={{ cursor: "pointer" }} />
+        {show && (
+          <Box sx={{ display: "block", marginTop: "-19px" }}>
+            <ul
+              style={{
+                padding: "0",
+                listStyle: "none",
+                background: "white",
+                borderRadius: "8px",
+                boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
+              }}
+            >
+              {checkboxes?.map((e, i) => (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    background: "white",
+                  }}
+                  key={e?.id}
+                >
+                  <Checkbox
+                    checked={e?.checkbox ? true : false}
+                    onChange={(event) => handleFilterHeader(e, i)}
+                    value={e?.checkbox}
+                    sx={{
+                      color: "black",
+                      "&.Mui-checked": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontWeight: "400",
+                      fontSize: "14px",
+                      lineHeight: "20px",
+                      color: " #6B6B80",
+                    }}
+                  >
+                    {typeof e?.header === "string" ? e?.header || e?.id : e?.id}
+                  </span>
+                </Box>
+              ))}
+            </ul>
+          </Box>
+        )}
+      </Box>
     </Grid>
   );
 };
@@ -287,7 +386,7 @@ export default CustomTable;
 // STYLED COMPONENTS
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "unset",
+    backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
     textAlign: "center",
     fontFamily: "Montserrat, Public Sans, sans-serif",
@@ -311,7 +410,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontWeight: 400,
     textAlign: "center",
     borderBottom: "1px solid #BEBEBE",
-    whiteSpace: "pre-wrap",
+    // whiteSpace: "pre-wrap",
   },
 }));
 
