@@ -11,7 +11,9 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import GlobalButton from "../../../components/global-button/global-button";
 import { Error } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import ProfileManagement from "../profile-management/profile-management";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = yup.object({
   password: yup
@@ -49,21 +51,27 @@ const validationSchema = yup.object({
 
 const ChangePassword = () => {
 
-  const[ProfileManage,setProfileMange]=useState(false);
+  const handleUpdatePassword = () => {
+    const toastText = 'Password Updated Successfully';
+    passwordUpdated();
+    toast.success(toastText);
+  };
 
-  const handleClickUserProfile=()=>{
-    setProfileMange(true);
-  }
-  
+  const passwordUpdated = () => {
+    console.log('signUp');
+  };
+
+  const [profileManage, setProfileManage] = useState(false);
+
+  const handleClickUserProfile = () => {
+    setProfileManage(true);
+  };
+
   const [changePassword, setChangePassword] = useState([]);
 
   const [emptyFields, setEmptyFields] = useState([]);
 
   const [showPassword, setShowPassword] = useState(false);
-
-  
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -82,21 +90,13 @@ const ChangePassword = () => {
     onSubmit: (values) => {
       const emptyFields = [];
       if (!values.password) emptyFields.push("password");
-      if (newPassword === '') {
-        values.newPassword = 'Password is required';
-      } else if (newPassword.length < 6) {
-        values.newPassword = 'Password should be at least 6 characters long';
-      }
-  
-      if (confirmPassword === '') {
-        values.confirmPassword = 'Please retype your password';
-      } else if (confirmPassword !== newPassword) {
-        values.confirmPassword = 'Passwords do not match';
-      }
+      if (!values.newPassword) emptyFields.push("newPassword");
+      if (!values.confirmPassword) emptyFields.push("confirmPassword");
 
       setEmptyFields(emptyFields);
     },
   });
+
   const handleBlur = (event) => {
     formik.handleBlur(event);
   };
@@ -105,8 +105,13 @@ const ChangePassword = () => {
     setChangePassword();
     event.preventDefault();
     formik.handleSubmit(event);
+    handleUpdatePassword();
   };
-  
+
+  if (profileManage) {
+    return <ProfileManagement />;
+  }
+
   return (
     <>
       <Grid container spacing={2}>
@@ -123,9 +128,14 @@ const ChangePassword = () => {
           <Typography sx={{ fontWeight: 600 }} className="font-family-exo2">
             Change Password
           </Typography>
-            <Typography className="font-family-exo2" sx={{cursor: "pointer"}} color="#6197E8" onClicked={handleClickUserProfile}>
-              User Profile
-            </Typography>
+          <Typography
+            className="font-family-exo2"
+            sx={{ cursor: "pointer" }}
+            color="#6197E8"
+            onClick={handleClickUserProfile}
+          >
+            User Profile
+          </Typography>
         </Grid>
         <form onSubmit={handleSubmit}>
           {changePassword ? (
@@ -137,7 +147,7 @@ const ChangePassword = () => {
                 Current Password
               </label>
               <TextField
-              className="width-100"
+                className="width-100"
                 id="password"
                 name="password"
                 size="small"
@@ -192,10 +202,7 @@ const ChangePassword = () => {
                   onBlur={handleBlur}
                   autoComplete={false}
                   // disabled={!editMode}
-                  error={
-                    formik.touched.password && Boolean(formik.errors.password)
-                  }
-                  helperText={formik.touched.password && formik.errors.password}
+
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -234,10 +241,7 @@ const ChangePassword = () => {
                   onBlur={handleBlur}
                   autoComplete={false}
                   // disabled={!editMode}
-                  error={
-                    formik.touched.password && Boolean(formik.errors.password)
-                  }
-                  helperText={formik.touched.password && formik.errors.password}
+
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -261,13 +265,19 @@ const ChangePassword = () => {
           )}
         </form>
         <Grid className="flex justify-end width-100">
-           
+          {changePassword ? (
             <GlobalButton
-              btnText= {changePassword ?"Next" : "Update"}
+              btnText="Next"
               btnName="accent"
               onClick={handleSubmit}
             />
-         
+          ) : (
+            <GlobalButton
+              btnText="Update"
+              btnName="accent"
+              onClick={handleSubmit}
+            />
+          )}
         </Grid>
       </Grid>
     </>
