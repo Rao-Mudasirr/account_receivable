@@ -1,13 +1,12 @@
 import React from "react";
 import PerformanceTable from "../PerformanceTable/PerformanceTable";
-import { Link } from "react-router-dom";
 
-const WorkflowsComparison = () => {
+const ClientComparison = () => {
   const INVOICE_DATA_ViEW_ALL = [
     {
       id: 1,
       Id: "01",
-      name: "Test",
+      name: "John",
       totalInvoice: 300,
       paidOnDueDate: 22,
       percentagePaidOnDueDate: 40,
@@ -18,7 +17,7 @@ const WorkflowsComparison = () => {
     {
       id: 2,
       Id: "02",
-      name: "Uk Workflow",
+      name: "Tery",
       totalInvoice: 300,
       paidOnDueDate: 22,
       percentagePaidOnDueDate: 40,
@@ -29,7 +28,7 @@ const WorkflowsComparison = () => {
     {
       id: 3,
       Id: "03",
-      name: "New Workflow",
+      name: "Alen Walker",
       totalInvoice: 300,
       paidOnDueDate: 22,
       percentagePaidOnDueDate: 40,
@@ -42,23 +41,16 @@ const WorkflowsComparison = () => {
     {
       accessorFn: (row) => row.Id,
       id: "ID",
-      cell: (info) => (
-        <Link
-          style={{ color: "#166088" }}
-          to={`/performance-analysis/client/${info.getValue()}`}
-        >
-          <span> {info.getValue()}</span>{" "}
-        </Link>
-      ),
+      cell: (info) => <span> {info.getValue()}</span>,
 
       header: () => <span>ID</span>,
       // isSortable: true,
     },
     {
       accessorFn: (row, i) => <span>{row.name}</span>,
-      id: "name",
+      id: "Client Name",
       cell: (info) => info.getValue(),
-      header: "Workflow Name",
+      header: "Client Name",
       // isSortable: true,
     },
     {
@@ -115,4 +107,4 @@ const WorkflowsComparison = () => {
   );
 };
 
-export default WorkflowsComparison;
+export default ClientComparison;

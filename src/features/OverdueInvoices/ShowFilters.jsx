@@ -1,37 +1,50 @@
-import React from 'react';
-import { Box, Button, Card, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import React from "react";
+import {
+  Box,
+  Button,
+  Card,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import Export from './Export';
-import Date_Range from './Date_Range';
-import ExportModal from '../client-details/components/export-modal/export-modal';
-import DatePickerModal from '../client-details/components/date-picker-modal/date-picker-modal';
+import Export from "./Export";
+import Date_Range from "./Date_Range";
+import ExportModal from "../client-details/components/export-modal/export-modal";
+import DatePickerModal from "../client-details/components/date-picker-modal/date-picker-modal";
+import FilterModal from "../client-details/components/filter-modal/FilterModal";
 
-function ShowFilters({handleClick, filter_type, isOpen, page, input_filter}) {
+function ShowFilters({ handleClick, filter_type, isOpen, page, input_filter }) {
   return (
     <div>
-          {isOpen &&(
-            <Card
-            sx={{
-              width: "592px",
-              // height: '376px',
-              position: "absolute",
-              right: "50px",
-              zIndex: 999,
-              padding: "24px",
-              marginTop: "12px",
-              background: "#FFFFFF",
-              boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.16)",
-              borderRadius: "8px",
-  
-              "@media (max-width: 768px)": {
-                width: "auto",
-                padding: "20px",
-                margin: "10px",
-              },
-            }}
-            >
-              {/* <ul> */}
-              <div
+      {isOpen && (
+        <Card
+          sx={{
+            width: "592px",
+            // height: '376px',
+            overflow: "auto !important",
+            maxHeight: "460px",
+            position: "absolute",
+            right: "50px",
+            zIndex: 999,
+            padding: "24px",
+            marginTop: "12px",
+            background: "#FFFFFF",
+            boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.16)",
+            borderRadius: "8px",
+
+            "@media (max-width: 768px)": {
+              width: "auto",
+              padding: "20px",
+              margin: "10px",
+            },
+          }}
+        >
+          {/* <ul> */}
+          <div
             className="icon-filter"
             onClick={handleClick}
             style={{
@@ -43,7 +56,7 @@ function ShowFilters({handleClick, filter_type, isOpen, page, input_filter}) {
           >
             <CancelOutlinedIcon className="cance-circle-icon" />{" "}
           </div>
-              <div className="">
+          <div className="">
             <Typography
               className="heading-20 font-family-exo2 primary-color"
               sx={{ fontWeight: 600 }}
@@ -53,13 +66,17 @@ function ShowFilters({handleClick, filter_type, isOpen, page, input_filter}) {
                 : filter_type === "Export" && "Export"}
             </Typography>
           </div>
-            {
-                filter_type == "Export" ? 
-                    <ExportModal />
-                    : (filter_type == 'More' && !page && !input_filter) ? 
-                    <DatePickerModal />
-                    : (filter_type == 'More' && page && input_filter) && (
-                      <>
+          {filter_type == "Export" ? (
+            <ExportModal />
+          ) : filter_type === "filters" ? (
+            <FilterModal />
+          ) : filter_type == "More" && !page && !input_filter ? (
+            <DatePickerModal />
+          ) : (
+            filter_type == "More" &&
+            page &&
+            input_filter && (
+              <>
                 <Box sx={{ flexGrow: 1 }}>
                   <Grid container spacing={1}>
                     {input_filter?.map((val, index) => (
@@ -109,10 +126,10 @@ function ShowFilters({handleClick, filter_type, isOpen, page, input_filter}) {
                   </Grid>
                 </Box>
               </>
-                    )
-            }
-              {/* </ul> */}
-              <Box
+            )
+          )}
+          {/* </ul> */}
+          <Box
             className="filter-below-btn"
             sx={{
               display: "flex",
@@ -158,12 +175,10 @@ function ShowFilters({handleClick, filter_type, isOpen, page, input_filter}) {
               Apply
             </Button>
           </Box>
-            </Card>
-          )
-        }
-          
+        </Card>
+      )}
     </div>
-  )
+  );
 }
 
-export default ShowFilters
+export default ShowFilters;
