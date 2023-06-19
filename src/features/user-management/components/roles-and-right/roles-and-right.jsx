@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, Modal, Typography } from "@mui/material";
+import { Card, Box, Modal, Typography, Grid } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -28,7 +28,6 @@ const style = {
   // border: '2px solid #000',
   borderRadius: "10px",
   boxShadow: 24,
-  p: 4,
 };
 
 export const RolesRightsTable = () => {

@@ -1,9 +1,8 @@
 import React from 'react';
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Typography from '@mui/material/Typography';
-import { Box, TextField } from '@mui/material';
+import { Box, TextField, Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import GlobalButton from '../../../../../../components/global-button/global-button';
@@ -63,6 +62,7 @@ const UpdateRole = (props) => {
             variant="standard"
           />
         </CardContent>
+
         <div
           style={{
             display: 'flex',
@@ -95,7 +95,7 @@ const UpdateRole = (props) => {
           />
         </div>
       </Box>
-    </div>
+    </div >
   );
 };
 
