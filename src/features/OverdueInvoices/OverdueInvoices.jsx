@@ -72,14 +72,14 @@ function OverdueInvoices() {
           accessorFn: (row) => row.invoiceNo,
           id: "invoiceNo",
           cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
-          header: "Invoice No.",
+          header: "Invoice #",
           // isSortable: true,
         },
         {
           accessorFn: (row) => row.invoice_status,
           id: "invoice_status",
           cell: (info) => <span className={info.getValue() === 'Paid' ? 'Paid' : info.getValue() === 'Due' ? 'Due' : 'Overdue'}>{info.getValue()}</span>,
-          header: "Invoice Status",
+          header: "Status",
           // isSortable: true,
         },
         {
@@ -110,18 +110,6 @@ function OverdueInvoices() {
           header: "Total Amount",
           // isSortable: true,
         },
-        // {
-        //   id: "Actions",
-        //   cell: (info) => (
-        //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-        //       {/* <TableAction type="delete" onClicked={handleOpen} />
-        //        <TableAction type="edit" onClicked={handleFormDialog} />
-        //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
-        //     </Box>
-        //   ),
-        //   header: () => <span>Actions</span>,
-        //   isSortable: false,
-        // },
       ];
 
       const [isOpen, setIsOpen] = useState(false);
