@@ -8,7 +8,7 @@ function Reports() {
 
     const navigate = useNavigate();
     const GoToNext = (val) => {
-        navigate(`/report-details/${val?.param}`, { state: { reportData: val } })
+        navigate(`/reports/${val?.param}`, { state: { reportData: val } })
     }
 
     return (
