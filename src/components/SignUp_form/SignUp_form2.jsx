@@ -134,7 +134,7 @@ const MyForm = () => {
                         Create Password
                       </label>
                     </div>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{ height: '75px' }}>
                       <Field
                         sx={styles.field__color}
                         component={TextField}
@@ -167,7 +167,7 @@ const MyForm = () => {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} >
                   <div>
                     <div className="label">
                       <label htmlFor="companyName">Company Name</label>
@@ -176,23 +176,20 @@ const MyForm = () => {
                       component={TextField}
                       id="companyName"
                       variant="filled"
+                      hiddenLabel
                       size="small"
                       fullWidth
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment sx={{m: '10px' }}>-</InputAdornment>,
+                        startAdornment: <InputAdornment position="start" >-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
-                        sx: {
-                          justifyContent: 'center',
-                          textAlign: 'center',
-                        },
                       }}
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ height: '75px' }}>
                   <div>
                     <label
                       htmlFor="mobile"
@@ -221,7 +218,7 @@ const MyForm = () => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ mt: '20px' }}>
                   <Button
                     variant="contained"
                     size="large"
