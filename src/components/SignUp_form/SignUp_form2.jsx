@@ -85,7 +85,7 @@ const MySignUpForm2 = () => {
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
-    handleSignUp()
+    handleSignUp() 
   };
 
   const handleSignUp = () => {
