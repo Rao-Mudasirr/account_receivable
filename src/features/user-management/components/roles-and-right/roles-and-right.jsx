@@ -136,7 +136,7 @@ export const RolesRightsTable = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {/* <BasicInformationForm/> */}
         
@@ -151,7 +151,7 @@ export const RolesRightsTable = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {/* <BasicInformationForm/> */}
            {addRoleModal && <Add_role closeAddRoleModal = {closeAddRoleModal} />}
