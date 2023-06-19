@@ -410,7 +410,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontWeight: 400,
     textAlign: "center",
     borderBottom: "1px solid #F0F0F2",
-    whiteSpace: "pre-wrap",
   },
 }));
 

@@ -1,43 +1,41 @@
-import { Grid } from '@mui/material';
-import React, { Fragment, useState } from 'react'
-import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { Grid } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
-import GlobalButton from '../../../components/global-button/global-button';
-import ShowFilters from '../../OverdueInvoices/ShowFilters';
-import CustomTable from '../../../components/Table/CustomTable';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import GlobalButton from "../../../components/global-button/global-button";
+import ShowFilters from "../../OverdueInvoices/ShowFilters";
+import CustomTable from "../../../components/Table/CustomTable";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
-import { list_col, list_data } from './ListClientData';
+import { list_col, list_data } from "./ListClientData";
 
 function Client_Listing() {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleClick = () => {
-        setIsOpen(!isOpen);
-    };
-    const [isOpen2, setIsOpen2] = useState(false);
-    const [type, setType] = useState("");
-    const handleClick2 = () => {
-        setIsOpen2(!isOpen2);
-    };
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [error, setError] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [type, setType] = useState("");
+  const handleClick2 = () => {
+    setIsOpen2(!isOpen2);
+  };
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [error, setError] = useState(null);
 
-    const handleDateChange = (date, label) => {
-        if (label === "Start date") {
-        setStartDate(date);
-        } else if (label === "End Date") {
-        setEndDate(date);
-        }
-    };
+  const handleDateChange = (date, label) => {
+    if (label === "Start date") {
+      setStartDate(date);
+    } else if (label === "End Date") {
+      setEndDate(date);
+    }
+  };
 
   return (
     <Fragment>
-      <div className="invoice-title">
-        Clients
-      </div>
+      <div className="invoice-title">Clients</div>
 
       {/* Search field */}
       <Grid container>
@@ -124,7 +122,7 @@ function Client_Listing() {
                     />
                   }
                   onClick={() => {
-                    setType("More");
+                    setType("filters");
                     handleClick2();
                   }}
                   // className="invoice-filter-btn"
@@ -152,7 +150,7 @@ function Client_Listing() {
 
             <ShowFilters
               page={"Reports"}
-            //   input_filter={input_filter}
+              //   input_filter={input_filter}
               filter_type={type}
               handleClick={handleClick2}
               isOpen={isOpen2}
@@ -170,7 +168,7 @@ function Client_Listing() {
         isPagination={true}
       />
     </Fragment>
-  )
+  );
 }
 
-export default Client_Listing
+export default Client_Listing;
