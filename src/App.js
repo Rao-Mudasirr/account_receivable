@@ -96,11 +96,6 @@ function App() {
           <Route exact path={"/reports/:id"} element={<ReportInfo />} />
           <Route
             exact
-            path={"/report-details/cashflow-forcasting/:id"}
-            element={<Cashflow_Forcasting />}
-          />
-          <Route
-            exact
             path={"/report-details/month/:id"}
             element={<DSO_Month />}
           />
