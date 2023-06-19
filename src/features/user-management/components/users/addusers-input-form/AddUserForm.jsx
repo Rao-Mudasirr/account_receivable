@@ -76,7 +76,7 @@ const AddUserInputs = () => {
 
         return (
           <Form noValidate autoComplete="off" className="adduser_form">
-            <Grid container spacing={2} className="adduser_forminputs">
+            <Grid container spacing={4} className="adduser_forminputs">
               <Grid
                 item
                 xs={12}

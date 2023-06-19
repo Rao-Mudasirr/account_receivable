@@ -61,6 +61,10 @@ const ChangePassword = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -78,8 +82,17 @@ const ChangePassword = () => {
     onSubmit: (values) => {
       const emptyFields = [];
       if (!values.password) emptyFields.push("password");
-      if (!values.newPassword) emptyFields.push("newPassword");
-      if (!values.confirmPassword) emptyFields.push("confirmPassword");
+      if (newPassword === '') {
+        values.newPassword = 'Password is required';
+      } else if (newPassword.length < 6) {
+        values.newPassword = 'Password should be at least 6 characters long';
+      }
+  
+      if (confirmPassword === '') {
+        values.confirmPassword = 'Please retype your password';
+      } else if (confirmPassword !== newPassword) {
+        values.confirmPassword = 'Passwords do not match';
+      }
 
       setEmptyFields(emptyFields);
     },
