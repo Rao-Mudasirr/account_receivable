@@ -1,14 +1,13 @@
 import { Box, FormControlLabel, Grid, Radio, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "./FilterModal.scss";
+import { ReactComponent as Down } from "../../../../assests/svg/chev-bottom.svg";
 import CustomInput from "../../../../components/CustomInput";
 
 const FilterModal = () => {
   const [value, setValue] = useState("All");
   return (
     <Box className="filter-model-clients">
-      <Typography variant="h3">Filters</Typography>
-
       <Typography variant="h5">Filtered By</Typography>
 
       <Grid container spacing={2}>
@@ -57,12 +56,18 @@ const FilterModal = () => {
         {value === "All" ? (
           <>
             <Grid item lg={6}>
-              <CustomInput required={false} type="select" label="Workflow" />
+              <CustomInput
+                required={false}
+                type="select"
+                label="Workflow"
+                IconComponent={Down}
+              />
             </Grid>
             <Grid item lg={6}>
               <CustomInput
                 required={false}
                 type="select"
+                IconComponent={Down}
                 label="Workflow Status"
               />
             </Grid>
@@ -73,18 +78,34 @@ const FilterModal = () => {
         ) : (
           <>
             <Grid item lg={6}>
-              <CustomInput required={false} type="select" label="Branch" />
-            </Grid>
-            <Grid item lg={6}>
-              <CustomInput required={false} type="select" label="Client" />
-            </Grid>
-            <Grid item lg={6}>
-              <CustomInput required={false} type="select" label="Workflow" />
+              <CustomInput
+                required={false}
+                type="select"
+                IconComponent={Down}
+                label="Branch"
+              />
             </Grid>
             <Grid item lg={6}>
               <CustomInput
                 required={false}
                 type="select"
+                IconComponent={Down}
+                label="Client"
+              />
+            </Grid>
+            <Grid item lg={6}>
+              <CustomInput
+                required={false}
+                type="select"
+                IconComponent={Down}
+                label="Workflow"
+              />
+            </Grid>
+            <Grid item lg={6}>
+              <CustomInput
+                required={false}
+                type="select"
+                IconComponent={Down}
                 label="Workflow Status"
               />
             </Grid>
