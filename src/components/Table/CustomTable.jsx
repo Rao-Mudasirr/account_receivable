@@ -389,7 +389,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
     textAlign: "center",
-    fontFamily: "Montserrat, Public Sans, sans-serif",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 600,
     backgroundImage: "unset",
     textTransform: "capitalize",
@@ -406,11 +406,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: "16px",
     color: "#40404D",
-    fontFamily: "Montserrat, Public Sans, sans-serif",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 400,
     textAlign: "center",
-    borderBottom: "1px solid #BEBEBE",
-    // whiteSpace: "pre-wrap",
+    borderBottom: "1px solid #F0F0F2",
+    whiteSpace: "pre-wrap",
   },
 }));
 
@@ -467,7 +467,7 @@ const styles = {
   currentPage: (theme) => ({
     color: "#637381",
     fontSize: "12px",
-    fontFamily: "Montserrat, Public Sans, sans-serif",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
   }),
   error: {
     justifyContent: "center",

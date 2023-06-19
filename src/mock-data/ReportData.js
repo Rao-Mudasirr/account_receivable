@@ -35,4 +35,34 @@ export const ReportData = [
         image: img5,
         param:"workflows-report"
     },
-]
+];
+
+export const CashCollectionReportData = [
+    {
+        id: 1,
+        invoiceId: "01",
+        client: 'Jacob',
+        amount: "£1234",
+        issueDate: "19 Oct, 1999",
+        dueDate: "19 Oct, 1999",
+        paidOn: "19 Oct, 1999",
+    },
+    {
+        id: 21,
+        invoiceId: "02",
+        client: 'Jacob',
+        amount: "£1234",
+        issueDate: "19 Oct, 1999",
+        dueDate: "19 Oct, 1999",
+        paidOn: "19 Oct, 1999",
+    },
+    {
+        id: 3,
+        invoiceId: "03",
+        client: 'Jacob',
+        amount: "£1234",
+        issueDate: "19 Oct, 1999",
+        dueDate: "19 Oct, 1999",
+        paidOn: "19 Oct, 1999",
+    },
+];
