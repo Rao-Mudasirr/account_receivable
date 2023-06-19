@@ -320,6 +320,7 @@ const ViewWorkflow = () => {
       id: 21,
       component: BeforeDueDate,
       step: 2,
+      template: true,
     },
     {
       label: "On Due Date",
@@ -332,6 +333,7 @@ const ViewWorkflow = () => {
       id: 11,
       component: AfterDueDate,
       step: 4,
+      template: true,
     },
     {
       label: "On Payment Collection Date",
