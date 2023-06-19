@@ -26,6 +26,7 @@ import SignUpForm2 from './components/SignUp_form/SignUp_form2'
 import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
+import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
 
 function App() {
   return (
@@ -75,12 +76,22 @@ function App() {
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
-          <Route exact path={"/clients-details/:id"} element={<Clientdetails />} />
+          <Route
+            exact
+            path={"/clients-details/:id"}
+            element={<Clientdetails />}
+          />
           <Route
             exact
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
-          />
+          >
+            <Route
+              exact
+              path={"/performance-analysis/client/:id"}
+              element={<ClientComparison />}
+            />
+          </Route>
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/reports/:id"} element={<ReportInfo />} />
           <Route
