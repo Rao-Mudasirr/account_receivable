@@ -19,16 +19,6 @@ import Add_role from './Add_Update_cards/Add_Update_cards/Add_role';
 import Update_role from './Add_Update_cards/Add_Update_cards/Update_role';
 
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
-  // border: '2px solid #000',
-  borderRadius: "10px",
-  boxShadow: 24,
-};
 
 export const RolesRightsTable = () => {
   const {
@@ -151,7 +141,7 @@ export const RolesRightsTable = () => {
         aria-describedby="modal-modal-description"
       >
         <Box>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" >
             {/* <BasicInformationForm/> */}
            {addRoleModal && <Add_role closeAddRoleModal = {closeAddRoleModal} />}
           </Typography>

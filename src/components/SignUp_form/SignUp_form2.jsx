@@ -184,7 +184,7 @@ const MySignUpForm2 = () => {
                                 onClick={handleClickshowNumber}
                                 onMouseDown={handleMouseDownNumber}
                                 edge="end"
-                                sx={{ margin: 0.7, pb: 2 }}
+                                sx={{ margin: 0.7, pb: 2, transform: 'scaleX(-1)' }}
                               >
                                 {showNumber ? <RiEyeOffLine /> : <RiEyeLine />}
                               </IconButton>

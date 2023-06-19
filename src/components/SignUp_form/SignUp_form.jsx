@@ -58,7 +58,7 @@ const validationSchema = Yup.object().shape({
       <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>),
   password: Yup.string().min(6, true).required(true),
-  checkbox: Yup.array().min(2, 'Please choose at least one option').required('Please select an option'),
+  checkbox: Yup.array().min(1, 'Please choose at least one option').required('Please select an option'),
 })
 
 const labelstyles = theme => ({
@@ -72,7 +72,32 @@ const labelstyles = theme => ({
   },
 });
 
-const MenuItemStyle = withStyles(labelstyles)(MenuItem);
+const ListItemTextStyle = withStyles(labelstyles)(ListItemText);
+
+
+const menuStyles = theme => ({
+  root: {
+    "&.Mui-selected": {
+      backgroundColor: "transparent"
+    },
+    "&.Mui-selected:hover": {
+      backgroundColor: "transparent"
+    },
+    "&.Mui-selected:focus": {
+      backgroundColor: "transparent"
+    },
+    "&.MuiSelect-outline":{
+      outline:"none",
+      border:"10px solid green"
+    },
+    "&.MuiInput-input":{
+      color:"red",
+      border:"10px solid green"
+    }
+  },
+})
+
+const StyledMenuItem = withStyles(menuStyles)(MenuItem);
 
 const checkBoxStyles = theme => ({
   root: {
@@ -233,7 +258,7 @@ export default function MySignUpForm(props) {
                       InputProps={{
                         style: {
                           fontSize: '14px',
-                          paddingLeft: '20px'
+                          paddingLeft: '20px',
                         },
                         endAdornment: (
                           <InputAdornment>
@@ -242,7 +267,7 @@ export default function MySignUpForm(props) {
                               onClick={handleClickShowPassword}
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
-                              sx={{ margin: 0.7, pb: 2 }}
+                              sx={{ margin: 0.7, pb: 2, transform: 'scaleX(-1)' }}
                             >
                               {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
                             </IconButton>
@@ -255,7 +280,7 @@ export default function MySignUpForm(props) {
                 </Grid>
 
 
-                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
+                <Grid item xs={12} sx={{ height: '75px', mt: '2.5rem' }}>
                   <Form>
                     <Box>
                       <div className="label">
@@ -264,10 +289,11 @@ export default function MySignUpForm(props) {
                           Why are you signing up for Accountant Pact?
                         </label>
                       </div>
-                      <Field 
+                      <Field
+                        sx={styles.field__color}
                         component={Select}
                         fullWidth
-                        placeholderText="Select"
+                        placeholder="Select"
                         variant="standard"
                         labelId="demo-multiple-checkbox-label"
                         id="demo-multiple-checkbox"
@@ -277,11 +303,7 @@ export default function MySignUpForm(props) {
                           style: {
                             fontSize: '14px',
                             paddingLeft: '20px',
-                            ...styles.field__color()
                           },
-                        }}
-                        SelectDisplayProps={{
-                          style: styles.field__color() 
                         }}
                         value={values.checkbox}
                         renderValue={(selected) => {
@@ -292,7 +314,7 @@ export default function MySignUpForm(props) {
                         }}
                       >
                         {names.map((name) => (
-                          <MenuItemStyle onClick={() => {
+                          <StyledMenuItem onClick={() => {
                             name === "All" ? values.checkbox.includes(name)
                               ? setFieldValue('checkbox', []) : setFieldValue('checkbox', names)
                               : values.checkbox.includes(name) ? setFieldValue('checkbox',
@@ -303,8 +325,8 @@ export default function MySignUpForm(props) {
                             <CustomCheckbox
                               checked={values.checkbox.includes(name)}
                             />
-                            <ListItemText primary={name} />
-                          </MenuItemStyle>
+                            <ListItemTextStyle primary={name} />
+                          </StyledMenuItem>
                         ))}
                       </Field>
                     </Box>
@@ -315,15 +337,15 @@ export default function MySignUpForm(props) {
                         color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
                         fontFamily: 'Exo 2',
                         fontSize: '12px',
-                        fontWeight:'600',
+                        fontWeight: '600',
                         display: 'flex',
                         alignItems: 'end',
                         position: 'absolute',
                         color: 'rgba(255, 85, 85, 1)',
                       }}
                     >
-                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt:'2px', transform: 'rotate(180deg)',  }} />
-                     <span style={{marginBottom:'3px'}}> Please Select an Option</span>
+                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt: '2px', transform: 'rotate(180deg)', }} />
+                      <span style={{ marginBottom: '3px' }}> Please Select an Option</span>
                     </div>
                   )}
                 </Grid>
@@ -372,7 +394,7 @@ const styles = {
       color: 'black',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'black'
+      borderBottomColor: 'black',
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
@@ -386,5 +408,12 @@ const styles = {
         borderColor: 'black',
       },
     },
-  })
+    '&:before': {
+      borderColor: 'black',
+  },
+      '&:after': {
+        borderColor: 'black',
+      },
+  }),
+
 }

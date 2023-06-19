@@ -26,8 +26,6 @@ const GlobalButton = (props) => {
           fontWeight: 400,
           fontSize: '0.75rem',
           borderRadius: '8px',
-          px:'20px',
-          py:'10px',
           textTransform: 'capitalize',
           '&:hover': {
             background: '#2B2B33',

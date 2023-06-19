@@ -175,7 +175,7 @@ function AgingBucketsReport() {
                 &nbsp;
                 <GlobalButton
                   btnName="accent"
-                  btnText="Export Text"
+                  btnText="Export"
                   endIcon={
                     <img
                       src={exportIcon}
@@ -207,7 +207,7 @@ function AgingBucketsReport() {
       {/* Table */}
 
       <Grid container >
-        <Grid item xs={7}>
+        <Grid item xs={12}>
           <CustomTable
             data={Aging_Buckets_Data}
             columns={Aging_Buckets_Col}
@@ -215,10 +215,10 @@ function AgingBucketsReport() {
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}
             isSuccess={true}
-            isPagination={false}
+            isPagination={true}
           />
         </Grid>
-        <Grid item xs={5}>
+        {/* <Grid item xs={5}>
             <CustomTable
               data={Aging_Buckets_Data}
               columns={Aging_Buckets_Col2}
@@ -228,7 +228,7 @@ function AgingBucketsReport() {
               isSuccess={true}
               isPagination={false}
             />
-        </Grid>
+        </Grid> */}
 
       </Grid>
     </Fragment>

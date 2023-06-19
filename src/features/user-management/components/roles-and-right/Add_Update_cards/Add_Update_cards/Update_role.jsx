@@ -1,6 +1,6 @@
 import React from 'react';
 import CardContent from '@mui/material/CardContent';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Typography from '@mui/material/Typography';
 import { Box, TextField, Grid } from '@mui/material';
 import { Button } from '@mui/material';
@@ -12,11 +12,12 @@ const UpdateRole = (props) => {
 
   return (
     <div className="height-100vh flex justify-center align-center">
-      <Box sx={{ width: '592px', height: '416px', borderRadius: '8px', backgroundColor: 'white', p: 2 }}>
+      <Box sx={{ width: '592px', height: '416px', borderRadius: '8px', backgroundColor: 'white', p: 2.3 }}>
         <Typography
           sx={{
             fontSize: 20,
             fontWeight: '600',
+            fontFamily:'Exo 2',
             display: 'flex',
             justifyContent: 'space-between',
           }}
@@ -32,7 +33,8 @@ const UpdateRole = (props) => {
               mt: 5,
               fontSize: 16,
               fontWeight: '400',
-              height: '45px'
+              height: '45px',
+              fontFamily:'Exo 2',
             }}
           >
             Role Name
@@ -50,6 +52,7 @@ const UpdateRole = (props) => {
               mt: 5,
               fontSize: 16,
               fontWeight: '400',
+              fontFamily:'Exo 2',
               height: '45px'
             }}
           >
