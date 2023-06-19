@@ -63,19 +63,19 @@ const InvoiceCreationDate = ({ edit, editIcon, id, item }) => {
             inputClass="message-input"
           />
         </Box>
-        <Box className="tabbing-form-button">
-          <Box
-            sx={{
-              marginTop: "16px",
-              justifyContent: "flex-end",
-              display: "flex",
-              flex: "1 1 auto",
-              flexWrap: "wrap",
-              rowGap: "10px",
-            }}
-          >
-            <GlobalButton variant="accent" btnName="accent" btnText="Save" />
-          </Box>
+      </Box>
+      <Box className="tabbing-form-button">
+        <Box
+          sx={{
+            marginTop: "16px",
+            justifyContent: "flex-end",
+            display: "flex",
+            flex: "1 1 auto",
+            flexWrap: "wrap",
+            rowGap: "10px",
+          }}
+        >
+          <GlobalButton variant="accent" btnName="accent" btnText="Save" />
         </Box>
       </Box>
     </Box>

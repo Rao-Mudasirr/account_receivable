@@ -24,9 +24,11 @@ import AddWorkflow from "./pages/add-workflows";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
 import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
 import AgingBuckets from "./pages/Aging_Buckets";
-import SignUpForm from './components/SignUp_form/SignUp_form'
-import SignUpForm2 from './components/SignUp_form/SignUp_form2'
+import SignUpForm from "./components/SignUp_form/SignUp_form";
+import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";
+import ClientListing from "./pages/client-listing";
+import PerformanceAnalysis from "./pages/Performance-Analysis";
 
 function App() {
   return (
@@ -49,10 +51,7 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-          <Route exact path={"/settings"} element={<DashboaedSettings />} />
-          <Route path="/not-found" element={<h1>Not Found</h1>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
-          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
+
           {/* <Route path="/report-details/workflows-report" element={<WorkflowReport/>} /> */}
           <Route
             path="/report-details/workflows-report/workflow-detail"
@@ -78,14 +77,25 @@ function App() {
             />
           </Route>
 
-          <Route exact path={"/clients"} element={<Clientdetails />} />
+          <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/clients-details/:id"} element={<Clientdetails />} />
+          <Route
+            exact
+            path={"/performance-analysis"}
+            element={<PerformanceAnalysis />}
+          />
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
-          <Route exact path={"/report-details/cashflow-forcasting/:id"} element={<Cashflow_Forcasting />} />
-          <Route exact path={"/report-details/month/:id"} element={<DSO_Month />} />
-          <Route path="/not-found" element={<h1>Not Found</h1>} />
-          <Route path="*" element={<Navigate to="/not-found" />} />
-          <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
+          <Route
+            exact
+            path={"/report-details/cashflow-forcasting/:id"}
+            element={<Cashflow_Forcasting />}
+          />
+          <Route
+            exact
+            path={"/report-details/month/:id"}
+            element={<DSO_Month />}
+          />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
