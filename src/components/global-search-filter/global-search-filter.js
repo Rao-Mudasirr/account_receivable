@@ -1,8 +1,6 @@
 import * as React from "react";
 import { TextField, InputAdornment } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import "./global-search-filter.scss";
-import { BorderBottom } from "@mui/icons-material";
 
 export const GlobalSearchBar = ({ value, onChange }) => {
   const [isFocused, setIsFocused] = React.useState(false);
