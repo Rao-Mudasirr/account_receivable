@@ -82,7 +82,7 @@ function App() {
             element={<PerformanceAnalysis />}
           />
           <Route exact path={"/reports"} element={<MainReport />} />
-          <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
+          <Route exact path={"/reports/:id"} element={<ReportInfo />} />
           <Route
             exact
             path={"/report-details/cashflow-forcasting/:id"}
