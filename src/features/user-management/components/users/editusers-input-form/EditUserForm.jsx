@@ -56,11 +56,13 @@ const EditUserInputs = () => {
 
         return (
           <Form noValidate autoComplete="off" className="edituser_form">
-            <Grid sx={{ gap: 5 }} className="edituser_forminputs">
+            <Grid container spacing={4} className="edituser_forminputs">
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   First Name
                 </label>
@@ -74,9 +76,11 @@ const EditUserInputs = () => {
               </Grid>
 
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   Last Name
                 </label>
@@ -90,9 +94,11 @@ const EditUserInputs = () => {
               </Grid>
 
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   Email
                 </label>
@@ -107,9 +113,11 @@ const EditUserInputs = () => {
               </Grid>
 
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   Phone
                 </label>
@@ -129,9 +137,11 @@ const EditUserInputs = () => {
               </Grid>
 
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   Company
                 </label>
@@ -158,9 +168,11 @@ const EditUserInputs = () => {
               </Grid>
 
               <Grid
+              sx={Styles.field_color}
                 item
-                xs={6}
-                className="textfield_bold">
+                xs={12}
+                md={6}
+                className="edituser-textfield_bold">
                 <label className="input_label">
                   Role
                 </label>
@@ -202,3 +214,31 @@ const EditUserInputs = () => {
 };
 
 export default EditUserInputs;
+
+//Style
+const Styles = {
+  field_color: (theme) => ({
+    width: "100%",
+    '& label': {
+      color: 'black',
+    },
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+        borderWidth: '0.15rem',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black',
+      },
+    },
+  })
+}
