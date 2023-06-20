@@ -476,9 +476,6 @@ export default function InvoiceListing() {
       <CustomTable
         data={INVOICE_DATA}
         columns={columns}
-        // showSerialNo
-        // onPageChange={pageChangeHandler}
-        // onSortByChange={sortChangeHandler}
         isSuccess={true}
         isPagination={true}
       />
