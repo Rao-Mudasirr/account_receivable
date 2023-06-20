@@ -1,8 +1,9 @@
 import React from 'react'
 import Chart from 'react-apexcharts';
-const optionsAgingBucketPieChart = {
+const optionsComparisonPieChart =(showIn,data)=> ({
     chart: {
         type: 'donut',
+        id:''
     },
     plotOptions: {
         pie: {
@@ -49,8 +50,8 @@ const optionsAgingBucketPieChart = {
     },
     dataLabels: {
         enabled: true,
-        formatter: function (val) {
-            return val.toFixed(0) + "%";
+        formatter: function (val, { seriesIndex}) {
+            return  showIn === "Amount" ?  "£" + data[seriesIndex] : val.toFixed(0) + "%";
         },
         style: {
             fontSize: '12px',
@@ -70,14 +71,15 @@ const optionsAgingBucketPieChart = {
     //     }
     // }],
     colors: ["#70D69E", "#FF9898"]
-}
-export const ComparisonPieChart = () => {
+})
+export const ComparisonPieChart = ({showIn, data}) => {
+    console.log(showIn);
     return (
         <>
             <Chart
-                series={[2050, 2000] ?? []}
+                series={data ?? []}
                 height={350}
-                options={optionsAgingBucketPieChart ?? {}}
+                options={optionsComparisonPieChart(showIn,data) ?? {}}
                 type="donut"
             />
         </>

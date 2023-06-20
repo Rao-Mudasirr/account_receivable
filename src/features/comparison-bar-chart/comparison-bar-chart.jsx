@@ -1,8 +1,19 @@
 import React from 'react'
 import Chart from 'react-apexcharts';
+const arrayToPercent = (data, max) => {
+    return data.map((item) => {
+        const percentData = item.data.map((value) => {
+            return (value / (max+10) * 100).toFixed(2);
+        });
 
+        return {
+            name: item.name,
+            data: percentData,
+        };
+    });
+};
 
-export const ComparisonBarChart = ({yaxisHidden}) => {
+export const ComparisonBarChart = ({ yaxisHidden, showIn, data, max }) => {
     const optionsComparisonBarChart = {
         chart: {
             height: 350,
@@ -47,6 +58,8 @@ export const ComparisonBarChart = ({yaxisHidden}) => {
         },
         yaxis: {
             show: yaxisHidden,
+            tickAmount: 5,
+            max: showIn === "Amount" ? max + 20 : 100,
             labels: {
                 style: {
                     fontSize: '12px',
@@ -54,7 +67,7 @@ export const ComparisonBarChart = ({yaxisHidden}) => {
                     fontFamily: 'Exo 2',
                     fontWeight: 400,
                 },
-                formatter: (value) => { return `£${value}` },
+                formatter: (value) => { return showIn === "Amount" ? `£${value.toFixed(0)}` : `${value.toFixed(0)}%` },
             },
             axisBorder: {
                 show: false
@@ -80,16 +93,7 @@ export const ComparisonBarChart = ({yaxisHidden}) => {
     return (
         <>
             <Chart
-                series={[
-                    {
-                        name: 'Paid Invoices',
-                        data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 10, 100, 67]
-                    },
-                    {
-                        name: 'OverDue Invoices',
-                        data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 34, 76, 12]
-                    }
-                ] ?? []}
+                series={  showIn === "Amount" ? data : arrayToPercent(data,max) ?? []}
                 height={350}
                 options={optionsComparisonBarChart ?? {}}
                 type="bar"
