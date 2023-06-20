@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./components/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -26,6 +26,8 @@ import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
+import Home from "./pages/Home";
+import HomeLayout from "./homeLayout/HomeLayout";
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/home" element={<HomeLayout />} >
+        <Route path="/home/" element={<Home />} />
+        </Route>
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
