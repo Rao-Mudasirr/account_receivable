@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 // import Pagination from '@mui/material/Pagination';
 import Stack from "@mui/material/Stack";
 // Tantack table
@@ -174,7 +174,8 @@ const CustomTable = (props) => {
       <IsFetching isFetching={isFetching} />
       <Grid xs={12} item>
         {/* Table Container */}
-        <Box sx={{ overflowX: "auto" }}>
+        <div style={{display: 'flex'}}>
+        <Box sx={{ overflowX: "auto", flex: '1'}}>
           <TableContainer
             className="no-scrollbar"
             sx={styles.tableContainer(tableContainerSX, theme)}
@@ -245,7 +246,66 @@ const CustomTable = (props) => {
             )}
           </TableContainer>
         </Box>
-
+        <Box
+          ref={menu}
+          sx={{ flex: '0 0 auto', position: 'relative', right: '-7px', top: '15px', zIndex: 10,}}
+        >
+          <Filter
+            onClick={() => setShow(!show)}
+            style={{ cursor: "pointer" }}
+          />
+          {show && (
+            <Box sx={{ display: "block", marginTop: "-19px", marginLeft: '-150px', position: "absolute", zIndex: 11, }}>
+              <ul
+                style={{
+                  padding: "0",
+                  listStyle: "none",
+                  background: "white",
+                  borderRadius: "8px",
+                  boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
+                  position: "relative",
+                  zIndex: 12,
+                }}
+              >
+                {checkboxes?.map((e, i) => (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      background: "white",
+                    }}
+                    key={e?.id}
+                  >
+                    <Checkbox
+                      checked={e?.checkbox ? true : false}
+                      onChange={(event) => handleFilterHeader(e, i)}
+                      value={e?.checkbox}
+                      sx={{
+                        color: "black",
+                        "&.Mui-checked": {
+                          color: "black",
+                        },
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontWeight: "400",
+                        fontSize: "14px",
+                        lineHeight: "20px",
+                        color: " #6B6B80",
+                      }}
+                    >
+                      {typeof e?.header === "string"
+                        ? e?.header || e?.id
+                        : e?.id}
+                    </span>
+                  </Box>
+                ))}
+              </ul>
+            </Box>
+          )}
+        </Box>
+        </div>
         {/* Pagination */}
         {pageData !== "clients-view" && (
           <Grid container>
@@ -317,64 +377,6 @@ const CustomTable = (props) => {
           </Grid>
         )}
       </Grid>
-      <Box
-        ref={menu}
-        sx={{
-          position: "absolute",
-          right: "0",
-          top: "-26px",
-          zIndex: "200",
-          textAlign: "end",
-        }}
-      >
-        <Filter onClick={() => setShow(!show)} style={{ cursor: "pointer" }} />
-        {show && (
-          <Box sx={{ display: "block", marginTop: "-19px" }}>
-            <ul
-              style={{
-                padding: "0",
-                listStyle: "none",
-                background: "white",
-                borderRadius: "8px",
-                boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
-              }}
-            >
-              {checkboxes?.map((e, i) => (
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    background: "white",
-                  }}
-                  key={e?.id}
-                >
-                  <Checkbox
-                    checked={e?.checkbox ? true : false}
-                    onChange={(event) => handleFilterHeader(e, i)}
-                    value={e?.checkbox}
-                    sx={{
-                      color: "black",
-                      "&.Mui-checked": {
-                        color: "black",
-                      },
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontWeight: "400",
-                      fontSize: "14px",
-                      lineHeight: "20px",
-                      color: " #6B6B80",
-                    }}
-                  >
-                    {typeof e?.header === "string" ? e?.header || e?.id : e?.id}
-                  </span>
-                </Box>
-              ))}
-            </ul>
-          </Box>
-        )}
-      </Box>
     </Grid>
   );
 };
