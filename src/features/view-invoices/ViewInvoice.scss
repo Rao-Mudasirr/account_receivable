@@ -9,27 +9,13 @@ h6 {
   padding: 0 !important;
 }
 
-.model {
-  padding: 20px;
-  overflow: auto;
-  
-}
 .modal-body {
-  background-color: white;
-  padding: 20px 40px;
-  padding-top: 50px;
-  position: relative;
-  outline: 0;
-  min-height: calc(100vh - 100px);
+  .MuiTypography-root {
+    font-family: 'Exo 2', "Roboto", "sans-serif";
+  }
 }
-.modal-body .close-icon {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: black;
-  cursor: pointer;
-}
-.model .modal-body .model-header {
+
+.modal-body .model-header {
   display: flex;
   align-items: flex-start;
   width: 100%;
@@ -37,148 +23,158 @@ h6 {
   flex-wrap: wrap;
   row-gap: 20px;
 }
-.model .modal-body .model-header .left-section h5 {
+
+.modal-body .model-header .left-section h5 {
   color: black;
   font-weight: 600;
   margin-bottom: 4px;
   text-transform: uppercase;
 }
-.model .modal-body .model-header .left-section {
-  /* width: 100%; */
-}
 
-.model .modal-body .model-header .left-section p {
+.modal-body .model-header .left-section p {
   color: black;
   margin-bottom: 2px;
 }
-.model .modal-body .model-header .right-section {
+
+.modal-body .model-header .right-section {
   display: flex;
   /* width: 100%; */
   flex-direction: column;
 }
-.model .modal-body .model-header .right-section img {
+
+.modal-body .model-header .right-section img {
   display: block;
   max-width: 100%;
 }
-.model .modal-body .model-header .right-section button {
+
+.modal-body .model-header .right-section button {
   background-color: black;
   color: white;
   margin-top: 20px;
   min-width: 120px;
 }
-.model .modal-body .model-mid {
+
+.modal-body .model-mid {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
-.model .modal-body h4 {
+
+.modal-body h4 {
   margin-top: 20px;
   font-weight: bold;
   font-size: medium;
   color: #5DA6D8;
 }
 
-.model .modal-body .model-mid .left-section {
+.modal-body .model-mid .left-section {
   flex: 0 0 50%;
 }
-.model .modal-body .model-mid .left-section .box-to {
+
+.modal-body .model-mid .left-section .box-to {
   margin-top: 16px;
 }
-.model .modal-body .model-mid .left-section .box-to h6 {
+
+.modal-body .model-mid .left-section .box-to h6 {
   font-size: 13px;
   color: #B7BDC9;
 }
-.model .modal-body .model-mid .left-section .box-to p {
+
+.modal-body .model-mid .left-section .box-to p {
   font-size: 13px;
   font-weight: 600;
 }
 
-.model .modal-body .model-mid .left-section .two-parent {
+.modal-body .model-mid .left-section .two-parent {
   display: flex;
   justify-content: space-between;
 }
 
-.model .modal-body .model-mid .right-section {
+.modal-body .model-mid .right-section {
   margin-top: 16px;
   flex: 0 0 50%;
 }
 
-.model .modal-body .model-mid .right-section .box-2 {
+.modal-body .model-mid .right-section .box-2 {
   display: flex;
   align-items: center;
-  /* gap: 20px; */
   padding-left: 30px;
-justify-content: center;
-column-gap: 80px;
-max-width: 300px;
-margin: auto;
+  column-gap: 80px;
+  max-width: 300px;
+  margin: auto;
 }
 
 
-.model .modal-body .model-mid .right-section .box-2 h6 {
+.modal-body .model-mid .right-section .box-2 h6 {
   margin: 0 !important;
   font-size: 16px;
   color: gray;
-  
-  flex: 0 0 50%;
-  
-  }
 
-.model .modal-body .model-mid .right-section .box-2 p {
-margin: 0 !important;
-font-size: 16px;
-color: black;
-/* flex: 0 0 50%; */
+  flex: 0 0 50%;
+
+}
+
+.modal-body .model-mid .right-section .box-2 p {
+  margin: 0 !important;
+  font-size: 16px;
+  color: black;
+  /* flex: 0 0 50%; */
 }
 
 
 
-.model .modal-body .model-table{
+.modal-body .model-table {
   margin-top: 20px;
 }
 
-.model .modal-body .model-table th{
+.modal-body .model-table th {
   border-bottom: 0px;
   background-color: #DCE9F1;
   color: #5DA6D8;
   text-transform: uppercase;
 }
-.model .modal-body .model-table td{
+
+.modal-body .model-table td {
   border-bottom: 0px;
- 
-}
-.model .modal-body .model-table tbody tr:last-child{
-  border-bottom: 1px dotted #BDC1C7;
- 
+
 }
 
-.model .modal-body .model-calculation{
+.modal-body .model-table tbody tr:last-child {
+  border-bottom: 1px dotted #BDC1C7;
+
+}
+
+.modal-body .model-calculation {
   max-width: 350px;
   margin-left: auto;
 }
-.model .modal-body .model-calculation .box-3{
+
+.modal-body .model-calculation .box-3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-margin-top: 16px;
+  margin-top: 16px;
 }
 
-.model .modal-body .model-calculation .box-3:first-child{
+.modal-body .model-calculation .box-3:first-child {
   border-bottom: 1px dotted #BDC1C7;
   padding-bottom: 10px;
 
 }
-.model .modal-body .model-calculation .box-3 h5{
+
+.modal-body .model-calculation .box-3 h5 {
   font-size: 14px;
   color: #B7BDC9;
   margin: 0;
 
 }
-.model .modal-body .model-calculation .box-3 p{
+
+.modal-body .model-calculation .box-3 p {
   font-size: 14px;
   margin: 0;
 }
-.model .modal-body .model-calculation .box-3 h6{
+
+.modal-body .model-calculation .box-3 h6 {
   font-size: 18px;
   margin: 0;
   color: #30A029;
@@ -190,33 +186,35 @@ margin-top: 16px;
 
 
 
-.model .modal-body .model-payment-instruction .payment-info-title{
+.modal-body .model-payment-instruction .payment-info-title {
   color: #B7BDC9;
   font-size: 18px;
   font-weight: 600;
 }
 
-.model .modal-body .model-payment-instruction .box-4{
+.modal-body .model-payment-instruction .box-4 {
   display: flex;
   align-items: center;
   /* justify-content: space-between; */
-margin-top: 7px;
-/* column-gap: 100px */
+  margin-top: 7px;
+  /* column-gap: 100px */
 }
 
 
-.model .modal-body .model-payment-instruction .box-4 h4{
+.modal-body .model-payment-instruction .box-4 h4 {
   font-size: 14px;
   margin: 0;
   color: #B7BDC9;
-  flex:0 0 25%;
+  flex: 0 0 25%;
 }
-.model .modal-body .model-payment-instruction .box-4 p{
+
+.modal-body .model-payment-instruction .box-4 p {
   font-size: 14px;
   margin: 0;
   color: #ADAFB3;
 }
-.model .modal-body .model-payment-instruction .box-4 h6{
+
+.modal-body .model-payment-instruction .box-4 h6 {
   font-size: 18px;
   margin: 0;
   color: #30A029;

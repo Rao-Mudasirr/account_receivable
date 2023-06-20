@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./components/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -20,7 +20,6 @@ import ClientWorkFlow from "./pages/client-workflows";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
-import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
 import SignUpForm from "./components/SignUp_form/SignUp_form";
 import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";

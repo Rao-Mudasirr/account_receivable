@@ -1,7 +1,7 @@
 import React from 'react'
 import { DashboardSelect } from '../dashboard-select/dashboard-select'
 
-export const DashboardChartSwitch = ({switchName,data,selectVal,setSelectVal}) => {
+export const DashboardChartSwitch = ({switchName,data,selectVal,setSelectVal,MenuSx}) => {
     return (
         <>
             <div className='flex align-center'>
@@ -9,7 +9,7 @@ export const DashboardChartSwitch = ({switchName,data,selectVal,setSelectVal}) =
                     {switchName}:
                 </div>
                 <div>
-                    <DashboardSelect data={data} selectVal={selectVal} setSelectVal={setSelectVal} />
+                    <DashboardSelect data={data} selectVal={selectVal} MenuSx={MenuSx} setSelectVal={setSelectVal} />
                 </div>
             </div>
         </>
