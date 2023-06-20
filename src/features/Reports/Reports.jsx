@@ -2,13 +2,13 @@ import React from 'react'
 import { ReportData } from '../../mock-data/ReportData'
 import { Card, Grid } from '@mui/material'
 import './report.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Reports() {
 
     const navigate = useNavigate();
     const GoToNext = (val) => {
-        navigate(`/report-details/${val?.param}`, { state: { reportData: val } })
+        navigate(`/reports/${val?.param}`, { state: { reportData: val } })
     }
 
     return (

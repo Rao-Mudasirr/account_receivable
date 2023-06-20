@@ -14,21 +14,18 @@ import Signin from "./components/signin/Signin";
 import MainReport from "./pages/MainReport";
 import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
-import WorkflowReport from "./features/Reports/workflow-report/WorkflowReport";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
 import ClientWorkFlow from "./pages/client-workflows";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
-// import CustomAlert from "./components/Alert/CustomAlert";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
-import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
-import AgingBuckets from "./pages/Aging_Buckets";
 import SignUpForm from "./components/SignUp_form/SignUp_form";
 import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
+import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
 
 function App() {
   return (
@@ -78,19 +75,24 @@ function App() {
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
-          <Route exact path={"/clients-details/:id"} element={<Clientdetails />} />
+          <Route
+            exact
+            path={"/clients-details/:id"}
+            element={<Clientdetails />}
+          />
           <Route
             exact
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
-          />
+          >
+            <Route
+              exact
+              path={"/performance-analysis/client/:id"}
+              element={<ClientComparison />}
+            />
+          </Route>
           <Route exact path={"/reports"} element={<MainReport />} />
-          <Route exact path={"/report-details/:id"} element={<ReportInfo />} />
-          <Route
-            exact
-            path={"/report-details/cashflow-forcasting/:id"}
-            element={<Cashflow_Forcasting />}
-          />
+          <Route exact path={"/reports/:id"} element={<ReportInfo />} />
           <Route
             exact
             path={"/report-details/month/:id"}

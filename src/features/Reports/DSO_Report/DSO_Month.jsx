@@ -15,31 +15,21 @@ import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import "../report.scss";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import GlobalButton from "../../../components/global-button/global-button";
+import { CustomPopover } from "../../../components/custom-popover/custom-popover";
+import { DashboardSelect } from "../../dashboard-select/dashboard-select";
+import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
+import { toast } from "react-toastify";
+import { Box } from "@mui/material";
 
 function DSO_Month() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { state } = useLocation();
-  console.log("state: ", state);
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [type, setType] = useState("");
 
-  const handleClick2 = () => {
-    setIsOpen2(!isOpen2);
-  };
+  const [selectBranch, setSelectBranch] = useState("");
+  const [selectClient, setSelectClient] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [error, setError] = useState(null);
-
-  const handleDateChange = (date, label) => {
-    if (label === "Start date") {
-      setStartDate(date);
-    } else if (label === "End Date") {
-      setEndDate(date);
-    }
-  };
+  const [checkboxPdf, setCheckboxPdf] = useState(false);
+  const [checkboxExcel, setCheckboxExcel] = useState(false);
+  
   return (
     <Fragment>
       <div className="invoice-title">
@@ -47,105 +37,125 @@ function DSO_Month() {
       </div>
 
       {/* Search field */}
-      <Grid container>
-        <Grid xs={12} sm={12} md={12} lg={12} xl={4}>
-          <div
-            style={{
-              margin: "5px",
-              display: "flex",
-              alignItems: "center",
-              marginTop: "14px",
-            }}
-          >
-            <GlobalSearchBar />
-          </div>
+      <Grid container className="align-center cash-collection-report">
+        <Grid xl={6} xs={12}>
+          <GlobalSearchBar />
         </Grid>
-
-        <Grid xs={12} sm={12} md={12} lg={12} xl={8}>
-          <div style={{ marginLeft: "auto" }} className="invoices-tabal-header">
-            <Grid container spacing={2} alignItems="center">
-              <Grid
-                // item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={6}
-                xl={9}
-                sx={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    sx={{
-                      paddingRight: "20px",
-                      ".MuiInputBase-input ": {
-                        p: "13px",
-                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-                        color: "#A6A6B3",
-                      },
-                    }}
-                    slots={{
-                      openPickerIcon: CalendarMonthRoundedIcon,
-                    }}
-                    slotProps={{ textField: { placeholder: "From" } }}
-                    variant="standared"
-                    value={startDate}
-                    onChange={(date) => handleDateChange(date, "Start date")}
-                  />
-                  &nbsp; &nbsp; &nbsp;
-                  <DatePicker
-                    sx={{
-                      paddingRight: "20px",
-                      ".MuiInputBase-input ": {
-                        p: "13px",
-                        fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-                        color: "#A6A6B3",
-                      },
-                    }}
-                    slots={{
-                      openPickerIcon: CalendarMonthRoundedIcon,
-                    }}
-                    slotProps={{ textField: { placeholder: "To" } }}
-                    value={endDate}
-                    onChange={(date) => handleDateChange(date, "End Date")}
-                  />
-                </LocalizationProvider>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={6}
-                xl={3}
-                style={{ display: "flex", justifyContent: "flex-start" }}
-              >
-                <GlobalButton
-                  btnName="accent"
-                  btnText="Export Text"
-                  endIcon={
-                    <img
-                      src={exportIcon}
-                      alt="Export Text"
-                      // width={16}
-                      // height={16}
-                    />
-                  }
-                  onClick={() => {
-                    setType("Export");
-                    handleClick2();
-                  }}
-                  // className="invoice-second-btn"
-                />
-              </Grid>
-            </Grid>
-
-            <ShowFilters
-              page={"Reports"}
-              // input_filter={input_filter}
-              filter_type={type}
-              handleClick={handleClick2}
-              isOpen={isOpen2}
-            />
+        <Grid xl={6} xs={12}>
+          <div
+            className="align-end"
+            style={{ marginLeft: "auto", display: "flex" }}
+          >
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                sx={{
+                  paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: startDate ? "#40404D" : "#A6A6B3",
+                  },
+                }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
+                slotProps={{ textField: { placeholder: "From" } }}
+                variant="standared"
+                value={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+              <DatePicker
+                sx={{
+                  paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: "#A6A6B3",
+                  },
+                }}
+                slotProps={{ textField: { placeholder: "To" } }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
+                value={endDate}
+                onChange={(date) => setEndDate(date)}
+              />
+            </LocalizationProvider>
+            <CustomPopover
+              mainTitle="Export"
+              mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
+              popoverOpenerTitle="Export Text"
+              popoverOpenerProps={{
+                variant: "contained",
+                sx: {
+                  background: "#2B2B33",
+                  borderRadius: "8px",
+                  height: "32px",
+                  whiteSpace: "nowrap",
+                  "&:hover": {
+                    background: "#2B2B33",
+                    borderWidth: "2px",
+                  },
+                },
+                endIcon: <img src={exportIcon} alt="Export Text" />,
+                className:
+                  "buttons-filters font-family-Exo font-weight-400 tertiary-title",
+              }}
+            >
+              {(popupState) => (
+                <>
+                  <p className="secondary-color margin-bottom-0">
+                    Export this report as
+                  </p>
+                  <Grid container spacing={2}>
+                    <Grid item sm={6} xs={12}>
+                      <Box className="attachment-box">
+                        <ExportCardCheckbox
+                          checkboxState={checkboxPdf}
+                          setCheckboxState={setCheckboxPdf}
+                          title="PDF"
+                        />
+                      </Box>
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                      <Box className="attachment-box">
+                        <ExportCardCheckbox
+                          checkboxState={checkboxExcel}
+                          setCheckboxState={setCheckboxExcel}
+                          title="Excel"
+                        />
+                      </Box>
+                    </Grid>
+                  </Grid>
+                  <div className="filter-below-btn margin-top-2 flex justify-end">
+                    <Button
+                      className="btn1"
+                      onClick={() => {
+                        setCheckboxPdf(false);
+                        setCheckboxExcel(false);
+                      }}
+                    >
+                      Clear
+                    </Button>
+                    &nbsp;
+                    <Button
+                      onClick={() => {
+                        if (checkboxExcel || checkboxPdf) {
+                          setCheckboxPdf(false);
+                          setCheckboxExcel(false);
+                          popupState.close();
+                        } else {
+                          toast.error("Please Select Export Type");
+                        }
+                      }}
+                      className="btn2 primary-bg-color"
+                    >
+                      Apply
+                    </Button>
+                  </div>
+                </>
+              )}
+            </CustomPopover>
           </div>
         </Grid>
       </Grid>
