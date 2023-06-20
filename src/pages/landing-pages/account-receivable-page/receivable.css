@@ -1,0 +1,44 @@
+.account__receivable {
+
+    .account_receivable_heading {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        /* font-size: 72px; */
+        line-height: 130%;
+        color: #37352F;
+        display: flex;
+        /* text-align: center; */
+        /* padding: 5rem; */
+    }
+
+    .custom__icon{
+        width: 24px;
+        height: 24px;
+        background: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom__style{
+        width: 8px;
+        height: 8px;
+        border-radius: 100px;
+    }
+
+    .receivable__right{
+        display: flex;
+        gap: 1rem;
+    }
+
+    .receivable__text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        color: #666665;
+        line-height: 30px;
+    }
+}
