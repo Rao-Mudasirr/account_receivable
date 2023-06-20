@@ -61,8 +61,7 @@ const ChangePassword = () => {
   };
 
   const toastText = "Password Updated Successfully";
-  // const setSamePassword = 
-  
+  // const setSamePassword =
 
   const passwordUpdated = () => {
     console.log(formik.values);
@@ -143,7 +142,11 @@ const ChangePassword = () => {
           </Typography>
         </Grid>
         <Formik>
-          <Form onSubmit={GlobalButton.btnText === "Next" ? handleNext : handleSubmit} > 
+          <Form
+            onSubmit={
+              GlobalButton.btnText === "Next" ? handleNext : handleSubmit
+            }
+          >
             {changePassword ? (
               <Grid item xl={12} xs={12} sx={{ p: 5, height: "150px" }}>
                 <label
@@ -208,7 +211,7 @@ const ChangePassword = () => {
                     onBlur={handleBlur}
                     autoComplete={false}
                     // disabled={!editMode}
-  
+
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -220,7 +223,9 @@ const ChangePassword = () => {
                             {showPassword ? (
                               <RiEyeLine />
                             ) : (
-                              <RiEyeOffLine style={{ transform: "scaleX(-1)" }} />
+                              <RiEyeOffLine
+                                style={{ transform: "scaleX(-1)" }}
+                              />
                             )}
                           </IconButton>
                         </InputAdornment>
@@ -247,7 +252,7 @@ const ChangePassword = () => {
                     onBlur={handleBlur}
                     autoComplete={false}
                     // disabled={!editMode}
-  
+
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -259,7 +264,9 @@ const ChangePassword = () => {
                             {showPassword ? (
                               <RiEyeLine />
                             ) : (
-                              <RiEyeOffLine style={{ transform: "scaleX(-1)" }} />
+                              <RiEyeOffLine
+                                style={{ transform: "scaleX(-1)" }}
+                              />
                             )}
                           </IconButton>
                         </InputAdornment>
@@ -269,40 +276,50 @@ const ChangePassword = () => {
                 </Grid>
               </Grid>
             )}
-            </Form>
-          </Formik>
-          <Grid className="flex justify-end width-100">
-            {changePassword ? (
-              <GlobalButton
-                btnText="Next"
-                btnName="accent"
-                onClick={() => {
-                  if (formik.values.password === "") {
-                    console.error();
-                  } else if (formik.values.password.length < 6) {
-                    console.error();
-                  } else {
-                    handleNext();
-                  }
-                }}
-              />
-            ) : (
-              <GlobalButton
-                btnText="Update"
-                btnName="accent"
-                onClick={() => {
-                  if ((formik.values.newPassword.length || formik.values.confirmPassword.length) < 6) {
-                    toast.error("Password must be at least 6 characters");
-                  } else if ((formik.values.newPassword || formik.values.confirmPassword) === "") {
-                    toast.error("Password is required");
-                   } else if (formik.values.newPassword !== formik.values.confirmPassword){
-                    toast.error("Make sure both passwords are same");
-                  } else {
-                    toast.success(toastText, handleSubmit())
-                  }
-                }}
-              />
-            )}
+          </Form>
+        </Formik>
+        <Grid className="flex justify-end width-100">
+          {changePassword ? (
+            <GlobalButton
+              btnType="ChangePassword"
+              btnText="Next"
+              btnName="accent"
+              onClick={() => {
+                if (formik.values.password === "") {
+                  console.error();
+                } else if (formik.values.password.length < 6) {
+                  console.error();
+                } else {
+                  handleNext();
+                }
+              }}
+            />
+          ) : (
+            <GlobalButton
+              btnType="ChangePassword"
+              btnText="Update"
+              btnName="accent"
+              onClick={() => {
+                if (
+                  (formik.values.newPassword.length ||
+                    formik.values.confirmPassword.length) < 6
+                ) {
+                  toast.error("Password must be at least 6 characters");
+                } else if (
+                  (formik.values.newPassword ||
+                    formik.values.confirmPassword) === ""
+                ) {
+                  toast.error("Password is required");
+                } else if (
+                  formik.values.newPassword !== formik.values.confirmPassword
+                ) {
+                  toast.error("Make sure both passwords are same");
+                } else {
+                  toast.success(toastText, handleSubmit());
+                }
+              }}
+            />
+          )}
         </Grid>
       </Grid>
     </>
