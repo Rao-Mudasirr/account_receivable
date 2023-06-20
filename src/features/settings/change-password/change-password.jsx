@@ -145,7 +145,7 @@ const ChangePassword = () => {
         <Formik>
           <Form onSubmit={GlobalButton.btnText === "Next" ? handleNext : handleSubmit} > 
             {changePassword ? (
-              <Grid item xl={12} xs={8} sx={{ p: 5, height: "150px" }}>
+              <Grid item xl={12} xs={12} sx={{ p: 5, height: "150px" }}>
                 <label
                   htmlFor="password"
                   className="secondary-color primary-title font-family-exo2"
