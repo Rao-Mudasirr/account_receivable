@@ -6,6 +6,9 @@ import exportIcon from "../../../assests/images/client/export.png";
 import { Button, Grid, Box } from "@mui/material";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { toast } from "react-toastify";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 
@@ -15,6 +18,8 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
   const [selectClient, setSelectClient] = useState("");
   const [checkboxPdf, setCheckboxPdf] = useState(false);
   const [checkboxExcel, setCheckboxExcel] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   return (
     <>
       <div className="invoice-title">Workflows Comparison</div>
@@ -50,82 +55,52 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
             {(popupState) => (
               <>
                 <Grid container spacing={2}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <Grid item sm={6} xs={12}>
                     <label className="secondary-color" for="branch">
-                      Branch
+                      From
                     </label>
-                    <DashboardSelect
-                      id="branch"
-                      placeholder="Select"
-                      fullWidth={true}
-                      MenuSx={{
-                        ".MuiMenuItem-root": {
-                          color: "#6B6B80",
-                          fontSize: "14px",
-                          fontWeight: 400,
-                        },
-                        marginTop: "10px",
-                        boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                        borderRadius: "8px",
-                        ".MuiList-root": { p: "0" },
-                        ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                        ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                      }}
-                      selectSx={{
-                        ".MuiOutlinedInput-notchedOutline": {
-                          borderBottom: "1.6px solid #C4C4CC !important",
-                        },
-                        ".MuiSelect-select": {
-                          p: "10.5px 14px",
-                          fontWeight: "400",
-                          color: "#40404D",
-                          fontSize: "15px",
-                        },
-                        ".MuiSelect-icon": { top: "40%" },
-                      }}
-                      selectVal={selectBranch}
-                      setSelectVal={setSelectBranch}
-                      data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
-                    />
+              <DatePicker
+                sx={{
+                  paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: startDate ? "#40404D" : "#A6A6B3",
+                  },
+                }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
+                slotProps={{ textField: { placeholder: "From" } }}
+                variant="standared"
+                value={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+              
                   </Grid>
                   <Grid item sm={6} xs={12}>
                     <label className="secondary-color" for="Client">
-                      Client
+                      To
                     </label>
-                    <DashboardSelect
-                      id="Client"
-                      placeholder="Select"
-                      fullWidth={true}
-                      MenuSx={{
-                        ".MuiMenuItem-root": {
-                          color: "#6B6B80",
-                          fontSize: "14px",
-                          fontWeight: 400,
-                        },
-                        marginTop: "10px",
-                        boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                        borderRadius: "8px",
-                        ".MuiList-root": { p: "0" },
-                        ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                        ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                      }}
-                      selectSx={{
-                        ".MuiOutlinedInput-notchedOutline": {
-                          borderBottom: "1.6px solid #C4C4CC !important",
-                        },
-                        ".MuiSelect-select": {
-                          p: "10.5px 14px",
-                          fontWeight: "400",
-                          color: "#40404D",
-                          fontSize: "15px",
-                        },
-                        ".MuiSelect-icon": { top: "40%" },
-                      }}
-                      selectVal={selectClient}
-                      setSelectVal={setSelectClient}
-                      data={["Client 1", "Client 2", "Client 3", "Client 4"]}
-                    />
+                    <DatePicker
+                sx={{
+                  paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: "#A6A6B3",
+                  },
+                }}
+                slotProps={{ textField: { placeholder: "To" } }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
+                value={endDate}
+                onChange={(date) => setEndDate(date)}
+                />
                   </Grid>
+                </LocalizationProvider>
                 </Grid>
                 <div className="filter-below-btn margin-top-2 flex justify-end">
                   <Button
