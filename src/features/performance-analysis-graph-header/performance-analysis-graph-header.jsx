@@ -38,7 +38,7 @@ export const PerformanceAnalysisGraphHeader = () => {
                 </Grid>
                 <Grid container className='flex align-center justify-between margin-top-1'>
                     <Grid item xs={6} className='position-relative'>
-                        <Box sx={{ top: '20px',zIndex:2 }} className="position-absolute">
+                        <Box sx={{ top: '23px',zIndex:2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName="Workflow" selectVal={workflow1Select} setSelectVal={setWorkflow1Select} data={["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
@@ -46,7 +46,7 @@ export const PerformanceAnalysisGraphHeader = () => {
                         </div>
                     </Grid>
                     <Grid item xs={6} className='position-relative'>
-                        <Box sx={{ top: '20px',zIndex:2 }} className="position-absolute">
+                        <Box sx={{ top: '23px',zIndex:2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName="Workflow" selectVal={workflow2Select} setSelectVal={setWorkflow2Select} data={["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
