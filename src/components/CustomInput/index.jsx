@@ -16,12 +16,13 @@ const CustomInput = ({
   type = "Text",
   options = [],
   inputClass,
+  parentClass,
   labelClass,
   ...props
 }) => {
   useEffect(() => {}, [options?.length]);
   return (
-    <Box className={"custom-input-1"}>
+    <Box className={`custom-input-1 ${parentClass}`}>
       <label
         style={{ paddingLeft: required ? "0" : "7px" }}
         className={`input_label input_label2  ${labelClass ? labelClass : ""}`}
