@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, Modal, Typography } from "@mui/material";
+import { Card, Box, Modal, Typography, Grid } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -19,17 +19,6 @@ import Add_role from './Add_Update_cards/Add_Update_cards/Add_role';
 import Update_role from './Add_Update_cards/Add_Update_cards/Update_role';
 
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
-  // border: '2px solid #000',
-  borderRadius: "10px",
-  boxShadow: 24,
-  p: 4,
-};
 
 export const RolesRightsTable = () => {
   const {
@@ -136,7 +125,7 @@ export const RolesRightsTable = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {/* <BasicInformationForm/> */}
         
@@ -151,8 +140,8 @@ export const RolesRightsTable = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+        <Box>
+          <Typography id="modal-modal-description" >
             {/* <BasicInformationForm/> */}
            {addRoleModal && <Add_role closeAddRoleModal = {closeAddRoleModal} />}
           </Typography>

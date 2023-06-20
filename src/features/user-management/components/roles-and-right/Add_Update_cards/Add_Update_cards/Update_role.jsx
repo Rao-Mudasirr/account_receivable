@@ -1,22 +1,23 @@
 import React from 'react';
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Typography from '@mui/material/Typography';
-import { Box, TextField } from '@mui/material';
+import { Box, TextField, Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import GlobalButton from '../../../../../../components/global-button/global-button';
 
 const UpdateRole = (props) => {
   const { handleCloseFormModal } = props;
 
   return (
-    <div className="card_style">
-      <Box sx={{ width: '592px', height: '416px', border:'8px' }}>
+    <div className="height-100vh flex justify-center align-center">
+      <Box sx={{ width: '592px', height: '416px', borderRadius: '8px', backgroundColor: 'white', p: 2.3 }}>
         <Typography
           sx={{
             fontSize: 20,
             fontWeight: '600',
+            fontFamily:'Exo 2',
             display: 'flex',
             justifyContent: 'space-between',
           }}
@@ -32,18 +33,16 @@ const UpdateRole = (props) => {
               mt: 5,
               fontSize: 16,
               fontWeight: '400',
+              height: '45px',
+              fontFamily:'Exo 2',
             }}
           >
             Role Name
           </Typography>
           <TextField
+            sx={styles.field__color}
             className="fields"
-            sx={{
-              m: 1,
-              width: '100%',
-              maxWidth: '63ch',
-              borderBottomColor: '#C4C4CC',
-            }}
+            fullWidth
             id="standard-basic"
             variant="standard"
           />
@@ -53,21 +52,20 @@ const UpdateRole = (props) => {
               mt: 5,
               fontSize: 16,
               fontWeight: '400',
+              fontFamily:'Exo 2',
+              height: '45px'
             }}
           >
             Description
           </Typography>
           <TextField
-            sx={{
-              m: 1,
-              width: '100%',
-              maxWidth: '63ch',
-              borderBottomColor: '#C4C4CC',
-            }}
+            sx={styles.field__color}
+            fullWidth
             id="standard-basic"
             variant="standard"
           />
         </CardContent>
+
         <div
           style={{
             display: 'flex',
@@ -76,27 +74,59 @@ const UpdateRole = (props) => {
             gap: 10,
           }}
         >
-          <Button variant="outlined" color="inherit" onClick={() => handleCloseFormModal(false)}>
-            Cancel
-          </Button>
-          <Button
-            variant="contained"
+          <Button variant="outlined" color="inherit"
+            onClick={() => handleCloseFormModal(false)}
             sx={{
-              background: '#2B2B33',
-              color: 'white',
+              color: 'black',
+              borderColor: '#40404D',
+              padding: '8px',
+              border: '1.5px solid #40404D',
+              fontWeight: 400,
+              fontSize: '0.75rem',
+              borderRadius: '8px',
+              textTransform: 'capitalize',
               '&:hover': {
-                background: 'black',
-                color: 'white',
-                border: '1px solid black',
-              },
+                borderColor: 'black',
+                color: 'black',
+              }
             }}
           >
-            Update
-          </Button>
+            Cancel</Button>
+          <GlobalButton
+            btnText='Update'
+            btnName='accent'
+          />
         </div>
       </Box>
-    </div>
+    </div >
   );
 };
 
 export default UpdateRole;
+
+
+const styles = {
+  field__color: () => ({
+    '& label': {
+      color: 'black',
+    },
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black'
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+        borderWidth: '0.15rem',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black',
+      },
+    },
+  })
+}

@@ -30,10 +30,6 @@ export const Aging_Buckets_Col = [
     // isSortable: true,
   },
 
-
-];
-
-export const Aging_Buckets_Col2 = [
   {
     accessorFn: (row) => <Link to="/overdue-invoices">{row.Aging_BucketsLT30}</Link>,
     id: "Aging_BucketsLT30",
@@ -70,7 +66,13 @@ export const Aging_Buckets_Col2 = [
     header: "Aging Buckets(>90d)",
     // isSortable: true,
   },
+
+
 ];
+
+// export const Aging_Buckets_Col2 = [
+  
+// ];
 
 
 export const Aging_Buckets_Data = [
@@ -94,7 +96,7 @@ export const Aging_Buckets_Data = [
     Aging_BucketsLT30: '23%',
     Aging_Buckets30To60: '60%',
     Aging_Buckets60To90: '72%',
-    Aging_BucketsLT90: '92%,'
+    Aging_BucketsLT90: '92%'
   },
   {
     id: 3,
@@ -105,6 +107,6 @@ export const Aging_Buckets_Data = [
     Aging_BucketsLT30: '22%',
     Aging_Buckets30To60: '65%',
     Aging_Buckets60To90: '90%',
-    Aging_BucketsLT90: '98%,'
+    Aging_BucketsLT90: '98%'
   },
 ]
