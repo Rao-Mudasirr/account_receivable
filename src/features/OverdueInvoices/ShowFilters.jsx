@@ -1,10 +1,21 @@
-import React from 'react';
-import { Box, Button, Card, FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import React from "react";
+import {
+  Box,
+  Button,
+  Card,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import Export from './Export';
-import Date_Range from './Date_Range';
-import ExportModal from '../client-details/components/export-modal/export-modal';
-import DatePickerModal from '../client-details/components/date-picker-modal/date-picker-modal';
+import Export from "./Export";
+import Date_Range from "./Date_Range";
+import ExportModal from "../client-details/components/export-modal/export-modal";
+import DatePickerModal from "../client-details/components/date-picker-modal/date-picker-modal";
+import FilterModal from "../client-details/components/filter-modal/FilterModal";
 
 function ShowFilters({ handleClick, filter_type, isOpen, page, input_filter }) {
   return (
@@ -14,6 +25,8 @@ function ShowFilters({ handleClick, filter_type, isOpen, page, input_filter }) {
           sx={{
             width: "592px",
             // height: '376px',
+            overflow: "auto !important",
+            maxHeight: "460px",
             position: "absolute",
             right: "50px",
             zIndex: 999,
@@ -53,64 +66,68 @@ function ShowFilters({ handleClick, filter_type, isOpen, page, input_filter }) {
                 : filter_type === "Export" && "Export"}
             </Typography>
           </div>
-          {
-            filter_type == "Export" ?
-              <ExportModal />
-              : (filter_type == 'More' && !page && !input_filter) ?
-                <DatePickerModal />
-                : (filter_type == 'More' && page && input_filter) && (
-                  <>
-                    <Box sx={{ flexGrow: 1 }}>
-                      <Grid container spacing={1}>
-                        {input_filter?.map((val, index) => (
-                          <Grid
-                            style={{ marginBottom: "40px" }}
-                            spacing={2}
-                            key={index}
-                            item
-                            xs={12}
-                            md={6}
-                            lg={6}
+          {filter_type == "Export" ? (
+            <ExportModal />
+          ) : filter_type === "filters" ? (
+            <FilterModal />
+          ) : filter_type == "More" && !page && !input_filter ? (
+            <DatePickerModal />
+          ) : (
+            filter_type == "More" &&
+            page &&
+            input_filter && (
+              <>
+                <Box sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={1}>
+                    {input_filter?.map((val, index) => (
+                      <Grid
+                        style={{ marginBottom: "40px" }}
+                        spacing={2}
+                        key={index}
+                        item
+                        xs={12}
+                        md={6}
+                        lg={6}
+                      >
+                        <InputLabel
+                          id="demo-simple-select-filled-label"
+                          className="field-label"
+                        >
+                          {val?.field}
+                        </InputLabel>
+                        <FormControl
+                          variant="standard"
+                          style={{ width: "260px", height: "48px" }}
+                        >
+                          <InputLabel id="demo-simple-select-filled-label">
+                            Select
+                          </InputLabel>
+                          <Select
+                            placeholder="Select"
+                            labelId="demo-simple-select-filled-label"
+                            // id="demo-simple-select-filled"
+                            // value={value}
+                            // onChange={handleChange}
                           >
-                            <InputLabel
-                              id="demo-simple-select-filled-label"
-                              className="field-label"
-                            >
-                              {val?.field}
-                            </InputLabel>
-                            <FormControl
-                              variant="standard"
-                              style={{ width: "260px", height: "48px" }}
-                            >
-                              <InputLabel id="demo-simple-select-filled-label">
-                                Select
-                              </InputLabel>
-                              <Select
-                                placeholder="Select"
-                                labelId="demo-simple-select-filled-label"
-                              // id="demo-simple-select-filled"
-                              // value={value}
-                              // onChange={handleChange}
-                              >
-                                <MenuItem value="">
-                                  <em>None</em>
+                            <MenuItem value="">
+                              <em>None</em>
+                            </MenuItem>
+                            {val?.Items?.map((data, i) => (
+                              <React.Fragment key={i}>
+                                <MenuItem value={data?.item}>
+                                  {data?.item}
                                 </MenuItem>
-                                {val?.Items?.map((data, i) => (
-                                  <React.Fragment key={i}>
-                                    <MenuItem value={data?.item}>
-                                      {data?.item}
-                                    </MenuItem>
-                                  </React.Fragment>
-                                ))}
-                              </Select>
-                            </FormControl>
-                          </Grid>
-                        ))}
+                              </React.Fragment>
+                            ))}
+                          </Select>
+                        </FormControl>
                       </Grid>
-                    </Box>
-                  </>
-                )
-          }
+                    ))}
+                  </Grid>
+                </Box>
+              </>
+            )
+          )}
           {/* </ul> */}
           <Box
             className="filter-below-btn"
@@ -159,11 +176,9 @@ function ShowFilters({ handleClick, filter_type, isOpen, page, input_filter }) {
             </Button>
           </Box>
         </Card>
-      )
-      }
-
+      )}
     </div>
-  )
+  );
 }
 
-export default ShowFilters
+export default ShowFilters;

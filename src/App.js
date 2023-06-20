@@ -21,8 +21,8 @@ import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
 import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
-import SignUpForm from './components/SignUp_form/SignUp_form'
-import SignUpForm2 from './components/SignUp_form/SignUp_form2'
+import SignUpForm from "./components/SignUp_form/SignUp_form";
+import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
@@ -94,11 +94,6 @@ function App() {
           </Route>
           <Route exact path={"/reports"} element={<MainReport />} />
           <Route exact path={"/reports/:id"} element={<ReportInfo />} />
-          <Route
-            exact
-            path={"/report-details/cashflow-forcasting/:id"}
-            element={<Cashflow_Forcasting />}
-          />
           <Route
             exact
             path={"/report-details/month/:id"}
