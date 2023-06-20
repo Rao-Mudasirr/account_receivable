@@ -12,6 +12,8 @@ import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { toast } from "react-toastify";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 
+import { PerformanceAnalysisGraphHeader } from "../../performance-analysis-graph-header/performance-analysis-graph-header";
+import { useParams } from "react-router-dom";
 
 const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
   const [selectBranch, setSelectBranch] = useState("");
@@ -20,10 +22,12 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
   const [checkboxExcel, setCheckboxExcel] = useState(false);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const {id} = useParams()
   return (
     <>
-      <div className="invoice-title">Workflows Comparison</div>
-
+      <div className="invoice-title">{id ? 'Client Comparison' : 'Workflows Comparison'}</div>
+      <PerformanceAnalysisGraphHeader />
+      <br/>
       {/* Search field */}
       <Grid container className="align-center cash-collection-report flex justify-space-between">
         <Grid >
@@ -209,6 +213,7 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
           </Grid>
       </Grid>
       <br />
+      
       <CustomTable
         data={INVOICE_DATA}
         columns={columns}
