@@ -146,8 +146,8 @@ const Manager = () => {
   };
   
   return (
-    <div className="container">
-      <p>Manager</p>
+    <div className="main_manager_container">
+      <p className='manager_text'>Manager</p>
       <div className="line" />
       <div className="manager_container">
         <div className="left">

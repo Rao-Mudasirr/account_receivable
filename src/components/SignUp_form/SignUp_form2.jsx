@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center">
+    <div className="height-100vh flex align-center justify-center signup_container">
       <Box
         sx={{
           width: 600,
@@ -135,7 +135,7 @@ const MySignUpForm2 = () => {
           borderRadius: '16px'
         }}
       >
-        <div className="heading">
+        <div className="sign_heading">
           <span style={{ color: '#4C4C4C', marginRight: '10px' }}>Welcome to</span>
           Accountants Pact!
         </div>
@@ -156,7 +156,7 @@ const MySignUpForm2 = () => {
               <Grid container spacing={7}>
                 <Grid item xs={12}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="number" style={{ color: touched.number && errors.number ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
                         <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
                         Registration Number(CRN)
@@ -197,7 +197,7 @@ const MySignUpForm2 = () => {
                 </Grid>
                 <Grid item xs={12} >
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="companyName">Company Name</label>
                     </div>
                     <Field

@@ -1,5 +1,5 @@
-
-.heading {
+.signup_container {
+.sign_heading {
   font-family: 'Exo 2';
   font-style: normal;
   font-weight: 600;
@@ -19,7 +19,7 @@
   color: #4C4C4C;
 }
 
-.label {
+.signup_label {
   font-size: 16px;
   font-family: 'Exo 2';
   font-weight: 400;
@@ -49,8 +49,8 @@
  .container {
   padding: 5px;
  }
- .heading {
+ .sign_heading {
   display: grid;
   text-align: center;
  }
-}
+}}

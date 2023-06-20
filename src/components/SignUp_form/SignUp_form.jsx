@@ -58,7 +58,7 @@ const validationSchema = Yup.object().shape({
       <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
       Please Enter a Valid email Address</div>),
   password: Yup.string().min(6, true).required(true),
-  checkbox: Yup.array().min(1, 'Please choose at least one option').required('Please select an option'),
+  checkbox: Yup.array().min(2, 'Please choose at least one option').required('Please select an option'),
 })
 
 const labelstyles = theme => ({
@@ -151,7 +151,7 @@ export default function MySignUpForm(props) {
   let isAllSelected = personName.length === names.length - 1;
 
   return (
-    <div className="height-100vh flex align-center justify-center">
+    <div className="height-100vh flex align-center justify-center signup_container" >
       <Box
         sx={{
           width: 600,
@@ -162,7 +162,7 @@ export default function MySignUpForm(props) {
           borderRadius: '16px'
         }}
       >
-        <div className="heading">
+        <div className="sign_heading">
           <span style={{ color: '#4C4C4C', marginRight: '10px' }}>Welcome to</span>
           Accountants Pact!
         </div>
@@ -209,7 +209,7 @@ export default function MySignUpForm(props) {
 
                 <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="email"
                         style={{ color: touched.email && errors.email ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
                         <span
@@ -237,7 +237,7 @@ export default function MySignUpForm(props) {
 
                 <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="password"
                         style={{ color: touched.password && errors.password ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}
                       >
@@ -283,7 +283,7 @@ export default function MySignUpForm(props) {
                 <Grid item xs={12} sx={{ height: '75px', mt: '2.5rem' }}>
                   <Form>
                     <Box>
-                      <div className="label">
+                      <div className="signup_label">
                         <label htmlFor="checkbox" style={{ color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
                           <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
                           Why are you signing up for Accountant Pact?
