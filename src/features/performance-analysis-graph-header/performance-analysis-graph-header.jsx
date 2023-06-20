@@ -6,6 +6,32 @@ import { DashboardDateRange } from '../dashboard-date-range/dashboard-date-range
 import { DashboardChartSwitch } from '../dashboard-chart-switch/dashboard-chart-switch';
 import { PaymentForecastingChartSwitch } from '../payment-forecasting-chart-switch/payment-forecasting-chart-switch';
 import { ComparisonBarChart } from '../comparison-bar-chart/comparison-bar-chart';
+import { ComparisonPieChart } from '../comparison-pie-chart/comparison-pie-chart';
+const ComparisonBarChart1 = [
+    {
+        name: 'Paid Invoices',
+        data: [144, 55, 57, 56, 61, 58, 63, 60, 66, 10, 100, 67]
+    },
+    {
+        name: 'OverDue Invoices',
+        data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 34, 76, 12]
+    }
+]
+const ComparisonBarChart2 = [
+    {
+        name: 'Paid Invoices',
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 10, 100, 67]
+    },
+    {
+        name: 'OverDue Invoices',
+        data: [176, 85, 101, 98, 87, 105, 91, 114, 94, 34, 76, 12]
+    }
+]
+const getMax = (array1, array2, array3, array4) => {
+    let mainArr = [array1, array2, array3, array4];
+    const flattenedArray = mainArr.flat();
+    return Math.max(...flattenedArray);
+}
 export const PerformanceAnalysisGraphHeader = () => {
     const [graphDivOpen, setGraphDivOpen] = useState(false);
     const [showInSelect, setShowInSelect] = useState("Percentage");
@@ -38,19 +64,19 @@ export const PerformanceAnalysisGraphHeader = () => {
                 </Grid>
                 <Grid container className='flex align-center justify-between margin-top-1'>
                     <Grid item xs={6} className='position-relative'>
-                        <Box sx={{ top: '20px',zIndex:2 }} className="position-absolute">
+                        <Box sx={{ top: '23px', zIndex: 2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName="Workflow" selectVal={workflow1Select} setSelectVal={setWorkflow1Select} data={["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
-                            <ComparisonBarChart yaxisHidden={true} />
+                            {chartSwitch === "Bar Graph" ? <ComparisonBarChart yaxisHidden={true} showIn={showInSelect} data={ComparisonBarChart1} max={getMax(ComparisonBarChart1[0].data, ComparisonBarChart1[1].data, ComparisonBarChart2[0].data, ComparisonBarChart2[1].data,)} /> : <ComparisonPieChart showIn={showInSelect} data={[2050, 2000]} max={getMax([2050, 2000])} />}
                         </div>
                     </Grid>
                     <Grid item xs={6} className='position-relative'>
-                        <Box sx={{ top: '20px',zIndex:2 }} className="position-absolute">
+                        <Box sx={{ top: '23px', zIndex: 2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName="Workflow" selectVal={workflow2Select} setSelectVal={setWorkflow2Select} data={["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
-                            <ComparisonBarChart yaxisHidden={false} />
+                            {chartSwitch === "Bar Graph" ? <ComparisonBarChart yaxisHidden={false} showIn={showInSelect} data={ComparisonBarChart2} max={getMax(ComparisonBarChart1[0].data, ComparisonBarChart1[1].data, ComparisonBarChart2[0].data, ComparisonBarChart2[1].data,)} /> : <ComparisonPieChart showIn={showInSelect} data={[2050, 1000]} max={getMax([2050, 1000])} />}
                         </div>
                     </Grid>
                 </Grid>
