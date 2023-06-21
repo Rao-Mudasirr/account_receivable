@@ -26,7 +26,21 @@ export const DashboardSelect = ({ data, setSelectVal, selectVal, selectSx, MenuS
                 onChange={(event) => setSelectVal(event.target.value)}
             >
                 {
-                    data?.map(item => <MenuItem key={item} className='font-family-Exo' value={item}>{item}</MenuItem>)
+                    id == 'Status' ? (
+                        data?.map(item => <MenuItem key={item} className='font-family-Exo' value={item} style={{
+                            color:
+                            item === "Paid"
+                              ? "#48995D"
+                              : item === "Due"
+                              ? "#FFBF00"
+                              : item === "Overdue"
+                              ? "#FF3F3F"
+                              : "#6B6B80",}}>{item}</MenuItem>)
+                    
+                    ) : (
+
+                        data?.map(item => <MenuItem key={item} className='font-family-Exo' value={item}>{item}</MenuItem>)
+                    )
                 }
             </Select>
         </>
