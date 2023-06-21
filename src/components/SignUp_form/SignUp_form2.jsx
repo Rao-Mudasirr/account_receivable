@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center signup_container">
+    <div className="height-100vh flex align-center justify-center signup_container margin-top-1">
       <Box
         sx={{
           width: 600,

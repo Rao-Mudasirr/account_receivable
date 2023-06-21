@@ -26,8 +26,10 @@ import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
+import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
   return (
@@ -37,8 +39,14 @@ function App() {
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/home" element={<HomeLayout />} >
-        <Route path="/home/" element={<Home />} />
+          <Route path="/home/" element={<Home />} />
         </Route>
+        
+        <Route path="/account-receivable" element={<HomeLayout />} >
+          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+        </Route>
+        
+        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
@@ -53,10 +61,8 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-
-          {/* <Route path="/report-details/workflows-report" element={<WorkflowReport/>} /> */}
           <Route
-            path="/report-details/workflows-report/workflow-detail"
+            path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
           />
           <Route
