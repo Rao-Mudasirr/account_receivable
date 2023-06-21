@@ -15,10 +15,10 @@ function HeroSection() {
         <Grid xs={12} xl={6} md={6} lg={6}>
             <Box className='hero-section-right'>
                 <ul>
-                    <li>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
-                    <li>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
-                    <li>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
-                    <li>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
+                    <li className='odd-li'>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
+                    <li className='even-li'>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
+                    <li className='odd-li'>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
+                    <li  className='even-li'>Accountant Pact contains everything you need for faster Accounting journey of your company.</li>
                 </ul>
             </Box>
         </Grid>

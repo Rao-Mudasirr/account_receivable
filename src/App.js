@@ -42,7 +42,7 @@ function App() {
           <Route path="/home/" element={<Home />} />
         </Route>
 
-        <Route path="/" element={<HomeLayout />} >
+        <Route path="/account-payable" element={<HomeLayout />} >
           <Route path="/account-payable" element={<AccountPayable />} />
         </Route>
 
