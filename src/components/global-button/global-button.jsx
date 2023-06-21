@@ -5,6 +5,7 @@ const GlobalButton = (props) => {
   const {
     btnName,
     btnText,
+    startIcon, // Added startIcon prop
     endIcon,
     width,
     disableElevation,
@@ -79,6 +80,7 @@ const GlobalButton = (props) => {
       type={type}
       disabled={disabled}
       value={btnValue}
+      startIcon={startIcon} // Added startIcon prop
       endIcon={endIcon}
     >
       {btnText} 
