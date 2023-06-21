@@ -82,8 +82,7 @@ const options = {
         enabled: false,
     },
     colors: [
-        function ({ value, seriesIndex, w }) {
-            console.log(value,seriesIndex,w,w?.config?.series?.[0].data?.[2]);
+        function ({ value, w }) {
             if (w?.config?.series?.[0].data?.[2] === value) {
                 return '#FF9898'
             } else {

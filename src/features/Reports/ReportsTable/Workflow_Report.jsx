@@ -63,7 +63,7 @@ export const WORKFLOW_REPORT_COL = [
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-         <Link to="/report-details/workflows-report/workflow-detail"> <TableAction type="view" /> </Link>
+         <Link to="/reports/workflows-report/workflow-detail"> <TableAction type="view" /> </Link>
         </Box>
       ),
       header: () => <span>Actions</span>,

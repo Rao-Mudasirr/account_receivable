@@ -20,13 +20,13 @@ import ClientWorkFlow from "./pages/client-workflows";
 import { ToastContainer } from "react-toastify";
 import AddWorkflow from "./pages/add-workflows";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
-import Cashflow_Forcasting from "./pages/Cashflow_Forcasting";
 import SignUpForm from "./components/SignUp_form/SignUp_form";
 import SignUpForm2 from "./components/SignUp_form/SignUp_form2";
 import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
+import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
@@ -49,10 +50,8 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-
-          {/* <Route path="/report-details/workflows-report" element={<WorkflowReport/>} /> */}
           <Route
-            path="/report-details/workflows-report/workflow-detail"
+            path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
           />
           <Route

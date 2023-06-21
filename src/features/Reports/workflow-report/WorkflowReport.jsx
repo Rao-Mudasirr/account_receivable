@@ -5,8 +5,6 @@ import { GlobalSearchBar } from "../../../components/global-search-filter/global
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import { Button, Grid, Box } from "@mui/material";
-import ShowFilters from "./ShowFilters";
-import Date_Range from "./Date_Range";
 import {
   WORKFLOW_REPORT_COL,
   WORKFLOW_REPORT_DATA,
@@ -20,7 +18,6 @@ import { toast } from "react-toastify";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 
 export default function WorkflowReport() {
-  
   const [selectBranch, setSelectBranch] = useState("");
   const [selectClient, setSelectClient] = useState("");
   const [startDate, setStartDate] = useState(null);

@@ -1,9 +1,10 @@
-.container {
+.main_manager_container {
     padding: 0.5rem;
-}
-.container p {
+
+.manager_text {
     font-size: 20px;
     font-weight: 600;
+    font-family: 'Exo 2';
     margin-top: 2rem;
     margin-bottom: 0.8rem;
 }
@@ -56,20 +57,12 @@
 
 .text {
     margin-left: -1rem;
+    font-family: 'Exo 2';
     cursor: pointer;
 }
 
 .text.active {
     font-weight: 600;
-}
-.btn-icon {
-    display: flex;
-    gap: 0.4rem;
-}
-.icon {
-    margin-top: 0.6rem;
-    cursor: pointer;
-    right: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -107,4 +100,5 @@
     .text {
         margin-left: 0;
     }
+}
 }

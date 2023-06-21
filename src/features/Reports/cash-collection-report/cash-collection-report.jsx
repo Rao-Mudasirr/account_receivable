@@ -12,12 +12,13 @@ import { CustomPopover } from '../../../components/custom-popover/custom-popover
 import { ExportCardCheckbox } from '../../../components/export-card-checkbox/export-card-checkbox'
 import { toast, ToastContainer } from 'react-toastify';
 import { CashCollectionReportData } from '../../../mock-data/ReportData'
+import { CashCollectionReportInvoiceModal } from '../../cash-collection-report-invoice-modal/cash-collection-report-invoice-modal'
 
 const CashCollectionReportCol = [
     {
         accessorFn: (row) => row.invoiceId,
         id: "invoiceId",
-        cell: (info) => info.getValue(),
+        cell: (info) => (<CashCollectionReportInvoiceModal id={info?.row?.original?.invoiceId} />),
         header: () => <span>Invoice Id</span>,
         isSortable: true,
     },
