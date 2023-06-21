@@ -85,7 +85,7 @@ const MySignUpForm2 = () => {
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
-    handleSignUp()
+    handleSignUp() 
   };
 
   const handleSignUp = () => {
@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center">
+    <div className="height-100vh flex align-center justify-center signup_container margin-top-1">
       <Box
         sx={{
           width: 600,
@@ -135,7 +135,7 @@ const MySignUpForm2 = () => {
           borderRadius: '16px'
         }}
       >
-        <div className="heading">
+        <div className="sign_heading">
           <span style={{ color: '#4C4C4C', marginRight: '10px' }}>Welcome to</span>
           Accountants Pact!
         </div>
@@ -156,13 +156,13 @@ const MySignUpForm2 = () => {
               <Grid container spacing={7}>
                 <Grid item xs={12}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="number" style={{ color: touched.number && errors.number ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
                         <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
                         Registration Number(CRN)
                       </label>
                     </div>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{ height: '75px' }}>
                       <Field
                         sx={styles.field__color}
                         component={TextField}
@@ -184,7 +184,7 @@ const MySignUpForm2 = () => {
                                 onClick={handleClickshowNumber}
                                 onMouseDown={handleMouseDownNumber}
                                 edge="end"
-                                sx={{ margin: 0.7, pb: 2 }}
+                                sx={{ margin: 0.7, pb: 2, transform: 'scaleX(-1)' }}
                               >
                                 {showNumber ? <RiEyeOffLine /> : <RiEyeLine />}
                               </IconButton>
@@ -195,9 +195,9 @@ const MySignUpForm2 = () => {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} >
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="companyName">Company Name</label>
                     </div>
                     <Field
@@ -210,14 +210,14 @@ const MySignUpForm2 = () => {
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment position='start'>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10 px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ height: '75px' }}>
                   <div>
                     <label
                       htmlFor="mobile"
@@ -247,7 +247,7 @@ const MySignUpForm2 = () => {
                     />
                   </div>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ mt: '20px' }}>
                   <Button
                     variant="contained"
                     size="large"

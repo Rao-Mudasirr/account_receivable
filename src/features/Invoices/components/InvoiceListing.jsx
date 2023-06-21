@@ -22,6 +22,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import { CustomPopover } from "../../../components/custom-popover/custom-popover";
+import { DashboardSelect } from "../../dashboard-select/dashboard-select";
+import { toast } from "react-toastify";
 
 const INVOICE_DATA = [
   {
@@ -81,80 +85,6 @@ const INVOICE_DATA = [
   },
 ];
 
-const input_filter = [
-  {
-    field: "Branch",
-    Items: [
-      {
-        id: "1",
-        item: "Item 1",
-      },
-      {
-        id: "2",
-        item: "Item 2",
-      },
-      {
-        id: "3",
-        item: "Item 3",
-      },
-    ],
-  },
-  {
-    field: "Client",
-    Items: [
-      {
-        id: "1",
-        item: "Item 1",
-      },
-      {
-        id: "2",
-        item: "Item 2",
-      },
-      {
-        id: "3",
-        item: "Item 3",
-      },
-    ],
-  },
-  {
-    field: "Status",
-    Items: [
-      {
-        id: "1",
-        item: "Paid",
-      },
-      {
-        id: "2",
-        item: "Due",
-      },
-      {
-        id: "3",
-        item: "Overdue",
-      },
-    ],
-  },
-  {
-    field: "Aging Bucket",
-    Items: [
-      {
-        id: "1",
-        item: "Amount overdue < 30d",
-      },
-      {
-        id: "2",
-        item: "Amount overdue 30 - 60d",
-      },
-      {
-        id: "3",
-        item: "Amount overdue 60 - 90d",
-      },
-      {
-        id: "4",
-        item: "Amount overdue > 90d",
-      },
-    ],
-  },
-];
 export default function InvoiceListing() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -235,20 +165,12 @@ export default function InvoiceListing() {
       header: "Total Amount",
       // isSortable: true,
     },
-    // {
-    //   id: "Actions",
-    //   cell: (info) => (
-    //     <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-    //       {/* <TableAction type="delete" onClicked={handleOpen} />
-    //        <TableAction type="edit" onClicked={handleFormDialog} />
-    //       <TableAction type="setting" onClicked={handleFormDialog} /> */}
-    //     </Box>
-    //   ),
-    //   header: () => <span>Actions</span>,
-    //   isSortable: false,
-    // },
   ];
 
+  const [selectBranch, setSelectBranch] = useState("");
+  const [selectClient, setSelectClient] = useState("");
+  const [status, setStatus] = useState("");
+  const [bucket, setBucket] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [error, setError] = useState(null);
@@ -298,140 +220,253 @@ export default function InvoiceListing() {
 
         <Grid xs={12} md={6} lg={6} xl={6}>
           <div style={{ marginLeft: "auto", display: "flex" }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              {/* <DemoContainer components={["DatePicker", "DatePicker"]}> */}
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{
                   paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: startDate ? "#40404D" : "#A6A6B3",
+                  },
                 }}
-                label="From"
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
+                slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
                 value={startDate}
-                onChange={(date) => handleDateChange(date, "Start date")}
+                onChange={(date) => setStartDate(date)}
               />
               <DatePicker
                 sx={{
                   paddingRight: "20px",
+                  ".MuiInputBase-input ": {
+                    p: "13px",
+                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+                    color: "#A6A6B3",
+                  },
                 }}
-                label="To"
+                slotProps={{ textField: { placeholder: "To" } }}
+                slots={{
+                  openPickerIcon: CalendarMonthRoundedIcon,
+                }}
                 value={endDate}
-                onChange={(date) => handleDateChange(date, "End Date")}
+                onChange={(date) => setEndDate(date)}
               />
-              {/* </DemoContainer> */}
             </LocalizationProvider>
-            <Button
-              onClick={handleClick}
-              variant="outlined"
-              color="primary"
-              sx={{
-                mr: 2,
-                color: "#40404D",
-                borderColor: "#40404D",
-                borderRadius: "8px",
-                "&:hover": {
-                  borderColor: "black",
-                  color: "black",
-                },
-              }}
-              endIcon={<img src={filterIcon} alt="More Filter" />}
-            >
-              More Filter
-            </Button>
-            {isOpen && (
-              <Card
-                style={{
-                  width: "592px",
-                  // height: '376px',
-                  position: "absolute",
-                  right: "50px",
-                  zIndex: 10,
-                  padding: "24px",
-                  marginTop: "7px",
-                  boxShadow: "0px 9px rgba(0, 0, 0, 0.2);",
+            <CustomPopover
+              mainTitle="Filters"
+              mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
+              popoverOpenerTitle="More Filters"
+              popoverOpenerProps={{
+                variant: "outlined",
+                sx: {
+                  mr: 2,
+                  top: '20px',
+                  whiteSpace: "nowrap",
+                  color: "#40404D",
+                  border: "1.5px solid #40404D !important",
+                  height: "32px",
                   borderRadius: "8px",
-                }}
-              >
-                {/* <ul> */}
-                <div className="filter-heading">
-                  <div className="title-filter">Filters</div>
-                  <div className="icon-filter" onClick={handleClick}>
-                    <CancelOutlinedIcon />{" "}
-                  </div>
-                </div>
-                <br />
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={1}>
-                    {input_filter?.map((val, index) => (
-                      <Grid
-                        style={{ marginBottom: "40px" }}
-                        spacing={2}
-                        key={index}
-                        item
-                        xs={12}
-                        md={6}
-                        lg={6}
-                      >
-                        <InputLabel
-                          id="demo-simple-select-filled-label"
-                          className="field-label"
-                        >
-                          {val?.field}
-                        </InputLabel>
-                        <FormControl
-                          variant="standard"
-                          style={{ width: "260px", height: "48px" }}
-                        >
-                          <InputLabel id="demo-simple-select-filled-label">
-                            Select
-                          </InputLabel>
-                          <Select
-                            placeholder="Select"
-                            labelId="demo-simple-select-filled-label"
-                            // id="demo-simple-select-filled"
-                            // value={value}
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value="">
-                              <em>None</em>
-                            </MenuItem>
-                            {val?.Items?.map((data, i) => (
-                              <React.Fragment key={i}>
-                                <MenuItem
-                                  value={data?.item}
-                                  style={{
-                                    color:
-                                      data?.item === "Paid"
-                                        ? "#48995D"
-                                        : data?.item === "Due"
-                                        ? "#FFBF00"
-                                        : data?.item === "Overdue"
-                                        ? "#FF3F3F"
-                                        : "#6B6B80",
-                                  }}
-                                >
-                                  {data?.item}
-                                </MenuItem>
-                              </React.Fragment>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-                    ))}
+                  "&:hover": {
+                    border: "2px solid #40404D !important",
+                  },
+                },
+                endIcon: <img src={filterIcon} alt="More Filter" />,
+                className:
+                  "buttons-filters font-family-Exo font-weight-400 tertiary-title",
+              }}
+            >
+              {(popupState) => (
+                <>
+                  <Grid container spacing={2}>
+                    <Grid item sm={6} xs={12}>
+                      <label className="secondary-color" for="branch">
+                        Branch
+                      </label>
+                      <DashboardSelect
+                        id="branch"
+                        placeholder="Select"
+                        fullWidth={true}
+                        MenuSx={{
+                          ".MuiMenuItem-root": {
+                            color: "#6B6B80",
+                            fontSize: "14px",
+                            fontWeight: 400,
+                          },
+                          marginTop: "10px",
+                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                          borderRadius: "8px",
+                          ".MuiList-root": { p: "0" },
+                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                        }}
+                        selectSx={{
+                          ".MuiOutlinedInput-notchedOutline": {
+                            borderBottom: "1.6px solid #C4C4CC !important",
+                          },
+                          ".MuiSelect-select": {
+                            p: "10.5px 14px",
+                            fontWeight: "400",
+                            color: "#40404D",
+                            fontSize: "15px",
+                          },
+                          ".MuiSelect-icon": { top: "40%" },
+                        }}
+                        selectVal={selectBranch}
+                        setSelectVal={setSelectBranch}
+                        data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
+                      />
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                      <label className="secondary-color" for="Client">
+                        Client
+                      </label>
+                      <DashboardSelect
+                        id="Client"
+                        placeholder="Select"
+                        fullWidth={true}
+                        MenuSx={{
+                          ".MuiMenuItem-root": {
+                            color: "#6B6B80",
+                            fontSize: "14px",
+                            fontWeight: 400,
+                          },
+                          marginTop: "10px",
+                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                          borderRadius: "8px",
+                          ".MuiList-root": { p: "0" },
+                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                        }}
+                        selectSx={{
+                          ".MuiOutlinedInput-notchedOutline": {
+                            borderBottom: "1.6px solid #C4C4CC !important",
+                          },
+                          ".MuiSelect-select": {
+                            p: "10.5px 14px",
+                            fontWeight: "400",
+                            color: "#40404D",
+                            fontSize: "15px",
+                          },
+                          ".MuiSelect-icon": { top: "40%" },
+                        }}
+                        selectVal={selectClient}
+                        setSelectVal={setSelectClient}
+                        data={["Client 1", "Client 2", "Client 3", "Client 4"]}
+                      />
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                      <label className="secondary-color" for="Client">
+                        Status
+                      </label>
+                      <DashboardSelect
+                        id="Status"
+                        placeholder="Select"
+                        fullWidth={true}
+                        MenuSx={{
+                          ".MuiMenuItem-root": {
+                            color: "#6B6B80",
+                            fontSize: "14px",
+                            fontWeight: 400,
+                          },
+                          marginTop: "10px",
+                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                          borderRadius: "8px",
+                          ".MuiList-root": { p: "0" },
+                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                        }}
+                        selectSx={{
+                          ".MuiOutlinedInput-notchedOutline": {
+                            borderBottom: "1.6px solid #C4C4CC !important",
+                          },
+                          ".MuiSelect-select": {
+                            p: "10.5px 14px",
+                            fontWeight: "400",
+                            color: "#40404D",
+                            fontSize: "15px",
+                          },
+                          ".MuiSelect-icon": { top: "40%" },
+                        }}
+                        selectVal={status}
+                        setSelectVal={setStatus}
+                        data={["Paid", "Due", "Overdue"]}
+                      />
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                      <label className="secondary-color" for="Client">
+                        Aging Bucket
+                      </label>
+                      <DashboardSelect
+                        id="bucket"
+                        placeholder="Select"
+                        fullWidth={true}
+                        MenuSx={{
+                          ".MuiMenuItem-root": {
+                            color: "#6B6B80",
+                            fontSize: "14px",
+                            fontWeight: 400,
+                          },
+                          marginTop: "10px",
+                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                          borderRadius: "8px",
+                          ".MuiList-root": { p: "0" },
+                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                        }}
+                        selectSx={{
+                          ".MuiOutlinedInput-notchedOutline": {
+                            borderBottom: "1.6px solid #C4C4CC !important",
+                          },
+                          ".MuiSelect-select": {
+                            p: "10.5px 14px",
+                            fontWeight: "400",
+                            color: "#40404D",
+                            fontSize: "15px",
+                          },
+                          ".MuiSelect-icon": { top: "40%" },
+                        }}
+                        selectVal={bucket}
+                        setSelectVal={setBucket}
+                        data={["Amount overdue < 30d", "Amount overdue 30 - 60d", "Amount overdue 60 - 90d", "Amount overdue > 90d"]}
+                      />
+                    </Grid>
                   </Grid>
-                </Box>
-                {/* </ul> */}
-                <div
-                  className="filter-below-btn"
-                  style={{ display: "flex", float: "right" }}
-                >
-                  <Button className="btn1" onClick={handleClick}>
-                    Clear
-                  </Button>
-                  &nbsp;
-                  <Button className="btn2">Apply</Button>
-                </div>
-              </Card>
-            )}
+                  <div className="filter-below-btn margin-top-2 flex justify-end">
+                    <Button
+                      className="btn1"
+                      onClick={() => {
+                        setSelectBranch("");
+                        setSelectClient("");
+                        setBucket("");
+                        setStatus("");
+                      }}
+                    >
+                      Clear
+                    </Button>
+                    &nbsp;
+                    <Button
+                      onClick={() => {
+                        if (selectBranch || selectClient) {
+                          setSelectBranch("");
+                          setSelectClient("");
+                          setBucket("");
+                          setStatus("");
+                          popupState.close();
+                        } else {
+                          toast.error("Please Select Any Type");
+                        }
+                      }}
+                      className="btn2 primary-bg-color"
+                    >
+                      Apply
+                    </Button>
+                  </div>
+                </>
+              )}
+            </CustomPopover>
           </div>
         </Grid>
       </Grid>
@@ -441,9 +476,6 @@ export default function InvoiceListing() {
       <CustomTable
         data={INVOICE_DATA}
         columns={columns}
-        // showSerialNo
-        // onPageChange={pageChangeHandler}
-        // onSortByChange={sortChangeHandler}
         isSuccess={true}
         isPagination={true}
       />

@@ -72,7 +72,32 @@ const labelstyles = theme => ({
   },
 });
 
-const MenuItemStyle = withStyles(labelstyles)(MenuItem);
+const ListItemTextStyle = withStyles(labelstyles)(ListItemText);
+
+
+const menuStyles = theme => ({
+  root: {
+    "&.Mui-selected": {
+      backgroundColor: "transparent"
+    },
+    "&.Mui-selected:hover": {
+      backgroundColor: "transparent"
+    },
+    "&.Mui-selected:focus": {
+      backgroundColor: "transparent"
+    },
+    "&.MuiSelect-outline":{
+      outline:"none",
+      border:"10px solid green"
+    },
+    "&.MuiInput-input":{
+      color:"red",
+      border:"10px solid green"
+    }
+  },
+})
+
+const StyledMenuItem = withStyles(menuStyles)(MenuItem);
 
 const checkBoxStyles = theme => ({
   root: {
@@ -126,7 +151,7 @@ export default function MySignUpForm(props) {
   let isAllSelected = personName.length === names.length - 1;
 
   return (
-    <div className="height-100vh flex align-center justify-center">
+    <div className="height-100vh flex align-center justify-center signup_container" >
       <Box
         sx={{
           width: 600,
@@ -137,7 +162,7 @@ export default function MySignUpForm(props) {
           borderRadius: '16px'
         }}
       >
-        <div className="heading">
+        <div className="sign_heading">
           <span style={{ color: '#4C4C4C', marginRight: '10px' }}>Welcome to</span>
           Accountants Pact!
         </div>
@@ -184,7 +209,7 @@ export default function MySignUpForm(props) {
 
                 <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="email"
                         style={{ color: touched.email && errors.email ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
                         <span
@@ -212,7 +237,7 @@ export default function MySignUpForm(props) {
 
                 <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
                   <div>
-                    <div className="label">
+                    <div className="signup_label">
                       <label htmlFor="password"
                         style={{ color: touched.password && errors.password ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}
                       >
@@ -233,7 +258,7 @@ export default function MySignUpForm(props) {
                       InputProps={{
                         style: {
                           fontSize: '14px',
-                          paddingLeft: '20px'
+                          paddingLeft: '20px',
                         },
                         endAdornment: (
                           <InputAdornment>
@@ -242,7 +267,7 @@ export default function MySignUpForm(props) {
                               onClick={handleClickShowPassword}
                               onMouseDown={handleMouseDownPassword}
                               edge="end"
-                              sx={{ margin: 0.7, pb: 2 }}
+                              sx={{ margin: 0.7, pb: 2, transform: 'scaleX(-1)' }}
                             >
                               {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
                             </IconButton>
@@ -255,19 +280,20 @@ export default function MySignUpForm(props) {
                 </Grid>
 
 
-                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
+                <Grid item xs={12} sx={{ height: '75px', mt: '2.5rem' }}>
                   <Form>
                     <Box>
-                      <div className="label">
+                      <div className="signup_label">
                         <label htmlFor="checkbox" style={{ color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
                           <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
                           Why are you signing up for Accountant Pact?
                         </label>
                       </div>
-                      <Field 
+                      <Field
+                        sx={styles.field__color}
                         component={Select}
+                        placeholder="Select"
                         fullWidth
-                        placeholderText="Select"
                         variant="standard"
                         labelId="demo-multiple-checkbox-label"
                         id="demo-multiple-checkbox"
@@ -277,11 +303,7 @@ export default function MySignUpForm(props) {
                           style: {
                             fontSize: '14px',
                             paddingLeft: '20px',
-                            ...styles.field__color()
                           },
-                        }}
-                        SelectDisplayProps={{
-                          style: styles.field__color() 
                         }}
                         value={values.checkbox}
                         renderValue={(selected) => {
@@ -292,7 +314,7 @@ export default function MySignUpForm(props) {
                         }}
                       >
                         {names.map((name) => (
-                          <MenuItemStyle onClick={() => {
+                          <StyledMenuItem onClick={() => {
                             name === "All" ? values.checkbox.includes(name)
                               ? setFieldValue('checkbox', []) : setFieldValue('checkbox', names)
                               : values.checkbox.includes(name) ? setFieldValue('checkbox',
@@ -303,8 +325,8 @@ export default function MySignUpForm(props) {
                             <CustomCheckbox
                               checked={values.checkbox.includes(name)}
                             />
-                            <ListItemText primary={name} />
-                          </MenuItemStyle>
+                            <ListItemTextStyle primary={name} />
+                          </StyledMenuItem>
                         ))}
                       </Field>
                     </Box>
@@ -315,15 +337,15 @@ export default function MySignUpForm(props) {
                         color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
                         fontFamily: 'Exo 2',
                         fontSize: '12px',
-                        fontWeight:'600',
+                        fontWeight: '600',
                         display: 'flex',
                         alignItems: 'end',
                         position: 'absolute',
                         color: 'rgba(255, 85, 85, 1)',
                       }}
                     >
-                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt:'2px', transform: 'rotate(180deg)',  }} />
-                     <span style={{marginBottom:'3px'}}> Please Select an Option</span>
+                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt: '2px', transform: 'rotate(180deg)', }} />
+                      <span style={{ marginBottom: '3px' }}> Please Select an Option</span>
                     </div>
                   )}
                 </Grid>
@@ -372,7 +394,7 @@ const styles = {
       color: 'black',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'black'
+      borderBottomColor: 'black',
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
@@ -386,5 +408,12 @@ const styles = {
         borderColor: 'black',
       },
     },
-  })
+    '&:before': {
+      borderColor: 'black',
+  },
+      '&:after': {
+        borderColor: 'black',
+      },
+  }),
+
 }

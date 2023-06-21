@@ -3,6 +3,7 @@ import { Button } from '@mui/material';
 
 const GlobalButton = (props) => {
   const {
+    btnType,
     btnName,
     btnText,
     startIcon, // Added startIcon prop
@@ -27,6 +28,8 @@ const GlobalButton = (props) => {
           fontWeight: 400,
           fontSize: '0.75rem',
           borderRadius: '8px',
+          px: btnType && "20px",
+          py: btnType && "10px",
           textTransform: 'capitalize',
           '&:hover': {
             background: '#2B2B33',

@@ -13,12 +13,15 @@ import { WorkflowSuccessSpeedometer } from '../features/workflow-success-speedom
 import { DashboardToggleIcon } from '../features/dashboard-toggle-icon/dashboard-toggle-icon';
 import { DashboardResponsiveDR } from '../features/dashboard-responsive-DR/dashboard-responsive-DR';
 import { AppTooltip } from '../components/app-tooltip/app-tooltip';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const [paymentForecastSwitch, setPaymentForecastSwitch] = useState("This Month");
   const [PCVal, setPCVal] = useState("2020");
   const [WFVal, setWFVal] = useState("UK Workflow");
   const [agingBucketVal, setAgingBucketVal] = useState("0");
+
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
@@ -81,7 +84,7 @@ export default function Dashboard() {
           </DashboardCard>
         </Grid>
         <Grid item xl={6} xs={12}>
-          <DashboardCard heading="Recent Notifications" headingSibling={<span className="right-text" style={{ color: '#6B9DE9' }}>View All</span>}>
+          <DashboardCard heading="Recent Notifications" headingSibling={<span className="right-text" style={{ color: '#6B9DE9', cursor:'pointer' }} onClick={()=> navigate('/notifications')}>View All</span>}>
             <RecentNotify />
           </DashboardCard>
         </Grid>
