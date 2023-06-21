@@ -6,7 +6,7 @@ export const receivableData = [
         bgColor: "#3AA1FF",
         justifyContent:'start',
         width:'300px',
-        margin:'10px'
+        margin:'10px',
     },
     {
         id: 2,
@@ -29,7 +29,7 @@ export const receivableData = [
         text: `Accountant Pact contains everything you need for faster Accounting journey of your company`,
         bgColor: "#58BACA",
         justifyContent:'end',
-        width:'300px',
+        width:'350px',
         margin:'25px'
     },
 ]
