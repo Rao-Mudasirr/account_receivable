@@ -16,7 +16,7 @@ const FormFooter = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Logo />
+            <Logo  className="logo-form"/>
             <Box className="form-box">
               <CustomInput
                 label="Full Name"
