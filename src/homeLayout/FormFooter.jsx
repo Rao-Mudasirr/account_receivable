@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from "../assests/home-page/home/form-logo.svg"
 import CustomInput from "../components/CustomInput";
 const FormFooter = () => {
   return (
-    <Box className="footer-form">
+    <Box className="footer-form margin-top-6">
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} lg={6}>
@@ -16,7 +16,7 @@ const FormFooter = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} lg={6}>
-            <Logo />
+            <Logo  className="logo-form"/>
             <Box className="form-box">
               <CustomInput
                 label="Full Name"

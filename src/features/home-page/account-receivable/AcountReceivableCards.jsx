@@ -47,8 +47,7 @@ const AcountReceivableCards = () => {
               gridTemplateColumns: "1fr 1fr",
               mt: "5rem",
               bgcolor: item.bgColor,
-              maxHeight: "560px",
-              height: "100%",
+              height: "560px",
               maxWidth: "1280px",
               width: "100%",
               borderRadius: "16px",
@@ -61,7 +60,8 @@ const AcountReceivableCards = () => {
                 alt="cashflow_1"
                 style={{
                   borderRadius: "50%",
-                  transform: item.scaleX
+                  transform: item.scaleX,
+                  marginBottom: '29%',
                 }}
               />
             </Grid>

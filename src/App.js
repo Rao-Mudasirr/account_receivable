@@ -38,10 +38,14 @@ function App() {
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/home-page/account-receivable" element={<AccountReceivablePage/>} />
         <Route path="/home" element={<HomeLayout />} >
-        <Route path="/home/" element={<Home />} />
+          <Route path="/home/" element={<Home />} />
         </Route>
+        
+        <Route path="/account-receivable" element={<HomeLayout />} >
+          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+        </Route>
+        
         <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />

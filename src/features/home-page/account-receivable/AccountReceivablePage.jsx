@@ -7,13 +7,13 @@ const AccountReceivablePage = () => {
     return (
         <>
             <div className="account__receivable">
-                <Grid container sx={{ mt: '180px' }}>
+                <Grid container sx={{ mt: '90px' }}>
                     <Grid fontSize={{md:80,xs:50}} p={{xl:10,  xs:5}} ml={{xl:15}} item xl={6} md={12} xs={12}>
                         <div className='account_receivable_heading'>
                             Online platform that helps you manage Accounting
                         </div>
                     </Grid>
-                    <Grid  item xl={4} md={12} xs={12} p={{xs:1}} mt={{ xl:'120px'}} ml={{xl: '-100px'}}>
+                    <Grid  item xl={4} md={12} xs={12} p={{xs:1}} mt={{ xl:'140px'}} ml={{xl: '-100px'}}>
                         {receivableData?.map((ele) =>
                             <Grid key={ele?.id} container justifyContent={ele?.justifyContent}
                                 m={{ xl: ele?.margin, md: 2, xs:1}} 
