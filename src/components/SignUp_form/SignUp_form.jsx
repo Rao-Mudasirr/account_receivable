@@ -292,8 +292,8 @@ export default function MySignUpForm(props) {
                       <Field
                         sx={styles.field__color}
                         component={Select}
-                        fullWidth
                         placeholder="Select"
+                        fullWidth
                         variant="standard"
                         labelId="demo-multiple-checkbox-label"
                         id="demo-multiple-checkbox"
