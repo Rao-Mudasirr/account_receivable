@@ -28,6 +28,7 @@ import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 
 function App() {
   return (
@@ -36,8 +37,17 @@ function App() {
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         <Route path="/signin" element={<Signin />} />
+        
         <Route path="/home" element={<HomeLayout />} >
-        <Route path="/home/" element={<Home />} />
+          <Route path="/home/" element={<Home />} />
+        </Route>
+
+        <Route path="/" element={<HomeLayout />} >
+          <Route path="/account-payable" element={<AccountPayable />} />
+        </Route>
+
+        <Route path="/home" element={<HomeLayout />} >
+          <Route path="/home/" element={<Home />} />
         </Route>
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
