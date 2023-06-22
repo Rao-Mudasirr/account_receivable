@@ -162,12 +162,18 @@ const SignInForm = () => {
 
               <Button
                 className="signin_btn"
+                size="large"
                 sx={{
                   backgroundColor: "#666666",
                   color: "#fff",
                   marginTop: "5rem",
                   "&:hover": {
                     backgroundColor: "black",
+                    '&:hover': {
+                      background: 'black',
+                      color: 'white',
+                      border: '1px solid black',
+                    },
                   },
                 }}
                 type="submit"
