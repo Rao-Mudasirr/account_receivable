@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Avatar, Grid, Typography, Box, Paper, Tabs, Tab, Divider } from "@mui/material";
 import ProfileManagement from './profile-management/profile-management';
 import CompanyManagement from './company-management/company-management';
+import BanksIntegration from './banks-integration/banks-integration';
 
 const TabData = [
     { label: "Profile Management", content: <ProfileManagement /> },
     { label: "Company Management", content: <CompanyManagement /> },
+    { label: "Integration", content: <BanksIntegration /> },
   ];
 
 const Settings = () => {
