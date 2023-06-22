@@ -8,6 +8,7 @@ import { useClients } from "./use-resent-email";
 import EmailIcon from '../../../../../assests/svg/email.png'
 import DeleteModel from '../../../../../components/modal/DeleteModel';
 import Compose_email from '../../Compose_email/Compose_email';
+import AddNoteModel from '../add-note/AddNoteModel';
 
 const RecentEmailTable = () => {
   const {
@@ -28,6 +29,13 @@ const RecentEmailTable = () => {
     setOpenModel(true);
   }
 
+  const [open2, setOpen2] = useState(false);
+  const handleOpen2 = () => {
+    setOpen2(true);
+  }
+  const handleClose2 = () => {
+    setOpen2(false);
+  }
   const { params, headerChangeHandler, pageChangeHandler, sortChangeHandler } =
     useTableParams();
   const columns = [
@@ -84,7 +92,7 @@ const RecentEmailTable = () => {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" onClicked={handleCustomModel} />
+          <TableAction type="view" onClicked={handleOpen2} />
         </Box>
       ),
       header: () => <span>Actions</span>,
@@ -133,6 +141,12 @@ const RecentEmailTable = () => {
         open={open}
         handleClose={handleClose}
         setOpenModel={setOpenModel}
+      />
+      <AddNoteModel
+        emailNote = "email"
+        open={open2}
+        handleClose={handleClose2}
+        onDeleteClick={handleClose2}
       />
       {/* <CustomModel open={openModel}
         setOpen={setOpenModel}
