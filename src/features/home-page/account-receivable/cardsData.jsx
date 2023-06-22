@@ -19,7 +19,7 @@ export const cardData = [
     image: cashflow_2,
     bgColor: "#F8FFF5",
     scaleX: "scaleX(-1)",
-    padding: "5rem",
+    padding: "8rem",
     ul: ["Speed up your move", "Quick and easy to buy"],
   },
   {

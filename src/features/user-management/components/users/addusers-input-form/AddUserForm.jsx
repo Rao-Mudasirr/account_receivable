@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Button,
-  MenuItem,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { Grid, Button, MenuItem, Checkbox } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
@@ -15,7 +9,7 @@ const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First Name is required"),
   lastName: Yup.string().required("Last Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.string().required("Phone is required"),
+  phone: Yup.number("Phone must be a `number` type").required("Phone is required"),
   company: Yup.string().required("Company is required"),
   role: Yup.string().required("Role is required"),
 });
@@ -231,22 +225,19 @@ const AddUserInputs = () => {
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
                 >
-                  {companyOptions.map((option, index) => (
+                  {companyOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            sx={{
-                              "&.Mui-checked": {
-                                color: "black",
-                              },
-                            }}
-                            checked={option.value === values.company}
-                            color="primary"
-                          />
-                        }
-                        label={option.label}
+                      <Checkbox
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "black",
+                          },
+                        }}
+                        className="checkbox-hidden"
+                        checked={option.value === values.company}
+                        color="primary"
                       />
+                      <span className="checkbox-label">{option.label}</span>
                     </MenuItem>
                   ))}
                 </Field>
@@ -279,22 +270,19 @@ const AddUserInputs = () => {
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
                 >
-                  {roleOptions.map((option, index) => (
+                  {roleOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            sx={{
-                              "&.Mui-checked": {
-                                color: "black",
-                              },
-                            }}
-                            checked={option.value === values.role}
-                            color="primary"
-                          />
-                        }
-                        label={option.label}
+                      <Checkbox
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "black",
+                          },
+                        }}
+                        className="checkbox-hidden"
+                        checked={option.value === values.role}
+                        color="primary"
                       />
+                      <span className="checkbox-label">{option.label}</span>
                     </MenuItem>
                   ))}
                 </Field>
@@ -320,7 +308,6 @@ export default AddUserInputs;
 //Style
 const Styles = {
   field_color: (theme) => ({
-    width: "100%",
     "& label": {
       color: "black",
     },
@@ -341,9 +328,6 @@ const Styles = {
       "&.Mui-focused fieldset": {
         borderColor: "black",
       },
-    },
-    "&:before": {
-      borderColor: "black",
     },
     "&:after": {
       borderColor: "black",
