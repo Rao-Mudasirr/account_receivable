@@ -6,7 +6,7 @@ export const receivableData = [
         bgColor: "#3AA1FF",
         justifyContent:'start',
         width:'300px',
-        margin:'10px',
+        margin:'40px 0 25px 0',
     },
     {
         id: 2,
@@ -22,7 +22,7 @@ export const receivableData = [
         bgColor: "#FF8AA6",
         justifyContent:'start',
         width:'450px',
-        margin:'25px 0 10px -25px'
+        margin:'25px 0 25px -25px'
     },
     {
         id: 4,
