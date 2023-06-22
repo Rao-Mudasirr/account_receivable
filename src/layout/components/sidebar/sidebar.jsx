@@ -34,7 +34,7 @@ const Sidebar = () => {
             <Box className="portal-name white-color font-family-Exo center-text" sx={{ zIndex: '2', pt: '27px', position: 'relative', ml: '30px' }}>Company Name</Box>
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'cenetr', flexDirection: 'column', mt: '200px' }}>
               {
-                ['Account Payable', 'Account Receivable', 'Cashflow'].map(item => <Box key={item} className={` white-color font-family-Exo center-text ${item === "Cashflow" ? "active-portal-btn black-color font-weight-600" : 'font-weight-400'}`} sx={{ p: '12px', mx: '20px', position: 'relative', zIndex: '3' }}>{item}</Box>)
+                ['Account Payable', 'Account Receivable', 'Cashflow'].map(item => <Box key={item} className={` white-color font-family-Exo center-text ${item === "Account Receivable" ? "active-portal-btn black-color font-weight-600" : 'font-weight-400'}`} sx={{ p: '12px', mx: '20px', position: 'relative', zIndex: '3' }}>{item}</Box>)
               }
             </Box>
           </Box>
