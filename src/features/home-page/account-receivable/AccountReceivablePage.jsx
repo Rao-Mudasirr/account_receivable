@@ -8,7 +8,7 @@ const AccountReceivablePage = () => {
         <>
             <div className="account__receivable">
                 <Grid container sx={{ mt: '90px' }}>
-                    <Grid fontSize={{md:80,xs:50}} p={{xl:10,  xs:5}} pt={{xl: 0, xs: 0}} item xl={6} md={12} xs={12}>
+                    <Grid fontSize={{md:80,xs:50}} p={{xl:10,  xs:5}} ml={{xl: 15}} item xl={6} md={12} xs={12}>
                         <div className='account_receivable_heading'>
                             Online platform that helps you manage Accounting
                         </div>
@@ -21,7 +21,7 @@ const AccountReceivablePage = () => {
                                 className="receivable__right">
                                 <div className="custom__icon">
                                     <div className="custom__style" style={{ backgroundColor: ele?.bgColor }}>
-                                    </div>
+                                </div>
                                 </div>
                                 <Grid item className="receivable__text" width={{ xl: ele?.width , md:400, xs: 250}} >
                                     {ele?.text}
