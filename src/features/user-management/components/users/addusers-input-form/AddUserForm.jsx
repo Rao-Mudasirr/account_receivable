@@ -97,7 +97,7 @@ const AddUserInputs = () => {
                   First Name
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="firstName"
@@ -127,7 +127,7 @@ const AddUserInputs = () => {
                   Last Name
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="lastName"
@@ -157,7 +157,7 @@ const AddUserInputs = () => {
                   Email
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="email"
@@ -188,7 +188,7 @@ const AddUserInputs = () => {
                   Phone
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={TextField}
                   name="phone"
@@ -224,7 +224,7 @@ const AddUserInputs = () => {
                   Company
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={Select}
                   name="company"
@@ -272,7 +272,7 @@ const AddUserInputs = () => {
                   Role
                 </label>
                 <Field
-                sx={Styles.field_color}
+                  sx={Styles.field_color}
                   className="usersform_textfield"
                   component={Select}
                   name="role"
@@ -284,11 +284,11 @@ const AddUserInputs = () => {
                       <FormControlLabel
                         control={
                           <Checkbox
-                          sx={{
-                            "&.Mui-checked": {
-                              color: "black",
-                            },
-                          }}
+                            sx={{
+                              "&.Mui-checked": {
+                                color: "black",
+                              },
+                            }}
                             checked={option.value === values.role}
                             color="primary"
                           />
@@ -321,26 +321,32 @@ export default AddUserInputs;
 const Styles = {
   field_color: (theme) => ({
     width: "100%",
-    '& label': {
-      color: 'black',
+    "& label": {
+      color: "black",
     },
-    '& label.Mui-focused': {
-      color: 'black',
+    "& label.Mui-focused": {
+      color: "black",
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'black',
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "black",
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'black',
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "black",
       },
-      '&:hover fieldset': {
-        borderColor: 'black',
-        borderWidth: '0.15rem',
+      "&:hover fieldset": {
+        borderColor: "black",
+        borderWidth: "0.15rem",
       },
-      '&.Mui-focused fieldset': {
-        borderColor: 'black',
+      "&.Mui-focused fieldset": {
+        borderColor: "black",
       },
     },
-  })
-}
+    "&:before": {
+      borderColor: "black",
+    },
+    "&:after": {
+      borderColor: "black",
+    },
+  }),
+};
