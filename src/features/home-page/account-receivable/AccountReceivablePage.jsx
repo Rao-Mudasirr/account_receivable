@@ -7,17 +7,20 @@ const AccountReceivablePage = () => {
     return (
         <>
             <div className="account__receivable">
-                <Grid container item spacing={1}
+                <Grid container justifyContent={'center'} item spacing={1}
                     sx={{
+                        // border:"1px solid red"
                         mt: '90px',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        gap: '1rem'
+                        // display: 'flex',
+                        // justifyContent: 'center',
+                        // gap: '1rem'
                     }}>
                     <Grid fontSize={{ md: 55, xs: 40 }}
-                        item xl={3.6}
+                        item 
+                        xl={3.6}
                         md={4.8}
                         xs={6}
+                        // sx={{border:"1px solid black"}}
                     >
                         <div className='account_receivable_heading'>
                             Online platform that helps you manage Accounting
@@ -27,6 +30,7 @@ const AccountReceivablePage = () => {
                         xl={4}
                         md={6}
                         xs={10}
+                        // xs={6}
                     >
                         {receivableData?.map((ele) =>
                             <Grid key={ele?.id} container justifyContent={ele?.justifyContent}
