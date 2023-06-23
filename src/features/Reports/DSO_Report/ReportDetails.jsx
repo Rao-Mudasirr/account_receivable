@@ -86,7 +86,7 @@ export default function ReportDetails() {
   return (
     <Fragment>
       <div className="invoice-title">
-        Days Sales Outstanding (Company Wise) Report
+        Days Sales Outstanding (Company) Report
       </div>
 
       {/* Search field */}

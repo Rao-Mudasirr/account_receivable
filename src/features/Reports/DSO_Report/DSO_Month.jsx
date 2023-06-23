@@ -33,7 +33,7 @@ function DSO_Month() {
   return (
     <Fragment>
       <div className="invoice-title">
-        Days Sales Outstanding (Month Wise) Report
+        Days Sales Outstanding (Month) Report
       </div>
 
       {/* Search field */}
