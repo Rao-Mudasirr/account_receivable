@@ -29,7 +29,7 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
-import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+
 
 function App() {
   return (
@@ -46,7 +46,6 @@ function App() {
           <Route path="/account-receivable" element={<AccountReceivablePage/>} />
         </Route>
         
-        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />

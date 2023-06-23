@@ -15,7 +15,7 @@ const AddNote = () => {
   } = useAddNote();
 
   return (
-    <>
+    <div>
       <h5 style={{marginBottom: "1rem"}}>Note History</h5>
       <Card className='addnote_container'>
         <div className='addnote_main'>
@@ -26,8 +26,8 @@ const AddNote = () => {
             </button>
           </div>
         </div>
-        <div style={{textAlign: "center"}}>
-          <img src={AddNoteIcon} alt="edit" />
+        <div className='flex justify-center padding-top-3'>
+          <img src={AddNoteIcon} alt="bg_image" />
         </div>
       </Card>
       <AddNoteModel
@@ -35,7 +35,7 @@ const AddNote = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-    </>
+    </div>
   );
 }
 
