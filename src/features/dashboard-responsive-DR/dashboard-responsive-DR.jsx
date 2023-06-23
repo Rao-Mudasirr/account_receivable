@@ -10,7 +10,7 @@ export const DashboardResponsiveDR = () => {
         <>
             <Box >
                 <Box sx={{ display: { sm: 'block', xs: 'none' } }}>
-                    <DashboardDateRange />
+                    <DashboardDateRange minWidth= '112px !important' />
                 </Box>
                 <Box className="  justify-center align-center" onClick={()=>handleOpenMUIModal()} sx={{ display: { sm: 'none', xs: 'flex' },mb:'5px',p:'4px',bgcolor:'#40404D',borderRadius:'4px',border:'.5px solid #40404D' }}>
                     <svg style={{filter: 'brightness(0) invert(1)'}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -20,7 +20,7 @@ export const DashboardResponsiveDR = () => {
                 </Box>
             </Box>
             <SimpleDialog title={"Date Range:"} titleClass="font-weight-600 heading-20"  handleClose={handleCloseMUIModal} open={openDialog}>
-                <DashboardDateRange />
+                <DashboardDateRange minWidth= '112px !important'  />
             </SimpleDialog>
         </>
     )

@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React from 'react'
 import Chart from 'react-apexcharts';
 const optionsComparisonPieChart = {
@@ -58,17 +59,31 @@ const optionsComparisonPieChart = {
             fontWeight: '400',
         },
     },
-    colors: ["#70D69E", "#FF9898"]
+    colors: ["#70D69E", "#FF9898"],
+    responsive: [
+        {
+            breakpoint: 600,
+            options: {
+                chart:{
+                    height:280
+                },
+                legend: {
+                    show: false,
+                },
+            },
+        }
+
+    ]
 }
 export const ComparisonPieChart = ({ showIn, data }) => {
     return (
-        <>
+        <Box sx={{mt:{sm:'0',xs:'40px'}}}>
             <Chart
                 series={data ?? []}
                 height={350}
                 options={optionsComparisonPieChart ?? {}}
                 type="donut"
             />
-        </>
+        </Box>
     )
 }

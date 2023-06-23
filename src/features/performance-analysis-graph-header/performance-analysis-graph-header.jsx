@@ -48,18 +48,18 @@ export const PerformanceAnalysisGraphHeader = ({ id }) => {
                 exit: "ease-out"
             }} className='margin-bottom-2' in={graphDivOpen} timeout="auto" unmountOnExit >
                 <Grid container className='align-center'>
-                    <Grid item className='font-weight-600 primary-color secondary-title' xs={2}>
+                    <Grid item className='font-weight-600 primary-color secondary-title margin-bottom-1' xl={2} xs={12}>
                         Graph Comparison
                     </Grid>
-                    <Grid item xs={10}>
+                    <Grid item xl={10} xs={12} className=''>
                         <Grid container className='flex align-center justify-between'>
-                            <Grid item xs={4} className='flex justify-end'>
+                            <Grid item lg={4} xs={12} justifyContent={{ xl: 'flex-end', lg: 'flex-start', xs: 'center' }} className='flex margin-bottom-1'>
                                 <DashboardDateRange />
                             </Grid>
-                            <Grid item xs={4} className='flex justify-end'>
+                            <Grid item lg={4} sm={6} xs={12} className='flex margin-bottom-1' justifyContent={{ xl: 'flex-end', lg: 'center', sm: 'flex-start', xs: 'center' }}>
                                 <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName="Show in" selectVal={showInSelect} setSelectVal={setShowInSelect} data={["Percentage", "Amount"]} />
                             </Grid>
-                            <Grid item xs={4} className='flex justify-end'>
+                            <Grid item lg={4} sm={6} xs={12} className='flex margin-bottom-1' justifyContent={{ xl: 'flex-end', sm: 'flex-end', xs: 'center' }}>
                                 <PaymentForecastingChartSwitch chartSwitch={chartSwitch} setSwitch={setchartSwitch} data={["Bar Graph", "Pie Graph"]} />
                             </Grid>
                         </Grid>
@@ -67,7 +67,7 @@ export const PerformanceAnalysisGraphHeader = ({ id }) => {
                 </Grid>
                 <Grid container className='flex align-center justify-between margin-top-1'>
                     <Grid item xl={6} xs={12} className='position-relative'>
-                        <Box sx={{ top: '23px', zIndex: 2 }} className="position-absolute">
+                        <Box sx={{ top: {sm:'23px'}, zIndex: 2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName={id ? "Client" : "Workflow"} selectVal={workflow1Select} setSelectVal={setWorkflow1Select} data={id ? ["Frodo Baggins", "Bilbo Baggins"] : ["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
@@ -75,7 +75,7 @@ export const PerformanceAnalysisGraphHeader = ({ id }) => {
                         </div>
                     </Grid>
                     <Grid item xl={6} xs={12} className='position-relative'>
-                        <Box sx={{ top: '23px', zIndex: 2 }} className="position-absolute">
+                        <Box sx={{ top: {sm:'23px'}, zIndex: 2 }} className="position-absolute">
                             <DashboardChartSwitch MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} switchName={id ? "Client" : "Workflow"} selectVal={workflow2Select} setSelectVal={setWorkflow2Select} data={id ? ["Frodo Baggins", "Bilbo Baggins"] : ["UK Workflow", "New workflow"]} />
                         </Box>
                         <div className='margin-top-1'>
