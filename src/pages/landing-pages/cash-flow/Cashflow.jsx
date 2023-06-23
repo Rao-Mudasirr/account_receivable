@@ -1,8 +1,11 @@
 import React from 'react'
+import HomePageCashflow from '../../../features/home-page/workflow/HomePageCashflow'
 
 const Cashflow = () => {
   return (
-    <div>Cashflow</div>
+    <>
+    <HomePageCashflow/>
+    </>
   )
 }
 

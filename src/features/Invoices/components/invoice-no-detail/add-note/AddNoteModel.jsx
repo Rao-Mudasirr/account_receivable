@@ -10,7 +10,7 @@ import { TextareaAutosize } from "@material-ui/core";
 
 const AddNoteModel = (props) => {
     //---usestate handlers and themes
-    const { open, handleClose, onDeleteClick } = props;
+    const { open, handleClose, onDeleteClick, emailNote } = props;
     const theme = useTheme();
 
     return (
@@ -31,15 +31,19 @@ const AddNoteModel = (props) => {
                 <Box sx={Styles.root}>
                     <div style={{ padding: "1rem" }}>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <h3>Add Note</h3>
+                            <h3>{emailNote ? 'Email Subject' : 'Add Note'}</h3>
                             <Link onClick={handleClose}>
                                 <img src={CloseIcon} alt="close" />
                             </Link>
                         </div>
-                        <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "2rem" }}>
-                            <CheckBox />
-                            Send Email Reminder
-                        </div>
+                        {
+                            !emailNote && (
+                                <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end", marginTop: "2rem" }}>
+                                    <CheckBox />
+                                    Send Email Reminder
+                                </div>
+                            )
+                        }
                         <div style={{ textAlign: "center", marginTop: "2rem" }}>
                             <TextareaAutosize
                                 minRows={11}
@@ -52,7 +56,7 @@ const AddNoteModel = (props) => {
                                 onClick={onDeleteClick}
                                 sx={Styles.buttonError(theme)}
                             >
-                                Add Note
+                               {emailNote ? 'Download Attachment' : 'Add Note'}
                             </Button>
                         </div>
                     </div>

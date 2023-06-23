@@ -26,19 +26,44 @@ import WorkflowsForms from "./pages/workflows-form";
 import ClientListing from "./pages/client-listing";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
+import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        <Route exact path={"/sign-up"} element={<SignUpForm />} />
-        <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
+        
         <Route path="/signin" element={<Signin />} />
+
+        {/* <Route path="/sign-up" element={<HomeLayout />} > */}
+          <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        {/* </Route> */}
+        
+        {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
+        <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
+        {/* </Route> */}
+
         <Route path="/home" element={<HomeLayout />} >
-        <Route path="/home/" element={<Home />} />
+          <Route path="/home/" element={<Home />} />
         </Route>
+        
+        <Route path="/account-receivable" element={<HomeLayout />} >
+          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+        </Route>
+
+        <Route path="/account-payable" element={<HomeLayout />} >
+          <Route path="/account-payable" element={<AccountReceivablePage/>} />
+        </Route>
+        
+        <Route path="/cashflow" element={<HomeLayout />} >
+          <Route path="/cashflow" element={<AccountReceivablePage/>} />
+        </Route>
+        
+        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
@@ -53,10 +78,8 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-
-          {/* <Route path="/report-details/workflows-report" element={<WorkflowReport/>} /> */}
           <Route
-            path="/report-details/workflows-report/workflow-detail"
+            path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
           />
           <Route

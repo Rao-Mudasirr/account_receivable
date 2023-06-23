@@ -1,10 +1,12 @@
 import { Box, Button, Container } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assests/home-page/home/logo-home.svg";
 import "./HomeLayout.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { useWindowDimensions } from "../hooks/useWindowDiemnsions";
+import MobileHeader from "./MobileHeader";
 const HeaderLayout = () => {
   const path = [
     {
@@ -14,19 +16,19 @@ const HeaderLayout = () => {
       list: null,
     },
     {
-      route: "/",
+      route: "/account-payable",
       name: "Account Payable",
       isSubMenu: false,
       list: null,
     },
     {
-      route: "/",
+      route: "/account-receivable",
       name: "Account Receivable",
       isSubMenu: false,
       list: null,
     },
     {
-      route: "/",
+      route: "/cashflow",
       name: "Cashflow",
       isSubMenu: false,
       list: null,
@@ -38,6 +40,12 @@ const HeaderLayout = () => {
       list: [],
     },
   ];
+  const [active, setActive] = useState(false);
+
+  const { width } = useWindowDimensions();
+  const isMobile = width < 900;
+  const navigate = useNavigate();
+  
   return (
     <Box component={"nav"} className="navbar-parent">
       <Container>
@@ -45,20 +53,25 @@ const HeaderLayout = () => {
           <Box className="image-box">
             <img src={Logo} alt="logo" loading="lazy" />
           </Box>
-          <Box className="navbar-list-parent">
-            <ul className="navbar-list">
-              {path?.map((e) => (
-                <>
-                  <NavLink to={e?.route}>{e?.name}</NavLink>
-                </>
-              ))}
-            </ul>
-          </Box>
-          <Box className="navbar-btn-parent">
-            <Button endIcon={<ArrowForwardIosIcon fontSize="12" />}>
-              Sign In
-            </Button>
-          </Box>
+          {!isMobile && (
+            <>
+              <Box className="navbar-list-parent">
+                <ul className="navbar-list">
+                  {path?.map((e) => (
+                    <>
+                      <NavLink to={e?.route}>{e?.name}</NavLink>
+                    </>
+                  ))}
+                </ul>
+              </Box>
+              <Box className="navbar-btn-parent">
+                <Button endIcon={<ArrowForwardIosIcon fontSize="12" />} onClick={()=>navigate('/signin')}>
+                  Sign In
+                </Button>
+              </Box>
+            </>
+          )}
+          {isMobile && <MobileHeader path={path} />}
         </Box>
       </Container>
     </Box>

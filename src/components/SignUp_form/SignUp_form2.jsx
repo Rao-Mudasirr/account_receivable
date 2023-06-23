@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center signup_container">
+    <div className="height-100vh flex align-center justify-center signup_container margin-top-1">
       <Box
         sx={{
           width: 600,
@@ -162,7 +162,7 @@ const MySignUpForm2 = () => {
                         Registration Number(CRN)
                       </label>
                     </div>
-                    <Grid item xs={12} sx={{ height: '75px' }}>
+                    <Grid item xs={12}>
                       <Field
                         sx={styles.field__color}
                         component={TextField}
