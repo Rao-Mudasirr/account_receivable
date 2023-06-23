@@ -21,13 +21,13 @@ const AddNote = () => {
         <div className='addnote_main'>
           <div className="addnote_header">
             <p>Add Note</p>
-            <button onClick={handleOpen}>
+            <button className="cursor-pointer" onClick={handleOpen}>
               <img src={EditIcon} alt="edit" />
             </button>
           </div>
         </div>
         <div style={{textAlign: "center"}}>
-          <img src={AddNoteIcon} alt="" />
+          <img src={AddNoteIcon} alt="edit" />
         </div>
       </Card>
       <AddNoteModel

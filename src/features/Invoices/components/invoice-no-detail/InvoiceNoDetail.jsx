@@ -2,7 +2,7 @@ import React from 'react';
 import AddNote from './add-note/AddNote';
 import RecentEmailTable from './recent-email-table/RecentEmailTable';
 import "./invoice_no_detail.scss";
-import { Card, Button } from '@mui/material';
+import { Card, Button, Grid } from '@mui/material';
 import { useState } from "react";
 import ViewInvoice from '../../../view-invoices/ViewInvoice';
 import { useNavigate } from 'react-router';
