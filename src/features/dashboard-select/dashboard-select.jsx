@@ -26,7 +26,7 @@ export const DashboardSelect = ({ data, setSelectVal, selectVal, selectSx, MenuS
                 onChange={(event) => setSelectVal(event.target.value)}
             >
                 {
-                    id == 'Status' ? (
+                    id === 'Status' ? (
                         data?.map(item => <MenuItem key={item} className='font-family-Exo' value={item} style={{
                             color:
                             item === "Paid"
