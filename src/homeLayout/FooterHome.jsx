@@ -136,9 +136,9 @@ const FooterHome = () => {
           <Grid item xs={12} md={6}>
             <Box className="down-box">
               {footerBottom?.map((e) => (
-                <>
+                <React.Fragment key={e?.name}>
                   <span>{e?.name}</span>
-                </>
+                </React.Fragment>
               ))}
             </Box>
           </Grid>

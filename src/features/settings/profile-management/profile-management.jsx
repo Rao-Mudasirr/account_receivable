@@ -353,6 +353,7 @@ const ProfileManagement = () => {
                   error={formik.touched.gender && Boolean(formik.errors.gender)}
                   helperText={formik.touched.gender && formik.errors.gender}
                   fullWidth
+                  
                 >
                   <MenuItem value="male">Male</MenuItem>
                   <MenuItem value="female">Female</MenuItem>
@@ -370,13 +371,7 @@ const ProfileManagement = () => {
                   onChange={formik.handleChange}
                   onBlur={handleBlur}
                   // disabled={!editMode}
-                  error={
-                    formik.touched.citizenship &&
-                    Boolean(formik.errors.citizenship)
-                  }
-                  helperText={
-                    formik.touched.citizenship && formik.errors.citizenship
-                  }
+                
                   fullWidth
                 >
                   <MenuItem value="option1">Uk</MenuItem>

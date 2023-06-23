@@ -1,5 +1,8 @@
 .navbar-parent {
   padding: 30px 20px;
+  @media screen and (max-width: 900px) {
+    padding: 30px 0px;
+  }
 
   .burger {
     width: 55px;
@@ -15,7 +18,10 @@
     align-items: center;
     padding: 5px;
     transition: all 0.5s ease;
-    margin: 1em;
+    @media screen and (max-width: 575px) {
+      width: 40px;
+      height: 40px;
+    }
   }
   .burger:hover {
     background: rgb(56 56 56);
@@ -30,6 +36,9 @@
     margin: 10px;
     transition: all 0.55s cubic-bezier(0.075, 0.82, 0.165, 1);
     width: 40px;
+    @media screen and (max-width: 575px) {
+      width: 22px;
+    }
   }
   .burger:hover .strip div {
     background: white;
@@ -74,6 +83,9 @@
       max-width: 237px;
       img {
         max-width: 237px;
+        @media screen and (max-width: 575px) {
+          max-width: 180px;
+        }
       }
     }
 

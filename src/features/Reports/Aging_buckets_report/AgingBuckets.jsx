@@ -24,7 +24,7 @@ export default function AgingBucketsReport() {
 
   return (
     <React.Fragment>
-      <div className="workflows-title">Workflows Report</div>
+      <div className="workflows-title">Aging Buckets Report</div>
 
       {/* Search field */}
       <Grid container className="align-center cash-collection-report">

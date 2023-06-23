@@ -23,6 +23,12 @@ import { toast } from "react-toastify";
 import editIcon from "../../../assests/images/client/editIcon.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GlobalButton from "../../../components/global-button/global-button";
+import WorkflowModel from "../../workflows-page/Model/WorkflowModel";
+import InvoiceCreationDate from "../../workflows-page/Model/InvoiceCreationDate";
+import BeforeDueDate from "../../workflows-page/Model/BeforeDueDate";
+import OnDueDate from "../../workflows-page/Model/OnDueDate";
+import AfterDueDate from "../../workflows-page/Model/AfterDueDate";
+import OnPaymentCollectionDate from "../../workflows-page/Model/OnPaymentCollectionDate";
 
 const WorkflowDetails = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +36,9 @@ const WorkflowDetails = () => {
   const [type, setType] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [clickedRowIndex, setClickedRowIndex] = useState(-1);
+  const [openEditModel, setOpenEditModel] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [value, setValue] = useState(1);
 
   const handleWorkStatusClick = (index) => {
     setClickedRowIndex(index);
@@ -59,6 +68,49 @@ const WorkflowDetails = () => {
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const handleCloseEditModel = () => {
+    setEdit(true);
+    setOpenEditModel(!openEditModel);
+  };
+
+  const tabbing_data = [
+    {
+      label: "Invoice Creation Date",
+      id: 1,
+      component: InvoiceCreationDate,
+      step: 1,
+    },
+    {
+      label: "Before Due Date",
+      id: 21,
+      component: BeforeDueDate,
+      step: 2,
+      template: true,
+    },
+    {
+      label: "On Due Date",
+      id: 41,
+      component: OnDueDate,
+      step: 3,
+    },
+    {
+      label: "After Due Date",
+      id: 11,
+      component: AfterDueDate,
+      step: 4,
+      template: true,
+    },
+    {
+      label: "On Payment Collection Date",
+      id: 15,
+      component: OnPaymentCollectionDate,
+      step: 5,
+    },
+  ];
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -170,7 +222,7 @@ const WorkflowDetails = () => {
                 <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.rules}</TableCell>
                 <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}}>{row.percentage}</TableCell>
                 <TableCell className='font-family-exo2 primary-color primary-title' sx={{fontWeight:400}} >{row.description}</TableCell>
-                <TableCell sx={{}} className="tertiary-color">
+                <TableCell sx={{}} className="tertiary-color" onClick={handleCloseEditModel}>
                   {row.action === "" ? <VisibilityIcon /> : row.action}
                 </TableCell>
               </TableRow>
@@ -178,6 +230,15 @@ const WorkflowDetails = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      
+      <WorkflowModel
+        open={openEditModel}
+        handleClose={handleCloseEditModel}
+        Tabbing_data={tabbing_data}
+        value={value}
+        edit={edit}
+        handleChange={handleChange}
+      />
     </div>
   );
 };
