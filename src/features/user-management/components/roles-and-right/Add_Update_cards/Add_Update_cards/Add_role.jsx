@@ -41,6 +41,7 @@ const AddRole = ({ closeAddRoleModal }) => {
         description: '',
     };
 
+
     const handleSubmit = (values) => {
         // Handle form submission here
         console.log(values);
@@ -49,13 +50,19 @@ const AddRole = ({ closeAddRoleModal }) => {
     return (
         <>
             <div className="height-100vh flex justify-center align-center">
-                <Box sx={{ width: '592px', height: '416px', borderRadius: '8px', backgroundColor: 'white', p: 2 }}>
+                <Box sx={{
+                    width: '592px',
+                    height: '416px',
+                    borderRadius: '8px',
+                    backgroundColor: 'white',
+                    p: 1
+                }}>
                     <CardContent>
                         <Typography sx={{
                             fontSize: 20,
                             fontWeight: '600',
                             display: 'flex',
-                            fontFamily:'Exo 2',
+                            fontFamily: 'Exo 2',
                             justifyContent: 'space-between'
                         }}
                             gutterBottom>
@@ -68,63 +75,63 @@ const AddRole = ({ closeAddRoleModal }) => {
                             validationSchema={validationSchema}
                         >
                             {({ errors, touched }) => (
-                                <Grid container>
-                                    <Grid item xs={12} sx={{ height: '60px', mt: 6 }} >
-                                        <div className="label">
-                                            <label htmlFor="fullName"
-                                                style={{ color: touched.rolename && errors.rolename ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
-                                                <span
-                                                    style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
-                                                Role Name</label>
-                                        </div>
-                                        <Field
-                                            sx={styles.field__color}
-                                            component={TextField}
-                                            id="roleName"
-                                            variant="standard"
-                                            fullWidth
-                                            type="text"
-                                            placeholder="Enter Role Name"
-                                            name="RoleName"
-                                            position='absolute'
-                                            InputProps={{
-                                                style: {
-                                                    fontSize: '14px',
-                                                    paddingLeft: '20px'
-                                                }
-                                            }}
-                                        />
+                                <Form>
+                                    <Grid container>
+                                        <Grid item xs={12} sx={{ height: '60px', mt: 6 }} >
+                                            <div className="label margin-bottom-1">
+                                                <label htmlFor="fullName"
+                                                    style={{ color: touched.rolename && errors.rolename ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
+                                                    <span
+                                                        style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
+                                                    Role Name</label>
+                                            </div>
+                                            <Field
+                                                sx={styles.field__color}
+                                                component={TextField}
+                                                id="roleName"
+                                                variant="standard"
+                                                fullWidth
+                                                type="text"
+                                                placeholder="Enter Role Name"
+                                                name="RoleName"
+                                                position='absolute'
+                                                InputProps={{
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        paddingLeft: '20px'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12} sx={{ height: '60px', mt: 6 }} >
+                                            <div className="label margin-bottom-1">
+                                                <label htmlFor="fullName"
+                                                    style={{ color: touched.description && errors.description ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
+                                                    <span
+                                                        style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
+                                                    Description</label>
+                                            </div>
+                                            <Field
+                                                sx={styles.field__color}
+                                                component={TextField}
+                                                id="description"
+                                                variant="standard"
+                                                fullWidth
+                                                type="text"
+                                                placeholder="Enter Description"
+                                                name="Description"
+                                                position='absolute'
+                                                InputProps={{
+                                                    style: {
+                                                        fontSize: '14px',
+                                                        paddingLeft: '20px'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
                                     </Grid>
-
-                                    <Grid item xs={12} sx={{ height: '60px', mt: 6 }} >
-                                        <div className="label">
-                                            <label htmlFor="fullName"
-                                                style={{ color: touched.description && errors.description ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
-                                                <span
-                                                    style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
-                                                Description</label>
-                                        </div>
-                                        <Field
-                                            sx={styles.field__color}
-                                            component={TextField}
-                                            id="description"
-                                            variant="standard"
-                                            fullWidth
-                                            type="text"
-                                            placeholder="Enter Description"
-                                            name="Description"
-                                            position='absolute'
-                                            InputProps={{
-                                                style: {
-                                                    fontSize: '14px',
-                                                    paddingLeft: '20px'
-                                                }
-                                            }}
-                                        />
-                                    </Grid>
-                                </Grid>
-
-
+                                </Form>
                             )}
                         </Formik>
                         <div style={{
@@ -139,6 +146,7 @@ const AddRole = ({ closeAddRoleModal }) => {
                                 sx={{
                                     color: 'black',
                                     borderColor: '#40404D',
+                                    type: "submit",
                                     padding: '8px',
                                     border: '1.5px solid #40404D',
                                     fontWeight: 400,
@@ -149,17 +157,14 @@ const AddRole = ({ closeAddRoleModal }) => {
                                         borderColor: 'black',
                                         color: 'black',
                                     }
-                                }}
-                            >
+                                }}>
                                 Cancel</Button>
                             <GlobalButton
                                 btnText='Add'
                                 btnName='accent'
                             />
                         </div>
-
                     </CardContent>
-
                 </Box >
             </div>
         </>

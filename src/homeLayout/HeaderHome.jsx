@@ -23,11 +23,13 @@ const HeaderLayout = () => {
     },
     {
       route: "/account-receivable",
+      route: "/account-receivable",
       name: "Account Receivable",
       isSubMenu: false,
       list: null,
     },
     {
+      route: "/account-receivable",
       route: "/cashflow",
       name: "Cashflow",
       isSubMenu: false,

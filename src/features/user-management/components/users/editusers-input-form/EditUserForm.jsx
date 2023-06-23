@@ -240,5 +240,11 @@ const Styles = {
         borderColor: 'black',
       },
     },
+    '&:before': {
+      borderColor: 'black',
+  },
+      '&:after': {
+        borderColor: 'black',
+      },
   })
 }

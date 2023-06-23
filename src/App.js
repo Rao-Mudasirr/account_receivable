@@ -10,7 +10,7 @@ import Overdue_Invoice from "./pages/Overdue_Invoice";
 import { Notifications } from "./pages/notifications";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
-import Signin from "./components/signin/Signin";
+import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
 import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
