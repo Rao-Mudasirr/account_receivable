@@ -45,7 +45,7 @@ const HeaderLayout = () => {
   const { width } = useWindowDimensions();
   const isMobile = width < 900;
   const navigate = useNavigate();
-  
+
   return (
     <Box component={"nav"} className="navbar-parent">
       <Container>
@@ -58,14 +58,17 @@ const HeaderLayout = () => {
               <Box className="navbar-list-parent">
                 <ul className="navbar-list">
                   {path?.map((e) => (
-                    <>
+                    <React.Fragment key={e?.name}>
                       <NavLink to={e?.route}>{e?.name}</NavLink>
-                    </>
+                    </React.Fragment>
                   ))}
                 </ul>
               </Box>
               <Box className="navbar-btn-parent">
-                <Button endIcon={<ArrowForwardIosIcon fontSize="12" />} onClick={()=>navigate('/signin')}>
+                <Button
+                  endIcon={<ArrowForwardIosIcon fontSize="12" />}
+                  onClick={() => navigate("/signin")}
+                >
                   Sign In
                 </Button>
               </Box>

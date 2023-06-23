@@ -8,10 +8,10 @@ const MobileHeader = ({ path }) => {
   return (
     <>
       <Box
-        class={`burger ${active ? "active" : ""}`}
+        className={`burger ${active ? "active" : ""}`}
         onClick={() => setActive(!active)}
       >
-        <Box class="strip burger-strip-2">
+        <Box className="strip burger-strip-2">
           <Box></Box>
           <Box></Box>
           <Box></Box>
@@ -26,9 +26,9 @@ const MobileHeader = ({ path }) => {
       >
         <ul className="navbar-list">
           {path?.map((e) => (
-            <>
+            <React.Fragment key={e?.name}>
               <NavLink to={e?.route}>{e?.name}</NavLink>
-            </>
+            </React.Fragment>
           ))}
         </ul>
         <Box
