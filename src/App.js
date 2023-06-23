@@ -30,7 +30,7 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
   return (
@@ -63,7 +63,7 @@ function App() {
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
         </Route>
         
-        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
+        {/* <Route path="/home-page/cashflow" element={<HomePageCashflow />} /> */}
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
