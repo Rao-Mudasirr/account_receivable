@@ -94,6 +94,8 @@ export const ComparisonBarChart = ({ yaxisHidden, showIn, data, max }) => {
             options: {
                 yaxis: {
                     show: true,
+                    tickAmount: 5,
+                    max: showIn === "Amount" ? max + 20 : 100,
                     labels: {
                         style: {
                             fontSize: '12px',
@@ -118,15 +120,14 @@ export const ComparisonBarChart = ({ yaxisHidden, showIn, data, max }) => {
                     colors: ["transparent"],
                     width: 2
                 },
-                legend: {
-                    show: false,
-                },
             },
         },
         {
             breakpoint: 600,
             options: {
                 yaxis: {
+                    tickAmount: 5,
+                    max: showIn === "Amount" ? max + 20 : 100,
                     labels: {
                         style: {
                             fontSize: '9px',
@@ -136,11 +137,14 @@ export const ComparisonBarChart = ({ yaxisHidden, showIn, data, max }) => {
                         },
                         formatter: (value) => { return showIn === "Amount" ? `£${value.toFixed(0)}` : `${value.toFixed(0)}%` },
                     },
-                }
+                },
+                legend: {
+                    show: false,
+                },
             },
         }
-    
-    ]
+
+        ]
     }
     return (
         <>
