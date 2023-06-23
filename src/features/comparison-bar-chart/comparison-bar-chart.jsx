@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts';
 const arrayToPercent = (data, max) => {
     return data.map((item) => {
         const percentData = item.data.map((value) => {
-            return (value / (max+10) * 100).toFixed(2);
+            return (value / (max + 10) * 100).toFixed(2);
         });
 
         return {
@@ -89,11 +89,63 @@ export const ComparisonBarChart = ({ yaxisHidden, showIn, data, max }) => {
             fontFamily: 'Exo 2',
             fontWeight: 400,
         },
+        responsive: [{
+            breakpoint: 1535,
+            options: {
+                yaxis: {
+                    show: true,
+                    labels: {
+                        style: {
+                            fontSize: '12px',
+                            colors: ["#6B6B80"],
+                            fontFamily: 'Exo 2',
+                            fontWeight: 400,
+                        },
+                        formatter: (value) => { return showIn === "Amount" ? `£${value.toFixed(0)}` : `${value.toFixed(0)}%` },
+                    },
+                }
+            },
+        },
+        {
+            breakpoint: 1030,
+            options: {
+                plotOptions: {
+                    bar: {
+                        borderRadius: 2,
+                    }
+                },
+                stroke: {
+                    colors: ["transparent"],
+                    width: 2
+                },
+                legend: {
+                    show: false,
+                },
+            },
+        },
+        {
+            breakpoint: 600,
+            options: {
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '9px',
+                            colors: ["#6B6B80"],
+                            fontFamily: 'Exo 2',
+                            fontWeight: 400,
+                        },
+                        formatter: (value) => { return showIn === "Amount" ? `£${value.toFixed(0)}` : `${value.toFixed(0)}%` },
+                    },
+                }
+            },
+        }
+    
+    ]
     }
     return (
         <>
             <Chart
-                series={  showIn === "Amount" ? data : arrayToPercent(data,max) ?? []}
+                series={showIn === "Amount" ? data : arrayToPercent(data, max) ?? []}
                 height={350}
                 options={optionsComparisonBarChart ?? {}}
                 type="bar"
