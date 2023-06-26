@@ -11,4 +11,10 @@
         height: 28px;
     }
 
+    @media (min-width: 1535px) {
+        .addnote_btn {
+            display: none;
+        }  
+    }
+
 }
