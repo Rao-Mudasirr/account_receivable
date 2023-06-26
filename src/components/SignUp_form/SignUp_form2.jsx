@@ -162,7 +162,7 @@ const MySignUpForm2 = () => {
                         Registration Number(CRN)
                       </label>
                     </div>
-                    <Grid item xs={12} sx={{ height: '75px' }}>
+                    <Grid item xs={12}>
                       <Field
                         sx={styles.field__color}
                         component={TextField}

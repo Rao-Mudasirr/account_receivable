@@ -4,7 +4,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
 import dayjs from 'dayjs';
 import { Grid } from '@mui/material';
-export const DashboardDateRange = () => {
+export const DashboardDateRange = ({minWidth}) => {
     const [value, setValue] = useState(dayjs('2022-04-17'));
     return (
         <>
@@ -20,7 +20,7 @@ export const DashboardDateRange = () => {
                                 className='margin-left-0'
                                 value={value}
                                 sx={{
-                                    minWidth: '112px !important', '.MuiOutlinedInput-notchedOutline': { display: 'none' }, '.MuiButtonBase-root': { p: 0 },
+                                    minWidth: minWidth, '.MuiOutlinedInput-notchedOutline': { display: 'none' }, '.MuiButtonBase-root': { p: 0 },
                                     '.MuiInputBase-input ': { p: '0px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, fontSize: '14px', fontWeight: 600, color: '#40404D', width: '82px' },
                                     'svg': { color: '#40404D', width: '22px', height: '22px' },
                                     '.MuiInputBase-root': { p: 0 }

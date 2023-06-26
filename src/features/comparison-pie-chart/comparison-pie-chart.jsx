@@ -1,9 +1,9 @@
+import { Box } from '@mui/material';
 import React from 'react'
 import Chart from 'react-apexcharts';
-const optionsComparisonPieChart =(showIn,data)=> ({
+const optionsComparisonPieChart = {
     chart: {
         type: 'donut',
-        id:''
     },
     plotOptions: {
         pie: {
@@ -50,8 +50,8 @@ const optionsComparisonPieChart =(showIn,data)=> ({
     },
     dataLabels: {
         enabled: true,
-        formatter: function (val, { seriesIndex}) {
-            return  showIn === "Amount" ?  "£" + data[seriesIndex] : val.toFixed(0) + "%";
+        formatter: function (val, { seriesIndex }) {
+            return val.toFixed(0) + "%";
         },
         style: {
             fontSize: '12px',
@@ -59,29 +59,31 @@ const optionsComparisonPieChart =(showIn,data)=> ({
             fontWeight: '400',
         },
     },
-    // responsive: [{
-    //     breakpoint: 480,
-    //     options: {
-    //         chart: {
-    //             width: 200
-    //         },
-    //         legend: {
-    //             position: 'bottom'
-    //         }
-    //     }
-    // }],
-    colors: ["#70D69E", "#FF9898"]
-})
-export const ComparisonPieChart = ({showIn, data}) => {
-    console.log(showIn);
+    colors: ["#70D69E", "#FF9898"],
+    responsive: [
+        {
+            breakpoint: 600,
+            options: {
+                chart:{
+                    height:280
+                },
+                legend: {
+                    show: false,
+                },
+            },
+        }
+
+    ]
+}
+export const ComparisonPieChart = ({ showIn, data }) => {
     return (
-        <>
+        <Box sx={{mt:{sm:'0',xs:'40px'}}}>
             <Chart
                 series={data ?? []}
                 height={350}
-                options={optionsComparisonPieChart(showIn,data) ?? {}}
+                options={optionsComparisonPieChart ?? {}}
                 type="donut"
             />
-        </>
+        </Box>
     )
 }

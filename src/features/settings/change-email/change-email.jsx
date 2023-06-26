@@ -222,9 +222,9 @@ const ChangeEmail = () => {
     onClose={handleClose}
     aria-labelledby="alert-dialog-title"
     aria-describedby="alert-dialog-description"
-    sx={{p:20,justifyContent:'center'}}
+    sx={{justifyContent:'center',p:2}}
   >
-    <DialogTitle id="alert-dialog-title" className="secondary-heading primary-color font-family-exo2" sx={{ fontWeight: 600,display:'flex' ,justifyContent:'center'}}>
+    <DialogTitle id="alert-dialog-title" className="secondary-heading primary-color font-family-exo2" sx={{ fontWeight: 600,display:'flex' ,justifyContent:'center',mt:2}}>
       {" Let’s Get You Verified"}
     </DialogTitle>
     <DialogContent>

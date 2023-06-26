@@ -44,7 +44,7 @@ const AfterDueDate = ({ edit, editIcon, item, id }) => {
               onClick={() =>
                 navigate(`/workflows/add?step=${item?.step}&id=${id}`)
               }
-              btnText="Edit "
+              btnText="Edit"
               endIcon={
                 <img src={editIcon} alt="Export Text" width={16} height={16} />
               }
