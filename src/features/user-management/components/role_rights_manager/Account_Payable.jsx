@@ -44,7 +44,7 @@ export default function Account_Payable() {
                 control={<Android12Switch
                 color='default' />}
               />
-              <span>
+              <span style={{fontFamily:'Exo 2'}}>
                 Accounts
               </span>
             </div>
