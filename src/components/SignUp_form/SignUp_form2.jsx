@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center signup_container margin-top-1">
+    <Grid container className="height-100vh align-center justify-center signup_container">
       <Box
         sx={{
           width: 600,
@@ -273,7 +273,7 @@ const MySignUpForm2 = () => {
           )}
         </Formik>
       </Box>
-    </div >
+      </Grid>
   );
 };
 
