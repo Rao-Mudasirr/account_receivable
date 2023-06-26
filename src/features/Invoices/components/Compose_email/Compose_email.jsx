@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import './compose_email.css'
+import './compose_email.scss'
 import { useTheme } from "@emotion/react";
 import { Chip, Modal } from '@mui/material';
 import Editor_page from './editor'
@@ -22,13 +22,13 @@ export default function Compose_email(props) {
   };
 
   return (
-
+    <div className="mail__container">
     <Modal
       open={open}
       onClose={handleClose}
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p:1 }}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p:1}}
     >
-      <Card sx={{ width: 900, height: 720,}}>
+      <Card sx={{ width: 900}}>
         <CardContent sx={{ ml: 0 }}>
           <div className="tags_email">
             <div className="card_data">
@@ -76,6 +76,6 @@ export default function Compose_email(props) {
         </CardContent>
       </Card>
     </Modal>
-
+    </div>
   );
 }
