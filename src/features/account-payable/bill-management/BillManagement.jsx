@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import GlobalButton from "../../../components/global-button/global-button";
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from "@mui/material";
-import './billmanagement.scss'
+import './billmanagement.scss'  
 
 export default function BillManagement() {
 
