@@ -7,21 +7,13 @@ import { useState } from "react";
 import ViewInvoice from "../../../view-invoices/ViewInvoice";
 import { useNavigate } from "react-router";
 import GlobalButton from "../../../../components/global-button/global-button";
-import Drawer from "@mui/material/Drawer";
 import Popover from "@mui/material/Popover";
+import EditIcon from "../../../../assests/images/client/editIcon.png";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-// import { useMediaQuery } from '@mui/material';
 
 const InvoiceNoDetail = () => {
-  const isSmallerThanMd = window.innerWidth;
-  // console.log(window.innerWidth);
-  const [state, setState] = React.useState({
-    // top: false,
-    // left: false,
-    // bottom: false,
-    right: true,
-  });
-  const [isAddNoteTrue, setIsAddNoteTrue] = React.useState(false);
+  
+  const [isAddNoteTrue, setIsAddNoteTrue] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -29,23 +21,13 @@ const InvoiceNoDetail = () => {
   const AllOverdue = () => {
     navigate("/overdue-invoices");
   };
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-  // console.log(window.innerWidth < 1200);
+  
   useEffect(() => {
     function handleResize() {
-      setIsAddNoteTrue(window.innerWidth > 1200); // Change the breakpoint value as per your requirement
+      setIsAddNoteTrue(window.innerWidth > 1200); 
     }
 
-    handleResize(); // Initial check
+    handleResize(); 
 
     window.addEventListener("resize", handleResize);
 
@@ -53,18 +35,7 @@ const InvoiceNoDetail = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const list = (anchor) => (
-    <Box
-      sx={{ width: 300 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      {/* <Box height="200px" width="50px" ></Box>
-      <Divider />
-     hjk */}
-    </Box>
-  );
+ 
   return (
     <>
       <Grid
@@ -72,17 +43,59 @@ const InvoiceNoDetail = () => {
         spacing={2}
         className="invoice-no_container position-relative"
       >
-        <Grid item xl={9.5} lg={11.9} md={12} xs={12}>
-          <Typography className="font-weight-600 heading-20 tertiary-color">
-            Invoice Details
-            <button
-            className="addnote_btn"
-              style={{ position: "fixed", left: "75%" }}
-              onClick={() => setIsAddNoteTrue(!isAddNoteTrue)}
-            >
-              show
-            </button>
-          </Typography>
+        <Grid item xl={10} lg={12} md={12} xs={12}>
+          <div className="flex justify-space-between">
+            <Typography className="font-weight-600 heading-20 tertiary-color">
+              Invoice Details
+            </Typography>
+            <PopupState variant="popover" popupId="demo-popup-popover">
+              {(popupState) => (
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      height: "32px",
+                      fontFamily: "Exo 2",
+                      background: "#2B2B33",
+                      borderRadius: "8px",
+                      "&:hover": {
+                        background: "#2B2B33",
+                      },
+                    }}
+                    inputProps={{
+                      fontFamily: "Exo 2"
+                    }}
+                    endIcon={
+                      <img
+                        src={EditIcon}
+                        alt="Edit Icon"
+                        width={16}
+                        height={16}
+                      />
+                    }
+                    {...bindTrigger(popupState)}
+                    className="addnote_btn"
+                  >
+                    Add Note
+                  </Button>
+                  <Popover
+                    {...bindPopover(popupState)}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                  >
+                    <AddNote />
+                  </Popover>
+                </div>
+              )}
+            </PopupState>
+          </div>
           <Typography
             className="font-weight-600 secondary-heading tertiary-color"
             sx={{ mt: "50px" }}
@@ -96,8 +109,8 @@ const InvoiceNoDetail = () => {
             className="justify-space-between"
           >
             <Grid
-              xl={7.6}
-              lg={6.89}
+              xl={7}
+              lg={7}
               md={12}
               xs={12}
               item
@@ -122,12 +135,8 @@ const InvoiceNoDetail = () => {
                   Total Amount
                 </Typography>
               </Box>
-              <Box sx={{ textAlign: "center" }}>
-                <GlobalButton
-                  sx={{ mt: "2.5rem" }}
-                  btnText="View Invoice"
-                  onClick={handleOpen}
-                />
+              <Box sx={{ textAlign: "center", mt: "2.5rem" }}>
+                <GlobalButton btnText="View Invoice" onClick={handleOpen} />
                 <ViewInvoice
                   open={open}
                   handleClose={handleClose}
@@ -146,10 +155,16 @@ const InvoiceNoDetail = () => {
             </Grid>
             <Grid
               item
+              xl={3.8}
+              lg={4.5}
+              md={12}
+              xs={12}
               sx={{
                 backgroundColor: "#F0F0F2",
                 p: "24px",
                 borderRadius: "8px",
+                width: "370px",
+                mt: "2.5rem",
               }}
             >
               <Typography className="font-weight-600 heading-20 tertiary-color">
@@ -180,7 +195,7 @@ const InvoiceNoDetail = () => {
                 </div>
               </Box>
               <GlobalButton
-                sx={{ mt: "1rem", width: "300px" }}
+                sx={{ mt: "1rem", width: "100%" }}
                 btnText="View All Invoices"
                 onClick={AllOverdue}
               />
@@ -193,51 +208,16 @@ const InvoiceNoDetail = () => {
         {isAddNoteTrue && (
           <Grid
             item
-            xs={0}
+            xl={2}
             className="position-relative"
-            // sx={{ border: "1px solid red" }}
           >
-            {/* {["right"].map((anchor) => (
-            <React.Fragment key={anchor}>
-              <GlobalButton
-                btnText="Note History"
-                onClick={toggleDrawer(anchor, true)}
-              />
-
-              <Drawer
-                anchor={anchor}
-                open={state[anchor]}
-                onClose={toggleDrawer(anchor, false)}
-                // PaperProps={{ style: { backgroundColor: "transparent" } }}
-              >
-                {list(anchor)} */}
-            {/* <PopupState variant="popover" popupId="demo-popup-popover">
-              {(popupState) => (
-                <div>
-                  <Button variant="contained" {...bindTrigger(popupState)}>
-                    Open Popover
-                  </Button>
-                  <Popover
-                    {...bindPopover(popupState)}
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "center",
-                    }}
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "center",
-                    }}
-                  > */}
-                  <Grid position={{ xl: "static", xs: "absolute" }} height={'100%'}>
-                    <AddNote />
-                  </Grid>
-                  {/* </Popover>
-                </div>
-              )}
-            </PopupState> */}
-            {/* </Drawer>
-            </React.Fragment> */}
-            {/* ))} */}
+            <Grid
+              className="margin-auto-x addnote_side margin-top-6"
+              position={{ xl: "static", xs: "absolute" }}
+              height={"100%"}
+            >
+              <AddNote />
+            </Grid>
           </Grid>
         )}
       </Grid>
