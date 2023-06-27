@@ -210,7 +210,7 @@ const MySignUpForm2 = () => {
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10 px' }}>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}

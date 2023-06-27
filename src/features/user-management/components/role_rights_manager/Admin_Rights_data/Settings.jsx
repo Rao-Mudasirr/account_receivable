@@ -21,6 +21,7 @@ const Settings = (checkboxData2) => {
         root: {
           '& .MuiFormControlLabel-label': {
             fontSize: '14px',
+            fontFamily: 'Exo 2',
           },
         },
       });

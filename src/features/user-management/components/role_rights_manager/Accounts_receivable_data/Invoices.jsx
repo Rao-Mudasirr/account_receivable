@@ -21,6 +21,7 @@ const Invoices = ({checkboxData, onClickBtn}) => {
         root: {
           '& .MuiFormControlLabel-label': {
             fontSize: '14px',
+            fontFamily: 'Exo 2',
           },
         },
       });

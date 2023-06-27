@@ -30,6 +30,8 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -56,6 +58,7 @@ function App() {
         <Route path="/account-payable" element={<HomeLayout />} >
           <Route path="/account-payable" element={<AccountReceivablePage/>} />
         </Route>
+          <Route path="/bill-management" element={<BillManagement/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
