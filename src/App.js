@@ -31,6 +31,7 @@ import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
+import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/account-payable" element={<AccountReceivablePage/>} />
         </Route>
           <Route path="/bill-management" element={<BillManagement/>} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
