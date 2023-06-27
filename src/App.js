@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/report-info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -30,39 +30,42 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import Document from "./pages/Document";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
-          <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        <Route exact path={"/sign-up"} element={<SignUpForm />} />
         {/* </Route> */}
-        
+
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
 
-        <Route path="/home" element={<HomeLayout />} >
+        <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
         </Route>
-        
-        <Route path="/account-receivable" element={<HomeLayout />} >
-          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+
+        <Route path="/account-receivable" element={<HomeLayout />}>
+          <Route
+            path="/account-receivable"
+            element={<AccountReceivablePage />}
+          />
         </Route>
 
-        <Route path="/account-payable" element={<HomeLayout />} >
-          <Route path="/account-payable" element={<AccountReceivablePage/>} />
+        <Route path="/account-payable" element={<HomeLayout />}>
+          <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
-        
-        <Route path="/cashflow" element={<HomeLayout />} >
-          <Route path="/cashflow" element={<AccountReceivablePage/>} />
+
+        <Route path="/cashflow" element={<HomeLayout />}>
+          <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
-        
+
         {/* <Route path="/home-page/cashflow" element={<HomePageCashflow />} /> */}
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
@@ -127,7 +130,9 @@ function App() {
             element={<DSO_Month />}
           />
 
-          <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          {/* work here temporary until mainlayout will sett */}
+          <Route exact path={"/settings"} element={<Document />} />
+
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
