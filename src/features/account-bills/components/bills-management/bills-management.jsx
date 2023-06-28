@@ -99,9 +99,9 @@ export const BillsManagement = () => {
               </TableCell>
               <TableCell
                 className="font-family-exo2 tertiary-color primary-title"
-                sx={{ fontWeight: 400 }}
+                sx={{ fontWeight: 400, }}
               >
-               <VisibilityIcon/>
+               <VisibilityIcon sx={{cursor:'pointer'}}/>
               </TableCell>
             </TableRow>
           ))}
