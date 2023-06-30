@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import { Button, Grid, Box } from "@mui/material";
 // import GlobalSearchBar from '../../../components/global-search-filter/global-search-filter'
-import './billmanagement.scss'
 
 export default function Vendors() {
 
@@ -16,6 +15,10 @@ export default function Vendors() {
             state: { data: row?.original },
         });
     };
+
+    const handleAddVendor = ()=> {
+        navigate('/add-vendor')
+    }
 
     const Vendors_Col = [
         {
@@ -72,7 +75,9 @@ export default function Vendors() {
             <div style={{padding:'2rem'}}>
             <Grid container className="justify-end">
                 {/* <GlobalSearchBar/> */}
-                <Button sx={{
+                <Button 
+                onClick={handleAddVendor}
+                sx={{
                     background: '#2B2B33',
                     fontSize: '14px',
                     fontWeight: 400,

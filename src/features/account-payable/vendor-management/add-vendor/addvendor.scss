@@ -1,0 +1,65 @@
+  .add-vendor_container {
+      @media(max-width: 600px) {
+          .add-vendor_container {
+              margin: 0 1.5rem;
+          }
+      }
+
+      .vendor-add_btn {
+          display: flex;
+          justify-content: flex-end;
+          gap: 1rem;
+          margin-top: 5.5rem;
+          margin-bottom: 2rem;
+      }
+
+      .vendor-add_btn>Button:nth-child(1) {
+          color: rgba(43, 43, 51, 1);
+          border-color: rgba(43, 43, 51, 1);
+          border-radius: 8px;
+          font-family: "Exo 2";
+      }
+
+      .vendor-add_btn>Button:nth-child(2) {
+          background: rgba(43, 43, 51, 1);
+          border-radius: 8px;
+          font-family: "Exo 2";
+      }
+
+      .input_label {
+          display: flex;
+          color: #6B6B80;
+          margin-bottom: 1rem;
+          margin-left: -6px;
+      }
+
+      .add-vendor-textfield_bold {
+          height: 120px;
+      }
+
+      .add-vendor-textfield_bold:hover {
+          font-weight: 600;
+      }
+
+      .hide_label .asterisk {
+          display: none;
+      }
+
+      .MuiFormControl-root {
+          width: 90%;
+      }
+
+      @media(max-width: 900px) {
+          .MuiFormControl-root {
+              width: 100%;
+          }
+      }
+
+      .checkbox-hidden {
+          display: none;
+      }
+
+      .checkbox-label {
+          margin-left: 10px;
+      }
+  }
