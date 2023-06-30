@@ -10,7 +10,7 @@ import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import DocumentApprovalModel from "../DocumentApprovalModel/DocumentApprovalModel";
-const PendingScreen = () => {
+const MakeItPaid = () => {
   const [value, setValue] = useState(0);
   const [openModel, setOpenModel] = useState({
     model: false,
@@ -26,9 +26,13 @@ const PendingScreen = () => {
       value: 1,
       title: "Timeline",
     },
+    {
+      value: 2,
+      title: "Credit Note",
+    },
   ];
   return (
-    <Box className="parent-pending-screen">
+    <Box className="parent-MakeitPaid-screen">
       <Box className="first-section">
         <Typography component="h4">East Repair Inc.</Typography>
         <Typography>£ 500.00</Typography>
@@ -42,7 +46,7 @@ const PendingScreen = () => {
         >
           Decline
         </Button>
-        <Button className="fill">Approve & Schedule</Button>
+        <Button className="fill">Mark As Paid</Button>
       </Box>
       <Box className="third-section">
         <Box className="tabbing-list">
@@ -72,7 +76,7 @@ const PendingScreen = () => {
   );
 };
 
-export default PendingScreen;
+export default MakeItPaid;
 
 const Details = () => {
   const [startDate, setStartDate] = useState(null);
