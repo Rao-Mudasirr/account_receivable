@@ -31,7 +31,7 @@ import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
-import { DeclineCard } from "./pages/landing-pages/account-payable/Decline-card";
+import DeclineCard from "./features/account-payable/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
