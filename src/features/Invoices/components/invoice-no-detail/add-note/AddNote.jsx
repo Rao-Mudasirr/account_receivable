@@ -1,21 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, Card } from '@mui/material';
 import "./addnote.scss";
 import EditIcon from '../../../../../assests/svg/edit.png';
 import AddNoteIcon from '../../../../../assests/svg/addnote.png';
 import AddNoteModel from './AddNoteModel';
-import { useAddNote } from './use-addnote';
 
 const AddNote = () => {
-  const {
-    open,
-    setOpen,
-    handleOpen,
-    handleClose,
-  } = useAddNote();
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   return (
-    <div>
+    <div style={{height:"100%",display: "flex", flexDirection: "column", justifyContent: "start"}}>
       <h5 style={{marginBottom: "1rem"}}>Note History</h5>
       <Card className='addnote_container'>
         <div className='addnote_main'>

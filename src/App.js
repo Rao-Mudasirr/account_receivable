@@ -32,6 +32,7 @@ import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
 import { DeclineCard } from "./pages/landing-pages/account-payable/Decline-card";
+import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
@@ -61,12 +62,12 @@ function App() {
         </Route>
           <Route path="/bill-management" element={<BillManagement/>} />
           <Route path="/decline-card" element={<DeclineCard/>} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
         </Route>
         
-        {/* <Route path="/home-page/cashflow" element={<HomePageCashflow />} /> */}
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />

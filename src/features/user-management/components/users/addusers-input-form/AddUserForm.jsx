@@ -35,7 +35,7 @@ const roleOptions = [
   { value: "Admin", label: "Admin" },
 ];
 
-const AddUserInputs = () => {
+const AddUserForm = () => {
   const [filledFields, setFilledFields] = useState({});
 
   const handleInputChange = (e, formik) => {
@@ -303,7 +303,7 @@ const AddUserInputs = () => {
   );
 };
 
-export default AddUserInputs;
+export default AddUserForm;
 
 //Style
 const Styles = {
