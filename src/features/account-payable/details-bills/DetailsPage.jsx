@@ -16,7 +16,7 @@ const DetailsPage = () => {
           height: '180px',
           mt:'10px',
           mb: '3rem',
-          boxShadow: 'inset 0px 0px 15px rgba(0, 0, 0, 0.2)',
+          boxShadow: 'inset 0px 0px 15px rgba(0, 0, 0, 0.1)',
           display:'block'
         }}
       ></Grid>
