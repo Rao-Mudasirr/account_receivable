@@ -57,12 +57,19 @@ const PendingScreen = () => {
           ))}
         </Box>
         <Box className="tabbing-children">
-          {value === 0 ? <Details /> : value === 1 ? <Timeline /> : ""}
+          {value === 0 ? (
+            <Details openModel={openModel} setOpenModel={setOpenModel} />
+          ) : value === 1 ? (
+            <Timeline />
+          ) : (
+            ""
+          )}
         </Box>
       </Box>
       {openModel && (
         <DocumentApprovalModel
           open={openModel?.model}
+          type={openModel?.type}
           handleClose={() =>
             setOpenModel({ ...openModel, model: !openModel.model, type: 0 })
           }
@@ -74,7 +81,7 @@ const PendingScreen = () => {
 
 export default PendingScreen;
 
-const Details = () => {
+const Details = ({ setOpenModel, openModel }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   return (
@@ -84,7 +91,12 @@ const Details = () => {
           <img src={Image} alt="file" />
         </Box>
 
-        <FullScreen className="maximize-btn" />
+        <FullScreen
+          className="maximize-btn"
+          onClick={() =>
+            setOpenModel({ ...openModel, model: !openModel.model, type: 1 })
+          }
+        />
       </Box>
       <Box className="children-second-section">
         <Grid container spacing={5} rowSpacing={5}>

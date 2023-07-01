@@ -20,6 +20,7 @@ import "./DocumentApprovalModel.scss";
 import { useNavigate } from "react-router-dom";
 import CustomInput from "../../../components/CustomInput";
 import DeclineModel from "./DeclineModel";
+import FullScreenModel from "./FullScreenModel";
 
 function DocumentApprovalModel({ open, handleClose, type = 0 }) {
   const navigate = useNavigate();
@@ -32,7 +33,13 @@ function DocumentApprovalModel({ open, handleClose, type = 0 }) {
         className="model documentApprovalModel-model-parent"
         aria-describedby="modal-modal-description"
       >
-        {type === 0 && <DeclineModel handleClose={handleClose} />}
+        {type === 0 ? (
+          <DeclineModel handleClose={handleClose} />
+        ) : type === 1 ? (
+          <FullScreenModel handleClose={handleClose} />
+        ) : (
+          ""
+        )}
       </Modal>
     </div>
   );
