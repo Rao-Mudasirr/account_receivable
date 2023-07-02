@@ -33,6 +33,7 @@ import AccountPayable from "./pages/landing-pages/account-payable/account-payabl
 import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
+import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           <Route path="/bill-management" element={<BillManagement/>} />
           <Route path="/vendors" element={<VendorManagementPage/>} />
           <Route path="/add-vendor" element={<AddVendor/>} />
+          <Route path="/vendor-action" element={<VendorAction/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />

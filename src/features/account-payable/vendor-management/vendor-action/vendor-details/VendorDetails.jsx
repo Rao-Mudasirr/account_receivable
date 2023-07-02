@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Grid, Button, MenuItem, Checkbox, Typography, Box } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { TextField, Select } from "formik-material-ui";
+import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
-import AddIcon from '@mui/icons-material/Add';
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./addvendor.scss";
+import "./vendordetails.scss";
 
 const validationSchema = Yup.object().shape({
     vendorName: Yup.string().required("Vendor Name is required"),
@@ -38,7 +35,7 @@ const initialValues = {
 };
 
 
-const AddVendor = () => {
+const VendorDetails = () => {
     const [filledFields, setFilledFields] = useState({});
     const navigate = useNavigate();
 
@@ -56,18 +53,11 @@ const AddVendor = () => {
         console.log(values); // Handle form submission logic here
         resetForm();
         setFilledFields({});
-        navigate((-1), toast.success("Vendor Added Successfully"));
+        navigate(-1);
       };
 
-    const goBack = () => {
-        window.history.back();
-    };
-
     return (
-        <Grid className="add-vendor_container">
-            <Typography className="font-weight-600 heading-20 margin-top-1 font-family-exo2">
-                Add Vendor
-            </Typography>
+        <Grid className="vendor-details_container">
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -78,7 +68,7 @@ const AddVendor = () => {
 
                     return (
 
-                        <Form noValidate autoComplete="off" className="add-vendor_form margin-top-3">
+                        <Form noValidate autoComplete="off" className="add-vendor_form">
                             <Typography className="font-weight-600 sub-heading margin-bottom-1 font-family-exo2">
                                 Personal Details
                             </Typography>
@@ -87,8 +77,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.vendorName ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.vendorName ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -116,8 +107,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.email ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.email ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -146,8 +138,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className="add-vendor-textfield_bold"
+                                        md={12}
+                                        lg={5}
+                                        className="vendor-details-textfield_bold"
                                     >
                                         <label className="input_label">
                                             Phone
@@ -172,8 +165,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className="add-vendor-textfield_bold"
+                                        md={12}
+                                        lg={5}
+                                        className="vendor-details-textfield_bold"
                                     >
                                         <label className="input_label">
                                             Website
@@ -191,8 +185,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.postCode ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.postCode ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -220,8 +215,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className="add-vendor-textfield_bold"
+                                        md={12}
+                                        lg={5}
+                                        className="vendor-details-textfield_bold"
                                     >
                                         <label className="input_label">
                                             City
@@ -239,8 +235,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className="add-vendor-textfield_bold"
+                                        md={12}
+                                        lg={5}
+                                        className="vendor-details-textfield_bold"
                                     >
                                         <label className="input_label">
                                             Address
@@ -262,8 +259,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.benificiaryName ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.benificiaryName ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -291,8 +289,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.accountNumber ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.accountNumber ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -320,8 +319,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className={`add-vendor-textfield_bold ${filledFields.sortCode ? "hide_label" : ""
+                                        md={12}
+                                        lg={5}
+                                        className={`vendor-details-textfield_bold ${filledFields.sortCode ? "hide_label" : ""
                                             }`}
                                     >
                                         <label className="input_label">
@@ -349,8 +349,9 @@ const AddVendor = () => {
                                     <Grid
                                         item
                                         xs={12}
-                                        md={5}
-                                        className="add-vendor-textfield_bold"
+                                        md={12}
+                                        lg={5}
+                                        className="vendor-details-textfield_bold"
                                     >
                                         <label className="input_label">
                                             IBAN
@@ -367,14 +368,12 @@ const AddVendor = () => {
 
                                 </Grid>
                             </Grid>
-                            <Grid container className="vendor-add_btn" lg={9.5} md={9.5}>
-                                <Button variant="outlined" onClick={goBack}>
-                                    Cancel
-                                </Button>
+                            <Grid item className="vendor-details_btn" lg={9.5} md={9.5}>
                                 <Button type="submit" sx={{
                                     background: '#2B2B33',
                                     fontSize: '14px',
                                     fontWeight: 400,
+                                    fontFamily: `'Exo 2', "Roboto" "sans-serif"`,
                                     borderRadius: '8px',
                                     gap: '10px',
                                     px: "16px",
@@ -385,9 +384,8 @@ const AddVendor = () => {
                                         background: '#2B2B33',
                                     }
                                 }}
-                                    endIcon={<AddIcon fontSize="medium" sx={{ color: 'white' }} />}
                                 >
-                                    Add Vendor
+                                    Update
                                 </Button>
                             </Grid>
                         </Form>
@@ -398,7 +396,7 @@ const AddVendor = () => {
     );
 };
 
-export default AddVendor;
+export default VendorDetails;
 
 //Style
 const Styles = {
