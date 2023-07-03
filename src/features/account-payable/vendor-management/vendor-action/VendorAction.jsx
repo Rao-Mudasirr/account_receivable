@@ -11,8 +11,6 @@ const TabData = [
 
 const VendorAction = () => {
 
-
-
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -31,7 +29,7 @@ const VendorAction = () => {
         <Grid itam>
           <Typography className='font-weight-600 heading-20 font-family-exo2'>AA Traders</Typography>
         </Grid>
-        <Grid item className='flex' sx={{ gap: "3rem" }}>
+        <Grid item className='flex margin-top-1' sx={{ gap: "3rem" }}>
           <Box>
             <Typography className='font-weight-400 secondary-title font-family-exo2 secondary-color'>Next Payment</Typography>
             <Typography className='font-weight-600 sub-heading margin-bottom-1 font-family-exo2 end-text tertiary-color'>10 Feb</Typography>

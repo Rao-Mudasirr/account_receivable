@@ -1,5 +1,5 @@
 import TableAction from "../../../components/Table/TableAction";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 // const navigate = useNavigate();
@@ -47,9 +47,11 @@ export const Vendors_Col = [
       id: "Actions",
       cell: (info) => (
           <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+            <Link to='/vendor-action'>
           <TableAction type="view"
-          //  onClick={handleView}
+           onClick={console.log()}
             />
+            </Link>
           </Box>
       ),
       header: () => <span>Actions</span>,

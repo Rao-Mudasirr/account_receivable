@@ -16,7 +16,7 @@ export default function Vendors() {
 
     return (
         <React.Fragment>
-            <div>
+            <div className="margin-outlet-x">
                 <Typography className="font-weight-600 heading-20 font-family-exo2 margin-top-2">Vendors</Typography>
             <Grid container className="justify-space-between margin-top-3">
             <GlobalSearchBar />

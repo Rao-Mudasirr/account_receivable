@@ -33,7 +33,7 @@ const initialValues = {
     address: "",
     benificiaryName: "",
     accountNumber: "",
-    sordCode: "",
+    sortCode: "",
     iban: ""
 };
 
@@ -64,7 +64,7 @@ const AddVendor = () => {
     };
 
     return (
-        <Grid className="add-vendor_container">
+        <Grid className="add-vendor_container margin-outlet-x">
             <Typography className="font-weight-600 heading-20 margin-top-1 font-family-exo2">
                 Add Vendor
             </Typography>
@@ -404,28 +404,28 @@ export default AddVendor;
 const Styles = {
     field_color: (theme) => ({
         "& label": {
-            color: "black",
+            color: "#2B2B33",
         },
         "& label.Mui-focused": {
-            color: "black",
+            color: "#2B2B33",
         },
         "& .MuiInput-underline:after": {
-            borderBottomColor: "black",
+            borderBottomColor: "#2B2B33",
         },
         "& .MuiOutlinedInput-root": {
             "& fieldset": {
-                borderColor: "black",
+                borderColor: "#2B2B33",
             },
             "&:hover fieldset": {
-                borderColor: "black",
+                borderColor: "#2B2B33",
                 borderWidth: "0.15rem",
             },
             "&.Mui-focused fieldset": {
-                borderColor: "black",
+                borderColor: "#2B2B33",
             },
         },
         "&:after": {
-            borderColor: "black",
+            borderColor: "#2B2B33",
         },
     }),
 };
