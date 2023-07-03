@@ -1,11 +1,10 @@
 import { Button } from '@mui/material'
 import React from 'react'
-import BillManagement from '../../account-payable/bill-management/BillManagement'
 
 export const CustomBtn = ({onClick,children,otherProps}) => {
     return (
         <>
-            {/* <Button
+            <Button
                 variant="contained"
                 className='font-family-Exo text-transform border-radius-8'
                 color="primary"
@@ -20,8 +19,7 @@ export const CustomBtn = ({onClick,children,otherProps}) => {
                 {...otherProps}
             >
                 {children}
-            </Button> */}
-            <BillManagement/>
+            </Button>
         </>
     )
 }
