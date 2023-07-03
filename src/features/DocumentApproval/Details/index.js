@@ -6,13 +6,14 @@ import Image from "../../../assests/bills/file.png";
 import { ReactComponent as FullScreen } from "../../../assests/bills/maximize.svg";
 import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import './style.scss'
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 
 const Details = ({ setOpenModel, openModel }) => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     return (
-      <>
+      <Box className='reuse-details-section'>
         <Box className="children-first-section">
           <Box className="image-box">
             <img src={Image} alt="file" />
@@ -118,7 +119,7 @@ const Details = ({ setOpenModel, openModel }) => {
             </Grid>
           </Grid>
         </Box>
-      </>
+      </Box>
     );
   };
   export default Details

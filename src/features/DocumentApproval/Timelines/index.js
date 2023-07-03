@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import './style.scss'
 
 const Timelines = () => {
     const array = Array.from({ length: 20 });
