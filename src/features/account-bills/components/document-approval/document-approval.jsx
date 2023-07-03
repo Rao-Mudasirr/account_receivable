@@ -3,6 +3,10 @@ import React from 'react'
 import { GlobalSearchBar } from '../../../../components/global-search-filter/global-search-filter'
 import { BillsManagement } from '../bills-management/bills-management';
 import DocumentApprovalModel from '../../../DocumentApproval/DocumentApprovalModel/DocumentApprovalModel';
+import './document-approval.scss'
+
+
+
 
 
 const SelectedPagination = styled(Pagination)(({ theme }) => ({
@@ -11,43 +15,118 @@ const SelectedPagination = styled(Pagination)(({ theme }) => ({
     color: "#FFFFFF",
   },
 }));
+
+const buttonStyles = {
+  Pending: {
+    backgroundColor: '#FFFFFF !important',
+    color: 'black !important',
+    border: '2px solid #FFFFFF !important',
+  },
+  Scheduled: {
+    backgroundColor: '#FFFFFF !important',
+    color: 'black !important',
+    border: '2px solid #FFFFFF !important',
+  },
+  Paid: {
+    backgroundColor: '#FFFFFF !important',
+    color: 'black !important',
+    border: '2px solid #FFFFFF !important',
+  },
+  Rejected: {
+    backgroundColor: '#FFFFFF !important',
+    color: 'black !important',
+    border: '2px solid #FFFFFF !important',
+  },
+};
+const selectedButtonStyles = {
+  Pending: {
+    backgroundColor: '#FFF0C2',
+    color: '#FFBF00',
+    border: '2px solid #FFBF00',
+  },
+  Scheduled: {
+    backgroundColor: '#D1DEFF',
+    color: '#3F75FF',
+    border: '2px solid #3F75FF',
+  },
+  Paid: {
+    backgroundColor: '#D3E7D8',
+    color: '#48995D',
+    border: '2px solid #48995D',
+  },
+  Rejected: {
+    backgroundColor: '#FFD1D1',
+    color: '#FF3F3F',
+    border: '2px solid #FF3F3F',
+  },
+};
 const DocumentApproval = () => {
 
-  // const classes = useStyles();
+  const [selectedButton, setSelectedButton] = React.useState('Pending');
+
   return (
 <Grid container spacing={2}>
   <Grid item xs={4}>
  <GlobalSearchBar/>
 
  <Box sx={{ display: 'flex', gap: 1, mt: 4 }}>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ p: 2, height: '10px', backgroundColor: 'Yellow', color: 'black' }}
-      >
-        Padding
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ p: 2, height: '10px', backgroundColor: 'white', color: 'black' }}
-      >
-        Scheduled
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ p: 2, height: '10px', backgroundColor: 'white', color: 'black' }}
-      >
-        Paid
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{ p: 2, height: '10px', backgroundColor: 'white', color: 'black' }}
-      >
-        Rejected
-      </Button>
+ <Button
+  className={`tertiary-color primary-title font-family-exo2 ${selectedButton === 'Pending' ? 'selected' : ''}`}
+  sx={{
+    p: 2,
+    height: '10px',
+    textTransform: 'capitalize',
+    borderRadius: '8px',
+    border: '2px',
+    ...(selectedButton === 'Pending' ? selectedButtonStyles.Pending : buttonStyles.Pending),
+  }}
+  onClick={() => setSelectedButton('Pending')}
+>
+  Pending
+</Button>
+<Button
+  className={`tertiary-color primary-title font-family-exo2 ${selectedButton === 'Scheduled' ? 'selected' : ''}`}
+  sx={{
+    p: 2,
+    height: '10px',
+    textTransform: 'capitalize',
+    borderRadius: '8px',
+    border: '2px',
+    ...(selectedButton === 'Scheduled' ? selectedButtonStyles.Scheduled : buttonStyles.Scheduled),
+  }}
+  onClick={() => setSelectedButton('Scheduled')}
+>
+  Scheduled
+</Button>
+<Button
+  className={`tertiary-color primary-title font-family-exo2 ${selectedButton === 'Paid' ? 'selected' : ''}`}
+  sx={{
+    p: 2,
+    height: '10px',
+    textTransform: 'capitalize',
+    borderRadius: '8px',
+    border: '2px',
+    ...(selectedButton === 'Paid' ? selectedButtonStyles.Paid : buttonStyles.Paid),
+  }}
+  onClick={() => setSelectedButton('Paid')}
+>
+  Paid
+</Button>
+<Button
+  className={`tertiary-color primary-title font-family-exo2 ${selectedButton === 'Rejected' ? 'selected' : ''}`}
+  sx={{
+    p: 2,
+    height: '10px',
+    textTransform: 'capitalize',
+    borderRadius: '8px',
+    border: '2px',
+    ...(selectedButton === 'Rejected' ? selectedButtonStyles.Rejected : buttonStyles.Rejected),
+  }}
+  onClick={() => setSelectedButton('Rejected')}
+>
+  Rejected
+</Button>
+
     </Box>
     <Box sx={{display: 'flex',justifyContent:'space-between'}}>
 
@@ -60,55 +139,74 @@ const DocumentApproval = () => {
         1-4 of 4
       </Typography>
       <SelectedPagination
-      count={0} // Replace with the desired number of pages
+      count={0} 
       color="primary"
     />
     </Box>
     </Box>
     <Grid>
-    <Box sx={{backgroundColor: 'rgba(53, 70, 93, 0.2)', p: 2, mt: 2}}>
+    <Box sx={{  p: 2, }}>
 <Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
 <Typography> Berghotel Grosse Scheidegg</Typography>
      <Typography> £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem', mt: 2 }}>
+<Box sx={{ display: 'flex', gap: '2rem', }}>
       <Typography>20/03/2023</Typography>
-      <Typography>Pending</Typography>
+     
+<Typography sx={{ color: selectedButtonStyles[selectedButton]?.color }}>
+  {selectedButton}
+</Typography>
+
     </Box>
 </Box>
 
 
 
 
-<Box sx={{backgroundColor: 'rgba(53, 70, 93, 0.2)', p: 2, mt: 2}}>
-<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Box sx={{  p: 2, }}>
+<Box sx={{display:'flex',justifyContent:'space-between'}}>
 <Typography> Berghotel Grosse Scheidegg</Typography>
      <Typography> £500.00</Typography>
 </Box>
 <Box sx={{ display: 'flex', gap: '2rem', mt: 2 }}>
       <Typography>20/03/2023</Typography>
-      <Typography>Pending</Typography>
+     
+<Typography sx={{ color: selectedButtonStyles[selectedButton]?.color }}>
+  {selectedButton}
+</Typography>
+
+
     </Box>
 </Box>
-<Box sx={{backgroundColor: 'rgba(53, 70, 93, 0.2)', p: 2, mt: 2}}>
-<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Box sx={{  p: 2, }}>
+<Box sx={{display:'flex',justifyContent:'space-between'}}>
 <Typography> Berghotel Grosse Scheidegg</Typography>
      <Typography> £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem', mt: 2 }}>
+<Box sx={{ display: 'flex', gap: '2rem',  }}>
       <Typography>20/03/2023</Typography>
-      <Typography>Pending</Typography>
+     
+<Typography sx={{  color: selectedButtonStyles[selectedButton]?.color }}>
+  {selectedButton}
+</Typography>
+
+
     </Box>
 </Box>
 
-<Box sx={{backgroundColor: 'rgba(53, 70, 93, 0.2)', p: 2, mt: 2}}>
-<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Box sx={{  p: 2, }}>
+<Box sx={{display:'flex',justifyContent:'space-between',}}>
 <Typography> Berghotel Grosse Scheidegg</Typography>
      <Typography> £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem', mt: 2 }}>
+<Box sx={{ display: 'flex', gap: '2rem',  }}>
       <Typography>20/03/2023</Typography>
-      <Typography>Pending</Typography>
+     
+<Typography sx={{  color: selectedButtonStyles[selectedButton]?.color }}>
+  {selectedButton}
+</Typography>
+
+
     </Box>
 </Box>
     </Grid>
@@ -117,16 +215,7 @@ const DocumentApproval = () => {
 
    
   </Grid>
-  <Box
-      sx={{
-        width: '1px',
-        backgroundColor: 'black',
-        height: '100%',
-      }}
-    />
-
-
-
+  
     <Grid>
    
     </Grid>

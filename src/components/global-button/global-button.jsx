@@ -74,7 +74,7 @@ const GlobalButton = (props) => {
   return (
     <Button
       variant={buttonStyle.variant}
-      className={`global-button font-family-exo2 ${className} width-sm-full`}
+      className={`global-button font-family-Exo ${className} width-sm-full`}
       sx={buttonStyle.sx}
       disableElevation={disableElevation}
       fullWidth={fullWidth}
