@@ -11,8 +11,12 @@
 }
 
 .bill_page {
-    width: 700px;
+    width: 730px;
     height: 100%;
-    position: 'relative';
-    overflow: 'auto';
+    position: relative;
+    overflow: auto;
+}
+
+.bill_page::-webkit-scrollbar {
+    display: none;
 }

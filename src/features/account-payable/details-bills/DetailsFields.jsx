@@ -116,14 +116,20 @@ const DetailsFields = () => {
                 </Grid>
             </Grid>
             <Grid container xs={12} className='justify-end margin-top-2'>
-            <Grid item xs={5}>
+                <Grid item xs={5}>
                     <label className='details_label'>Payment Amount</label>
-                    <Select
+                    <TextField
+                        type='number'
                         sx={styles.field__color}
-                        className="fields custom-select"
+                        className="fields"
                         fullWidth
                         id="standard-basic"
                         variant="standard"
+                        inputProps={{
+                            style: {
+                                height: '40px',
+                            },
+                        }}
                     />
                 </Grid>
             </Grid>

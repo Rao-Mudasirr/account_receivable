@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import { Bills_Data } from "./BillsData";
 import TableAction from "../../../components/Table/TableAction";
 import { useNavigate } from "react-router-dom";
-import GlobalButton from "../../../components/global-button/global-button";
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from "@mui/material";
 import './billmanagement.scss'  
@@ -13,10 +12,9 @@ import './billmanagement.scss'
 export default function BillManagement() {
 
     const navigate = useNavigate();
-    const handleView = ({ row }) => {
-        navigate(`/bill-management${row?.original?.id}`, {
-            state: { data: row?.original },
-        });
+    const handleView = (info) => {
+        const { id } = info.row;
+        navigate(`/bill-management/details-page/${id}`)
     };
 
     const Bills_Col = [
