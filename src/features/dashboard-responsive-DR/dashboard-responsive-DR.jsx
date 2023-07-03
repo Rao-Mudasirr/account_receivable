@@ -19,7 +19,7 @@ export const DashboardResponsiveDR = () => {
                     </svg>
                 </Box>
             </Box>
-            <SimpleDialog title={"Date Range:"} titleClass="font-weight-600 heading-20"  handleClose={handleCloseMUIModal} open={openDialog}>
+            <SimpleDialog title={"Date Range:"} handleClose={handleCloseMUIModal} open={openDialog}>
                 <DashboardDateRange minWidth= '112px !important'  />
             </SimpleDialog>
         </>

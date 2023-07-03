@@ -11,14 +11,14 @@ import { NavLinkMenu, SidebarLabel } from "./sidebar-menu-mui-style";
 import { useMatch, useResolvedPath } from "react-router-dom";
 
 // Component Function Starts Here
-const SidebarMenu = ({ item }) => {
+const SidebarMenu = ({ item,pName }) => {
   const { sidebarLinkHandler } = useSidebarMenu({ item })
   const resolved = useResolvedPath(item.path);
   const match = useMatch({ path: resolved.pathname, end: true });
   return (
     <>
       {
-        <>
+        item.allowedPortal.includes(pName) &&
           <div className="sidebar-menu-top">
             <div>
               <NavLinkMenu
@@ -38,7 +38,6 @@ const SidebarMenu = ({ item }) => {
               </NavLinkMenu>
             </div>
           </div>
-        </>
       }
     </>
   );
