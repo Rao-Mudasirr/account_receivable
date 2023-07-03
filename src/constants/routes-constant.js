@@ -1,0 +1,13 @@
+export const TODASHBOARD = "/";
+export const TOINVOICES = "/invoices";
+export const TOBILLS = "/bills";
+export const TOPAYMENTSOURCES = "/payment-sources";
+export const TOVENDORMANAEMENT = "/vendor-management";
+export const TOCLIENTS = "/clients-listing";
+export const TOPERFORMANCEANALYSIS = "/performance-analysis";
+export const TOWORKFLOWS = "/workflows";
+export const TONOTIFICATIONS = "/notifications";
+export const TOACTIVITYLOG = "/activity-log";
+export const TOREPORTS = "/reports";
+export const TOUSERMANAGEMENT = "/user-management";
+export const TOSETTINGS = "/settings";

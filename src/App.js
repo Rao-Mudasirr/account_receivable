@@ -34,6 +34,8 @@ import BillManagement from "./pages/landing-pages/account-payable/Bill-Managemen
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
 import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
+import { BillsManagement } from "./pages/bills-management";
+import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
@@ -109,6 +111,8 @@ function App() {
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/bills"} element={<BillsManagement />} />
+          <Route exact path={"/bills/add-bill"} element={<AddBill />} />
           <Route
             exact
             path={"/clients-details/:id"}

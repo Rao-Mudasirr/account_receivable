@@ -1,5 +1,5 @@
 // Sidebar Data
-import { sidebarData } from "./sidebar-data"
+import { SIDEBARDATA } from "./sidebar-data"
 
 // Components
 import SidebarMenu from "./sidebar-menu/sidebar-menu";
@@ -15,15 +15,19 @@ import { useSidebar } from "./use-sidebar";
 import { Box, Grid } from "@mui/material";
 import { useState } from "react";
 import { AnimatedBtn } from "./animated-btn/animated-btn";
+import { getLocalStorage, setLocalStorage } from "../../../utils/localStorageHelpers";
+import { AP, AR, CASHFLOW } from "../../../constants/portal-type-constants";
 
 // Component
 const Sidebar = () => {
-
   const { openDrawer } = useSidebar();
-  const [open, setOpen] = useState(false)
+  const [portalType,setPortaltype] = useState(getLocalStorage("pName"));
+  const [open, setOpen] = useState(false);
+  const [sidebarData, setSidebarData] = useState(SIDEBARDATA);
+  
   return (
     <Grid container height="100%" position="relative" sx={{ mt: {md: '70px'}, overflowX: 'hidden', flexWrap: 'nowrap' }} className="sidebar">
-      <Grid height="100%" width="100%" sx={{ background: '#2B2B33', }}>
+      <Grid onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)} height="100%" width="100%" sx={{ background: '#2B2B33', }}>
         <Box sx={{ position: 'relative' }}>
           <Box position={"absolute"} zIndex={'1'}>
             <svg xmlns="http://www.w3.org/2000/svg" width="264" height="253" viewBox="0 0 264 253" fill="none">
@@ -34,7 +38,7 @@ const Sidebar = () => {
             <Box className="portal-name white-color font-family-Exo center-text" sx={{ zIndex: '2', pt: '27px', position: 'relative', ml: '30px' }}>Company Name</Box>
             <Box sx={{ height: '100%', display: 'flex', alignItems: 'cenetr', flexDirection: 'column', mt: '200px' }}>
               {
-                ['Account Payable', 'Account Receivable', 'Cashflow'].map(item => <Box key={item} className={` white-color font-family-Exo center-text ${item === "Account Receivable" ? "active-portal-btn black-color font-weight-600" : 'font-weight-400'}`} sx={{ p: '12px', mx: '20px', position: 'relative', zIndex: '3' }}>{item}</Box>)
+                [AP, AR, CASHFLOW].map(item => <Box key={item} onClick={()=>{setLocalStorage("pName", item);setPortaltype(item);setSidebarData(SIDEBARDATA)}} className={` white-color font-family-Exo center-text ${item === portalType ? "active-portal-btn black-color font-weight-600 cursor-default" : 'font-weight-400 cursor-pointer'}`} sx={{ p: '12px', mx: '20px', position: 'relative', zIndex: '3' }}>{item}</Box>)
               }
             </Box>
           </Box>
@@ -47,13 +51,13 @@ const Sidebar = () => {
             <Box
               src={PortalChangeBtn1}
               onClick={() => setOpen(!open)}
-              alt="smd-logo"
+              alt="AP-logo"
               style={{ position: "fixed", left: '40px' }}
               className={`cursor-pointer ${!openDrawer} && "logo-img-icon"`}
             >
               <AnimatedBtn openInnerSidbar={open} setOpenInnerSidbar={setOpen} />
             </Box>
-            <div className="portal-name font-family-Exo">Accounts Receivable</div>
+            <div  className="portal-name font-family-Exo">{portalType}</div>
           </div>
 
           <div
@@ -65,6 +69,7 @@ const Sidebar = () => {
                 <SidebarMenu
                   item={item}
                   key={item.id}
+                  pName={portalType}
                 />
               );
             })}

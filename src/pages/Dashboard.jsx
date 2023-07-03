@@ -15,7 +15,7 @@ import { DashboardResponsiveDR } from "../features/dashboard-responsive-DR/dashb
 import { AppTooltip } from "../components/app-tooltip/app-tooltip";
 import { useNavigate } from "react-router-dom";
 
-const dashboardStyle = {
+export const dashboardStyle = {
   width: "102px",
   height: "28px",
   fontFamily: "Exo 2",
