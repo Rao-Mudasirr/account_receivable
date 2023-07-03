@@ -1,7 +1,7 @@
 import { Box, Dialog } from '@mui/material'
 import React from 'react'
 
-export const SimpleDialog = ({ open, handleClose, children, title, titleClass, titleSX,paperSx }) => {
+export const SimpleDialog = ({ open, handleClose, children, title, titleClass="font-weight-600 heading-20 primary-color", titleSX,paperSx }) => {
     return (
         <>
             <Dialog onClose={handleClose}  PaperProps={{sx:paperSx}}  open={open}>

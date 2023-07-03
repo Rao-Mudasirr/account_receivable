@@ -87,7 +87,7 @@ const optionsAgingBucketPieChart = {
                     total: {
                         showAlways: false,
                         show: true,
-                        label:'',
+                        label: '',
                         fontSize: '13.5px',
                         color: "#6B6B80",
                         fontFamily: 'Exo 2',
@@ -124,18 +124,7 @@ const optionsAgingBucketPieChart = {
             fontWeight: '400',
         },
     },
-    // responsive: [{
-    //     breakpoint: 480,
-    //     options: {
-    //         chart: {
-    //             width: 200
-    //         },
-    //         legend: {
-    //             position: 'bottom'
-    //         }
-    //     }
-    // }],
-    colors: ["#B54C02", "#E88750", "#E8BD50", "#FF3F3F"]
+    colors: ["#B54C02", "#E8BD50", "#E88750", "#FF3F3F"]
 }
 export const AgingBucketBarChart = ({ chartSwitch }) => {
     return (
@@ -153,7 +142,7 @@ export const AgingBucketBarChart = ({ chartSwitch }) => {
                             type="bar"
                         />
                     </Box>
-                        : <Box sx={{my:'27px'}}>
+                        : <Box sx={{ my: '27px' }}>
                             <Chart
                                 series={[2050, 2000, 1000, 3000] ?? []}
                                 height={265}
