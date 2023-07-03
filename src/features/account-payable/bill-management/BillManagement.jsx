@@ -87,8 +87,8 @@ export default function BillManagement() {
 
     return (
         <Fragment>
-            <div style={{padding:'2rem'}}>
-            <Grid container className="justify-end">
+            <div>
+            {/* <Grid container className="justify-end">
                 <Button sx={{
                     background: '#2B2B33',
                     fontSize: '0.75rem',
@@ -112,7 +112,7 @@ export default function BillManagement() {
                     <AddIcon fontSize="medium" sx={{color:'white'}}/>
                 </Button>
             </Grid>
-            <br />
+            <br /> */}
             {/* Table */}
 
             <CustomTable
