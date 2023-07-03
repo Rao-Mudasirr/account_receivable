@@ -5,7 +5,6 @@ import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import { Button, Grid, Box } from "@mui/material";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
-import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
@@ -26,7 +25,7 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
   return (
     <>
       <div className="invoice-title">{id ? 'Client Comparison' : 'Workflows Comparison'}</div>
-      <PerformanceAnalysisGraphHeader />
+      <PerformanceAnalysisGraphHeader id={id} />
       <br/>
       {/* Search field */}
       <Grid container className="align-center cash-collection-report flex justify-space-between">

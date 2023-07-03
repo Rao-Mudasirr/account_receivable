@@ -10,7 +10,7 @@ import Overdue_Invoice from "./pages/Overdue_Invoice";
 import { Notifications } from "./pages/notifications";
 import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/InvoiceNoDetail";
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
-import Signin from "./components/signin/Signin";
+import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
 import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
@@ -30,8 +30,11 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
-
+import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
+import DeclineCard from "./components/decline-card/Decline-card";
+import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
+import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -58,12 +61,15 @@ function App() {
         <Route path="/account-payable" element={<HomeLayout />} >
           <Route path="/account-payable" element={<AccountReceivablePage/>} />
         </Route>
+          <Route path="/bill-management" element={<BillManagement/>} />
+          <Route path="/decline-card" element={<DeclineCard/>} />
+          <Route path="/details-page" element={<DetailsPage/>} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
         </Route>
         
-        <Route path="/home-page/cashflow" element={<HomePageCashflow />} />
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />

@@ -23,6 +23,7 @@ const styles = {
     },
     '& .MuiFormControlLabel-label': {
       fontSize: '14px',
+      fontFamily: 'Exo 2',
     },
   },
 };

@@ -60,4 +60,12 @@
   .MuiFormControl-root{
     width: 100%;
   }
+
+  .checkbox-hidden {
+    display: none;
+  }
+  
+  .checkbox-label {
+    margin-left: 10px;
+  }
 }
