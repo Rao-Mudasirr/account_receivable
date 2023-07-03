@@ -134,8 +134,7 @@ function App() {
             element={<DSO_Month />}
           />
 
-          {/* work here temporary until mainlayout will sett */}
-          <Route exact path={"/settings"} element={<Document />} />
+          <Route exact path={"/settings"} element={<DashboaedSettings />} />
 
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
