@@ -12,7 +12,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/report-info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -30,6 +30,8 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import { BillsManagement } from "./pages/bills-management";
+import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
@@ -103,6 +105,8 @@ function App() {
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/bills"} element={<BillsManagement />} />
+          <Route exact path={"/bills/add-bill"} element={<AddBill />} />
           <Route
             exact
             path={"/clients-details/:id"}
