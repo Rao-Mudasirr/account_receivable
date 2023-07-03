@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { Box, Button, Grid, InputAdornment, Typography } from "@mui/material";
 import CustomInput from "../../../components/CustomInput";
@@ -6,11 +6,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Image from "../../../assests/bills/file.png";
 import { ReactComponent as FullScreen } from "../../../assests/bills/maximize.svg";
 import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
-
+import { ReactComponent as Close } from "../../../assests/svg/model-close.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import DocumentApprovalModel from "../DocumentApprovalModel/DocumentApprovalModel";
-const PendingScreen = () => {
+const MakeItPaid = () => {
   const [value, setValue] = useState(0);
   const [openModel, setOpenModel] = useState({
     model: false,
@@ -26,9 +26,13 @@ const PendingScreen = () => {
       value: 1,
       title: "Timeline",
     },
+    {
+      value: 2,
+      title: "Credit Note",
+    },
   ];
   return (
-    <Box className="parent-pending-screen">
+    <Box className="parent-MakeitPaid-screen">
       <Box className="first-section">
         <Typography component="h4">East Repair Inc.</Typography>
         <Typography>£ 500.00</Typography>
@@ -42,7 +46,7 @@ const PendingScreen = () => {
         >
           Decline
         </Button>
-        <Button className="fill">Approve & Schedule</Button>
+        <Button className="fill">Mark As Paid</Button>
       </Box>
       <Box className="third-section">
         <Box className="tabbing-list">
@@ -58,9 +62,11 @@ const PendingScreen = () => {
         </Box>
         <Box className="tabbing-children">
           {value === 0 ? (
-            <Details openModel={openModel} setOpenModel={setOpenModel} />
+            <Details setOpenModel={setOpenModel} openModel={openModel} />
           ) : value === 1 ? (
             <Timeline />
+          ) : value === 2 ? (
+            <DragDropFile />
           ) : (
             ""
           )}
@@ -79,7 +85,7 @@ const PendingScreen = () => {
   );
 };
 
-export default PendingScreen;
+export default MakeItPaid;
 
 const Details = ({ setOpenModel, openModel }) => {
   const [startDate, setStartDate] = useState(null);
@@ -206,5 +212,115 @@ const Timeline = () => {
         ))}
       </Box>
     </>
+  );
+};
+
+// drag drop file component
+const DragDropFile = () => {
+  // drag state
+  const [dragActive, setDragActive] = React.useState(false);
+  const [file, setFile] = useState(null);
+  // ref
+  const inputRef = React.useRef(null);
+
+  // handle drag events
+  const handleDrag = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  // triggers when file is dropped
+  const handleDrop = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      console.log("files", e.dataTransfer.files[0]);
+      // handleFiles(e.dataTransfer.files);
+      setFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  // triggers when file is selected with click
+  const handleChange = function (e) {
+    e.preventDefault();
+    if (e.target.files && e.target.files[0]) {
+      console.log("files", e.target.files[0]);
+      // handleFiles(e.target.files);
+      setFile(e.target.files[0]);
+    }
+  };
+
+  // triggers the input when the button is clicked
+  const onButtonClick = () => {
+    inputRef.current.click();
+  };
+
+  return (
+    <Box className="uploader">
+      <form
+        id="form-file-upload"
+        className={dragActive ? "drag-active" : ""}
+        onDragEnter={handleDrag}
+        onSubmit={(e) => e.preventDefault()}
+      >
+        {file ? (
+          <>
+            <label
+              id="label-file-upload"
+              htmlFor="input-file-upload"
+              className={dragActive ? "drag-active" : ""}
+            >
+              <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                <p style={{ margin: 0 }}>{file?.name}</p>
+                <Close
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setFile(null)}
+                />
+              </Box>
+            </label>
+          </>
+        ) : (
+          <>
+            <input
+              ref={inputRef}
+              type="file"
+              id="input-file-upload"
+              multiple={true}
+              onChange={handleChange}
+            />
+            <label
+              id="label-file-upload"
+              htmlFor="input-file-upload"
+              className={dragActive ? "drag-active" : ""}
+            >
+              {" "}
+              <Box>
+                <p>Drag and drop here </p>
+                <p className="or">or</p>
+                <Button className="fill" onClick={onButtonClick}>
+                  Browse Files
+                </Button>
+              </Box>
+            </label>
+          </>
+        )}
+
+        {dragActive && (
+          <div
+            id="drag-file-element"
+            onDragEnter={handleDrag}
+            onDragLeave={handleDrag}
+            onDragOver={handleDrag}
+            onDrop={handleDrop}
+          ></div>
+        )}
+      </form>
+    </Box>
   );
 };

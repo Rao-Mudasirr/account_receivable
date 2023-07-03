@@ -10,7 +10,7 @@ import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import DocumentApprovalModel from "../DocumentApprovalModel/DocumentApprovalModel";
-const PendingScreen = () => {
+const Rejected = () => {
   const [value, setValue] = useState(0);
   const [openModel, setOpenModel] = useState({
     model: false,
@@ -22,27 +22,23 @@ const PendingScreen = () => {
       value: 0,
       title: "Details",
     },
-    {
-      value: 1,
-      title: "Timeline",
-    },
   ];
   return (
-    <Box className="parent-pending-screen">
+    <Box className="parent-paid-screen">
       <Box className="first-section">
         <Typography component="h4">East Repair Inc.</Typography>
         <Typography>£ 500.00</Typography>
       </Box>
       <Box className="second-section">
-        <Button
+        {/* <Button
           className="outline"
           onClick={() =>
             setOpenModel({ ...openModel, model: !openModel.model, type: 0 })
           }
         >
           Decline
-        </Button>
-        <Button className="fill">Approve & Schedule</Button>
+        </Button> */}
+        <Button className="fill">Close</Button>
       </Box>
       <Box className="third-section">
         <Box className="tabbing-list">
@@ -59,8 +55,6 @@ const PendingScreen = () => {
         <Box className="tabbing-children">
           {value === 0 ? (
             <Details openModel={openModel} setOpenModel={setOpenModel} />
-          ) : value === 1 ? (
-            <Timeline />
           ) : (
             ""
           )}
@@ -79,7 +73,7 @@ const PendingScreen = () => {
   );
 };
 
-export default PendingScreen;
+export default Rejected;
 
 const Details = ({ setOpenModel, openModel }) => {
   const [startDate, setStartDate] = useState(null);
@@ -185,25 +179,6 @@ const Details = ({ setOpenModel, openModel }) => {
             />
           </Grid>
         </Grid>
-      </Box>
-    </>
-  );
-};
-const Timeline = () => {
-  const array = Array.from({ length: 20 });
-  return (
-    <>
-      <Box sx={{ marginTop: "20px" }}>
-        {array.map((e, i) => (
-          <Box className="timeline-first-section" key={i}>
-            <Typography className="time-timeline">
-              Mar 31, 2023 3:37 p.m.
-            </Typography>
-            <Typography className="time-description">
-              Usman Saeed has modified the payment currency from DKK to GBP{" "}
-            </Typography>
-          </Box>
-        ))}
       </Box>
     </>
   );
