@@ -31,6 +31,8 @@ import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import Document from "./pages/Document";
+import { BillsManagement } from "./pages/bills-management";
+import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
@@ -106,6 +108,8 @@ function App() {
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
+          <Route exact path={"/bills"} element={<BillsManagement />} />
+          <Route exact path={"/bills/add-bill"} element={<AddBill />} />
           <Route
             exact
             path={"/clients-details/:id"}

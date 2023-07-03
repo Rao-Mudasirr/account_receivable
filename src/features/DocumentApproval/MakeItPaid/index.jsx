@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles.scss";
-import { Box, Button, Grid, InputAdornment, Typography } from "@mui/material";
-import CustomInput from "../../../components/CustomInput";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import Image from "../../../assests/bills/file.png";
-import { ReactComponent as FullScreen } from "../../../assests/bills/maximize.svg";
-import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
+import { Box, Button, Typography } from "@mui/material";
 import { ReactComponent as Close } from "../../../assests/svg/model-close.svg";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import DocumentApprovalModel from "../DocumentApprovalModel/DocumentApprovalModel";
+import Details from "../Details";
+import Timelines from "../Timelines";
+
 const MakeItPaid = () => {
   const [value, setValue] = useState(0);
   const [openModel, setOpenModel] = useState({
@@ -64,7 +60,7 @@ const MakeItPaid = () => {
           {value === 0 ? (
             <Details setOpenModel={setOpenModel} openModel={openModel} />
           ) : value === 1 ? (
-            <Timeline />
+            <Timelines />
           ) : value === 2 ? (
             <DragDropFile />
           ) : (
@@ -86,134 +82,6 @@ const MakeItPaid = () => {
 };
 
 export default MakeItPaid;
-
-const Details = ({ setOpenModel, openModel }) => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  return (
-    <>
-      <Box className="children-first-section">
-        <Box className="image-box">
-          <img src={Image} alt="file" />
-        </Box>
-
-        <FullScreen
-          className="maximize-btn"
-          onClick={() =>
-            setOpenModel({ ...openModel, model: !openModel.model, type: 1 })
-          }
-        />
-      </Box>
-      <Box className="children-second-section">
-        <Grid container spacing={5} rowSpacing={5}>
-          <Grid item xs={12} md={6} lg={6}>
-            <CustomInput
-              inputClass={"inputClass"}
-              label={"Invoice Number"}
-              required={false}
-              labelClass={"labelClass"}
-            />
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <p className="label">Issue Date</p>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                sx={{
-                  ".MuiInputBase-input ": {
-                    p: "13px",
-                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-                    color: startDate ? "#40404D" : "#A6A6B3",
-                  },
-                }}
-                slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
-                }}
-                slotProps={{ textField: { placeholder: "From" } }}
-                variant="standared"
-                value={startDate}
-                onChange={(date) => setStartDate(date)}
-              />
-            </LocalizationProvider>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <p className="label">Bill Due Date</p>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                sx={{
-                  ".MuiInputBase-input ": {
-                    p: "13px",
-                    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-                    color: startDate ? "#40404D" : "#A6A6B3",
-                  },
-                }}
-                slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
-                }}
-                slotProps={{ textField: { placeholder: "From" } }}
-                variant="standared"
-                value={startDate}
-                onChange={(date) => setStartDate(date)}
-              />
-            </LocalizationProvider>
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <CustomInput
-              inputClass={"inputClass"}
-              label={"Payment Source"}
-              required={false}
-              labelClass={"labelClass"}
-              type="select"
-            />
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <CustomInput
-              inputClass={"inputClass"}
-              label={"Payment Method"}
-              required={false}
-              labelClass={"labelClass"}
-              type="select"
-            />
-          </Grid>
-          <Grid item xs={12} md={6} lg={6}></Grid>
-          <Grid item xs={12} md={6} lg={6}>
-            <CustomInput
-              label={"Payment Amount"}
-              required={false}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Pound />
-                  </InputAdornment>
-                ),
-              }}
-              inputClass={"inputClass inputClass2"}
-              labelClass={"labelClass"}
-            />
-          </Grid>
-        </Grid>
-      </Box>
-    </>
-  );
-};
-const Timeline = () => {
-  const array = Array.from({ length: 20 });
-  return (
-    <>
-      <Box sx={{ marginTop: "20px" }}>
-        {array.map((e, i) => (
-          <Box className="timeline-first-section" key={i}>
-            <Typography className="time-timeline">
-              Mar 31, 2023 3:37 p.m.
-            </Typography>
-            <Typography className="time-description">
-              Usman Saeed has modified the payment currency from DKK to GBP{" "}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-    </>
-  );
-};
 
 // drag drop file component
 const DragDropFile = () => {

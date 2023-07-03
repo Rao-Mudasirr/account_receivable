@@ -232,6 +232,9 @@
   border-radius: $border-radius-5 !important;
 }
 
+.border-radius-8 {
+  border-radius: $border-radius-8 !important;
+}
 .border-radius-15 {
   border-radius: $border-radius-15 !important;
 }
@@ -349,7 +352,7 @@ a {
 }
 
 .text-transform {
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }
 
 .height-40 {
