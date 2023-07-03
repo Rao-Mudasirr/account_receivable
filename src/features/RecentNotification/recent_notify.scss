@@ -67,13 +67,26 @@
   flex: none;
   order: 1;
   flex-grow: 0;
-} /* Separator */
-.separator {
-  width: auto;
-  height: 1px; /* Theme/Primary/P 95 */
-  background: #f0f0f2;
-  border-radius: 2px; /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+} 
+/* Separator */
+.card-body{
+  hr {
+    width: auto;
+    height: 1px;
+    /*Theme/Primary/P95*/
+    background-color: #F0F0F2;
+    border-top: 1px solid #F0F0F2;
+    /*Insideautolayout*/
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+  hr:last-child {
+    display: none;
+  }
 }
