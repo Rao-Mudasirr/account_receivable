@@ -22,7 +22,7 @@ const DetailsPage = () => {
           justifyContent: 'center'
         }}
       >
-        <div
+        <div className='bill_page'
           style={{
             width: '700px',
             height: '100%',
