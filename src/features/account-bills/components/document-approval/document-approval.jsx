@@ -131,11 +131,11 @@ const DocumentApproval = () => {
     <Box sx={{display: 'flex',justifyContent:'space-between'}}>
 
    
-    <Typography sx={{mt:2}}>
-  inbox sum:£91,391.00  
+    <Typography sx={{mt:2}} className='secondary-color tertiary-titl font-family-exo2'>
+    Inbox sum: £91,397.00 
     </Typography>
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Typography variant="body1">
+      <Typography variant="body1"  className='secondary-color tertiary-titl font-family-exo2'>
         1-4 of 4
       </Typography>
       <SelectedPagination
@@ -145,10 +145,10 @@ const DocumentApproval = () => {
     </Box>
     </Box>
     <Grid>
-    <Box sx={{  p: 2, }}>
+    <Box sx={{  }}>
 <Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
-<Typography> Berghotel Grosse Scheidegg</Typography>
-     <Typography> £500.00</Typography>
+<Typography sx={{fontWeight:600}} className='primary-color primary-title font-family-exo2'> Berghotel Grosse Scheidegg</Typography>
+     <Typography sx={{fontWeight:400}} className='tertiary-color sub-heading font-family-exo2' > £500.00</Typography>
 </Box>
 <Box sx={{ display: 'flex', gap: '2rem', }}>
       <Typography>20/03/2023</Typography>
@@ -163,49 +163,46 @@ const DocumentApproval = () => {
 
 
 
-<Box sx={{  p: 2, }}>
-<Box sx={{display:'flex',justifyContent:'space-between'}}>
-<Typography> Berghotel Grosse Scheidegg</Typography>
-     <Typography> £500.00</Typography>
+<Box sx={{  }}>
+<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Typography sx={{fontWeight:600}} className='primary-color primary-title font-family-exo2'> Berghotel Grosse Scheidegg</Typography>
+     <Typography sx={{fontWeight:400}} className='tertiary-color sub-heading font-family-exo2' > £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem', mt: 2 }}>
+<Box sx={{ display: 'flex', gap: '2rem', }}>
       <Typography>20/03/2023</Typography>
      
 <Typography sx={{ color: selectedButtonStyles[selectedButton]?.color }}>
   {selectedButton}
 </Typography>
 
-
     </Box>
 </Box>
-<Box sx={{  p: 2, }}>
-<Box sx={{display:'flex',justifyContent:'space-between'}}>
-<Typography> Berghotel Grosse Scheidegg</Typography>
-     <Typography> £500.00</Typography>
+<Box sx={{  }}>
+<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Typography sx={{fontWeight:600}} className='primary-color primary-title font-family-exo2'> Berghotel Grosse Scheidegg</Typography>
+     <Typography sx={{fontWeight:400}} className='tertiary-color sub-heading font-family-exo2' > £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem',  }}>
+<Box sx={{ display: 'flex', gap: '2rem', }}>
       <Typography>20/03/2023</Typography>
      
-<Typography sx={{  color: selectedButtonStyles[selectedButton]?.color }}>
+<Typography sx={{ color: selectedButtonStyles[selectedButton]?.color }}>
   {selectedButton}
 </Typography>
 
-
     </Box>
 </Box>
 
-<Box sx={{  p: 2, }}>
-<Box sx={{display:'flex',justifyContent:'space-between',}}>
-<Typography> Berghotel Grosse Scheidegg</Typography>
-     <Typography> £500.00</Typography>
+<Box sx={{  }}>
+<Box sx={{display:'flex',justifyContent:'space-between',mt:2}}>
+<Typography sx={{fontWeight:600}} className='primary-color primary-title font-family-exo2'> Berghotel Grosse Scheidegg</Typography>
+     <Typography sx={{fontWeight:400}} className='tertiary-color sub-heading font-family-exo2' > £500.00</Typography>
 </Box>
-<Box sx={{ display: 'flex', gap: '2rem',  }}>
+<Box sx={{ display: 'flex', gap: '2rem', }}>
       <Typography>20/03/2023</Typography>
      
-<Typography sx={{  color: selectedButtonStyles[selectedButton]?.color }}>
+<Typography sx={{ color: selectedButtonStyles[selectedButton]?.color }}>
   {selectedButton}
 </Typography>
-
 
     </Box>
 </Box>
