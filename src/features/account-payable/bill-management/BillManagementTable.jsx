@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from "@mui/material";
 import './billmanagement.scss'  
+import { AddBillModal } from "../../add-bill-modal/add-bill-modal";
 
-export default function BillManagement() {
+export default function BillManagementTable() {
 
     const navigate = useNavigate();
     const handleView = (info) => {
@@ -114,6 +115,8 @@ export default function BillManagement() {
             </Grid>
             <br /> */}
             {/* Table */}
+            {/* <AddBillModal/>
+            <br/> */}
 
             <CustomTable
                 data={Bills_Data}
