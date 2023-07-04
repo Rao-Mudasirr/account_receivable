@@ -40,7 +40,7 @@ const INVOICE_DATA = [
     total_amount: "$7200",
   },
   {
-    id: 2,
+    id: 2, 
     Id: "02",
     invoiceNo: "2345",
     client: "Ali",
