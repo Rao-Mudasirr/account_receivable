@@ -12,6 +12,10 @@ import { BillsManagement } from "../bills-management/bills-management";
 import DocumentApprovalModel from "../../../DocumentApproval/DocumentApprovalModel/DocumentApprovalModel";
 import Divider from "@mui/material/Divider";
 import "./document-approval.scss";
+import PendingScreen from "../../../DocumentApproval/PendingScreen";
+import MakeItPaid from "../../../DocumentApproval/MakeItPaid";
+import Paid from "../../../DocumentApproval/Paid";
+import Rejected from "../../../DocumentApproval/Rejected";
 
 const SelectedPagination = styled(Pagination)(({ theme }) => ({
   "& .Mui-selected": {
@@ -69,7 +73,7 @@ const DocumentApproval = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={4}>
+      <Grid item lg={4} xs={12}>  
         <GlobalSearchBar />
 
         <Box sx={{ display: "flex", gap: 0.5, mt: 4 }}>
@@ -79,6 +83,7 @@ const DocumentApproval = () => {
             }`}
             sx={{
               p: 2,
+              
               height: "10px",
               textTransform: "capitalize",
               borderRadius: "8px",
@@ -292,8 +297,18 @@ const DocumentApproval = () => {
         </Grid>
       </Grid>
 
-      <Grid></Grid>
-      <Grid item xs={8}></Grid>
+   
+      <Grid item lg={8} xs={12}>    {selectedButton === 'Pending' ? (
+            <PendingScreen />
+          ) : selectedButton ===  'Scheduled'? (
+            <MakeItPaid />
+          ) : selectedButton ===  "Paid" ? (
+            <Paid />
+          ) : selectedButton === "Rejected"? (
+            <Rejected />
+          ) : (
+            ""
+          )}</Grid>
     </Grid>
   );
 };
