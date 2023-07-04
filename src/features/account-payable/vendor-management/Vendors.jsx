@@ -11,12 +11,12 @@ export default function Vendors() {
     const navigate = useNavigate();
 
     const handleAddVendor = () => {
-        navigate('/add-vendor')
+        navigate('/vendors/add-vendor')
     }
 
     return (
         <React.Fragment>
-            <div className="margin-outlet-x">
+            <div>
                 <Typography className="font-weight-600 heading-20 font-family-exo2 margin-top-2">Vendors</Typography>
             <Grid container className="justify-space-between margin-top-3">
             <GlobalSearchBar />
@@ -36,7 +36,10 @@ export default function Vendors() {
                     textTransform: 'capitalize',
                     '&:hover': {
                         background: '#2B2B33',
-                    }
+                    },
+                    "@media (max-width: 600px)": {
+                        mt: "8px",
+                      },
                 }}
                 endIcon={<AddIcon fontSize="medium" sx={{color:'white'}}/>}
                 >

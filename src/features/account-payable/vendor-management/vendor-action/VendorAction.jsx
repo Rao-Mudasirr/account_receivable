@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
-import { Avatar, Grid, Typography, Box, Paper, Tabs, Tab, Divider } from "@mui/material";
+import React from 'react';
+import { Grid, Typography, Box } from "@mui/material";
 import VendorDetails from './vendor-details/VendorDetails';
 import VendorDocuments from './vendor-documents/VendorDocuments';
-import { Vendors_Data } from '../VendorsData'
+import {CustomTabs} from '../../../../components/custom-tabs/custom-tabs'
 
 const TabData = [
-  { label: "Details", content: <VendorDetails /> },
-  { label: "Documents", content: <VendorDocuments /> },
+  {
+    id:0,
+    name:'Details',
+    component:<VendorDetails/>
+  },
+  {
+    id:1,
+    name:'Documents',
+    component:<VendorDocuments/>
+  },
 ];
 
 const VendorAction = () => {
 
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
-
-  // Check if activeTab is within the valid range
-  if (activeTab < 0 || activeTab >= TabData.length) {
-    return <div>Error: Invalid activeTab value</div>;
-  }
-
   return (
-    <Grid container spacing={2} className='margin-auto-x'>
-      <Grid container className='margin-top-2 justify-space-between align-center' xl={10} lg={10} md={10} xs={12}>
+    <Grid container>
+      <Grid container className='justify-space-between' xl={10} lg={10} md={10} xs={12}>
 
         <Grid itam>
           <Typography className='font-weight-600 heading-20 font-family-exo2'>AA Traders</Typography>
         </Grid>
-        <Grid item className='flex margin-top-1' sx={{ gap: "3rem" }}>
+        <Grid item className='flex' sx={{ gap: "3rem" }}>
           <Box>
             <Typography className='font-weight-400 secondary-title font-family-exo2 secondary-color'>Next Payment</Typography>
             <Typography className='font-weight-600 sub-heading margin-bottom-1 font-family-exo2 end-text tertiary-color'>10 Feb</Typography>
@@ -47,42 +44,8 @@ const VendorAction = () => {
       </Grid>
 
       <Grid xl={10} lg={10} md={10} xs={12}>
-        <div style={{ padding: '5px', marginTop: '10px' }}>
-          <div style={{ overflow: "hidden" }}>
-            <Tabs
-              value={activeTab}
-              onChange={handleTabChange}
-              sx={{
-                "& .MuiTabs-indicator": {
-                  backgroundColor: "#40404D",
-                  textTransform: 'capitalize',
-                },
-
-              }}
-              className="font-family-exo2"
-            >
-              {TabData.map((tab, index) => (
-                <Tab
-                  key={index}
-                  label={tab.label}
-                  sx={{
-                    "&.Mui-selected": {
-                      color: "#40404D",
-                      fontSize: '16px',
-                      fontWeight: '400',
-                      textTransform: 'capitalize',
-                    },
-                  }}
-                  className="font-family-exo2"
-                />
-              ))}
-            </Tabs>
-            <Divider sx={{ backgroundColor: "#000000" }} />
-          </div>
-        </div>
-        <div style={{ padding: '5px', marginTop: '5px' }}>{TabData[activeTab].content}</div>
-      </Grid>
-      <Grid xs={2}></Grid>
+        <CustomTabs tabsData={TabData}/>
+        </Grid>
     </Grid>
   );
 };

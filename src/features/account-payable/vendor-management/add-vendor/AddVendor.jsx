@@ -64,7 +64,7 @@ const AddVendor = () => {
     };
 
     return (
-        <Grid className="add-vendor_container margin-outlet-x">
+        <Grid className="add-vendor_container">
             <Typography className="font-weight-600 heading-20 margin-top-1 font-family-exo2">
                 Add Vendor
             </Typography>

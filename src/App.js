@@ -41,7 +41,7 @@ function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        
+         
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
@@ -64,9 +64,6 @@ function App() {
           <Route path="/account-payable" element={<AccountReceivablePage/>} />
         </Route>
           <Route path="/bill-management" element={<BillManagement/>} />
-          <Route path="/vendors" element={<VendorManagementPage/>} />
-          <Route path="/add-vendor" element={<AddVendor/>} />
-          <Route path="/vendor-action" element={<VendorAction/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
@@ -113,6 +110,9 @@ function App() {
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
+          <Route path="/vendors/add-vendor" element={<AddVendor/>} />
+          <Route path="/vendors/vendor-action" element={<VendorAction/>} />
           <Route
             exact
             path={"/clients-details/:id"}

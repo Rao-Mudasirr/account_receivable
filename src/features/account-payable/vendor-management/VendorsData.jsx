@@ -47,7 +47,7 @@ export const Vendors_Col = [
       id: "Actions",
       cell: (info) => (
           <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-            <Link to='/vendor-action'>
+            <Link to='/vendors/vendor-action'>
           <TableAction type="view"
            onClick={console.log()}
             />
