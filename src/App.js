@@ -30,6 +30,7 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import Document from "./pages/Document";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
@@ -38,33 +39,35 @@ function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
-          <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        <Route exact path={"/sign-up"} element={<SignUpForm />} />
         {/* </Route> */}
-        
+
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
 
-        <Route path="/home" element={<HomeLayout />} >
+        <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
         </Route>
-        
-        <Route path="/account-receivable" element={<HomeLayout />} >
-          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+
+        <Route path="/account-receivable" element={<HomeLayout />}>
+          <Route
+            path="/account-receivable"
+            element={<AccountReceivablePage />}
+          />
         </Route>
 
-        <Route path="/account-payable" element={<HomeLayout />} >
-          <Route path="/account-payable" element={<AccountReceivablePage/>} />
+        <Route path="/account-payable" element={<HomeLayout />}>
+          <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
-        
-        <Route path="/cashflow" element={<HomeLayout />} >
-          <Route path="/cashflow" element={<AccountReceivablePage/>} />
+
+        <Route path="/cashflow" element={<HomeLayout />}>
+          <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
-        
+
         {/* <Route path="/home-page/cashflow" element={<HomePageCashflow />} /> */}
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
@@ -132,6 +135,7 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
