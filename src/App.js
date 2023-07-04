@@ -30,7 +30,6 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
@@ -63,7 +62,6 @@ function App() {
         <Route path="/account-payable" element={<HomeLayout />} >
           <Route path="/account-payable" element={<AccountReceivablePage/>} />
         </Route>
-          <Route path="/bill-management" element={<BillManagement/>} />
           <Route path="/decline-card" element={<DeclineCard/>} />
           <Route path="/details-page" element={<DetailsPage/>} />
           <Route path="/vendors" element={<VendorManagementPage/>} />
