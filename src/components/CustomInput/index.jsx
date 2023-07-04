@@ -8,6 +8,8 @@ import {
 // import { TextField } from "formik-material-ui";
 
 import React, { useEffect } from "react";
+import { ReactComponent as Down } from "../../assests/svg/chev-bottom.svg";
+
 import "./styles.scss";
 
 const CustomInput = ({
@@ -55,6 +57,7 @@ const CustomInput = ({
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             defaultValue={options[0]?.title || "Select"}
             variant="standard"
+            IconComponent={Down}
             {...props}
           >
             {options?.length === 0 ? (
