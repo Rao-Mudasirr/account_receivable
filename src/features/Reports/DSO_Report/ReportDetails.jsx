@@ -12,12 +12,12 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DSO_Data2 } from "../ReportsTable/DSO_Report";
 import "../report.scss";
 import TableAction from "../../../components/Table/TableAction";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 export default function ReportDetails() {
 
@@ -110,7 +110,7 @@ export default function ReportDetails() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -128,7 +128,7 @@ export default function ReportDetails() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}

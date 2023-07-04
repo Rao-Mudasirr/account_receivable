@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
 import dayjs from 'dayjs';
 import { Grid } from '@mui/material';
+import { DateIcon } from '../../components/date-icon/date-icon';
 export const DashboardDateRange = ({minWidth}) => {
     const [value, setValue] = useState(dayjs('2022-04-17'));
     return (
@@ -27,7 +27,7 @@ export const DashboardDateRange = ({minWidth}) => {
                                 }}
                                 onChange={(date) => { }}
                                 slots={{
-                                    openPickerIcon: CalendarMonthRoundedIcon
+                                    openPickerIcon: DateIcon
                                 }}
                             />
                         </Grid>
@@ -46,7 +46,7 @@ export const DashboardDateRange = ({minWidth}) => {
                                 }}
                                 onChange={(date) => { }}
                                 slots={{
-                                    openPickerIcon: CalendarMonthRoundedIcon
+                                    openPickerIcon: DateIcon
                                 }}
                             />
                         </Grid>

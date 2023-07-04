@@ -1,18 +1,15 @@
-import { Box, TextField } from '@mui/material'
-import React from 'react'
+import { Box, TextField } from '@mui/material';
+import React from 'react';
+import "./custom-field.scss"
 
-export const CustomField = () => {
+export const CustomField = ({ label, id, children }) => {
   return (
     <>
       <Box className="flex flex-column custom-field-for-ap">
-        <label className='secondary-color' >
-          Invoice Number
+        <label htmlFor={id} className='secondary-color' >
+          {label}
         </label>
-        <TextField
-            id="standard-basic"
-            className="font-family-Exo"
-            placeholder="Standard"
-          />
+        {children}
       </Box>
     </>
   )

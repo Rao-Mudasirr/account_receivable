@@ -11,11 +11,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { CASHFLOW_Col, CashFlow_Data } from "../ReportsTable/Cashflow_Data";
 import "../report.scss";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 import { toast } from "react-toastify";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 function CashFlowForCasting() {
 
@@ -51,7 +51,7 @@ function CashFlowForCasting() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -69,7 +69,7 @@ function CashFlowForCasting() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}
