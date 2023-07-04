@@ -211,7 +211,7 @@ export default function InvoiceListing() {
 
         <Grid xs={12} md={6} lg={6} xl={6}>
           <div style={{ marginLeft: "auto", display: "flex" }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{
                   paddingRight: "20px",
@@ -254,7 +254,7 @@ export default function InvoiceListing() {
                 variant: "outlined",
                 sx: {
                   mr: 2,
-                  top: '20px',
+                  top: "20px",
                   whiteSpace: "nowrap",
                   color: "#40404D",
                   border: "1.5px solid #40404D !important",
@@ -421,7 +421,12 @@ export default function InvoiceListing() {
                         }}
                         selectVal={bucket}
                         setSelectVal={setBucket}
-                        data={["Amount overdue < 30d", "Amount overdue 30 - 60d", "Amount overdue 60 - 90d", "Amount overdue > 90d"]}
+                        data={[
+                          "Amount overdue < 30d",
+                          "Amount overdue 30 - 60d",
+                          "Amount overdue 60 - 90d",
+                          "Amount overdue > 90d",
+                        ]}
                       />
                     </Grid>
                   </Grid>

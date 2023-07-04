@@ -33,6 +33,7 @@ import AccountPayable from "./pages/landing-pages/account-payable/account-payabl
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
+import Document from "./pages/Document";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
@@ -40,27 +41,29 @@ function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
-        
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
-          <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        <Route exact path={"/sign-up"} element={<SignUpForm />} />
         {/* </Route> */}
-        
+
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
 
-        <Route path="/home" element={<HomeLayout />} >
+        <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
         </Route>
-        
-        <Route path="/account-receivable" element={<HomeLayout />} >
-          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+
+        <Route path="/account-receivable" element={<HomeLayout />}>
+          <Route
+            path="/account-receivable"
+            element={<AccountReceivablePage />}
+          />
         </Route>
 
-        <Route path="/account-payable" element={<HomeLayout />} >
-          <Route path="/account-payable" element={<AccountReceivablePage/>} />
+        <Route path="/account-payable" element={<HomeLayout />}>
+          <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
           <Route path="/decline-card" element={<DeclineCard/>} />
           <Route path="/details-page" element={<DetailsPage/>} />
@@ -136,6 +139,7 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
