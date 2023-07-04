@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { GlobalSearchBar } from "../../../../components/global-search-filter/global-search-filter";
-import { BillsManagement } from "../bills-management/bills-management";
+import { BillsManagement } from "../bills-management-payable-table/bills-management-payable-table";
 import DocumentApprovalModel from "../../../DocumentApproval/DocumentApprovalModel/DocumentApprovalModel";
 import Divider from "@mui/material/Divider";
 import "./document-approval.scss";
@@ -73,17 +73,17 @@ const DocumentApproval = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item lg={4} xs={12}>  
+      <Grid item xl={3} xs={12} sx={{p:2}}>  
         <GlobalSearchBar />
 
         <Box sx={{ display: "flex", gap: 0.5, mt: 4 }}>
           <Button
-            className={`tertiary-color primary-title font-family-exo2 ${
+            className={`tertiary-color  font-family-exo2 ${
               selectedButton === "Pending" ? "selected" : ""
             }`}
             sx={{
               p: 2,
-              
+              fontSize:{md:'16px',sx:'8px'},
               height: "10px",
               textTransform: "capitalize",
               borderRadius: "8px",
@@ -97,11 +97,12 @@ const DocumentApproval = () => {
             Pending
           </Button>
           <Button
-            className={`tertiary-color primary-title font-family-exo2 ${
+            className={`tertiary-color  font-family-exo2 ${
               selectedButton === "Scheduled" ? "selected" : ""
             }`}
             sx={{
               p: 2,
+              fontSize:{md:'16px',sx:'6px'},
               height: "10px",
               textTransform: "capitalize",
               borderRadius: "8px",
@@ -158,14 +159,15 @@ const DocumentApproval = () => {
           >
             Inbox sum: £91,397.00
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center" ,mt:2}}>
             <Typography
               variant="body1"
               className="secondary-color tertiary-titl font-family-exo2"
+           
             >
               1-4 of 4
             </Typography>
-            <SelectedPagination count={0} color="primary" />
+            <SelectedPagination   count={0} color="primary" />
           </Box>
         </Box>
         <Grid>
@@ -298,7 +300,11 @@ const DocumentApproval = () => {
       </Grid>
 
    
-      <Grid item lg={8} xs={12}>    {selectedButton === 'Pending' ? (
+      <Grid item xl={7} xs={12 }  sx={{ borderLeft: '2px solid #C4C4CC',
+      p: 2,
+      '@media (max-width: 1700px)': {
+        borderLeft: 'none',
+      },}}>    {selectedButton === 'Pending' ? (
             <PendingScreen />
           ) : selectedButton ===  'Scheduled'? (
             <MakeItPaid />

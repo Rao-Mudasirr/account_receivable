@@ -120,6 +120,7 @@ export default function BillManagementTable() {
 
             <CustomTable
                 data={Bills_Data}
+                show={false}
                 columns={Bills_Col}
                 // showSerialNo
                 // onPageChange={pageChangeHandler}

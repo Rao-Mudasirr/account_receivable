@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Avatar, Grid, Typography, Box, Paper, Tabs, Tab, Divider } from "@mui/material";
-import { BillsManagement } from './components/bills-management/bills-management';
+import { BillsManagement } from './components/bills-management-payable-table/bills-management-payable-table';
 import DocumentApproval from './components/document-approval/document-approval';
 
 
 
 
 const TabData = [
-    { label: "Profile Management", content: <BillsManagement/> },
+    // { label: "Profile Management", content: <BillsManagement/> },
     { label: "Company Management", content: <DocumentApproval /> },
   
   ];

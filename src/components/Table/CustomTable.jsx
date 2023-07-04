@@ -254,7 +254,7 @@ const CustomTable = (props) => {
             onClick={() => setShow(!show)}
             style={{ cursor: "pointer" }}
           />
-          {show && (
+          { show && (
             <Box sx={{ display: "block", marginTop: "-19px", marginLeft: '-150px', position: "absolute", zIndex: 11, }}>
               <ul
                 style={{
