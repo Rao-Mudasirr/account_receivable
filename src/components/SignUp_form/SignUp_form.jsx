@@ -19,7 +19,7 @@ import './signUp.scss'
 
 const names = [
   'Account Payable (I want to pay vendors)',
-  'Account Receivable (I want to send bills)',
+  'Account Receivable (I want to send invoices)',
   'Cash Flow (I want to manage cash)',
   'All',
 ];
@@ -151,7 +151,7 @@ export default function MySignUpForm(props) {
   let isAllSelected = personName.length === names.length - 1;
 
   return (
-    <div className="height-100vh flex align-center justify-center signup_container" >
+    <Grid container className="height-100vh align-center justify-center signup_container" >
       <Box
         sx={{
           width: 600,
@@ -377,7 +377,7 @@ export default function MySignUpForm(props) {
           )}
         </Formik>
       </Box>
-    </div >
+    </Grid >
   );
 }
 

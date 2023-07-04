@@ -124,7 +124,7 @@ const MySignUpForm2 = () => {
   const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
   return (
-    <div className="height-100vh flex align-center justify-center signup_container margin-top-1">
+    <Grid container className="height-100vh align-center justify-center signup_container">
       <Box
         sx={{
           width: 600,
@@ -210,7 +210,7 @@ const MySignUpForm2 = () => {
                       margin="none"
                       name="companyName"
                       InputProps={{
-                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10 px' }}>-</InputAdornment>,
+                        startAdornment: <InputAdornment sx={{ p: '15px', mb: '10px' }}>-</InputAdornment>,
                         variant: 'standard',
                         disableUnderline: true,
                       }}
@@ -273,7 +273,7 @@ const MySignUpForm2 = () => {
           )}
         </Formik>
       </Box>
-    </div >
+      </Grid>
   );
 };
 

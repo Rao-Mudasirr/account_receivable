@@ -44,7 +44,7 @@ export default function Cashflow() {
                 control={<Android12Switch
                 color='default' />}
               />
-              <span>
+              <span style={{fontFamily:'Exo 2'}}>
                 CashFlow
               </span>
             </div>

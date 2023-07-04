@@ -10,6 +10,7 @@ const Dashboard = ({ checkboxData,handleSwitchChange}) => {
         root: {
           '& .MuiFormControlLabel-label': {
             fontSize: '14px',
+            fontFamily: 'Exo 2',
           },
         },
       });
