@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import CustomTable from '../../../components/Table/CustomTable'
@@ -13,6 +12,7 @@ import { ExportCardCheckbox } from '../../../components/export-card-checkbox/exp
 import { toast, ToastContainer } from 'react-toastify';
 import { CashCollectionReportData } from '../../../mock-data/ReportData'
 import { CashCollectionReportInvoiceModal } from '../../cash-collection-report-invoice-modal/cash-collection-report-invoice-modal'
+import { CustomDatePicker } from '../../../components/custom-date-picker/custom-date-picker'
 
 const CashCollectionReportCol = [
     {
@@ -75,32 +75,10 @@ export const CashCollectionReport = () => {
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <Grid container>
                                     <Grid item xs={6}>
-                                        <DatePicker
-                                            sx={{
-                                                paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: startDate ? '#40404D' : '#A6A6B3' },
-                                            }}
-                                            slots={{
-                                                openPickerIcon: CalendarMonthRoundedIcon
-                                            }}
-
-                                            slotProps={{ textField: { placeholder: 'From' } }}
-                                            variant="standared"
-                                            value={startDate}
-                                            onChange={(date) => setStartDate(date)}
-                                        />
+                                        <CustomDatePicker dateValue={startDate} placeholder="From" setDateValue={setStartDate} />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <DatePicker
-                                            sx={{
-                                                paddingRight: "20px", '.MuiInputBase-input ': { p: '13px', fontFamily: `'Exo 2', "Roboto", "sans-serif"`, color: endDate ? '#40404D' : '#A6A6B3' },
-                                            }}
-                                            slotProps={{ textField: { placeholder: 'To' } }}
-                                            slots={{
-                                                openPickerIcon: CalendarMonthRoundedIcon,
-                                            }}
-                                            value={endDate}
-                                            onChange={(date) => setEndDate(date)}
-                                        />
+                                        <CustomDatePicker dateValue={endDate} placeholder="To" setDateValue={setEndDate} />
                                     </Grid>
                                 </Grid>
                             </LocalizationProvider>

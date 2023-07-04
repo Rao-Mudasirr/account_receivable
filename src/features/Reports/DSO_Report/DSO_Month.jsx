@@ -13,13 +13,13 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DSO_Col, DSO_Data } from "../ReportsTable/DSO_Report";
 import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import "../report.scss";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import GlobalButton from "../../../components/global-button/global-button";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 import { toast } from "react-toastify";
 import { Box } from "@mui/material";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 function DSO_Month() {
 
@@ -57,7 +57,7 @@ function DSO_Month() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -75,7 +75,7 @@ function DSO_Month() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}
