@@ -11,11 +11,11 @@ import {
 } from "../../ReportsTable/Workflow_Detail";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { CustomPopover } from "../../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../../dashboard-select/dashboard-select";
 import { toast } from "react-toastify";
 import { ExportCardCheckbox } from "../../../../components/export-card-checkbox/export-card-checkbox";
+import { DateIcon } from "../../../../components/date-icon/date-icon";
 
 export default function WorkflowReport() {
   const [selectBranch, setSelectBranch] = useState("");
@@ -50,7 +50,7 @@ export default function WorkflowReport() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -68,7 +68,7 @@ export default function WorkflowReport() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}

@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./App.scss";
 import UserManagements from "./pages/user-managements";
 import Layout from "./layout/layout";
-import Dashboard from "./pages/Dashboard";
 import InvoiceListing from "./features/Invoices/components/InvoiceListing";
 import Clientdetails from "./pages/client-details";
 import Overdue_Invoice from "./pages/Overdue_Invoice";
@@ -29,8 +28,6 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
-import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import Document from "./pages/Document";
 import Bills from "./pages/bills";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
@@ -39,6 +36,8 @@ import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+import { Dashboard } from "./pages/dashboard";
+
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>

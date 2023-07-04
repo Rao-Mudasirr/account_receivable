@@ -1,7 +1,7 @@
 import React from "react";
 import "./totalBills.scss";
 
-function TotalBills({title, number ,price, color}) {
+function ScheduledBills({title, number ,price, color}) {
   return (
     <div className="bill-card">
       <div
@@ -18,4 +18,4 @@ function TotalBills({title, number ,price, color}) {
   );
 }
 
-export default TotalBills;
+export default ScheduledBills;
