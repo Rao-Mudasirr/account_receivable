@@ -10,10 +10,7 @@ const DocumentApproval = () => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid item xs={12} lg={3}>
-          {/* work here */}
-          test
-        </Grid>
+        <Grid item xs={12} lg={3}></Grid>
         <Grid item xs={12} lg={9}>
           {value === 0 ? (
             <PendingScreen />

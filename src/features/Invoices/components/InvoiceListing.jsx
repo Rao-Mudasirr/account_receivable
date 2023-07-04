@@ -183,15 +183,6 @@ export default function InvoiceListing() {
     }
   };
 
-  // const handleApplyClick = () => {
-  //   if (startDate && endDate && startDate.isAfter(endDate)) {
-  //     setError("Please select a valid date range.");
-  //     return;
-  //   }
-
-  //   onApplyDate({ startDate, endDate });
-  //   onCloseDatePicker();
-  // };
 
   const handleClearClick = () => {
     setStartDate(null);

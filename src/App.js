@@ -32,10 +32,12 @@ import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import Document from "./pages/Document";
 import Bills from "./pages/bills";
+import DeclineCard from "./components/decline-card/Decline-card";
+import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
+import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
-
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -64,12 +66,14 @@ function App() {
         <Route path="/account-payable" element={<HomeLayout />}>
           <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
-
-        <Route path="/cashflow" element={<HomeLayout />}>
-          <Route path="/cashflow" element={<AccountReceivablePage />} />
+          <Route path="/decline-card" element={<DeclineCard/>} />
+          <Route path="/details-page" element={<DetailsPage/>} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
+        
+        <Route path="/cashflow" element={<HomeLayout />} >
+          <Route path="/cashflow" element={<AccountReceivablePage/>} />
         </Route>
-
-        {/* <Route path="/home-page/cashflow" element={<HomePageCashflow />} /> */}
+        
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
@@ -135,10 +139,8 @@ function App() {
             element={<DSO_Month />}
           />
 
-          {/* work here temporary until mainlayout will sett */}
-          <Route exact path={"/settings"} element={<Document />} />
+          <Route exact path={"/settings"} element={<DashboaedSettings />} />
           <Route exact path={"/bills-management"} element={<Bills />} />
-
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
