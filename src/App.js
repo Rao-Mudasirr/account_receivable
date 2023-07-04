@@ -36,6 +36,7 @@ import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import Document from "./pages/Document";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
+import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 function App() {
   return (
@@ -76,6 +77,10 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
+
+          <Route exact path={"/total-bills"} element={<TotalBills />} />
+          
+          
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
