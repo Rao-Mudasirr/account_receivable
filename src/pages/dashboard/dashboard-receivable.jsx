@@ -14,8 +14,6 @@ import { DashboardToggleIcon } from "../../features/dashboard-toggle-icon/dashbo
 import { DashboardResponsiveDR } from "../../features/dashboard-responsive-DR/dashboard-responsive-DR";
 import { AppTooltip } from "../../components/app-tooltip/app-tooltip";
 import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/localStorageHelpers";
-import { AP } from "../../constants/portal-type-constants";
 
 
 export const dashboardStyle = {
@@ -40,7 +38,6 @@ export const DashboardReceivable = () => {
     const [PCVal, setPCVal] = useState("2020");
     const [WFVal, setWFVal] = useState("UK Workflow");
     const [agingBucketVal, setAgingBucketVal] = useState("0");
-    const temp = getLocalStorage("pName");
     const navigate = useNavigate();
     return (
         <>
@@ -122,7 +119,7 @@ export const DashboardReceivable = () => {
                 </Grid>
                 <Grid item xl={6.5} xs={12}>
                     <DashboardCard
-                        heading={temp === AP ? "Top Vendors" : "Top Clients"}
+                        heading={"Top Clients"}
                         headingSibling={<DashboardResponsiveDR />}
                     >
                         <TopClientsStackedBarChart />

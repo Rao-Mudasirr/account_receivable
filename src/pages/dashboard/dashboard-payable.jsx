@@ -10,14 +10,12 @@ import { DashboardChartSwitch } from "../../features/dashboard-chart-switch/dash
 import { DashboardToggleIcon } from "../../features/dashboard-toggle-icon/dashboard-toggle-icon";
 import { DashboardResponsiveDR } from "../../features/dashboard-responsive-DR/dashboard-responsive-DR";
 import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/localStorageHelpers";
-import { AP } from "../../constants/portal-type-constants";
 import { dashboardStyle } from "./dashboard-receivable";
+
 export const DashboardPayable = () => {
     const [paymentForecastSwitch, setPaymentForecastSwitch] = useState("This Month");
     const [PCVal, setPCVal] = useState("2020");
     const [agingBucketVal, setAgingBucketVal] = useState("0");
-    const temp = getLocalStorage("pName");
     const navigate = useNavigate();
     return (
         <>
@@ -42,7 +40,7 @@ export const DashboardPayable = () => {
                     </Grid>
                     <Grid item xl={6.5} xs={12}>
                         <DashboardCard
-                            heading={temp === AP ? "Top Vendors" : "Top Clients"}
+                            heading={"Top Vendors"}
                             headingSibling={<DashboardResponsiveDR />}
                         >
                             <TopClientsStackedBarChart />
