@@ -22,10 +22,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { toast } from "react-toastify";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 const INVOICE_DATA = [
   {
@@ -231,7 +231,7 @@ export default function InvoiceListing() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -249,7 +249,7 @@ export default function InvoiceListing() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}

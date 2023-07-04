@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./App.scss";
 import UserManagements from "./pages/user-managements";
 import Layout from "./layout/layout";
-import Dashboard from "./pages/Dashboard";
 import InvoiceListing from "./features/Invoices/components/InvoiceListing";
 import Clientdetails from "./pages/client-details";
 import Overdue_Invoice from "./pages/Overdue_Invoice";
@@ -32,6 +31,7 @@ import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
+import { Dashboard } from "./pages/dashboard";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 
 function App() {
