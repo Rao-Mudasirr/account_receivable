@@ -22,10 +22,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { toast } from "react-toastify";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 const INVOICE_DATA = [
   {
@@ -40,7 +40,7 @@ const INVOICE_DATA = [
     total_amount: "$7200",
   },
   {
-    id: 2,
+    id: 2, 
     Id: "02",
     invoiceNo: "2345",
     client: "Ali",
@@ -211,7 +211,7 @@ export default function InvoiceListing() {
 
         <Grid xs={12} md={6} lg={6} xl={6}>
           <div style={{ marginLeft: "auto", display: "flex" }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{
                   paddingRight: "20px",
@@ -222,7 +222,7 @@ export default function InvoiceListing() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -240,7 +240,7 @@ export default function InvoiceListing() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}
@@ -254,7 +254,7 @@ export default function InvoiceListing() {
                 variant: "outlined",
                 sx: {
                   mr: 2,
-                  top: '20px',
+                  top: "20px",
                   whiteSpace: "nowrap",
                   color: "#40404D",
                   border: "1.5px solid #40404D !important",
@@ -421,7 +421,12 @@ export default function InvoiceListing() {
                         }}
                         selectVal={bucket}
                         setSelectVal={setBucket}
-                        data={["Amount overdue < 30d", "Amount overdue 30 - 60d", "Amount overdue 60 - 90d", "Amount overdue > 90d"]}
+                        data={[
+                          "Amount overdue < 30d",
+                          "Amount overdue 30 - 60d",
+                          "Amount overdue 60 - 90d",
+                          "Amount overdue > 90d",
+                        ]}
                       />
                     </Grid>
                   </Grid>

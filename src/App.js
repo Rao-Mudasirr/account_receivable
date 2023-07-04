@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./App.scss";
 import UserManagements from "./pages/user-managements";
 import Layout from "./layout/layout";
-import Dashboard from "./pages/Dashboard";
 import InvoiceListing from "./features/Invoices/components/InvoiceListing";
 import Clientdetails from "./pages/client-details";
 import Overdue_Invoice from "./pages/Overdue_Invoice";
@@ -30,13 +29,17 @@ import AccountReceivablePage from "./features/home-page/account-receivable/Accou
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
 import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import BillManagement from "./pages/landing-pages/account-payable/Bill-Management";
-import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
 import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+import Bills from "./pages/bills";
+import DeclineCard from "./components/decline-card/Decline-card";
+import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
+import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
-// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+import { Dashboard } from "./pages/dashboard";
+
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -45,25 +48,29 @@ function App() {
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
-          <Route exact path={"/sign-up"} element={<SignUpForm />} />
+        <Route exact path={"/sign-up"} element={<SignUpForm />} />
         {/* </Route> */}
-        
+
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
 
-        <Route path="/home" element={<HomeLayout />} >
+        <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
         </Route>
-        
-        <Route path="/account-receivable" element={<HomeLayout />} >
-          <Route path="/account-receivable" element={<AccountReceivablePage/>} />
+
+        <Route path="/account-receivable" element={<HomeLayout />}>
+          <Route
+            path="/account-receivable"
+            element={<AccountReceivablePage />}
+          />
         </Route>
 
-        <Route path="/account-payable" element={<HomeLayout />} >
-          <Route path="/account-payable" element={<AccountReceivablePage/>} />
+        <Route path="/account-payable" element={<HomeLayout />}>
+          <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
-          <Route path="/bill-management" element={<BillManagement/>} />
+          <Route path="/decline-card" element={<DeclineCard/>} />
+          <Route path="/details-page" element={<DetailsPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
@@ -138,6 +145,7 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          <Route exact path={"/bills-management"} element={<Bills />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

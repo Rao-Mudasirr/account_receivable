@@ -5,18 +5,17 @@ import Grid from "@mui/material/Grid";
 import { Bills_Data } from "./BillsData";
 import TableAction from "../../../components/Table/TableAction";
 import { useNavigate } from "react-router-dom";
-import GlobalButton from "../../../components/global-button/global-button";
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from "@mui/material";
-import './billmanagement.scss'
+import './billmanagement.scss'  
+import { AddBillModal } from "../../add-bill-modal/add-bill-modal";
 
-export default function BillManagement() {
+export default function BillManagementTable() {
 
     const navigate = useNavigate();
-    const handleView = ({ row }) => {
-        navigate(`/bill-management${row?.original?.id}`, {
-            state: { data: row?.original },
-        });
+    const handleView = (info) => {
+        const { id } = info.row;
+        navigate(`/bill-management/details-page/${id}`)
     };
 
     const Bills_Col = [
@@ -89,8 +88,8 @@ export default function BillManagement() {
 
     return (
         <Fragment>
-            <div style={{padding:'2rem'}}>
-            <Grid container className="justify-end">
+            <div>
+            {/* <Grid container className="justify-end">
                 <Button sx={{
                     background: '#2B2B33',
                     fontSize: '0.75rem',
@@ -114,8 +113,10 @@ export default function BillManagement() {
                     <AddIcon fontSize="medium" sx={{color:'white'}}/>
                 </Button>
             </Grid>
-            <br />
+            <br /> */}
             {/* Table */}
+            {/* <AddBillModal/>
+            <br/> */}
 
             <CustomTable
                 data={Bills_Data}

@@ -44,7 +44,7 @@ const Sidebar = () => {
           </Box>
         </Box>
       </Grid>
-      <Grid height={{md:'94.9%',xs:"98.7%"}} width="100%" sx={{ top: '5px', left: open ? '264px' : '10px', transition: 'all .3s linear', zIndex: '3' }} position={"absolute"}>
+      <Grid height={{md:'94.9%',xs:"98.7%"}} width="100%" sx={{ top: '5px', left: open ? '264px' : '10px', transition: 'all .3s ease-in', zIndex: '3' }} position={"absolute"}>
         {/* Sidebar logo */}
         <div className="sidebar-container">
           <div className="sidebar-logo " >
