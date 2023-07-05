@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import React from 'react'
 import { AddBillModal } from '../add-bill-modal/add-bill-modal';
 import BillManagementTable from '../account-payable/bill-management/BillManagementTable';
@@ -14,7 +14,13 @@ export const BillManagement = () => {
                 <Grid item xs={12}>
                     <BillManagementTable />
                 </Grid>
+<<<<<<< HEAD
                
+=======
+                <Grid item xs={12}>
+                    Table 🐱‍🏍✔🐱⚔
+                </Grid>
+>>>>>>> efb54535c82ae018ebd23dfe06df10f516ac8de9
             </Grid>
         </>
     )
