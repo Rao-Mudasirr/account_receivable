@@ -5,19 +5,21 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import "./vendordetails.scss";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import { Error } from '@mui/icons-material';
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const validationSchema = Yup.object().shape({
-  vendorName: Yup.string().required("Vendor Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.number("Phone must be a `number` type"),
+  vendorName: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Vendor Name is required</span>),
+  email: Yup.string().email(<span className="error-color"><Error className="vendor_error-icon" /> Please enter a correct Email Address</span>)
+  .required(<span className="error-color"><Error className="vendor_error-icon" />Email Address is required</span>),
+  phone: Yup.string(),
   website: Yup.string(),
-  postCode: Yup.string().required("Post Code is required"),
+  postCode: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Post Code is required</span>),
   city: Yup.string(),
   address: Yup.string(),
-  benificiaryName: Yup.string().required("Benificiary Name is required"),
-  accountNumber: Yup.number().required("Account Number is required"),
-  sortCode: Yup.string().required("Sort Code is required"),
+  benificiaryName: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Benificiary Name is required</span>),
+  accountNumber: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Account Number is required</span>),
+  sortCode: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Sort Code is required</span>),
   iban: Yup.string(),
 });
 
@@ -31,7 +33,7 @@ const initialValues = {
   address: "",
   benificiaryName: "",
   accountNumber: "",
-  sordCode: "",
+  sortCode: "",
   iban: "",
 };
 
@@ -72,7 +74,7 @@ const VendorDetails = () => {
                 Personal Details
               </Typography>
               <Grid>
-                <Grid container spacing={12}>
+                <Grid container spacing={10}>
                   <Grid
                     item
                     xs={12}
@@ -96,7 +98,6 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="vendorName"
                       variant="standard"
@@ -128,7 +129,6 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="email"
                       variant="standard"
@@ -149,12 +149,11 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="phone"
                       variant="standard"
                       placeholder="Phone"
-                      type="tel"
+                      type="number"
                       inputProps={{
                         style: { MozAppearance: "textfield" },
                         inputMode: "numeric",
@@ -205,14 +204,13 @@ const VendorDetails = () => {
                     </label>
                     <Field
                       sx={Styles.field_color}
-                      className="usersform_textfield"
                       component={TextField}
                       name="postCode"
                       variant="standard"
                       placeholder="Post Code"
                       InputProps={{
                         endAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment position="start" color= "red">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="24"
@@ -232,9 +230,6 @@ const VendorDetails = () => {
                           </InputAdornment>
                         ),
                         className: "font-family-Exo",
-                        classes: {
-                          clearIndicator: "custom-clear-icon", // Add a custom class name for the clear icon
-                        },
                       }}
                       onChange={(e) => handleInputChange(e, props)}
                     />
@@ -281,7 +276,7 @@ const VendorDetails = () => {
                 <Typography className="font-weight-600 sub-heading margin-bottom-1 margin-top-6 font-family-exo2">
                   Bank Details
                 </Typography>
-                <Grid container spacing={12}>
+                <Grid container spacing={10}>
                   <Grid
                     item
                     xs={12}
@@ -305,7 +300,6 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="benificiaryName"
                       variant="standard"
@@ -337,9 +331,9 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="accountNumber"
+                      type="number"
                       variant="standard"
                       placeholder="Account Number"
                       onChange={(e) => handleInputChange(e, props)}
@@ -369,7 +363,6 @@ const VendorDetails = () => {
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
-                      className="usersform_textfield"
                       component={TextField}
                       name="sortCode"
                       variant="standard"
@@ -433,33 +426,27 @@ export default VendorDetails;
 //Style
 const Styles = {
   field_color: (theme) => ({
-    "& label": {
-      color: "black",
-    },
-    "& label.Mui-focused": {
-      color: "black",
-    },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
+      borderBottomColor: "#2B2B33",
     },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "black",
-      },
-      "&:hover fieldset": {
-        borderColor: "black",
-        borderWidth: "0.15rem",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
+    "& .Mui-error:after": {
+      borderBottomColor: "#d32f2f",
     },
-    "&:after": {
-      borderColor: "black",
+    "& .Mui-error:before": {
+      borderBottomColor: "#d32f2f !important",
     },
-    
+    "& input": {
+      paddingLeft: "15px",
+      pb: "10px",
+    },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+    "& :before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
+    },
   }),
   font_family: (theme) => ({
-    className: "font-family-Exo"
-  })
+    className: "font-family-Exo",
+  }),
 };

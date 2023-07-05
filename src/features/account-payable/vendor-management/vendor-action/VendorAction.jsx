@@ -37,7 +37,7 @@ const VendorAction = () => {
           </Box>
           <Box>
             <Typography className='font-weight-400 secondary-title font-family-exo2 secondary-color'>Amount Owed</Typography>
-            <Typography className='font-weight-600 sub-heading margin-bottom-1 font-family-exo2 end-text tertiary-color'>£ 500.00</Typography>
+            <Typography className='font-weight-600 sub-heading margin-bottom-1 font-family-exo2 end-text tertiary-color'>£500.00</Typography>
           </Box>
         </Grid>
 
