@@ -16,7 +16,7 @@ export const billstableheading = [
       {
           srno:"01",
           invoiceid:'Email',
-          status:'Paid',
+          status:'Pending',
           name:'John',
           dateissue:'Doe',
           duedate:'19 Oct,2023',
@@ -25,7 +25,7 @@ export const billstableheading = [
       {
           srno:"02",
           invoiceid:'Manual',
-          status:'Due',
+          status:'Approved',
           name:'Chris',
           dateissue:'Doe',
           duedate:'19 Oct,2023',
@@ -34,7 +34,7 @@ export const billstableheading = [
       {
           srno:"03",
           invoiceid:'File Upload',
-          status:'Overdue',
+          status:'Rejected',
           name:'Nick',
           dateissue:'Doe',
           duedate:'19 Oct,2023',
@@ -43,7 +43,7 @@ export const billstableheading = [
       {
           srno:"04",
           invoiceid:'File Upload',
-          status:'Paid',
+          status:'Partial',
           name:'John Doe',
           dateissue:'Doe',
           duedate:'19 Oct,2023',

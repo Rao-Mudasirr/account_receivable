@@ -12,6 +12,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 export const BillsManagementPayableTable = () => {
+
+  const [openStatusModal,setOpenStatusModal]=useState("");
+  setOpenStatusModal()
+  {
+    openStatusModal(true);
+  }
+
   return (
     <div>
     <TableContainer sx={{ mt: 2 }}>
