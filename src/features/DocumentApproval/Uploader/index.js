@@ -6,7 +6,7 @@ import DocumentApprovalModel from "../DocumentApprovalModel/DocumentApprovalMode
 
 
 // drag drop file component
-const DragDropFile = () => {
+const DragDropFile = ({openModel,setOpenModel}) => {
     // drag state
     const [dragActive, setDragActive] = React.useState(false);
     const [file, setFile] = useState(null);
@@ -30,9 +30,7 @@ const DragDropFile = () => {
       e.stopPropagation();
       setDragActive(false);
       if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        console.log("files", e.dataTransfer.files[0]);
-        // handleFiles(e.dataTransfer.files);
-        setFile(e.dataTransfer.files[0]);
+        setOpenModel({ ...openModel, model: !openModel.model, type: 2 })
       }
     };
   
@@ -42,7 +40,8 @@ const DragDropFile = () => {
       if (e.target.files && e.target.files[0]) {
         console.log("files", e.target.files[0]);
         // handleFiles(e.target.files);
-        setFile(e.target.files[0]);
+        setOpenModel({ ...openModel, model: !openModel.model, type: 2 })
+        
       }
     };
   
