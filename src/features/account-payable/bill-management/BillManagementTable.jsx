@@ -76,7 +76,7 @@ export default function BillManagementTable() {
                     <TableAction type="view" onClick={() => handleView(info)} />
                 </Box>
             ),
-            header: () => <span>Actions</span>,
+            header: () => <div className="flex justify-center width-100">Actions</div>,
             isSortable: false,
         },
     ];

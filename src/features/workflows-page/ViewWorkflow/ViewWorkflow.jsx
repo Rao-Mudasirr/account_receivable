@@ -254,7 +254,6 @@ const ViewWorkflow = () => {
       cell: (info) => (
         <AppTooltip
           message={info.getValue() ? "Active" : "In-Active"}
-          style={{ display: "flex", justifyContent: "center" }}
         >
           <div>
             {" "}
@@ -304,7 +303,7 @@ const ViewWorkflow = () => {
           )}
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <div className="flex justify-center width-100">Actions</div>,
       isSortable: false,
     },
   ];
