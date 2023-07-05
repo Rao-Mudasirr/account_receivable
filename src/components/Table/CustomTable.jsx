@@ -78,6 +78,7 @@ const CustomTable = (props) => {
     tableContainerSX = {},
     rootSX = {},
     showSerialNo = false,
+    showHeaderFilter = true
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -246,7 +247,7 @@ const CustomTable = (props) => {
             )}
           </TableContainer>
         </Box>
-        <Box
+       {showHeaderFilter && <Box
           ref={menu}
           sx={{ flex: '0 0 auto', position: 'relative', right: '-7px', top: '15px', zIndex: 10,}}
         >
@@ -304,7 +305,7 @@ const CustomTable = (props) => {
               </ul>
             </Box>
           )}
-        </Box>
+        </Box>}
         </div>
         {/* Pagination */}
         {pageData !== "clients-view" && (
