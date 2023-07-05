@@ -2,7 +2,7 @@ import { Button, Grid, Box } from "@mui/material";
 import React, { Fragment, useState } from "react";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import DateIcon from "@mui/icons-material/CalendarMonthRounded";
 import GlobalButton from "../../../components/global-button/global-button";
 import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import CustomTable from "../../../components/Table/CustomTable";
@@ -49,7 +49,7 @@ function Client_Listing() {
                   },
                 }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 slotProps={{ textField: { placeholder: "From" } }}
                 variant="standared"
@@ -67,7 +67,7 @@ function Client_Listing() {
                 }}
                 slotProps={{ textField: { placeholder: "To" } }}
                 slots={{
-                  openPickerIcon: CalendarMonthRoundedIcon,
+                  openPickerIcon: DateIcon,
                 }}
                 value={endDate}
                 onChange={(date) => setEndDate(date)}

@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./App.scss";
 import UserManagements from "./pages/user-managements";
 import Layout from "./layout/layout";
-import Dashboard from "./pages/Dashboard";
 import InvoiceListing from "./features/Invoices/components/InvoiceListing";
 import Clientdetails from "./pages/client-details";
 import Overdue_Invoice from "./pages/Overdue_Invoice";
@@ -12,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -29,14 +28,14 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
-import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import Bills from "./pages/bills";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
-import Document from "./pages/Document";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
-// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+import { Dashboard } from "./pages/dashboard";
+
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -139,7 +138,7 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
-
+          <Route exact path={"/bills-management"} element={<Bills />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

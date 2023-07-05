@@ -1,7 +1,7 @@
 import React from 'react'
-import { dashboardStyle } from './Dashboard'
 import { CustomTabs } from '../components/custom-tabs/custom-tabs'
 import { BillManagement } from '../features/bill-management/bill-management'
+import { dashboardStyle } from './dashboard/dashboard-receivable'
 const BillsManagementTabsData = [
   {
     id:0,
