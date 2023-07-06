@@ -76,9 +76,9 @@ const CustomTable = (props) => {
     onSortByChange,
     isPagination = true,
     tableContainerSX = {},
-    filterBox = true,
     rootSX = {},
     showSerialNo = false,
+    showHeaderFilter = true,
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -202,7 +202,7 @@ const CustomTable = (props) => {
                               header.column.columnDef.isSortable &&
                               handleSortBy(header?.id)
                             }
-                            sx={styles.cell}
+                            sx={{ ...styles.cell }}
                           >
                             {header.isPlaceholder
                               ? null
@@ -247,7 +247,7 @@ const CustomTable = (props) => {
               )}
             </TableContainer>
           </Box>
-          {filterBox && (
+          {showHeaderFilter && (
             <Box
               ref={menu}
               sx={{
@@ -406,7 +406,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
-    textAlign: "center",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 600,
     backgroundImage: "unset",
@@ -426,7 +425,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: "#40404D",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 400,
-    textAlign: "center",
     borderBottom: "1px solid #F0F0F2",
   },
 }));
@@ -471,10 +469,6 @@ const styles = {
     backgroundColor: theme.palette.mode === "light" ? "#fff" : "#212B36",
     ...tableContainerSX,
   }),
-  cell: {
-    display: "flex",
-    justifyContent: "center",
-  },
   currentPageBox: {
     display: "flex",
     my: "15px",

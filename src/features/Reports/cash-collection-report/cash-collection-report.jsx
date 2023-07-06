@@ -1,7 +1,7 @@
 import { Box, Button, Grid } from '@mui/material'
 import React, { useState } from 'react'
 import { GlobalSearchBar } from '../../../components/global-search-filter/global-search-filter'
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
+import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
