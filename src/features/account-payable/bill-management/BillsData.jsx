@@ -7,7 +7,7 @@
       vendor: 'John Doe',
       created_by: 'Doe',
       created_on: '19 Oct, 1999',
-      bill_status: 'Pending'
+      bill_status: "Pending",
     },
     {
       id: 2,
@@ -16,7 +16,7 @@
       vendor: 'John Doe',
       created_by: 'Doe',
       created_on: '19 Oct, 1999',
-      bill_status: 'Approved'
+      bill_status: "Approved", 
     },
     {
       id: 3,
