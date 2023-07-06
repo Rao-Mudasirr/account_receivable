@@ -19,6 +19,14 @@
     color: #4C4C4C;
   }
 
+  .signup_error-icon {
+    margin-right: 7px;
+    margin-bottom: -3px;
+    font-size: medium;
+    transform: rotate(180deg);
+    color: rgba(255, 85, 85, 1);
+}
+
   .textfield_bold:hover {
     font-weight: 600;
   }

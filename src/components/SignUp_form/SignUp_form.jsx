@@ -26,59 +26,29 @@ const names = [
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required(
-    <div
-      style={{
-        fontFamily: "Exo 2",
-        fontSize: "12px",
-        display: "flex",
-        alignItems: "end",
-        position: "absolute",
-        color: "rgba(255, 85, 85, 1)",
-      }}
-    >
+    <span className="error-color font-family-exo2">
       <ErrorIcon
-        fontSize="small"
-        sx={{ mr: 0.5, mb: 0.3, transform: "rotate(180deg)" }}
+       className="signup_error-icon"
       />
       Please Enter Full Name(First and Last Name)
-    </div>
+    </span>
   ),
   email: Yup.string()
     .email(
-      <div
-        style={{
-          fontFamily: "Exo 2",
-          fontSize: "12px",
-          display: "flex",
-          alignItems: "end",
-          position: "absolute",
-          color: "rgba(255, 85, 85, 1)",
-        }}
-      >
-        <ErrorIcon
-          fontSize="small"
-          sx={{ mr: 0.5, mb: 0.3, transform: "rotate(180deg)" }}
-        />
+      <span className="error-color font-family-exo2">
+      <ErrorIcon
+       className="signup_error-icon"
+      />
         Please Enter a Valid email Address
-      </div>
+      </span>
     )
     .required(
-      <div
-        style={{
-          fontFamily: "Exo 2",
-          fontSize: "12px",
-          display: "flex",
-          alignItems: "end",
-          position: "absolute",
-          color: "rgba(255, 85, 85, 1)",
-        }}
-      >
-        <ErrorIcon
-          fontSize="small"
-          sx={{ mr: 0.5, mb: 0.3, transform: "rotate(180deg)" }}
-        />
+      <span className="error-color">
+      <ErrorIcon
+       className="signup_error-icon"
+      />
         Please Enter a Valid email Address
-      </div>
+      </span>
     ),
   password: Yup.string().min(6, true).required(true),
   checkbox: Yup.array()
@@ -112,11 +82,6 @@ const menuStyles = (theme) => ({
     },
     "&.MuiSelect-outline": {
       outline: "none",
-      border: "10px solid green",
-    },
-    "&.MuiInput-input": {
-      color: "red",
-      border: "10px solid green",
     },
   },
 });
@@ -447,34 +412,15 @@ export default function MySignUpForm(props) {
                       </Box>
                     </Form>
                     {touched.checkbox && errors.checkbox && (
-                      <div
-                        style={{
-                          color:
-                            touched.checkbox && errors.checkbox
-                              ? "rgba(255, 85, 85, 1)"
-                              : "black",
-                          fontFamily: "Exo 2",
-                          fontSize: "12px",
-                          fontWeight: "600",
-                          display: "flex",
-                          alignItems: "end",
-                          position: "absolute",
-                          color: "rgba(255, 85, 85, 1)",
-                        }}
-                      >
-                        <ErrorIcon
-                          fontSize="small"
-                          sx={{
-                            mr: 0.5,
-                            mt: "2px",
-                            transform: "rotate(180deg)",
-                          }}
-                        />
-                        <span style={{ marginBottom: "3px" }}>
-                          {" "}
+                      <span
+                      className={
+                        touched.checkbox && errors.checkbox
+                       ? "error-color tertiary-title font-family-exo2"
+                       : ""
+                      } >
+                        <ErrorIcon className="signup_error-icon"/>
                           Please Select an Option
-                        </span>
-                      </div>
+                      </span>
                     )}
                   </Grid>
                   <Grid item xs={12} sx={{ mt: "40px" }}>
