@@ -39,6 +39,7 @@ import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import { Dashboard } from "./pages/dashboard";
+import LogListing from "./pages/landing-pages/account-payable/LogListing";
 
 function App() {
   return (
@@ -120,6 +121,7 @@ function App() {
           <Route path="/vendors" element={<VendorManagementPage/>} />
           <Route path="/vendors/add-vendor" element={<AddVendor/>} />
           <Route path="/vendors/vendor-action" element={<VendorAction/>} />
+          <Route exact path={"/activity-log"} element={<LogListing />} />
           <Route
             exact
             path={"/clients-details/:id"}
@@ -145,7 +147,6 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
-          <Route exact path={"/bills-management"} element={<Bills />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

@@ -74,9 +74,19 @@ const menuStyles = (theme) => ({
     "&.Mui-selected:focus": {
       backgroundColor: "transparent",
     },
+<<<<<<< HEAD
     "&.MuiSelect-outline": {
       outline: "none",
     },
+=======
+    "&.MuiSelect-outline":{
+      outline:"none",
+    },
+    "&.MuiInput-input":{
+      color:"red",
+
+    }
+>>>>>>> b42605ecebfce07f3560eac47a0934c700230d1d
   },
 });
 

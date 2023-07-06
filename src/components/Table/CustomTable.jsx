@@ -78,6 +78,7 @@ const CustomTable = (props) => {
     tableContainerSX = {},
     rootSX = {},
     showSerialNo = false,
+    showHeaderFilter = true
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -201,7 +202,7 @@ const CustomTable = (props) => {
                             header.column.columnDef.isSortable &&
                             handleSortBy(header?.id)
                           }
-                          sx={styles.cell}
+                          sx={{...styles.cell}}
                         >
                           {header.isPlaceholder
                             ? null
@@ -246,7 +247,7 @@ const CustomTable = (props) => {
             )}
           </TableContainer>
         </Box>
-        <Box
+       {showHeaderFilter && <Box
           ref={menu}
           sx={{ flex: '0 0 auto', position: 'relative', right: '-7px', top: '15px', zIndex: 10,}}
         >
@@ -254,7 +255,7 @@ const CustomTable = (props) => {
             onClick={() => setShow(!show)}
             style={{ cursor: "pointer" }}
           />
-          {show && (
+          { show && (
             <Box sx={{ display: "block", marginTop: "-19px", marginLeft: '-150px', position: "absolute", zIndex: 11, }}>
               <ul
                 style={{
@@ -304,7 +305,7 @@ const CustomTable = (props) => {
               </ul>
             </Box>
           )}
-        </Box>
+        </Box>}
         </div>
         {/* Pagination */}
         {pageData !== "clients-view" && (
@@ -389,7 +390,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
-    textAlign: "center",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 600,
     backgroundImage: "unset",
@@ -409,7 +409,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: "#40404D",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 400,
-    textAlign: "center",
     borderBottom: "1px solid #F0F0F2",
   },
 }));
@@ -454,10 +453,6 @@ const styles = {
     backgroundColor: theme.palette.mode === "light" ? "#fff" : "#212B36",
     ...tableContainerSX,
   }),
-  cell: {
-    display: "flex",
-    justifyContent: "center",
-  },
   currentPageBox: {
     display: "flex",
     my: "15px",

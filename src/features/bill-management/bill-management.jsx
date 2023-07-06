@@ -7,14 +7,11 @@ export const BillManagement = () => {
     return (
         <>
             <Grid container>
-                <Grid item className="flex justify-end margin-bottom-1" xs={11.75}>
+                <Grid item className="flex justify-end margin-bottom-1" xs={12}>
                     <AddBillModal />
                 </Grid>
                 <Grid item xs={12}>
                     <BillManagementTable />
-                </Grid>
-                <Grid item xs={12}>
-                    Table 🐱‍🏍✔🐱⚔
                 </Grid>
             </Grid>
         </>
