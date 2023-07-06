@@ -19,52 +19,28 @@ import './signUp.scss'
 const validationSchema = Yup.object().shape({
   number: Yup.string()
     .matches(/^\d+$/, 'Please enter digits only')
-    .min(7, <div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-      Please Enter Registration Number</div>)
+    .min(7, <span className="error-color font-family-exo2">
+    <ErrorIcon className="signup_error-icon" />
+      Please Enter Registration Number</span>)
     .max(30, 'Maximum number limit exceeded')
-    .required(<div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.4, transform: 'rotate(180deg)' }} />
-      Please Enter Registration Number</div>),
+    .required(<span className="error-color font-family-exo2">
+    <ErrorIcon className="signup_error-icon" />
+      Please Enter Registration Number</span>),
 
   mobile: Yup.string()
-    .matches(/^\d+$/, 'Please enter digits only')
-    .min(7, <div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
-      Please Enter your Phone Number</div>)
+    .min(7, <span className="error-color font-family-exo2">
+    <ErrorIcon className="signup_error-icon" />
+      Please Enter your Phone Number</span>)
     .max(30, 'Maximum number limit exceeded')
-    .required(<div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
-      Please Enter your Phone Number</div>),
+    .required(<span className="error-color font-family-exo2">
+    <ErrorIcon className="signup_error-icon" />
+      Please Enter your Phone Number</span>),
 });
+
+const initialValues = {
+  number: '',
+  mobile: '',
+};
 
 const MySignUpForm2 = () => {
   const [showNumber, setShowNumber] = useState(false);
@@ -77,14 +53,23 @@ const MySignUpForm2 = () => {
     event.preventDefault();
   };
 
-  const initialValues = {
-    number: '',
-    mobile: '',
+  const [filledFields, setFilledFields] = useState({});
+
+  const handleInputChange = (e, formik) => {
+    const { name, value } = e.target;
+    formik.setFieldValue(name, value);
+    setFilledFields((prevFilledFields) => ({
+      ...prevFilledFields,
+      [name]: value.trim() !== "",
+    }));
   };
+
+
 
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
+    setFilledFields({});
     handleSignUp() 
   };
 
@@ -151,27 +136,47 @@ const MySignUpForm2 = () => {
           </FormGroup>
         </div>
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-          {({ errors, touched }) => (
+        {(props) => {
+            const { values, errors, touched, setFieldValue } = props;
+
+            return (
             <Form>
               <Grid container spacing={7}>
-                <Grid item xs={12}>
-                  <div>
-                    <div className="signup_label">
-                      <label htmlFor="number" style={{ color: touched.number && errors.number ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
-                        <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
+              <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${
+                      filledFields.number ? "hide_label" : ""
+                    }`}
+                    sx={{ height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${
+                        touched.number && errors.number ? "error_label" : ""
+                      }`}
+                    >
+                      {filledFields.number ? null : (
+                        <span
+                          className="asterisk error-color"
+                          style={{
+                            marginTop: "-5px",
+                          }}
+                        >
+                          *
+                        </span>
+                      )}
                         Registration Number(CRN)
                       </label>
-                    </div>
-                    <Grid item xs={12}>
-                      <Field
-                        sx={styles.field__color}
-                        component={TextField}
-                        id="number"
-                        variant="standard"
-                        fullWidth
-                        placeholder="Enter Registration Number"
-                        type={showNumber ? 'text' : 'password'}
-                        name="number"
+                    <Field
+                      className="signinform_textfield"
+                      component={TextField}
+                      name="number"
+                      variant="standard"
+                      fullWidth
+                      placeholder="Enter Registration Number"
+                      onChange={(e) => handleInputChange(e, props)}
+                      type={showNumber ? "text" : "password"}
+                      sx={styles.field__color}
                         InputProps={{
                           style: {
                             fontSize: '14px',
@@ -192,10 +197,8 @@ const MySignUpForm2 = () => {
                           ),
                         }}
                       />
-                    </Grid>
-                  </div>
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item xs={12} className='margin-top-2' >
                   <div>
                     <div className="signup_label">
                       <label htmlFor="companyName">Company Name</label>
@@ -235,7 +238,7 @@ const MySignUpForm2 = () => {
                       variant="standard"
                       fullWidth
                       placeholder="Enter Mobile Number"
-                      type="text"
+                      type="number"
                       name="mobile"
                       InputProps={{
                         style: {
@@ -270,7 +273,8 @@ const MySignUpForm2 = () => {
                 </Grid>
               </Grid>
             </Form>
-          )}
+          )
+        }}
         </Formik>
       </Box>
       </Grid>

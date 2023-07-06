@@ -27,26 +27,20 @@ const names = [
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required(
     <span className="error-color font-family-exo2">
-      <ErrorIcon
-       className="signup_error-icon"
-      />
+      <ErrorIcon className="signup_error-icon" />
       Please Enter Full Name(First and Last Name)
     </span>
   ),
   email: Yup.string()
     .email(
       <span className="error-color font-family-exo2">
-      <ErrorIcon
-       className="signup_error-icon"
-      />
+        <ErrorIcon className="signup_error-icon" />
         Please Enter a Valid email Address
       </span>
     )
     .required(
-      <span className="error-color">
-      <ErrorIcon
-       className="signup_error-icon"
-      />
+      <span className="error-color font-family-exo2">
+        <ErrorIcon className="signup_error-icon" />
         Please Enter a Valid email Address
       </span>
     ),
@@ -198,9 +192,8 @@ export default function MySignUpForm(props) {
                     >
                       {filledFields.fullName ? null : (
                         <span
-                          className="asterisk"
+                          className="asterisk error-color"
                           style={{
-                            color: "rgba(255, 85, 85, 1)",
                             marginTop: "-5px",
                           }}
                         >
@@ -223,112 +216,105 @@ export default function MySignUpForm(props) {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sx={{ height: "75px", mt: "2rem" }}>
-                    <div>
-                      <div className="signup_label">
-                        <label
-                          htmlFor="email"
+                  <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${
+                      filledFields.email ? "hide_label" : ""
+                    }`}
+                    sx={{ marginTop: "2rem", height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${
+                        touched.email && errors.email ? "error_label" : ""
+                      }`}
+                    >
+                      {filledFields.email ? null : (
+                        <span
+                          className="asterisk error-color"
                           style={{
-                            color:
-                              touched.email && errors.email
-                                ? "rgba(255, 85, 85, 1)"
-                                : "#4C4C4C",
+                            marginTop: "-5px",
                           }}
                         >
-                          <span
-                            style={{
-                              color: "rgba(255, 85, 85, 1)",
-                              marginTop: "-5px",
-                            }}
-                          >
-                            *
-                          </span>
-                          Business Email
-                        </label>
-                      </div>
-                      <Field
-                        sx={styles.field__color}
-                        component={TextField}
-                        id="email"
-                        variant="standard"
-                        fullWidth
-                        placeholder="Enter Email"
-                        type="email"
-                        name="email"
-                        InputProps={{
-                          style: {
-                            fontSize: "14px",
-                            paddingLeft: "20px",
-                          },
-                        }}
-                      />
-                    </div>
+                          *
+                        </span>
+                      )}
+                      Business Email
+                    </label>
+                    <Field
+                      className="signinform_textfield"
+                      component={TextField}
+                      name="email"
+                      variant="standard"
+                      placeholder="Enter Email"
+                      type="text"
+                      fullWidth
+                      onChange={(e) => handleInputChange(e, props)}
+                      InputProps={styles.font_family()}
+                      sx={styles.field__color}
+                    />
                   </Grid>
 
-                  <Grid item xs={12} sx={{ height: "75px", mt: "2rem" }}>
-                    <div>
-                      <div className="signup_label">
-                        <label
-                          htmlFor="password"
+                  <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${
+                      filledFields.password ? "hide_label" : ""
+                    }`}
+                    sx={{ marginTop: "2rem", height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${
+                        touched.password && errors.password ? "error_label" : ""
+                      }`}
+                    >
+                      {filledFields.password ? null : (
+                        <span
+                          className="asterisk error-color"
                           style={{
-                            color:
-                              touched.password && errors.password
-                                ? "rgba(255, 85, 85, 1)"
-                                : "#4C4C4C",
+                            marginTop: "-5px",
                           }}
                         >
-                          <span
-                            style={{
-                              color: "rgba(255, 85, 85, 1)",
-                              marginTop: "-5px",
-                            }}
-                          >
-                            *
-                          </span>
-                          Create Password
-                        </label>
-                      </div>
-                      <Field
-                        sx={styles.field__color}
-                        component={TextField}
-                        id="password"
-                        variant="standard"
-                        fullWidth
-                        placeholder="Enter Password"
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        InputProps={{
-                          style: {
-                            fontSize: "14px",
-                            paddingLeft: "20px",
-                          },
-                          endAdornment: (
-                            <InputAdornment>
-                              <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                sx={{
-                                  margin: 0.7,
-                                  pb: 2,
-                                  transform: "scaleX(-1)",
-                                }}
-                              >
-                                {showPassword ? (
-                                  <RiEyeOffLine />
-                                ) : (
-                                  <RiEyeLine />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                      <span className="password__text">
-                        The password must be at least 6 characters
-                      </span>
-                    </div>
+                          *
+                        </span>
+                      )}
+                      Create Password
+                    </label>
+                    <Field
+                      className="signinform_textfield"
+                      component={TextField}
+                      name="password"
+                      variant="standard"
+                      fullWidth
+                      placeholder="Enter Password"
+                      onChange={(e) => handleInputChange(e, props)}
+                      id="standard-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      sx={styles.field__color}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {showPassword ? (
+                                <RiEyeLine />
+                              ) : (
+                                <RiEyeOffLine className="rotate_icon" />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        className: "font-family-Exo",
+                        fontSize: "14px",
+                        paddingLeft: "20px",
+                      }}
+                    />
+                    <span className="password__text">
+                      The password must be at least 6 characters
+                    </span>
                   </Grid>
 
                   <Grid item xs={12} sx={{ height: "75px", mt: "2.5rem" }}>
@@ -413,13 +399,14 @@ export default function MySignUpForm(props) {
                     </Form>
                     {touched.checkbox && errors.checkbox && (
                       <span
-                      className={
-                        touched.checkbox && errors.checkbox
-                       ? "error-color tertiary-title font-family-exo2"
-                       : ""
-                      } >
-                        <ErrorIcon className="signup_error-icon"/>
-                          Please Select an Option
+                        className={
+                          touched.checkbox && errors.checkbox
+                            ? "error-color tertiary-title font-family-exo2"
+                            : ""
+                        }
+                      >
+                        <ErrorIcon className="signup_error-icon" />
+                        Please Select an Option
                       </span>
                     )}
                   </Grid>
