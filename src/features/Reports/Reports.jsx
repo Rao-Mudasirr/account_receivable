@@ -1,32 +1,36 @@
-import React from 'react'
-import { ReportData } from '../../mock-data/ReportData'
-import { Card, Grid } from '@mui/material'
 import './report.scss';
-import { useNavigate } from 'react-router-dom';
+import { getLocalStorage } from '../../utils/localStorageHelpers';
+import { Grid } from '@mui/material';
+import { ReportDataPayable, ReportDataReceiveable } from '../../mock-data/ReportData';
+import { Link } from 'react-router-dom';
+
+const reports = {
+    "Account Receivable": ReportDataReceiveable,
+    "Account Payable": ReportDataPayable,
+}
 
 function Reports() {
-
-    const navigate = useNavigate();
-    const GoToNext = (val) => {
-        navigate(`/reports/${val?.param}`, { state: { reportData: val } })
-    }
-
     return (
         <>
-            <div className='top-heading'>Reports</div>
-            <Grid container>
+            <div className='top-heading heading-20 font-weight-600 tertiary-color'>Reports</div>
+            <Grid container spacing={2}>
                 {
-                    ReportData?.map((val, i) => (
-                        <Grid className='report-styles' xs={12} md={6} lg={6} xl={4} key={i}>
-                            <div className='report-title'>{val?.title}</div>
-                            <Card className='report-card' onClick={() => GoToNext(val)}>
-                                <img className='report-image' src={val?.image} alt="Report card image" />
-                            </Card>
+                    reports[getLocalStorage("pName")]?.map((val, i) => (
+                        <Grid className='report-styles flex flex-column' sx={{ alignItems: { lg: 'flex-start', xs: 'center' } }} item xs={12} lg={6} xl={4} key={val?.title}>
+                            <div className='report-title primary-color font-weight-600'>{val?.title}</div>
+                            <div className="link flex">
+                                <Link to={`/reports/${val?.param}`}>
+                                    <div className='report-card border-radius-8'>
+                                        <div className="flex justify-center align-center">
+                                            {val?.image}
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
                         </Grid>
                     ))
                 }
             </Grid>
-
         </>
     )
 }
