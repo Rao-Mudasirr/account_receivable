@@ -1,88 +1,31 @@
-.top-heading {
-  width: 74px;
-  height: 28px;
-  font-family: "Exo 2";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
-  display: flex;
-  align-items: center;
-  color: #40404d;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
 .report-styles {
   .report-title {
     position: relative;
     left: 20px;
-    top: 0px;
-    width: 276px;
-    height: 24px;
     margin-top: 52px;
     margin-bottom: 20px;
-    font-family: "Exo 2";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    color: #2b2b33;
   }
 
   .report-card {
-    cursor: pointer;
     width: 341px;
     height: 206px;
     background: #f0f0f2;
-    border-radius: 8px;
     padding: 30px;
+  }
+}
 
-    .report-image {
-      width: 302px;
-      height: 142px;
+@media screen and (max-width: 1200px) {
+  .report-styles {
+    .report-title {
+      left: 0px;
     }
   }
 }
 
 @media screen and (max-width: 970px) {
   .report-styles {
-    .report-title {
-      margin: auto;
-      width: 276px;
-      height: 24px;
-      margin-top: 52px;
-      margin-bottom: 20px;
-      font-family: "Exo 2";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 24px;
-      display: flex;
-      align-items: center;
-      color: #2b2b33;
-    }
-
     .report-card {
-      margin: auto;
-      cursor: pointer !important;
       width: 341px !important;
-      height: 206px !important;
-      background: #f0f0f2 !important;
-      border-radius: 8px !important;
-      padding: 30px;
-      -webkit-border-radius: 8px !important;
-      -moz-border-radius: 8px !important;
-      -ms-border-radius: 8px !important;
-      -o-border-radius: 8px !important;
-
-      .report-image {
-        width: auto !important;
-        height: 142px !important;
-      }
     }
   }
 }
@@ -95,5 +38,13 @@
   .invoices-tabal-header {
     margin-top: 20px !important;
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .report-styles {
+    .report-card {
+      width: 280px !important;
+    }
   }
 }

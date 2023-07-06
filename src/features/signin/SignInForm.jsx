@@ -78,7 +78,7 @@ const SignInForm = () => {
                       paddingLeft: '20px'
                     }
                   }}
-                  sx = {{
+                  sx={{
                     '& label': {
                       color: 'black',
                     },
@@ -117,7 +117,7 @@ const SignInForm = () => {
                   onChange={(e) => handleInputChange(e, props)}
                   id="standard-adornment-password"
                   type={showPassword ? "text" : "password"}
-                  sx = {{
+                  sx={{
                     '& label': {
                       color: 'black',
                     },
@@ -148,7 +148,7 @@ const SignInForm = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine className="rotate_icon"/>}
+                          {showPassword ? <RiEyeLine /> : <RiEyeOffLine className="rotate_icon" />}
                         </IconButton>
                       </InputAdornment>
                     ),

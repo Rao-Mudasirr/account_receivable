@@ -13,9 +13,9 @@ export const NotificationsDetailsContainer = ({notification,index}) => {
             </Badge>
           </Box>
         </Grid>
-        <Grid item xs={11.5} paddingLeft="16px">
+        <Grid item xs={11.5} paddingLeft="16px"> 
           <NotificationsDetailsItem notification={notification} />
-        </Grid>
+        </Grid> 
       </Grid>
     </>
   )
