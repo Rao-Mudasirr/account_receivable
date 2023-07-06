@@ -32,7 +32,6 @@ import AccountPayable from "./pages/landing-pages/account-payable/account-payabl
 import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
 import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
-import Bills from "./pages/bills";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
