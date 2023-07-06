@@ -1,14 +1,10 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import CustomTable from "../../../components/Table/CustomTable";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import { Bills_Data } from "./BillsData";
 import TableAction from "../../../components/Table/TableAction";
 import { useNavigate } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
-import { Button } from "@mui/material";
-import './billmanagement.scss'  
-import { AddBillModal } from "../../add-bill-modal/add-bill-modal";
+import './billmanagement.scss'
 
 export default function BillManagementTable() {
 
@@ -58,20 +54,21 @@ export default function BillManagementTable() {
             accessorFn: (row) => row.bill_status,
             id: "Status",
             cell: (info) => (
-              <span
-                className={
-                  info.getValue() === "Pending"
-                    ? "Pending"
-                    : info.getValue() === "Approved"
-                    ? "Approved"
-                    : info.getValue() === "Rejected"
-                    ? "Rejected"
-                    : "Partial"
-                }
-              >
-                {info.getValue()}
-              </span>
-        )},
+                <span
+                    className={
+                        info.getValue() === "Pending"
+                            ? "Pending"
+                            : info.getValue() === "Approved"
+                                ? "Approved"
+                                : info.getValue() === "Rejected"
+                                    ? "Rejected"
+                                    : "Partial"
+                    }
+                >
+                    {info.getValue()}
+                </span>
+            )
+        },
         {
             id: "Actions",
             cell: (info) => (
@@ -79,54 +76,24 @@ export default function BillManagementTable() {
                     <TableAction type="view" onClick={() => handleView(info)} />
                 </Box>
             ),
-            header: () => <span>Actions</span>,
+            header: () => <div className="flex justify-center width-100">Actions</div>,
             isSortable: false,
         },
     ];
 
-
-
     return (
         <Fragment>
             <div>
-            {/* <Grid container className="justify-end">
-                <Button sx={{
-                    background: '#2B2B33',
-                    fontSize: '0.75rem',
-                    borderRadius: '8px',
-                    mr:'20px',
-                    gap:'10px',
-                    px: "18px",
-                    py: "10px",
-                    textTransform: 'capitalize',
-                    '&:hover': {
-                        background: '#2B2B33',
-                    }
-                }}
-                ><span style={{
-                    fontFamily: 'Exo 2',
-                    fontSize: '14px',
-                    fontWeight: '400',
-                    color: '#ffff',
-                }}>
-                        Add Bill</span>
-                    <AddIcon fontSize="medium" sx={{color:'white'}}/>
-                </Button>
-            </Grid>
-            <br /> */}
-            {/* Table */}
-            {/* <AddBillModal/>
-            <br/> */}
-
-            <CustomTable
-                data={Bills_Data}
-                columns={Bills_Col}
-                // showSerialNo
-                // onPageChange={pageChangeHandler}
-                // onSortByChange={sortChangeHandler}
-                isSuccess={true}
-                isPagination={false}
-            />
+                <CustomTable
+                    data={Bills_Data}
+                    columns={Bills_Col}
+                    showHeaderFilter={false}
+                    // showSerialNo
+                    // onPageChange={pageChangeHandler}
+                    // onSortByChange={sortChangeHandler}
+                    isSuccess={true}
+                    isPagination={false}
+                />
             </div>
         </Fragment>
     );

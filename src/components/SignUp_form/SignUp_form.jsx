@@ -88,11 +88,10 @@ const menuStyles = theme => ({
     },
     "&.MuiSelect-outline":{
       outline:"none",
-      border:"10px solid green"
     },
     "&.MuiInput-input":{
       color:"red",
-      border:"10px solid green"
+
     }
   },
 })
@@ -179,8 +178,8 @@ export default function MySignUpForm(props) {
             < Form >
               <Grid container spacing={7}>
                 <Grid item xs={12} sx={{ height: '75px' }} >
-                  <div className="fields">
-                    <div className="label">
+                  <div>
+                    <div className="signup_label">
                       <label htmlFor="fullName"
                         style={{ color: touched.fullName && errors.fullName ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
                         <span
