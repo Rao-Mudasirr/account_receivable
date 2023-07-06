@@ -28,12 +28,6 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
-<<<<<<< HEAD
-import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
-import Document from "./pages/Document";
-=======
-import Bills from "./pages/bills";
->>>>>>> efb54535c82ae018ebd23dfe06df10f516ac8de9
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
