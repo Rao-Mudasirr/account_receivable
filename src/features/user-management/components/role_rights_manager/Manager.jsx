@@ -147,6 +147,7 @@ const Manager = () => {
   
   return (
     <div className="main_manager_container">
+      <p className='heading-20 font-weight-600 font-family-exo2'>Roles and Rights : Manager</p>
       <p className='manager_text'>Manager</p>
       <div className="line" />
       <div className="manager_container">

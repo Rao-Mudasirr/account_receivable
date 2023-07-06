@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, FormControlLabel, Switch } from "@mui/material";
+import { Card, Box, FormControlLabel, Switch, Grid, Select } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -10,6 +10,8 @@ import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
 import { Status } from '../../../../components/status/status';
 import { GlobalSearchBar } from '../../../../components/global-search-filter/global-search-filter';
+import CustomInput from '../../../../components/CustomInput';
+import { ReactComponent as Down } from "../../../../assests/svg/chev-bottom.svg";
 
 export const UserAccessTable = () => {
   const {
@@ -131,41 +133,43 @@ export const UserAccessTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 2, mt: -2 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <GlobalSearchBar
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <TextField defaultValue='Role' sx={{
-            width: 333, mb: 2, borderRadius : 5,
-            '& .MuiInputBase-root': {
-              color: isFocused ? 'black' : 'inherit',
-              '&::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+      <Card sx={{ p: 2 }}>
+        <Grid container sx={{ justifyContent: 'space-between', mb: '10px' }}>
+          <Grid item xs={5} lg={6} >
+            <GlobalSearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </Grid>
+          <Grid item xs={5} lg={2.5} >
+          <Select
+          sx={{
+            height:'100%',
+            '&:before': {
+              borderColor: 'black',
+          },
+              '&:after': {
+                borderColor: 'black',
               },
-              '&::after': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-              '&:hover::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-            },
           }}
-            select
-            variant = {isFocused ? 'filled' : 'standard'}
+            defaultValue="Role"
+            placeholder='Role'
+            fullWidth
+            variant="standard"
+            IconComponent={Down}
           >
-            <MenuItem disabled value='Role'>
-              Role
-            </MenuItem>
-            <MenuItem value='Assigned'>
-              Assigned
-            </MenuItem>
-            <MenuItem value='Unassigned'>
-              Unassigned
-            </MenuItem>
-          </TextField>
-        </div>
+              <MenuItem disabled value='Role'>
+                Role
+              </MenuItem>
+              <MenuItem value='Assigned'>
+                Assigned
+              </MenuItem>
+              <MenuItem value='Unassigned'>
+                Unassigned
+              </MenuItem>
+          </Select>
+          </Grid>
+          </Grid>
         <CustomTable
           data={userData}
           columns={columns}

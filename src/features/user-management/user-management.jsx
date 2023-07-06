@@ -20,7 +20,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ pt: 1 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -55,7 +55,7 @@ const UserManagement = () => {
     <>
       {
         managerData ? <div className="container">
-          <p>User Management</p>
+          <p className='font-family-exo2 heading-20 font-weight-600'>User Management</p>
           <Box sx={{ width: '100%' }}>
             <Box sx={{
               borderColor: 'divider',

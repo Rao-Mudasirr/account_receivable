@@ -167,9 +167,9 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <Box sx={{ p: 1, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Typography variant="subtitle" sx={{ fontSize: "14px" }}>Add</Typography>
-          <TableAction disabled={disabled} onClicked={onAdd} type="add" />
+        <Box onClick={onAdd} sx={{ px: 1.6, py:0.5, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}>
+          <Typography variant="subtitle" sx={{ fontSize: "12px",fontFamily:'Exo 2', mr:'5px'}}>Add</Typography>
+          <TableAction disabled={disabled} type="add" />
         </Box>
       )}
 
