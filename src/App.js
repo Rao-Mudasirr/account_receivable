@@ -37,6 +37,7 @@ import TotalBills from "./features/account-payable/total-bills-dashboard/total-b
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 
 function App() {
   return (
@@ -95,6 +96,10 @@ function App() {
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
+          />
+           <Route
+            path="/reports/vendors-report/vendors-detail"
+            element={<SingleVendorReport />}
           />
           <Route
             exact

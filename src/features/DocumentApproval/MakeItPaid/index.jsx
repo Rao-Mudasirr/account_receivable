@@ -63,7 +63,7 @@ const MakeItPaid = () => {
           ) : value === 1 ? (
             <Timelines />
           ) : value === 2 ? (
-            <DragDropFile />
+            <DragDropFile setOpenModel={setOpenModel} openModel={openModel} />
           ) : (
             ""
           )}
