@@ -137,7 +137,7 @@ const TableHeader = forwardRef(function TableHeader(
           {title}
         </Typography> */}
         {!hideSearch && (
-          <div style={{ marginBottom: '10px' }}>
+          <div style={{ marginBottom: '15px' }}>
             <GlobalSearchBar
               value={searchQuery}
               onChange={handleSearchChange}
@@ -150,7 +150,7 @@ const TableHeader = forwardRef(function TableHeader(
       {showSelectFilters && (
         <Stack sx={styles.selectStackStyles}>
           {selectFilters.map(({ key, label, options = [] }) => (
-            <div style={{ marginBottom: '10px' }}>
+            <div style={{ marginBottom: '15px' }}>
               <GlobalSearchBar
                 placeholder="Search"
                 value={searchQuery}
@@ -167,7 +167,7 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <Box onClick={onAdd} sx={{ px: 1.6, py:0.5, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}>
+        <Box onClick={onAdd} sx={{ px: 1.6, py:0.5, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", mb:'5px' }}>
           <Typography variant="subtitle" sx={{ fontSize: "12px",fontFamily:'Exo 2', mr:'5px'}}>Add</Typography>
           <TableAction disabled={disabled} type="add" />
         </Box>
@@ -209,7 +209,7 @@ const styles = {
     flexDirection: { xs: "column", sm: "row" },
     flexWrap: "wrap",
     backgroundColor: alpha("#fff", 0.8),
-    padding: theme.spacing(1, 1.8),
+    // padding: theme.spacing(1, 1.8),
     alignItems: "center",
     // gap changing
     gap: theme.spacing(0.5),

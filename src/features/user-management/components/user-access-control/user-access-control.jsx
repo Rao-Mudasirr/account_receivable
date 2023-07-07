@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, FormControlLabel, Switch, Grid, Select } from "@mui/material";
+import { Card, Box, FormControlLabel, Switch, Grid, Select, Typography } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -89,20 +89,24 @@ export const UserAccessTable = () => {
     {
       accessorFn: (row) =>
         row.status ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Status
-              title={row.status}
-              color={
-                row.status === 'Active' ? '#065F46' : row.status === 'Inactive' ? '#FF624E' : '-'
-              }
-              bgColor={
-                row.status === 'Active'
-                  ? 'rgba(209, 250, 229, 1)'
-                  : row.status === 'Inactive'
-                    ? 'rgba(255, 98, 78, 0.12)'
-                    : '-'
-              }
-            />
+          <Box sx={{ display: 'flex', justifyContent: 'center', }}>
+            <Typography
+              fontFamily='Exo 2'
+            >
+              <Status
+                title={row.status}
+                color={
+                  row.status === 'Active' ? '#065F46' : row.status === 'Inactive' ? '#FF624E' : '-'
+                }
+                bgColor={
+                  row.status === 'Active'
+                    ? 'rgba(209, 250, 229, 1)'
+                    : row.status === 'Inactive'
+                      ? 'rgba(255, 98, 78, 0.12)'
+                      : '-'
+                }
+              />
+            </Typography>
           </Box>
         ) : (
           '-'
@@ -134,30 +138,33 @@ export const UserAccessTable = () => {
   return (
     <>
       <Card sx={{ p: 2 }}>
-        <Grid container sx={{ justifyContent: 'space-between', mb: '10px' }}>
+        <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
           <Grid item xs={5} lg={6} >
             <GlobalSearchBar
               value={searchQuery}
               onChange={handleSearchChange}
             />
           </Grid>
-          <Grid item xs={5} lg={2.5} >
-          <Select
-          sx={{
-            height:'100%',
-            '&:before': {
-              borderColor: 'black',
-          },
-              '&:after': {
-                borderColor: 'black',
-              },
-          }}
-            defaultValue="Role"
-            placeholder='Role'
-            fullWidth
-            variant="standard"
-            IconComponent={Down}
-          >
+          <Grid item xs={5} lg={2.5}>
+            <Select
+              sx={{
+                height: '100%',
+                '&:before': {
+                  borderColor: '#C4C4CC',
+                },
+                '&:after': {
+                  borderColor: '#C4C4CC',
+                },
+                '& .MuiSelect-select':{
+                  padding:'10px'
+                }
+              }}
+              defaultValue="Role"
+              placeholder='Role'
+              fullWidth
+              variant="standard"
+              IconComponent={Down}
+            >
               <MenuItem disabled value='Role'>
                 Role
               </MenuItem>
@@ -167,12 +174,13 @@ export const UserAccessTable = () => {
               <MenuItem value='Unassigned'>
                 Unassigned
               </MenuItem>
-          </Select>
+            </Select>
           </Grid>
-          </Grid>
+        </Grid>
         <CustomTable
           data={userData}
           columns={columns}
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}

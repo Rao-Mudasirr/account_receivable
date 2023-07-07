@@ -289,6 +289,7 @@ export default function WorkflowReport() {
       <CustomTable
         data={WORKFLOW_REPORT_DATA}
         columns={WORKFLOW_REPORT_COL}
+        showHeaderFilter={false}
         isSuccess={true}
         isPagination={true}
       />

@@ -89,7 +89,7 @@ export const RolesRightsTable = () => {
   return (
     <>
 
-      <Card sx={{ p: 1 }}>
+      <Card sx={{ p: 2 }}>
         <TableHeader
           ref={tableHeaderRef}
           title="Health & Safety"
@@ -106,6 +106,7 @@ export const RolesRightsTable = () => {
           data={ROLE_RIGHTS_DATA}
           columns={columns}
           // showSerialNo
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}

@@ -71,7 +71,7 @@ export const UsersTable = () => {
 
   return (
     <>
-      <Card sx={{ p: 1 }}>
+      <Card sx={{ p: 2 }}>
         <TableHeader
           ref={tableHeaderRef}
           title="Health & Safety"
@@ -84,6 +84,7 @@ export const UsersTable = () => {
         <CustomTable
           data={USERS_DATA}
           columns={columns}
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}

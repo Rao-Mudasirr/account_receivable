@@ -124,24 +124,27 @@ export const ClientsTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 1 }}>
-      <Grid container sx={{ justifyContent: 'space-between', mb: '10px' }}>
+      <Card sx={{ p: 2 }}>
+      <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
           <Grid item xs={5} lg={6} >
             <GlobalSearchBar
               value={searchQuery}
               onChange={handleSearchChange}
             />
           </Grid>
-          <Grid item xs={5} lg={2.5} >
+          <Grid item xs={5} lg={2.5}>
           <Select
           sx={{
             height:'100%',
             '&:before': {
-              borderColor: 'black',
+              borderColor: '#C4C4CC',
           },
               '&:after': {
-                borderColor: 'black',
+                borderColor: '#C4C4CC',
               },
+              '& .MuiSelect-select':{
+                padding:'10px'
+              }
           }}
             defaultValue="Role"
             placeholder='Role'
@@ -165,6 +168,7 @@ export const ClientsTable = () => {
           data={userData}
           columns={columns}
           // showSerialNo
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}

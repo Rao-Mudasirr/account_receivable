@@ -36,11 +36,14 @@ import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
+        
+        <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
