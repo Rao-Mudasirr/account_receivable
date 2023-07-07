@@ -1,29 +1,23 @@
 import React, {useState} from "react";
 import {Button, Grid, } from "@mui/material";
-import { toast } from "react-toastify";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateIcon } from "../../../../../components/date-icon/date-icon";
 import { SimpleDialog } from "../../../../../components/modal/simple-dialog";
-import './vendor-document-model.scss';
 import { DashboardSelect } from "../../../../dashboard-select/dashboard-select";
 
 const VendorDocumentModel = (props) => {
-  const { openFilter, handleCloseVendor } = props;
-
-  const [selectBranch, setSelectBranch] = useState("");
-  const [selectClient, setSelectClient] = useState("");
-  const [status, setStatus] = useState("");
+  const { openFilter, handleCloseVendor,setStatus,status } = props;
   const [bucket, setBucket] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-
+console.log(status);
 
     return(
         <SimpleDialog open={openFilter} handleClose={handleCloseVendor} title="Filters" titleClass="adduser_header primary-color font-weight-600 heading-20">
     
           <>
-            <Grid container spacing={2}>
+            <Grid container spacing={6}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <Grid item sm={6} xs={12}>
                     <label className="secondary-color" for="branch">
@@ -31,7 +25,6 @@ const VendorDocumentModel = (props) => {
                     </label>
               <DatePicker
                 sx={{
-                  paddingRight: "20px",
                   ".MuiInputBase-input ": {
                     p: "13px",
                     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
@@ -54,7 +47,6 @@ const VendorDocumentModel = (props) => {
                     </label>
                     <DatePicker
                 sx={{
-                  paddingRight: "20px",
                   ".MuiInputBase-input ": {
                     p: "13px",
                     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
@@ -70,7 +62,7 @@ const VendorDocumentModel = (props) => {
                 />
                   </Grid>
                 </LocalizationProvider>
-              <Grid item sm={6} xs={12}>
+              <Grid item sm={6} xs={12} className="margin-bottom-1">
                 <label className="secondary-color" for="Client">
                   Document Type
                 </label>
@@ -103,12 +95,12 @@ const VendorDocumentModel = (props) => {
                     },
                     ".MuiSelect-icon": { top: "40%" },
                   }}
-                  selectVal={status}
-                  setSelectVal={setStatus}
-                  data={["Paid", "Due", "Overdue"]}
+                  selectVal={bucket}
+                  setSelectVal={setBucket}
+                  data={["Pdf", "Excel"]}
                 />
               </Grid>
-              <Grid item sm={6} xs={12}>
+              <Grid item sm={6} xs={12} className="margin-bottom-1">
                 <label className="secondary-color" for="Client">
                   Document Status
                 </label>
@@ -141,47 +133,17 @@ const VendorDocumentModel = (props) => {
                     },
                     ".MuiSelect-icon": { top: "40%" },
                   }}
-                  selectVal={bucket}
-                  setSelectVal={setBucket}
+                  selectVal={status}
+                  setSelectVal={setStatus}
                   data={[
-                    "Amount overdue < 30d",
-                    "Amount overdue 30 - 60d",
-                    "Amount overdue 60 - 90d",
-                    "Amount overdue > 90d",
+                    "Pending",
+                    "Scheduled",
+                    "Paid",
+                    "Rejected",
                   ]}
                 />
               </Grid>
             </Grid>
-            <div className="filter-below-btn margin-top-2 flex justify-end">
-              <Button
-                className="btn1"
-                onClick={() => {
-                  setSelectBranch("");
-                  setSelectClient("");
-                  setBucket("");
-                  setStatus("");
-                }}
-              >
-                Clear
-              </Button>
-              &nbsp;
-              <Button
-                onClick={() => {
-                  if (selectBranch || selectClient) {
-                    setSelectBranch("");
-                    setSelectClient("");
-                    setBucket("");
-                    setStatus("");
-                    handleCloseVendor();
-                  } else {
-                    toast.error("Please Select Any Type");
-                  };
-                }}
-                className="btn2 primary-bg-color"
-              >
-                Apply
-              </Button>
-            </div>
           </>
       </SimpleDialog>
     )

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import "./vendordocuments.scss";
-import PendingScreen from "../../../../DocumentApproval/PendingScreen";
+import DocumentDetail from "./document-detail/DocumentDetail";
 import VendorDocumentModel from "./VendorDocumentModel";
 
 const SelectedPagination = styled(Pagination)(({ theme }) => ({
@@ -21,48 +21,30 @@ const SelectedPagination = styled(Pagination)(({ theme }) => ({
   },
 }));
 
-const buttonStyles = {
+const selectedStatusStyles = {
   Pending: {
-    backgroundColor: "#FFFFFF !important",
-    color: "black !important",
-    border: "2px solid #C4C4CC !important",
-  },
-  Scheduled: {
-    backgroundColor: "#FFFFFF !important",
-    color: "black !important",
-    border: "2px solid #C4C4CC !important",
-  },
-  Paid: {
-    backgroundColor: "#FFFFFF !important",
-    color: "black !important",
-    border: "2px solid #C4C4CC !important",
-  },
-  Rejected: {
-    backgroundColor: "#FFFFFF !important",
-    color: "black !important",
-    border: "2px solid #C4C4CC !important",
-  },
-};
-const selectedButtonStyles = {
-  Pending: {
-    backgroundColor: "#FFF0C2",
     color: "#FFBF00",
-    border: "2px solid #FFBF00",
+    fontSize: "14px",
+    fontWeight: 600,
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   },
   Scheduled: {
-    backgroundColor: "#D1DEFF",
     color: "#3F75FF",
-    border: "2px solid #3F75FF",
+    fontSize: "14px",
+    fontWeight: 600,
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   },
   Paid: {
-    backgroundColor: "#D3E7D8",
     color: "#48995D",
-    border: "2px solid #48995D",
+    fontSize: "14px",
+    fontWeight: 600,
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   },
   Rejected: {
-    backgroundColor: "#FFD1D1",
     color: "#FF3F3F",
-    border: "2px solid #FF3F3F",
+    fontSize: "14px",
+    fontWeight: 600,
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   },
 };
 
@@ -88,8 +70,7 @@ const searchBarStyle = {
 };
 
 const VendorDocuments = () => {
-  const [selectedButton, setSelectedButton] = useState("Pending");
-
+  const [status, setStatus] = useState("");
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleOpenVendor = () => {
@@ -101,13 +82,13 @@ const VendorDocuments = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xl={3.5} xs={12} sx={{ p: 2 }}>
+      <Grid item xl={4} xs={12} sx={{ p: 2 }}>
         <TextField
           id="standard-search"
           type="search"
           fullWidth
           className="font-family-Exo"
-          sx={searchBarStyle}
+          sx={{ ...searchBarStyle, width: { xl: "100%", md: 333, xs: 333 } }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -157,83 +138,7 @@ const VendorDocuments = () => {
           placeholder="Search"
         />
 
-        <Box sx={{ display: "flex", gap: 0.5, mt: 4 }}>
-          <Button
-            className={`tertiary-color  font-family-exo2 ${
-              selectedButton === "Pending" ? "selected" : ""
-            }`}
-            sx={{
-              p: 2,
-              fontSize: { md: "16px", sx: "8px" },
-              height: "10px",
-              textTransform: "capitalize",
-              borderRadius: "8px",
-              border: "2px",
-              ...(selectedButton === "Pending"
-                ? selectedButtonStyles.Pending
-                : buttonStyles.Pending),
-            }}
-            onClick={() => setSelectedButton("Pending")}
-          >
-            Pending
-          </Button>
-          <Button
-            className={`tertiary-color  font-family-exo2 ${
-              selectedButton === "Scheduled" ? "selected" : ""
-            }`}
-            sx={{
-              p: 2,
-              fontSize: { md: "16px", sx: "6px" },
-              height: "10px",
-              textTransform: "capitalize",
-              borderRadius: "8px",
-              border: "2px",
-              ...(selectedButton === "Scheduled"
-                ? selectedButtonStyles.Scheduled
-                : buttonStyles.Scheduled),
-            }}
-            onClick={() => setSelectedButton("Scheduled")}
-          >
-            Scheduled
-          </Button>
-          <Button
-            className={`tertiary-color primary-title font-family-exo2 ${
-              selectedButton === "Paid" ? "selected" : ""
-            }`}
-            sx={{
-              p: 2,
-              height: "10px",
-              textTransform: "capitalize",
-              borderRadius: "8px",
-              border: "2px",
-              ...(selectedButton === "Paid"
-                ? selectedButtonStyles.Paid
-                : buttonStyles.Paid),
-            }}
-            onClick={() => setSelectedButton("Paid")}
-          >
-            Paid
-          </Button>
-          <Button
-            className={`tertiary-color primary-title font-family-exo2 ${
-              selectedButton === "Rejected" ? "selected" : ""
-            }`}
-            sx={{
-              p: 2,
-              height: "10px",
-              textTransform: "capitalize",
-              borderRadius: "8px",
-              border: "2px",
-              ...(selectedButton === "Rejected"
-                ? selectedButtonStyles.Rejected
-                : buttonStyles.Rejected),
-            }}
-            onClick={() => setSelectedButton("Rejected")}
-          >
-            Rejected
-          </Button>
-        </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box className="flex justify-space-between margin-top-3">
           <Typography
             sx={{ mt: 2 }}
             className="secondary-color tertiary-titl font-family-exo2"
@@ -249,34 +154,30 @@ const VendorDocuments = () => {
             </Typography>
             <SelectedPagination count={0} color="primary" />
           </Box>
-        </Box>
+        </Box> 
         <Grid>
           <Box sx={{ mt: 1 }}>
             <Box
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                sx={{ fontWeight: 600 }}
-                className="primary-color primary-title font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-exo2"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                sx={{ fontWeight: 400 }}
-                className="tertiary-color sub-heading font-family-exo2"
+                className="tertiary-color sub-heading  font-weight-400 font-family-exo2"
               >
                 {" "}
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
-              <Typography>20/03/2023</Typography>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2, alignItems: "center" }}>
+              <Typography className="font-family-Exo tertiary-title font-weight-400 secondary-color">20/03/2023</Typography>
 
-              <Typography
-                sx={{ color: selectedButtonStyles[selectedButton]?.color }}
-              >
-                {selectedButton}
+              <Typography sx={{ color: status ? selectedStatusStyles[status] : selectedStatusStyles.Pending }}>
+                {status ? status : "Pending"}
               </Typography>
             </Box>
             <Divider sx={{ mt: 2 }} />
@@ -288,26 +189,23 @@ const VendorDocuments = () => {
             >
               <Typography
                 sx={{ fontWeight: 600 }}
-                className="primary-color primary-title font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-exo2"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                sx={{ fontWeight: 400 }}
-                className="tertiary-color sub-heading font-family-exo2"
+                className="tertiary-color sub-heading font-family-400 font-family-exo2"
               >
                 {" "}
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
-              <Typography>20/03/2023</Typography>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2, alignItems: "center" }}>
+              <Typography className="font-family-Exo tertiary-title font-weight-400 secondary-color">20/03/2023</Typography>
 
-              <Typography
-                sx={{ color: selectedButtonStyles[selectedButton]?.color }}
-              >
-                {selectedButton}
+              <Typography sx={{  color: status ? selectedStatusStyles[status] : selectedStatusStyles.Paid }}>
+                {status ? status : "Paid"}
               </Typography>
             </Box>
             <Divider sx={{ mt: 2 }} />
@@ -317,27 +215,23 @@ const VendorDocuments = () => {
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                sx={{ fontWeight: 600 }}
-                className="primary-color primary-title font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-exo2"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                sx={{ fontWeight: 400 }}
-                className="tertiary-color sub-heading font-family-exo2"
+                className="tertiary-color sub-heading font-weight-400 font-family-exo2"
               >
                 {" "}
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
-              <Typography>20/03/2023</Typography>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2, alignItems: "center" }}>
+              <Typography className="font-family-Exo tertiary-title font-weight-400 secondary-color">20/03/2023</Typography>
 
-              <Typography
-                sx={{ color: selectedButtonStyles[selectedButton]?.color }}
-              >
-                {selectedButton}
+              <Typography sx={{  color: status ? selectedStatusStyles[status] : selectedStatusStyles.Rejected }}>
+                {status ? status : "Rejected"}
               </Typography>
             </Box>
             <Divider sx={{ mt: 2 }} />
@@ -348,27 +242,23 @@ const VendorDocuments = () => {
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                sx={{ fontWeight: 600 }}
-                className="primary-color primary-title font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-exo2"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                sx={{ fontWeight: 400 }}
-                className="tertiary-color sub-heading font-family-exo2"
+                className="tertiary-color sub-heading font-weight-400 font-family-exo2"
               >
                 {" "}
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
-              <Typography>20/03/2023</Typography>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2, alignItems: "center" }}>
+              <Typography className="font-family-Exo tertiary-title font-weight-400 secondary-color">20/03/2023</Typography>
 
-              <Typography
-                sx={{ color: selectedButtonStyles[selectedButton]?.color }}
-              >
-                {selectedButton}
+              <Typography sx={{  color: status ? selectedStatusStyles[status] : selectedStatusStyles.Scheduled }}>
+                {status ? status : "Unpaid"}
               </Typography>
             </Box>
           </Box>
@@ -377,7 +267,7 @@ const VendorDocuments = () => {
 
       <Grid
         item
-        xl={7}
+        xl={8}
         xs={12}
         sx={{
           borderLeft: "2px solid #C4C4CC",
@@ -387,22 +277,14 @@ const VendorDocuments = () => {
           },
         }}
       >
-        {/* {selectedButton === 'Pending' ? ( */}
-        <PendingScreen />
-        {/* ) : selectedButton ===  'Scheduled'? (
-            <MakeItPaid />
-          ) : selectedButton ===  "Paid" ? (
-            <Paid />
-          ) : selectedButton === "Rejected"? (
-            <Rejected />
-          ) : (
-            ""
-          )} */}
+        <DocumentDetail />
       </Grid>
 
       <VendorDocumentModel
         openFilter={openFilter}
         handleCloseVendor={handleCloseVendor}
+        setStatus={setStatus}
+        status={status}
       />
     </Grid>
   );

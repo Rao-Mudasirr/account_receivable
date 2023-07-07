@@ -23,7 +23,7 @@ export const Status = ({
       }}
       onClick={handleStatusClick}
     >
-      <Typography variant="h4" sx={{ color: color, whiteSpace: 'nowrap', fontSize: "16px", }}>
+      <Typography variant="h4" sx={{ color: color, whiteSpace: 'nowrap', fontSize: "16px", }} className="font-family-Exo">
         {title}
       </Typography>
       {children}
