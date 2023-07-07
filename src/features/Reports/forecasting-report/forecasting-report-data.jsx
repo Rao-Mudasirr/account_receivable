@@ -32,8 +32,10 @@ export const Forecasting_Report_Col = [
   {
     accessorFn: (row) => row.Due_Date,
     id: "Due_Date",
+    
     cell: (info) => info.getValue(),
     header: "Due Date",
+    
     // isSortable: true,
   },
 
@@ -45,9 +47,6 @@ export const Forecasting_Report_Col = [
 
 ];
 
-// export const Aging_Buckets_Col2 = [
-  
-// ];
 
 
 export const Forecasting_Report_Data = [
@@ -58,6 +57,7 @@ export const Forecasting_Report_Data = [
     Bill_Amount: '1000',
     Created_On: '25/10/22',
     Due_Date: '25/10/22',
+    
   },
   {
     id: 2,

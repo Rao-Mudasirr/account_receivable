@@ -194,8 +194,10 @@ const CustomTable = (props) => {
                                 : index === headerGroup.headers.length - 1
                                 ? "0px 4px 4px 0px"
                                 : "0px",
+                                
                           }}
                           key={header.id}
+                          
                         >
                           <Box
                             onClick={() =>

@@ -28,13 +28,13 @@ export default function ForecastingReport() {
 
       {/* Search field */}
       <Grid container className="align-center cash-collection-report">
-        <Grid xl={6} xs={12}>
+        <Grid xl={4} xs={12}>
           <GlobalSearchBar />
         </Grid>
         <Grid xl={6} xs={12}>
           <div
             className="align-end"
-            style={{ marginLeft: "auto", display: "flex" ,   border:'2px solid red',}}
+            style={{ display: "flex" ,}}
           >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
@@ -71,82 +71,84 @@ export default function ForecastingReport() {
                 onChange={(date) => setEndDate(date)}
               />
             </LocalizationProvider>
-            <CustomPopover
-              mainTitle="Export"
-              mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="Export"
-              popoverOpenerProps={{
-                variant: "contained",
-                sx: {
-                  background: "#2B2B33",
-                  borderRadius: "8px",
-                  height: "32px",
-                //   whiteSpace: "nowrap",
-                  border:'2px solid red',
-                  "&:hover": {
+          <Box sx={{marginLeft:'auto'}}>    <CustomPopover
+                mainTitle="Export"
+                mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
+                popoverOpenerTitle="Export"
+                popoverOpenerProps={{
+                  variant: "contained",
+                  sx: {
+                  
                     background: "#2B2B33",
-                    borderWidth: "2px",
+                    borderRadius: "8px",
+                    height: "32px",
+                    whiteSpace: "nowrap",
+                
+                    "&:hover": {
+                      background: "#2B2B33",
+                      borderWidth: "2px",
+                    },
                   },
-                },
-                endIcon: <img src={exportIcon} alt="Export" />,
-                className:
-                  "buttons-filters font-family-Exo font-weight-400 tertiary-title",
-              }}
-            >
-              {(popupState) => (
-                <>
-                  <p className="secondary-color margin-bottom-0">
-                    Export this report as
-                  </p>
-                  <Grid container spacing={2}>
-                    <Grid item sm={6} xs={12}>
-                      <Box className="attachment-box">
-                        <ExportCardCheckbox
-                          checkboxState={checkboxPdf}
-                          setCheckboxState={setCheckboxPdf}
-                          title="PDF"
-                        />
-                      </Box>
+                  endIcon: <img src={exportIcon} alt="Export" />,
+                  className:
+                    "buttons-filters font-family-Exo font-weight-400 tertiary-title",
+                }}
+              >
+                {(popupState) => (
+                  <>
+                    <p className="secondary-color margin-bottom-0">
+                      Export this report as
+                    </p>
+                    <Grid container spacing={2}>
+                      <Grid item sm={6} xs={12}>
+                        <Box className="attachment-box">
+                          <ExportCardCheckbox
+                            checkboxState={checkboxPdf}
+                            setCheckboxState={setCheckboxPdf}
+                            title="PDF"
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <Box className="attachment-box">
+                          <ExportCardCheckbox
+                            checkboxState={checkboxExcel}
+                            setCheckboxState={setCheckboxExcel}
+                            title="Excel"
+                          />
+                        </Box>
+                      </Grid>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <Box className="attachment-box">
-                        <ExportCardCheckbox
-                          checkboxState={checkboxExcel}
-                          setCheckboxState={setCheckboxExcel}
-                          title="Excel"
-                        />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                  <div className="filter-below-btn margin-top-2 flex justify-end">
-                    <Button
-                      className="btn1"
-                      onClick={() => {
-                        setCheckboxPdf(false);
-                        setCheckboxExcel(false);
-                      }}
-                    >
-                      Clear
-                    </Button>
-                    &nbsp;
-                    <Button
-                      onClick={() => {
-                        if (checkboxExcel || checkboxPdf) {
+                    <div className="filter-below-btn margin-top-2 flex justify-end">
+                      <Button
+                        className="btn1"
+                        onClick={() => {
                           setCheckboxPdf(false);
                           setCheckboxExcel(false);
-                          popupState.close();
-                        } else {
-                          toast.error("Please Select Export Type");
-                        }
-                      }}
-                      className="btn2 primary-bg-color"
-                    >
-                      Apply
-                    </Button>
-                  </div>
-                </>
-              )}
-            </CustomPopover>
+                        }}
+                      >
+                        Clear
+                      </Button>
+                      &nbsp;
+                      <Button
+                        onClick={() => {
+                          if (checkboxExcel || checkboxPdf) {
+                            setCheckboxPdf(false);
+                            setCheckboxExcel(false);
+                            popupState.close();
+                          } else {
+                            toast.error("Please Select Export Type");
+                          }
+                        }}
+                        className="btn2 primary-bg-color"
+                      >
+                        Apply
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </CustomPopover></Box>  
+            
           </div>
         </Grid>
       </Grid>
@@ -154,7 +156,7 @@ export default function ForecastingReport() {
       {/* Table */}
 
       <Grid container >
-        <Grid item xs={12}>
+        <Grid item xl={10} xs={12}>
           <CustomTable
             data={Forecasting_Report_Data}
             columns={Forecasting_Report_Col}
@@ -163,7 +165,8 @@ export default function ForecastingReport() {
             // onSortByChange={sortChangeHandler}
             isSuccess={true}
             isPagination={false}
-            // showserialNo=false
+            showSerialNo ={false}
+            showHeaderFilter={false}
           />
         </Grid>
        
