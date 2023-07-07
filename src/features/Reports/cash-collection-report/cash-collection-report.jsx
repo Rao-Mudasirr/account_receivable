@@ -66,7 +66,7 @@ export const CashCollectionReport = () => {
         <>
             <div className="invoice-title">Cash Collection Report</div>
             <Grid container className='align-center cash-collection-report'>
-                <Grid xl={5} xs={12}  >
+                <Grid xl={5} xs={12}>
                     <GlobalSearchBar />
                 </Grid>
                 <Grid xl={7} xs={12} >

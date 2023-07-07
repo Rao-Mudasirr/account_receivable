@@ -13,6 +13,7 @@ const reportsPages = {
   "cash-collection-report": <CashCollectionReport />,
   "aging-buckets-report": <AgingBucketsReport />,
   "workflows-report": <WorkflowReport />,
+  "total-cash-paid-report": <CashCollectionReport />,
   "vendors-report": <VendorReport />,
 };
 

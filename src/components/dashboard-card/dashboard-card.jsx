@@ -9,7 +9,7 @@ export const DashboardCard = ({
   headingSibling,
   paddingForMd = '20px 24px',
   paddingForSm = '20px 20px',
-  headingSize = "14px",
+  headingSize = '14px',
   headingWeight = "600",
   headingColor ="#40404D",
   tooltipMessage,
