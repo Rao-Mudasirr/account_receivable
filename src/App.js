@@ -35,6 +35,7 @@ import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 
 function App() {
   return (
@@ -89,6 +90,10 @@ function App() {
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
+          />
+           <Route
+            path="/reports/vendors-report/vendors-detail"
+            element={<SingleVendorReport />}
           />
           <Route
             exact

@@ -78,7 +78,7 @@ const CustomTable = (props) => {
     tableContainerSX = {},
     rootSX = {},
     showSerialNo = false,
-    showHeaderFilter = true
+    showHeaderFilter = true,
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -175,137 +175,153 @@ const CustomTable = (props) => {
       <IsFetching isFetching={isFetching} />
       <Grid xs={12} item>
         {/* Table Container */}
-        <div style={{display: 'flex'}}>
-        <Box sx={{ overflowX: "auto", flex: '1'}}>
-          <TableContainer
-            className="no-scrollbar"
-            sx={styles.tableContainer(tableContainerSX, theme)}
-          >
-            <Table stickyHeader>
-              <TableHead>
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <StyledTableRow key={headerGroup.id}>
-                    {headerGroup.headers.map((header, index) => (
-                      <StyledTableCell
-                        sx={{
-                          borderRadius:
-                            index === 0
-                              ? "4px 0px 0px 4px"
-                              : index === headerGroup.headers.length - 1
-                              ? "0px 4px 4px 0px"
-                              : "0px",
-                        }}
-                        key={header.id}
-                      >
-                        <Box
-                          onClick={() =>
-                            header.column.columnDef.isSortable &&
-                            handleSortBy(header?.id)
-                          }
-                          sx={{...styles.cell}}
+        <div style={{ display: "flex" }}>
+          <Box sx={{ overflowX: "auto", flex: "1" }}>
+            <TableContainer
+              className="no-scrollbar"
+              sx={styles.tableContainer(tableContainerSX, theme)}
+            >
+              <Table stickyHeader>
+                <TableHead>
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <StyledTableRow key={headerGroup.id}>
+                      {headerGroup.headers.map((header, index) => (
+                        <StyledTableCell
+                          sx={{
+                            borderRadius:
+                              index === 0
+                                ? "4px 0px 0px 4px"
+                                : index === headerGroup.headers.length - 1
+                                ? "0px 4px 4px 0px"
+                                : "0px",
+                          }}
+                          key={header.id}
                         >
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                          {header.column.columnDef.isSortable &&
-                            !isSorted(header.id) && <KeyboardArrowDownIcon />}
-                          {header.column.columnDef.isSortable &&
-                            isSorted(header.id) && <KeyboardArrowUpIcon />}
-                        </Box>
-                      </StyledTableCell>
-                    ))}
-                  </StyledTableRow>
-                ))}
-              </TableHead>
-
-              {isSuccess && table.getRowModel().rows.length > 0 && (
-                <TableBody>
-                  {table.getRowModel().rows?.map((row) => (
-                    <StyledTableRow key={row?.id}>
-                      {row.getVisibleCells().map((cell) => (
-                        <StyledTableCell key={cell?.id}>
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
+                          <Box
+                            onClick={() =>
+                              header.column.columnDef.isSortable &&
+                              handleSortBy(header?.id)
+                            }
+                            sx={{ ...styles.cell }}
+                          >
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                            {header.column.columnDef.isSortable &&
+                              !isSorted(header.id) && <KeyboardArrowDownIcon />}
+                            {header.column.columnDef.isSortable &&
+                              isSorted(header.id) && <KeyboardArrowUpIcon />}
+                          </Box>
                         </StyledTableCell>
                       ))}
                     </StyledTableRow>
                   ))}
-                </TableBody>
-              )}
-            </Table>
-            {(isError || table.getRowModel().rows.length === 0) && (
-              <Grid container sx={styles.error}>
-                <Grid item width={200}>
-                  <NoContentFound />
+                </TableHead>
+
+                {isSuccess && table.getRowModel().rows.length > 0 && (
+                  <TableBody>
+                    {table.getRowModel().rows?.map((row) => (
+                      <StyledTableRow key={row?.id}>
+                        {row.getVisibleCells().map((cell) => (
+                          <StyledTableCell key={cell?.id}>
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
+                          </StyledTableCell>
+                        ))}
+                      </StyledTableRow>
+                    ))}
+                  </TableBody>
+                )}
+              </Table>
+              {(isError || table.getRowModel().rows.length === 0) && (
+                <Grid container sx={styles.error}>
+                  <Grid item width={200}>
+                    <NoContentFound />
+                  </Grid>
                 </Grid>
-              </Grid>
-            )}
-          </TableContainer>
-        </Box>
-       {showHeaderFilter && <Box
-          ref={menu}
-          sx={{ flex: '0 0 auto', position: 'relative', right: '-7px', top: '15px', zIndex: 10,}}
-        >
-          <Filter
-            onClick={() => setShow(!show)}
-            style={{ cursor: "pointer" }}
-          />
-          { show && (
-            <Box sx={{ display: "block", marginTop: "-19px", marginLeft: '-150px', position: "absolute", zIndex: 11, }}>
-              <ul
-                style={{
-                  padding: "0",
-                  listStyle: "none",
-                  background: "white",
-                  borderRadius: "8px",
-                  boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
-                  position: "relative",
-                  zIndex: 12,
-                }}
-              >
-                {checkboxes?.map((e, i) => (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
+              )}
+            </TableContainer>
+          </Box>
+          {showHeaderFilter && (
+            <Box
+              ref={menu}
+              sx={{
+                flex: "0 0 auto",
+                position: "relative",
+                right: "-7px",
+                top: "15px",
+                zIndex: 10,
+              }}
+            >
+              <Filter
+                onClick={() => setShow(!show)}
+                style={{ cursor: "pointer" }}
+              />
+              {show && (
+                <Box
+                  sx={{
+                    display: "block",
+                    marginTop: "-19px",
+                    marginLeft: "-150px",
+                    position: "absolute",
+                    zIndex: 11,
+                  }}
+                >
+                  <ul
+                    style={{
+                      padding: "0",
+                      listStyle: "none",
                       background: "white",
+                      borderRadius: "8px",
+                      boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
+                      position: "relative",
+                      zIndex: 12,
                     }}
-                    key={e?.id}
                   >
-                    <Checkbox
-                      checked={e?.checkbox ? true : false}
-                      onChange={(event) => handleFilterHeader(e, i)}
-                      value={e?.checkbox}
-                      sx={{
-                        color: "black",
-                        "&.Mui-checked": {
-                          color: "black",
-                        },
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontWeight: "400",
-                        fontSize: "14px",
-                        lineHeight: "20px",
-                        color: " #6B6B80",
-                      }}
-                    >
-                      {typeof e?.header === "string"
-                        ? e?.header || e?.id
-                        : e?.id}
-                    </span>
-                  </Box>
-                ))}
-              </ul>
+                    {checkboxes?.map((e, i) => (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          background: "white",
+                        }}
+                        key={e?.id}
+                      >
+                        <Checkbox
+                          checked={e?.checkbox ? true : false}
+                          onChange={(event) => handleFilterHeader(e, i)}
+                          value={e?.checkbox}
+                          sx={{
+                            color: "black",
+                            "&.Mui-checked": {
+                              color: "black",
+                            },
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontWeight: "400",
+                            fontSize: "14px",
+                            lineHeight: "20px",
+                            color: " #6B6B80",
+                          }}
+                        >
+                          {typeof e?.header === "string"
+                            ? e?.header || e?.id
+                            : e?.id}
+                        </span>
+                      </Box>
+                    ))}
+                  </ul>
+                </Box>
+              )}
             </Box>
           )}
-        </Box>}
         </div>
         {/* Pagination */}
         {pageData !== "clients-view" && (
