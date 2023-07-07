@@ -35,6 +35,7 @@ import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import Forcasting_Reports from "./pages/Forcasting_Reports";
 
 function App() {
   return (
@@ -114,6 +115,7 @@ function App() {
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
+           <Route exact path={"/reports/forecasting-report"} element={<Forcasting_Reports />} /> b 
           <Route
             exact
             path={"/clients-details/:id"}
