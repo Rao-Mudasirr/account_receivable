@@ -7,6 +7,9 @@
     .image-box {
       max-height: 179px;
       overflow: auto;
+      img {
+        max-width: 100%;
+      }
 
       &::-webkit-scrollbar {
         display: none;

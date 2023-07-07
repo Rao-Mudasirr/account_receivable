@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import CustomInput from "../../../components/CustomInput";
 import DeclineModel from "./DeclineModel";
 import FullScreenModel from "./FullScreenModel";
+import UploadTableModel from "./UploadTableModel";
 
 function DocumentApprovalModel({ open, handleClose, type = 0 }) {
   const navigate = useNavigate();
@@ -37,8 +38,8 @@ function DocumentApprovalModel({ open, handleClose, type = 0 }) {
           <DeclineModel handleClose={handleClose} />
         ) : type === 1 ? (
           <FullScreenModel handleClose={handleClose} />
-        ) : (
-          ""
+        ) : type === 2 ?  <UploadTableModel  handleClose={handleClose}/>  : (
+         <></>
         )}
       </Modal>
     </div>
