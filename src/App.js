@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -28,15 +28,17 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
-import Bills from "./pages/bills";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
+import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
+import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 
 function App() {
   return (
@@ -79,6 +81,10 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
+
+          <Route exact path={"/total-bills"} element={<TotalBills />} />
+          
+          
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
@@ -93,6 +99,10 @@ function App() {
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
+          />
+           <Route
+            path="/reports/vendors-report/vendors-detail"
+            element={<SingleVendorReport />}
           />
           <Route
             exact
@@ -143,7 +153,6 @@ function App() {
           />
 
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
-          <Route exact path={"/bills-management"} element={<Bills />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
