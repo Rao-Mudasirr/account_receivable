@@ -73,11 +73,10 @@ export const UsersTable = () => {
 
   return (
     <>
-      <Box className='flex justify-space-between'>
+      <Box sx={{gap: 2}} className='flex justify-space-between margin-bottom-1'>
         <GlobalSearchBar />
         <AddUser/>
       </Box>
-
       <CustomTable
         data={USERS_DATA}
         columns={columns}

@@ -13,13 +13,12 @@ const AddUser = () => {
               popoverOpenerProps={{
                 variant:"contained",
                 sx: {
-                  mr: 2,
-                  whiteSpace: "nowrap",
                   color: "#ffffff",
                   bgcolor: "#2B2B33",
                   border: "1.5px solid #40404D !important",
                   height: "32px",
                   borderRadius: "8px",
+                  mb: "-16px",
                   "&:hover": {
                     border: "2px solid #2B2B33 !important",
                     bgcolor: "#2B2B33"

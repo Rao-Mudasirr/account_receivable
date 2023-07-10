@@ -123,8 +123,5 @@ const Styles = {
     fontWeight: 400,
     fontSize: "16px",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-    "& .focus": {
-      border: "none"
-    }
   }),
 };

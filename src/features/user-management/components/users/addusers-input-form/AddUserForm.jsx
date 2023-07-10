@@ -96,6 +96,9 @@ const AddUserForm = () => {
                   component={TextField}
                   name="firstName"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="First Name"
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -126,6 +129,9 @@ const AddUserForm = () => {
                   component={TextField}
                   name="lastName"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="Last Name"
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -156,6 +162,9 @@ const AddUserForm = () => {
                   component={TextField}
                   name="email"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="Email"
                   type="email"
                   onChange={(e) => handleInputChange(e, props)}
@@ -188,11 +197,9 @@ const AddUserForm = () => {
                   name="phone"
                   variant="standard"
                   placeholder="Phone"
-                  type="tel"
+                  type="number"
                   inputProps={{
-                    style: { MozAppearance: "textfield" },
-                    inputMode: "numeric",
-                    pattern: "[0-9]*",
+                    className: "font-family-Exo"
                   }}
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -223,6 +230,10 @@ const AddUserForm = () => {
                   component={Select}
                   name="company"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo",
+                    placeholder: "Select"
+                  }}
                   onChange={(e) => handleInputChange(e, props)}
                 >
                   {companyOptions.map((option) => (
@@ -267,6 +278,9 @@ const AddUserForm = () => {
                   className="usersform_textfield"
                   component={Select}
                   name="role"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
                 >
