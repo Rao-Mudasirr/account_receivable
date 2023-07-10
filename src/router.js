@@ -15,7 +15,6 @@ import Clientdetails from "./pages/client-details";
 import PerformanceAnalysis from "./pages/Performance-Analysis";
 import ClientComparison from "./features/performance-analysis/ClientComparison/ClientComparison";
 import DSO_Month from "./features/Reports/DSO_Report/DSO_Month";
-import ReportInfo from "./pages/Report-Info";
 import MainReport from "./pages/MainReport";
 
 // const UserArray = ["ap"];
