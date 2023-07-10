@@ -41,9 +41,13 @@
 }
 
 .left_name li {
-    line-height: 2rem;
+    line-height: 2.3rem;
     list-style: none;
     cursor: pointer;
+}
+
+.left_name {
+    margin-top: -1rem;
 }
 
 .left_name li.active {

@@ -288,6 +288,7 @@ export default function AgingBucketsReport() {
           <CustomTable
             data={Aging_Buckets_Data}
             columns={Aging_Buckets_Col}
+            showHeaderFilter={false}
             // showSerialNo
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}

@@ -28,6 +28,10 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
+import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
@@ -37,12 +41,15 @@ import TotalBills from "./features/account-payable/total-bills-dashboard/total-b
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
+import CreateWorkflow from "./pages/CreateWorkflow";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
+        <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
@@ -67,21 +74,19 @@ function App() {
         <Route path="/account-payable" element={<HomeLayout />}>
           <Route path="/account-payable" element={<AccountReceivablePage />} />
         </Route>
-          <Route path="/decline-card" element={<DeclineCard/>} />
-          <Route path="/details-page" element={<DetailsPage/>} />
-          <Route path="/vendors" element={<VendorManagementPage/>} />
-        
-        <Route path="/cashflow" element={<HomeLayout />} >
-          <Route path="/cashflow" element={<AccountReceivablePage/>} />
+        <Route path="/decline-card" element={<DeclineCard />} />
+        <Route path="/details-page" element={<DetailsPage />} />
+
+        <Route path="/cashflow" element={<HomeLayout />}>
+          <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
-        
+
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
 
           <Route exact path={"/total-bills"} element={<TotalBills />} />
-          
-          
+
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
@@ -97,7 +102,7 @@ function App() {
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
           />
-           <Route
+          <Route
             path="/reports/vendors-report/vendors-detail"
             element={<SingleVendorReport />}
           />
@@ -119,11 +124,19 @@ function App() {
               path={"/workflows/form"}
               element={<WorkflowsForms />}
             />
+            <Route
+              exact
+              path={"/workflows/create"}
+              element={<CreateWorkflow />}
+            />
           </Route>
 
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
+          <Route path="/vendors" element={<VendorManagementPage />} />
+          <Route path="/vendors/add-vendor" element={<AddVendor />} />
+          <Route path="/vendors/vendor-action" element={<VendorAction />} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
           <Route
             exact

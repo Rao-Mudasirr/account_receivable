@@ -1,125 +1,115 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { Button, Select } from '@mui/material';
-import { TextField } from 'formik-material-ui'
-import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
-import InputAdornment from '@mui/material/InputAdornment';
-import Box from '@mui/material/Box';
-import ErrorIcon from '@mui/icons-material/Error';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
-import { Link, useNavigate } from 'react-router-dom';
-import { withStyles } from '@material-ui/core';
-import './signUp.scss'
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Button, Select } from "@mui/material";
+import { TextField } from "formik-material-ui";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
+import InputAdornment from "@mui/material/InputAdornment";
+import Box from "@mui/material/Box";
+import ErrorIcon from "@mui/icons-material/Error";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemText from "@mui/material/ListItemText";
+import Checkbox from "@mui/material/Checkbox";
+import { Link, useNavigate } from "react-router-dom";
+import { withStyles } from "@material-ui/core";
+import "./signUp.scss";
 
 const names = [
-  'Account Payable (I want to pay vendors)',
-  'Account Receivable (I want to send invoices)',
-  'Cash Flow (I want to manage cash)',
-  'All',
+  "Account Payable (I want to pay vendors)",
+  "Account Receivable (I want to send invoices)",
+  "Cash Flow (I want to manage cash)",
+  "All",
 ];
 
-
 const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required(<div style={{
-    fontFamily: 'Exo 2',
-    fontSize: '12px',
-    display: 'flex',
-    alignItems: 'end',
-    position: 'absolute',
-    color: 'rgba(255, 85, 85, 1)'
-  }}>
-    <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
-    Please Enter Full Name(First and Last Name)</div>),
+  fullName: Yup.string().required(
+    <span className="error-color font-family-Exo">
+      <ErrorIcon className="signup_error-icon" />
+      Please Enter Full Name(First and Last Name)
+    </span>
+  ),
   email: Yup.string()
-    .email((<div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
-      Please Enter a Valid email Address</div>))
-    .required(<div style={{
-      fontFamily: 'Exo 2',
-      fontSize: '12px',
-      display: 'flex',
-      alignItems: 'end',
-      position: 'absolute',
-      color: 'rgba(255, 85, 85, 1)'
-    }}>
-      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mb: 0.3, transform: 'rotate(180deg)' }} />
-      Please Enter a Valid email Address</div>),
+    .email(
+      <span className="error-color font-family-Exo">
+        <ErrorIcon className="signup_error-icon" />
+        Please Enter a Valid email Address
+      </span>
+    )
+    .required(
+      <span className="error-color font-family-Exo">
+        <ErrorIcon className="signup_error-icon" />
+        Please Enter a Valid email Address
+      </span>
+    ),
   password: Yup.string().min(6, true).required(true),
-  checkbox: Yup.array().min(2, 'Please choose at least one option').required('Please select an option'),
-})
+  checkbox: Yup.array()
+    .min(2, "Please choose at least one option")
+    .required("Please select an option"),
+});
 
-const labelstyles = theme => ({
+const labelstyles = (theme) => ({
   root: {
-    '& .MuiFormControlLabel-label': {
-      fontSize: '14px',
-      fontWeight: '400',
-      fontFamily: 'Exo 2',
-      color: '#4C4C4C'
+    "& .MuiInputLabel-root": {
+      fontWeight: "bold",
+    },
+    "& .MuiFormControlLabel-label": {
+      fontSize: "14px",
+      fontWeight: "400",
+      fontFamily: "Exo 2",
+      color: "#4C4C4C",
+    },
+    "&.MuiInputLabel-shrink": {
+      fontWeight: "bold",
     },
   },
 });
 
 const ListItemTextStyle = withStyles(labelstyles)(ListItemText);
 
-
-const menuStyles = theme => ({
+const menuStyles = (theme) => ({
   root: {
     "&.Mui-selected": {
-      backgroundColor: "transparent"
+      backgroundColor: "transparent",
     },
     "&.Mui-selected:hover": {
-      backgroundColor: "transparent"
+      backgroundColor: "transparent",
     },
     "&.Mui-selected:focus": {
-      backgroundColor: "transparent"
+      backgroundColor: "transparent",
     },
-    "&.MuiSelect-outline":{
-      outline:"none",
+    "&.MuiSelect-outline": {
+      outline: "none",
     },
-    "&.MuiInput-input":{
-      color:"red",
-
-    }
   },
-})
+});
 
 const StyledMenuItem = withStyles(menuStyles)(MenuItem);
 
-const checkBoxStyles = theme => ({
+const checkBoxStyles = (theme) => ({
   root: {
-    '&$checked': {
-      color: 'black',
+    "&$checked": {
+      color: "black",
     },
   },
   checked: {},
-})
+});
 
 const CustomCheckbox = withStyles(checkBoxStyles)(Checkbox);
 
+const initialValues = {
+  fullName: "",
+  email: "",
+  password: "",
+  checkbox: [""],
+};
 
 export default function MySignUpForm(props) {
-  const navigate = useNavigate()
-  const initialValues = {
-    fullName: '',
-    email: '',
-    password: '',
-    checkbox: [""],
-  };
+  const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
     setShowPassword((show) => !show);
@@ -129,198 +119,268 @@ export default function MySignUpForm(props) {
     event.preventDefault();
   };
 
+  const [filledFields, setFilledFields] = useState({});
+
+  const handleInputChange = (e, formik) => {
+    const { name, value } = e.target;
+    formik.setFieldValue(name, value);
+    setFilledFields((prevFilledFields) => ({
+      ...prevFilledFields,
+      [name]: value.trim() !== "",
+    }));
+  };
+
   const handleSubmit = (values) => {
     // Handle form submission here
     console.log(values);
-    navigate("/sign-up-2")
+    setFilledFields({});
+    navigate("/sign-up-2");
   };
 
   const [personName, setPersonName] = useState([]);
 
   const handleChange = (event) => {
     const { value } = event.target;
-    if (value.includes('All')) {
-      setPersonName(names.filter((name) => name !== 'All'));
+    if (value.includes("All")) {
+      setPersonName(names.filter((name) => name !== "All"));
     } else {
       setPersonName(value);
     }
   };
 
-
   let isAllSelected = personName.length === names.length - 1;
 
   return (
-    <Grid container className="height-100vh align-center justify-center signup_container" >
+    <Grid
+      container
+      className="height-100vh align-center justify-center signup_container"
+    >
       <Box
         sx={{
           width: 600,
-          borderRadius: '16px',
-          p: '25px',
-          border: '1px solid rgba(204, 204, 204, 0.5)',
-          filter: 'dropShadow(0px 0px 4px rgba(204, 204, 204, 0.1))',
-          borderRadius: '16px'
+          borderRadius: "16px",
+          p: "25px",
+          border: "1px solid rgba(204, 204, 204, 0.5)",
+          filter: "dropShadow(0px 0px 4px rgba(204, 204, 204, 0.1))",
+          borderRadius: "16px",
         }}
       >
         <div className="sign_heading">
-          <span style={{ color: '#4C4C4C', marginRight: '10px' }}>Welcome to</span>
+          <span style={{ color: "#4C4C4C", marginRight: "10px" }}>
+            Welcome to
+          </span>
           Accountants Pact!
         </div>
-        <div className="text-mute">
-          Let's Get Started
-        </div>
+        <div className="text-mute">Let's Get Started</div>
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          {({ values, errors, touched, setFieldValue }) => (
+          {(props) => {
+            const { values, errors, touched, setFieldValue } = props;
 
-            < Form >
-              <Grid container spacing={7}>
-                <Grid item xs={12} sx={{ height: '75px' }} >
-                  <div>
-                    <div className="signup_label">
-                      <label htmlFor="fullName"
-                        style={{ color: touched.fullName && errors.fullName ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
+            return (
+              <Form>
+                <Grid container spacing={7}>
+                  <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${filledFields.fullName ? "hide_label" : ""
+                      }`}
+                    sx={{ height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${touched.fullName && errors.fullName ? "error_label" : ""
+                        }`}
+                    >
+                      {filledFields.fullName ? null : (
                         <span
-                          style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
-                        Full Name</label>
-                    </div>
+                          className="asterisk error-color"
+                          style={{
+                            marginTop: "-5px",
+                          }}
+                        >
+                          *
+                        </span>
+                      )}
+                      Full Name
+                    </label>
                     <Field
-                      sx={styles.field__color}
+                      className="signinform_textfield"
                       component={TextField}
-                      id="fullName"
-                      variant="standard"
-                      fullWidth
-                      type="text"
-                      placeholder="Enter Full Name"
                       name="fullName"
-                      position='absolute'
-                      InputProps={{
-                        style: {
-                          fontSize: '14px',
-                          paddingLeft: '20px'
-                        }
-                      }}
-                    />
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
-                  <div>
-                    <div className="signup_label">
-                      <label htmlFor="email"
-                        style={{ color: touched.email && errors.email ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}>
-                        <span
-                          style={{ color: "rgba(255, 85, 85, 1)", marginTop: '-5px' }}>*</span>
-                        Business Email</label>
-                    </div>
-                    <Field
-                      sx={styles.field__color}
-                      component={TextField}
-                      id="email"
                       variant="standard"
+                      placeholder="Enter Full Name"
+                      type="text"
                       fullWidth
-                      placeholder="Enter Email"
-                      type="email"
-                      name="email"
-                      InputProps={{
-                        style: {
-                          fontSize: '14px',
-                          paddingLeft: '20px'
-                        }
-                      }}
-                    />
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} sx={{ height: '75px', mt: '2rem' }}>
-                  <div>
-                    <div className="signup_label">
-                      <label htmlFor="password"
-                        style={{ color: touched.password && errors.password ? "rgba(255, 85, 85, 1)" : "#4C4C4C" }}
-                      >
-                        <span
-                          style={{ color: "rgba(255, 85, 85, 1)", marginTop: '-5px' }}>*</span>
-                        Create Password</label>
-
-                    </div>
-                    <Field
+                      onChange={(e) => handleInputChange(e, props)}
+                      InputProps={styles.font_family}
                       sx={styles.field__color}
+                    />
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${filledFields.email ? "hide_label" : ""
+                      }`}
+                    sx={{ marginTop: "2rem", height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${touched.email && errors.email ? "error_label" : ""
+                        }`}
+                    >
+                      {filledFields.email ? null : (
+                        <span
+                          className="asterisk error-color"
+                          style={{
+                            marginTop: "-5px",
+                          }}
+                        >
+                          *
+                        </span>
+                      )}
+                      Business Email
+                    </label>
+                    <Field
+                      className="signinform_textfield"
                       component={TextField}
-                      id="password"
+                      name="email"
+                      variant="standard"
+                      placeholder="Enter Email"
+                      type="text"
+                      fullWidth
+                      onChange={(e) => handleInputChange(e, props)}
+                      InputProps={styles.font_family}
+                      sx={styles.field__color}
+                    />
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    className={`textfield_bold ${filledFields.password ? "hide_label" : ""
+                      }`}
+                    sx={{ marginTop: "2rem", height: "75px" }}
+                  >
+                    <label
+                      className={`signup_label ${touched.password && errors.password ? "error_label" : ""
+                        }`}
+                    >
+                      {filledFields.password ? null : (
+                        <span
+                          className="asterisk error-color"
+                          style={{
+                            marginTop: "-5px",
+                          }}
+                        >
+                          *
+                        </span>
+                      )}
+                      Create Password
+                    </label>
+                    <Field
+                      className="signinform_textfield"
+                      component={TextField}
+                      name="password"
                       variant="standard"
                       fullWidth
                       placeholder="Enter Password"
-                      type={showPassword ? 'text' : 'password'}
-                      name="password"
+                      onChange={(e) => handleInputChange(e, props)}
+                      id="standard-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      sx={styles.field__color}
                       InputProps={{
-                        style: {
-                          fontSize: '14px',
-                          paddingLeft: '20px',
-                        },
                         endAdornment: (
-                          <InputAdornment>
+                          <InputAdornment position="end">
                             <IconButton
                               aria-label="toggle password visibility"
                               onClick={handleClickShowPassword}
                               onMouseDown={handleMouseDownPassword}
-                              edge="end"
-                              sx={{ margin: 0.7, pb: 2, transform: 'scaleX(-1)' }}
                             >
-                              {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+                              {showPassword ? (
+                                <RiEyeLine />
+                              ) : (
+                                <RiEyeOffLine className="rotate_icon" />
+                              )}
                             </IconButton>
                           </InputAdornment>
                         ),
+                        className: "font-family-Exo",
+                        fontSize: "14px",
+                        paddingLeft: "20px",
                       }}
                     />
-                    <span className="password__text">The password must be at least 6 characters</span>
-                  </div>
-                </Grid>
+                    <span className="password__text">
+                      The password must be at least 6 characters
+                    </span>
+                  </Grid>
 
-
-                <Grid item xs={12} sx={{ height: '75px', mt: '2.5rem' }}>
-                  <Form>
-                    <Box>
-                      <div className="signup_label">
-                        <label htmlFor="checkbox" style={{ color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : '#4C4C4C' }}>
-                          <span style={{ color: 'rgba(255, 85, 85, 1)', marginTop: '-5px' }}>*</span>
+                  <Grid item xs={12} sx={{ height: "75px", mt: "2.5rem" }}>
+                    <Form>
+                      <Box>
+                        <div className={`textfield_bold ${filledFields.checkbox ? "hide_label" : ""
+                          }`}>
+                          <label
+                          htmlFor="checkbox"
+                          className={`signup_label ${touched.checkbox && errors.checkbox ? "error_label" : ""
+                          }`}
+                        >
+                           {filledFields.checkbox ? null : (
+                          <span
+                            className="asterisk error-color"
+                            style={{
+                              marginTop: "-5px",
+                            }}
+                          >
+                            *
+                          </span>
+                           )}
                           Why are you signing up for Accountant Pact?
                         </label>
-                      </div>
+                      
                       <Field
                         sx={styles.field__color}
                         component={Select}
                         placeholder="Select"
                         fullWidth
                         variant="standard"
-                        labelId="demo-multiple-checkbox-label"
                         id="demo-multiple-checkbox"
                         multiple
                         name="checkbox"
-                        InputProps={{
-                          style: {
-                            fontSize: '14px',
-                            paddingLeft: '20px',
-                          },
-                        }}
+                        InputLabelProps={styles.label__color}
                         value={values.checkbox}
                         renderValue={(selected) => {
-                          if (selected.includes('All')) {
-                            return 'All';
+                          if (selected.includes("All")) {
+                            return "All";
                           }
-                          return selected.join(', ');
+                          return selected.join(", ");
                         }}
                       >
                         {names.map((name) => (
-                          <StyledMenuItem onClick={() => {
-                            name === "All" ? values.checkbox.includes(name)
-                              ? setFieldValue('checkbox', []) : setFieldValue('checkbox', names)
-                              : values.checkbox.includes(name) ? setFieldValue('checkbox',
-                                values.checkbox.filter(item => item !== name)) :
-                                setFieldValue('checkbox', [...values.checkbox, name]);
-                            console.log(values.checkbox);
-                          }} key={name} value={name}>
+                          <StyledMenuItem
+                            onClick={() => {
+                              name === "All"
+                                ? values.checkbox.includes(name)
+                                  ? setFieldValue("checkbox", [])
+                                  : setFieldValue("checkbox", names)
+                                : values.checkbox.includes(name)
+                                  ? setFieldValue(
+                                    "checkbox",
+                                    values.checkbox.filter(
+                                      (item) => item !== name
+                                    )
+                                  )
+                                  : setFieldValue("checkbox", [
+                                    ...values.checkbox,
+                                    name,
+                                  ]);
+                              console.log(values.checkbox);
+                            }}
+                            key={name}
+                            value={name}
+                          >
                             <CustomCheckbox
                               checked={values.checkbox.includes(name)}
                             />
@@ -328,27 +388,23 @@ export default function MySignUpForm(props) {
                           </StyledMenuItem>
                         ))}
                       </Field>
+                      </div>
                     </Box>
                   </Form>
                   {touched.checkbox && errors.checkbox && (
-                    <div
-                      style={{
-                        color: touched.checkbox && errors.checkbox ? 'rgba(255, 85, 85, 1)' : 'black',
-                        fontFamily: 'Exo 2',
-                        fontSize: '12px',
-                        fontWeight: '600',
-                        display: 'flex',
-                        alignItems: 'end',
-                        position: 'absolute',
-                        color: 'rgba(255, 85, 85, 1)',
-                      }}
+                    <span
+                      className={
+                        touched.checkbox && errors.checkbox
+                          ? "error_label font-family-Exo tertiary-title font-weight-400"
+                          : ""
+                      }
                     >
-                      <ErrorIcon fontSize="small" sx={{ mr: 0.5, mt: '2px', transform: 'rotate(180deg)', }} />
-                      <span style={{ marginBottom: '3px' }}> Please Select an Option</span>
-                    </div>
+                      <ErrorIcon className="signup_error-icon" />
+                      Please Select an Option
+                    </span>
                   )}
                 </Grid>
-                <Grid item xs={12} sx={{ mt: '40px' }}>
+                <Grid item xs={12} sx={{ mt: "40px" }}>
                   {/* <Link to="/sign-up-2"> */}
                   <Button
                     variant="contained"
@@ -356,14 +412,14 @@ export default function MySignUpForm(props) {
                     fullWidth
                     type="submit"
                     sx={{
-                      borderRadius: '8px',
+                      borderRadius: "8px",
                       mt: 1,
-                      background: '#2B2B33',
-                      color: 'white',
-                      '&:hover': {
-                        background: 'black',
-                        color: 'white',
-                        border: '1px solid black',
+                      background: "#2B2B33",
+                      color: "white",
+                      "&:hover": {
+                        background: "black",
+                        color: "white",
+                        border: "1px solid black",
                       },
                     }}
                   >
@@ -372,47 +428,51 @@ export default function MySignUpForm(props) {
                   {/* </Link> */}
                 </Grid>
               </Grid>
-            </Form>
-          )}
-        </Formik>
-      </Box>
+              </Form>
+        );
+          }}
+      </Formik>
+    </Box>
     </Grid >
   );
 }
-
-
 
 //style
 
 const styles = {
   field__color: () => ({
-    '& label': {
-      color: 'black',
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#2B2B33",
     },
-    '& label.Mui-focused': {
-      color: 'black',
+    "& .Mui-error:after": {
+      borderBottomColor: "#d32f2f",
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'black',
+    "& .Mui-error:before": {
+      borderBottomColor: "#d32f2f !important",
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'black',
-      },
-      '&:hover fieldset': {
-        borderColor: 'black',
-        borderWidth: '0.15rem',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'black',
-      },
+    "& input": {
+      paddingLeft: "15px",
+      pb: "10px",
     },
-    '&:before': {
-      borderColor: 'black',
-  },
-      '&:after': {
-        borderColor: 'black',
-      },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+    "& :before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
+    },
+    "&:before": {
+      borderColor: "black",
+    },
+    "&:after": {
+      borderColor: "black",
+    },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
   }),
-
-}
+  font_family: () => ({
+    className: "font-family-Exo",
+    fontSize: "14px",
+    paddingLeft: "20px",
+  }),
+};

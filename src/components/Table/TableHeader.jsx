@@ -139,7 +139,7 @@ const TableHeader = forwardRef(function TableHeader(
           {title}
         </Typography> */}
         {!hideSearch && (
-          <div style={{ marginBottom: '10px' }}>
+          <div style={{ marginBottom: '15px' }}>
             <GlobalSearchBar
               value={searchQuery}
               onChange={handleSearchChange}
@@ -152,7 +152,7 @@ const TableHeader = forwardRef(function TableHeader(
       {showSelectFilters && (
         <Stack sx={styles.selectStackStyles}>
           {selectFilters.map(({ key, label, options = [] }) => (
-            <div style={{ marginBottom: '10px' }}>
+            <div style={{ marginBottom: '15px' }}>
               <GlobalSearchBar
                 placeholder="Search"
                 value={searchQuery}
