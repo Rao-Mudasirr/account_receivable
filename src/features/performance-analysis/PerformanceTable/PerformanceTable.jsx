@@ -32,7 +32,7 @@ const PerformanceTable = ({ INVOICE_DATA, columns, paginationClass }) => {
         <Grid >
           <GlobalSearchBar />
         </Grid>
-        <Grid className="flex">
+        <Grid className="flex margin-right-1">
           <CustomPopover
             mainTitle="Filters"
             mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"

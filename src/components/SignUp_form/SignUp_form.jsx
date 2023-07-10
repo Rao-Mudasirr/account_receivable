@@ -26,20 +26,20 @@ const names = [
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string().required(
-    <span className="error-color font-family-exo2">
+    <span className="error-color font-family-Exo">
       <ErrorIcon className="signup_error-icon" />
       Please Enter Full Name(First and Last Name)
     </span>
   ),
   email: Yup.string()
     .email(
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter a Valid email Address
       </span>
     )
     .required(
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter a Valid email Address
       </span>
@@ -52,11 +52,17 @@ const validationSchema = Yup.object().shape({
 
 const labelstyles = (theme) => ({
   root: {
+    "& .MuiInputLabel-root": {
+      fontWeight: "bold",
+    },
     "& .MuiFormControlLabel-label": {
       fontSize: "14px",
       fontWeight: "400",
       fontFamily: "Exo 2",
       color: "#4C4C4C",
+    },
+    "&.MuiInputLabel-shrink": {
+      fontWeight: "bold",
     },
   },
 });
@@ -180,15 +186,13 @@ export default function MySignUpForm(props) {
                   <Grid
                     item
                     xs={12}
-                    className={`textfield_bold ${
-                      filledFields.fullName ? "hide_label" : ""
-                    }`}
+                    className={`textfield_bold ${filledFields.fullName ? "hide_label" : ""
+                      }`}
                     sx={{ height: "75px" }}
                   >
                     <label
-                      className={`signup_label ${
-                        touched.fullName && errors.fullName ? "error_label" : ""
-                      }`}
+                      className={`signup_label ${touched.fullName && errors.fullName ? "error_label" : ""
+                        }`}
                     >
                       {filledFields.fullName ? null : (
                         <span
@@ -211,7 +215,7 @@ export default function MySignUpForm(props) {
                       type="text"
                       fullWidth
                       onChange={(e) => handleInputChange(e, props)}
-                      InputProps={styles.font_family()}
+                      InputProps={styles.font_family}
                       sx={styles.field__color}
                     />
                   </Grid>
@@ -219,15 +223,13 @@ export default function MySignUpForm(props) {
                   <Grid
                     item
                     xs={12}
-                    className={`textfield_bold ${
-                      filledFields.email ? "hide_label" : ""
-                    }`}
+                    className={`textfield_bold ${filledFields.email ? "hide_label" : ""
+                      }`}
                     sx={{ marginTop: "2rem", height: "75px" }}
                   >
                     <label
-                      className={`signup_label ${
-                        touched.email && errors.email ? "error_label" : ""
-                      }`}
+                      className={`signup_label ${touched.email && errors.email ? "error_label" : ""
+                        }`}
                     >
                       {filledFields.email ? null : (
                         <span
@@ -250,7 +252,7 @@ export default function MySignUpForm(props) {
                       type="text"
                       fullWidth
                       onChange={(e) => handleInputChange(e, props)}
-                      InputProps={styles.font_family()}
+                      InputProps={styles.font_family}
                       sx={styles.field__color}
                     />
                   </Grid>
@@ -258,15 +260,13 @@ export default function MySignUpForm(props) {
                   <Grid
                     item
                     xs={12}
-                    className={`textfield_bold ${
-                      filledFields.password ? "hide_label" : ""
-                    }`}
+                    className={`textfield_bold ${filledFields.password ? "hide_label" : ""
+                      }`}
                     sx={{ marginTop: "2rem", height: "75px" }}
                   >
                     <label
-                      className={`signup_label ${
-                        touched.password && errors.password ? "error_label" : ""
-                      }`}
+                      className={`signup_label ${touched.password && errors.password ? "error_label" : ""
+                        }`}
                     >
                       {filledFields.password ? null : (
                         <span
@@ -320,126 +320,120 @@ export default function MySignUpForm(props) {
                   <Grid item xs={12} sx={{ height: "75px", mt: "2.5rem" }}>
                     <Form>
                       <Box>
-                        <div className="signup_label">
+                        <div className={`textfield_bold ${filledFields.checkbox ? "hide_label" : ""
+                          }`}>
                           <label
-                            htmlFor="checkbox"
+                          htmlFor="checkbox"
+                          className={`signup_label ${touched.checkbox && errors.checkbox ? "error_label" : ""
+                          }`}
+                        >
+                           {filledFields.checkbox ? null : (
+                          <span
+                            className="asterisk error-color"
                             style={{
-                              color:
-                                touched.checkbox && errors.checkbox
-                                  ? "rgba(255, 85, 85, 1)"
-                                  : "#4C4C4C",
+                              marginTop: "-5px",
                             }}
                           >
-                            <span
-                              style={{
-                                color: "rgba(255, 85, 85, 1)",
-                                marginTop: "-5px",
-                              }}
-                            >
-                              *
-                            </span>
-                            Why are you signing up for Accountant Pact?
-                          </label>
-                        </div>
-                        <Field
-                          sx={styles.field__color}
-                          component={Select}
-                          placeholder="Select"
-                          fullWidth
-                          variant="standard"
-                          labelId="demo-multiple-checkbox-label"
-                          id="demo-multiple-checkbox"
-                          multiple
-                          name="checkbox"
-                          InputProps={{
-                            style: {
-                              fontSize: "14px",
-                              paddingLeft: "20px",
-                            },
-                          }}
-                          value={values.checkbox}
-                          renderValue={(selected) => {
-                            if (selected.includes("All")) {
-                              return "All";
-                            }
-                            return selected.join(", ");
-                          }}
-                        >
-                          {names.map((name) => (
-                            <StyledMenuItem
-                              onClick={() => {
-                                name === "All"
-                                  ? values.checkbox.includes(name)
-                                    ? setFieldValue("checkbox", [])
-                                    : setFieldValue("checkbox", names)
-                                  : values.checkbox.includes(name)
-                                  ? setFieldValue(
-                                      "checkbox",
-                                      values.checkbox.filter(
-                                        (item) => item !== name
-                                      )
-                                    )
-                                  : setFieldValue("checkbox", [
-                                      ...values.checkbox,
-                                      name,
-                                    ]);
-                                console.log(values.checkbox);
-                              }}
-                              key={name}
-                              value={name}
-                            >
-                              <CustomCheckbox
-                                checked={values.checkbox.includes(name)}
-                              />
-                              <ListItemTextStyle primary={name} />
-                            </StyledMenuItem>
-                          ))}
-                        </Field>
-                      </Box>
-                    </Form>
-                    {touched.checkbox && errors.checkbox && (
-                      <span
-                        className={
-                          touched.checkbox && errors.checkbox
-                            ? "error-color tertiary-title font-family-exo2"
-                            : ""
-                        }
+                            *
+                          </span>
+                           )}
+                          Why are you signing up for Accountant Pact?
+                        </label>
+                      
+                      <Field
+                        sx={styles.field__color}
+                        component={Select}
+                        placeholder="Select"
+                        fullWidth
+                        variant="standard"
+                        id="demo-multiple-checkbox"
+                        multiple
+                        name="checkbox"
+                        InputLabelProps={styles.label__color}
+                        value={values.checkbox}
+                        renderValue={(selected) => {
+                          if (selected.includes("All")) {
+                            return "All";
+                          }
+                          return selected.join(", ");
+                        }}
                       >
-                        <ErrorIcon className="signup_error-icon" />
-                        Please Select an Option
-                      </span>
-                    )}
-                  </Grid>
-                  <Grid item xs={12} sx={{ mt: "40px" }}>
-                    {/* <Link to="/sign-up-2"> */}
-                    <Button
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                      type="submit"
-                      sx={{
-                        borderRadius: "8px",
-                        mt: 1,
-                        background: "#2B2B33",
-                        color: "white",
-                        "&:hover": {
-                          background: "black",
-                          color: "white",
-                          border: "1px solid black",
-                        },
-                      }}
+                        {names.map((name) => (
+                          <StyledMenuItem
+                            onClick={() => {
+                              name === "All"
+                                ? values.checkbox.includes(name)
+                                  ? setFieldValue("checkbox", [])
+                                  : setFieldValue("checkbox", names)
+                                : values.checkbox.includes(name)
+                                  ? setFieldValue(
+                                    "checkbox",
+                                    values.checkbox.filter(
+                                      (item) => item !== name
+                                    )
+                                  )
+                                  : setFieldValue("checkbox", [
+                                    ...values.checkbox,
+                                    name,
+                                  ]);
+                              console.log(values.checkbox);
+                            }}
+                            key={name}
+                            value={name}
+                          >
+                            <CustomCheckbox
+                              checked={values.checkbox.includes(name)}
+                            />
+                            <ListItemTextStyle primary={name} />
+                          </StyledMenuItem>
+                        ))}
+                      </Field>
+                      </div>
+                    </Box>
+                  </Form>
+                  {touched.checkbox && errors.checkbox && (
+                    <span
+                      className={
+                        touched.checkbox && errors.checkbox
+                          ? "error_label font-family-Exo tertiary-title font-weight-400"
+                          : ""
+                      }
                     >
-                      Continue
-                    </Button>
-                    {/* </Link> */}
-                  </Grid>
+                      <ErrorIcon className="signup_error-icon" />
+                      Please Select an Option
+                    </span>
+                  )}
                 </Grid>
+                <Grid item xs={12} sx={{ mt: "40px" }}>
+                  {/* <Link to="/sign-up-2"> */}
+                  <Button
+                    variant="contained"
+                    size="large"
+                    fullWidth
+                    type="submit"
+                    sx={{
+                      borderRadius: "8px",
+                      mt: 1,
+                      background: "#2B2B33",
+                      color: "white",
+                      "&:hover": {
+                        background: "black",
+                        color: "white",
+                        border: "1px solid black",
+                      },
+                    }}
+                  >
+                    Continue
+                  </Button>
+                  {/* </Link> */}
+                </Grid>
+              </Grid>
               </Form>
-            );
+        );
           }}
-        </Formik>
-      </Box>
-    </Grid>
+      </Formik>
+    </Box>
+    </Grid >
   );
 }
 
