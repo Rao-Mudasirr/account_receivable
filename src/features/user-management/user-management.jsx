@@ -8,39 +8,28 @@ import Manager from './components/role_rights_manager/Manager';
 import './user-management.scss'
 import { CustomTabs } from '../../components/custom-tabs/custom-tabs';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ pt: 1 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
+const tabsData = [
+  {
+    id: 0,
+    name: 'Role & Rights',
+    component: <RolesRightsTable />
+  },
+  {
+    id: 1,
+    name: 'User Access Control',
+    component: <UserAccessTable />
+  },
+  {
+    id: 2,
+    name: 'Users',
+    component: <UsersTable />
+  },
+  {
+    id: 3,
+    name: 'Clients',
+    component: <ClientsTable />
+  },
+]
 
 const UserManagement = () => {
   const [managerData, setManagerData] = React.useState(true);
