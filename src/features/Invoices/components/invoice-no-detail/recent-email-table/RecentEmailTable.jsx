@@ -40,13 +40,6 @@ const RecentEmailTable = () => {
     useTableParams();
   const columns = [
     {
-      accessorFn: (row) => row.sr,
-      id: "sr",
-      cell: (info) => info.getValue(),
-      header: () => <span>Sr.#</span>,
-      // isSortable: true,
-    },
-    {
       accessorFn: (row) => row.workflowName,
       id: "workflowName",
       cell: (info) => info.getValue(),
@@ -110,12 +103,10 @@ const RecentEmailTable = () => {
         <h2>Recent Emails</h2>
         <Button
           variant="contained"
+          className='text-transform font-family-Exo border-radius-8'
           color="primary"
           sx={{
-            height: "40px",
-            fontFamily: "Exo 2",
             background: "#2B2B33",
-            borderRadius: '8px',
             "&:hover": {
               background: "#2B2B33",
             },
@@ -131,7 +122,8 @@ const RecentEmailTable = () => {
       <CustomTable
         data={INVOICE_DETAIL_DATA}
         columns={columns}
-        // showSerialNo
+        showSerialNo
+        showHeaderFilter={false}
         onPageChange={pageChangeHandler}
         onSortByChange={sortChangeHandler}
         isSuccess={true}

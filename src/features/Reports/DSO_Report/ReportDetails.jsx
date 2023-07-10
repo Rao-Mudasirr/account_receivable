@@ -40,8 +40,8 @@ export default function ReportDetails() {
       accessorFn: (row) => row.Id,
       id: "Id",
       cell: (info) => info.getValue(),
-      header: () => <span>Client Id</span>,
-      // isSortable: true,
+      header: () => <div className="flex align-center justify-center">Client Id</div>,
+      isSortable: true,
     },
     {
       accessorFn: (row) => row.client_name,
@@ -97,7 +97,7 @@ export default function ReportDetails() {
         <Grid xl={6} xs={12}>
           <div
             className="align-end"
-            style={{ marginLeft: "auto", display: "flex" }}
+            style={{ marginLeft: "auto", display: "flex"}}
           >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
@@ -268,7 +268,7 @@ export default function ReportDetails() {
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="Export Text"
+              popoverOpenerTitle="Export"
               popoverOpenerProps={{
                 variant: "contained",
                 sx: {

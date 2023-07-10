@@ -11,7 +11,11 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
+<<<<<<< HEAD
 import ReportInfo from "./pages/Report-Info.jsx";
+=======
+import ReportInfo from "./pages/report-info";
+>>>>>>> 28d31477577bbd4f56815e438eec20112c393589
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -28,11 +32,17 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
+import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
+import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import Forcasting_Reports from "./pages/Forcasting_Reports";
@@ -42,6 +52,7 @@ function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
+         
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
@@ -68,7 +79,6 @@ function App() {
         </Route>
           <Route path="/decline-card" element={<DeclineCard/>} />
           <Route path="/details-page" element={<DetailsPage/>} />
-          <Route path="/vendors" element={<VendorManagementPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
@@ -77,6 +87,10 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
+
+          <Route exact path={"/total-bills"} element={<TotalBills />} />
+          
+          
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
@@ -119,6 +133,9 @@ function App() {
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
+          <Route path="/vendors/add-vendor" element={<AddVendor/>} />
+          <Route path="/vendors/vendor-action" element={<VendorAction/>} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
            <Route exact path={"/reports/forecasting-report"} element={<Forcasting_Reports />} /> b 
           <Route

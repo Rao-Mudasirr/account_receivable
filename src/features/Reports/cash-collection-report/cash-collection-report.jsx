@@ -66,7 +66,7 @@ export const CashCollectionReport = () => {
         <>
             <div className="invoice-title">Cash Collection Report</div>
             <Grid container className='align-center cash-collection-report'>
-                <Grid xl={5} xs={12}  >
+                <Grid xl={5} xs={12}>
                     <GlobalSearchBar />
                 </Grid>
                 <Grid xl={7} xs={12} >
@@ -124,7 +124,7 @@ export const CashCollectionReport = () => {
                                     </CustomPopover>
                                 </Grid>
                                 <Grid item xs={6} className='flex justify-end'>
-                                    <CustomPopover mainTitle="Export" mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1" popoverOpenerTitle="Export Text" popoverOpenerProps={{
+                                    <CustomPopover mainTitle="Export" mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1" popoverOpenerTitle="Export" popoverOpenerProps={{
                                         variant: 'contained', sx: {
                                             background: "#2B2B33", borderRadius: '8px', height: '32px', whiteSpace: 'nowrap',
                                             "&:hover": {

@@ -208,7 +208,7 @@ export default function WorkflowReport() {
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="Export Text"
+              popoverOpenerTitle="Export"
               popoverOpenerProps={{
                 variant: "contained",
                 sx: {

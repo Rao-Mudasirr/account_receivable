@@ -4,12 +4,6 @@ import './recent_notify.scss';
 
 export default function RecentNotify() {
   return (
-      // <div className="card-notification">
-      //   <div className="card-top">
-      //     <div className="row-top1">
-      //       <span className="top-heading">Recent Notification</span>
-      //     </div>
-      //   </div>
       <div className="card-body" style={{overflow: 'auto', height:'300px'}}>
             <br />
             {
@@ -19,11 +13,10 @@ export default function RecentNotify() {
                         <span className="card-left-text">{item?.title}</span>
                         <span className="card-right-text">{item?.time}</span>
                         </div>
-                        <hr className="separator" />
+                        <hr className="separator"/>
                     </React.Fragment>
                 ))
             }
         </div>
-      // </div>
   );
 }

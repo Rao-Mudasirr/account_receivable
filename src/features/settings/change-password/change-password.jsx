@@ -47,6 +47,8 @@ const validationSchema = yup.object({
         Password must be at least 6 characters
       </span>
     ),
+    newPassword: yup.string().required("New Password"),
+    confirmPassword: yup.string().required("Confirm Password"),
 });
 
 const ChangePassword = () => {
@@ -72,10 +74,22 @@ const ChangePassword = () => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [newPassword, setNewPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  const handleClickNewPassword = () => setNewPassword((show) => !show);
+
+  const handleMouseDownNewPassword = (event) => {
+    event.preventDefault();
+  };
+  const handleClickConfirmPassword = () => setConfirmPassword((show) => !show);
+
+  const handleMouseDownConfirmPassword = (event) => {
     event.preventDefault();
   };
 
@@ -204,7 +218,7 @@ const ChangePassword = () => {
                     id="newPassword"
                     name="newPassword"
                     size="small"
-                    type={showPassword ? "text" : "password"}
+                    type={newPassword ? "text" : "password"}
                     placeholder="*************"
                     value={formik.values.newPassword}
                     onChange={formik.handleChange}
@@ -217,10 +231,10 @@ const ChangePassword = () => {
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
+                            onClick={handleClickNewPassword}
+                            onMouseDown={handleMouseDownNewPassword}
                           >
-                            {showPassword ? (
+                            {newPassword ? (
                               <RiEyeLine />
                             ) : (
                               <RiEyeOffLine
@@ -245,7 +259,7 @@ const ChangePassword = () => {
                     id="confirmPassword"
                     name="confirmPassword"
                     size="small"
-                    type={showPassword ? "text" : "password"}
+                    type={confirmPassword ? "text" : "password"}
                     placeholder="*************"
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
@@ -258,10 +272,10 @@ const ChangePassword = () => {
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
+                            onClick={handleClickConfirmPassword}
+                            onMouseDown={handleMouseDownConfirmPassword}
                           >
-                            {showPassword ? (
+                            {confirmPassword ? (
                               <RiEyeLine />
                             ) : (
                               <RiEyeOffLine
@@ -281,6 +295,7 @@ const ChangePassword = () => {
         <Grid className="flex justify-end width-100">
           {changePassword ? (
             <GlobalButton
+            type="submit"
               btnType="ChangePassword"
               btnText="Next"
               btnName="accent"
@@ -315,7 +330,7 @@ const ChangePassword = () => {
                 ) {
                   toast.error("Make sure both passwords are same");
                 } else {
-                  toast.success(toastText, handleSubmit());
+                  toast.success(toastText, handleSubmit(setTimeout(handleClickUserProfile, 2000)));
                 }
               }}
             />
