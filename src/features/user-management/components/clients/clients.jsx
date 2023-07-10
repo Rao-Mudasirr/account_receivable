@@ -124,7 +124,6 @@ export const ClientsTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 2 }}>
       <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
           <Grid item xs={5} lg={6} >
             <GlobalSearchBar
@@ -174,7 +173,6 @@ export const ClientsTable = () => {
           isSuccess={true}
           isPagination={true}
         />
-      </Card>
       <DeleteModel
         open={open}
         handleClose={handleClose}

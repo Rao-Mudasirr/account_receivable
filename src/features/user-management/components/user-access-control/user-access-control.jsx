@@ -137,7 +137,6 @@ export const UserAccessTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 2 }}>
         <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
           <Grid item xs={5} lg={6} >
             <GlobalSearchBar
@@ -185,7 +184,6 @@ export const UserAccessTable = () => {
           onSortByChange={sortChangeHandler}
           isSuccess={true}
         />
-      </Card>
     </>
   );
 };

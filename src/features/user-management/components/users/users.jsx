@@ -71,7 +71,6 @@ export const UsersTable = () => {
 
   return (
     <>
-      <Card sx={{ p: 2 }}>
         <TableHeader
           ref={tableHeaderRef}
           title="Health & Safety"
@@ -90,7 +89,6 @@ export const UsersTable = () => {
           isSuccess={true}
           isPagination={true}
         />
-      </Card>
       <DeleteModel open={open} handleClose={handleClose} onDeleteClick={handleClose} />
       <EditUser
         openForm={openForm}
