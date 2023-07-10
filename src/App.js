@@ -11,11 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-<<<<<<< HEAD
-import ReportInfo from "./pages/Report-Info.jsx";
-=======
 import ReportInfo from "./pages/report-info";
->>>>>>> 28d31477577bbd4f56815e438eec20112c393589
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";

@@ -197,14 +197,8 @@ const CustomTable = (props) => {
                               index === 0
                                 ? "4px 0px 0px 4px"
                                 : index === headerGroup.headers.length - 1
-<<<<<<< HEAD
-                                ? "0px 4px 4px 0px"
-                                : "0px",
-                                
-=======
                                   ? "0px 4px 4px 0px"
                                   : "0px",
->>>>>>> 28d31477577bbd4f56815e438eec20112c393589
                           }}
                           key={header.id}
                           
