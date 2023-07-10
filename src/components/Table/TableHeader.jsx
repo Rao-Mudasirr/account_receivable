@@ -12,11 +12,12 @@ import {
   Typography,
   alpha,
 } from "@mui/material";
-
+import AddIcon from '@mui/icons-material/Add';
 // @mui icons
 import SearchIcon from "@mui/icons-material/Search";
 import TableAction from "./TableAction";
 import Add_role from '../../features/user-management/components/roles-and-right/Add_Update_cards/Add_Update_cards/Add_role';
+import { CustomBtn } from '../../features/add-bill-modal/custom-btn/custom-btn';
 
 // ----------------------------------------------------------------------
 // Variables
@@ -43,6 +44,7 @@ const TableHeader = forwardRef(function TableHeader(
     selectSize = "small",
     searchSize = "small",
     showAddBtn = false,
+    addBtnTitle="Add",
     showDeleteBtn = false,
     // share btn
     showShareBtn = false,
@@ -167,10 +169,7 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <Box sx={{ p: 1, borderRadius: 2, bgcolor: "#2B2B33", color: "#fff", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Typography variant="subtitle" sx={{ fontSize: "14px" }}>Add</Typography>
-          <TableAction disabled={disabled} onClicked={onAdd} type="add" />
-        </Box>
+        <CustomBtn otherProps={{ endIcon: <AddIcon /> }} disabled={disabled} onClicked={onAdd}>{addBtnTitle}</CustomBtn>
       )}
 
 
@@ -209,7 +208,7 @@ const styles = {
     flexDirection: { xs: "column", sm: "row" },
     flexWrap: "wrap",
     backgroundColor: alpha("#fff", 0.8),
-    padding: theme.spacing(1, 1.8),
+    padding: theme.spacing(1, 0),
     alignItems: "center",
     // gap changing
     gap: theme.spacing(0.5),
