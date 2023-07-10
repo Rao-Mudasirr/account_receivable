@@ -2,19 +2,16 @@ import { Button, Grid, Box } from "@mui/material";
 import React, { Fragment, useState } from "react";
 import { GlobalSearchBar } from "../../../components/global-search-filter/global-search-filter";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import DateIcon from "@mui/icons-material/CalendarMonthRounded";
-import GlobalButton from "../../../components/global-button/global-button";
-import ShowFilters from "../../OverdueInvoices/ShowFilters";
 import CustomTable from "../../../components/Table/CustomTable";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import { list_col, list_data } from "./ListClientData";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
-import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 import { toast } from "react-toastify";
 import FilterModal from "../components/filter-modal/FilterModal";
+import { DateIcon } from "../../../components/date-icon/date-icon";
 
 function Client_Listing() {
   const [selectBranch, setSelectBranch] = useState("");
@@ -130,7 +127,7 @@ function Client_Listing() {
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="Export Text"
+              popoverOpenerTitle="Export"
               popoverOpenerProps={{
                 variant: "contained",
                 sx: {
@@ -213,6 +210,8 @@ function Client_Listing() {
         columns={list_col}
         isSuccess={true}
         isPagination={true}
+        showSerialNo
+        serialNoSortable
       />
     </Fragment>
   );
