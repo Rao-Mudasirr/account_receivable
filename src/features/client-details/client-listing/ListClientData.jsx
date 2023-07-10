@@ -14,13 +14,6 @@ const pauseStyle = {
 }
 export const list_col = [
   {
-    accessorFn: (row) => row.sr,
-    id: "sr",
-    cell: (info) => info.getValue(),
-    header: () => <span>Sr.#</span>,
-    // isSortable: true,
-  },
-  {
     accessorFn: (row) => row.id,
     id: "id",
     cell: (info) =>(
@@ -29,7 +22,7 @@ export const list_col = [
       </span>
     ),
     header: () => <span>Id</span>,
-    // isSortable: true,
+    isSortable: true,
   },
   {
     accessorFn: (row) => row.client,
@@ -163,7 +156,6 @@ export const list_col = [
 
 export const list_data = [
   {
-    sr: '01',
     id: '1234',
     client: 'Jacob',
     email: 'xyz@gmail.com',
@@ -189,7 +181,6 @@ export const list_data = [
     workflow_status: 'Active',
   },
   {
-    sr: '02',
     id: '1234',
     client: 'Bills',
     email: 'xyz@gmail.com',
@@ -215,7 +206,6 @@ export const list_data = [
     workflow_status: 'Pause',
   },
   {
-    sr: '03',
     id: '1234',
     client: 'John',
     email: 'xyz@gmail.com',

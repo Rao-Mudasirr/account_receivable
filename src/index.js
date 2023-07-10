@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.scss";
 import "./styles/common.scss";
 import "./styles/utilities.scss";
+import "./styles/global-styling.scss";
 import "./styles/screen-media-query.scss";
 import { BrowserRouter } from "react-router-dom";
 

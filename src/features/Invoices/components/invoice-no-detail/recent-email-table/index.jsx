@@ -2,7 +2,6 @@
 export const INVOICE_DETAIL_DATA = [
   {
     id: 1,
-    sr: 1,
     workflowName: "Custom Email",
     initiatorRole: "Super Admin",
     initiatorName: "John",
@@ -16,7 +15,6 @@ export const INVOICE_DETAIL_DATA = [
   },
   {
     id: 2,
-    sr: 2,
     workflowName: "Default Workflow",
     initiatorRole: "Manager",
     initiatorName: "Nick",
@@ -30,7 +28,6 @@ export const INVOICE_DETAIL_DATA = [
   },
   {
     id: 3,
-    sr: 3,
     workflowName: "Custom Email",
     initiatorRole: "Admin",
     initiatorName: "Chris",
@@ -44,7 +41,6 @@ export const INVOICE_DETAIL_DATA = [
   },
   {
     id: 4,
-    sr: 4,
     workflowName: "Default Workflow",
     initiatorRole: "Manager",
     initiatorName: "John",
@@ -58,7 +54,6 @@ export const INVOICE_DETAIL_DATA = [
   },
   {
     id: 5,
-    sr: 5,
     workflowName: "Default Workflow",
     initiatorRole: "Manager",
     initiatorName: "John",

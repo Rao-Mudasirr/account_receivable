@@ -78,7 +78,9 @@ const CustomTable = (props) => {
     tableContainerSX = {},
     rootSX = {},
     showSerialNo = false,
+    serialName = "Sr.#",
     showHeaderFilter = true,
+    serialNoSortable= false
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -147,10 +149,13 @@ const CustomTable = (props) => {
     columnsData = [
       {
         accessorFn: (row) => row,
-        id: "Id",
-        cell: (info) => Number(info?.row?.id) + 1,
-        header: "Id",
-        isSortable: false,
+        id: serialName,
+        cell: (info) => {
+          console.log(info?.row?.id.length);
+          return serialNoSortable ? <div className="flex justify-center align-center">{info?.row?.id.length === 1 ? `0${Number(info?.row?.id) + 1}` : Number(info?.row?.id) + 1}</div> : info?.row?.id.length === 1 ? `0${Number(info?.row?.id) + 1}` : Number(info?.row?.id) + 1
+        },
+        header: serialNoSortable ? <div className="flex justify-center align-center">{serialName}</div> : serialName,
+        isSortable: serialNoSortable,
       },
       ...checkboxes,
     ];
@@ -192,8 +197,8 @@ const CustomTable = (props) => {
                               index === 0
                                 ? "4px 0px 0px 4px"
                                 : index === headerGroup.headers.length - 1
-                                ? "0px 4px 4px 0px"
-                                : "0px",
+                                  ? "0px 4px 4px 0px"
+                                  : "0px",
                           }}
                           key={header.id}
                         >
@@ -202,18 +207,21 @@ const CustomTable = (props) => {
                               header.column.columnDef.isSortable &&
                               handleSortBy(header?.id)
                             }
-                            sx={{ ...styles.cell }}
+                            sx={{ ...styles.cell, }}
+                            className="flex"
                           >
                             {header.isPlaceholder
                               ? null
                               : flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext()
-                                )}
-                            {header.column.columnDef.isSortable &&
-                              !isSorted(header.id) && <KeyboardArrowDownIcon />}
-                            {header.column.columnDef.isSortable &&
-                              isSorted(header.id) && <KeyboardArrowUpIcon />}
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                            <Box className="flex flex-column">
+                              {header.column.columnDef.isSortable &&
+                                !isSorted(header.id) && <KeyboardArrowUpIcon fontSize="9px"  />}
+                              {header.column.columnDef.isSortable &&
+                                !isSorted(header.id) && <KeyboardArrowDownIcon fontSize="9px" sx={{mt:'-6px'}} />}
+                            </Box>
                           </Box>
                         </StyledTableCell>
                       ))}
