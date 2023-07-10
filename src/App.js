@@ -41,12 +41,15 @@ import TotalBills from "./features/account-payable/total-bills-dashboard/total-b
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <Routes>
+        
+        <Route path="/set-default-btn" element={<SetDefaultBtn />} />
          
         <Route path="/signin" element={<Signin />} />
 

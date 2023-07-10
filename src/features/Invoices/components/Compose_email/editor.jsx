@@ -54,17 +54,37 @@ const EmailEditor = ({ handleClose }) => {
         />
       </div>
       <div className="btns">
-        <Button variant="outlined" color="inherit" onClick={() => handleClose()}>
+        <Button sx={{
+          color: 'black',
+          borderColor: '#40404D',
+          px: "25px",
+          py: "10px",
+          border: '1.5px solid #40404D',
+          fontWeight: 400,
+          fontSize: '16px',
+          fontFamily:'Exo 2',
+          borderRadius: '8px',
+          textTransform: 'capitalize',
+          '&:hover': {
+            borderColor: 'black',
+            color: 'black',
+          },
+        }} onClick={() => handleClose()}>
           Cancel
         </Button>
         <Button
           sx={{
-            background: "#2B2B33",
-            color: "white",
-            "&:hover": {
-              background: 'black',
-              color: "white",
-              border: '1px solid black'
+            background: '#2B2B33',
+            color: 'white',
+            fontWeight: 400,
+            fontSize: '16px',
+            fontFamily:'Exo 2',
+            borderRadius: '8px',
+            px: "25px",
+            py: "12px",
+            textTransform: 'capitalize',
+            '&:hover': {
+              background: '#2B2B33',
             },
           }}
           onClick={handleSureClick}

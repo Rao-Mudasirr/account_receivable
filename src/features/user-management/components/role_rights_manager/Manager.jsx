@@ -21,9 +21,7 @@ const Manager = () => {
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('');
   const [switchEnabled, setSwitchEnabled] = useState(false);
-  const [switchOn, setSwitchOn] = useState(false)
-  const handleSwitchOn = ()=> setSwitchOn(false)
-  const handleSwitchOff = ()=> setSwitchOn(true)
+
 
   const handleSwitchChange = () => {
     setSwitchEnabled(!switchEnabled);
@@ -147,6 +145,7 @@ const Manager = () => {
   
   return (
     <div className="main_manager_container">
+      <p className='heading-20 font-weight-600 font-family-exo2'>Roles and Rights : Manager</p>
       <p className='manager_text'>Manager</p>
       <div className="line" />
       <div className="manager_container">

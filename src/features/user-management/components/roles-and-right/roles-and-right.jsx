@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, Modal, Typography, Grid } from "@mui/material";
+import { Card, Box, Modal, Typography, Grid, Button } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -88,8 +88,6 @@ export const RolesRightsTable = () => {
   ];
   return (
     <>
-
-      <Card sx={{ p: 1 }}>
         <TableHeader
           ref={tableHeaderRef}
           title="Health & Safety"
@@ -106,12 +104,12 @@ export const RolesRightsTable = () => {
           data={ROLE_RIGHTS_DATA}
           columns={columns}
           // showSerialNo
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
           isPagination={true}
         />
-      </Card>
       <DeleteModel
         open={open}
         handleClose={handleClose}

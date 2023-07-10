@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Card, Box, FormControlLabel, Switch } from "@mui/material";
+import { Card, Box, FormControlLabel, Switch, Grid, Select, Typography } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import { styled } from '@mui/material/styles';
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -10,6 +10,8 @@ import { USER_ACCESS_DATA } from ".";
 import { useUserAccess } from "./use-user-access-control";
 import { Status } from '../../../../components/status/status';
 import { GlobalSearchBar } from '../../../../components/global-search-filter/global-search-filter';
+import CustomInput from '../../../../components/CustomInput';
+import { ReactComponent as Down } from "../../../../assests/svg/chev-bottom.svg";
 
 export const UserAccessTable = () => {
   const {
@@ -87,20 +89,24 @@ export const UserAccessTable = () => {
     {
       accessorFn: (row) =>
         row.status ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Status
-              title={row.status}
-              color={
-                row.status === 'Active' ? '#065F46' : row.status === 'Inactive' ? '#FF624E' : '-'
-              }
-              bgColor={
-                row.status === 'Active'
-                  ? 'rgba(209, 250, 229, 1)'
-                  : row.status === 'Inactive'
-                    ? 'rgba(255, 98, 78, 0.12)'
-                    : '-'
-              }
-            />
+          <Box sx={{ display: 'flex', justifyContent: 'center', }}>
+            <Typography
+              fontFamily='Exo 2'
+            >
+              <Status
+                title={row.status}
+                color={
+                  row.status === 'Active' ? '#065F46' : row.status === 'Inactive' ? '#FF624E' : '-'
+                }
+                bgColor={
+                  row.status === 'Active'
+                    ? 'rgba(209, 250, 229, 1)'
+                    : row.status === 'Inactive'
+                      ? 'rgba(255, 98, 78, 0.12)'
+                      : '-'
+                }
+              />
+            </Typography>
           </Box>
         ) : (
           '-'
@@ -131,49 +137,53 @@ export const UserAccessTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 2, mt: -2 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <GlobalSearchBar
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <TextField defaultValue='Role' sx={{
-            width: 333, mb: 2, borderRadius : 5,
-            '& .MuiInputBase-root': {
-              color: isFocused ? 'black' : 'inherit',
-              '&::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-              '&::after': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-              '&:hover::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-            },
-          }}
-            select
-            variant = {isFocused ? 'filled' : 'standard'}
-          >
-            <MenuItem disabled value='Role'>
-              Role
-            </MenuItem>
-            <MenuItem value='Assigned'>
-              Assigned
-            </MenuItem>
-            <MenuItem value='Unassigned'>
-              Unassigned
-            </MenuItem>
-          </TextField>
-        </div>
+        <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
+          <Grid item xs={5} lg={6} >
+            <GlobalSearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </Grid>
+          <Grid item xs={5} lg={2.5}>
+            <Select
+              sx={{
+                height: '100%',
+                '&:before': {
+                  borderColor: '#C4C4CC',
+                },
+                '&:after': {
+                  borderColor: '#C4C4CC',
+                },
+                '& .MuiSelect-select':{
+                  padding:'10px'
+                }
+              }}
+              defaultValue="Role"
+              placeholder='Role'
+              fullWidth
+              variant="standard"
+              IconComponent={Down}
+            >
+              <MenuItem disabled value='Role'>
+                Role
+              </MenuItem>
+              <MenuItem value='Assigned'>
+                Assigned
+              </MenuItem>
+              <MenuItem value='Unassigned'>
+                Unassigned
+              </MenuItem>
+            </Select>
+          </Grid>
+        </Grid>
         <CustomTable
           data={userData}
           columns={columns}
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
         />
-      </Card>
     </>
   );
 };
