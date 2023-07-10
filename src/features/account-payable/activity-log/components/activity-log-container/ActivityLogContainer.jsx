@@ -3,7 +3,6 @@ import React from 'react'
 import NotificationIcon from "../../../../../assests/svg/sidebar/notification-icon.svg"
 import { ActivityLogDetailsData } from '../activity-log-details-data/ActivityLogDetailsData';
 export const ActivityLogContainer = ({listing,index}) => {
-    console.log(listing,index);
   return ( 
     <>
       <Grid container sx={{ pt: '16px', pb: '32px', borderTop: index === 0 ? '1px solid #C4C4CC' : '', borderBottom: '1px solid #C4C4CC' }}>
@@ -20,4 +19,4 @@ export const ActivityLogContainer = ({listing,index}) => {
       </Grid>
     </>
   )
-}
+} 

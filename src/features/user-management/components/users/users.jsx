@@ -81,6 +81,7 @@ export const UsersTable = () => {
       <CustomTable
         data={USERS_DATA}
         columns={columns}
+        showHeaderFilter={false}
         onPageChange={pageChangeHandler}
         onSortByChange={sortChangeHandler}
         isSuccess={true}

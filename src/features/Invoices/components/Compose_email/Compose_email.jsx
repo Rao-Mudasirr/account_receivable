@@ -29,20 +29,20 @@ export default function Compose_email(props) {
       sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p:1}}
     >
       <Card sx={{ width: 900}}>
-        <CardContent className="mail__container" sx={{ ml: 0 }}>
-          <div className="tags_email ">
-            <div className="card_data flex justify-space-between align-center">
+        <CardContent sx={{ ml: 0 }}>
+          <div className="tags_email">
+            <div className="card_data flex justify-space-between font-weight-400 font-family-Exo">
               <ul>
                 <li>To</li>
                 <li><Chip label="Chip Filled"
                   size="small" />
                 </li>
               </ul>
-              <div >
-                Cc
-              </div>
+              <ul className='margin-right-1 cursor-pointer'>
+                <li>Cc</li>
+              </ul>
             </div>
-            <div className="card_data">
+            <div className="card_data margin-top-nag">
               <ul>
                 <li>From</li>
                 <li><Chip
