@@ -2,6 +2,7 @@ import { MenuItem, Select } from '@mui/material';
 import React from 'react'
 
 export const DashboardSelect = ({ data, setSelectVal, selectVal, selectSx, MenuSx, fullWidth, id,placeholder }) => {
+    console.log(selectVal);
     return (
         <>
             <Select
