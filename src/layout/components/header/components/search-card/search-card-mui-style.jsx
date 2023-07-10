@@ -8,7 +8,7 @@ export const AUTOCOMPLETEINPUT = {
   "& .MuiOutlinedInput-root": {
     height: '40px',
     "& > fieldset": {
-      borderColor: '#EEEEEE'
+      border: '1px solid #EEEEEE !important',borderRadius:'5px !important'
     },
     "& > input": {
       borderColor: '#E2E2E2',
@@ -16,7 +16,7 @@ export const AUTOCOMPLETEINPUT = {
       fontFamily:"\"Exo 2\"",
       '&::placeholder': {
         textOverflow: 'ellipsis !important',
-        color: 'black'
+        color: 'black' 
       }
     },
   },

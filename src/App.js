@@ -28,6 +28,10 @@ import ClientComparison from "./features/performance-analysis/ClientComparison/C
 import AccountReceivablePage from "./features/home-page/account-receivable/AccountReceivablePage";
 import Home from "./pages/Home";
 import HomeLayout from "./homeLayout/HomeLayout";
+import AccountPayable from "./pages/landing-pages/account-payable/account-payable";
+import AddVendor from "./features/account-payable/vendor-management/add-vendor/AddVendor";
+import VendorAction from "./features/account-payable/vendor-management/vendor-action/VendorAction";
+// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import DeclineCard from "./components/decline-card/Decline-card";
 import VendorManagementPage from "./pages/landing-pages/account-payable/Vendor-Management-Page";
 import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
@@ -46,6 +50,7 @@ function App() {
       <Routes>
         
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
+         
         <Route path="/signin" element={<Signin />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
@@ -72,7 +77,6 @@ function App() {
         </Route>
           <Route path="/decline-card" element={<DeclineCard/>} />
           <Route path="/details-page" element={<DetailsPage/>} />
-          <Route path="/vendors" element={<VendorManagementPage/>} />
         
         <Route path="/cashflow" element={<HomeLayout />} >
           <Route path="/cashflow" element={<AccountReceivablePage/>} />
@@ -127,6 +131,9 @@ function App() {
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
+          <Route path="/vendors" element={<VendorManagementPage/>} />
+          <Route path="/vendors/add-vendor" element={<AddVendor/>} />
+          <Route path="/vendors/vendor-action" element={<VendorAction/>} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
           <Route
             exact

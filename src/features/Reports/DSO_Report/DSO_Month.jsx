@@ -44,7 +44,7 @@ function DSO_Month() {
         <Grid xl={6} xs={12}>
           <div
             className="align-end"
-            style={{ marginLeft: "auto", display: "flex" }}
+            style={{ marginLeft: "auto", display: "flex",justifyContent:'flex-end' }}
           >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
@@ -84,7 +84,7 @@ function DSO_Month() {
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="Export Text"
+              popoverOpenerTitle="Export"
               popoverOpenerProps={{
                 variant: "contained",
                 sx: {
