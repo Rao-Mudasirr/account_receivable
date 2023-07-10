@@ -21,9 +21,7 @@ const Manager = () => {
   const [active, setActive] = useState('');
   const [switchOption, setSwitchOption] = useState('');
   const [switchEnabled, setSwitchEnabled] = useState(false);
-  const [switchOn, setSwitchOn] = useState(false)
-  const handleSwitchOn = ()=> setSwitchOn(false)
-  const handleSwitchOff = ()=> setSwitchOn(true)
+
 
   const handleSwitchChange = () => {
     setSwitchEnabled(!switchEnabled);

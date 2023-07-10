@@ -3,8 +3,8 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { withStyles } from '@material-ui/core';
-const Dashboard = ({ checkboxData,handleSwitchChange}) => {
-  console.log(handleSwitchChange,'Clicked')
+const Dashboard = ({ checkboxData }) => {
+
 
     const labelstyles = theme => ({
         root: {
@@ -33,7 +33,7 @@ const Dashboard = ({ checkboxData,handleSwitchChange}) => {
             {checkboxData.map((item, index) => (
                 <LabelStyle
                     key={index}
-                    control={<CustomCheckbox onClick={()=> handleSwitchChange}/>}
+                    control={<CustomCheckbox/>}
                     label={item.label}
                 />
             ))}
