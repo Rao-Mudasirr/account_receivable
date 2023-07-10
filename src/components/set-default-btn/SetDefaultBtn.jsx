@@ -11,11 +11,11 @@ const SetDefaultBtn = () => {
     return (
         <>
             <Button variant='outlined' sx={{
-                color: 'black',
-                borderColor: '#40404D',
+                color: '#6B6B80',
+                borderColor: '#6B6B80',
                 px: '15',
                 py: '10',
-                border: '2px solid #40404D',
+                border: '2px solid #6B6B80',
                 fontWeight: 400,
                 fontSize: '12px',
                 borderRadius: '8px',
