@@ -1,48 +1,49 @@
-import React, { useRef } from 'react'
-import CustomSwitch from '../../../components/CustomSwtich/CustomSwtich';
-import TableAction from '../../../components/Table/TableAction';
-import { Box } from '@mui/material';
-import CustomTable from '../../../components/Table/CustomTable';
-import TableHeader from '../../../components/Table/TableHeader';
-import DeletePrompt from '../../../components/Table/prompt/DeletePrompt';
-import ViewPrompt from '../../../components/Table/prompt/ViewPrompt/ViewPrompt';
+import React, { useRef } from "react";
+import CustomSwitch from "../../../components/CustomSwtich/CustomSwtich";
+import TableAction from "../../../components/Table/TableAction";
+import { Box } from "@mui/material";
+import CustomTable from "../../../components/Table/CustomTable";
+import TableHeader from "../../../components/Table/TableHeader";
+import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
+import { useNavigate } from "react-router-dom";
+import ViewPrompt from "../../../components/Table/prompt/ViewPrompt/ViewPrompt";
 const payableWorkflowData = [
-    {
-        id: 1,
-        name: "Xyz",
-        description: "Default Workflow",
-        rules: 20,
-        status: true,
-    },
+  {
+    id: 1,
+    name: "Xyz",
+    description: "Default Workflow",
+    rules: 20,
+    status: true,
+  },
 
-    {
-        id: 2,
-        name: "Abc",
-        description: "Default Workflow",
-        rules: 20,
-        status: false,
-    },
-    {
-        id: 3,
-        name: "Rst",
-        description: "Default Workflow",
-        rules: 20,
-        status: false,
-    },
-    {
-        id: 4,
-        name: "Uvw",
-        description: "Default Workflow",
-        rules: 20,
-        status: false,
-    },
-    {
-        id: 5,
-        name: "UwU",
-        description: "Default Workflow",
-        rules: 20,
-        status: false,
-    },
+  {
+    id: 2,
+    name: "Abc",
+    description: "Default Workflow",
+    rules: 20,
+    status: false,
+  },
+  {
+    id: 3,
+    name: "Rst",
+    description: "Default Workflow",
+    rules: 20,
+    status: false,
+  },
+  {
+    id: 4,
+    name: "Uvw",
+    description: "Default Workflow",
+    rules: 20,
+    status: false,
+  },
+  {
+    id: 5,
+    name: "UwU",
+    description: "Default Workflow",
+    rules: 20,
+    status: false,
+  },
 ];
 const payableWorkflowCoulmn = [
     {
@@ -88,24 +89,26 @@ const payableWorkflowCoulmn = [
     },
 ];
 export const WorkflowPayable = () => {
-    const tableHeaderRef = useRef();
-    return (
-        <>
-            <Box className="invoice-title">Workflows</Box>
-            <TableHeader
-                ref={tableHeaderRef}
-                searchKey="search"
-                showAddBtn
-                addBtnTitle="Create New Workflow"
-            />
-            <CustomTable
-                data={payableWorkflowData}
-                columns={payableWorkflowCoulmn}
-                showSerialNo
-                isSuccess={true}
-                serialName="ID"
-                showHeaderFilter={false}
-            />
-        </>
-    )
-}
+  const tableHeaderRef = useRef();
+  const navigate = useNavigate();
+  return (
+    <>
+      <Box className="invoice-title">Workflows</Box>
+      <TableHeader
+        ref={tableHeaderRef}
+        searchKey="search"
+        showAddBtn
+        addBtnTitle="Create New Workflow"
+        onAdd={() => navigate("/workflows/create")}
+      />
+      <CustomTable
+        data={payableWorkflowData}
+        columns={payableWorkflowCoulmn}
+        showSerialNo
+        isSuccess={true}
+        serialName="ID"
+        showHeaderFilter={false}
+      />
+    </>
+  );
+};

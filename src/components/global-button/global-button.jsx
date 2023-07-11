@@ -42,7 +42,7 @@ const GlobalButton = (props) => {
         sx: {
           color: 'black',
           borderColor: '#40404D',
-          width: '122px',
+          width: btnType ? '' : '122px',
           padding: '8px',
           height: '32px',
           border: '1.5px solid #40404D',
