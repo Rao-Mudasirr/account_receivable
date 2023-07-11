@@ -8,7 +8,7 @@ import DiagreamIcon from "../../assests/svg/diagram.svg";
 import { ReactComponent as ViewIcon } from "../../assests/svg/view.svg";
 import { ReactComponent as DeleteIcon } from "../../assests/svg/trash.svg";
 import { ReactComponent as EditIcon } from "../../assests/svg/edit.svg";
-import SettingIcon from "../../assests/svg/setting-4.png";
+import SettingIcon from "../../assests/svg/settings.svg";
 import AddIcon from "../../assests/svg/add-circle.png";
 import PrintIcon from "@mui/icons-material/Print";
 // import { ShareIcon } from "react-icons/fa";
@@ -23,8 +23,8 @@ const TableAction = ({ type = "edit", onClicked = () => { }, ...other }) => {
       sx={(theme) => styles.btnStyle(theme, type)}
       {...other}
       size="small"
-      onMouseEnter={()=> setHovered(true)}
-      onMouseLeave={()=> setHovered(false)}
+      // onMouseEnter={()=> setHovered(true)}
+      // onMouseLeave={()=> setHovered(false)}
     >
       {hovered ? hoveredIcons[type] : icons[type]}
     </IconButton>

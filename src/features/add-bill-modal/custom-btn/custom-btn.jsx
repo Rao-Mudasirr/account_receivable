@@ -11,7 +11,6 @@ export const CustomBtn = ({onClick,children,otherProps}) => {
                 onClick={onClick}
                 sx={{
                     background: "#2B2B33",
-                    p: '10px 16px',
                     "&:hover": {
                         background: "#2B2B33",
                     },
