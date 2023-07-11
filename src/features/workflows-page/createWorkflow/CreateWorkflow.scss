@@ -11,6 +11,10 @@
     .inputClass {
       width: 90%;
       max-width: 90%;
+      @media screen and (max-width: 990px) {
+        width: 100%;
+        max-width: 100%;
+      }
       .usersform_textfield {
         width: 100%;
         max-width: 100%;
@@ -64,6 +68,10 @@
       .inputClass {
         width: 55%;
         max-width: 90%;
+        @media screen and (max-width: 990px) {
+          width: 100%;
+          max-width: 100%;
+        }
         .usersform_textfield {
           width: 100%;
           max-width: 100%;

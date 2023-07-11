@@ -7,40 +7,44 @@ import './manager.scss';
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
   padding: 8,
-  '& .MuiSwitch-track': {
-    borderRadius: 22 / 2,
-    border: "1px solid black",
-    opacity: 1,
-    backgroundColor: 'black' ? 'white' : 'gray',
-    boxSizing: 'border-box',
-  },
-  '& .MuiSwitch-thumb': {
-    boxShadow: 'none',
-    backgroundColor: 'black',
-    border: "3px solid dark",
-    width: 16,
-    height: 16,
-    margin: 2,
-  },
-  '& .MuiSwitch-switchBase.Mui-checked': {
-    backgroundColor: 'dark',
-  },
+    "& .MuiSwitch-track": {
+      borderRadius: 22 / 2,
+      border: "1px solid #E1E1E6",
+      opacity: 1,
+      backgroundColor: "black" ? "white" : "#E1E1E6",
+      boxSizing: "border-box",
+    },
+    "& .MuiSwitch-thumb": {
+      boxShadow: "none",
+      backgroundColor: "#40404D",
+      border: "3px solid #40404D",
+      width: 16,
+      height: 16,
+      margin: 2,
+    },
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      backgroundColor: "transparent",
+      color: '#40404D'
+    },
 
-  "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
-    backgroundColor: 'gray'
-  },
-}));
+    "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+      backgroundColor: "#E1E1E6",
+    },
+  }));
 
 
 
 export default function Account_Receivable({
   switchOption,
-  setSwitchOption,
   formControlData,
-  switchEnabled,
+  SwitchOption,
+  setSwitchOption,
   handleSwitchChange,
+  checkboxData,
+  switchEnabled,
+  setSwitchEnabled
 }) {
-console.log(formControlData);
+  console.log(formControlData);
   return (
     <FormGroup>
       <div>
@@ -49,13 +53,13 @@ console.log(formControlData);
             <div key={index}>
               <FormControlLabel
                 control={<Android12Switch
-                value={item.id}
-                  checked={formControlData.checked}
-                  onChange={()=>handleSwitchChange}
-                  color='default' />}
-              />
+                  value={item.id}
+                  checked={formControlData.id}
+                  onChange={()=>setSwitchEnabled(!switchEnabled)}
+                  color="default"
+                />} />
               <span
-                id={item.id} 
+                id={item.id}
                 onClick={() => setSwitchOption(item.id)}
                 className={`text ${switchOption === item.id ? 'active' : ''}`}
               >

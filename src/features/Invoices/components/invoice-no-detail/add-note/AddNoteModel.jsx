@@ -121,6 +121,7 @@ const Styles = {
     paddingLeft: "20px",
     paddingTop: "20px",
     fontWeight: 400,
-    fontSize: "16px"
+    fontSize: "16px",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
   }),
 };

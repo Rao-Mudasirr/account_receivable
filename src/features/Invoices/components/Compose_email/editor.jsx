@@ -58,7 +58,7 @@ const EmailEditor = ({ handleClose }) => {
           color: 'black',
           borderColor: '#40404D',
           px: "25px",
-          py: "10px",
+          py: "8px",
           border: '1.5px solid #40404D',
           fontWeight: 400,
           fontSize: '16px',
@@ -66,7 +66,7 @@ const EmailEditor = ({ handleClose }) => {
           borderRadius: '8px',
           textTransform: 'capitalize',
           '&:hover': {
-            borderColor: 'black',
+            borderColor: 'black', 
             color: 'black',
           },
         }} onClick={() => handleClose()}>
@@ -81,7 +81,7 @@ const EmailEditor = ({ handleClose }) => {
             fontFamily:'Exo 2',
             borderRadius: '8px',
             px: "25px",
-            py: "12px",
+            py: "8px",
             textTransform: 'capitalize',
             '&:hover': {
               background: '#2B2B33',

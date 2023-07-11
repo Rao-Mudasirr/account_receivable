@@ -1,27 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Grid, Button, MenuItem, Checkbox, Typography, Box } from "@mui/material";
+import { Grid, Button, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { TextField, Select } from "formik-material-ui";
+import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import AddIcon from '@mui/icons-material/Add';
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./addvendor.scss";
+import { Error } from '@mui/icons-material';
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const validationSchema = Yup.object().shape({
-    vendorName: Yup.string().required("Vendor Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    phone: Yup.number("Phone must be a `number` type"),
+    vendorName: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Vendor Name is required</span>),
+    email: Yup.string().email(<span className="error-color"><Error className="vendor_error-icon" /> Please enter a correct Email Address</span>)
+    .required(<span className="error-color"><Error className="vendor_error-icon" />Email Address is required</span>),
+    phone: Yup.string(),
     website: Yup.string(),
-    postCode: Yup.string().required("Post Code is required"),
+    postCode: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Post Code is required</span>),
     city: Yup.string(),
     address: Yup.string(),
-    benificiaryName: Yup.string().required("Benificiary Name is required"),
-    accountNumber: Yup.number().required("Account Number is required"),
-    sortCode: Yup.string().required("Sort Code is required"),
+    benificiaryName: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Benificiary Name is required</span>),
+    accountNumber: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Account Number is required</span>),
+    sortCode: Yup.string().required(<span className="error-color"><Error className="vendor_error-icon" />Sort Code is required</span>),
     iban: Yup.string(),
-});
+  });
 
 const initialValues = {
     vendorName: "",
@@ -104,6 +107,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="vendorName"
@@ -133,6 +137,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="email"
@@ -154,12 +159,13 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="phone"
                                             variant="standard"
                                             placeholder="Phone"
-                                            type="tel"
+                                            type="number"
                                             inputProps={{
                                                 style: { MozAppearance: "textfield" },
                                                 inputMode: "numeric",
@@ -180,6 +186,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             component={TextField}
                                             name="website"
                                             variant="standard"
@@ -208,6 +215,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="postCode"
@@ -228,6 +236,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             component={TextField}
                                             name="city"
                                             variant="standard"
@@ -247,6 +256,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             component={TextField}
                                             name="address"
                                             variant="standard"
@@ -279,6 +289,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="benificiaryName"
@@ -308,10 +319,12 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="accountNumber"
                                             variant="standard"
+                                            type="number"
                                             placeholder="Account Number"
                                             onChange={(e) => handleInputChange(e, props)}
                                         />
@@ -337,6 +350,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             className="usersform_textfield"
                                             component={TextField}
                                             name="sortCode"
@@ -357,6 +371,7 @@ const AddVendor = () => {
                                         </label>
                                         <Field
                                             sx={Styles.field_color}
+                                            InputProps={Styles.font_family()}
                                             component={TextField}
                                             name="iban"
                                             variant="standard"
@@ -403,29 +418,28 @@ export default AddVendor;
 //Style
 const Styles = {
     field_color: (theme) => ({
-        "& label": {
-            color: "#2B2B33",
-        },
-        "& label.Mui-focused": {
-            color: "#2B2B33",
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "#2B2B33",
-        },
-        "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-                borderColor: "#2B2B33",
-            },
-            "&:hover fieldset": {
-                borderColor: "#2B2B33",
-                borderWidth: "0.15rem",
-            },
-            "&.Mui-focused fieldset": {
-                borderColor: "#2B2B33",
-            },
-        },
-        "&:after": {
-            borderColor: "#2B2B33",
-        },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "#2B2B33",
+      },
+      "& .Mui-error:after": {
+        borderBottomColor: "#d32f2f",
+      },
+      "& .Mui-error:before": {
+        borderBottomColor: "#d32f2f !important",
+      },
+      "& input": {
+        paddingLeft: "15px",
+        pb: "10px",
+      },
+      "& .MuiInputBase-root:hover": {
+        backgroundColor: "#F0F0F2",
+      },
+      "& :before": {
+        borderBottom: "1.6px solid #C4C4CC !important",
+      },
     }),
-};
+    font_family: (theme) => ({
+      className: "font-family-Exo",
+    }),
+  };
+  

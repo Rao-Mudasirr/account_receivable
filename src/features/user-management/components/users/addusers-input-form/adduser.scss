@@ -53,6 +53,10 @@
     font-weight: 600;
   }
 
+  .adduser-textfield_bold:focus-within {
+    font-weight: 600;
+  }
+
   .hide_label .asterisk {
     display: none;
   }
@@ -67,5 +71,14 @@
   
   .checkbox-label {
     margin-left: 10px;
+  }
+  .MuiFormHelperText-root{
+    font-family: 'Exo 2', "Roboto", "sans-serif";
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
   }
 }

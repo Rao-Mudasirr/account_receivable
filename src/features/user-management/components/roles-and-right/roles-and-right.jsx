@@ -6,6 +6,7 @@ import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
 import TableAction from '../../../../components/Table/TableAction';
 import DeleteModel from '../../../../components/modal/DeleteModel';
+import SettingIcon from "../../../../assests/svg/setting-4.png";
 import FormDialog from '../../../../components/modal/ModalPractice';
 
 import Manager from '../role_rights_manager/Manager'
@@ -79,10 +80,10 @@ export const RolesRightsTable = () => {
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
           <TableAction type="delete" onClicked={handleOpen} />
           <TableAction type="edit" onClicked={handleOpenFormModal} />
-          <Link to="/user-management/role-right-manager"><TableAction type="setting" /></Link>
+          <Link to="/user-management/role-right-manager"><TableAction type='setting'/></Link>
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       isSortable: false,
     },
   ];
