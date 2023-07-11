@@ -66,7 +66,7 @@ const EmailEditor = ({ handleClose }) => {
           borderRadius: '8px',
           textTransform: 'capitalize',
           '&:hover': {
-            borderColor: 'black',
+            borderColor: 'black', 
             color: 'black',
           },
         }} onClick={() => handleClose()}>
