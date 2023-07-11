@@ -154,11 +154,6 @@ const VendorDetails = () => {
                       variant="standard"
                       placeholder="Phone"
                       type="number"
-                      inputProps={{
-                        style: { MozAppearance: "textfield" },
-                        inputMode: "numeric",
-                        pattern: "[0-9]*",
-                      }}
                       onChange={(e) => handleInputChange(e, props)}
                     />
                   </Grid>

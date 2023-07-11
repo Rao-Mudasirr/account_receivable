@@ -44,6 +44,7 @@ import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
+import PaymentEditModel from "./features/account-payable/PaymentEditModel";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
       <Routes>
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/edit" element={<PaymentEditModel />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
