@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import CustomTable from '../../../components/Table/CustomTable';
 import TableHeader from '../../../components/Table/TableHeader';
 import DeletePrompt from '../../../components/Table/prompt/DeletePrompt';
+import ViewPrompt from '../../../components/Table/prompt/ViewPrompt/ViewPrompt';
 const payableWorkflowData = [
     {
         id: 1,
@@ -79,7 +80,7 @@ const payableWorkflowCoulmn = [
             <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
                 <DeletePrompt onDeleteClick={()=>{}} />
                 <TableAction type="edit" onClick={() => { }} />
-                <TableAction type="view" onClick={() => { }} />
+                <ViewPrompt type="view" onViewClick={() => { }} />
             </Box>
         ),
         header: () => <div className="flex justify-center width-100">Actions</div>,
