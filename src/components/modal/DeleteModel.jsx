@@ -38,7 +38,7 @@ const DeleteModel = (props) => {
                 <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
                   <Box sx={{ pt: "40px", textAlign: "center" }}>
                     <Typography variant="h3" sx={Styles.heading}>Are you sure?</Typography>
-                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3 }}>
+                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3, fontFamily: `'Exo 2', "Roboto", "sans-serif"` }}>
                       You want to Delete
                     </Typography>
                   </Box>
@@ -117,5 +117,5 @@ const Styles = {
     textTransform: 'capitalize',
     borderRadius: "8px"
   }),
-  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3 }
+  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3, fontFamily: `'Exo 2', "Roboto", "sans-serif"` }
 };

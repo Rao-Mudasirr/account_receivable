@@ -143,11 +143,11 @@ const ChangePassword = () => {
             ml: 3,
           }}
         >
-          <Typography sx={{ fontWeight: 600 }} className="font-family-exo2">
+          <Typography sx={{ fontWeight: 600 }} className="font-family-Exo">
             Change Password
           </Typography>
           <Typography
-            className="font-family-exo2"
+            className="font-family-Exo"
             sx={{ cursor: "pointer" }}
             color="#6197E8"
             onClick={handleClickUserProfile}
@@ -165,7 +165,7 @@ const ChangePassword = () => {
               <Grid item xl={12} xs={12} sx={{ p: 5, height: "150px" }}>
                 <label
                   htmlFor="password"
-                  className="secondary-color primary-title font-family-exo2"
+                  className="secondary-color primary-title font-family-Exo"
                 >
                   Current Password
                 </label>
@@ -209,7 +209,7 @@ const ChangePassword = () => {
                 <Grid item xl={8} xs={8} sx={{ p: 5 }}>
                   <label
                     htmlFor="newPassword"
-                    className="secondary-color primary-title font-family-exo2"
+                    className="secondary-color primary-title font-family-Exo"
                   >
                     New Password
                   </label>
@@ -250,7 +250,7 @@ const ChangePassword = () => {
                 <Grid item xl={8} xs={8} sx={{ p: 5 }}>
                   <label
                     htmlFor="confirmPassword"
-                    className="secondary-color primary-title font-family-exo2"
+                    className="secondary-color primary-title font-family-Exo"
                   >
                     Confirm New Password
                   </label>

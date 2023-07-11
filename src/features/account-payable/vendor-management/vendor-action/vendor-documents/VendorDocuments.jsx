@@ -141,14 +141,14 @@ const VendorDocuments = () => {
         <Box className="flex justify-space-between margin-top-3">
           <Typography
             sx={{ mt: 2 }}
-            className="secondary-color tertiary-titl font-family-exo2"
+            className="secondary-color tertiary-titl font-family-Exo"
           >
             Inbox sum: £91,397.00
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
             <Typography
               variant="body1"
-              className="secondary-color tertiary-titl font-family-exo2"
+              className="secondary-color tertiary-titl font-family-Exo"
             >
               1-4 of 4
             </Typography>
@@ -161,13 +161,13 @@ const VendorDocuments = () => {
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                className="primary-color primary-title font-weight-600 font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-Exo"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                className="tertiary-color sub-heading  font-weight-400 font-family-exo2"
+                className="tertiary-color sub-heading  font-weight-400 font-family-Exo"
               >
                 {" "}
                 £500.00
@@ -189,13 +189,13 @@ const VendorDocuments = () => {
             >
               <Typography
                 sx={{ fontWeight: 600 }}
-                className="primary-color primary-title font-weight-600 font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-Exo"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                className="tertiary-color sub-heading font-family-400 font-family-exo2"
+                className="tertiary-color sub-heading font-family-400 font-family-Exo"
               >
                 {" "}
                 £500.00
@@ -215,13 +215,13 @@ const VendorDocuments = () => {
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                className="primary-color primary-title font-weight-600 font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-Exo"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                className="tertiary-color sub-heading font-weight-400 font-family-exo2"
+                className="tertiary-color sub-heading font-weight-400 font-family-Exo"
               >
                 {" "}
                 £500.00
@@ -242,13 +242,13 @@ const VendorDocuments = () => {
               sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
             >
               <Typography
-                className="primary-color primary-title font-weight-600 font-family-exo2"
+                className="primary-color primary-title font-weight-600 font-family-Exo"
               >
                 {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
-                className="tertiary-color sub-heading font-weight-400 font-family-exo2"
+                className="tertiary-color sub-heading font-weight-400 font-family-Exo"
               >
                 {" "}
                 £500.00

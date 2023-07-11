@@ -17,7 +17,7 @@ export default function Vendors() {
     return (
         <React.Fragment>
             <div>
-                <Typography className="font-weight-600 heading-20 font-family-exo2 margin-top-2">Vendors</Typography>
+                <Typography className="font-weight-600 heading-20 font-family-Exo margin-top-2">Vendors</Typography>
             <Grid container className="justify-space-between margin-top-3">
             <GlobalSearchBar />
                 <Button 
@@ -28,7 +28,6 @@ export default function Vendors() {
                     fontWeight: 400,
                     fontFamily: `'Exo 2', "Roboto" "sans-serif"`,
                     borderRadius: '8px',
-                    mr:'20px',
                     gap:'10px',
                     px: "16px",
                     py: "10px",
@@ -51,6 +50,7 @@ export default function Vendors() {
 
             <CustomTable
                 data={Vendors_Data}
+                showHeaderFilter={false}
                 columns={Vendors_Col}
                 isSuccess={true}
                 isPagination={true}

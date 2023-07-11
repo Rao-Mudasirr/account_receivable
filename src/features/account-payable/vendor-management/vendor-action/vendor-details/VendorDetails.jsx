@@ -70,7 +70,7 @@ const VendorDetails = () => {
 
           return (
             <Form noValidate autoComplete="off" className="add-vendor_form">
-              <Typography className="font-weight-600 sub-heading margin-bottom-1 font-family-exo2">
+              <Typography className="font-weight-600 sub-heading margin-bottom-1 font-family-Exo">
                 Personal Details
               </Typography>
               <Grid>
@@ -154,11 +154,6 @@ const VendorDetails = () => {
                       variant="standard"
                       placeholder="Phone"
                       type="number"
-                      inputProps={{
-                        style: { MozAppearance: "textfield" },
-                        inputMode: "numeric",
-                        pattern: "[0-9]*",
-                      }}
                       onChange={(e) => handleInputChange(e, props)}
                     />
                   </Grid>
@@ -273,7 +268,7 @@ const VendorDetails = () => {
                     />
                   </Grid>
                 </Grid>
-                <Typography className="font-weight-600 sub-heading margin-bottom-1 margin-top-6 font-family-exo2">
+                <Typography className="font-weight-600 sub-heading margin-bottom-1 margin-top-6 font-family-Exo">
                   Bank Details
                 </Typography>
                 <Grid container spacing={10}>

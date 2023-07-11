@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Box, Button, Typography } from "@mui/material";
 import "./styles.scss";
 import { ReactComponent as Add } from "../../../assests/svg/add-circle-white.svg";
@@ -7,8 +7,19 @@ import CustomInput from "../../../components/CustomInput";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
 import TableAction from "../../../components/Table/TableAction";
 import SetDefaultBtn from "../../../components/set-default-btn/SetDefaultBtn";
+import PaymentEditModel from './PaymentEditModel'
 
 const PaymentSourceComponent = () => {
+
+  const [editModel, setEditModel] = useState(false);
+  const handleOpenEdit = () => {
+    setEditModel(true)
+  }
+
+  const handleCloseEdit = () => {
+    setEditModel(false)
+  }
+
   return (
     <Box className="parent-paymentSource">
       <Box className="heading">Payment Sources</Box>
@@ -38,11 +49,16 @@ const PaymentSourceComponent = () => {
             <Box className="right-side">
               <SetDefaultBtn />
               <DeletePrompt onDeleteClick={() => {}} />
-              <TableAction type="edit" onClick={() => {}} />
+              <TableAction type="edit" onClick={handleOpenEdit} />
             </Box>
           </Box>
         ))}
       </Box>
+          <PaymentEditModel
+          handleOpenEdit={handleOpenEdit}
+          openEdit={editModel}
+          handleCloseEdit={handleCloseEdit}
+          />
     </Box>
   );
 };
