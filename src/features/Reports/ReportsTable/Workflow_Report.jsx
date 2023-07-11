@@ -66,7 +66,7 @@ export const WORKFLOW_REPORT_COL = [
          <Link to="/reports/workflows-report/workflow-detail"> <TableAction type="view" /> </Link>
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       // isSortable: false,
     },
   ];

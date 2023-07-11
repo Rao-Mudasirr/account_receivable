@@ -66,7 +66,7 @@ export const UsersTable = () => {
           <TableAction type="edit" onClicked={handleFormDialog} />
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       isSortable: false,
     },
   ];
