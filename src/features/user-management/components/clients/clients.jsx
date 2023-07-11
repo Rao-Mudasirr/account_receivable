@@ -117,7 +117,7 @@ export const ClientsTable = () => {
           <TableAction type="view" onClicked={handleOpen2} />
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       // isSortable: false,
     },
   ];

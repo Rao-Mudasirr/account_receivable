@@ -113,7 +113,7 @@ export const UserAccessTable = () => {
         ),
       id: "status",
       cell: (info) => info.getValue(),
-      header: "Status",
+      header: ()=> <span className='flex justify-center width-100'>Status</span>,
     },
     {
       id: "Actions",
@@ -130,7 +130,7 @@ export const UserAccessTable = () => {
           />
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       isSortable: false,
     },
   ];

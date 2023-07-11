@@ -82,7 +82,7 @@ export const RolesRightsTable = () => {
           <Link to="/user-management/role-right-manager"><TableAction type="setting" /></Link>
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       isSortable: false,
     },
   ];
