@@ -35,12 +35,15 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 
 export default function Account_Receivable({
   switchOption,
-  setSwitchOption,
   formControlData,
-  switchEnabled,
+  SwitchOption,
+  setSwitchOption,
   handleSwitchChange,
+  checkboxData,
+  switchEnabled,
+  setSwitchEnabled
 }) {
-console.log(formControlData);
+  console.log(formControlData);
   return (
     <FormGroup>
       <div>
@@ -49,13 +52,13 @@ console.log(formControlData);
             <div key={index}>
               <FormControlLabel
                 control={<Android12Switch
-                value={item.id}
-                  checked={formControlData.checked}
-                  onChange={()=>handleSwitchChange}
-                  color='default' />}
-              />
+                  value={item.id}
+                  checked={formControlData.id}
+                  onChange={()=>setSwitchEnabled(!switchEnabled)}
+                  color="default"
+                />} />
               <span
-                id={item.id} 
+                id={item.id}
                 onClick={() => setSwitchOption(item.id)}
                 className={`text ${switchOption === item.id ? 'active' : ''}`}
               >
