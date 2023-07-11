@@ -70,7 +70,7 @@ const VendorDetails = () => {
 
           return (
             <Form noValidate autoComplete="off" className="add-vendor_form">
-              <Typography className="font-weight-600 sub-heading margin-bottom-1 font-family-exo2">
+              <Typography className="font-weight-600 sub-heading margin-bottom-1 font-family-Exo">
                 Personal Details
               </Typography>
               <Grid>
@@ -268,7 +268,7 @@ const VendorDetails = () => {
                     />
                   </Grid>
                 </Grid>
-                <Typography className="font-weight-600 sub-heading margin-bottom-1 margin-top-6 font-family-exo2">
+                <Typography className="font-weight-600 sub-heading margin-bottom-1 margin-top-6 font-family-Exo">
                   Bank Details
                 </Typography>
                 <Grid container spacing={10}>
