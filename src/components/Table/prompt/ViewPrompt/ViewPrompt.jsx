@@ -179,7 +179,7 @@ const ViewPrompt = (props) => {
                 >
                   <Grid container direction={'column'} alignItems={'start'}
                     sx={{ 
-                     mt: 1, mb: { md: 2, xs: 0 },border:"1px solid green" }}
+                     mt: 1, mb: { md: 2, xs: 0 } }}
                   >
                     <Box
                    
