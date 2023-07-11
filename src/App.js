@@ -45,6 +45,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentEditModel from "./features/account-payable/PaymentEditModel";
+import PaymentSource from "./pages/payment-sources";
 
 function App() {
   return (
@@ -132,7 +133,7 @@ function App() {
               element={<CreateWorkflow />}
             />
           </Route>
-
+          <Route exact path={"/payment-sources"} element={<PaymentSource />} />
           <Route exact path={"/clients-listing"} element={<ClientListing />} />
           <Route exact path={"/bills"} element={<BillsManagement />} />
           <Route exact path={"/bills/add-bill"} element={<AddBill />} />
