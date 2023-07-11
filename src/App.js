@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -41,11 +41,8 @@ import TotalBills from "./features/account-payable/total-bills-dashboard/total-b
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
-<<<<<<< HEAD
 import Forcasting_Reports from "./pages/Forcasting_Reports";
-=======
 import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
->>>>>>> 4605f557c031ef15e1cdaa3e14562529881037ee
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 
