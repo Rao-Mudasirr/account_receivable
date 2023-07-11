@@ -88,8 +88,6 @@ export const RolesRightsTable = () => {
   ];
   return (
     <>
-
-      <Card sx={{ p: 2 }}>
         <TableHeader
           ref={tableHeaderRef}
           title="Health & Safety"
@@ -112,7 +110,6 @@ export const RolesRightsTable = () => {
           isSuccess={true}
           isPagination={true}
         />
-      </Card>
       <DeleteModel
         open={open}
         handleClose={handleClose}
