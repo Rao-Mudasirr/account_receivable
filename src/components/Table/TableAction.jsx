@@ -1,33 +1,32 @@
-import React from "react";
-import { Box, IconButton, darken } from "@mui/material";
+import React, { useState } from "react";
+import { Box, IconButton } from "@mui/material";
 
 // @mui icons
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import DownloadIcon from "@mui/icons-material/Download";
 import ShareIcon from "@mui/icons-material/Share";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import DiagreamIcon from "../../assests/svg/diagram.svg";
-import ViewIcon from "../../assests/svg/eye.png";
-import DeleteIcon from "../../assests/svg/trash.png";
-import EditIcon from "../../assests/svg/edit.png";
+import { ReactComponent as ViewIcon } from "../../assests/svg/view.svg";
+import { ReactComponent as DeleteIcon } from "../../assests/svg/trash.svg";
+import { ReactComponent as EditIcon } from "../../assests/svg/edit.svg";
 import SettingIcon from "../../assests/svg/setting-4.png";
 import AddIcon from "../../assests/svg/add-circle.png";
-
 import PrintIcon from "@mui/icons-material/Print";
 // import { ShareIcon } from "react-icons/fa";
 
 // ----------------------------------------------------------------------
 
-const TableAction = ({ type = "edit", onClicked = () => {}, ...other }) => {
+const TableAction = ({ type = "edit", onClicked = () => { }, ...other }) => {
+  const [hovered, setHovered] = useState(false)
   return (
     <IconButton
       onClick={onClicked}
       sx={(theme) => styles.btnStyle(theme, type)}
       {...other}
       size="small"
+      onMouseEnter={()=> setHovered(true)}
+      onMouseLeave={()=> setHovered(false)}
     >
-      {icons[type]}
+      {hovered ? hoveredIcons[type] : icons[type]}
     </IconButton>
   );
 };
@@ -38,53 +37,6 @@ export default TableAction;
 // Styles
 const styles = {
   btnStyle: (theme, type) => {
-    let backgroundColor = "#919EAB";
-
-    // switch (type) {
-    //   case "add":
-    //     backgroundColor = "#F6830F";
-    //     break;
-    //   case "delete":
-    //     backgroundColor = "#DC3545";
-    //     break;
-    //   case "view":
-    //     backgroundColor = "#21130d";
-    //     break;
-    //   case "download":
-    //     backgroundColor = "#229A16";
-    //     break;
-    //   case "refresh":
-    //     backgroundColor = "#23183D";
-    //     break;
-    //   // share icon
-    //   case "share":
-    //     backgroundColor = "#23183D";
-    //     break;
-    //   case "diagram":
-    //     backgroundColor = "#F6830F";
-    //     break;
-    //   // share icon
-    //   case "share":
-    //     backgroundColor = "#23183D";
-    //     break;
-
-    //   //  print icon
-    //   case "print":
-    //     backgroundColor = "#F6830F";
-    //     break;
-
-    //   // header share icon
-    //   case "headerShare":
-    //     backgroundColor = "#23183D";
-    //     break;
-    // }
-    // return {
-    //   backgroundColor,
-    //   color: "black",
-    //   ":hover": {
-    //     backgroundColor: darken(backgroundColor, 0.15),
-    //   },
-    // };
   },
   iconStyles: (theme, iconColor) => ({
     color: iconColor,
@@ -93,10 +45,11 @@ const styles = {
 
 // ----------------------------------------------------------------------
 // Icons Object
+
 const icons = {
-  edit: <img src={EditIcon} alt="edit" />,
-  delete: <img src={DeleteIcon} alt="delete" />,
-  view: <img src={ViewIcon} alt="view" />,
+  edit: <EditIcon />,
+  delete: <DeleteIcon />,
+  view: <ViewIcon />,
   setting: <img src={SettingIcon} alt="view" />,
   add: <img src={AddIcon} alt="add" />,
   refresh: (
@@ -128,4 +81,9 @@ const icons = {
   headerShare: (
     <ShareIcon sx={{ color: "#fff", padding: "1px", fontSize: "25px" }} />
   ),
+};
+const hoveredIcons = {
+  edit: <EditIcon />,
+  delete: <DeleteIcon />,
+  view: <ViewIcon />,
 };
