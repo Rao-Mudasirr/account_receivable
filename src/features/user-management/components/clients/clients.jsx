@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Box, TextField, MenuItem, Fade, Modal, Backdrop } from "@mui/material";
+import { Card, Box, Grid, MenuItem, Fade, Modal, Backdrop, Select } from "@mui/material";
 import CustomTable from "../../../../components/Table/CustomTable";
 import TableHeader from "../../../../components/Table/TableHeader";
 import { useTableParams } from "../../../../components/Table/useTableParams";
@@ -13,6 +13,8 @@ import FormDialog from '../../../../components/modal/ModalPractice';
 import { CustomModel } from '../../../../components/custom-model/custom-model';
 import { ClientsModal } from './client-modal/client-modal';
 import ClientView from './ClientView';
+import { ReactComponent as Down } from "../../../../assests/svg/chev-bottom.svg";
+
 
 const style = {
   position: 'absolute',
@@ -122,48 +124,55 @@ export const ClientsTable = () => {
   const isFocused = false;
   return (
     <>
-      <Card sx={{ p: 1 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <GlobalSearchBar
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-          <TextField defaultValue='Role' sx={{
-            width: 333, mb: 2, borderRadius : 5,
-            '& .MuiInputBase-root': {
-              color: isFocused ? 'black' : 'inherit',
-              '&::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
+      <Grid container sx={{ justifyContent: 'space-between', mb: '15px' }}>
+          <Grid item xs={5} lg={6} >
+            <GlobalSearchBar
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </Grid>
+          <Grid item xs={5} lg={2.5}>
+          <Select
+          sx={{
+            height:'100%',
+            '&:before': {
+              borderColor: '#C4C4CC',
+          },
+              '&:after': {
+                borderColor: '#C4C4CC',
               },
-              '&::after': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-              '&:hover::before': {
-                borderBottomColor: isFocused ? 'black' : '#C4C4CC',
-              },
-            },
+              '& .MuiSelect-select':{
+                padding:'10px'
+              }
           }}
-            select
-            variant = {isFocused ? 'filled' : 'standard'}
+            defaultValue="Role"
+            placeholder='Role'
+            fullWidth
+            variant="standard"
+            IconComponent={Down}
           >
-            <MenuItem value='Assigned'>
-              Assigned
-            </MenuItem>
-            <MenuItem value='Unassigned'>
-              Unassigned
-            </MenuItem>
-          </TextField>
-        </div>
+              <MenuItem disabled value='Role'>
+                Role
+              </MenuItem>
+              <MenuItem value='Assigned'>
+                Assigned
+              </MenuItem>
+              <MenuItem value='Unassigned'>
+                Unassigned
+              </MenuItem>
+          </Select>
+          </Grid>
+          </Grid>
         <CustomTable
           data={userData}
           columns={columns}
           // showSerialNo
+          showHeaderFilter={false}
           onPageChange={pageChangeHandler}
           onSortByChange={sortChangeHandler}
           isSuccess={true}
           isPagination={true}
         />
-      </Card>
       <DeleteModel
         open={open}
         handleClose={handleClose}

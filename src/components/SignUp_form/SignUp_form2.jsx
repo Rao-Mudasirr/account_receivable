@@ -24,14 +24,14 @@ const validationSchema = Yup.object().shape({
     .matches(/^\d+$/, "Please enter digits only")
     .min(
       7,
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter Registration Number
       </span>
     )
     .max(30, "Maximum number limit exceeded")
     .required(
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter Registration Number
       </span>
@@ -40,14 +40,14 @@ const validationSchema = Yup.object().shape({
   mobile: Yup.string()
     .min(
       7,
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter your Phone Number
       </span>
     )
     .max(30, "Maximum number limit exceeded")
     .required(
-      <span className="error-color font-family-exo2">
+      <span className="error-color font-family-Exo">
         <ErrorIcon className="signup_error-icon" />
         Please Enter your Phone Number
       </span>
@@ -234,7 +234,7 @@ const MySignUpForm2 = () => {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} className="margin-top-2">
+                  <Grid item xs={12} className="margin-top-2 textfield_bold">
                     <label htmlFor="companyName" className="signup_label">
                       Company Name
                     </label>

@@ -13,7 +13,6 @@ import {
 import CustomInput from "../../../components/CustomInput";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Image from "../../../assests/bills/file.png";
-import { ReactComponent as FullScreen } from "../../../assests/bills/maximize.svg";
 import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';

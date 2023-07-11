@@ -38,7 +38,7 @@ const UserManagement = () => {
     <>
       {
         managerData ? <div className="container">
-          <p>User Management</p>
+          <p className='font-family-exo2 heading-20 font-weight-600'>User Management</p>
           <Box sx={{ width: '100%' }}>
             <Box sx={{
               marginTop: 5

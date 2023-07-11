@@ -15,7 +15,6 @@ import MakeItPaid from "./MakeItPaid";
 import Paid from "./Paid";
 import Rejected from "./Rejected";
 
-
 const SelectedPagination = styled(Pagination)(({ theme }) => ({
   "& .Mui-selected": {
     backgroundColor: "#6B6B80",
@@ -72,8 +71,8 @@ const DocumentApproval = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xl={3} xs={12} sx={{p:2}}>  
-        <GlobalSearchBar/>
+      <Grid item lg={4} xs={12} sx={{ p: 2 }}>
+        <GlobalSearchBar />
 
         <Box sx={{ display: "flex", gap: 0.5, mt: 4 }}>
           <Button
@@ -82,7 +81,7 @@ const DocumentApproval = () => {
             }`}
             sx={{
               p: 2,
-              fontSize:{md:'16px',sx:'8px'},
+              fontSize: { md: "16px", sx: "8px" },
               height: "10px",
               textTransform: "capitalize",
               borderRadius: "8px",
@@ -101,7 +100,7 @@ const DocumentApproval = () => {
             }`}
             sx={{
               p: 2,
-              fontSize:{md:'16px',sx:'6px'},
+              fontSize: { md: "16px", sx: "6px" },
               height: "10px",
               textTransform: "capitalize",
               borderRadius: "8px",
@@ -158,15 +157,14 @@ const DocumentApproval = () => {
           >
             Inbox sum: £91,397.00
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center" ,mt:2}}>
+          <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
             <Typography
               variant="body1"
               className="secondary-color tertiary-titl font-family-exo2"
-           
             >
               1-4 of 4
             </Typography>
-            <SelectedPagination   count={0} color="primary" />
+            <SelectedPagination count={0} color="primary" />
           </Box>
         </Box>
         <Grid>
@@ -178,7 +176,6 @@ const DocumentApproval = () => {
                 sx={{ fontWeight: 600 }}
                 className="primary-color primary-title font-family-exo2"
               >
-                {" "}
                 Berghotel Grosse Scheidegg
               </Typography>
               <Typography
@@ -189,7 +186,7 @@ const DocumentApproval = () => {
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem" ,mt:1,mb:2}}>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
               <Typography>20/03/2023</Typography>
 
               <Typography
@@ -220,15 +217,14 @@ const DocumentApproval = () => {
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem" ,mt:1,mb:2}}>
-              <Typography  >20/03/2023</Typography>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
+              <Typography>20/03/2023</Typography>
 
               <Typography
                 sx={{ color: selectedButtonStyles[selectedButton]?.color }}
               >
                 {selectedButton}
               </Typography>
-             
             </Box>
             <Divider sx={{ mt: 2 }} />
           </Box>
@@ -251,15 +247,14 @@ const DocumentApproval = () => {
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem" ,mt:1,mb:2}}>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
               <Typography>20/03/2023</Typography>
 
               <Typography
-                sx={{ color: selectedButtonStyles[selectedButton]?.color, }}
+                sx={{ color: selectedButtonStyles[selectedButton]?.color }}
               >
                 {selectedButton}
               </Typography>
-             
             </Box>
             <Divider sx={{ mt: 2 }} />
           </Box>
@@ -283,7 +278,7 @@ const DocumentApproval = () => {
                 £500.00
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "2rem" ,mt:1,mb:2}}>
+            <Box sx={{ display: "flex", gap: "2rem", mt: 1, mb: 2 }}>
               <Typography>20/03/2023</Typography>
 
               <Typography
@@ -291,29 +286,36 @@ const DocumentApproval = () => {
               >
                 {selectedButton}
               </Typography>
-             
             </Box>
-           
           </Box>
         </Grid>
       </Grid>
 
-   
-      <Grid item xl={7} xs={12 }  sx={{ borderLeft: '2px solid #C4C4CC',
-      p: 2,
-      '@media (max-width: 1700px)': {
-        borderLeft: 'none',
-      },}}>    {selectedButton === 'Pending' ? (
-            <PendingScreen/>
-          ) : selectedButton ===  'Scheduled'? (
-            <MakeItPaid />
-          ) : selectedButton ===  "Paid" ? (
-            <Paid />
-          ) : selectedButton === "Rejected"? (
-            <Rejected />
-          ) : (
-            ""
-          )}</Grid>
+      <Grid
+        item
+        lg={8}
+        xs={12}
+        sx={{
+          borderLeft: "2px solid #C4C4CC",
+          p: 2,
+          "@media (max-width: 1700px)": {
+            borderLeft: "none",
+          },
+        }}
+      >
+        {" "}
+        {selectedButton === "Pending" ? (
+          <PendingScreen />
+        ) : selectedButton === "Scheduled" ? (
+          <MakeItPaid />
+        ) : selectedButton === "Paid" ? (
+          <Paid />
+        ) : selectedButton === "Rejected" ? (
+          <Rejected />
+        ) : (
+          ""
+        )}
+      </Grid>
     </Grid>
   );
 };

@@ -151,7 +151,6 @@ const CustomTable = (props) => {
         accessorFn: (row) => row,
         id: serialName,
         cell: (info) => {
-          console.log(info?.row?.id.length);
           return serialNoSortable ? <div className="flex justify-center align-center">{info?.row?.id.length === 1 ? `0${Number(info?.row?.id) + 1}` : Number(info?.row?.id) + 1}</div> : info?.row?.id.length === 1 ? `0${Number(info?.row?.id) + 1}` : Number(info?.row?.id) + 1
         },
         header: serialNoSortable ? <div className="flex justify-center align-center">{serialName}</div> : serialName,

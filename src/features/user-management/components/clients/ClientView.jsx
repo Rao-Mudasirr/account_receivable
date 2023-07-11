@@ -76,6 +76,7 @@ function ClientView({ handleClose2 }) {
             pageData="clients-view"
             data={CLIENTS_DATA}
             columns={columns}
+            showHeaderFilter={false}
             // showSerialNo
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}

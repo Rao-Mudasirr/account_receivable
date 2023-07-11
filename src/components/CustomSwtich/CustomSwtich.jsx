@@ -7,25 +7,26 @@ const CustomSwitch = ({ ...props }) => {
     padding: 8,
     "& .MuiSwitch-track": {
       borderRadius: 22 / 2,
-      border: "1px solid black",
+      border: "1px solid #E1E1E6",
       opacity: 1,
-      backgroundColor: "black" ? "white" : "gray",
+      backgroundColor: "black" ? "white" : "#E1E1E6",
       boxSizing: "border-box",
     },
     "& .MuiSwitch-thumb": {
       boxShadow: "none",
-      backgroundColor: "black",
-      border: "3px solid dark",
+      backgroundColor: "#40404D",
+      border: "3px solid #40404D",
       width: 16,
       height: 16,
       margin: 2,
     },
     "& .MuiSwitch-switchBase.Mui-checked": {
-      backgroundColor: "dark",
+      backgroundColor: "transparent",
+      color: '#40404D'
     },
 
     "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
-      backgroundColor: "gray",
+      backgroundColor: "#E1E1E6",
     },
   }));
   return (
