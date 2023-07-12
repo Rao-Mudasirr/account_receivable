@@ -13,6 +13,9 @@
   .usersform_textfield {
     width: 240px;
     text-align: start;
+    .MuiSelect-icon {
+      top: calc(50% - 12px);
+    }
     @media screen and (max-width: 992px) {
       width: 100%;
     }

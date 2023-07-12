@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, MenuItem, Checkbox } from "@mui/material";
+import { Grid, Button, MenuItem, Checkbox, InputAdornment } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
@@ -86,6 +86,9 @@ const EditUserForm = () => {
                   component={TextField}
                   name="firstName"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="First Name"
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -106,6 +109,9 @@ const EditUserForm = () => {
                   component={TextField}
                   name="lastName"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="Last Name"
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -126,6 +132,9 @@ const EditUserForm = () => {
                   component={TextField}
                   name="email"
                   variant="standard"
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
                   placeholder="Email"
                   type="email"
                   onChange={(e) => handleInputChange(e, props)}
@@ -147,13 +156,11 @@ const EditUserForm = () => {
                   component={TextField}
                   name="phone"
                   variant="standard"
-                  placeholder="Phone"
-                  type="tel"
                   inputProps={{
-                    style: { MozAppearance: "textfield" },
-                    inputMode: "numeric",
-                    pattern: "[0-9]*",
+                    className: "font-family-Exo"
                   }}
+                  placeholder="Phone"
+                  type="number"
                   onChange={(e) => handleInputChange(e, props)}
                 />
               </Grid>
@@ -174,6 +181,9 @@ const EditUserForm = () => {
                   name="company"
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start">Select</InputAdornment>,
+                  }}
                 >
                   {companyOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -272,5 +282,6 @@ const Styles = {
     "&:after": {
       borderColor: "black",
     },
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   }),
 };
