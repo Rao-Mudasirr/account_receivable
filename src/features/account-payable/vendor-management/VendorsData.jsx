@@ -46,13 +46,15 @@ export const Vendors_Col = [
   {
       id: "Actions",
       cell: (info) => (
-          <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+           <Box sx={{ display: "flex", justifyContent: "left-center" ,}}>
+          
             <Link to='/vendors/vendor-action'>
           <TableAction type="view"
            onClick={console.log()}
             />
             </Link>
-          </Box>
+            </Box>
+          
       ),
       header: () => <span>Actions</span>,
       isSortable: false,
