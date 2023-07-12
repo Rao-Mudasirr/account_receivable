@@ -200,6 +200,7 @@ const CustomTable = (props) => {
                                   : "0px",
                           }}
                           key={header.id}
+                          
                         >
                           <Box
                             onClick={() =>
