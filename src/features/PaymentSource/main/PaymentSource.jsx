@@ -26,10 +26,10 @@ const PaymentSourceComponent = () => {
       <Box className="heading-Section">Bank Accounts</Box>
       <Box className="section2">
         <CustomInput type="select" placeholder="Bank" required={false} />
-        <Button>
+        <Button >
           Add Payment Source
           <span>
-            <Add />
+            <Add  />
           </span>
         </Button>
       </Box>

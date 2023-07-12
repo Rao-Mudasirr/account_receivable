@@ -38,8 +38,8 @@ const DeleteModel = (props) => {
                 <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
                   <Box sx={{ pt: "40px", textAlign: "center" }}>
                     <Typography variant="h3" sx={Styles.heading}>Are you sure?</Typography>
-                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3, fontFamily: `'Exo 2', "Roboto", "sans-serif"` }}>
-                      You want to Delete
+                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3 }}>
+                      This will delete your bank account
                     </Typography>
                   </Box>
                   <Box sx={Styles.buttonWrapper}>
@@ -98,7 +98,9 @@ const Styles = {
   buttonError: (theme) => ({
     bgcolor: "#2B2B33",
     color: "#fff",
-    "&:hover": { bgcolor: "#2B2B33" },
+    transition: "background-color 0.2s ease",
+    "&:hover": { bgcolor: "#1A1A1D" ,boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
+    transform: "scale(1)", },
     px: 2,
     py: 1,
     fontSize: "16px !important",
@@ -110,8 +112,11 @@ const Styles = {
     bgcolor: "#fff",
     color: "#2B2B33",
     minWidth: "100px",
-    "&:hover": { bgcolor: "#fff" },
+    transition: "background-color 0.2s ease",
+    "&:hover": { bgcolor: "#F7F7F7",boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
+    transform: "scale(1)", },
     fontSize: "16px !important",
+    
     border: "1px solid #2B2B33",
     fontWeight: "400",
     textTransform: 'capitalize',
