@@ -9,7 +9,9 @@ const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First Name is required"),
   lastName: Yup.string().required("Last Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.number("Phone must be a `number` type").required("Phone is required"),
+  phone: Yup.number("Phone must be a `number` type").required(
+    "Phone is required"
+  ),
   company: Yup.string().required("Company is required"),
   role: Yup.string().required("Role is required"),
 });
@@ -92,12 +94,11 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={TextField}
                   name="firstName"
                   variant="standard"
                   inputProps={{
-                    className: "font-family-Exo"
+                    className: "font-family-Exo",
                   }}
                   placeholder="First Name"
                   onChange={(e) => handleInputChange(e, props)}
@@ -125,12 +126,11 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={TextField}
                   name="lastName"
                   variant="standard"
                   inputProps={{
-                    className: "font-family-Exo"
+                    className: "font-family-Exo",
                   }}
                   placeholder="Last Name"
                   onChange={(e) => handleInputChange(e, props)}
@@ -158,12 +158,11 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={TextField}
                   name="email"
                   variant="standard"
                   inputProps={{
-                    className: "font-family-Exo"
+                    className: "font-family-Exo",
                   }}
                   placeholder="Email"
                   type="email"
@@ -192,14 +191,13 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={TextField}
                   name="phone"
                   variant="standard"
                   placeholder="Phone"
                   type="number"
                   inputProps={{
-                    className: "font-family-Exo"
+                    className: "font-family-Exo",
                   }}
                   onChange={(e) => handleInputChange(e, props)}
                 />
@@ -226,13 +224,11 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={Select}
                   name="company"
                   variant="standard"
                   inputProps={{
                     className: "font-family-Exo",
-                    placeholder: "Select"
                   }}
                   onChange={(e) => handleInputChange(e, props)}
                 >
@@ -275,12 +271,43 @@ const AddUserForm = () => {
                 </label>
                 <Field
                   sx={Styles.field_color}
-                  className="usersform_textfield"
                   component={Select}
                   name="role"
                   inputProps={{
-                    className: "font-family-Exo"
+                    className: "font-family-Exo",
                   }}
+                  // renderValue={(selected) => {
+                  //   console.log(selected);
+                    // if (
+                    //   // !selected &&
+                    //   selected.length === 7 ||
+                    //   selected.length === 5 
+                    // ) {
+                    //   return (
+                    //     <span
+                    //       style={{
+                    //         color: "#C4C4CC",
+                    //         fontFamily: "Exo 2",
+                    //         marginLeft: "15px",
+                    //       }}
+                    //     >
+                    //       Placeholder
+                    //     </span>
+                    //   );
+                    // }
+                    // else  {
+                      
+                    //   return selected;
+                    // }
+                  //   if (selected?.length === ""  ) {
+                  //     return <em>Placeholder</em>;
+                  //   }
+        
+                  //   else  {
+                    
+                  //       return selected;
+                      
+                  // }}}
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
                 >
@@ -322,29 +349,34 @@ export default AddUserForm;
 //Style
 const Styles = {
   field_color: (theme) => ({
-    "& label": {
-      color: "black",
-    },
-    "& label.Mui-focused": {
-      color: "black",
-    },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
+      borderBottomColor: "#2B2B33",
     },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "black",
-      },
-      "&:hover fieldset": {
-        borderColor: "black",
-        borderWidth: "0.15rem",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
+    "& .Mui-error:after": {
+      borderBottomColor: "#d32f2f",
     },
+    "& .Mui-error:before": {
+      borderBottomColor: "#d32f2f !important",
+    },
+    "& input": {
+      paddingLeft: "15px",
+      pb: "10px",
+    },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+    "& .MuiSelect-select:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+
+    "& :before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
+    },
+    // "&:before": {
+    //   borderBottom: "1.6px solid #C4C4CC !important",
+    // },
     "&:after": {
-      borderColor: "black",
+      borderColor: "#2B2B33",
     },
   }),
 };
