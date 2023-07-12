@@ -50,6 +50,10 @@
     font-weight: 600;
   }
 
+  .edituser-textfield_bold:focus-within {
+    font-weight: 600;
+  }
+
   .MuiFormControl-root{
     width: 100%;
   }
@@ -60,5 +64,11 @@
   
   .checkbox-label {
     margin-left: 10px;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
   }
 }

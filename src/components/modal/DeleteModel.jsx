@@ -122,5 +122,5 @@ const Styles = {
     textTransform: 'capitalize',
     borderRadius: "8px"
   }),
-  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3 }
+  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3, fontFamily: `'Exo 2', "Roboto", "sans-serif"` }
 };

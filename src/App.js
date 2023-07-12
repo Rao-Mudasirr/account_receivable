@@ -41,6 +41,7 @@ import TotalBills from "./features/account-payable/total-bills-dashboard/total-b
 // import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
+import Forcasting_Reports from "./pages/Forcasting_Reports";
 import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
@@ -139,6 +140,7 @@ function App() {
           <Route path="/vendors/add-vendor" element={<AddVendor />} />
           <Route path="/vendors/vendor-action" element={<VendorAction />} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
+           <Route exact path={"/reports/forecasting-report"} element={<Forcasting_Reports />} /> b 
           <Route
             exact
             path={"/clients-details/:id"}
@@ -149,7 +151,7 @@ function App() {
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
           >
-            <Route
+            <Route 
               exact
               path={"/performance-analysis/client/:id"}
               element={<ClientComparison />}
