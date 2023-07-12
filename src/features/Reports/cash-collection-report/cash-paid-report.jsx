@@ -11,8 +11,8 @@ import { CustomPopover } from '../../../components/custom-popover/custom-popover
 import { ExportCardCheckbox } from '../../../components/export-card-checkbox/export-card-checkbox'
 import { toast, ToastContainer } from 'react-toastify';
 import { CashCollectionReportData } from '../../../mock-data/ReportData'
-import { CashCollectionReportInvoiceModal } from '../../cash-collection-report-invoice-modal/cash-collection-report-invoice-modal'
 import { CustomDatePicker } from '../../../components/custom-date-picker/custom-date-picker'
+import { CashCollectionReportCol } from './cash-col-data'
 
 export default function CashPaidReport() {
     
@@ -25,7 +25,7 @@ export default function CashPaidReport() {
 
   return (
     <>
-    <div className="invoice-title">Cash Collection Report</div>
+    <div className="invoice-title">Cash Paid Report</div>
     <Grid container className='align-center cash-collection-report'>
         <Grid xl={5} xs={12}>
             <GlobalSearchBar />
