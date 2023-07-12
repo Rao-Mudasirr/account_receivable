@@ -341,7 +341,7 @@ export default function MySignUpForm(props) {
                         renderValue={(selected) => {
                           console.log(selected.length);
                           if (selected?.length === 1 ) {
-                            return <span style={{color:'#C4C4CC', fontFamily:'Exo 2', marginLeft:'15px'}}>Placeholder</span>;
+                            return <span style={{color:'#B2B2B2', fontFamily:'Exo 2', marginLeft:'15px'}}>Select</span>;
                           }
                           if (selected.includes("All")) {
                             return "All";
