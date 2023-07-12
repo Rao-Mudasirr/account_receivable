@@ -6,6 +6,7 @@ import CustomTable from "../../../components/Table/CustomTable";
 import TableHeader from "../../../components/Table/TableHeader";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
 import { useNavigate } from "react-router-dom";
+import ViewPrompt from "../../../components/Table/prompt/ViewPrompt/ViewPrompt";
 const payableWorkflowData = [
   {
     id: 1,
@@ -45,47 +46,47 @@ const payableWorkflowData = [
   },
 ];
 const payableWorkflowCoulmn = [
-  {
-    accessorFn: (row) => row.name,
-    id: "name",
-    cell: (info) => info.getValue(),
-    header: "Workflow Name",
-  },
-  {
-    accessorFn: (row) => row.description,
-    id: "description",
-    cell: (info) => info.getValue(),
-    header: "Description",
-  },
-  {
-    accessorFn: (row) => row.rules,
-    id: "rules",
-    cell: (info) => <span>{info.getValue()}</span>,
-    header: "Rules",
-  },
-  {
-    accessorFn: (row) => row.status,
-    id: "status",
-    cell: (info) => (
-      <CustomSwitch
-      // checked={info.getValue()}
-      />
-    ),
-    header: "Status",
-  },
-  {
-    accessorFn: (row) => row.id,
-    id: "Actions",
-    cell: (info) => (
-      <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-        <DeletePrompt onDeleteClick={() => {}} />
-        <TableAction type="edit" onClick={() => {}} />
-        <TableAction type="view" onClick={() => {}} />
-      </Box>
-    ),
-    header: () => <div className="flex justify-center width-100">Actions</div>,
-    isSortable: false,
-  },
+    {
+        accessorFn: (row) => row.name,
+        id: "name",
+        cell: (info) => info.getValue(),
+        header: "Workflow Name",
+    },
+    {
+        accessorFn: (row) => row.description,
+        id: "description",
+        cell: (info) => info.getValue(),
+        header: "Description",
+    },
+    {
+        accessorFn: (row) => row.rules,
+        id: "rules",
+        cell: (info) => <span>{info.getValue()}</span>,
+        header: "Rules",
+    },
+    {
+        accessorFn: (row) => row.status,
+        id: "status",
+        cell: (info) => (
+            <CustomSwitch
+            // checked={info.getValue()}
+            />
+        ),
+        header: "Status",
+    },
+    {
+        accessorFn: (row) => row.id,
+        id: "Actions",
+        cell: (info) => (
+            <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
+                <DeletePrompt onDeleteClick={()=>{}} />
+                <TableAction type="edit" onClick={() => { }} />
+                <ViewPrompt type="view" onViewClick={() => { }} />
+            </Box>
+        ),
+        header: () => <div className="flex justify-center width-100">Actions</div>,
+        isSortable: false,
+    },
 ];
 export const WorkflowPayable = () => {
   const tableHeaderRef = useRef();
