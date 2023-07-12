@@ -1,5 +1,5 @@
-import React from 'react';
-import { GlobalSearchBar } from '../../components/global-search-filter/global-search-filter';
+import React from "react";
+import { GlobalSearchBar } from "../../components/global-search-filter/global-search-filter";
 import { useUserAccess } from "../../features/user-management/components/user-access-control/use-user-access-control";
 import { forwardRef, useImperativeHandle, useState } from "react";
 // @mui
@@ -12,12 +12,12 @@ import {
   Typography,
   alpha,
 } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 // @mui icons
 import SearchIcon from "@mui/icons-material/Search";
 import TableAction from "./TableAction";
-import Add_role from '../../features/user-management/components/roles-and-right/Add_Update_cards/Add_Update_cards/Add_role';
-import { CustomBtn } from '../../features/add-bill-modal/custom-btn/custom-btn';
+import Add_role from "../../features/user-management/components/roles-and-right/Add_Update_cards/Add_Update_cards/Add_role";
+import { CustomBtn } from "../../features/add-bill-modal/custom-btn/custom-btn";
 
 // ----------------------------------------------------------------------
 // Variables
@@ -44,7 +44,7 @@ const TableHeader = forwardRef(function TableHeader(
     selectSize = "small",
     searchSize = "small",
     showAddBtn = false,
-    addBtnTitle="Add",
+    addBtnTitle = "Add",
     showDeleteBtn = false,
     // share btn
     showShareBtn = false,
@@ -53,12 +53,12 @@ const TableHeader = forwardRef(function TableHeader(
     showDiagramBtn = false,
     debounceTimeout = 500,
     disabled = false,
-    onDelete = () => { },
-    onAdd = () => { },
-    onShare = () => { },
-    onPrint = () => { },
-    onChanged = () => { },
-    onDiagramBtn = () => { },
+    onDelete = () => {},
+    onAdd = () => {},
+    onShare = () => {},
+    onPrint = () => {},
+    onChanged = () => {},
+    onDiagramBtn = () => {},
   },
   ref
 ) {
@@ -109,13 +109,9 @@ const TableHeader = forwardRef(function TableHeader(
     onChanged({});
   }
 
-  const {
-    userData,
-    tableData,
-    updateStatus
-  } = useUserAccess();
+  const { userData, tableData, updateStatus } = useUserAccess();
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredData = tableData.filter((data) =>
     Object.values(data).some((value) =>
@@ -139,7 +135,7 @@ const TableHeader = forwardRef(function TableHeader(
           {title}
         </Typography> */}
         {!hideSearch && (
-          <div style={{ marginBottom: '15px' }}>
+          <div style={{ marginBottom: "15px" }}>
             <GlobalSearchBar
               value={searchQuery}
               onChange={handleSearchChange}
@@ -152,7 +148,7 @@ const TableHeader = forwardRef(function TableHeader(
       {showSelectFilters && (
         <Stack sx={styles.selectStackStyles}>
           {selectFilters.map(({ key, label, options = [] }) => (
-            <div style={{ marginBottom: '15px' }}>
+            <div style={{ marginBottom: "15px" }}>
               <GlobalSearchBar
                 placeholder="Search"
                 value={searchQuery}
@@ -169,10 +165,14 @@ const TableHeader = forwardRef(function TableHeader(
       )}
       {/* Add Button */}
       {showAddBtn && (
-        <CustomBtn otherProps={{ endIcon: <AddIcon /> }} disabled={disabled} onClicked={onAdd}>{addBtnTitle}</CustomBtn>
+        <CustomBtn
+          otherProps={{ endIcon: <AddIcon /> }}
+          disabled={disabled}
+          onClick={onAdd}
+        >
+          {addBtnTitle}
+        </CustomBtn>
       )}
-
-
 
       {/* Share Button */}
       {showShareBtn && (
@@ -229,10 +229,7 @@ const styles = {
   }),
   searchStyles: (theme) => ({
     width: { xs: "100%", sm: "auto" },
-    backgroundColor:
-      theme.palette.mode === "light"
-        ? "#fff"
-        : "#212B36",
+    backgroundColor: theme.palette.mode === "light" ? "#fff" : "#212B36",
     border: "unset",
     boxShadow: "unset",
     borderRadius: "4px",
@@ -245,10 +242,7 @@ const styles = {
   }),
   selectFieldStyles: (theme) => ({
     width: { xs: "100%", sm: "min(100vw, 200px)" },
-    backgroundColor:
-      theme.palette.mode === "light"
-        ? "#fff"
-        : "#212B36",
+    backgroundColor: theme.palette.mode === "light" ? "#fff" : "#212B36",
     borderRadius: "4px",
   }),
   addBtnStyles: (theme) => ({

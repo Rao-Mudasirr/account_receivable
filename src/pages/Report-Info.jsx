@@ -9,7 +9,7 @@ import VendorReport from "../features/Reports/VendorReport/VendorReport";
 import CashPaidReport from "../features/Reports/cash-collection-report/cash-paid-report";
 
 const reportsPages = {
-  dso: <ReportDetails />,
+  "dso": <ReportDetails />,
   "cashflow-forecasting-report": <CashFlowForCasting />,
   "cash-collection-report": <CashCollectionReport />,
   "aging-buckets-report": <AgingBucketsReport />,

@@ -45,6 +45,9 @@ const Manager = () => {
             formControlData={formControlData}
             setSwitchOption={setSwitchOption}
             switchOption={switchOption}
+            handleSwitchChange={handleSwitchChange}
+            switchEnabled={switchEnabled}
+            setSwitchEnabled={setSwitchEnabled}
           />
         );
       case '3':
@@ -69,7 +72,8 @@ const Manager = () => {
           <Dashboard
             checkboxData={formControlData.find((data) =>
               data.id === 'dashboard').switchOptions}
-              handleSwitchChange={handleSwitchChange}
+            handleSwitchChange={handleSwitchChange}
+            switchEnabled={switchEnabled}
           />
         );
       case 'invoices':
@@ -119,7 +123,7 @@ const Manager = () => {
         return null;
     }
   };
-  
+
   const renderSwitchComponents2 = (active) => {
     switch (active) {
       case 'userManagement':
@@ -142,7 +146,7 @@ const Manager = () => {
         return null;
     }
   };
-  
+
   return (
     <div className="main_manager_container">
       <p className='heading-20 font-weight-600 font-family-exo2'>Roles and Rights : Manager</p>
