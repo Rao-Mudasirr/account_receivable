@@ -5,6 +5,7 @@ import { DashboardCard } from "../../components/dashboard-card/dashboard-card";
 import { DashboardResponsiveDR } from '../../features/dashboard-responsive-DR/dashboard-responsive-DR';
 import { DashboardToggleIcon } from '../../features/dashboard-toggle-icon/dashboard-toggle-icon';
 import { AgingBucketBarChart } from '../../features/aging-bucket-bar-chart/aging-bucket-bar-chart';
+import AccountReceivableDashboard from '../../features/Cashflow-Module/account-receivable-dashboard';
 export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
   return (
@@ -15,7 +16,10 @@ export const DashboardCashflow = () => {
           <DashboardCard
             heading={"Account Receivable"}
           >
-
+            <AccountReceivableDashboard 
+              tooltipMessageDso="Days Sales Outstanding It measures the average number of days it takes a business to receive payments for goods and services purchased on credit."
+              tooltipMessageApd="Average Payment Delay The time between receiving a payment for goods and services AND paying said payment."
+            />
           </DashboardCard>
         </Grid>
         <Grid item xs={6}>
