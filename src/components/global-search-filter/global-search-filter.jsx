@@ -2,7 +2,7 @@ import * as React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import "./global-search-filter.scss";
 
-export const GlobalSearchBar = ({ value, onChange }) => {
+export const GlobalSearchBar = ({ value, onChange, className }) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   const handleFocus = () => {
@@ -22,7 +22,7 @@ export const GlobalSearchBar = ({ value, onChange }) => {
       onFocus={handleFocus}
       onBlur={handleBlur}
       fullWidth
-      className="font-family-Exo"
+      className={`font-family-Exo ${className ? className : ""}`}
       sx={{
         width: 333,
         ".MuiInputBase-root": { alignItems: "baseline" },
