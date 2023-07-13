@@ -46,6 +46,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import PayNowCard from "./components/pay-now/PayNowCard";
 
 function App() {
   return (
@@ -61,6 +62,8 @@ function App() {
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
+
+        <Route exact path={"/pay-now"} element={<PayNowCard />} />
 
         <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
