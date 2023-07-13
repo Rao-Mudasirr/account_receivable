@@ -20,10 +20,13 @@ const SetDefaultBtn = () => {
                 fontSize: '12px',
                 borderRadius: '8px',
                 textTransform: 'capitalize',
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                    borderColor: 'black',
+                    // borderColor: 'black',
                     border: '2px solid black',
-                    color:'black'
+                    //color:'black',
+                    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.6)", // Add a box shadow on hover
+                    transform: "scale(1)",
                 },
             }}
                 onClick={showToast}
