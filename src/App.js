@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -86,9 +86,7 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
-
           <Route exact path={"/total-bills"} element={<TotalBills />} />
-
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
@@ -113,7 +111,6 @@ function App() {
             path={"/user-management/role-right-manager"}
             element={<Manager />}
           />
-
           <Route exact path={"/workflows"} element={<Workflow />}>
             <Route
               exact
@@ -140,7 +137,11 @@ function App() {
           <Route path="/vendors/add-vendor" element={<AddVendor />} />
           <Route path="/vendors/vendor-action" element={<VendorAction />} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
-           <Route exact path={"/reports/forecasting-report"} element={<Forcasting_Reports />} /> b 
+          <Route
+            exact
+            path={"/reports/forecasting-report"}
+            element={<Forcasting_Reports />}
+          />{" "}
           <Route
             exact
             path={"/clients-details/:id"}
@@ -151,7 +152,7 @@ function App() {
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
           >
-            <Route 
+            <Route
               exact
               path={"/performance-analysis/client/:id"}
               element={<ClientComparison />}
@@ -164,7 +165,6 @@ function App() {
             path={"/report-details/month/:id"}
             element={<DSO_Month />}
           />
-
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
