@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { Grid, Button, MenuItem, Checkbox } from "@mui/material";
+import { Grid, Button, MenuItem, Checkbox, Select, InputLabel } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { TextField, Select } from "formik-material-ui";
+import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import "./adduser.scss";
 
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.number("Phone must be a `number` type").required(
-    "Phone is required"
+  firstName: Yup.string().required(<span className="error-color tertiary-title">First Name is required</span>),
+  lastName: Yup.string().required(<span className="error-color tertiary-title">Last Name is required</span>),
+  email: Yup.string().email("Invalid email").required(<span className="error-color tertiary-title">Email is required</span>),
+  phone: Yup.string().required(
+    <span className="error-color tertiary-title">Phone is required</span>
   ),
-  company: Yup.string().required("Company is required"),
-  role: Yup.string().required("Role is required"),
+  company: Yup.string().required(<span className="error-color tertiary-title">Company is required</span>),
+  role: Yup.string().required(<span className="error-color tertiary-title">Role is required</span>),
 });
 
 const initialValues = {
@@ -68,7 +68,7 @@ const AddUserForm = () => {
       onSubmit={handleSubmit}
     >
       {(props) => {
-        const { values, resetForm } = props;
+        const { values, errors, resetForm, touched } = props;
 
         return (
           <Form noValidate autoComplete="off" className="adduser_form">
@@ -222,15 +222,24 @@ const AddUserForm = () => {
                   )}
                   Company
                 </label>
-                <Field
+                <Select
                   sx={Styles.field_color}
-                  component={Select}
+                  fullWidth
                   name="company"
                   variant="standard"
                   inputProps={{
                     className: "font-family-Exo",
                   }}
+                  value={values.company}
+                  error={errors.company && touched.company}
                   onChange={(e) => handleInputChange(e, props)}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
+                  }}
                 >
                   {companyOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -247,7 +256,10 @@ const AddUserForm = () => {
                       <span className="checkbox-label">{option.label}</span>
                     </MenuItem>
                   ))}
-                </Field>
+                </Select>
+                {errors.company && touched.company && (
+                  <span className="error-color tertiary-title">{errors.company}</span>
+                )}
               </Grid>
 
               <Grid
@@ -269,47 +281,24 @@ const AddUserForm = () => {
                   )}
                   Role
                 </label>
-                <Field
+                <Select
                   sx={Styles.field_color}
-                  component={Select}
+                  fullWidth
                   name="role"
                   inputProps={{
                     className: "font-family-Exo",
                   }}
-                  // renderValue={(selected) => {
-                  //   console.log(selected);
-                    // if (
-                    //   // !selected &&
-                    //   selected.length === 7 ||
-                    //   selected.length === 5 
-                    // ) {
-                    //   return (
-                    //     <span
-                    //       style={{
-                    //         color: "#C4C4CC",
-                    //         fontFamily: "Exo 2",
-                    //         marginLeft: "15px",
-                    //       }}
-                    //     >
-                    //       Placeholder
-                    //     </span>
-                    //   );
-                    // }
-                    // else  {
-                      
-                    //   return selected;
-                    // }
-                  //   if (selected?.length === ""  ) {
-                  //     return <em>Placeholder</em>;
-                  //   }
-        
-                  //   else  {
-                    
-                  //       return selected;
-                      
-                  // }}}
                   variant="standard"
+                  value={values.role}
+                  error={errors.role && touched.role}
                   onChange={(e) => handleInputChange(e, props)}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
+                  }}
                 >
                   {roleOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -326,7 +315,11 @@ const AddUserForm = () => {
                       <span className="checkbox-label">{option.label}</span>
                     </MenuItem>
                   ))}
-                </Field>
+                </Select>
+
+                {errors.role && touched.role && (
+                  <span className="error-color tertiary-title">{errors.role}</span>
+                )}
               </Grid>
             </Grid>
             <Grid className="useradd_btn">
@@ -346,7 +339,7 @@ const AddUserForm = () => {
 
 export default AddUserForm;
 
-//Style
+// Style
 const Styles = {
   field_color: (theme) => ({
     "& .MuiInput-underline:after": {
@@ -358,7 +351,7 @@ const Styles = {
     "& .Mui-error:before": {
       borderBottomColor: "#d32f2f !important",
     },
-    "& input": {
+    "& .MuiInputBase-input": {
       paddingLeft: "15px",
       pb: "10px",
     },

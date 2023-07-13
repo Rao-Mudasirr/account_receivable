@@ -46,6 +46,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import EditKey from "./features/account-payable/vendor-management/EditKey";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
       <Routes>
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/edit-key" element={<EditKey />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
