@@ -1,7 +1,7 @@
 import React from 'react'
-import { UnifiedDSOAPD } from '../unified-dso-apd/unified-dso-apd';
+import { UnifiedDSOAPD } from '../../../unified-dso-apd/unified-dso-apd';
 import { Box, Grid } from '@mui/material';
-import { AppTooltip } from '../../components/app-tooltip/app-tooltip';
+import { AppTooltip } from '../../../../components/app-tooltip/app-tooltip';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 function AccountReceivableDashboard({
