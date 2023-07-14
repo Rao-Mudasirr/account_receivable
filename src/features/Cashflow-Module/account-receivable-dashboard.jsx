@@ -13,7 +13,7 @@ function AccountReceivableDashboard({
 }) {
   return (
     <Grid container>
-        <Grid md={6} lg={6}>
+        <Grid md={12} lg={12} xl={6}>
             <Box>DSO <AppTooltip message={tooltipMessageDso}><InfoOutlinedIcon className='cursor-pointer'  sx={{fontSize: '15px !important',ml:'5px'}}/></AppTooltip></Box>
             <UnifiedDSOAPD
                 days={135}
@@ -22,22 +22,22 @@ function AccountReceivableDashboard({
                 series={[
                     {
                       name: "DSO",
-                      data: [200, 400, 300],
+                      data: [25, 70, 135],
                     },
                 ]}
             />
         </Grid>
         
-        <Grid md={6} lg={6}>
+        <Grid md={12} lg={12} xl={6}>
             <Box>APD <AppTooltip message={tooltipMessageApd}><InfoOutlinedIcon className='cursor-pointer'  sx={{fontSize: '15px !important',ml:'5px'}}/></AppTooltip></Box>
             <UnifiedDSOAPD
-                days={135}
-                isGood={false}
-                percentile={65}
+                days={100}
+                isGood={true}
+                percentile={100}
                 series={[
                     {
                       name: "DSO",
-                      data: [200, 400, 300],
+                      data: [25, 200, 100],
                     },
                 ]}
             />
