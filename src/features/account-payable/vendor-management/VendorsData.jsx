@@ -44,16 +44,20 @@ export const Vendors_Col = [
     // isSortable: true,
   },
   {
-    id: "Actions",
-    cell: (info) => (
-      <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-        <Link to="/vendors/vendor-action">
-          <TableAction type="view" onClick={console.log()} />
-        </Link>
-      </Box>
-    ),
-    header: () => <div className="flex justify-center width-100">Actions</div>,
-    isSortable: false,
+      id: "Actions",
+      cell: (info) => (
+           <Box sx={{ display: "flex", justifyContent: "left-center" ,}}>
+          
+            <Link to='/vendors/vendor-action'>
+          <TableAction type="view"
+           onClick={console.log()}
+            />
+            </Link>
+            </Box>
+          
+      ),
+      header: () => <span>Actions</span>,
+      isSortable: false,
   },
 ];
 

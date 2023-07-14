@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import "./styles.scss";
 import { ReactComponent as Add } from "../../../assests/svg/add-circle-white.svg";
@@ -7,26 +7,30 @@ import CustomInput from "../../../components/CustomInput";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
 import TableAction from "../../../components/Table/TableAction";
 import SetDefaultBtn from "../../../components/set-default-btn/SetDefaultBtn";
-import PaymentEditModel from './PaymentEditModel'
+import PaymentEditModel from "./PaymentEditModel";
+import PaymentSourceModel from "../DocumentApprovalModel/PaymentSourceModel";
 
 const PaymentSourceComponent = () => {
-
   const [editModel, setEditModel] = useState(false);
+  const [openModel, setOpenModel] = useState(false);
   const handleOpenEdit = () => {
-    setEditModel(true)
-  }
+    setEditModel(true);
+  };
 
   const handleCloseEdit = () => {
-    setEditModel(false)
-  }
+    setEditModel(false);
+  };
 
+  const handleClose = () => {
+    setOpenModel(!openModel);
+  };
   return (
     <Box className="parent-paymentSource">
       <Box className="heading">Payment Sources</Box>
       <Box className="heading-Section">Bank Accounts</Box>
       <Box className="section2">
         <CustomInput type="select" placeholder="Bank" required={false} />
-        <Button>
+        <Button onClick={handleClose}>
           Add Payment Source
           <span>
             <Add />
@@ -54,11 +58,13 @@ const PaymentSourceComponent = () => {
           </Box>
         ))}
       </Box>
-          <PaymentEditModel
-          handleOpenEdit={handleOpenEdit}
-          openEdit={editModel}
-          handleCloseEdit={handleCloseEdit}
-          />
+      <PaymentEditModel
+        handleOpenEdit={handleOpenEdit}
+        openEdit={editModel}
+        handleCloseEdit={handleCloseEdit}
+      />
+
+      <PaymentSourceModel open={openModel} handleClose={handleClose} />
     </Box>
   );
 };

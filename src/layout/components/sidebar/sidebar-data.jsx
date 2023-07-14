@@ -1,25 +1,32 @@
 
-import DashboardIcon from "../../../assests/svg/sidebar/dashboard-icon.svg";
-import InvoicesIcon from "../../../assests/svg/sidebar/invoice-Icon.svg";
-import ClientsIcon from "../../../assests/svg/sidebar/clients-icon.svg";
-import PerformanceAnalysisIcon from "../../../assests/svg/sidebar/performance-icon.svg";
-import WorkflowsIcon from "../../../assests/svg/sidebar/workflow-icon.svg";
-import NotificationsIcon from "../../../assests/svg/sidebar/notification-icon.svg";
-import ReportsIcon from "../../../assests/svg/sidebar/reports-icon.svg";
-import UserManagementIcon from "../../../assests/svg/sidebar/user-management-icon.svg";
-import SettingsIcon from "../../../assests/svg/sidebar/setting-icon.svg";
+import {ReactComponent as DashboardIcon} from "../../../assests/svg/sidebar/dashboard-icon.svg";
+import {ReactComponent as InvoicesIcon} from "../../../assests/svg/sidebar/invoice-Icon.svg";
+import {ReactComponent as ClientsIcon} from "../../../assests/svg/sidebar/clients-icon.svg";
+import {ReactComponent as PerformanceAnalysisIcon} from "../../../assests/svg/sidebar/performance-icon.svg";
+import {ReactComponent as WorkflowsIcon} from "../../../assests/svg/sidebar/workflow-icon.svg";
+import {ReactComponent as NotificationsIcon} from "../../../assests/svg/sidebar/notification-icon.svg";
+import {ReactComponent as ReportsIcon} from "../../../assests/svg/sidebar/reports-icon.svg";
+import {ReactComponent as UserManagementIcon} from "../../../assests/svg/sidebar/user-management-icon.svg";
+import {ReactComponent as SettingsIcon} from "../../../assests/svg/sidebar/setting-icon.svg";
+import {ReactComponent as CategoriesIcon} from "../../../assests/svg/sidebar/categories-icon.svg";
+import {ReactComponent as KPIIcon} from "../../../assests/svg/sidebar/kpi-icon.svg";
+import {ReactComponent as TransactionsIcon} from "../../../assests/svg/sidebar/transaction-icon.svg";
 
-import DashboardActiveIcon from "../../../assests/svg/sidebar/dashboard-active-icon.svg";
-import InvoicesActiveIcon from "../../../assests/svg/sidebar/invoice-active-Icon.svg";
-import ClientsActiveIcon from "../../../assests/svg/sidebar/clients-active-icon.svg";
-import PerformanceAnalysisActiveIcon from "../../../assests/svg/sidebar/performance-active-icon.svg";
-import WorkflowsActiveIcon from "../../../assests/svg/sidebar/workflow-active-icon.svg";
-import NotificationsActiveIcon from "../../../assests/svg/sidebar/notification-active-icon.svg";
-import ReportsActiveIcon from "../../../assests/svg/sidebar/reports-active-icon.svg";
-import UserManagementActiveIcon from "../../../assests/svg/sidebar/user-management-active-icon.svg";
-import SettingsActiveIcon from "../../../assests/svg/sidebar/setting-active-icon.svg";
+import {ReactComponent as DashboardActiveIcon} from "../../../assests/svg/sidebar/dashboard-active-icon.svg";
+import {ReactComponent as InvoicesActiveIcon} from "../../../assests/svg/sidebar/invoice-active-Icon.svg";
+import {ReactComponent as ClientsActiveIcon} from "../../../assests/svg/sidebar/clients-active-icon.svg";
+import {ReactComponent as PerformanceAnalysisActiveIcon} from "../../../assests/svg/sidebar/performance-active-icon.svg";
+import {ReactComponent as WorkflowsActiveIcon} from "../../../assests/svg/sidebar/workflow-active-icon.svg";
+import {ReactComponent as NotificationsActiveIcon} from "../../../assests/svg/sidebar/notification-active-icon.svg";
+import {ReactComponent as ReportsActiveIcon} from "../../../assests/svg/sidebar/reports-active-icon.svg";
+import {ReactComponent as UserManagementActiveIcon} from "../../../assests/svg/sidebar/user-management-active-icon.svg";
+import {ReactComponent as SettingsActiveIcon} from "../../../assests/svg/sidebar/setting-active-icon.svg";
+import {ReactComponent as CategoriesActiveIcon} from "../../../assests/svg/sidebar/categories-active-icon.svg";
+import {ReactComponent as KPIActiveIcon} from "../../../assests/svg/sidebar/kpi-active-icon.svg";
+import {ReactComponent as TransactionsActiveIcon} from "../../../assests/svg/sidebar/transaction-active-icon.svg";
+
 import { AP, AR, CASHFLOW } from "../../../constants/portal-type-constants";
-import { TOACTIVITYLOG, TOBILLS, TOCLIENTS, TODASHBOARD, TOINVOICES, TONOTIFICATIONS, TOPAYMENTSOURCES, TOPERFORMANCEANALYSIS, TOREPORTS, TOSETTINGS, TOUSERMANAGEMENT, TOVENDORMANAEMENT, TOWORKFLOWS } from "../../../constants/routes-constant";
+import { TOACTIVITYLOG, TOBILLS, TOCATEGORIES, TOCLIENTS, TODASHBOARD, TOIMPORTTRANSACTIONS, TOINVOICES, TOKPI, TONOTIFICATIONS, TOPAYMENTSOURCES, TOPERFORMANCEANALYSIS, TOREPORTS, TOSETTINGS, TOSUBSCRIPTIONINVOICES, TOTRANSACTIONS, TOUSERMANAGEMENT, TOVATMANAGEMENT, TOVENDORMANAEMENT, TOWORKFLOWS } from "../../../constants/routes-constant";
 
 export const SIDEBARDATA = [
   {
@@ -27,128 +34,151 @@ export const SIDEBARDATA = [
     title: "Dashboard",
     path: TODASHBOARD,
     allowedPortal: [AP,AR,CASHFLOW],
-    icon: <img src={DashboardIcon} alt="home" />,
-    hoverdIcon: <img src={DashboardActiveIcon} alt="account-settings" />,
+    icon: <DashboardIcon />,
+    hoverdIcon: <DashboardActiveIcon />,
   },
-  // {
-  //   id: "2",
-  //   title: "Menu",
-  //   path: MENUPATH,
-  //   allowedPortal:[],
-  //   icon: <img src={MenuIcon} alt="menu" />,
-  //   iconClosed: <AddIcon />,
-  //   iconOpened: <RemoveIcon />,
-
-  //   subNav: [
-  //     {
-  //       id: "1",
-  //       title: "Menu Preview",
-  //       allowedPortal:[],
-  //       path: MENUPATH + SLASHPATH + MENUPREVIEWPATH,
-  //     },
-  //     {
-  //       id: "2",
-  //       title: "Create Menu",
-  //       allowedPortal:[],
-  //       path: MENUPATH + SLASHPATH + CREATEMENUPATH,
-  //     },
-  //   ],
-  // },
+  {
+    id: "17.1",
+    title: "Transactions",
+    path: TOTRANSACTIONS,
+    allowedPortal: [CASHFLOW],
+    icon: <TransactionsIcon />,
+    hoverdIcon: <TransactionsActiveIcon />,
+  },
+  {
+    id: "17.2",
+    title: "VAT Management",
+    path: TOVATMANAGEMENT,
+    allowedPortal: [CASHFLOW],
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
+  },
+  {
+    id: "17.3",
+    title: "Categories",
+    path: TOCATEGORIES,
+    allowedPortal: [CASHFLOW],
+    icon: <CategoriesIcon />,
+    hoverdIcon: <CategoriesActiveIcon />,
+  },
+  {
+    id: "17.4",
+    title: "Key Performance Indicator",
+    path: TOKPI,
+    allowedPortal: [CASHFLOW],
+    icon: <KPIIcon />,
+    hoverdIcon: <KPIActiveIcon />,
+  },
+  {
+    id: "17.5",
+    title: "Import Transactions",
+    path: TOIMPORTTRANSACTIONS,
+    allowedPortal: [CASHFLOW],
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
+  },
+  {
+    id: "17.6",
+    title: "Subscription Invoices",
+    path: TOSUBSCRIPTIONINVOICES,
+    allowedPortal: [CASHFLOW],
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
+  },
   {
     id: "133.6",
     title: "Invoices",
     path: TOINVOICES,
     allowedPortal: [AR],
-    icon: <img src={InvoicesIcon} alt="home" />,
-    hoverdIcon: <img src={InvoicesActiveIcon} alt="account-settings" />,
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
   },
   {
     id: "15",
     title: "Bills",
     path: TOBILLS,
     allowedPortal: [AP],
-    icon: <img src={InvoicesIcon} alt="Bills" />,
-    hoverdIcon: <img src={InvoicesActiveIcon} alt="account-settings" />,
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
   },
   {
     id: "16",
     title: "Payment Sources",
     path: TOPAYMENTSOURCES,
     allowedPortal: [AP],
-    icon: <img src={InvoicesIcon} alt="Payment Sources" />,
-    hoverdIcon: <img src={InvoicesActiveIcon} alt="account-settings" />,
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
   },
   {
-    id: "17",
+    id: ".1",
     title: "Vendor Management",
     path: TOVENDORMANAEMENT,
     allowedPortal: [AP],
-    icon: <img src={InvoicesIcon} alt="Vendor Management" />,
-    hoverdIcon: <img src={InvoicesActiveIcon} alt="account-settings" />,
+    icon: <InvoicesIcon />,
+    hoverdIcon: <InvoicesActiveIcon />,
   },
   {
     id: "3",
     title: "Clients",
     path: TOCLIENTS,
     allowedPortal: [AR],
-    icon: <img src={ClientsIcon} alt="listing" />,
-    hoverdIcon: <img src={ClientsActiveIcon} alt="account-settings" />,
+    icon: <ClientsIcon />,
+    hoverdIcon: <ClientsActiveIcon />,
   },
   {
     id: "1.1",
     title: "Performance Analysis",
     path: TOPERFORMANCEANALYSIS,
     allowedPortal: [AR],
-    icon: <img src={PerformanceAnalysisIcon} alt="home" />,
-    hoverdIcon: <img src={PerformanceAnalysisActiveIcon} alt="account-settings" />,
+    icon: <PerformanceAnalysisIcon />,
+    hoverdIcon: <PerformanceAnalysisActiveIcon />,
   },
   {
     id: "1.2",
     title: "Workflows",
     path: TOWORKFLOWS,
     allowedPortal: [AP,AR],
-    icon: <img src={WorkflowsIcon} alt="home" />,
-    hoverdIcon: <img src={WorkflowsActiveIcon} alt="account-settings" />,
+    icon: <WorkflowsIcon />,
+    hoverdIcon: <WorkflowsActiveIcon />,
   },
   {
     id: "4",
     title: "Notifications",
     path: TONOTIFICATIONS,
     allowedPortal: [AR],
-    icon: <img src={NotificationsIcon} alt="my-Notifications" />,
-    hoverdIcon: <img src={NotificationsActiveIcon} alt="account-settings" />,
+    icon: <NotificationsIcon />,
+    hoverdIcon: <NotificationsActiveIcon />,
   },
   {
     id: "18",
     title: "Activity Log",
     path: TOACTIVITYLOG,
     allowedPortal: [AP],
-    icon: <img src={InvoicesIcon} alt="Activity Log" />,
-    hoverdIcon: <img src={InvoicesActiveIcon} alt="account-settings" />,
+    icon: <InvoicesIcon/>,
+    hoverdIcon: <InvoicesActiveIcon />,
   },
   {
     id: "6",
     title: "Reports",
     path: TOREPORTS,
     allowedPortal: [AP,AR],
-    icon: <img src={ReportsIcon} alt="Reports" />,
-    hoverdIcon: <img src={ReportsActiveIcon} alt="account-settings" />,
+    icon: <ReportsIcon />,
+    hoverdIcon: <ReportsActiveIcon />,
   },
   {
     id: "10",
     title: "User Management",
     path: TOUSERMANAGEMENT,
     allowedPortal: [AR],
-    icon: <img src={UserManagementIcon} alt="recipe-management" />,
-    hoverdIcon: <img src={UserManagementActiveIcon} alt="account-settings" />,
+    icon: <UserManagementIcon />,
+    hoverdIcon: <UserManagementActiveIcon />,
   },
   {
     id: "14",
     title: "Settings",
     path: TOSETTINGS,
     allowedPortal: [AR],
-    icon: <img src={SettingsIcon} alt="account-settings" />,
-    hoverdIcon: <img src={SettingsActiveIcon} alt="account-settings" />,
+    icon: <SettingsIcon />,
+    hoverdIcon: <SettingsActiveIcon />,
   },
 ];
-

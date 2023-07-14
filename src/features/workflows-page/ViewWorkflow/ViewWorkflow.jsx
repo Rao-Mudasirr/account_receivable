@@ -299,7 +299,9 @@ const ViewWorkflow = () => {
                 type="delete"
                 disabled={info.row.index === 0 ? true : false}
               />
+             
             </>
+            
           )}
         </Box>
       ),
@@ -460,6 +462,7 @@ const ViewWorkflow = () => {
               >
                 Set as Default
               </Button>
+              
 
               <Button
                 variant="contained"
