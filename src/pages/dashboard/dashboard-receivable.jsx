@@ -19,18 +19,10 @@ import { useNavigate } from "react-router-dom";
 export const dashboardStyle = {
     width: "102px",
     height: "28px",
-    fontFamily: "Exo 2",
-    fontStyle: "normal",
-    fontWeight: "600",
     fontSize: "20px",
-    lineHeight: "28px",
     display: "flex",
     alignItems: "center",
     marginBottom: '52px',
-    color: "#40404D",
-    flex: "none",
-    order: 0,
-    flexGrow: 0,
 };
 
 export const DashboardReceivable = () => {
@@ -41,7 +33,7 @@ export const DashboardReceivable = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div style={dashboardStyle}>Dashboard</div>
+            <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Grid container spacing={3}>
