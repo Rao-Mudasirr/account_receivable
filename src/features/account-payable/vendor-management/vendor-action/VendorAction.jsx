@@ -38,7 +38,7 @@ const VendorAction = () => {
           className="flex"
           sx={{
             gap: "3rem",
-            "@media (max-width: 480px)": { marginTop: "1rem", gap: "2rem" },
+            "@media (max-width: 512px)": { marginTop: "1rem", gap: "2rem" },
           }}
         >
           <Box>
