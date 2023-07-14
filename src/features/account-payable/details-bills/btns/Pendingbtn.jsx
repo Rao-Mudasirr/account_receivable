@@ -35,14 +35,14 @@ const Pendingbtn = () => {
                     className='font-family-Exo  border-radius-8'
                     color="primary"
                     sx={{
-                        px: '20',
-                        py: '12',
+                        px: '25px',
+                        py: '10px',
                         background: "#2B2B33",
                         "&:hover": {
                             background: "#2B2B33",
                         }
                     }}>
-                    Send
+                    Save
                 </Button>
             </div>
         </>

@@ -22,6 +22,8 @@ import { SimpleDialog } from "../../../components/modal/simple-dialog";
 import GlobalButton from "../../../components/global-button/global-button";
 import Pendingbtn from "./btns/Pendingbtn";
 import Approvedbtn from "./btns/Approvedbtn";
+import Rejectedbtns from "./btns/Rejectedbtns";
+import Partialbtn from "./btns/Partialbtn";
 
 
 const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
@@ -144,8 +146,12 @@ const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
         {status === 'Approved' ? <Box>
           <Approvedbtn/>
         </Box> : ""}
-        <Box>C</Box>
-        <Box>D</Box>
+        {status === 'Rejected' ? <Box>
+          <Rejectedbtns/>
+        </Box> : ""}
+        {status === 'Partial' ? <Box>
+          <Partialbtn/>
+        </Box> : ""}
       </DialogContent>
 
     </SimpleDialog>

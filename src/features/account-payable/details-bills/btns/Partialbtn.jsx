@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material'
 
-const Approvedbtn = () => {
+const Partialbtn = () => {
   return (
     <div style={{marginTop:'5rem'}} className='flex justify-end'>
       <Button
@@ -16,10 +16,10 @@ const Approvedbtn = () => {
             background: "#2B2B33",
           }
         }}>
-        close
+        Send
       </Button>
     </div>
   )
 }
 
-export default Approvedbtn
+export default Partialbtn
