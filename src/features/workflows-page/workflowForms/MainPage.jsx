@@ -9,6 +9,7 @@ import InvoiceCreationDate from "./InvoiceCreationDate";
 import BeforeDueDate from "./BeforeDueDate";
 import OnDueDate from "./OnDueDate";
 import OnPaymentCollectionDate from "./OnPaymentCollectionDate";
+import AfterDueDate from "./AfterDueDate";
 
 const MainPage = ({ searchParams, setSearchParams, children }) => {
   const step = searchParams.get("step");
@@ -65,6 +66,8 @@ const MainPage = ({ searchParams, setSearchParams, children }) => {
         <OnPaymentCollectionDate />
       ) : step === "2" ? (
         <BeforeDueDate />
+      ) : step === "4" ? (
+        <AfterDueDate />
       ) : (
         ""
       )}
