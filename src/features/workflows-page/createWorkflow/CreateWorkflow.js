@@ -1,10 +1,11 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import CustomInput from "../../../components/CustomInput";
 import GlobalButton from "../../../components/global-button/global-button";
 import { ReactComponent as Add } from "../../../assests/svg/add-icon.svg";
 import { useNavigate } from "react-router-dom";
 import "./CreateWorkflow.scss";
+import DeleteCondition from "./delete-condition";
 
 const CreateWorkflowComponent = () => {
   const condition1 = [
@@ -87,6 +88,22 @@ const CreateWorkflowComponent = () => {
       value: `Elizabeth Swan`,
     },
   ];
+  const All_Condition = {
+    condition1: condition1,
+    condition2: condition2,
+    condition3: condition3,
+  }
+  const [Add_Conditions, setAdd_Condtion] = useState([All_Condition])
+  const AddCondtion = () => {
+    const newData = [...Add_Conditions];
+    setAdd_Condtion([...newData, All_Condition])
+  }
+  const handleDelete = (id) => {
+      const newData = [...Add_Conditions];
+      const updated_data = newData?.filter((val, index) => index !== id)
+      console.log("updated: ", updated_data);
+      setAdd_Condtion(updated_data)
+  }
   const navigate = useNavigate();
   return (
     <Box className="create-workflow-parent">
@@ -102,22 +119,27 @@ const CreateWorkflowComponent = () => {
       <Box className="condition-box">
         <Box className="first-section">
           <Typography variant="h5">If:</Typography>
-          <Button>
+          <Button onClick={AddCondtion}>
             Add Condition{" "}
             <span>
               <Add />
             </span>
           </Button>
         </Box>{" "}
-        <Box className="second-section">
-          <CustomInput type="select" required={false} options={condition1} />
-          <CustomInput type="select" required={false} options={condition2} />
-          <CustomInput
-            required={false}
-            placeholder="Type here"
-            parentClass={"inputClass"}
-          />
-        </Box>
+        {
+          Add_Conditions?.map((item, i) => (
+            <Box className="second-section" key={i}>
+              <CustomInput type="select" required={false} options={item?.condition1} />
+              <CustomInput type="select" required={false} options={item?.condition2} />
+              <CustomInput
+                required={false}
+                placeholder="Type here"
+                parentClass={"inputClass"}
+              />
+              <DeleteCondition handleDelete={handleDelete} id = {i}/>
+            </Box>
+          ))
+        }
       </Box>
       <Box className="condition-box">
         <Box className="first-section">

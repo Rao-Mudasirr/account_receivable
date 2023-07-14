@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useTheme } from "@emotion/react";
 import { Backdrop, Button, Grid, Typography } from "@mui/material";
-import DeleteIcon from "../../assests/svg/trash-red.png";
+//import DeleteIcon from "../../assests/svg/trash-red.png";
+import DeleteIcon from "../../assests/svg/trash-black.png";
 //---icons
 
 const DeleteModel = (props) => {
@@ -33,6 +34,7 @@ const DeleteModel = (props) => {
                 <div style={{marginBottom: -35}}>
                 <Box sx={{ p: 3, mt: 4, borderRadius: "50%", bgcolor: "#fff", position: "relative", boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)" }}>
                   <img src={DeleteIcon} alt="" />
+                 
                 </Box>
                 </div>
                 <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
