@@ -1,0 +1,79 @@
+.model-body {
+    /* Add styles for the model body */
+    max-width: 1000px;
+    width: 100%;
+    @media screen and (max-width: 1000px) {
+      margin: 10px;
+  }
+}
+
+  
+
+    .documentApprovalModel-model-body {
+      padding-left: 5px;
+      padding-right: 5px;
+      @media screen and (max-width: 100px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+    }
+
+
+  
+  .top-section {
+    /* Add styles for the top section */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+  }
+
+ 
+  
+  .width-100 {
+    /* Add styles for the width-80 class */
+    width: 80%;
+    margin-bottom: 70px;
+  }
+  .width-110 {
+    /* Add styles for the width-80 class */
+    width: 80%;
+    margin-bottom: 70px;
+  }
+  
+//   .width-40 {
+//     /* Add styles for the width-40 class */
+//     width: 50%;
+   
+//   }
+  .width-50 {
+    /* Add styles for the width-40 class */
+    width: 110%;
+   
+  }
+  .font-family-Exo {
+    font-family: 'Exo', sans-serif;
+  }
+  
+  .padding-left-2 {
+    padding-left: 2px;
+  }
+  
+.save-button {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #7a7a7a;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    
+  }
+  
+  .save-button:hover {
+    background-color: #000000;
+  }

@@ -38,7 +38,7 @@ import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
-// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+//  import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import Forcasting_Reports from "./pages/Forcasting_Reports";
@@ -46,6 +46,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import Subscription_invoices from "./pages/Subscription-invoices";
 
 function App() {
   return (
@@ -80,7 +81,7 @@ function App() {
         <Route path="/details-page" element={<DetailsPage />} />
 
         <Route path="/cashflow" element={<HomeLayout />}>
-          <Route path="/cashflow" element={<AccountReceivablePage />} />
+          <Route path="/cashflow" element={<AccountReceivablePage />} /> 
         </Route>
 
         <Route exact path={"/"} element={<Layout />}>
@@ -88,7 +89,7 @@ function App() {
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
 
           <Route exact path={"/total-bills"} element={<TotalBills />} />
-
+          <Route path="/subscription-invoices" element={<Subscription_invoices />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
