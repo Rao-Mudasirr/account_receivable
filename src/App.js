@@ -46,6 +46,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 
 function App() {
   return (
@@ -166,6 +167,8 @@ function App() {
             element={<DSO_Month />}
           />
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          {/* Cashflow routes */}
+          <Route exact path={"/subscription-invoices"} element={<SubscriptionInvoices />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
