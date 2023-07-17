@@ -7,10 +7,10 @@ const FilteredBy = () => {
     const [quarterlyFilterState, setQuarterlyFilterState] = useState(false)
     return (
         <>
-        <Box className='padding-2' sx={{width:'640px'}}>
-                <label htmlFor="filtered-by" className='font-family-Exo font-weight-400'>Filtered by</label>
+        <Box className='padding-1' sx={{width:'640px', marginTop:'5rem'}}>
+                <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Filtered by</label>
             <Grid container xs={12}>
-                <Grid item xs={5} className="attachment-checkbox flex cursor-pointer margin-top-1">
+                <Grid item xs={6} className="attachment-checkbox flex cursor-pointer" sx={{marginTop:'8px'}}>
                     <Checkbox
                         defaultChecked={false}
                         value={filterState}
@@ -51,7 +51,7 @@ const FilteredBy = () => {
 
                 
 
-                <Grid item xs={5} className="attachment-checkbox flex cursor-pointer margin-top-1">
+                <Grid item xs={6} className="attachment-checkbox flex cursor-pointer" sx={{marginTop:'8px'}}>
                     <Checkbox
                         defaultChecked={false}
                         value={quarterlyFilterState}
