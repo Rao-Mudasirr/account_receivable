@@ -85,6 +85,12 @@ const PayNowCard = (open, onClose,) => {
                                 IconComponent={Down}
                                 value={selectedCard}
                                 onChange={handleCardChange}
+                                renderValue={(selected) => {
+                                    if (selected.length === 0)
+                                        return <em>Placeholder</em>;
+
+                                    return selectedCardDetails.cardNumber;
+                                }}
                             >
                                 {PaynowCardData.map((card) => (
                                     <MenuItem key={card.id} value={card.id}>
@@ -93,7 +99,7 @@ const PayNowCard = (open, onClose,) => {
                                 ))}
                             </Select>
                         </Grid>
-                        <Grid item mt={{ xs: '10px' }}>
+                        <Grid item mt={{ xs: '5px' }}>
                             <Button
                                 variant="outlined"
                                 sx={{
@@ -137,12 +143,17 @@ const PayNowCard = (open, onClose,) => {
                                             color: '#6B6B80',
                                         },
                                     }}
-                                    placeholder="Card Number Format"
                                     fullWidth
                                     variant="standard"
                                     IconComponent={Down}
                                     value={selectedCard}
                                     onChange={handleCardChange}
+                                    renderValue={(selected) => {
+                                        if (selected.length === 0)
+                                            return <em>Placeholder</em>;
+
+                                        return selectedCardDetails.cardNumber;
+                                    }}
                                 >
                                     {selectedCardDetails && (
                                         <MenuItem value={selectedCardDetails.id}>
