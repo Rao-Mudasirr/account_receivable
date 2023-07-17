@@ -11,7 +11,7 @@ export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
   return (
     <>
-      <div style={dashboardStyle}>Dashboard</div>
+      <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <DashboardCard
