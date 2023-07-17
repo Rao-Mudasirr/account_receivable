@@ -7,6 +7,7 @@ import { DashboardToggleIcon } from "../../features/dashboard-toggle-icon/dashbo
 import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
 import AccountReceivableDashboard from '../../features/cashflow/Dashboard/Cashflow-Module/account-receivable-dashboard';
 import { PaymentForecastingChart } from "../../features/cashflow/Dashboard/PaymentForecastingChart/PaymentForecastingChart";
+import { CashInflowOutflowStats } from "../../features/cash-inflow-outflow-stats/cash-inflow-outflow-stats";
 export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
   return (
@@ -30,17 +31,21 @@ export const DashboardCashflow = () => {
           <DashboardCard
             heading={"Cash Inflow/Outflow Stats"}
             headingSibling={<DashboardResponsiveDR />}
-          ></DashboardCard>
+          >
+            <CashInflowOutflowStats />
+          </DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard
             heading="Cash Inflow"
+            headingColor="#48995D"
             headingSibling={<DashboardResponsiveDR />}
           ></DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard
             heading="Cash Outflow"
+            headingColor="#FF3F3F"
             headingSibling={<DashboardResponsiveDR />}
           ></DashboardCard>
         </Grid>
