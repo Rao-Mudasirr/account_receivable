@@ -62,11 +62,11 @@ const PayNowCard = (open, onClose,) => {
             <SimpleDialog open={open} handleClose={onClose} title="Bill Details"
                 titleClass="primary-color font-weight-600 heading-20" paperSx={{ maxWidth: '1251px' }}>
                 <Grid container sx={{ p: 1 }}>
-                    <label htmlFor="Select" className="font-family-Exo secondary-color margin-top-2">
+                    <label htmlFor="Select" className="font-family-Exo secondary-color margin-top-3">
                         Select Card
                     </label>
-                    <Grid container className="justify-space-between margin-top-1">
-                        <Grid item xs={12} lg={8}>
+                    <Grid container className="justify-space-between">
+                        <Grid item xs={12} lg={8} className='margin-top-1'>
                             <Select
                                 sx={{
                                     '&:before': {
@@ -85,21 +85,20 @@ const PayNowCard = (open, onClose,) => {
                                 IconComponent={Down}
                                 value={selectedCard}
                                 onChange={handleCardChange}
-                                renderValue={(selected) => {
-                                    if (selected.length === 0)
-                                        return <em>Placeholder</em>;
-
-                                    return selectedCardDetails.cardNumber;
-                                }}
+                                displayEmpty // Add the displayEmpty prop
+                                renderValue={(value) =>
+                                    value ? selectedCardDetails?.cardNumber :
+                                    <span style={{color:'#E1E1E6', fontFamily:'Exo 2'}}>Card Number Format</span>
+                                }
                             >
                                 {PaynowCardData.map((card) => (
                                     <MenuItem key={card.id} value={card.id}>
-                                        {`Bank XYZ - Card : ${card.cardNumber}`}
+                                        {`Bank XYZ - Card: ${card.cardNumber}`}
                                     </MenuItem>
                                 ))}
                             </Select>
                         </Grid>
-                        <Grid item mt={{ xs: '5px' }}>
+                        <Grid item mt={{ xs: '10px' }}>
                             <Button
                                 variant="outlined"
                                 sx={{
@@ -148,12 +147,10 @@ const PayNowCard = (open, onClose,) => {
                                     IconComponent={Down}
                                     value={selectedCard}
                                     onChange={handleCardChange}
-                                    renderValue={(selected) => {
-                                        if (selected.length === 0)
-                                            return <em>Placeholder</em>;
-
-                                        return selectedCardDetails.cardNumber;
-                                    }}
+                                    renderValue={(value) =>
+                                        value ? selectedCardDetails?.id :
+                                        <span style={{color:'#E1E1E6', fontFamily:'Exo 2'}}>Card Number Format</span>
+                                    }
                                 >
                                     {selectedCardDetails && (
                                         <MenuItem value={selectedCardDetails.id}>
@@ -263,9 +260,9 @@ const styles = {
             paddingLeft: "15px",
             pb: "8px",
         },
-        "& .MuiInputBase-root:hover": {
-            backgroundColor: "#F0F0F2",
-        },
+        // "& .MuiInputBase-root:hover": {
+        //     backgroundColor: "#F0F0F2",
+        // },
         "& :before": {
             borderBottom: "1.6px solid #C4C4CC !important",
         },

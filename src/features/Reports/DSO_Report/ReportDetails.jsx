@@ -78,7 +78,7 @@ export default function ReportDetails() {
           <TableAction type="view" onClick={() => handleView(info)} />
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span className='flex justify-center width-100'>Actions</span>,
       isSortable: false,
     },
   ];
@@ -349,6 +349,7 @@ export default function ReportDetails() {
       <CustomTable
         data={DSO_Data2}
         columns={DSO_Col}
+        showHeaderFilter={false}
         // showSerialNo
         // onPageChange={pageChangeHandler}
         // onSortByChange={sortChangeHandler}

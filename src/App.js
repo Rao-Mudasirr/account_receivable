@@ -47,6 +47,8 @@ import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorRepo
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
 import PayNowCard from "./components/pay-now/PayNowCard";
+import FilteredBy from "./components/filtered-by/FilteredBy";
+import VTAmanagement from "./pages/VTA-management";
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
         <Route path="/cashflow" element={<HomeLayout />}>
           <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
+        
+
 
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
