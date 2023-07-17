@@ -7,7 +7,6 @@ import { DashboardToggleIcon } from "../../features/dashboard-toggle-icon/dashbo
 import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
 import AccountReceivableDashboard from '../../features/cashflow/Dashboard/Cashflow-Module/account-receivable-dashboard';
 import { PaymentForecastingChart } from "../../features/cashflow/Dashboard/PaymentForecastingChart/PaymentForecastingChart";
-import CashflowCard from "../../components/cashflow-card/cashflow-card";
 import { CashInflowOutflowStats } from "../../features/cash-inflow-outflow-stats/cash-inflow-outflow-stats";
 export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
@@ -15,9 +14,13 @@ export const DashboardCashflow = () => {
     <>
       <div style={dashboardStyle}>Dashboard</div>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item lg={6} xs={12}>
           <DashboardCard
             heading={"Account Receivable"}
+            headingSize=""
+            className="tertiary-color sub-heading font-family-Exo"
+            headingWeight="400"
+            
           >
             <AccountReceivableDashboard 
               tooltipMessageDso="Days Sales Outstanding It measures the average number of days it takes a business to receive payments for goods and services purchased on credit."
@@ -25,9 +28,15 @@ export const DashboardCashflow = () => {
             />
           </DashboardCard>
         </Grid>
-        <Grid item md={6 }xs={12}>
-          {/* <DashboardCard heading={"Account Payable"}></DashboardCard> */}
-          <CashflowCard/>
+        <Grid item lg={6 }xs={12}>
+        <DashboardCard
+            heading={"Account Payable"}
+          >
+            <AccountReceivableDashboard 
+              tooltipMessageDso="Days Sales Outstanding It measures the average number of days it takes a business to receive payments for goods and services purchased on credit."
+              tooltipMessageApd="Average Payment Delay The time between receiving a payment for goods and services AND paying said payment."
+            />
+          </DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard
