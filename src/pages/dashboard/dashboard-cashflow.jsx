@@ -6,17 +6,19 @@ import { DashboardResponsiveDR } from "../../features/dashboard-responsive-DR/da
 import { DashboardToggleIcon } from "../../features/dashboard-toggle-icon/dashboard-toggle-icon";
 import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
 import { PaymentForecastingChart } from "../../features/cashflow/Dashboard/PaymentForecastingChart/PaymentForecastingChart";
+import CashflowCard from "../../components/cashflow-card/cashflow-card";
 export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
   return (
     <>
-      <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
+      <div style={dashboardStyle}>Dashboard</div>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <DashboardCard heading={"Account Receivable"}></DashboardCard>
         </Grid>
-        <Grid item xs={6}>
-          <DashboardCard heading={"Account Payable"}></DashboardCard>
+        <Grid item md={6 }xs={12}>
+          {/* <DashboardCard heading={"Account Payable"}></DashboardCard> */}
+          <CashflowCard/>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard
