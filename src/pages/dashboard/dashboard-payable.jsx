@@ -23,7 +23,7 @@ export const DashboardPayable = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div style={dashboardStyle}>Dashboard</div>
+            <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Grid container spacing={3}>
