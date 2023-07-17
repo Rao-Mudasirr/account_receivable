@@ -49,6 +49,7 @@ import PaymentSource from "./pages/payment-sources";
 import EditKey from "./features/account-payable/vendor-management/EditKey";
 import TransactionsPage from "./pages/transactions-page";
 import { TOTRANSACTIONS } from "./constants/routes-constant";
+import TransactionModel from "./components/transaction-model/Transaction-Model";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/edit-key" element={<EditKey />} />
+        <Route path="/trasaction-model" element={<TransactionModel />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up"} element={<SignUpForm />} />

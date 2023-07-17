@@ -8,16 +8,83 @@ import { GlobalSearchBar } from "../../../../components/global-search-filter/glo
 import filterIcon from "../../../../assests/images/client/filter.png";
 import { DashboardSelect } from "../../../dashboard-select/dashboard-select";
 import { CustomDatePicker } from "../../../../components/custom-date-picker/custom-date-picker";
-import { Uncategorized_Data, Uncategorized_Col } from "./UncategorizedData";
+// import { Uncategorized_Data,Uncategorized_Col } from "./UncategorizedData";
 import CustomTable from "../../../../components/Table/CustomTable";
+import TransactionModel from '../../../../components/transaction-model/Transaction-Model';
 
 const Uncategorized = () => {
   const [selectBranch, setSelectBranch] = useState("");
   const [selectClient, setSelectClient] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [openModel, setOpenModel] = useState(false)
+  const handleOpen = () => {
+    setOpenModel(true)
+    }
+
+  const handleClose = () => {
+    setOpenModel(false)
+    }
+
+  const Uncategorized_Col = [
+    {
+      accessorFn: (row) => row.sr,
+      id: "sr",
+      cell: (info) => info.getValue(),
+      header: "Sr.#",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.name,
+      id: "name",
+      cell: (info) => info.getValue(),
+      header: "Name",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.category,
+      id: "category",
+      cell: (info) => <Box className="yellow-color">{info.getValue()}</Box>,
+      header: "Category",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.payment_extended_date,
+      id: "payment_extended_date",
+      cell: (info) => info.getValue(),
+      header: "Payment Extended Date",
+      // isSortable: true,
+    },
+    {
+      accessorFn: (row) => row.amount,
+      id: "amount",
+      cell: (info) => (
+        <Box
+          className="error-color cursor-pointer"
+          sx={{ textDecoration: "underline" }}
+          onClick={handleOpen}
+        >
+          {info.getValue()}
+        </Box>
+      ),
+      header: "Amount(incl. tex)",
+      // isSortable: true,
+    },
+  ];
+
+  const Uncategorized_Data = [
+    {
+      id: 1,
+      sr: "01",
+      name: "Test 1",
+      category: "Uncategorized",
+      payment_extended_date: "19 Apr, 2023",
+      amount: "-£ 15,000",
+    },
+  ];
 
   return (
+    <>
     <Grid xl={12}>
       <Grid container className="align-end" spacing={2}>
         <Grid item lg={7} md={12}>
@@ -167,7 +234,6 @@ const Uncategorized = () => {
                         data={["All", "Cash Inflow", "Cash Outflow"]}
                       />
                     </Grid>
-
                   </Grid>
                   <div className="filter-below-btn margin-top-2 flex justify-end">
                     <Button
@@ -201,15 +267,17 @@ const Uncategorized = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Box sx={{height: "1px", bgcolor: "#C4C4CC", my: "1rem"}}></Box>
+      <Box sx={{ height: "1px", bgcolor: "#C4C4CC", my: "1rem" }}></Box>
       <CustomTable
-                data={Uncategorized_Data}
-                showHeaderFilter={false}
-                columns={Uncategorized_Col}
-                isSuccess={true}
-                isPagination={true}
-            />
+        data={Uncategorized_Data}
+        columns={Uncategorized_Col}
+        showHeaderFilter={false}
+        isSuccess={true}
+        isPagination={true}
+      />
     </Grid>
+    <TransactionModel openModel={openModel} handleClose={handleClose} titelValue={"-£ 15,000"} amountValue={"-£ 15,000"}/>
+    </>
   );
 };
 

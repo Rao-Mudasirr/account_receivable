@@ -1,6 +1,5 @@
-import TableAction from "../../../../components/Table/TableAction";
-import { Link } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+
 
 export const Uncategorized_Col = [
   {
@@ -35,7 +34,12 @@ export const Uncategorized_Col = [
     accessorFn: (row) => row.amount,
     id: "amount",
     cell: (info) => (
-      <Box className="error-color cursor-pointer" sx={{textDecoration: "underline"}}>{info.getValue()}</Box>
+      <Box
+        className="error-color cursor-pointer"
+        sx={{ textDecoration: "underline" }}
+      >
+        {info.getValue()}
+      </Box>
     ),
     header: "Amount(incl. tex)",
     // isSortable: true,
