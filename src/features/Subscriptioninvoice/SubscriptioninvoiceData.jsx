@@ -1,7 +1,7 @@
 import TableAction from "../../components/Table/TableAction";
 import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import LinkNewCard from './LinkNewCard';
+import LinkNewCard from './LinkNewCard/LinkNewCard';
   
 export const SUBSCRIPTION_INVO_Col = [
   {

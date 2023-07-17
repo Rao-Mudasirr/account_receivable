@@ -1,97 +1,35 @@
- import React from "react";
- import { Box, Button, Typography, IconButton, Grid, Autocomplete, TextField } from "@mui/material";
+ import React, { useState } from "react";
+ import { Box, Button, Typography, IconButton, Grid, Autocomplete, TextField, InputLabel } from "@mui/material";
  import { ReactComponent as CloseIcon } from "../../../assests/svg/model-close.svg";
  import CustomInput from "../../../components/CustomInput";
-// // import Typography from '@mui/material/Typography';
-// import Modal from '@mui/material/Modal';
  import "../LinkNewCard/styles.scss"
- import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
  import InputAdornment from "@material-ui/core/InputAdornment";
 import Modal from '@mui/material/Modal';
 import { AUTOCOMPLETEINPUT, ListBoxPaper } from "../../../layout/components/header/components/search-card/search-card-mui-style";
-
+import { CustomField } from "../../add-bill-feature/custom-field/custom-field";
+import { CustomDatePicker } from "../../../components/custom-date-picker/custom-date-picker";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 const style = {
-  position: 'absolute',
+   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 650,
   height:900,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: 'none',
   boxShadow: 10,
+  borderRadius:'8px ',
   p: 4,
 };
-//Style
-const Styles = {
-    field_color: (theme) => ({
-      "& .MuiInput-underline:after": {
-        borderBottomColor: "#2B2B33",
-      },
-      "& .Mui-error:after": {
-        borderBottomColor: "#d32f2f",
-      },
-      "& .Mui-error:before": {
-        borderBottomColor: "#d32f2f !important",
-      },
-      "& input": {
-        paddingLeft: "15px",
-        pb: "10px",
-      },
-      "& .MuiInputBase-root:hover": {
-        backgroundColor: "#F0F0F2",
-      },
-      "& :before": {
-        borderBottom: "1.6px solid #C4C4CC !important",
-      },
-    }),
-    font_family: (theme) => ({
-      className: "font-family-Exo",
-    }),
-  };
-const style1={};
-function ChildModal() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
-      setOpen(true);
-    };
-    const handleClose = () => {
-      setOpen(false);
-    };
-    const handleClick = () => {
-        // Handle click logic here
-      };
-    return (
-     
-      <React.Fragment>
-           <Box className="save-button ">
-        <Button onClick={handleOpen}>save</Button>
-        </Box>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="child-modal-title"
-          aria-describedby="child-modal-description"
-        >
-          <Box sx={{ ...style1, width: 200 }}>
-            <h2 id="child-modal-title">Text in a child modal</h2>
-            <p id="child-modal-description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            </p>
-            <Button onClick={handleClose}>Close Child Modal</Button>
-          </Box>
-        </Modal>
-      </React.Fragment>
-    );
-  }
+
 export default function LinkNewCard () {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  //  const [startDate, setStartDate] = useState(null);
+  //  const [endDate, setEndDate] = useState(null);
   const condition1 = [
     {
       title: "Barclays",
@@ -124,14 +62,15 @@ export default function LinkNewCard () {
         <Box className="model-body">
       <Box className="documentApprovalModel-model">
         <Box className="top-section">
-           <Typography variant="h6" style={{ fontWeight: 'bold', color: 'black' }}>Link New Card</Typography>
+           <Typography variant="h6" >Link New Card</Typography>
            <IconButton onClick={handleClose} style={{ cursor: "pointer", zIndex: 200 }}>
              <CloseIcon />
            </IconButton>
          </Box>
         <Box className="documentApprovalModel-model-body">
                 <Box sx={{ marginBottom: "60px" }}>
-             
+               
+
                  <Autocomplete
                           
                      id="search-which-is-on-sidebar-already"
@@ -139,19 +78,29 @@ export default function LinkNewCard () {
                     isOptionEqualToValue={(option, value) => option.id === value.id}
                     ListboxProps={{ className: 'header-search-card', style: { maxHeight: "210px", paddingTop: 0, paddingBottom: 0 } }}
                     size="small"
+                  
                     PaperComponent={ListBoxPaper}
                           
                             options={condition1}
                             getOptionLabel={(option) => option.title}
                             renderInput={(params) => (
-                              <TextField  id="standard-basic"  variant="standard"
+                             <>
+                              <InputLabel htmlFor="standard-basic" sx={{color: 'black', fontFamily: 'font-family-Exo padding-left-2', fontWeight: 'bold', marginBottom: '10px',  '&:hover': {
+                                  color: 'dark-black', // Define the hover color
+                                   cursor: 'pointer', fontSize: '16px',padding:"2px" } }}>Select Bank</InputLabel> 
+
+                                   
+                              <TextField  id="standard-basic"  
                                   {...params} sx={{AUTOCOMPLETEINPUT,display: "flex" }}
+                                
                                 placeholder="Type Here "
                                 InputProps={{
                                   ...params.InputProps,
                                   endAdornment: (
 
-                                    <InputAdornment position="end" color= "red">
+                                    <InputAdornment position="end" color= "#777777" SX={{ width: 24,
+                                      height: 24,
+                                      flexShrink: 0,}}>
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width="24"
@@ -171,13 +120,15 @@ export default function LinkNewCard () {
                                   </InputAdornment>
                                   ),
                                   className: "font-family-Exo padding-left-2",
+                                  
                                 }}
                               />
+                              </>
                             )}
                           />
-
+                          
                 </Box>
-                <Box sx={{ marginBottom: "60px" }}>
+                <Box className="documentApprovalModel-model-body" sx={{ marginBottom: "60px" }}>
                     <CustomInput
                     className="width-100"
                     placeholder="Card Number Format"
@@ -185,10 +136,10 @@ export default function LinkNewCard () {
                         className: "font-family-Exo padding-left-2",
                     }}
                     required={false}
-                    label="Name on Card"
+                    label="*Name on Card"
                     />
                 </Box>
-                <Box sx={{ marginBottom: "60px" }}>
+                <Box className="documentApprovalModel-model-body" sx={{ marginBottom: "60px" }}>
                     <CustomInput
                     className="width-100"
                     placeholder="Card Number Format"
@@ -199,54 +150,46 @@ export default function LinkNewCard () {
                     label="Card Number"
                     />
                 </Box>
-                <Grid container item xs={12}  sx={{ display: "flex", flexDirection: { md: "row", xs: "column" ,mt:2 }, gap: 6 }}>
-                    <Box sx={{ marginBottom: "80px" ,display: "flex" }}>
-                    <CustomInput
+       
+                  <Grid item xs={12}sx={{ display: "flex", flexDirection: { md: "row", xs: "column" }, mt: 2 ,gap:4}} >
+                    <Box  sx={{marginBottom: "60px", display:"flex"} }>
+                1      <CustomInput className="font-family-Exo padding-left-2"
                         placeholder="4421"
-                        className="width-50"
-                      
                         inputProps={{
-                        className: "font-family-Exo padding-left-2",
+                         // className: "font-family-Exo padding-left-3",
                         }}
                         required={false}
                         label="CVN Number"
-                    />
+                      />
+                      </Box>
+                      <Box sx={{marginTop:"17px", marginBottom: "60px", display:"flex"}}>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <CustomField label="Expiry Date" id="Expiry Date" className="font-family-Exo padding-left-2">
+                          <CustomDatePicker placeholder="18/22" />
+                        </CustomField>
+                      </LocalizationProvider>
                     </Box>
-                    <Box sx={{ marginBottom: "80px"}}>
-                     <CustomInput
-                        className="width-50"
-                        placeholder="18/20"
-                        inputProps={{
-                        className: "font-family-Exo padding-left-2",
-                        }}
-                        required={false}
-                        label="Expiry Date"
-
-
-
-
-                        
-                    />
-                   
-                    </Box>
-                </Grid>
-                <Box className="save-button ">
+                  </Grid>
+                  <Grid item xs={12}>
+                     <Box className="save-button ">
                     <Button onClick={ handleOpen} sx={{
                         color:'white'
 
                     }} >
                         SAVE
-                    {/* <ChildModal /> */}
                     </Button>
-                </Box>
+                     </Box>
+                      
+                      </Grid> 
+              
                 </Box>
         </Box>
+       
         </Box>
-          {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          
-          </Typography> */}
+        
         </Box>
       </Modal>
+      
     </div>
   );
 }
