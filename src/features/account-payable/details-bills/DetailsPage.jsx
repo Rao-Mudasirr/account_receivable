@@ -15,9 +15,9 @@ import CustomInput from "../../../components/CustomInput";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Image from "../../../assests/bills/file.png";
 import { ReactComponent as FullScreen } from "../../../assests/bills/maximize.svg";
-import { ReactComponent as Pound } from "../../../assests/bills/pound-sign.svg";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { PoundSign } from "../../../assests/bills/pound-sign";
 
 
 const DetailsPage = ({ open, handleClose ,setOpenModel, openModel}) => {
@@ -125,7 +125,7 @@ const DetailsPage = ({ open, handleClose ,setOpenModel, openModel}) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Pound />
+                      <PoundSign />
                     </InputAdornment>
                   ),
                 }}
