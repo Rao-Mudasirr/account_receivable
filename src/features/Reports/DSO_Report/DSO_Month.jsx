@@ -165,6 +165,7 @@ function DSO_Month() {
       <CustomTable
         data={DSO_Data}
         columns={DSO_Col}
+        showHeaderFilter={false}
         // showSerialNo
         // onPageChange={pageChangeHandler}
         // onSortByChange={sortChangeHandler}

@@ -46,6 +46,8 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import PayNowCard from "./components/pay-now/PayNowCard";
+import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 
 function App() {
@@ -62,6 +64,8 @@ function App() {
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
+
+        <Route exact path={"/pay-now"} element={<PayNowCard />} />
 
         <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
@@ -83,12 +87,15 @@ function App() {
         <Route path="/cashflow" element={<HomeLayout />}>
           <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
+        
+
 
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
+          <Route path={"/vta-management"} element={<VTAmanagement/>} />
           <Route
             exact
             path={"/user-management"}
