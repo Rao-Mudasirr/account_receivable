@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -17,7 +17,7 @@ import exportIcon from "../../../assests/images/client/export.png";
 import CardFilter from "../components/card-filter/card-filter";
 import GlobalButton from "../../../components/global-button/global-button";
 
-const DueInvoices = ({ status }) => {
+const DueInvoices = ({ status, setActiveTab }) => {
   // states
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +27,10 @@ const DueInvoices = ({ status }) => {
   const modalClickHandlar = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(()=>{
+    setActiveTab(0);
+  },[])
 
   const filteredRows = invoicestabledata.filter(
     (row) =>
@@ -73,7 +77,7 @@ const DueInvoices = ({ status }) => {
           />
           <GlobalButton
             btnName="accent"
-            btnText="Export Text"
+            btnText="Export"
             endIcon={
               <img src={exportIcon} alt="Export Text" width={16} height={16} />
             }
