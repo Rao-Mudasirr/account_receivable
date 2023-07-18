@@ -290,6 +290,7 @@ function CashFlowForCasting() {
       <CustomTable
         data={CashFlow_Data}
         columns={CASHFLOW_Col}
+        showHeaderFilter={false}
         // showSerialNo
         // onPageChange={pageChangeHandler}
         // onSortByChange={sortChangeHandler}
