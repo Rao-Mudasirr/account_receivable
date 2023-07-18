@@ -14,7 +14,8 @@ export default function SubscriptionList() {
         data={SUB_INVOICE_DATA}
         columns={sub_columns}
         isSuccess={true}
-        isPagination={true}
+        isPagination={false}
+        showHeaderFilter={false}
       />
     </React.Fragment>
   )
