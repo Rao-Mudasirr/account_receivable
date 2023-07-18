@@ -8,6 +8,7 @@ import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging
 import AccountReceivableDashboard from '../../features/cashflow/Dashboard/Cashflow-Module/account-receivable-dashboard';
 import { PaymentForecastingChart } from "../../features/cashflow/Dashboard/PaymentForecastingChart/PaymentForecastingChart";
 import { CashInflowOutflowStats } from "../../features/cash-inflow-outflow-stats/cash-inflow-outflow-stats";
+import { CashInflowOutflowTable } from "../../features/cash-inflow-outflow-table/cash-inflow-outflow-table";
 export const DashboardCashflow = () => {
   const [agingBucketVal, setAgingBucketVal] = useState("0");
   return (
@@ -40,14 +41,18 @@ export const DashboardCashflow = () => {
             heading="Cash Inflow"
             headingColor="#48995D"
             headingSibling={<DashboardResponsiveDR />}
-          ></DashboardCard>
+          >
+            <CashInflowOutflowTable />
+          </DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard
             heading="Cash Outflow"
             headingColor="#FF3F3F"
             headingSibling={<DashboardResponsiveDR />}
-          ></DashboardCard>
+          >
+            <CashInflowOutflowTable />
+          </DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <PaymentForecastingChart />
