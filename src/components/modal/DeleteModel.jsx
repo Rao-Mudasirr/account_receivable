@@ -31,17 +31,41 @@ const DeleteModel = (props) => {
           <Grid container>
             <Grid xs={12} item>
               <Box sx={Styles.innerBox(theme)}>
-                <div style={{marginBottom: -35}}>
-                <Box sx={{ p: 3, mt: 4, borderRadius: "50%", bgcolor: "#fff", position: "relative", boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)" }}>
-                  <img src={DeleteIcon} alt="" />
-                 
-                </Box>
+                <div style={{ marginBottom: -35 }}>
+                  <Box
+                    sx={{
+                      p: 3,
+                      mt: 4,
+                      borderRadius: "50%",
+                      bgcolor: "#fff",
+                      position: "relative",
+                      boxShadow: "-4px 4px 4px rgba(222, 222, 222, 0.25)",
+                    }}
+                  >
+                    <img src={DeleteIcon} alt="" />
+                  </Box>
                 </div>
-                <div style={{backgroundColor: "#fff", width: "100%", borderRadius: "0 0 8px 8px"}}>
+                <div
+                  style={{
+                    backgroundColor: "#fff",
+                    width: "100%",
+                    borderRadius: "0 0 8px 8px",
+                  }}
+                >
                   <Box sx={{ pt: "40px", textAlign: "center" }}>
-                    <Typography variant="h3" sx={Styles.heading}>Are you sure?</Typography>
-                    <Typography variant="h5" sx={{ fontWeight: "400", color: "#2B2B33", fontSize: "14px", mt: 3 }}>
-                      This will delete your bank account
+                    <Typography variant="h3" sx={Styles.heading}>
+                      Are you sure?
+                    </Typography>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: "400",
+                        color: "#2B2B33",
+                        fontSize: "14px",
+                        mt: 3,
+                      }}
+                    >
+                      {props.children || "This will delete your bank account"}
                     </Typography>
                   </Box>
                   <Box sx={Styles.buttonWrapper}>
@@ -80,8 +104,7 @@ const Styles = {
     width: { xs: "95%", sm: 500 },
     borderRadius: "8px",
     boxShadow: 24,
-    backgroundColor: "#2B2B33", // Top half color 
-
+    backgroundColor: "#2B2B33", // Top half color
   }),
   innerBox: (theme) => ({
     display: "flex",
@@ -95,34 +118,46 @@ const Styles = {
     justifyContent: "center",
     gap: "1rem",
     mt: 6,
-    mb: 3.5
+    mb: 3.5,
   }),
   buttonError: (theme) => ({
     bgcolor: "#2B2B33",
     color: "#fff",
     transition: "background-color 0.2s ease",
-    "&:hover": { bgcolor: "#1A1A1D" ,boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
-    transform: "scale(1)", },
+    "&:hover": {
+      bgcolor: "#1A1A1D",
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
+      transform: "scale(1)",
+    },
     px: 2,
     py: 1,
     fontSize: "16px !important",
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
     fontWeight: "400",
-    borderRadius: "8px"
+    borderRadius: "8px",
   }),
   buttonSuccess: (theme) => ({
     bgcolor: "#fff",
     color: "#2B2B33",
     minWidth: "100px",
     transition: "background-color 0.2s ease",
-    "&:hover": { bgcolor: "#F7F7F7",boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
-    transform: "scale(1)", },
+    "&:hover": {
+      bgcolor: "#F7F7F7",
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)", // Add a box shadow on hover
+      transform: "scale(1)",
+    },
     fontSize: "16px !important",
-    
+
     border: "1px solid #2B2B33",
     fontWeight: "400",
-    textTransform: 'capitalize',
-    borderRadius: "8px"
+    textTransform: "capitalize",
+    borderRadius: "8px",
   }),
-  heading: { fontSize: "20px", fontWeight: "600", color: "#2B2B33", mt: 3, fontFamily: `'Exo 2', "Roboto", "sans-serif"` }
+  heading: {
+    fontSize: "20px",
+    fontWeight: "600",
+    color: "#2B2B33",
+    mt: 3,
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+  },
 };
