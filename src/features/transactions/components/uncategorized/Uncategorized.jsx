@@ -83,6 +83,8 @@ const Uncategorized = () => {
     },
   ];
 
+  const dataElement = Uncategorized_Data[0];
+
   return (
     <>
     <Grid xl={12}>
@@ -276,7 +278,7 @@ const Uncategorized = () => {
         isPagination={true}
       />
     </Grid>
-    <TransactionModel openModel={openModel} handleClose={handleClose} titelValue={"-£ 15,000"} amountValue={"-£ 15,000"}/>
+    <TransactionModel openModel={openModel} handleClose={handleClose} titelValue={dataElement.amount} nameValue={dataElement.name} amountValue={dataElement.amount} paymentDateValue={dataElement.payment_extended_date} categoryValue={dataElement.category} />
     </>
   );
 };
