@@ -16,7 +16,7 @@ const Categories = () => {
       component: "Cash Outflow",
     },
   ];
-  // console.log(0.21 + 1.91 + 2.13 + 0.09 + 0.66 + 0.09 + 0.09 + 1.46 + 1.88);
+  // console.log(8.52 * 240);
 
   return (
     <Box>

@@ -19,6 +19,7 @@ import CustomInput from "../../../../components/CustomInput";
 import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.svg";
 import "./RulesCategory.scss";
 import DeletePrompt from "../../../../components/Table/prompt/DeletePrompt";
+import CategoriesModel from "../CategoriesModel/CategoriesModel";
 
 const RulesCategory = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -133,7 +134,9 @@ const RulesCategory = () => {
                       <DeletePrompt>
                         Selected Category will be Deleted
                       </DeletePrompt>
-                      <TableAction />
+                      <TableAction
+                        onClicked={() => setOpenEditModel(!openEditModel)}
+                      />
                     </Box>
                   ) : (
                     row.action
@@ -144,6 +147,10 @@ const RulesCategory = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <CategoriesModel
+        open={openEditModel}
+        handleClose={() => setOpenEditModel(!openEditModel)}
+      />
     </div>
   );
 };
