@@ -9,14 +9,13 @@ import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import ErrorIcon from "@mui/icons-material/Error";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import { Link, useNavigate } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import "./signUp.scss";
-
+ 
 const names = [
   "Account Payable (I want to pay vendors)",
   "Account Receivable (I want to send invoices)",
@@ -341,7 +340,7 @@ export default function MySignUpForm(props) {
                         renderValue={(selected) => {
                           console.log(selected.length);
                           if (selected?.length === 1 ) {
-                            return <span style={{color:'#C4C4CC', fontFamily:'Exo 2', marginLeft:'15px'}}>Placeholder</span>;
+                            return <span style={{color:'#B2B2B2', fontFamily:'Exo 2', marginLeft:'15px'}}>Select</span>;
                           }
                           if (selected.includes("All")) {
                             return "All";
@@ -349,11 +348,7 @@ export default function MySignUpForm(props) {
                           return selected.join(", ");
                         }}
                         error={Boolean(errors.checkbox)}
-                      // inputProps={{ placeholder: "Select options" }}
                       >
-                        {/* <MenuItem disabled value="">
-                          <em>Placeholder</em>
-                        </MenuItem> */}
                         {names.map((name) => (
                           <StyledMenuItem
                             onClick={() => {
