@@ -14,7 +14,12 @@ const DeletePrompt = (props) => {
     <Box>
       <TableAction size="small" type="delete" onClicked={handleOpen} />
       {open && (
-        <DeleteModel open={open} handleClose={handleClose} onDeleteClick={onDeleteClick} />
+        <DeleteModel
+          open={open}
+          handleClose={handleClose}
+          onDeleteClick={onDeleteClick}
+          children={props.children}
+        />
       )}
     </Box>
   );

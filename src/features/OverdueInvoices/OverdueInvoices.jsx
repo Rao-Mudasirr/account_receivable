@@ -128,10 +128,10 @@ function OverdueInvoices() {
         <Grid xs={12} md={6} lg={6} xl={6}>
           <div
             style={{
-              margin: "5px",
+              // margin: "5px",
               display: "flex",
               alignItems: "center",
-              marginTop: "10px",
+              // marginTop: "10px",
             }}
           >
             <GlobalSearchBar />
@@ -177,7 +177,7 @@ function OverdueInvoices() {
                 handleClick()
               }}
           >
-            Export Text
+            Export
           </Button>
           <ShowFilters 
             filter_type = {type}
@@ -194,6 +194,7 @@ function OverdueInvoices() {
           <CustomTable
             data={INVOICE_DATA}
             columns={columns}
+            showHeaderFilter={false}
             // showSerialNo
             // onPageChange={pageChangeHandler}
             // onSortByChange={sortChangeHandler}
