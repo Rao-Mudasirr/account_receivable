@@ -48,6 +48,10 @@ import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
 import TransactionsPage from "./pages/transactions-page";
 import { TOTRANSACTIONS } from "./constants/routes-constant";
+import PayNowCard from "./components/pay-now/PayNowCard";
+import VTAmanagement from "./pages/VTA-management";
+import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
+import CategoryCashflow from "./pages/CategoryCashflow";
 
 function App() {
   return (
@@ -63,6 +67,8 @@ function App() {
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
+
+        <Route exact path={"/pay-now"} element={<PayNowCard />} />
 
         <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
@@ -84,6 +90,8 @@ function App() {
         <Route path="/cashflow" element={<HomeLayout />}>
           <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
+        
+
 
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
@@ -91,6 +99,7 @@ function App() {
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route path={"/vta-management"} element={<VTAmanagement/>} />
           <Route
             exact
             path={"/user-management"}
@@ -145,6 +154,7 @@ function App() {
             path={"/reports/forecasting-report"}
             element={<Forcasting_Reports />}
           />{" "}
+          <Route exact path={"/categories"} element={<CategoryCashflow />} />{" "}
           <Route
             exact
             path={"/clients-details/:id"}
@@ -169,6 +179,12 @@ function App() {
             element={<DSO_Month />}
           />
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          {/* Cashflow routes */}
+          <Route
+            exact
+            path={"/subscription-invoices"}
+            element={<SubscriptionInvoices />}
+          />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

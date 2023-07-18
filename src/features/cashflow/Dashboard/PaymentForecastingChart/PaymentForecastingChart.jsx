@@ -6,7 +6,6 @@ import { DashboardResponsiveDR } from "../../../dashboard-responsive-DR/dashboar
 const RandomNumber = () => {
   return Math.floor(Math.random() * 200);
 };
-console.log(RandomNumber);
 const state = {
   options: {
     chart: {
@@ -15,14 +14,11 @@ const state = {
       zoom: {
         enabled: false,
       },
-
       toolbar: {
         show: false,
       },
     },
-    grid: {
-      show: false,
-    },
+
     stroke: { curve: "smooth", width: 2 },
 
     markers: {
