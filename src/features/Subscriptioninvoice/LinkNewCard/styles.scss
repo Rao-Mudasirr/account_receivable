@@ -33,7 +33,8 @@
 
     .documentApprovalModel-model-body {
       display: flex;
-      width: 605px;
+      // width: 580px;
+      width: 580px;
       flex-direction: column;
       gap: 8px;
      
@@ -53,26 +54,24 @@
 
   }
 .h6{
-  font-family: Exo 2;
-font-size: 20px;
+font-family: 'Exo 2' !important;
+font-size: 20px !important;
 font-style: normal;
-font-weight: 600;
-line-height: 28px;
+font-weight: 600 !important;
+line-height: 28px !important;
 color: var(--theme-primary-p-20-main, #2B2B33);
 }
  
   
   .width-100 {
     /* Add styles for the width-80 class */
-            width: 80%;
-          // // margin-bottom: 70px;
-          display: flex;
+        display: flex;
       height: 48px;
-      padding: 12px 24px;
+      // padding: 12px 24px;
       justify-content: center;
       // align-items: flex-start;
       //  gap: 4px;
-       align-self: stretch;
+      //  align-self: stretch;
        flex: 1 0 0;
        color: var(--theme-primary-p-20-main, #2B2B33);
   }
@@ -80,34 +79,30 @@ color: var(--theme-primary-p-20-main, #2B2B33);
   
 
   .font-family-Exo {
-    font-family: 'Exo', sans-serif;
+    font-family: 'Exo 2';
+    padding: 8.5px 14px !important;
+   
   }
-  
-  .padding-left-2 {
-    padding-left: 2px;
-    
-  }
+.label-1{
+  padding: 8.5px 14px !important; 
+  width: 230px !important;
+}
+
  
 .save-button {
-    // display: block;
-    // width: 100%;
-    // padding: 0.5rem;
-    // font-size: 1rem;
-    // background-color: #7a7a7a;
-    // color: #ffffff;
-    // border: none;
-    // border-radius: 4px;
-    // cursor: pointer;
-    // text-align: center;
-     width: 431px;
+
+    display: flex;
+    width: 431px;
     height: 48px;
-    background: #2B2B33;
-    border-radius: 8px;
-    letter-spacing: 20px;
-    border-radius: 8px;
-background: var(--theme-primary-p-20-main, #2B2B33);
+    padding: 11px 24px;
+    justify-content: center !important;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+background: var(--theme-primary-p-20-main, #2B2B33) !important;
+color: white !important;
 // flex: 1 0 0;
-align-self: stretch;
+  margin: auto !important;
     
   }
   

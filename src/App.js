@@ -46,7 +46,7 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
-import Subscription_invoices from "./pages/Subscription-invoices";
+import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 
 function App() {
   return (
@@ -87,9 +87,7 @@ function App() {
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
-
           <Route exact path={"/total-bills"} element={<TotalBills />} />
-          <Route path="/subscription-invoices" element={<Subscription_invoices />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route
             exact
@@ -114,7 +112,6 @@ function App() {
             path={"/user-management/role-right-manager"}
             element={<Manager />}
           />
-
           <Route exact path={"/workflows"} element={<Workflow />}>
             <Route
               exact
@@ -141,7 +138,11 @@ function App() {
           <Route path="/vendors/add-vendor" element={<AddVendor />} />
           <Route path="/vendors/vendor-action" element={<VendorAction />} />
           <Route exact path={"/activity-log"} element={<LogListing />} />
-           <Route exact path={"/reports/forecasting-report"} element={<Forcasting_Reports />} /> b 
+          <Route
+            exact
+            path={"/reports/forecasting-report"}
+            element={<Forcasting_Reports />}
+          />{" "}
           <Route
             exact
             path={"/clients-details/:id"}
@@ -152,7 +153,7 @@ function App() {
             path={"/performance-analysis"}
             element={<PerformanceAnalysis />}
           >
-            <Route 
+            <Route
               exact
               path={"/performance-analysis/client/:id"}
               element={<ClientComparison />}
@@ -165,8 +166,9 @@ function App() {
             path={"/report-details/month/:id"}
             element={<DSO_Month />}
           />
-
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          {/* Cashflow routes */}
+          <Route exact path={"/subscription-invoices"} element={<SubscriptionInvoices />} />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />
