@@ -54,6 +54,7 @@ import EditKey from "./features/account-payable/vendor-management/EditKey";
 import TransactionsPage from "./pages/transactions-page";
 import { TOTRANSACTIONS } from "./constants/routes-constant";
 import TransactionModel from "./components/transaction-model/Transaction-Model";
+import KPIs from "./pages/key-performance-indicator";
 
 function App() {
   return (
@@ -104,6 +105,7 @@ function App() {
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route path={"/vta-management"} element={<VTAmanagement/>} />
           <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
             path={"/user-management"}
