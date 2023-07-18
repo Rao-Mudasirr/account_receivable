@@ -46,7 +46,7 @@ export const Vendors_Col = [
   {
       id: "Actions",
       cell: (info) => (
-           <Box sx={{ display: "flex", justifyContent: "left-center" ,}}>
+           <Box className="center-text">
           
             <Link to='/vendors/vendor-action'>
           <TableAction type="view"
@@ -56,7 +56,7 @@ export const Vendors_Col = [
             </Box>
           
       ),
-      header: () => <span>Actions</span>,
+      header: () => <div className="flex justify-center width-100">Actions</div>,
       isSortable: false,
   },
 ];

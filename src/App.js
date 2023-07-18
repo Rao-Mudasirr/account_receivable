@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/report-info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -50,6 +50,10 @@ import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
+import EditKey from "./features/account-payable/vendor-management/EditKey";
+import TransactionsPage from "./pages/transactions-page";
+import { TOTRANSACTIONS } from "./constants/routes-constant";
+import TransactionModel from "./components/transaction-model/Transaction-Model";
 
 function App() {
   return (
@@ -57,6 +61,8 @@ function App() {
       <Routes>
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/edit-key" element={<EditKey />} />
+        <Route path="/trasaction-model" element={<TransactionModel />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up"} element={<SignUpForm />} />
@@ -97,6 +103,7 @@ function App() {
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route path={"/vta-management"} element={<VTAmanagement/>} />
+          <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
           <Route
             exact
             path={"/user-management"}
