@@ -6,7 +6,6 @@ const CashInflowOutflowTableCol = [
         id: "expand",
         cell: (info) => (info.getValue()),
         header: () => <span></span>,
-        isSticky: true
     },
     {
         accessorFn: (row) => row.sr,
@@ -108,6 +107,9 @@ export const CashInflowOutflowTableData = [
         id22: "465.00",
         id23: "465.00",
         id24: "465.00",
+        sx: {
+            fontWeight: "600 !important"
+        }
     },
 ];
 
@@ -118,7 +120,6 @@ export const CashInflowOutflowTable = () => {
                 <CustomTable
                     data={CashInflowOutflowTableData}
                     columns={CashInflowOutflowTableCol}
-                    onSortByChange={() => { }}
                     isSuccess={true}
                     showHeaderFilter={false}
                     isPagination={false}

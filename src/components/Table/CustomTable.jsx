@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Pagination from '@mui/material/Pagination';
 import Stack from "@mui/material/Stack";
 // Tantack table
@@ -35,28 +35,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ReactComponent as Filter } from "../../assests/svg/setting-box.svg";
 import { ExpandableRow } from "./expandable-row";
 
-// ----------------------------------------------------------------------
-// types
-// type TTable = {
-//   columns;
-//   data;
-//   isLoading?: boolean;
-//   isError?: boolean;
-//   isSuccess?: boolean;
-//   isFetching?: boolean;
-//   isPagination?: boolean;
-//   totalPages?: number;
-//   maxHeight?: number;
-//   minHeight?: number;
-//   currentPage?: number;
-//   onPageChange?;
-//   onSortByChange?;
-//   tableContainerSX?;
-//   showSerialNo?: boolean;
-//   rootSX?;
-// };
 
-// ----------------------------------------------------------------------
+
 // constant
 const EMPTY_ARRAY = [];
 
@@ -275,13 +255,13 @@ const CustomTable = (props) => {
                           {row.getVisibleCells().map((cell) => (
 
                             cell.column.columnDef.isSticky ?
-                              <StickyTableCell key={cell?.id}>
+                              <StickyTableCell sx={row.original.sx} key={cell?.id}>
                                 {flexRender(
                                   cell.column.columnDef.cell,
                                   cell.getContext()
                                 )}
                               </StickyTableCell>
-                              : <StyledTableCell key={cell?.id}>
+                              : <StyledTableCell sx={row.original.sx} key={cell?.id}>
                                 {flexRender(
                                   cell.column.columnDef.cell,
                                   cell.getContext()
@@ -498,7 +478,7 @@ export const StickyTableCell = styled(TableCell)(({ theme }) => ({
     cursor: "pointer",
     left: 0,
     position: "sticky",
-    zIndex: theme.zIndex.appBar + 2
+    zIndex: theme.zIndex.appBar - 2
   },
   [`&.${tableCellClasses.root}`]: {
     boxShadow: "unset !important",
@@ -507,13 +487,14 @@ export const StickyTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: "16px",
     color: "#40404D",
+    backgroundColor: "#fff !important",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 400,
     borderBottom: "1px solid #F0F0F2",
     minWidth: "50px",
     left: 0,
     position: "sticky",
-    zIndex: theme.zIndex.appBar + 1
+    zIndex: theme.zIndex.appBar - 1
   },
 }));
 
