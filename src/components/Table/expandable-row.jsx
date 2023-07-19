@@ -8,11 +8,11 @@ export const ExpandableRow = ({ data, expandData }) => {
     return (
         <>
             <StyledTableRow >
-                <StickyTableCell padding="checkbox">
+                <StyledTableCell padding="checkbox">
                     <IconButton onClick={() => setIsExpanded(!isExpanded)}>
                         <DownArrow style={{ rotate: isExpanded ? '180deg' : '0deg' }} />
                     </IconButton>
-                </StickyTableCell>
+                </StyledTableCell>
                 {data.map((cell, i) => i !== 0 && (
                     cell.column.columnDef.isSticky ?
                         <StickyTableCell key={cell?.id}>
@@ -34,7 +34,7 @@ export const ExpandableRow = ({ data, expandData }) => {
                     <StyledTableRow key={i}>
                         <StyledTableCell padding="checkbox" />
                         {
-                            Object.values(item).map((cell, index) => <StyledTableCell key={index}>{cell}</StyledTableCell>)
+                            Object.values(item).map((cell, index) => <StyledTableCell sx={{pl: index===0 ? '25px':''}} key={index}>{cell}</StyledTableCell>)
                         }
                     </StyledTableRow>
                 )

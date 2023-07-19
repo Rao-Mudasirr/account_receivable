@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 import { DashboardCard } from "../../components/dashboard-card/dashboard-card";
 import { UnifiedDSOAPD } from "../../features/unified-dso-apd/unified-dso-apd";
 import { TopClientsStackedBarChart } from "../../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart";
-import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
+import { AgingBucketCharts } from "../../features/aging-bucket-charts/aging-bucket-charts";
 import { PaymentShowcaseAreaChart } from "../../features/payment-showcase-area-chart/payment-showcase-area-chart";
 import { PaymentForecastingChartSwitch } from "../../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch";
 import { DashboardChartSwitch } from "../../features/dashboard-chart-switch/dashboard-chart-switch";
@@ -130,7 +130,7 @@ export const DashboardReceivable = () => {
                             </div>
                         }
                     >
-                        <AgingBucketBarChart chartSwitch={agingBucketVal} />
+                        <AgingBucketCharts chartSwitch={agingBucketVal} />
                     </DashboardCard>
                 </Grid>
                 <Grid item xl={6.5} xs={12}>
