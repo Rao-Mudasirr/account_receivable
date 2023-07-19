@@ -85,7 +85,8 @@ color: var(--theme-primary-p-20-main, #2B2B33);
   }
 .label-1{
   padding: 8.5px 14px !important; 
-  width: 230px !important;
+  width: 240px !important;
+  padding-inline-start: 1px!important;
 }
 
  
@@ -99,10 +100,10 @@ color: var(--theme-primary-p-20-main, #2B2B33);
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-background: var(--theme-primary-p-20-main, #2B2B33) !important;
-color: white !important;
-// flex: 1 0 0;
-  margin: auto !important;
+      background: var(--theme-primary-p-20-main, #2B2B33) !important;
+      color: white !important;
+      // flex: 1 0 0;
+        margin: auto !important;
     
   }
   

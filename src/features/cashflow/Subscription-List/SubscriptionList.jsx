@@ -23,13 +23,13 @@ export default function SubscriptionList() {
         isPagination={false}
         showHeaderFilter={false}
       />
-          <Button onClick={handleOpen}>Link New Card</Button>
+          {/* <Button onClick={handleOpen}>Link New Card</Button>
           <span>
             <LinkNewCard 
               open = {open}
               handleClose={handleClose}
             />
-          </span>
+          </span> */}
           
     </React.Fragment>
   )

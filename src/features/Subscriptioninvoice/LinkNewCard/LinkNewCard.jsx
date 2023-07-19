@@ -152,11 +152,11 @@ export default function LinkNewCard({ open, handleClose }) {
                   />
                 </Box>
 
-                <Grid item xs={12} sx={{ display: "flex", flexDirection: { md: "row", xs: "column" }, mt: 2, gap:2  }} >
+                <Grid item xs={12} sx={{ display: "flex", flexDirection: { md: "row", xs: "column" }, mt: 2, gap:10  }} >
                   <Box sx={{  display: "flex" ,marginBottom:"60px",justifyContent: 'flex-start',
                   '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                    padding: '9.5px 18px !important',
-                    width:'233px !important'
+                    padding: '8.5px 18px !important',paddingLeft:'1px !imporatnt',
+                    width:'252px !important'
                              },   }}>
                           <CustomInput 
                       placeholder="4421"
@@ -168,7 +168,7 @@ export default function LinkNewCard({ open, handleClose }) {
                    
                     />
                   </Box>
-                  <Box sx={{ display: "flex",justifyContent: 'flex-end' ,width: 'auto !important ',paddingRight:"1 px",
+                  <Box sx={{ display: "flex",justifyContent: 'flex-end' ,width: '242!important ',paddingRight:"1 px",
                   '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
                                        
                                 },}}>
