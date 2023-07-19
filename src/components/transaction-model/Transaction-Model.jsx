@@ -294,7 +294,7 @@ const TransactionModel = ({
           <Grid className="flex justify-space-between margin-top-1 align-center">
             <Box>
               <Typography sx={{ fontWeight: 400, fontSize: "11px", color: "#000"}}>Consider as Cash inflow</Typography>
-              <Typography sx={{fontFamily: "Exo 2", fontWeight: 400, fontSize: "12px", marginTop: "4px"}}>Subtract from the selected cash inflow Category</Typography>
+              <Typography sx={{fontFamily: `'Exo 2', "Roboto", "sans-serif"`, fontWeight: 400, fontSize: "12px", marginTop: "4px"}}>Subtract from the selected cash inflow Category</Typography>
             </Box>
             <Box>
               <Button className="tm-del_btn font-family-Exo" onClick={handleDeleteOpen}>
