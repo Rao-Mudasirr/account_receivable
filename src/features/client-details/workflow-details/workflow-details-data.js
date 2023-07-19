@@ -4,7 +4,7 @@ export const workflowtableheading = [
      "",
     "ID",
     "Workflow Name",
-    "rules",
+    "Rules",
     "% of Paid Invoices",
     "Description",
     "Action",
