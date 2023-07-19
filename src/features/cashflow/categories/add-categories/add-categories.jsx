@@ -8,12 +8,15 @@ import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.
 import DeleteModel from "../../../../components/modal/DeleteModel";
 import AddModal from "../add-modal/add-modal";
 import GlobalButton from "../../../../components/global-button/global-button";
+import SubCategoryInput from "../sub-category-input/sub-category-input";
 
 const AddCategories = () => {
   const [gridHovered, setGridHovered] = useState(false);
   const [contentHovered, setContentHovered] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [showSubCategoryInputBox, setShowSubCategoryInputBox] = useState(false);
+
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,6 +47,16 @@ const AddCategories = () => {
     setContentHovered(false);
   };
 
+  const handleShowSubCategoryInputBox = () => {
+    setShowSubCategoryInputBox(true);
+  };
+
+  const handleSaveSubCategory = () => {
+    // Implement your logic to save the sub-category here
+    setShowSubCategoryInputBox(false);
+  };
+
+
   const condition1 = [
     {
       title: "Category 1",
@@ -66,10 +79,10 @@ const AddCategories = () => {
           <CustomInput type="select" required={false} options={condition1} />
 
           <Box className="button-section">
-            <Button>View Categories</Button>
+            <Button >View Categories</Button>
             <Button>
               Add New Categories
-              <span>
+              <span onClick={handleShowSubCategoryInputBox}>
                 <Add />
               </span>
             </Button>
@@ -161,7 +174,7 @@ const AddCategories = () => {
               }}
             >
               Add Sub Category
-              <span style={{ marginLeft: "8px", marginTop: "10px" }}>
+              <span style={{ marginLeft: "8px", marginTop: "10px" }}  >
                 {" "}
                 <img src={AddIcon} alt="Add Icon" width={16} />
               </span>
@@ -175,27 +188,10 @@ const AddCategories = () => {
           </Box>
         )}
       </Box>
-<Box  sx={{ mt: 2, display: 'flex', justifyContent: 'space-between',}}>
-      <TextField
-        size="small"
-        sx={{
-           width:{xl:'154px',xs:'100%'},
-          //  height:'2px',
-          backgroundColor: "#F0F0F2",
-          fontSize: "10px",
-          lineHeight: "12px",
-          borderBottom: 'none',
-          borderColor:'#F0F0F2',
-        }}
-        inputProps={{
-          style: {
-            height: "100%",
-            padding: "4px 8px"
-          },
-        }}
-      />
-      <GlobalButton btnText="Save" btnName="accent" />
-    </Box>
+
+{showSubCategoryInputBox && (
+        <SubCategoryInput onSaveSubCategory={handleSaveSubCategory} />
+      )}
 
       <Box>
         <AddModal
