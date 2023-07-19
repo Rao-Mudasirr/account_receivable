@@ -12,11 +12,15 @@ import { AccountsAnalyticsCharts } from "../../features/accounts-analytics-chart
 export const DashboardCashflow = () => {
   return (
     <>
-      <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
+      <div style={dashboardStyle}>Dashboard</div>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item lg={6} xs={12}>
           <DashboardCard
             heading={"Account Receivable"}
+            headingSize=""
+            className="tertiary-color sub-heading font-family-Exo"
+            headingWeight="400"
+            
           >
             <AccountReceivableDashboard
               tooltipMessageDso="Days Sales Outstanding It measures the average number of days it takes a business to receive payments for goods and services purchased on credit."
@@ -24,8 +28,15 @@ export const DashboardCashflow = () => {
             />
           </DashboardCard>
         </Grid>
-        <Grid item xs={6}>
-          <DashboardCard heading={"Account Payable"}></DashboardCard>
+        <Grid item lg={6 }xs={12}>
+        <DashboardCard
+            heading={"Account Payable"}
+          >
+            <AccountReceivableDashboard 
+              tooltipMessageDso="Days Sales Outstanding It measures the average number of days it takes a business to receive payments for goods and services purchased on credit."
+              tooltipMessageApd="Average Payment Delay The time between receiving a payment for goods and services AND paying said payment."
+            />
+          </DashboardCard>
         </Grid>
         <Grid item xs={12}>
           <DashboardCard

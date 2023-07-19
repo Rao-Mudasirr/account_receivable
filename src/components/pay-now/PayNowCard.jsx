@@ -3,13 +3,8 @@ import { Select, Grid, Button, Box } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { ReactComponent as Down } from "../../assests/svg/chev-bottom.svg";
 import { TextField } from '@mui/material';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Typography } from '@mui/material';
-import dayjs from 'dayjs';
-import EventIcon from '@mui/icons-material/Event';
+import './paynow.scss'
 import Paynowbtn from './Paynowbtn'
 import { DateIcon } from '../date-icon/date-icon';
 import { SimpleDialog } from '../modal/simple-dialog';
@@ -57,6 +52,13 @@ const PayNowCard = (open, onClose,) => {
 
     const selectedCardDetails = selectedCard ? getCardDetails(selectedCard) : null;
 
+    const isFieldsEmpty =
+        !selectedCardDetails ||
+        (selectedCardDetails.cardNumber === '' &&
+            selectedCardDetails.cvnNumber === '' &&
+            selectedCardDetails.date === '' &&
+            selectedCardDetails.password === '');
+
     return (
         <>
             <SimpleDialog open={open} handleClose={onClose} title="Bill Details"
@@ -88,7 +90,7 @@ const PayNowCard = (open, onClose,) => {
                                 displayEmpty // Add the displayEmpty prop
                                 renderValue={(value) =>
                                     value ? selectedCardDetails?.cardNumber :
-                                    <span style={{color:'#E1E1E6', fontFamily:'Exo 2'}}>Card Number Format</span>
+                                        <span style={{ color: '#E1E1E6', fontFamily: 'Exo 2' }}>Card Number Format</span>
                                 }
                             >
                                 {PaynowCardData.map((card) => (
@@ -147,10 +149,6 @@ const PayNowCard = (open, onClose,) => {
                                     IconComponent={Down}
                                     value={selectedCard}
                                     onChange={handleCardChange}
-                                    renderValue={(value) =>
-                                        value ? selectedCardDetails?.id :
-                                        <span style={{color:'#E1E1E6', fontFamily:'Exo 2'}}>Card Number Format</span>
-                                    }
                                 >
                                     {selectedCardDetails && (
                                         <MenuItem value={selectedCardDetails.id}>
@@ -230,17 +228,38 @@ const PayNowCard = (open, onClose,) => {
                             </Grid>
                         </Grid>
                         <Grid item mt={{ xs: '10px' }} xs={12} lg={5} className="flex justify-center align-center">
-                            <Box
-                                sx={{
-                                    width: '422px',
-                                    height: '247px',
-                                    borderRadius: '12px',
-                                    border: '2px dashed #A6A6B3',
-                                }}
-                            ></Box>
+                            {isFieldsEmpty ? (
+                                <Box
+                                    sx={{
+                                        width: '422px',
+                                        height: '247px',
+                                        borderRadius: '12px',
+                                        border: '2px dashed #A6A6B3',
+                                    }}
+                                >
+                                </Box>
+                            ) : (
+                                <Box
+                                    sx={{
+                                        width: '422px',
+                                        height: '247px',
+                                        borderRadius: '12px',
+                                        border: '5px solid #A6A6B3',
+                                    }}
+                                >
+                                    <Box>
+                                        <div className='card_data'>
+                                            <div className="card_leftside"></div>
+                                            <div className="card_rightside"></div>
+                                        </div>
+                                    </Box>
+                                </Box>
+                            )}
                         </Grid>
                     </Grid>
-                    <Paynowbtn />
+                    <Paynowbtn
+                        isFieldsEmpty={isFieldsEmpty}
+                    />
                 </Grid>
             </SimpleDialog>
         </>

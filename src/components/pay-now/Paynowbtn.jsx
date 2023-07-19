@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Grid } from '@mui/material'
 
-const Paynowbtn = () => {
+const Paynowbtn = ({ isFieldsEmpty }) => {
     return (
         <Grid container className='justify-end margin-top-2 margin-right-2'>
             <Button
@@ -12,10 +12,10 @@ const Paynowbtn = () => {
                     fontSize: '16px',
                     px: '25px',
                     py: '10px',
-                    background: "#A6A6B3",
-                    "&:hover": {
-                        background: "#2B2B33",
-                    }
+                    background: isFieldsEmpty ? '#A6A6B3' : '#2B2B33',
+                    '&:hover': {
+                        background: isFieldsEmpty ? '#A6A6B3' : '#2B2B33',
+                    },
                 }}>
                 close
             </Button>

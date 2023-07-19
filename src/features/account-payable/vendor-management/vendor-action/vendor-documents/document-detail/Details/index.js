@@ -4,10 +4,10 @@ import CustomInput from "../../../../../../../components/CustomInput";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Image from "../../../../../../../assests/bills/file.png";
 import { ReactComponent as FullScreen } from "../../../../../../../assests/bills/maximize.svg";
-import { ReactComponent as Pound } from "../../../../../../../assests/bills/pound-sign.svg";
 import { DateIcon } from "../../../../../../../components/date-icon/date-icon";
 import './style.scss'
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { PoundSign } from "../../../../../../../assests/bills/pound-sign";
 
 const Details = ({ setOpenModel, openModel }) => {
     const [startDate, setStartDate] = useState(null);
@@ -110,7 +110,7 @@ const Details = ({ setOpenModel, openModel }) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Pound />
+                      <PoundSign />
                     </InputAdornment>
                   ),
                 }}
