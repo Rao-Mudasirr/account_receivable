@@ -4,8 +4,7 @@ import TableAction from "../TableAction";
 import DeleteModel from "../../modal/DeleteModel";
 const DeletePrompt = (props) => {
   //---usestate handlers and themes
-  const { onDeleteClick } = props;
-
+  const {add_icon, children, onDeleteClick} = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -18,7 +17,8 @@ const DeletePrompt = (props) => {
           open={open}
           handleClose={handleClose}
           onDeleteClick={onDeleteClick}
-          children={props.children}
+          children={children}
+          add_icon={add_icon}
         />
       )}
     </Box>
