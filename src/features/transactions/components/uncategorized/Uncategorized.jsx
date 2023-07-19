@@ -195,7 +195,7 @@ const Uncategorized = () => {
                         </LocalizationProvider>
                       </Grid>
 
-                      <Grid item sm={6} xs={12}>
+                      <Grid item xl={5.5} lg={5.5} xs={5} sm={5}>
                         <label className="secondary-color" for="Category Type">
                           Category Type
                         </label>

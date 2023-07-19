@@ -15,6 +15,7 @@ import { PoundSign } from "../../assests/bills/pound-sign";
 import {ReactComponent as PercentAge} from '../../assests/svg/percent-age.svg'
 import GlobalModal from "../global-modal/global-modal";
 import DeleteIcon from '../../assests/svg/trash.svg'
+import { ReactComponent as Down } from "../../assests/svg/chev-bottom.svg";
 
 const TransactionModel = ({
   openModel,
@@ -56,7 +57,6 @@ const TransactionModel = ({
     note: "",
   });
 
-  // Handler to update form fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -70,7 +70,6 @@ const TransactionModel = ({
     console.log("Form values:", formData);
   };
 
-  // Handler to clear form fields
   const handleClear = () => {
     setFormData({
       name: "",
@@ -247,11 +246,11 @@ const TransactionModel = ({
             <Select
               sx={
                 Styles.field_color
-                // color: categoryValue === "Uncategorized" ? "#FFBF00" : ""
               }
               fullWidth
               name="category"
               variant="standard"
+              IconComponent={Down}
               onChange={handleChange}
               value={formData.category ? 1 : 2}
               inputProps={{
