@@ -39,7 +39,7 @@ export default function BillManagementTable() {
       accessorFn: (row) => row.Id,
       id: "Id",
       cell: (info) => info.getValue(),
-      header: () => <span>Doc Id</span>,
+      header: () => <span>Doc ID</span>,
     },
     {
       accessorFn: (row) => row.bill_received_via,
