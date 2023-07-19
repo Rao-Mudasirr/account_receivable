@@ -64,7 +64,7 @@ const optionsAgingBucketBarChart = {
     },
     colors: ["#FF9898"]
 }
-const optionsAgingBucketPieChart = {
+const optionsAgingBucketPieChart = (colors = ["#B54C02", "#E8BD50", "#E88750", "#FF3F3F"]) => ({
     chart: {
         type: 'donut',
     },
@@ -102,8 +102,16 @@ const optionsAgingBucketPieChart = {
         }
     },
     labels: ["1-30d", "31-60d", "61-90d", ">90d"],
+    stroke: {
+        show: false,
+    },
+    fill: {
+        opacity: 1,
+    },
     legend: {
         show: true,
+        position: 'bottom',
+        horizontalAlign: 'center',
         fontSize: '11.0759px',
         color: "#6B6B80",
         fontFamily: 'Exo 2',
@@ -112,9 +120,13 @@ const optionsAgingBucketPieChart = {
             horizontal: 15,
             vertical: 10
         },
+        markers: {
+            radius: 2,
+        },
     },
     dataLabels: {
         enabled: true,
+        dropShadow:false,
         formatter: function (val) {
             return val.toFixed(0) + "%";
         },
@@ -124,9 +136,9 @@ const optionsAgingBucketPieChart = {
             fontWeight: '400',
         },
     },
-    colors: ["#B54C02", "#E8BD50", "#E88750", "#FF3F3F"]
-}
-export const AgingBucketBarChart = ({ chartSwitch }) => {
+    colors: colors
+})
+export const AgingBucketCharts = ({ chartSwitch, pieChartColors }) => {
     return (
         <>
             <div>
@@ -146,7 +158,7 @@ export const AgingBucketBarChart = ({ chartSwitch }) => {
                             <Chart
                                 series={[2050, 2000, 1000, 3000] ?? []}
                                 height={265}
-                                options={optionsAgingBucketPieChart ?? {}}
+                                options={optionsAgingBucketPieChart(pieChartColors) ?? {}}
                                 type="donut"
                             />
                         </Box>
