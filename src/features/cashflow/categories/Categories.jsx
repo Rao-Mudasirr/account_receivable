@@ -2,13 +2,14 @@ import { Box } from "@mui/material";
 import React from "react";
 import { CustomTabs } from "../../../components/custom-tabs/custom-tabs";
 import RulesCategory from "./RulesCategory/RulesCategory";
+import AddCategories from "./add-categories/add-categories";
 
 const Categories = () => {
   const BillsManagementTabsData = [
     {
       id: 0,
       name: "Cash Inflow",
-      component: <RulesCategory />,
+      component: <AddCategories />,
     },
     {
       id: 1,

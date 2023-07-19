@@ -77,9 +77,6 @@ function ClientView({ handleClose2 }) {
             data={CLIENTS_DATA}
             columns={columns}
             showHeaderFilter={false}
-            // showSerialNo
-            // onPageChange={pageChangeHandler}
-            // onSortByChange={sortChangeHandler}
             isSuccess={true}
             isPagination={true}
           />
@@ -93,7 +90,7 @@ function ClientView({ handleClose2 }) {
         <Button className="btn1" onClick={()=>handleClose2()}>
           Clear
         </Button>
-        &nbsp;
+        &nbsp; &nbsp; &nbsp;
         <Button className="btn2">Apply</Button>
       </div>
     </div>

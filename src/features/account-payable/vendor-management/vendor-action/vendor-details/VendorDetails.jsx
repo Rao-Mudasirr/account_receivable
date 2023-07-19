@@ -145,7 +145,15 @@ const VendorDetails = () => {
                     lg={6}
                     className="vendor-details-textfield_bold"
                   >
-                    <label className="input_label">Phone</label>
+                    <label className="input_label">
+                    {filledFields.vendorName ? null : (
+                        <span
+                          className="asterisk"
+                          style={{ color: "white", marginTop: "-3px" }}
+                        >*</span>
+                      )}
+                      Phone
+                    </label>
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
@@ -165,7 +173,15 @@ const VendorDetails = () => {
                     lg={6}
                     className="vendor-details-textfield_bold"
                   >
-                    <label className="input_label">Website</label>
+                    <label className="input_label">
+                    {filledFields.vendorName ? null : (
+                        <span
+                          className="asterisk"
+                          style={{ color: "white", marginTop: "-3px" }}
+                        >*</span>
+                      )}  
+                      Website
+                    </label>
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
@@ -237,7 +253,15 @@ const VendorDetails = () => {
                     lg={6}
                     className="vendor-details-textfield_bold"
                   >
-                    <label className="input_label">City</label>
+                    <label className="input_label">
+                    {filledFields.vendorName ? null : (
+                        <span
+                          className="asterisk"
+                          style={{ color: "white", marginTop: "-3px" }}
+                        >*</span>
+                      )}
+                      City
+                    </label>
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
@@ -256,7 +280,15 @@ const VendorDetails = () => {
                     lg={6}
                     className="vendor-details-textfield_bold"
                   >
-                    <label className="input_label">Address</label>
+                    <label className="input_label">
+                    {filledFields.vendorName ? null : (
+                        <span
+                          className="asterisk"
+                          style={{ color: "white", marginTop: "-3px" }}
+                        >*</span>
+                      )}
+                      Address
+                    </label>
                     <Field
                       sx={Styles.field_color}
                       InputProps={Styles.font_family()}
@@ -373,7 +405,15 @@ const VendorDetails = () => {
                     lg={6}
                     className="vendor-details-textfield_bold"
                   >
-                    <label className="input_label">IBAN</label>
+                    <label className="input_label">
+                    {filledFields.vendorName ? null : (
+                        <span
+                          className="asterisk"
+                          style={{ color: "white", marginTop: "-3px" }}
+                        >*</span>
+                      )}
+                      IBAN
+                    </label>
                     <Field
                       sx={Styles.field_color()}
                       InputProps={Styles.font_family()}

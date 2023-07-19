@@ -12,8 +12,8 @@ function AccountReceivableDashboard({
     tooltipMessageDso
 }) {
   return (
-    <Grid container>
-        <Grid md={12} lg={12} xl={6}>
+    <Grid container >
+        <Grid xs={12} xl={6} >
             <Box>DSO <AppTooltip message={tooltipMessageDso}><InfoOutlinedIcon className='cursor-pointer'  sx={{fontSize: '15px !important',ml:'5px'}}/></AppTooltip></Box>
             <UnifiedDSOAPD
                 days={135}
@@ -28,7 +28,7 @@ function AccountReceivableDashboard({
             />
         </Grid>
         
-        <Grid md={12} lg={12} xl={6}>
+        <Grid xs={12} xl={6}>
             <Box>APD <AppTooltip message={tooltipMessageApd}><InfoOutlinedIcon className='cursor-pointer'  sx={{fontSize: '15px !important',ml:'5px'}}/></AppTooltip></Box>
             <UnifiedDSOAPD
                 days={100}

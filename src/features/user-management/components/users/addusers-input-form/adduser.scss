@@ -4,7 +4,7 @@
   // border-radius: 8px;
   // font-family: 'Exo 2';
 
-  
+
   .adduser_header {
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@
 
 }
 
-.adduser_form{
+.adduser_form {
   margin: 0 auto;
 
   .useradd_btn {
@@ -24,14 +24,14 @@
     gap: 1rem;
     margin-top: 6.5rem;
   }
-  
+
   .useradd_btn>Button:nth-child(1) {
     color: rgba(43, 43, 51, 1);
     border-color: rgba(43, 43, 51, 1);
     border-radius: 8px;
     font-family: "Exo 2";
   }
-  
+
   .useradd_btn>Button:nth-child(2) {
     background: rgba(43, 43, 51, 1);
     border-radius: 8px;
@@ -44,7 +44,7 @@
     margin-bottom: 1rem;
     margin-left: -6px;
   }
-  
+
   .adduser-textfield_bold {
     height: 120px;
   }
@@ -61,24 +61,25 @@
     display: none;
   }
 
-  .MuiFormControl-root{
+  .MuiFormControl-root {
     width: 100%;
   }
 
   .checkbox-hidden {
     display: none;
   }
-  
+
   .checkbox-label {
     margin-left: 10px;
   }
-  .MuiFormHelperText-root{
+
+  .MuiFormHelperText-root {
     font-family: 'Exo 2', "Roboto", "sans-serif";
   }
 
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
