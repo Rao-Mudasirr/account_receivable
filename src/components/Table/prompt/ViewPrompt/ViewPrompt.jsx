@@ -205,16 +205,19 @@ const ViewPrompt = (props) => {
                         <img src={dot} alt="diagramicon" height={8} width={8} />
                       </Box>
                       <CustomInput
+                        disable={true}
                         type="select"
                         required={false}
                         options={condition1}
                       />
                       <CustomInput
+                        disable={true}
                         type="select"
                         required={false}
                         options={condition2}
                       />
                       <CustomInput
+                        disable={true}
                         required={false}
                         placeholder="Type here"
                         parentClass={"inputClass"}
@@ -253,11 +256,13 @@ const ViewPrompt = (props) => {
                       }}
                     >
                       <CustomInput
+                        disable={true}
                         type="select"
                         required={false}
                         options={condition3}
                       />
                       <CustomInput
+                        disable={true}
                         type="select"
                         required={false}
                         options={condition4}

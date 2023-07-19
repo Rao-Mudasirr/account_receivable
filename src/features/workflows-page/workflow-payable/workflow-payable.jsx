@@ -79,7 +79,7 @@ const payableWorkflowCoulmn = [
         id: "Actions",
         cell: (info) => (
             <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-                <DeletePrompt onDeleteClick={()=>{}} />
+                <DeletePrompt add_icon={true} children="This workflow will be deleted." onDeleteClick={()=>{}} />
                 <TableAction type="edit" onClick={() => { }} />
                 <ViewPrompt type="view" onViewClick={() => { }} />
             </Box>
