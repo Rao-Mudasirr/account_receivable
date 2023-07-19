@@ -65,8 +65,8 @@ const ClientDetails = () => {
   };
 
   const TabData = [
-    { id:0,name: "Invoices", component: <DueInvoices status={activestatus} /> },
-    { id:1,name: "Workflow Details", component: <WorkflowDetails /> },
+    { id:0,name: "Invoices", component: <DueInvoices status={activestatus} setActiveTab={setActiveTab} /> },
+    { id:1,name: "Workflow Details", component: <WorkflowDetails setActiveTab={setActiveTab} /> },
   ];
 
   return (
@@ -432,7 +432,7 @@ const ClientDetails = () => {
           </Grid>
         </Grid>
       </Grid>
-      <CustomTabs tabsData={TabData} />
+      <CustomTabs tabsData={TabData} setActiveTab={setActiveTab} />
     </>
   );
 };

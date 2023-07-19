@@ -50,6 +50,9 @@ import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
+import TransactionsPage from "./pages/transactions-page";
+import { TOTRANSACTIONS } from "./constants/routes-constant";
+import KPIs from "./pages/key-performance-indicator";
 
 function App() {
   return (
@@ -97,6 +100,8 @@ function App() {
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route path={"/vta-management"} element={<VTAmanagement/>} />
+          <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
             path={"/user-management"}

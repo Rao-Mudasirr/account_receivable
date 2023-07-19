@@ -181,8 +181,8 @@ const EditUserForm = () => {
                   name="company"
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
-                  InputProps={{
-                    startAdornment: <InputAdornment position="start">Select</InputAdornment>,
+                  inputProps={{
+                    className: "font-family-Exo"
                   }}
                 >
                   {companyOptions.map((option) => (
@@ -219,6 +219,9 @@ const EditUserForm = () => {
                   name="role"
                   variant="standard"
                   onChange={(e) => handleInputChange(e, props)}
+                  inputProps={{
+                    className: "font-family-Exo",
+                  }}
                 >
                   {roleOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -258,30 +261,30 @@ export default EditUserForm;
 //Style
 const Styles = {
   field_color: (theme) => ({
-    "& label": {
-      color: "black",
-    },
-    "& label.Mui-focused": {
-      color: "black",
-    },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
+      borderBottomColor: "#2B2B33",
     },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "black",
-      },
-      "&:hover fieldset": {
-        borderColor: "black",
-        borderWidth: "0.15rem",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
+    "& .Mui-error:after": {
+      borderBottomColor: "#d32f2f",
+    },
+    "& .Mui-error:before": {
+      borderBottomColor: "#d32f2f !important",
+    },
+    "& input": {
+      paddingLeft: "15px",
+      pb: "10px",
+    },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+    "& :before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
+    },
+    "&:before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
     },
     "&:after": {
-      borderColor: "black",
+      borderColor: "#2B2B33",
     },
-    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   }),
 };
