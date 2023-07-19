@@ -43,7 +43,7 @@ const Uncategorized = () => {
     {
       accessorFn: (row) => row.category,
       id: "category",
-      cell: (info) => <Box className="yellow-color">{info.getValue()}</Box>,
+      cell: (info) => <Box className={info.getValue() === "Uncategorized" ? "yellow-color" : ""}>{info.getValue()}</Box>,
       header: "Category",
       // isSortable: true,
     },
