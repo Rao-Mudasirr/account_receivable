@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/Report-Info";
+import ReportInfo from "./pages/report-info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -46,12 +46,13 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
-import TransactionsPage from "./pages/transactions-page";
-import { TOTRANSACTIONS } from "./constants/routes-constant";
 import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
+import TransactionsPage from "./pages/transactions-page";
+import { TOTRANSACTIONS } from "./constants/routes-constant";
+import KPIs from "./pages/key-performance-indicator";
 
 function App() {
   return (
@@ -98,8 +99,9 @@ function App() {
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
-          <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
           <Route path={"/vta-management"} element={<VTAmanagement/>} />
+          <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
             path={"/user-management"}
