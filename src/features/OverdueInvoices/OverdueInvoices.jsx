@@ -16,7 +16,7 @@ const INVOICE_DATA = [
       issue_date: '19 Oct, 2023',
       due_date: '19 Oct, 2023',
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
   ];
 function OverdueInvoices() {

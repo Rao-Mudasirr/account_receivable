@@ -50,10 +50,8 @@ import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
-import EditKey from "./features/account-payable/vendor-management/EditKey";
 import TransactionsPage from "./pages/transactions-page";
 import { TOTRANSACTIONS } from "./constants/routes-constant";
-import TransactionModel from "./components/transaction-model/Transaction-Model";
 import KPIs from "./pages/key-performance-indicator";
 
 function App() {
@@ -62,8 +60,6 @@ function App() {
       <Routes>
         <Route path="/set-default-btn" element={<SetDefaultBtn />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/edit-key" element={<EditKey />} />
-        <Route path="/trasaction-model" element={<TransactionModel />} />
 
         {/* <Route path="/sign-up" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up"} element={<SignUpForm />} />

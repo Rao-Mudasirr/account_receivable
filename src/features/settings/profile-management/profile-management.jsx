@@ -248,7 +248,7 @@ const ProfileManagement = () => {
           <Typography
             variant="body1"
             className="font-family-exo2 primary-title"
-            sx={{ color: "#166088",cursor:'pointer' }}
+            sx={{ color: "#166088",cursor:'pointer', fontSize: 16, fontWeight: 400}}
             onClick={handleEmailClick}
           >
             Change Email
@@ -256,7 +256,7 @@ const ProfileManagement = () => {
           <Typography
             variant="body1"
             className="font-family-exo2 primary-title"
-            sx={{ color: "#166088",cursor:'pointer'  }}
+            sx={{ color: "#166088",cursor:'pointer', fontSize: 16, fontWeight: 400}}
             onClick={handlePasswordClick}
           >
             Change Password
@@ -289,7 +289,7 @@ const ProfileManagement = () => {
                     formik.touched.firstName && formik.errors.firstName
                   }
                   fullWidth
-                  sx={{ height: "48px" }}
+                  sx={{ height: "48px", marginRight: '89px' }}
                 />
               </Grid>
               <Grid item xl={6} xs={12}>
@@ -326,7 +326,7 @@ const ProfileManagement = () => {
                 </LocalizationProvider>
               </Grid>
               <Grid item xl={6} xs={12} sx={{ mt: 2 }}>
-                <label htmlFor="age"  className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Age</label>
+                <label htmlFor="age" className="secondary-color primary-title font-family-exo2" sx={{fontWeight:400}} >Age</label>
                 <TextField
                   id="age"
                   name="age"
