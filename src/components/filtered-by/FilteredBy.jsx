@@ -7,11 +7,8 @@ const FilteredBy = () => {
     const [quarterlyFilterState, setQuarterlyFilterState] = useState(false)
     return (
         <>
-            <Box className='padding-1'
-            // sx={{width:'640px', marginTop:'5rem'}}
-
-            >
-                <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color !pl-0'>Filtered by</label>
+            <Box className='padding-1' sx={{ width: '640px', marginTop: '5rem' }}>
+                <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Filtered by</label>
                 <Grid container xs={12}>
                     <Grid item xs={6} className="attachment-checkbox flex cursor-pointer" sx={{ marginTop: '8px' }}>
                         <Checkbox
@@ -19,7 +16,8 @@ const FilteredBy = () => {
                             value={filterState}
                             icon={
                                 <Box className="flex justify-center align-center border-radius-rounded non-checked-icon" sx={{ width: '25px', height: '25px', bgcolor: 'white', }}>
-                                    <svg className='checkbox-export-popover' viewBox="0 0 16 14" fill="none">
+                                    <svg className='checkbox-export-popover' viewBox="0 0 16 14" height="30px"
+                                        width="30px" fill="none">
                                         <path d="M9.875 7.5a2.375 2.375 0 11-4.75 0 2.375 2.375 0 014.75 0z" fill="#7F7F7F" />
                                         <path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#7F7F7F" />
                                     </svg>
