@@ -17,8 +17,10 @@ const PreCategorized = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [openModel, setOpenModel] = useState(false)
-  const handleOpen = () => {
+  const [transactionData, setTransactionData] = useState(null)
+  const handleOpen = (rowData) => {
     setOpenModel(true)
+    setTransactionData(console.log(rowData));
     }
 
   const handleClose = () => {
@@ -61,7 +63,7 @@ const PreCategorized = () => {
         <Box
         className={info.getValue().startsWith("-") ? "error-color" : "success-color"}
         sx={{ textDecoration: "underline", cursor:'pointer' }}
-        onClick={handleOpen}
+        onClick={() => handleOpen(info.row)}
       >
         {info.getValue()}
       </Box>
@@ -97,6 +99,8 @@ const PreCategorized = () => {
       amount: "-£ 456,7800",
     },
   ];
+
+  const dataElement = Pre_categorized_Data[0];
   return (
     <>
     <Grid xl={12}>
@@ -290,7 +294,18 @@ const PreCategorized = () => {
         isPagination={true}
       />
     </Grid>
-    </>
+    {transactionData && ( 
+        <TransactionModel
+          openModel={openModel}
+          handleClose={handleClose}
+          titelValue={transactionData.amount}
+          nameValue={transactionData.name}
+          amountValue={transactionData.amount}
+          paymentDateValue={transactionData.payment_extended_date}
+          categoryValue={transactionData.category}
+        />
+      )}
+      </>
   )
 }
 
