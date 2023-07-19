@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
 
-export const CustomBtn = ({onClick,children,otherProps}) => {
+export const CustomBtn = ({onClick,children,otherProps,otherSx}) => {
     return (
         <>
             <Button
@@ -14,6 +14,7 @@ export const CustomBtn = ({onClick,children,otherProps}) => {
                     "&:hover": {
                         background: "#2B2B33",
                     },
+                    ...otherSx
                 }}
                 {...otherProps}
             >

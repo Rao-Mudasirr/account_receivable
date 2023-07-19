@@ -1,6 +1,6 @@
 import React from 'react'
 import { StickyTableCell, StyledTableCell, StyledTableRow } from './CustomTable'
-import { IconButton } from '@mui/material'
+import { Box, IconButton } from '@mui/material'
 import { ReactComponent as DownArrow } from "../../assests/svg/dashboard/arrow-down.svg";
 import { flexRender } from '@tanstack/react-table';
 export const ExpandableRow = ({ data, expandData }) => {
@@ -34,7 +34,7 @@ export const ExpandableRow = ({ data, expandData }) => {
                     <StyledTableRow key={i}>
                         <StyledTableCell padding="checkbox" />
                         {
-                            Object.values(item).map((cell, index) => <StyledTableCell sx={{pl: index===0 ? '25px':''}} key={index}>{cell}</StyledTableCell>)
+                            Object.values(item).map((cell, index) => <StyledTableCell key={index} sx={{py:index===0 && 0}}>{ <Box sx={{py:'16px',pl: index===0 ? '25px':'',borderLeft: index===0 ? '2px dashed #F0F0F2':''}}>{cell}</Box>}</StyledTableCell>)
                         }
                     </StyledTableRow>
                 )

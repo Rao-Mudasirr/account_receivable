@@ -9,6 +9,7 @@ import { ApRadioButton } from '../../components/ap-radio-button/ap-radio-button'
 import { CustomBtn } from '../add-bill-modal/custom-btn/custom-btn'
 import AddIcon from '@mui/icons-material/Add';
 import DragDropFile from '../DocumentApproval/Uploader'
+import { PoundSign } from "../../assests/bills/pound-sign";
 
 export const AddBillFeature = () => {
     const [startDate, setStartDate] = useState(null);
@@ -51,7 +52,7 @@ export const AddBillFeature = () => {
                             placeholder="Enter Amount"
                             type='number'
                             InputProps={{
-                                startAdornment: <InputAdornment className='flex justify-center align-center font-family-Exo border-radius-5 ' sx={{ border: '2px solid #777', width: '24px', height: '24px', color: '#777', fontSize: '12px' }}><div className="font-family-Exo">£</div></InputAdornment>
+                                startAdornment: <InputAdornment  ><PoundSign /></InputAdornment>
                             }}
                         />
                     </CustomField>

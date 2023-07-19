@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SimpleDialog } from "../modal/simple-dialog";
 import {
   Grid,
@@ -42,12 +42,12 @@ const TransactionModel = ({
     setOpenUpdate(false)
   }
 
-  const isNegative = titelValue.includes("-");
+  const isNegative = titelValue && titelValue.includes("-");
   const fontColorClass = isNegative ? "#FF0000" : "#48995D";
 
   const [formData, setFormData] = useState({
     name: nameValue,
-    amount: amountValue,
+    amount:  amountValue,
     issueDate: "",
     VAT: "",
     expactedDate: "",
@@ -56,6 +56,19 @@ const TransactionModel = ({
     note: "",
   });
 
+  useEffect(() => {
+    setFormData({
+      name: nameValue,
+      amount: amountValue,
+      issueDate: "",
+      VAT: "",
+      expactedDate: "",
+      paymentDate: paymentDateValue,
+      category: categoryValue,
+      note: "",
+    });
+  }, [nameValue, amountValue, paymentDateValue, categoryValue]);
+ 
   // Handler to update form fields
   const handleChange = (event) => {
     const { name, value } = event.target;
