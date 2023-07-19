@@ -4,12 +4,12 @@ import { CustomTabs } from "../../../components/custom-tabs/custom-tabs";
 import RulesCategory from "./RulesCategory/RulesCategory";
 import AddCategories from "./add-categories/add-categories";
 
-const Categories = () => {
+const Categories = ({ outlet }) => {
   const BillsManagementTabsData = [
     {
       id: 0,
       name: "Cash Inflow",
-      component: <AddCategories />,
+      component: outlet ? <RulesCategory /> : <AddCategories />,
     },
     {
       id: 1,

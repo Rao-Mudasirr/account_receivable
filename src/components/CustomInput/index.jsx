@@ -1,5 +1,7 @@
 import {
   Box,
+  Checkbox,
+  ListSubheader,
   MenuItem,
   Select,
   TextField,
@@ -20,9 +22,11 @@ const CustomInput = ({
   inputClass,
   parentClass,
   labelClass,
+
   ...props
 }) => {
   useEffect(() => {}, [options?.length]);
+
   return (
     <Box className={`custom-input-1 ${parentClass}`}>
       <label
@@ -55,16 +59,65 @@ const CustomInput = ({
           {" "}
           <Select
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
-            defaultValue={options[0]?.title || "Select"}
+            defaultValue={props?.defaultValue || options[0]?.title || "Select"}
+            value={props?.value || options[0]?.title}
             variant="standard"
+            multiple={props?.isMulti ? true : false}
             IconComponent={Down}
             {...props}
           >
             {options?.length === 0 ? (
               <MenuItem value="s">create a array and add them</MenuItem>
+            ) : props?.isMulti && props.grouped ? (
+              options?.map((e, i) => (
+                <div>
+                  <ListSubheader>{e?.header}</ListSubheader>
+                  {e?.data?.map((el, i) => (
+                    <MenuItem
+                      key={`${el?.value}${el?.id}`}
+                      value={el.value}
+                      onClick={() => props?.MenuItemOnchange(el)}
+                    >
+                      <Checkbox
+                        checked={
+                          props.personName.find(
+                            (s) =>
+                              s.title === el?.value && s.header === el?.header
+                          )
+                            ? true
+                            : false
+                        }
+                        onChange={() => props?.MenuItemOnchange(el)}
+                        sx={{
+                          color: "black",
+                          "&.Mui-checked": {
+                            color: "black",
+                          },
+                        }}
+                      />
+                      <span> {el?.title}</span>
+                    </MenuItem>
+                  ))}
+                </div>
+              ))
+            ) : props?.isMulti && !props?.grouped ? (
+              options?.map((e, i) => (
+                <MenuItem key={`${e?.value}${e?.id}`} value={e?.value}>
+                  <Checkbox
+                    checked={props?.personName.indexOf(e?.value) > -1}
+                    sx={{
+                      color: "black",
+                      "&.Mui-checked": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                  <span> {e?.title}</span>
+                </MenuItem>
+              ))
             ) : (
               options?.map((e, i) => (
-                <MenuItem key={`${e?.value}${e?.id}`} value={e.value}>
+                <MenuItem key={`${e?.value}${e?.id}`} value={e?.value}>
                   {e?.title}
                 </MenuItem>
               ))

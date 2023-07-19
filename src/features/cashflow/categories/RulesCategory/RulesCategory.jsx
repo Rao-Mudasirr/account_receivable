@@ -20,8 +20,10 @@ import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.
 import "./RulesCategory.scss";
 import DeletePrompt from "../../../../components/Table/prompt/DeletePrompt";
 import CategoriesModel from "../CategoriesModel/CategoriesModel";
+import { useNavigate } from "react-router-dom";
 
 const RulesCategory = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("");
@@ -47,7 +49,9 @@ const RulesCategory = () => {
         <CustomInput type="select" required={false} />
 
         <Box className="button-section">
-          <Button>View Categories</Button>
+          <Button onClick={() => navigate("/categories")}>
+            View Categories
+          </Button>
           <Button>
             Add New Categories
             <span>

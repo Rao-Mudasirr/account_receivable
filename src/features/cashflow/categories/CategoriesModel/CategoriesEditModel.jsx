@@ -5,6 +5,21 @@ import CustomInput from "../../../../components/CustomInput";
 import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.svg";
 
 const CategoriesEditModel = ({ handleClose }) => {
+  const [personName, setPersonName] = React.useState([]);
+
+  const MenuItemOnchange = (value) => {
+    const list = [...personName];
+    const condition = list.find(
+      (e) => e?.title === value?.title && e?.header === value?.header
+    );
+    if (condition) {
+      const index = list.splice(list.indexOf(condition), 1);
+
+      setPersonName([...list]);
+    } else {
+      setPersonName([...list, { ...value }]);
+    }
+  };
   const condition1 = [
     {
       title: `Cash Inflow`,
@@ -35,10 +50,32 @@ const CategoriesEditModel = ({ handleClose }) => {
   ];
   const condition3 = [
     {
-      title: `All Bank Accounts`,
-      value: `All Bank Accounts`,
+      header: "All Bank Accounts",
+      data: [
+        {
+          title: `Main Account`,
+          value: `Main Account`,
+          header: "All Bank Accounts",
+        },
+        {
+          title: `Second Account`,
+          value: `Second Account`,
+          header: "All Bank Accounts",
+        },
+      ],
+    },
+    {
+      header: "Pakistan Accounts",
+      data: [
+        {
+          title: `Main Account`,
+          value: `Main Account`,
+          header: "Pakistan Accounts",
+        },
+      ],
     },
   ];
+
   const condition4 = [
     {
       title: `All these Conditions`,
@@ -130,6 +167,13 @@ const CategoriesEditModel = ({ handleClose }) => {
                 label="In"
                 required={false}
                 options={condition3}
+                MenuItemOnchange={MenuItemOnchange}
+                grouped={true}
+                groupedData={condition3}
+                personName={personName}
+                value={personName.map((e) => e.title) || [{ title: "1" }]}
+                isMulti={true}
+                renderValue={(selected) => selected.join(", ")}
                 type="select"
                 inputClass={"inputClass"}
                 placeholder="Category Rule No.1"
