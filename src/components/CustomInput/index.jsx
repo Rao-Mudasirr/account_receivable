@@ -59,6 +59,7 @@ const CustomInput = ({
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             defaultValue={options[0]?.title || "Select"}
             variant="standard"
+            placeholder="Select"
             disabled={disable}
             IconComponent={Down}
             {...props}
