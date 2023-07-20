@@ -11,7 +11,7 @@ import TableAction from "../../../components/Table/TableAction";
 import { ReactComponent as Add } from "../../../assests/svg/add-circle-white.svg";
 import "./kpi.scss";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
-import EditKey from "./EditKey";
+import EditKeyModal from "./EditKeyModal";
 const KPI = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
@@ -169,7 +169,7 @@ const KPI = () => {
                     </Table>
                 </TableContainer>
             </div>
-            <EditKey open={openEdit} handleClose={handleCloseEdit}/>
+            <EditKeyModal open={openEdit} handleClose={handleCloseEdit}/>
         </>
     )
 }

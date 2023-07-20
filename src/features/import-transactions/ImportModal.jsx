@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
 import { SimpleDialog } from "../../components/modal/simple-dialog";
 import { Box, Grid } from "@mui/material";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ReactComponent as InflowIcon } from "../../assests/svg/import-transactions/down-arrow.svg";
 import { ReactComponent as OutflowIcon } from "../../assests/svg/import-transactions/up-arrow.svg";
+
 const importModalData = [
   {
     id: "1",
@@ -15,11 +18,17 @@ const importModalData = [
     svg: <OutflowIcon />,
   },
 ];
+
 export const ImportModal = ({ open, handleClose }) => {
   const fileInputRef = useRef(null);
 
   const handleImportButtonClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleFileInputChange = (event) => {
+    handleClose();
+    toast.success("File Imported Sucessfully");
   };
 
   return (
@@ -50,7 +59,12 @@ export const ImportModal = ({ open, handleClose }) => {
           ))}
         </Grid>
       </SimpleDialog>
-      <input type="file" ref={fileInputRef} style={{ display: "none" }} />
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: "none" }}
+        onChange={handleFileInputChange} // Add the event listener for file input change
+      />
     </>
   );
 };
