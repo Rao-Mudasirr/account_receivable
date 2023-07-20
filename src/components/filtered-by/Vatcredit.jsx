@@ -12,7 +12,8 @@ return(
 
 <>
      
-     <Typography className='h5 ' >Month</Typography>
+     {/* <Typography className='h5 ' >Month</Typography> */}
+     <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Month</label>
      <DashboardSelect
               id="branch"
               placeholder="July"

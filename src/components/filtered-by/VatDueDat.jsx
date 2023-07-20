@@ -12,7 +12,8 @@ return(
 
 <>
      
-     <Typography className='h5 ' >VAT Due Date</Typography>
+     {/* <Typography className="h5"  >VAT Due Date</Typography> */}
+     <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>VAT Due Date</label>
  <DashboardSelect
               id="branch"
               placeholder="On day 18 of Month"

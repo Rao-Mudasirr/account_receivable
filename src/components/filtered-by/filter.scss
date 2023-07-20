@@ -39,12 +39,16 @@
 
         }
     }
-
+    
+.exo2-font {
+    font-family: 'Exo 2';
+  }
+  
     .h5{
         color: var(--text-light, #6B6B80);
 
         /* BodyText/Default/Regular - 16 */
-        font-family: Exo 2;
+        font-family: 'Exo 2 !important';
         font-size: 16px;
         font-style: normal;
         font-weight: 400;

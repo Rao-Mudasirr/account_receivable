@@ -11,7 +11,8 @@ return(
 
 <>
    
-   <Typography className='h5 ' >Year</Typography>
+   {/* <Typography className='h5 ' >Year</Typography> */}
+  < label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Year</label>
    <DashboardSelect
               id="branch"
               placeholder="2023"

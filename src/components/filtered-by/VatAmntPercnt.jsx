@@ -22,14 +22,15 @@ return(
 
 <>
 
-     <Typography className='h5 ' >Amount (percentage)</Typography>
-    
-            <TextField
-            
-              sx={Styles.field_color}
+     {/* <Typography className='h5 ' >Amount (percentage)</Typography> */}
+     <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Amount(percentage)</label>
+      
+            <TextField  
+             sx={Styles.field_color}
+              fullWidth             
               name="Perc"
               variant="standard"
-              placeholder="10"
+              placeholder="10" 
               type="number"
               value={formData.VAT}
               onChange={handleChange}
@@ -72,7 +73,7 @@ const Styles = {
         borderBottomColor: "#d32f2f !important",
       },
       "& .MuiInputBase-input": {
-        paddingLeft: "15px",
+        paddingLeft: "26px !important",
         pb: "10px",
       },
       "& .MuiInputBase-root:hover": {
@@ -87,10 +88,13 @@ const Styles = {
       "&:after": {
         borderColor: "#2B2B33",
       },
+      "& .-MuiInputBase-input-MuiInput-input":{
+        paddingLeft: '29px !important',
+      },
        mt: 2,
-       width:"555px",
-   
-            paddingBottom: "30px !important",
+      //  width:"540px",
+      // paddingLeft:'10px',
+            paddingBottom: "60px !important",
       
    
     }),
