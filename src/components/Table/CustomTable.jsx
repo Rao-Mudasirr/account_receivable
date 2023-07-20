@@ -449,7 +449,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     whiteSpace: "nowrap",
     borderBottom: "none",
     cursor: "pointer",
-    zIndex: "1",
+    zIndex: theme.zIndex.appBar,
   },
   [`&.${tableCellClasses.root}`]: {
     boxShadow: "unset !important",
@@ -478,7 +478,7 @@ export const StickyTableCell = styled(TableCell)(({ theme }) => ({
     cursor: "pointer",
     left: 0,
     position: "sticky",
-    zIndex: theme.zIndex.appBar - 2
+    zIndex: 4
   },
   [`&.${tableCellClasses.root}`]: {
     boxShadow: "unset !important",
@@ -487,14 +487,14 @@ export const StickyTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: "16px",
     color: "#40404D",
-    backgroundColor: "#fff !important",
+    backgroundColor: "#fff",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
     fontWeight: 400,
     borderBottom: "1px solid #F0F0F2",
     minWidth: "50px",
     left: 0,
     position: "sticky",
-    zIndex: theme.zIndex.appBar - 1
+    zIndex: 2
   },
 }));
 

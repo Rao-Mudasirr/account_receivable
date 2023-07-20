@@ -45,6 +45,12 @@ const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
             <Box className="image-box ">
               <img src={Image} alt="file" />
             </Box>
+            <FullScreen
+            className="maximize-btn"
+            // onClick={() =>
+            //   setOpenModel({ ...openModel, model: !openModel.model, type: 1 })
+            // }
+          />
           </Box>
           <Box className="children-second-section">
             <Grid container spacing={5} rowSpacing={5}>
