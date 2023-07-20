@@ -72,10 +72,10 @@ export const DashboardCashflow = () => {
             <TitleTable />
           </DashboardCard>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} xl={6}>
           <AccountsAnalyticsCharts title="Account Receivable Analytics" card1Heading="Invoice Analytics" card2Heading="Top 10 Receivables by Category" />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} xl={6}>
           <AccountsAnalyticsCharts title="Account Payable Analytics" card1Heading="Bills Analytics" card2Heading="Top 10 Payables by Category" />
         </Grid>
       </Grid>

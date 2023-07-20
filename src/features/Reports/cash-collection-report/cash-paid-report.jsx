@@ -49,7 +49,7 @@ export default function CashPaidReport() {
                         <Grid item xs={6} className='flex justify-end'>
                             <CustomPopover mainTitle="Filters" mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1" popoverOpenerTitle="More Filters" popoverOpenerProps={{
                                 variant: 'outlined', sx: {
-                                    mr: 2, whiteSpace: 'nowrap', color: "#40404D", border: "1.5px solid #40404D !important", height: '32px', borderRadius: "8px",
+                                    mr: 2, whiteSpace: 'nowrap', color: "#40404D", border: "1.5px solid #40404D !important", height: '32px', borderRadius: "8px", visibility: 'hidden',
                                     "&:hover": {
                                         border: '2px solid #40404D !important'
                                     },
@@ -140,6 +140,7 @@ export default function CashPaidReport() {
         onSortByChange={() => { }}
         isSuccess={true}
         isPagination={true}
+        showHeaderFilter={false}
     />
     <ToastContainer />
 </>
