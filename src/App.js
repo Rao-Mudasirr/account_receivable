@@ -47,13 +47,17 @@ import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorRepo
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
 import TransactionsPage from "./pages/transactions-page";
-import ImportTransactionsPage from './pages/import-transactions-page'
-import { TOTRANSACTIONS, TOIMPORTTRANSACTIONS } from "./constants/routes-constant";
+import ImportTransactionsPage from "./pages/import-transactions-page";
+import {
+  TOTRANSACTIONS,
+  TOIMPORTTRANSACTIONS,
+} from "./constants/routes-constant";
 import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
 import KPIs from "./pages/key-performance-indicator";
+import RulesCategory from "./features/cashflow/categories/RulesCategory/RulesCategory";
 
 function App() {
   return (
@@ -92,8 +96,6 @@ function App() {
         <Route path="/cashflow" element={<HomeLayout />}>
           <Route path="/cashflow" element={<AccountReceivablePage />} />
         </Route>
-        
-
 
         <Route exact path={"/"} element={<Layout />}>
           <Route exact path={"/"} element={<Dashboard />} />
@@ -101,8 +103,12 @@ function App() {
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
           <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
-          <Route exact path={TOIMPORTTRANSACTIONS} element={<ImportTransactionsPage />} />
-          <Route path={"/vta-management"} element={<VTAmanagement/>} />
+          <Route
+            exact
+            path={TOIMPORTTRANSACTIONS}
+            element={<ImportTransactionsPage />}
+          />
+          <Route path={"/vta-management"} element={<VTAmanagement />} />
           <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
@@ -114,9 +120,11 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-          
-          <Route exact path={"/overdue-invoices/:id"} element={<Overdue_Invoice />} />
-          
+          <Route
+            exact
+            path={"/overdue-invoices/:id"}
+            element={<Overdue_Invoice />}
+          />
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
@@ -161,7 +169,13 @@ function App() {
             path={"/reports/forecasting-report"}
             element={<Forcasting_Reports />}
           />{" "}
-          <Route exact path={"/categories"} element={<CategoryCashflow />} />{" "}
+          <Route exact path={"/categories"} element={<CategoryCashflow />}>
+            <Route
+              exact
+              path={"/categories/view-category"}
+              element={<RulesCategory />}
+            />
+          </Route>{" "}
           <Route
             exact
             path={"/clients-details/:id"}

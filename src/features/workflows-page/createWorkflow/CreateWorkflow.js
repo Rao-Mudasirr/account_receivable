@@ -92,18 +92,18 @@ const CreateWorkflowComponent = () => {
     condition1: condition1,
     condition2: condition2,
     condition3: condition3,
-  }
-  const [Add_Conditions, setAdd_Condtion] = useState([All_Condition])
+  };
+  const [Add_Conditions, setAdd_Condtion] = useState([All_Condition]);
   const AddCondtion = () => {
     const newData = [...Add_Conditions];
-    setAdd_Condtion([...newData, All_Condition])
-  }
+    setAdd_Condtion([...newData, All_Condition]);
+  };
   const handleDelete = (id) => {
-      const newData = [...Add_Conditions];
-      const updated_data = newData?.filter((val, index) => index !== id)
-      console.log("updated: ", updated_data);
-      setAdd_Condtion(updated_data)
-  }
+    const newData = [...Add_Conditions];
+    const updated_data = newData?.filter((val, index) => index !== id);
+    console.log("updated: ", updated_data);
+    setAdd_Condtion(updated_data);
+  };
   const navigate = useNavigate();
   return (
     <Box className="create-workflow-parent">
@@ -126,24 +126,26 @@ const CreateWorkflowComponent = () => {
             </span>
           </Button>
         </Box>{" "}
-        {
-          Add_Conditions?.map((item, i) => (
-            <Box className="second-section" key={i}>
-              <CustomInput type="select" required={false} options={item?.condition1} />
-              <CustomInput type="select" required={false} options={item?.condition2} />
-              <CustomInput
-                required={false}
-                placeholder="Type here"
-                parentClass={"inputClass"}
-              />
-              {
-                i != 0 && (
-                  <DeleteCondition handleDelete={handleDelete} id = {i}/>
-                )
-              }
-            </Box>
-          ))
-        }
+        {Add_Conditions?.map((item, i) => (
+          <Box className="second-section" key={i}>
+            <CustomInput
+              type="select"
+              required={false}
+              options={item?.condition1}
+            />
+            <CustomInput
+              type="select"
+              required={false}
+              options={item?.condition2}
+            />
+            <CustomInput
+              required={false}
+              placeholder="Type here"
+              parentClass={"inputClass"}
+            />
+            {i !== 0 && <DeleteCondition handleDelete={handleDelete} id={i} />}
+          </Box>
+        ))}
       </Box>
       <Box className="condition-box">
         <Box className="first-section">
