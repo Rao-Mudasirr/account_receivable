@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Box } from '@material-ui/core';
+import FinancingData from '../financing/financing-data';
+import CategoryExpandModal from '../../category-exppand-modal/category-exppand-modal';
 
 const Sales = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const data = FinancingData();
+  const [isExpanded, setExpanded] = useState(false);
 
-export default Sales
+  const handleExpand = () => {
+    setExpanded(!isExpanded);
+  };
+
+  return (
+    <Box sx={{mt:2 }}>
+      <CategoryExpandModal
+        categoryText="Sales"
+        categoryIcon="PlayArrowSharpIcon"
+        data={data}
+        isExpanded={isExpanded}
+        onExpand={handleExpand}
+      />
+    </Box>
+  );
+};
+
+export default Sales;
+
