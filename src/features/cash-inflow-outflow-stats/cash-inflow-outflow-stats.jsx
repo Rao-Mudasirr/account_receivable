@@ -67,7 +67,6 @@ const options = {
     tooltip: {
         shared: false,
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-            console.log(w, dataPointIndex, seriesIndex);
             return '<div style="padding: 4px 8px; border-radius: 4px; background-color: #2B2B33; color: #fff; font-size: 13px;" class="arrow_box">' +
                 '<span>' + w.globals.seriesNames[seriesIndex] + ' : </span>' +
                 '<span>£' + Math.abs(series[seriesIndex][dataPointIndex]) + '</span>' +

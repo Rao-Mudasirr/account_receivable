@@ -48,7 +48,7 @@ export const ReportDataPayable = [
     id: 2,
     title: "Aging Buckets Report",
     image: <Img4 />,
-    param: "aging-buckets-report",
+    param: "aging-buckets-report-payable",
   },
   {
     id: 3,

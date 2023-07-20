@@ -66,14 +66,75 @@ export const Aging_Buckets_Col = [
     header: "Aging Buckets(>90d)",
     // isSortable: true,
   },
-
-
 ];
 
-// export const Aging_Buckets_Col2 = [
-  
-// ];
+export const Aging_Payable_Col = [
+  {
+    accessorFn: (row) => row.Client_Id,
+    id: "Client_Id",
+    cell: (info) => info.getValue(),
+    header: () => <span>Id</span>,
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => row.Client_Name,
+    id: "Client_Name",
+    cell: (info) => (info.getValue()),
+    header: "Vendor Name",
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => row.Overdue_Invoices,
+    id: "Overdue_Invoices",
+    cell: (info) => info.getValue(),
+    header: "No. of Overdue Invoices",
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => row.Total_verdue_Amount,
+    id: "Total_verdue_Amount",
+    cell: (info) => info.getValue(),
+    header: "Total Overdue Amount",
+    // isSortable: true,
+  },
 
+  {
+    accessorFn: (row) => <Link to="/overdue-invoices/payable">{row.Aging_BucketsLT30}</Link>,
+    id: "Aging_BucketsLT30",
+    cell: (info) => <span style={{ color: "#0084AD", textDecoration: "underline" }}>
+      {info.getValue()}
+    </span>,
+    header: "Aging Buckets(<30d)",
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => <Link to="/overdue-invoices/payable">{row.Aging_Buckets30To60}</Link>,
+    id: "Aging_Buckets30To60",
+    cell: (info) => <span style={{ color: "#0084AD", textDecoration: "underline" }}>
+      {info.getValue()}
+    </span>,
+    header: "Aging Buckets(31-60d)",
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => <Link to="/overdue-invoices/payable">{row.Aging_Buckets60To90}</Link>,
+    id: "Aging_Buckets60To90",
+    cell: (info) => <span style={{ color: "#0084AD", textDecoration: "underline" }}>
+      {info.getValue()}
+    </span>,
+    header: "Aging Buckets(61-90d)",
+    // isSortable: true,
+  },
+  {
+    accessorFn: (row) => <Link to="/overdue-invoices/payable">{row.Aging_BucketsLT90}</Link>,
+    id: "Aging_BucketsLT90",
+    cell: (info) => <span style={{ color: "#0084AD", textDecoration: "underline" }}>
+      {info.getValue()}
+    </span>,
+    header: "Aging Buckets(>90d)",
+    // isSortable: true,
+  },
+];
 
 export const Aging_Buckets_Data = [
   {

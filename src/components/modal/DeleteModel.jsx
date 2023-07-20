@@ -5,11 +5,14 @@ import { useTheme } from "@emotion/react";
 import { Backdrop, Button, Grid, Typography } from "@mui/material";
 //import DeleteIcon from "../../assests/svg/trash-red.png";
 import DeleteIcon from "../../assests/svg/trash-black.png";
+import { ReactComponent as Add } from "../../assests/svg/add-circle-white.svg";
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
+
 //---icons
 
 const DeleteModel = (props) => {
   //---usestate handlers and themes
-  const { open, handleClose, onDeleteClick } = props;
+  const { open, handleClose, onDeleteClick, children, add_icon } = props;
   const theme = useTheme();
 
   return (
@@ -65,7 +68,7 @@ const DeleteModel = (props) => {
                         mt: 3,
                       }}
                     >
-                      {props.children || "This will delete your bank account"}
+                      {children ? children : "This will delete your bank account"}
                     </Typography>
                   </Box>
                   <Box sx={Styles.buttonWrapper}>
@@ -74,12 +77,22 @@ const DeleteModel = (props) => {
                       sx={Styles.buttonError(theme)}
                     >
                       Yes, Sure
+                      &nbsp;
+                      {add_icon && (
+                        <Add style={{width: '24px', height: '24px'}} />
+                      )
+                      }
                     </Button>
                     <Button
                       onClick={handleClose}
                       sx={Styles.buttonSuccess(theme)}
                     >
                       Cancel
+                      &nbsp;
+                      {add_icon && (
+                        <ControlPointIcon style={{width: '24px', height: '24px'}} />
+                      )
+                      }
                     </Button>
                   </Box>
                 </div>

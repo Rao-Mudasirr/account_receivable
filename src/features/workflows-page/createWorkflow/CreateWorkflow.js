@@ -109,10 +109,10 @@ const CreateWorkflowComponent = () => {
     <Box className="create-workflow-parent">
       <Box className="invoice-title">Create a New Workflow</Box>
       <Box className="add-workflow-box">
-        <CustomInput label="Workflow Name" placeholder="Placeholder" />
+        <CustomInput label="Workflow Name" placeholder="Type Here" />
         <CustomInput
           label=" Description"
-          placeholder="Placeholder"
+          placeholder="Type Here"
           parentClass={"inputClass"}
         />
       </Box>
@@ -136,7 +136,11 @@ const CreateWorkflowComponent = () => {
                 placeholder="Type here"
                 parentClass={"inputClass"}
               />
-              <DeleteCondition handleDelete={handleDelete} id = {i}/>
+              {
+                i != 0 && (
+                  <DeleteCondition handleDelete={handleDelete} id = {i}/>
+                )
+              }
             </Box>
           ))
         }

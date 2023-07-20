@@ -6,6 +6,7 @@ import filterIcon from "../../assests/images/client/filter.png";
 import exportIcon from "../../assests/images/client/export.png";
 import './overdue_invoices.scss';
 import ShowFilters from './ShowFilters';
+import { useParams } from 'react-router-dom';
 
 const INVOICE_DATA = [
     {
@@ -16,7 +17,7 @@ const INVOICE_DATA = [
       issue_date: '19 Oct, 2023',
       due_date: '19 Oct, 2023',
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 2,
@@ -26,7 +27,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 3,
@@ -36,7 +37,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 4,
@@ -46,7 +47,7 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
     {
       id: 5,
@@ -56,24 +57,25 @@ const INVOICE_DATA = [
       issue_date: "19 Oct, 2023",
       due_date: "19 Oct, 2023",
       overdue_days: '12',
-      total_amount: '$7200'
+      total_amount: '£7200'
     },
   ];
 function OverdueInvoices() {
+  const {id} = useParams();
     const columns = [
         {
           accessorFn: (row) => row.Id,
           id: "Id",
           cell: (info) => info.getValue(),
-          header: () => <span>Sr.#</span>,
+          header: () => <span>{id ? "Bill Id" : "Sr.#"}</span>,
           // isSortable: true,
         },
         {
-          accessorFn: (row) => row.invoiceNo,
-          id: "invoiceNo",
-          cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
-          header: "Invoice #",
-          // isSortable: true,
+            accessorFn: (row) => row.invoiceNo,
+            id: "invoiceNo",
+            cell: (info) => <span style={{color:'#0084AD', textDecoration:'underline'}}>{info.getValue()}</span>,
+            header: "Invoice #",
+            // isSortable: true,
         },
         {
           accessorFn: (row) => row.invoice_status,
@@ -112,6 +114,10 @@ function OverdueInvoices() {
         },
       ];
 
+      const filteredColumns = columns.filter((column) => {
+        // Return false for the column you want to hide based on the condition
+        return column?.id !== "invoiceNo";
+      });
       const [isOpen, setIsOpen] = useState(false);
       const [type, setType] = useState("");
 
@@ -139,27 +145,31 @@ function OverdueInvoices() {
         </Grid>
         <Grid xs={12} md={6} lg={6} xl={6}>
         <div style={{ marginLeft: "auto", float: 'right' }}>
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{
-              mr: 2,
-              color: "#40404D",
-              borderColor: "#40404D",
-              borderRadius:'8px',
-              "&:hover": {
-                borderColor: "black",
-                color: "black",
-              },
-            }}
-            endIcon={<img src={filterIcon} alt="More Filter" />}
-            onClick={()=> {
-              setType("More")
-              handleClick()
-            }}
-          >
-            More Filter
-          </Button>
+          {
+            !id && (
+              <Button
+              variant="outlined"
+              color="primary"
+              sx={{
+                mr: 2,
+                color: "#40404D",
+                borderColor: "#40404D",
+                borderRadius:'8px',
+                "&:hover": {
+                  borderColor: "black",
+                  color: "black",
+                },
+              }}
+              endIcon={<img src={filterIcon} alt="More Filter" />}
+              onClick={()=> {
+                setType("More")
+                handleClick()
+              }}
+            >
+              More Filter
+            </Button>
+            )
+          }
 
           <Button
             variant="contained"
@@ -193,11 +203,8 @@ function OverdueInvoices() {
 
           <CustomTable
             data={INVOICE_DATA}
-            columns={columns}
+            columns={id ? filteredColumns : columns}
             showHeaderFilter={false}
-            // showSerialNo
-            // onPageChange={pageChangeHandler}
-            // onSortByChange={sortChangeHandler}
             isSuccess={true}
             isPagination={true}
           />

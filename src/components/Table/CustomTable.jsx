@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Pagination from '@mui/material/Pagination';
 import Stack from "@mui/material/Stack";
 // Tantack table
@@ -33,29 +33,10 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ReactComponent as Filter } from "../../assests/svg/setting-box.svg";
+import { ExpandableRow } from "./expandable-row";
 
-// ----------------------------------------------------------------------
-// types
-// type TTable = {
-//   columns;
-//   data;
-//   isLoading?: boolean;
-//   isError?: boolean;
-//   isSuccess?: boolean;
-//   isFetching?: boolean;
-//   isPagination?: boolean;
-//   totalPages?: number;
-//   maxHeight?: number;
-//   minHeight?: number;
-//   currentPage?: number;
-//   onPageChange?;
-//   onSortByChange?;
-//   tableContainerSX?;
-//   showSerialNo?: boolean;
-//   rootSX?;
-// };
 
-// ----------------------------------------------------------------------
+
 // constant
 const EMPTY_ARRAY = [];
 
@@ -80,7 +61,7 @@ const CustomTable = (props) => {
     showSerialNo = false,
     serialName = "Sr.#",
     showHeaderFilter = true,
-    serialNoSortable= false
+    serialNoSortable = false
   } = props;
 
   const [rowSelection, setRowSelection] = React.useState({});
@@ -190,40 +171,76 @@ const CustomTable = (props) => {
                   {table.getHeaderGroups().map((headerGroup) => (
                     <StyledTableRow key={headerGroup.id}>
                       {headerGroup.headers.map((header, index) => (
-                        <StyledTableCell
-                          sx={{
-                            borderRadius:
-                              index === 0
-                                ? "4px 0px 0px 4px"
-                                : index === headerGroup.headers.length - 1
-                                  ? "0px 4px 4px 0px"
-                                  : "0px",
-                          }}
-                          key={header.id}
-                          
-                        >
-                          <Box
-                            onClick={() =>
-                              header.column.columnDef.isSortable &&
-                              handleSortBy(header?.id)
-                            }
-                            sx={{ ...styles.cell, }}
-                            className="flex"
+                        header.column.columnDef.isSticky ?
+                          <StickyTableCell
+                            sx={{
+                              borderRadius:
+                                index === 0
+                                  ? "4px 0px 0px 4px"
+                                  : index === headerGroup.headers.length - 1
+                                    ? "0px 4px 4px 0px"
+                                    : "0px",
+                            }}
+                            key={header.id}
+
                           >
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                            <Box className="flex flex-column">
-                              {header.column.columnDef.isSortable &&
-                                !isSorted(header.id) && <KeyboardArrowUpIcon fontSize="9px"  />}
-                              {header.column.columnDef.isSortable &&
-                                !isSorted(header.id) && <KeyboardArrowDownIcon fontSize="9px" sx={{mt:'-6px'}} />}
+                            <Box
+                              onClick={() =>
+                                header.column.columnDef.isSortable &&
+                                handleSortBy(header?.id)
+                              }
+                              sx={{ ...styles.cell, }}
+                              className="flex"
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                              <Box className="flex flex-column">
+                                {header.column.columnDef.isSortable &&
+                                  !isSorted(header.id) && <KeyboardArrowUpIcon fontSize="9px" />}
+                                {header.column.columnDef.isSortable &&
+                                  !isSorted(header.id) && <KeyboardArrowDownIcon fontSize="9px" sx={{ mt: '-6px' }} />}
+                              </Box>
                             </Box>
-                          </Box>
-                        </StyledTableCell>
+                          </StickyTableCell>
+                          :
+                          <StyledTableCell
+                            sx={{
+                              borderRadius:
+                                index === 0
+                                  ? "4px 0px 0px 4px"
+                                  : index === headerGroup.headers.length - 1
+                                    ? "0px 4px 4px 0px"
+                                    : "0px",
+                            }}
+                            key={header.id}
+
+                          >
+                            <Box
+                              onClick={() =>
+                                header.column.columnDef.isSortable &&
+                                handleSortBy(header?.id)
+                              }
+                              sx={{ ...styles.cell, }}
+                              className="flex"
+                            >
+                              {header.isPlaceholder
+                                ? null
+                                : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                              <Box className="flex flex-column">
+                                {header.column.columnDef.isSortable &&
+                                  !isSorted(header.id) && <KeyboardArrowUpIcon fontSize="9px" />}
+                                {header.column.columnDef.isSortable &&
+                                  !isSorted(header.id) && <KeyboardArrowDownIcon fontSize="9px" sx={{ mt: '-6px' }} />}
+                              </Box>
+                            </Box>
+                          </StyledTableCell>
                       ))}
                     </StyledTableRow>
                   ))}
@@ -231,18 +248,28 @@ const CustomTable = (props) => {
 
                 {isSuccess && table.getRowModel().rows.length > 0 && (
                   <TableBody>
-                    {table.getRowModel().rows?.map((row) => (
-                      <StyledTableRow key={row?.id}>
-                        {row.getVisibleCells().map((cell) => (
-                          <StyledTableCell key={cell?.id}>
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </StyledTableCell>
-                        ))}
-                      </StyledTableRow>
-                    ))}
+                    {table.getRowModel().rows?.map((row) =>
+                      row.original.expand ?
+                        <ExpandableRow key={row?.id} data={row.getVisibleCells()} expandData={row.original.expandData} />
+                        : <StyledTableRow key={row?.id}>
+                          {row.getVisibleCells().map((cell) => (
+
+                            cell.column.columnDef.isSticky ?
+                              <StickyTableCell sx={row.original.sx} key={cell?.id}>
+                                {flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
+                              </StickyTableCell>
+                              : <StyledTableCell sx={row.original.sx} key={cell?.id}>
+                                {flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
+                              </StyledTableCell>
+                          ))}
+                        </StyledTableRow>
+                    )}
                   </TableBody>
                 )}
               </Table>
@@ -410,7 +437,7 @@ export default CustomTable;
 
 // ----------------------------------------------------------------------
 // STYLED COMPONENTS
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#F0F0F2 !important",
     color: "#6B6B80",
@@ -422,7 +449,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     whiteSpace: "nowrap",
     borderBottom: "none",
     cursor: "pointer",
-    zIndex: "1",
+    zIndex: theme.zIndex.appBar,
   },
   [`&.${tableCellClasses.root}`]: {
     boxShadow: "unset !important",
@@ -437,31 +464,52 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  // "&:nth-of-type(even)": {
-  //   backgroundColor:
-  //     theme.palette.mode === "light"
-  //       ? alpha("#18938D", 0.12)
-  //       : "#454F5B",
-  // },
+export const StickyTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "#F0F0F2 !important",
+    color: "#6B6B80",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+    fontWeight: 600,
+    backgroundImage: "unset",
+    textTransform: "capitalize",
+    fontSize: 16,
+    whiteSpace: "nowrap",
+    borderBottom: "none",
+    cursor: "pointer",
+    left: 0,
+    position: "sticky",
+    zIndex: 4
+  },
+  [`&.${tableCellClasses.root}`]: {
+    boxShadow: "unset !important",
+  },
 
-  // hide last border
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: "16px",
+    color: "#40404D",
+    backgroundColor: "#fff",
+    fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
+    fontWeight: 400,
+    borderBottom: "1px solid #F0F0F2",
+    minWidth: "50px",
+    left: 0,
+    position: "sticky",
+    zIndex: 2
+  },
+}));
+
+export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   " &:last-child th": {
     backgroundColor:
       theme.palette.mode === "light" ? alpha("#BEBEBE", 0.12) : "#454F5B",
     backdropFilter: " blur(20px)",
-
-    // border: 0,
   },
-  // "&:first-of-type": {
-  //   boxShadow: "unset",
-  // },
 }));
 
 // ----------------------------------------------------------------------
 // styles
 
-const styles = {
+export const styles = {
   tableContainer: (tableContainerSX, theme) => ({
     "&::-webkit-scrollbar": {
       width: 5,

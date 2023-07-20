@@ -20,6 +20,7 @@ const CustomInput = ({
   inputClass,
   parentClass,
   labelClass,
+  disable = false,
   ...props
 }) => {
   useEffect(() => {}, [options?.length]);
@@ -46,6 +47,7 @@ const CustomInput = ({
             // id="standard-basic"
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             // label="Standard"
+            disabled={disable}
             placeholder="Standard"
             {...props}
           />
@@ -57,6 +59,8 @@ const CustomInput = ({
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             defaultValue={options[0]?.title || "Select"}
             variant="standard"
+            placeholder="Select"
+            disabled={disable}
             IconComponent={Down}
             {...props}
           >
@@ -79,6 +83,7 @@ const CustomInput = ({
               inputClass ? inputClass : ""
             }`}
             // label="Standard"
+            disabled={disable}
             placeholder="Standard"
             {...props}
           />
