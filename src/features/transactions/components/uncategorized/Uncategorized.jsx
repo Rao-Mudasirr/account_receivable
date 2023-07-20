@@ -89,15 +89,16 @@ const Uncategorized = () => {
 
   return (
     <>
-      <Grid xl={12}>
+      <Grid xs={12}>
         <Grid container className="align-end" spacing={2}>
-          <Grid item lg={7} md={12}>
+          <Grid item xl={8.7} lg={7.5} md={12}>
             <GlobalSearchBar />
           </Grid>
 
           <Grid
             item
-            lg={5}
+            xl={3.3}
+            lg={4.5}
             md={12}
             className="flex align-end"
             sx={{ gap: "1.5rem" }}
