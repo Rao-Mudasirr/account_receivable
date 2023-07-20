@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import "./adduser.scss";
+import { ReactComponent as Down } from '../../../../../assests/svg/chev-bottom.svg'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required(<span className="error-color tertiary-title">First Name is required</span>),
@@ -227,6 +228,7 @@ const AddUserForm = () => {
                   fullWidth
                   name="company"
                   variant="standard"
+                  IconComponent={Down}
                   inputProps={{
                     className: "font-family-Exo",
                   }}
@@ -289,6 +291,7 @@ const AddUserForm = () => {
                     className: "font-family-Exo",
                   }}
                   variant="standard"
+                  IconComponent={Down}
                   value={values.role}
                   error={errors.role && touched.role}
                   onChange={(e) => handleInputChange(e, props)}

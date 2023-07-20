@@ -19,8 +19,11 @@ import CustomInput from "../../../../components/CustomInput";
 import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.svg";
 import "./RulesCategory.scss";
 import DeletePrompt from "../../../../components/Table/prompt/DeletePrompt";
+import CategoriesModel from "../CategoriesModel/CategoriesModel";
+import { useNavigate } from "react-router-dom";
 
 const RulesCategory = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("");
@@ -46,7 +49,9 @@ const RulesCategory = () => {
         <CustomInput type="select" required={false} />
 
         <Box className="button-section">
-          <Button>View Categories</Button>
+          <Button onClick={() => navigate("/categories")}>
+            View Categories
+          </Button>
           <Button>
             Add New Categories
             <span>
@@ -133,7 +138,9 @@ const RulesCategory = () => {
                       <DeletePrompt>
                         Selected Category will be Deleted
                       </DeletePrompt>
-                      <TableAction />
+                      <TableAction
+                        onClicked={() => setOpenEditModel(!openEditModel)}
+                      />
                     </Box>
                   ) : (
                     row.action
@@ -144,6 +151,10 @@ const RulesCategory = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <CategoriesModel
+        open={openEditModel}
+        handleClose={() => setOpenEditModel(!openEditModel)}
+      />
     </div>
   );
 };
