@@ -38,7 +38,7 @@ import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
-// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+//  import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import Forcasting_Reports from "./pages/Forcasting_Reports";
@@ -94,7 +94,7 @@ function App() {
         <Route path="/details-page" element={<DetailsPage />} />
 
         <Route path="/cashflow" element={<HomeLayout />}>
-          <Route path="/cashflow" element={<AccountReceivablePage />} />
+          <Route path="/cashflow" element={<AccountReceivablePage />} /> 
         </Route>
 
         <Route exact path={"/"} element={<Layout />}>
