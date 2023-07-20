@@ -10,7 +10,7 @@ const FilteredBy = () => {
             <Box className='padding-1' sx={{ width: '640px', marginTop: '5rem' }}>
                 <label htmlFor="filtered-by" className='font-family-Exo font-weight-400 secondary-color'>Filtered by</label>
                 <Grid container xs={12}>
-                    <Grid item xs={6} className="attachment-checkbox flex cursor-pointer" sx={{ marginTop: '8px' }}>
+                    <Grid item xs={12} lg={6} className="attachment-checkbox flex cursor-pointer" sx={{ marginTop: '8px' }}>
                         <Checkbox
                             defaultChecked={false}
                             value={filterState}
@@ -52,7 +52,7 @@ const FilteredBy = () => {
 
 
 
-                    <Grid item xs={6} className="attachment-checkbox flex cursor-pointer" sx={{ marginTop: '8px' }}>
+                    <Grid item xs={12} lg={6} className="attachment-checkbox flex cursor-pointer" sx={{ marginTop: '8px' }}>
                         <Checkbox
                             defaultChecked={false}
                             value={quarterlyFilterState}
