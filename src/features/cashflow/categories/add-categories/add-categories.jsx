@@ -10,8 +10,10 @@ import Sales from "../components/sales/sales";
 import DailyExpense from "../components/daily-expense/daily-expense";
 const AddCategories = () => {
   const [showSubCategoryInputBox, setShowSubCategoryInputBox] = useState(false);
-
+  const navigate = useNavigate();
+  
   const handleSaveSubCategory = () => {
+
     setShowSubCategoryInputBox(false);
   };
   const handleShowSubCategoryInputBox = () => {
@@ -40,7 +42,7 @@ const AddCategories = () => {
           <CustomInput type="select" required={false} options={condition1} />
 
           <Box className="button-section">
-            <Button>View Categories</Button>
+            <Button onClick={()=> navigate('/categories/view-category')}>View Categories Rules</Button>
             <Button onClick={handleShowSubCategoryInputBox}>
               Add New Categories
               <span>
