@@ -28,7 +28,7 @@ export default function SingleVendorReport() {
 
   const WORKFLOW_REPORT_DATA = [
     {
-      id: 1,
+      id: '01',
       createAt: "26/06/2033",
       dueDate: "26/06/2033",
       source: "Email",
@@ -36,7 +36,7 @@ export default function SingleVendorReport() {
       billStatus: "Approved",
     },
     {
-      id: 2,
+      id: '02',
       createAt: "26/06/2033",
       dueDate: "26/06/2033",
       source: "Email",
@@ -44,7 +44,7 @@ export default function SingleVendorReport() {
       billStatus: "Pending",
     },
     {
-      id: 3,
+      id: '03',
       createAt: "26/06/2033",
       dueDate: "26/06/2033",
       source: "Email",
