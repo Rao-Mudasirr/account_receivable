@@ -9,25 +9,25 @@ import filterIcon from "../../../../assests/images/client/filter.png";
 import { DashboardSelect } from "../../../dashboard-select/dashboard-select";
 import { CustomDatePicker } from "../../../../components/custom-date-picker/custom-date-picker";
 import CustomTable from "../../../../components/Table/CustomTable";
-import TransactionModel from '../../../../components/transaction-model/Transaction-Model';
+import TransactionModel from "../../../../components/transaction-model/Transaction-Model";
 
 const Late = () => {
   const [selectBranch, setSelectBranch] = useState("");
   const [selectClient, setSelectClient] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [openModel, setOpenModel] = useState(false)
-  const [filteredTransactionData, setFilteredTransactionData] = useState()
+  const [openModel, setOpenModel] = useState(false);
+  const [filteredTransactionData, setFilteredTransactionData] = useState();
 
   const handleOpen = (_id) => {
-    setOpenModel(true)
-    const [filterData] = Late_Data?.filter((ele) => ele?.id === _id)
-    setFilteredTransactionData(filterData)
-  }
+    setOpenModel(true);
+    const [filterData] = Late_Data?.filter((ele) => ele?.id === _id);
+    setFilteredTransactionData(filterData);
+  };
 
   const handleClose = () => {
-    setOpenModel(false)
-  }
+    setOpenModel(false);
+  };
 
   const Late_Col = [
     {
@@ -47,9 +47,13 @@ const Late = () => {
     {
       accessorFn: (row) => row.category,
       id: "category",
-      cell: (info) => <Box className={info.getValue() === "Uncategorized" ? "yellow-color" : ""}>
-        {info.getValue()}
-        </Box>,
+      cell: (info) => (
+        <Box
+          className={info.getValue() === "Uncategorized" ? "yellow-color" : ""}
+        >
+          {info.getValue()}
+        </Box>
+      ),
       header: "Category",
       // isSortable: true,
     },
@@ -72,7 +76,9 @@ const Late = () => {
       id: "amount",
       cell: (info) => (
         <Box
-          className={info.getValue().startsWith("-") ? "error-color" : "success-color"}
+          className={
+            info.getValue().startsWith("-") ? "error-color" : "success-color"
+          }
           sx={{ textDecoration: "underline", cursor: "pointer" }}
           onClick={() => handleOpen(info?.row?.original?.id)}
         >
@@ -162,8 +168,7 @@ const Late = () => {
                     bgcolor: "#F0F0F2",
                   },
                   ".MuiSelect-icon": { top: "40%" },
-                  // maxWidth: "330px",
-                  // width: "100%"
+                  width: "100%"
                 }}
                 selectVal={selectBranch}
                 setSelectVal={setSelectBranch}
@@ -200,6 +205,7 @@ const Late = () => {
                       <Grid item sm={6} xs={12}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <CustomDatePicker
+                            width="100%"
                             dateValue={startDate}
                             placeholder="From"
                             setDateValue={setStartDate}
@@ -210,6 +216,7 @@ const Late = () => {
                       <Grid item sm={6} xs={12}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <CustomDatePicker
+                            width="100%"
                             dateValue={endDate}
                             placeholder="To"
                             setDateValue={setEndDate}
@@ -251,6 +258,7 @@ const Late = () => {
                               fontSize: "15px",
                             },
                             ".MuiSelect-icon": { top: "40%" },
+                            width: "94%",
                           }}
                           selectVal={selectClient}
                           setSelectVal={setSelectClient}
@@ -312,4 +320,4 @@ const Late = () => {
   );
 };
 
-export default Late
+export default Late;
