@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CustomInput from "../../../../components/CustomInput";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -11,12 +12,12 @@ import GlobalButton from "../../../../components/global-button/global-button";
 import SubCategoryInput from "../sub-category-input/sub-category-input";
 
 const AddCategories = () => {
+  const navigate = useNavigate();
   const [gridHovered, setGridHovered] = useState(false);
   const [contentHovered, setContentHovered] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showSubCategoryInputBox, setShowSubCategoryInputBox] = useState(false);
-
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -56,7 +57,6 @@ const AddCategories = () => {
     setShowSubCategoryInputBox(false);
   };
 
-
   const condition1 = [
     {
       title: "Category 1",
@@ -79,7 +79,9 @@ const AddCategories = () => {
           <CustomInput type="select" required={false} options={condition1} />
 
           <Box className="button-section">
-            <Button >View Categories</Button>
+            <Button onClick={() => navigate("/categories/view-category")}>
+              View Categories
+            </Button>
             <Button>
               Add New Categories
               <span onClick={handleShowSubCategoryInputBox}>
@@ -174,13 +176,13 @@ const AddCategories = () => {
               }}
             >
               Add Sub Category
-              <span style={{ marginLeft: "8px", marginTop: "10px" }}  >
+              <span style={{ marginLeft: "8px", marginTop: "10px" }}>
                 {" "}
                 <img src={AddIcon} alt="Add Icon" width={16} />
               </span>
             </Button>
-            <Box sx={{ mt: 1,cursor:'pointer' }}  onClick={handleOpen}>
-              <span >
+            <Box sx={{ mt: 1, cursor: "pointer" }} onClick={handleOpen}>
+              <span>
                 {" "}
                 <img src={dellIcon} alt="" />
               </span>
@@ -189,7 +191,7 @@ const AddCategories = () => {
         )}
       </Box>
 
-{showSubCategoryInputBox && (
+      {showSubCategoryInputBox && (
         <SubCategoryInput onSaveSubCategory={handleSaveSubCategory} />
       )}
 
@@ -205,15 +207,6 @@ const AddCategories = () => {
         handleClose={handleClose}
         onDeleteClick={handleClose}
       />
-
-  
-
-
-    
-
-     
-    
-  
     </>
   );
 };
