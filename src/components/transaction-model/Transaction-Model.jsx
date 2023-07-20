@@ -15,6 +15,7 @@ import { PoundSign } from "../../assests/bills/pound-sign";
 import {ReactComponent as PercentAge} from '../../assests/svg/percent-age.svg'
 import GlobalModal from "../global-modal/global-modal";
 import DeleteIcon from '../../assests/svg/trash.svg'
+import { ReactComponent as Down } from "../../assests/svg/chev-bottom.svg";
 
 const TransactionModel = ({
   openModel,
@@ -83,7 +84,6 @@ const TransactionModel = ({
     console.log("Form values:", formData);
   };
 
-  // Handler to clear form fields
   const handleClear = () => {
     setFormData({
       name: "",
@@ -260,11 +260,11 @@ const TransactionModel = ({
             <Select
               sx={
                 Styles.field_color
-                // color: categoryValue === "Uncategorized" ? "#FFBF00" : ""
               }
               fullWidth
               name="category"
               variant="standard"
+              IconComponent={Down}
               onChange={handleChange}
               value={formData.category ? 1 : 2}
               inputProps={{
@@ -307,7 +307,7 @@ const TransactionModel = ({
           <Grid className="flex justify-space-between margin-top-1 align-center">
             <Box>
               <Typography sx={{ fontWeight: 400, fontSize: "11px", color: "#000"}}>Consider as Cash inflow</Typography>
-              <Typography sx={{fontFamily: "Exo 2", fontWeight: 400, fontSize: "12px", marginTop: "4px"}}>Subtract from the selected cash inflow Category</Typography>
+              <Typography sx={{fontFamily: `'Exo 2', "Roboto", "sans-serif"`, fontWeight: 400, fontSize: "12px", marginTop: "4px"}}>Subtract from the selected cash inflow Category</Typography>
             </Box>
             <Box>
               <Button className="tm-del_btn font-family-Exo" onClick={handleDeleteOpen}>
