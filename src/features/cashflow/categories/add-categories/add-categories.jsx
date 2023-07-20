@@ -6,21 +6,28 @@ import AddIcon from "../../../../assests/images/categories/add-circle.png";
 import dellIcon from "../../../../assests/images/categories/dell-butn.png";
 import { ReactComponent as Add } from "../../../../assests/svg/add-circle-white.svg";
 import DeleteModel from "../../../../components/modal/DeleteModel";
-import AddModal from "../add-modal/add-modal";
 import GlobalButton from "../../../../components/global-button/global-button";
 import SubCategoryInput from "../sub-category-input/sub-category-input";
 import Fainancing from "../components/financing/financing";
 import CategoryModal from "../category-modal/category-modal";
 import Sales from "../components/sales/sales";
 import DailyExpense from "../components/daily-expense/daily-expense";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import KeyPerformanceIndicator from "../../key-performance-indicator/key-performance-indicator";
 
 const AddCategories = () => {
   const [showSubCategoryInputBox, setShowSubCategoryInputBox] = useState(false);
 
+  const [isPerformanceModalOpen, setPerformanceModalOpen] = useState(false);
 
- 
+
+  const handleOpenPerformanceModal = () => {
+    setPerformanceModalOpen(true);
+  };
+
+  const handleClosePerformanceModal = () => {
+    setPerformanceModalOpen(false);
+  };
+
   const handleSaveSubCategory = () => {
     setShowSubCategoryInputBox(false);
     
@@ -75,8 +82,20 @@ const AddCategories = () => {
 <DailyExpense/>
       {showSubCategoryInputBox && (
         
-        <SubCategoryInput onSaveSubCategory={handleSaveSubCategory} toastMessage="A new Category added successfully" />
+        <SubCategoryInput onSaveSubCategory={handleSaveSubCategory} />
       )}
+{/* 
+Add key performance modal */}
+
+
+{/* <Button  onClick={handleOpenPerformanceModal}>View Categories</Button>  
+
+<KeyPerformanceIndicator
+ openAdd={isPerformanceModalOpen}
+ handleClosePerformanceModal={handleClosePerformanceModal}
+/> */}
+
+
     </>
   );
 };
