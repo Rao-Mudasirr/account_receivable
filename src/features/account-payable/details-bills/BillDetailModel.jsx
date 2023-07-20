@@ -3,23 +3,21 @@ import { ReactComponent as Close } from "../../../assests/svg/model-close.svg";
 import Image from "../../../assests/bills/file.png";
 
 import { Box, Typography } from "@mui/material";
-const BillDetailModel = ({handleClose}) => {
-    return (
-        <Box className="flex justify-center">
-        <Box className="bg-white-color">
-          <Box>
-            <Typography variant="h2" className="flex justify-center">Bill Details</Typography>
-            <Close
-              onClick={handleClose}
-              style={{ cursor: "pointer", zIndex: 200}}
-            />
-          </Box>
-          <Box className="documentApprovalModel-model-body">
-            <img src={Image} />
-          </Box>
-        </Box>
+import { SimpleDialog } from "../../../components/modal/simple-dialog";
+const BillDetailModel = ({ openModel, handleClose }) => {
+  return (
+    <SimpleDialog
+      open={openModel}
+      handleClose={handleClose}
+      title="Bill Detail"
+      titleClass="adduser_header primary-color font-weight-600 secondary-heading"
+      paperSx={{ width: "900px"}}
+    >
+      <Box className="documentApprovalModel-model-body">
+        <img src={Image} />
       </Box>
-    );
-  }
-  
-export default BillDetailModel
+    </SimpleDialog>
+  );
+};
+
+export default BillDetailModel;

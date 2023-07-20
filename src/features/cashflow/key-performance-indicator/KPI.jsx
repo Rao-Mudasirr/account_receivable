@@ -11,13 +11,20 @@ import TableAction from "../../../components/Table/TableAction";
 import { ReactComponent as Add } from "../../../assests/svg/add-circle-white.svg";
 import "./kpi.scss";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
+import EditKey from "./EditKey";
 const KPI = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [clickedRowIndex, setClickedRowIndex] = useState(-1);
     const [selectBranch, setSelectBranch] = useState("");
+    const [openEdit, setOpenEdit] = useState(false);
 
-
+    const handleOpenEdit = () => {
+        setOpenEdit(true)
+    }
+    const handleCloseEdit = () => {
+        setOpenEdit(false)
+    }
 
     const handleKPIStatusClick = (index) => {
         setClickedRowIndex(index);
@@ -150,7 +157,7 @@ const KPI = () => {
                                                 <DeletePrompt>
                                                     Selected Category will be Deleted
                                                 </DeletePrompt>
-                                                <TableAction />
+                                                <TableAction onClicked={handleOpenEdit}/>
                                             </Box>
                                         ) : (
                                             row.action
@@ -162,6 +169,7 @@ const KPI = () => {
                     </Table>
                 </TableContainer>
             </div>
+            <EditKey open={openEdit} handleClose={handleCloseEdit}/>
         </>
     )
 }

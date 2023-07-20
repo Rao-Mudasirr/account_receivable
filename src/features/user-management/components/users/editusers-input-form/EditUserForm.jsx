@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
 import "./edituser.scss";
+import { ReactComponent as Down } from '../../../../../assests/svg/chev-bottom.svg'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string(),
@@ -180,9 +181,17 @@ const EditUserForm = () => {
                   component={Select}
                   name="company"
                   variant="standard"
+                  IconComponent={Down}
                   onChange={(e) => handleInputChange(e, props)}
                   inputProps={{
                     className: "font-family-Exo"
+                  }}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
                   }}
                 >
                   {companyOptions.map((option) => (
@@ -218,9 +227,17 @@ const EditUserForm = () => {
                   component={Select}
                   name="role"
                   variant="standard"
+                  IconComponent={Down}
                   onChange={(e) => handleInputChange(e, props)}
                   inputProps={{
                     className: "font-family-Exo",
+                  }}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
                   }}
                 >
                   {roleOptions.map((option) => (
@@ -270,7 +287,7 @@ const Styles = {
     "& .Mui-error:before": {
       borderBottomColor: "#d32f2f !important",
     },
-    "& input": {
+    "& .MuiInputBase-input": {
       paddingLeft: "15px",
       pb: "10px",
     },

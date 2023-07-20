@@ -32,13 +32,13 @@ const TabData = [
 const Transactions = () => {
   return (
     <Grid container>
-      <Grid item xl={10} lg={10} md={10} xs={12}>
+      <Grid item>
         <Typography className="font-weight-600 heading-20 font-family-Exo">
           Transactions
         </Typography>
       </Grid>
 
-      <Grid item className="margin-top-3" xl={10} lg={10} md={10} xs={12}>
+      <Grid item className="margin-top-3" xs={12}>
         <CustomTabs tabsData={TabData} />
       </Grid>
     </Grid>
