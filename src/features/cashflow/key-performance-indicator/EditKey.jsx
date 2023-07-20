@@ -3,16 +3,29 @@ import { Box, Typography, Grid, Button } from "@mui/material";
 import GlobalButton from "../../../components/global-button/global-button";
 import { DashboardSelect } from "../../dashboard-select/dashboard-select";
 import { TextareaAutosize } from "@mui/base";
+import { SimpleDialog } from "../../../components/modal/simple-dialog";
 
-const EditKey = () => {
+const EditKey = ({ open, handleClose }) => {
   const [category, setCategory] = useState("");
   const [indcator, setIndicator] = useState("");
   const [account, setAccount] = useState("");
   return (
-    <>
-      <Box sx={{ px: "25px" }}>
+    <SimpleDialog
+      open={open}
+      handleClose={handleClose}
+      title={
+        <Typography className="font-weight-600 heading-20 font-family-Exo">
+          Edit the formula{" "}
+          <span className="secondary-color">
+            Gross cash burn (total Cashflows)
+          </span>
+        </Typography>
+      }
+      paperSx={{maxWidth: "980px", width: "100%", borderRadius: "8px"}}
+    >
+      <Box>
         <Typography
-          sx={{ my: 6 }}
+          sx={{ my: 4 }}
           className="sub-heading font-weight-400 font-family-Exo primary-color"
         >
           Indicator's Computation Formula
@@ -148,48 +161,56 @@ const EditKey = () => {
           </Box>
         </Box>
 
-        {/* <Box>
-              <TextareaAutosize
-                minRows={11}
-                style={Styles.textArea()}
-              >
-                <div>
-                    Value
-          <Button sx={{bgcolor: "#0084AD"}}>Button</Button>
-          </div>
-              </TextareaAutosize>
-              </Box> */}
         <Box>
-          <div contentEditable={true} style={{...Styles.textArea(), height: "219px"}}>
+          <div
+            contentEditable={true}
+            style={{ ...Styles.textArea(), height: "219px" }}
+          >
             <div className="flex align-center">
-            Value (
-            <Button
-            contentEditable={false}
-              sx={{
-                bgcolor: "#0084AD",
-                zIndex: 1,
-                display: "flex",
-                alignItems: "center",
-                padding: "4px 8px",
-                borderRadius: "4px",
-                height: '32px',
-                color: "#fff",
-                "&:hover": {
-                  borderLeft: "1px solid #0084AD",
-                  borderRight: "1px solid #0084AD",
+              Value (
+              <Button
+                contentEditable={false}
+                sx={{
                   bgcolor: "#0084AD",
-                },
-              }}
-              endIcon={<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.99967 15.1673C4.04634 15.1673 0.833008 11.954 0.833008 8.00065C0.833008 4.04732 4.04634 0.833984 7.99967 0.833984C11.953 0.833984 15.1663 4.04732 15.1663 8.00065C15.1663 11.954 11.953 15.1673 7.99967 15.1673ZM7.99967 1.83398C4.59967 1.83398 1.83301 4.60065 1.83301 8.00065C1.83301 11.4007 4.59967 14.1673 7.99967 14.1673C11.3997 14.1673 14.1663 11.4007 14.1663 8.00065C14.1663 4.60065 11.3997 1.83398 7.99967 1.83398Z" fill="white"/>
-              <path d="M6.11357 10.3869C5.9869 10.3869 5.86023 10.3402 5.76023 10.2402C5.5669 10.0469 5.5669 9.7269 5.76023 9.53357L9.53357 5.76023C9.7269 5.5669 10.0469 5.5669 10.2402 5.76023C10.4336 5.95357 10.4336 6.27357 10.2402 6.4669L6.4669 10.2402C6.37357 10.3402 6.24023 10.3869 6.11357 10.3869Z" fill="white"/>
-              <path d="M9.8869 10.3869C9.76023 10.3869 9.63357 10.3402 9.53357 10.2402L5.76023 6.4669C5.5669 6.27357 5.5669 5.95357 5.76023 5.76023C5.95357 5.5669 6.27357 5.5669 6.4669 5.76023L10.2402 9.53357C10.4336 9.7269 10.4336 10.0469 10.2402 10.2402C10.1402 10.3402 10.0136 10.3869 9.8869 10.3869Z" fill="white"/>
-              </svg>
-              }
-            >
-              cash Outflow
-            </Button>
-            ,0)
+                  zIndex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "4px 8px",
+                  borderRadius: "4px",
+                  height: "32px",
+                  color: "#fff",
+                  "&:hover": {
+                    borderLeft: "1px solid #0084AD",
+                    borderRight: "1px solid #0084AD",
+                    bgcolor: "#0084AD",
+                  },
+                }}
+                endIcon={
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.99967 15.1673C4.04634 15.1673 0.833008 11.954 0.833008 8.00065C0.833008 4.04732 4.04634 0.833984 7.99967 0.833984C11.953 0.833984 15.1663 4.04732 15.1663 8.00065C15.1663 11.954 11.953 15.1673 7.99967 15.1673ZM7.99967 1.83398C4.59967 1.83398 1.83301 4.60065 1.83301 8.00065C1.83301 11.4007 4.59967 14.1673 7.99967 14.1673C11.3997 14.1673 14.1663 11.4007 14.1663 8.00065C14.1663 4.60065 11.3997 1.83398 7.99967 1.83398Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M6.11357 10.3869C5.9869 10.3869 5.86023 10.3402 5.76023 10.2402C5.5669 10.0469 5.5669 9.7269 5.76023 9.53357L9.53357 5.76023C9.7269 5.5669 10.0469 5.5669 10.2402 5.76023C10.4336 5.95357 10.4336 6.27357 10.2402 6.4669L6.4669 10.2402C6.37357 10.3402 6.24023 10.3869 6.11357 10.3869Z"
+                      fill="white"
+                    />
+                    <path
+                      d="M9.8869 10.3869C9.76023 10.3869 9.63357 10.3402 9.53357 10.2402L5.76023 6.4669C5.5669 6.27357 5.5669 5.95357 5.76023 5.76023C5.95357 5.5669 6.27357 5.5669 6.4669 5.76023L10.2402 9.53357C10.4336 9.7269 10.4336 10.0469 10.2402 10.2402C10.1402 10.3402 10.0136 10.3869 9.8869 10.3869Z"
+                      fill="white"
+                    />
+                  </svg>
+                }
+              >
+                cash Outflow
+              </Button>
+              ,0)
             </div>
             {/* <TextareaAutosize
               minRows={11}
@@ -203,30 +224,34 @@ const EditKey = () => {
             Read our <span className="link-color">Formula guide here.</span>
           </Typography>
         </Box>
-      </Box>
-
-      <Box>
         <Box
           sx={{
             display: "flex",
             gap: "1rem",
             justifyContent: "flex-end",
-            mt: "6rem",
+            mt: "3rem",
           }}
         >
-          <GlobalButton
-            btnType
-            btnText="Cancel"
-            //   onClick={handleCloseEdit}
-          />
-          <GlobalButton
-            btnText="Confirm"
-            btnName="accent"
-            // onClick={handleCloseEdit}
-          />
+          <Button
+        className="tertiary-color font-weight-400"
+        sx={{px: "24px", py: "10px", width: "105px", height: "48px", borderRadius: "8px", border: "1px solid #40404D", ":hover": {border: "2px solid #40404D"}}}
+        onClick={handleClose}
+        >
+          Cencel
+        </Button>
+        <Button
+        className="white-color font-weight-400"
+        sx={{px: "26px", py: "10px", borderRadius: "8px", bgcolor: "#40404D", ":hover": {bgcolor: "#2B2B33"}}}
+        onClick={handleClose}
+        >
+          Confirm
+        </Button>
         </Box>
       </Box>
-    </>
+
+      <Box>
+      </Box>
+    </SimpleDialog>
   );
 };
 
@@ -243,6 +268,6 @@ const Styles = {
     fontWeight: 400,
     fontSize: "16px",
     fontFamily: `'Exo 2', "Roboto", "sans-serif"`,
-    color: "#C4C4CC"
+    color: "#C4C4CC",
   }),
 };

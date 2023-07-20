@@ -17,7 +17,7 @@ const Paynowbtn = ({ isFieldsEmpty }) => {
                         background: isFieldsEmpty ? '#A6A6B3' : '#2B2B33',
                     },
                 }}>
-                close
+                Pay Now
             </Button>
         </Grid>
     )

@@ -11,11 +11,11 @@ const VTAmanagement = () => {
     return (
         <Box px={5} py={3} mt={4} >
             <Typography className="font-family-exo2" fontSize={'20px'} fontStyle='normal' fontWeight={600} colour='#2B2B33' line-height='28px'>VAT Management</Typography>
-            <Grid container alignItems={'start'} justifyContent={'space-between'} mt={1} >
-                <Grid item xs={12} lg={5.3}>
+            <Grid container alignItems={'start'} justifyContent={'space-between'}  >
+                <Grid item xs={12} lg={5.3} >
                     <FilteredBy />
                 </Grid>
-                <Grid item xs={12} lg={5.3} mt={9}>
+                <Grid item xs={12} lg={5.3} mt={11.5}>
                     <Grid item xs={12}><VatDueDate /></Grid>
                 </Grid>
             </Grid>

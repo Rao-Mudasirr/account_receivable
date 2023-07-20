@@ -1,36 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CustomTable from '../../../components/Table/CustomTable'
-import { SUB_INVOICE_DATA, sub_columns } from './sbscription-table-data'
+import { SUB_INVOICE_DATA } from './sbscription-table-data'
+import { sub_columns } from './sbscription-table-data'
 import './sub-invoice.scss';
-import { Button } from '@mui/material';
-import LinkNewCard from '../../Subscriptioninvoice/LinkNewCard/LinkNewCard';
+import PayNowCard from '../../../components/pay-now/PayNowCard';
+
 
 export default function SubscriptionList() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const tableData = sub_columns(handleOpen)
   return (
     <React.Fragment>
       <div className="subscription-title">Subscription Invoices</div>
-      <br/>
-      <br/>
+      <br />
+      <br />
       {/* Table */}
       <CustomTable
         data={SUB_INVOICE_DATA}
-        columns={sub_columns}
+        columns={tableData}
         isSuccess={true}
         isPagination={false}
         showHeaderFilter={false}
       />
-          {/* <Button onClick={handleOpen}>Link New Card</Button>
-          <span>
-            <LinkNewCard 
-              open = {open}
-              handleClose={handleClose}
-            />
-          </span> */}
-          
+      <PayNowCard
+        open={open}
+        onClose={handleClose}
+      />
+      
     </React.Fragment>
   )
 }
