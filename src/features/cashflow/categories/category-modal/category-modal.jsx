@@ -20,19 +20,6 @@ const CategoryModal = ({ categoryText, categoryIcon, data }) => {
   const [isExpanded, setExpanded] = useState(false);
   const [expandedSubcategories, setExpandedSubcategories] = useState([]);
 
-  // const handleExpandSubcategory = (subcategoryId) => {
-  //   setExpandedSubcategories((prevExpandedSubcategories) => {
-  //     if (prevExpandedSubcategories.includes(subcategoryId)) {
-  //       return prevExpandedSubcategories.filter(
-  //         (id) => id !== subcategoryId
-  //       );
-  //     } else {
-  //       return [...prevExpandedSubcategories, subcategoryId];
-  //     }
-  //   });
-  // };
-
-
   const [showSubCategoryInputBox, setShowSubCategoryInputBox] = useState(false);
 
   const handleShowSubCategoryInputBox = () => {
