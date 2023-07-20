@@ -17,8 +17,12 @@ const Late = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [openModel, setOpenModel] = useState(false)
-  const handleOpen = () => {
+  const [filteredTransactionData, setFilteredTransactionData] = useState()
+
+  const handleOpen = (_id) => {
     setOpenModel(true)
+    const [filterData] = Late_Data?.filter((ele) => ele?.id === _id)
+    setFilteredTransactionData(filterData)
   }
 
   const handleClose = () => {
@@ -70,7 +74,7 @@ const Late = () => {
         <Box
           className={info.getValue().startsWith("-") ? "error-color" : "success-color"}
           sx={{ textDecoration: "underline", cursor: "pointer" }}
-          onClick={handleOpen}
+          onClick={() => handleOpen(info?.row?.original?.id)}
         >
           {info.getValue()}
         </Box>
@@ -97,11 +101,9 @@ const Late = () => {
       category: "Rent",
       payment_extended_date: "19 Apr, 2023",
       last_since: "30 March, 2023",
-      amount: "£ 20,000",
+      amount: "-£ 20,000",
     },
   ];
-
-  const dataElement = Late_Data[0];
 
   return (
     <>
@@ -297,13 +299,13 @@ const Late = () => {
         />
       </Grid>
       <TransactionModel
-      openModel={openModel}
-      handleClose={handleClose}
-      titelValue={dataElement.amount}
-      nameValue={dataElement.name}
-      amountValue={dataElement.amount}
-      paymentDateValue={dataElement.payment_extended_date}
-      categoryValue={dataElement.category}
+        openModel={openModel}
+        handleClose={handleClose}
+        titelValue={filteredTransactionData?.amount}
+        nameValue={filteredTransactionData?.name}
+        amountValue={filteredTransactionData?.amount}
+        paymentDateValue={filteredTransactionData?.payment_extended_date}
+        categoryValue={filteredTransactionData?.category}
       />
     </>
   );

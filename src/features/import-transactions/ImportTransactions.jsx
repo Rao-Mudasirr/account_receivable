@@ -17,8 +17,8 @@ const ImportTransactions = () => {
       <Typography className="font-weight-600 heading-20 font-family-Exo">
         Import Transactions
       </Typography>
-      <Grid className="flex flex-column align-center justify-center"
-      sx={{gap: "4rem", height: "80vh"}}
+      <Grid className="flex flex-column align-center justify-center height-100vh"
+      sx={{gap: "4rem"}}
       >
       <Box
       className="flex flex-column align-center justify-center"

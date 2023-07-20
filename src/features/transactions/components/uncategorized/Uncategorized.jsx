@@ -17,8 +17,12 @@ const Uncategorized = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [openModel, setOpenModel] = useState(false)
-  const handleOpen = () => {
+  const [filteredTransactionData, setFilteredTransactionData] = useState()
+
+  const handleOpen = (_id) => {
     setOpenModel(true)
+    const [filterData] = Uncategorized_Data?.filter((ele) => ele?.id === _id)
+    setFilteredTransactionData(filterData)
   }
 
   const handleClose = () => {
@@ -61,7 +65,7 @@ const Uncategorized = () => {
         <Box
           className="error-color cursor-pointer"
           sx={{ textDecoration: "underline" }}
-          onClick={handleOpen}
+          onClick={() => handleOpen(info?.row?.original?.id)}
         >
           {info.getValue()}
         </Box>
@@ -82,7 +86,6 @@ const Uncategorized = () => {
     },
   ];
 
-  const dataElement = Uncategorized_Data[0];
 
   return (
     <>
@@ -278,13 +281,13 @@ const Uncategorized = () => {
         />
       </Grid>
       <TransactionModel
-      openModel={openModel}
-      handleClose={handleClose}
-      titelValue={dataElement.amount}
-      nameValue={dataElement.name}
-      amountValue={dataElement.amount}
-      paymentDateValue={dataElement.payment_extended_date}
-      categoryValue={dataElement.category}
+        openModel={openModel}
+        handleClose={handleClose}
+        titelValue={filteredTransactionData?.amount}
+        nameValue={filteredTransactionData?.name}
+        amountValue={filteredTransactionData?.amount}
+        paymentDateValue={filteredTransactionData?.payment_extended_date}
+        categoryValue={filteredTransactionData?.category}
       />
     </>
   );
