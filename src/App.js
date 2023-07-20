@@ -114,6 +114,9 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
+          
+          <Route exact path={"/overdue-invoices/:id"} element={<Overdue_Invoice />} />
+          
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}

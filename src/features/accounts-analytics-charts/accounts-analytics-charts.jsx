@@ -4,8 +4,9 @@ import { DashboardCard } from '../../components/dashboard-card/dashboard-card'
 import { AgingBucketCharts } from '../aging-bucket-charts/aging-bucket-charts'
 import { DashboardResponsiveDR } from '../dashboard-responsive-DR/dashboard-responsive-DR'
 import { DashboardToggleIcon } from '../dashboard-toggle-icon/dashboard-toggle-icon'
+import { CategoryBarChart } from '../category-bar-chart/category-bar-chart'
 
-export const AccountsAnalyticsCharts = ({title,card1Heading}) => {
+export const AccountsAnalyticsCharts = ({ title, card1Heading,card2Heading }) => {
     const [agingBucketVal, setAgingBucketVal] = useState("0");
     return (
         <>
@@ -32,6 +33,14 @@ export const AccountsAnalyticsCharts = ({title,card1Heading}) => {
                         }
                     >
                         <AgingBucketCharts chartSwitch={agingBucketVal} pieChartColors={['#76BD70', '#E8BD50', '#E88750', '#FF6060']} />
+                    </DashboardCard>
+                </Grid>
+                <Grid item xs={12}>
+                    <DashboardCard
+                        heading={card2Heading}
+                        headingSibling={<DashboardResponsiveDR />}
+                    >
+                        <CategoryBarChart />
                     </DashboardCard>
                 </Grid>
             </Grid>
