@@ -20,6 +20,7 @@ const CustomInput = ({
   type = "Text",
   options = [],
   inputClass,
+  placeholder,
   parentClass,
   labelClass,
   disable = false,
@@ -51,7 +52,7 @@ const CustomInput = ({
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             // label="Standard"
             disabled={disable}
-            placeholder="Standard"
+            placeholder={placeholder || " Standard"}
             {...props}
           />
         </>
@@ -62,15 +63,23 @@ const CustomInput = ({
             className={`usersform_textfield ${inputClass ? inputClass : ""}`}
             defaultValue={props?.defaultValue || options[0]?.title || "Select"}
             value={props?.value || options[0]?.title}
+            renderValue={(value) =>
+              value !== "" ? (
+                value
+              ) : (
+                <span style={{ color: "#c4c4cc" }}>{placeholder}</span>
+              )
+            }
             variant="standard"
             multiple={props?.isMulti ? true : false}
-            placeholder="Select"
             disabled={disable}
             IconComponent={Down}
             {...props}
           >
             {options?.length === 0 ? (
-              <MenuItem value="s">create a array and add them</MenuItem>
+              <MenuItem value="create a array and add them">
+                create a array and add them
+              </MenuItem>
             ) : props?.isMulti && props.grouped ? (
               options?.map((e, i) => (
                 <div>
@@ -136,7 +145,7 @@ const CustomInput = ({
             }`}
             // label="Standard"
             disabled={disable}
-            placeholder="Standard"
+            placeholder={placeholder || " Standard"}
             {...props}
           />
         </>

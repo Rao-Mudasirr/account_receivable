@@ -24,12 +24,22 @@ import Pendingbtn from "./btns/Pendingbtn";
 import Approvedbtn from "./btns/Approvedbtn";
 import Rejectedbtns from "./btns/Rejectedbtns";
 import Partialbtn from "./btns/Partialbtn";
+import BillDetailModel from "./BillDetailModel";
 
 
-const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
+const DetailsPage = ({ open, onClose, status }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [openModel, setOpenModel] = useState(false);
+  const handleOpen = () => {
+    setOpenModel(true)
+  }
+  const handleClose = () => {
+    setOpenModel(false)
+  }
+
   return (
+    <>
     <SimpleDialog open={open} handleClose={onClose} title="Bill Details"
       titleClass="primary-color font-weight-600 heading-20" paperSx={{ maxWidth: '936px' }}>
       <div className="flex justify-space-between margin-top-3">
@@ -42,15 +52,11 @@ const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
       <DialogContent>
         <Box className='reuse-details-section'>
           <Box className="children-first-section">
-            <Box className="image-box ">
+            <Box className="image-box">
               <img src={Image} alt="file" />
             </Box>
-            <FullScreen
-            className="maximize-btn"
-            // onClick={() =>
-            //   setOpenModel({ ...openModel, model: !openModel.model, type: 1 })
-            // }
-          />
+            <FullScreen className="maximize-btn"
+            onClick={handleOpen}/>
           </Box>
           <Box className="children-second-section">
             <Grid container spacing={5} rowSpacing={5}>
@@ -161,6 +167,8 @@ const DetailsPage = ({ open, onClose, setOpenModel, openModel, status }) => {
       </DialogContent>
 
     </SimpleDialog>
+    <BillDetailModel openModel={openModel} handleClose={handleClose}/>
+    </>
   );
 };
 

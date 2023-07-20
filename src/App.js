@@ -46,12 +46,16 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import TransactionsPage from "./pages/transactions-page";
+import ImportTransactionsPage from "./pages/import-transactions-page";
+import {
+  TOTRANSACTIONS,
+  TOIMPORTTRANSACTIONS,
+} from "./constants/routes-constant";
 import PayNowCard from "./components/pay-now/PayNowCard";
 import VTAmanagement from "./pages/VTA-management";
 import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
 import CategoryCashflow from "./pages/CategoryCashflow";
-import TransactionsPage from "./pages/transactions-page";
-import { TOTRANSACTIONS } from "./constants/routes-constant";
 import KPIs from "./pages/key-performance-indicator";
 import RulesCategory from "./features/cashflow/categories/RulesCategory/RulesCategory";
 
@@ -98,8 +102,13 @@ function App() {
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
-          <Route path={"/vta-management"} element={<VTAmanagement />} />
           <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route
+            exact
+            path={TOIMPORTTRANSACTIONS}
+            element={<ImportTransactionsPage />}
+          />
+          <Route path={"/vta-management"} element={<VTAmanagement />} />
           <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
@@ -111,9 +120,11 @@ function App() {
             path={"/overdue-invoices"}
             element={<Overdue_Invoice />}
           />
-          
-          <Route exact path={"/overdue-invoices/:id"} element={<Overdue_Invoice />} />
-          
+          <Route
+            exact
+            path={"/overdue-invoices/:id"}
+            element={<Overdue_Invoice />}
+          />
           <Route
             path="/reports/workflows-report/workflow-detail"
             element={<WorkflowDetail />}
