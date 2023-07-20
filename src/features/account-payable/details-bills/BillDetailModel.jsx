@@ -11,11 +11,9 @@ const BillDetailModel = ({ openModel, handleClose }) => {
       handleClose={handleClose}
       title="Bill Detail"
       titleClass="adduser_header primary-color font-weight-600 secondary-heading"
-      paperSx={{ width: "900px"}}
+      paperSx={{ maxWidth:'685px'}}
     >
-      <Box className="documentApprovalModel-model-body">
         <img src={Image} />
-      </Box>
     </SimpleDialog>
   );
 };

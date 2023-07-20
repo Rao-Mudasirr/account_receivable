@@ -8,6 +8,7 @@ import './paynow.scss'
 import Paynowbtn from './Paynowbtn'
 import { DateIcon } from '../date-icon/date-icon';
 import { SimpleDialog } from '../modal/simple-dialog';
+import LinkNewCard from '../../features/Subscriptioninvoice/LinkNewCard/LinkNewCard';
 
 
 const PaynowCardData = [
@@ -37,12 +38,15 @@ const PaynowCardData = [
 const PayNowCard = ({ open, onClose }) => {
     // const [startDate, setStartDate] = useState();
     const [selectedCard, setSelectedCard] = useState(null);
-
+    const [open2, setOpen2] = useState(false);
     const handleCardChange = (event) => {
         const selectedCardId = event.target.value;
         setSelectedCard(selectedCardId);
         // setStartDate(null);
     };
+    const handleClose = () => {
+        setOpen2(false)
+    }
 
     // const formatDate = dayjs(startDate).format('MM/YY');
 
@@ -93,8 +97,8 @@ const PayNowCard = ({ open, onClose }) => {
                                         <span style={{ color: '#E1E1E6', fontFamily: 'Exo 2' }}>Card Number Format</span>
                                 }
                                 inputProps={{
-                                    className:'font-family-Exo'
-                                }} 
+                                    className: 'font-family-Exo'
+                                }}
                             >
                                 {PaynowCardData.map((card) => (
                                     <MenuItem key={card.id} value={card.id}>
@@ -105,6 +109,8 @@ const PayNowCard = ({ open, onClose }) => {
                         </Grid>
                         <Grid item mt={{ xs: '10px' }}>
                             <Button
+
+                                onClick={()=>setOpen2(true)}
                                 variant="outlined"
                                 sx={{
                                     color: '#6B6B80',
@@ -124,6 +130,7 @@ const PayNowCard = ({ open, onClose }) => {
                                 }}
                             >
                                 Link New Card
+
                             </Button>
                         </Grid>
                     </Grid>
@@ -153,8 +160,8 @@ const PayNowCard = ({ open, onClose }) => {
                                     value={selectedCard}
                                     onChange={handleCardChange}
                                     inputProps={{
-                                        className:'font-family-Exo'
-                                    }} 
+                                        className: 'font-family-Exo'
+                                    }}
                                 >
                                     {selectedCardDetails && (
                                         <MenuItem value={selectedCardDetails.id}>
@@ -178,8 +185,8 @@ const PayNowCard = ({ open, onClose }) => {
                                         value={selectedCardDetails ? selectedCardDetails.cvnNumber : ''}
                                         disabled={!selectedCardDetails}
                                         inputProps={{
-                                            className:'font-family-Exo'
-                                        }} 
+                                            className: 'font-family-Exo'
+                                        }}
                                     />
                                 </Grid>
                                 <Grid xs={12} lg={5} className="margin-top-3">
@@ -208,8 +215,8 @@ const PayNowCard = ({ open, onClose }) => {
                                         value={selectedCardDetails ? selectedCardDetails.date : ''}
                                         disabled={!selectedCardDetails}
                                         inputProps={{
-                                            className:'font-family-Exo'
-                                        }} 
+                                            className: 'font-family-Exo'
+                                        }}
                                         InputProps={{
                                             endAdornment: (
                                                 <div style={{ display: 'flex', justifyContent: 'flex-end', color: '#777777', marginRight: '15px' }}>
@@ -236,8 +243,8 @@ const PayNowCard = ({ open, onClose }) => {
                                         value={selectedCardDetails ? selectedCardDetails.password : ''}
                                         disabled={!selectedCardDetails}
                                         inputProps={{
-                                            className:'font-family-Exo'
-                                        }}                                    />
+                                            className: 'font-family-Exo'
+                                        }} />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -270,7 +277,7 @@ const PayNowCard = ({ open, onClose }) => {
                                             </div>
                                         </div>
                                     </Box>
-                                    <Box sx={{marginTop:'3.5rem'}} className="flex justify-center">
+                                    <Box sx={{ marginTop: '3.5rem' }} className="flex justify-center">
                                         <Typography className='sub-heading font-weight-400 font-family-Exo'
                                             onChange={handleCardChange}>
                                             {selectedCardDetails.cardNumber}
@@ -285,6 +292,9 @@ const PayNowCard = ({ open, onClose }) => {
                     />
                 </Grid>
             </SimpleDialog>
+            <LinkNewCard open={open2}
+                handleClose={handleClose}
+            />
         </>
     );
 };

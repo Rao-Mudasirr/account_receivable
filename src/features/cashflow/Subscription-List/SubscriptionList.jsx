@@ -5,6 +5,7 @@ import { sub_columns } from './sbscription-table-data'
 import './sub-invoice.scss';
 import PayNowCard from '../../../components/pay-now/PayNowCard';
 
+
 export default function SubscriptionList() {
 
   const [open, setOpen] = useState(false);
@@ -33,6 +34,7 @@ export default function SubscriptionList() {
         open={open}
         onClose={handleClose}
       />
+      
     </React.Fragment>
   )
 }
