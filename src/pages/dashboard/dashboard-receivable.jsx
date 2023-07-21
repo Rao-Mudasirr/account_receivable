@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 import { DashboardCard } from "../../components/dashboard-card/dashboard-card";
 import { UnifiedDSOAPD } from "../../features/unified-dso-apd/unified-dso-apd";
 import { TopClientsStackedBarChart } from "../../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart";
-import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
+import { AgingBucketCharts } from "../../features/aging-bucket-charts/aging-bucket-charts";
 import { PaymentShowcaseAreaChart } from "../../features/payment-showcase-area-chart/payment-showcase-area-chart";
 import { PaymentForecastingChartSwitch } from "../../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch";
 import { DashboardChartSwitch } from "../../features/dashboard-chart-switch/dashboard-chart-switch";
@@ -19,18 +19,10 @@ import { useNavigate } from "react-router-dom";
 export const dashboardStyle = {
     width: "102px",
     height: "28px",
-    fontFamily: "Exo 2",
-    fontStyle: "normal",
-    fontWeight: "600",
     fontSize: "20px",
-    lineHeight: "28px",
     display: "flex",
     alignItems: "center",
     marginBottom: '52px',
-    color: "#40404D",
-    flex: "none",
-    order: 0,
-    flexGrow: 0,
 };
 
 export const DashboardReceivable = () => {
@@ -41,7 +33,7 @@ export const DashboardReceivable = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div style={dashboardStyle}>Dashboard</div>
+            <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Grid container spacing={3}>
@@ -138,7 +130,7 @@ export const DashboardReceivable = () => {
                             </div>
                         }
                     >
-                        <AgingBucketBarChart chartSwitch={agingBucketVal} />
+                        <AgingBucketCharts chartSwitch={agingBucketVal} />
                     </DashboardCard>
                 </Grid>
                 <Grid item xl={6.5} xs={12}>

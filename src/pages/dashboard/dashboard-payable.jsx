@@ -3,7 +3,7 @@ import RecentNotify from "../../features/RecentNotification/RecentNotify";
 import { Grid } from "@mui/material";
 import { DashboardCard } from "../../components/dashboard-card/dashboard-card";
 import { TopClientsStackedBarChart } from "../../features/top-clients-stacked-bar-chart/top-clients-stacked-bar-chart";
-import { AgingBucketBarChart } from "../../features/aging-bucket-bar-chart/aging-bucket-bar-chart";
+import { AgingBucketCharts } from "../../features/aging-bucket-charts/aging-bucket-charts";
 import { PaymentShowcaseAreaChart } from "../../features/payment-showcase-area-chart/payment-showcase-area-chart";
 import { PaymentForecastingChartSwitch } from "../../features/payment-forecasting-chart-switch/payment-forecasting-chart-switch";
 import { DashboardChartSwitch } from "../../features/dashboard-chart-switch/dashboard-chart-switch";
@@ -23,7 +23,7 @@ export const DashboardPayable = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div style={dashboardStyle}>Dashboard</div>
+            <div style={dashboardStyle} className="tertiary-color font-weight-600">Dashboard</div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Grid container spacing={3}>
@@ -70,7 +70,7 @@ export const DashboardPayable = () => {
                             </div>
                         }
                     >
-                        <AgingBucketBarChart chartSwitch={agingBucketVal} />
+                        <AgingBucketCharts chartSwitch={agingBucketVal} />
                     </DashboardCard>
                 </Grid>
                 <Grid item xl={6.5} xs={12}>
@@ -87,6 +87,7 @@ export const DashboardPayable = () => {
                     >
                         <PaymentShowcaseAreaChart
                             categories={[
+                                "",
                                 "Jan",
                                 "Feb",
                                 "Mar",
@@ -102,7 +103,7 @@ export const DashboardPayable = () => {
                             series={[
                                 {
                                     name: "Payment Collection",
-                                    data: [31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51],
+                                    data: ["", 31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51],
                                 },
                             ]}
                         />
@@ -121,7 +122,7 @@ export const DashboardPayable = () => {
                         <PaymentShowcaseAreaChart
                             categories={
                                 paymentForecastSwitch === "This Month"
-                                    ? ["Week 1", "Week 2", "Week 3", "Week 4"]
+                                    ? ["", "Week 1", "Week 2", "Week 3", "Week 4"]
                                     : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
                             }
                             series={[
@@ -129,7 +130,7 @@ export const DashboardPayable = () => {
                                     name: "Payment Forecasting",
                                     data:
                                         paymentForecastSwitch === "This Month"
-                                            ? [31, 40, 28, 51]
+                                            ? ["", 31, 40, 28, 51]
                                             : [31, 40, 28, 51, 42, 109, 100],
                                 },
                             ]}

@@ -19,17 +19,20 @@ const Step3 = ({ handleClose, stepIncrease, stepDecrease }) => {
                 </Box>
                 <Box className="detail-box">
                   <Typography variant="h4">Nord Bank Checking</Typography>
-                  <Typography variant="h5">Ends with .00000</Typography>
+                  <Typography variant="h5">www.nordbankchecking.com</Typography>
                 </Box>
               </Box>
             </Box>
           </Box>
           <Close
             onClick={handleClose}
-            style={{ cursor: "pointer", zIndex: 200 }}
+            style={{ cursor: "pointer", zIndex: 200, position: 'relative', top: '-40px' }}
           />
         </Box>
         <Box className="documentApprovalModel-model-body">
+          <Box className="title" sx={{color: '#2B2B33', fontSize: 20, fontFamily: 'Exo 2', fontWeight: '600', wordWrap: 'break-word', pb: 1}}>
+            Enter your credentials
+          </Box>
           <Box className="description">
             By providing your Credentials to Payable, you’re enabling Payable to
             retrieve your financial data.{" "}

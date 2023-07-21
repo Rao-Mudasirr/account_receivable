@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField, Select } from "formik-material-ui";
 import * as Yup from "yup";
 import "./edituser.scss";
+import { ReactComponent as Down } from '../../../../../assests/svg/chev-bottom.svg'
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string(),
@@ -180,9 +181,17 @@ const EditUserForm = () => {
                   component={Select}
                   name="company"
                   variant="standard"
+                  IconComponent={Down}
                   onChange={(e) => handleInputChange(e, props)}
-                  InputProps={{
-                    startAdornment: <InputAdornment position="start">Select</InputAdornment>,
+                  inputProps={{
+                    className: "font-family-Exo"
+                  }}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
                   }}
                 >
                   {companyOptions.map((option) => (
@@ -218,7 +227,18 @@ const EditUserForm = () => {
                   component={Select}
                   name="role"
                   variant="standard"
+                  IconComponent={Down}
                   onChange={(e) => handleInputChange(e, props)}
+                  inputProps={{
+                    className: "font-family-Exo",
+                  }}
+                  displayEmpty
+                  renderValue={(selected) => {
+                    if (!selected) {
+                      return <span style={{color:'#b8b8b8', fontFamily:'Exo 2', fontSize: "16px", fontWeight: 400}} shrink>Select</span>;
+                    }
+                    return selected;
+                  }}
                 >
                   {roleOptions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -258,30 +278,30 @@ export default EditUserForm;
 //Style
 const Styles = {
   field_color: (theme) => ({
-    "& label": {
-      color: "black",
-    },
-    "& label.Mui-focused": {
-      color: "black",
-    },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
+      borderBottomColor: "#2B2B33",
     },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "black",
-      },
-      "&:hover fieldset": {
-        borderColor: "black",
-        borderWidth: "0.15rem",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
+    "& .Mui-error:after": {
+      borderBottomColor: "#d32f2f",
+    },
+    "& .Mui-error:before": {
+      borderBottomColor: "#d32f2f !important",
+    },
+    "& .MuiInputBase-input": {
+      paddingLeft: "15px",
+      pb: "10px",
+    },
+    "& .MuiInputBase-root:hover": {
+      backgroundColor: "#F0F0F2",
+    },
+    "& :before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
+    },
+    "&:before": {
+      borderBottom: "1.6px solid #C4C4CC !important",
     },
     "&:after": {
-      borderColor: "black",
+      borderColor: "#2B2B33",
     },
-    fontFamily: `'Exo 2', "Roboto", "sans-serif"`
   }),
 };

@@ -37,10 +37,10 @@ const INVOICE_DATA = [
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: "12",
-    total_amount: "$7200",
+    total_amount: "£ 7200",
   },
   {
-    id: 2, 
+    id: 2,
     Id: "02",
     invoiceNo: "2345",
     client: "Ali",
@@ -48,7 +48,7 @@ const INVOICE_DATA = [
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: "12",
-    total_amount: "$7200",
+    total_amount: "£ 7200",
   },
   {
     id: 3,
@@ -59,7 +59,7 @@ const INVOICE_DATA = [
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: "12",
-    total_amount: "$7200",
+    total_amount: "£ 7200",
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ const INVOICE_DATA = [
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: "12",
-    total_amount: "$7200",
+    total_amount: "£ 7200",
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const INVOICE_DATA = [
     issue_date: "19 Oct, 2023",
     due_date: "19 Oct, 2023",
     overdue_days: "12",
-    total_amount: "$7200",
+    total_amount: "£ 7200",
   },
 ];
 
@@ -127,8 +127,8 @@ export default function InvoiceListing() {
             info.getValue() === "Paid"
               ? "Paid"
               : info.getValue() === "Due"
-              ? "Due"
-              : "Overdue"
+                ? "Due"
+                : "Overdue"
           }
         >
           {info.getValue()}
@@ -210,7 +210,11 @@ export default function InvoiceListing() {
         </Grid>
 
         <Grid xs={12} md={6} lg={6} xl={6}>
-          <div style={{ marginLeft: "auto", display: "flex" }}>
+          <Box sx={{
+            marginLeft: "auto",
+            display: "flex"
+          }}>
+            <Box sx={{marginLeft:'30px'}}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={{
@@ -246,224 +250,227 @@ export default function InvoiceListing() {
                 onChange={(date) => setEndDate(date)}
               />
             </LocalizationProvider>
-            <CustomPopover
-              mainTitle="Filters"
-              mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="More Filters"
-              popoverOpenerProps={{
-                variant: "outlined",
-                sx: {
-                  mr: 2,
-                  top: "20px",
-                  whiteSpace: "nowrap",
-                  color: "#40404D",
-                  border: "1.5px solid #40404D !important",
-                  height: "32px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    border: "2px solid #40404D !important",
+            </Box>
+            <Box sx={{ marginLeft: 'auto', marginRight:'10px' }}>
+              <CustomPopover
+                mainTitle="Filters"
+                mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
+                popoverOpenerTitle="More Filters"
+                popoverOpenerProps={{
+                  variant: "outlined",
+                  sx: {
+                    mr: 2,
+                    top: "20px",
+                    whiteSpace: "nowrap",
+                    color: "#40404D",
+                    border: "1.5px solid #40404D !important",
+                    height: "32px",
+                    borderRadius: "8px",
+                    "&:hover": {
+                      border: "2px solid #40404D !important",
+                    },
                   },
-                },
-                endIcon: <img src={filterIcon} alt="More Filter" />,
-                className:
-                  "buttons-filters font-family-Exo font-weight-400 tertiary-title",
-              }}
-            >
-              {(popupState) => (
-                <>
-                  <Grid container spacing={2}>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="branch">
-                        Branch
-                      </label>
-                      <DashboardSelect
-                        id="branch"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={selectBranch}
-                        setSelectVal={setSelectBranch}
-                        data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
-                      />
+                  endIcon: <img src={filterIcon} alt="More Filter" />,
+                  className:
+                    "buttons-filters font-family-Exo font-weight-400 tertiary-title",
+                }}
+              >
+                {(popupState) => (
+                  <>
+                    <Grid container spacing={2}>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="branch">
+                          Branch
+                        </label>
+                        <DashboardSelect
+                          id="branch"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={selectBranch}
+                          setSelectVal={setSelectBranch}
+                          data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
+                        />
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="Client">
+                          Client
+                        </label>
+                        <DashboardSelect
+                          id="Client"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={selectClient}
+                          setSelectVal={setSelectClient}
+                          data={["Client 1", "Client 2", "Client 3", "Client 4"]}
+                        />
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="Client">
+                          Status
+                        </label>
+                        <DashboardSelect
+                          id="Status"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={status}
+                          setSelectVal={setStatus}
+                          data={["Paid", "Due", "Overdue"]}
+                        />
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="Client">
+                          Aging Bucket
+                        </label>
+                        <DashboardSelect
+                          id="bucket"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={bucket}
+                          setSelectVal={setBucket}
+                          data={[
+                            "Amount overdue < 30d",
+                            "Amount overdue 30 - 60d",
+                            "Amount overdue 60 - 90d",
+                            "Amount overdue > 90d",
+                          ]}
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="Client">
-                        Client
-                      </label>
-                      <DashboardSelect
-                        id="Client"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={selectClient}
-                        setSelectVal={setSelectClient}
-                        data={["Client 1", "Client 2", "Client 3", "Client 4"]}
-                      />
-                    </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="Client">
-                        Status
-                      </label>
-                      <DashboardSelect
-                        id="Status"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={status}
-                        setSelectVal={setStatus}
-                        data={["Paid", "Due", "Overdue"]}
-                      />
-                    </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="Client">
-                        Aging Bucket
-                      </label>
-                      <DashboardSelect
-                        id="bucket"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={bucket}
-                        setSelectVal={setBucket}
-                        data={[
-                          "Amount overdue < 30d",
-                          "Amount overdue 30 - 60d",
-                          "Amount overdue 60 - 90d",
-                          "Amount overdue > 90d",
-                        ]}
-                      />
-                    </Grid>
-                  </Grid>
-                  <div className="filter-below-btn margin-top-2 flex justify-end">
-                    <Button
-                      className="btn1"
-                      onClick={() => {
-                        setSelectBranch("");
-                        setSelectClient("");
-                        setBucket("");
-                        setStatus("");
-                      }}
-                    >
-                      Clear
-                    </Button>
-                    &nbsp;
-                    <Button
-                      onClick={() => {
-                        if (selectBranch || selectClient) {
+                    <div className="filter-below-btn margin-top-2 flex justify-end">
+                      <Button
+                        className="btn1"
+                        onClick={() => {
                           setSelectBranch("");
                           setSelectClient("");
                           setBucket("");
                           setStatus("");
-                          popupState.close();
-                        } else {
-                          toast.error("Please Select Any Type");
-                        }
-                      }}
-                      className="btn2 primary-bg-color"
-                    >
-                      Apply
-                    </Button>
-                  </div>
-                </>
-              )}
-            </CustomPopover>
-          </div>
+                        }}
+                      >
+                        Clear
+                      </Button>
+                      &nbsp;
+                      <Button
+                        onClick={() => {
+                          if (selectBranch || selectClient) {
+                            setSelectBranch("");
+                            setSelectClient("");
+                            setBucket("");
+                            setStatus("");
+                            popupState.close();
+                          } else {
+                            toast.error("Please Select Any Type");
+                          }
+                        }}
+                        className="btn2 primary-bg-color"
+                      >
+                        Apply
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </CustomPopover>
+            </Box>
+          </Box>
         </Grid>
       </Grid>
       <br />

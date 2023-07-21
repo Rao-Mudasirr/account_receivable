@@ -4,7 +4,7 @@ import { GlobalSearchBar } from "../../../components/global-search-filter/global
 import filterIcon from "../../../assests/images/client/filter.png";
 import exportIcon from "../../../assests/images/client/export.png";
 import { Button, Grid, Box } from "@mui/material";
-import {Aging_Buckets_Col, Aging_Buckets_Data} from './Aging_Buckets_Data'
+import {Aging_Buckets_Col, Aging_Payable_Col, Aging_Buckets_Data} from './Aging_Buckets_Data'
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { CustomPopover } from "../../../components/custom-popover/custom-popover";
@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import { ExportCardCheckbox } from "../../../components/export-card-checkbox/export-card-checkbox";
 import { DateIcon } from "../../../components/date-icon/date-icon";
 
-export default function AgingBucketsReport() {
+export default function AgingBucketsReport({payable}) {
   
   const [selectBranch, setSelectBranch] = useState("");
   const [selectClient, setSelectClient] = useState("");
@@ -71,137 +71,140 @@ export default function AgingBucketsReport() {
                 onChange={(date) => setEndDate(date)}
               />
             </LocalizationProvider>
-            <CustomPopover
-              mainTitle="Filters"
-              mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
-              popoverOpenerTitle="More Filters"
-              popoverOpenerProps={{
-                variant: "outlined",
-                sx: {
-                  mr: 2,
-                  whiteSpace: "nowrap",
-                  color: "#40404D",
-                  border: "1.5px solid #40404D !important",
-                  height: "32px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    border: "2px solid #40404D !important",
+            
+                <CustomPopover
+                mainTitle="Filters"
+                mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
+                popoverOpenerTitle="More Filters"
+                popoverOpenerProps={{
+                  variant: "outlined",
+                  sx: {
+                    mr: 2,
+                    whiteSpace: "nowrap",
+                    color: "#40404D",
+                    visibility: payable ? 'hidden' : 'show',
+                    border: "1.5px solid #40404D !important",
+                    height: "32px",
+                    borderRadius: "8px",
+                    "&:hover": {
+                      border: "2px solid #40404D !important",
+                    },
                   },
-                },
-                endIcon: <img src={filterIcon} alt="More Filter" />,
-                className:
-                  "buttons-filters font-family-Exo font-weight-400 tertiary-title",
-              }}
-            >
-              {(popupState) => (
-                <>
-                  <Grid container spacing={2}>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="branch">
-                        Branch
-                      </label>
-                      <DashboardSelect
-                        id="branch"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={selectBranch}
-                        setSelectVal={setSelectBranch}
-                        data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
-                      />
+                  endIcon: <img src={filterIcon} alt="More Filter" />,
+                  className:
+                    "buttons-filters font-family-Exo font-weight-400 tertiary-title",
+                }}
+              >
+                {(popupState) => (
+                  <>
+                    <Grid container spacing={2}>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="branch">
+                          Branch
+                        </label>
+                        <DashboardSelect
+                          id="branch"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={selectBranch}
+                          setSelectVal={setSelectBranch}
+                          data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]}
+                        />
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <label className="secondary-color" for="Client">
+                          Client
+                        </label>
+                        <DashboardSelect
+                          id="Client"
+                          placeholder="Select"
+                          fullWidth={true}
+                          MenuSx={{
+                            ".MuiMenuItem-root": {
+                              color: "#6B6B80",
+                              fontSize: "14px",
+                              fontWeight: 400,
+                            },
+                            marginTop: "10px",
+                            boxShadow: "0px 6px 6px 6px #DEDEDE40",
+                            borderRadius: "8px",
+                            ".MuiList-root": { p: "0" },
+                            ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
+                            ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
+                          }}
+                          selectSx={{
+                            ".MuiOutlinedInput-notchedOutline": {
+                              borderBottom: "1.6px solid #C4C4CC !important",
+                            },
+                            ".MuiSelect-select": {
+                              p: "10.5px 14px",
+                              fontWeight: "400",
+                              color: "#40404D",
+                              fontSize: "15px",
+                            },
+                            ".MuiSelect-icon": { top: "40%" },
+                          }}
+                          selectVal={selectClient}
+                          setSelectVal={setSelectClient}
+                          data={["Client 1", "Client 2", "Client 3", "Client 4"]}
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid item sm={6} xs={12}>
-                      <label className="secondary-color" for="Client">
-                        Client
-                      </label>
-                      <DashboardSelect
-                        id="Client"
-                        placeholder="Select"
-                        fullWidth={true}
-                        MenuSx={{
-                          ".MuiMenuItem-root": {
-                            color: "#6B6B80",
-                            fontSize: "14px",
-                            fontWeight: 400,
-                          },
-                          marginTop: "10px",
-                          boxShadow: "0px 6px 6px 6px #DEDEDE40",
-                          borderRadius: "8px",
-                          ".MuiList-root": { p: "0" },
-                          ".Mui-selected": { bgcolor: "#F0F0F2 !important" },
-                          ".Mui-selected:hover": { bgcolor: "#F0F0F2" },
-                        }}
-                        selectSx={{
-                          ".MuiOutlinedInput-notchedOutline": {
-                            borderBottom: "1.6px solid #C4C4CC !important",
-                          },
-                          ".MuiSelect-select": {
-                            p: "10.5px 14px",
-                            fontWeight: "400",
-                            color: "#40404D",
-                            fontSize: "15px",
-                          },
-                          ".MuiSelect-icon": { top: "40%" },
-                        }}
-                        selectVal={selectClient}
-                        setSelectVal={setSelectClient}
-                        data={["Client 1", "Client 2", "Client 3", "Client 4"]}
-                      />
-                    </Grid>
-                  </Grid>
-                  <div className="filter-below-btn margin-top-2 flex justify-end">
-                    <Button
-                      className="btn1"
-                      onClick={() => {
-                        setSelectBranch("");
-                        setSelectClient("");
-                      }}
-                    >
-                      Clear
-                    </Button>
-                    &nbsp;
-                    <Button
-                      onClick={() => {
-                        if (selectBranch || selectClient) {
+                    <div className="filter-below-btn margin-top-2 flex justify-end">
+                      <Button
+                        className="btn1"
+                        onClick={() => {
                           setSelectBranch("");
                           setSelectClient("");
-                          popupState.close();
-                        } else {
-                          toast.error("Please Select Any Type");
-                        }
-                      }}
-                      className="btn2 primary-bg-color"
-                    >
-                      Apply
-                    </Button>
-                  </div>
-                </>
-              )}
-            </CustomPopover>
+                        }}
+                      >
+                        Clear
+                      </Button>
+                      &nbsp;
+                      <Button
+                        onClick={() => {
+                          if (selectBranch || selectClient) {
+                            setSelectBranch("");
+                            setSelectClient("");
+                            popupState.close();
+                          } else {
+                            toast.error("Please Select Any Type");
+                          }
+                        }}
+                        className="btn2 primary-bg-color"
+                      >
+                        Apply
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </CustomPopover>
+             
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
@@ -287,27 +290,12 @@ export default function AgingBucketsReport() {
         <Grid item xs={12}>
           <CustomTable
             data={Aging_Buckets_Data}
-            columns={Aging_Buckets_Col}
+            columns={payable ? Aging_Payable_Col : Aging_Buckets_Col}
             showHeaderFilter={false}
-            // showSerialNo
-            // onPageChange={pageChangeHandler}
-            // onSortByChange={sortChangeHandler}
             isSuccess={true}
             isPagination={true}
           />
         </Grid>
-        {/* <Grid item xs={5}>
-            <CustomTable
-              data={Aging_Buckets_Data}
-              columns={Aging_Buckets_Col2}
-              // showSerialNo
-              // onPageChange={pageChangeHandler}
-              // onSortByChange={sortChangeHandler}
-              isSuccess={true}
-              isPagination={false}
-            />
-        </Grid> */}
-
       </Grid>
     </React.Fragment>
   );

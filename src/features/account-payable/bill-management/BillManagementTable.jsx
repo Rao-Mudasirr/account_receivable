@@ -10,23 +10,28 @@ import BillDetailModel from "../details-bills/BillDetailModel";
 import DetailsPage from "../details-bills/DetailsPage";
 
 export default function BillManagementTable() {
-    const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [status, setStatus] = useState()
 
-    const handleViewDetails = () => {
-      setDetailsModalOpen(true);
-    };
-  
-    const handleCloseDetails = () => {
-      setDetailsModalOpen(false);
-    };
+
+  const handleViewDetails = () => {
+    setDetailsModalOpen(true);
+  };
+
+  const handleCloseDetails = () => {
+    console.log(';asd')
+    setDetailsModalOpen(false);
+  };
 
   const navigate = useNavigate();
 
-  const handleView = (info) => {
-    const { id } = info.row;
+  const handleView = (billData) => {
+    console.log(billData);
+    // const { id } = info.row;
+
     setDetailsModalOpen(true);
 
-    console.log("Status:", info.row.bill_status);
+    setStatus(billData.Status);
   };
 
   const Bills_Col = [
@@ -34,7 +39,7 @@ export default function BillManagementTable() {
       accessorFn: (row) => row.Id,
       id: "Id",
       cell: (info) => info.getValue(),
-      header: () => <span>Doc Id</span>,
+      header: () => <span>Doc ID</span>,
     },
     {
       accessorFn: (row) => row.bill_received_via,
@@ -69,10 +74,10 @@ export default function BillManagementTable() {
             info.getValue() === "Pending"
               ? "Pending"
               : info.getValue() === "Approved"
-              ? "Approved"
-              : info.getValue() === "Rejected"
-              ? "Rejected"
-              : "Partial"
+                ? "Approved"
+                : info.getValue() === "Rejected"
+                  ? "Rejected"
+                  : "Partial"
           }
         >
           {info.getValue()}
@@ -83,16 +88,18 @@ export default function BillManagementTable() {
       id: "Actions",
       cell: (info) => (
         <Box sx={{ display: "flex", gap: "5px", justifyContent: "center" }}>
-          <TableAction type="view" onClick={() => handleView(info)} />
+          <TableAction type="view" onClick={() => handleView(info.row._valuesCache)} />
         </Box>
       ),
       header: () => <div className="flex justify-center width-100">Actions</div>,
       isSortable: false,
     },
   ];
-
+  const shameem = Bills_Data?.map((ele) => ele?.bill_status)
+  console.log(shameem);
   return (
     <Fragment>
+      <DetailsPage open={detailsModalOpen} onClose={handleCloseDetails} status={status}/>
       <div>
         <CustomTable
           data={Bills_Data}
@@ -103,8 +110,7 @@ export default function BillManagementTable() {
         />
       </div>
 
-     
-     <DetailsPage open={detailsModalOpen} handleClose={handleCloseDetails} />
+
     </Fragment>
   );
 }

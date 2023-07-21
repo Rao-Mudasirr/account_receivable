@@ -5,11 +5,17 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { CustomDatePicker } from '../../components/custom-date-picker/custom-date-picker'
 import { DashboardSelect } from '../dashboard-select/dashboard-select'
+import { ApRadioButton } from '../../components/ap-radio-button/ap-radio-button'
+import { CustomBtn } from '../add-bill-modal/custom-btn/custom-btn'
+import AddIcon from '@mui/icons-material/Add';
+import DragDropFile from '../DocumentApproval/Uploader'
+import { PoundSign } from "../../assests/bills/pound-sign";
 
 export const AddBillFeature = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [selectBranch, setSelectBranch] = useState("");
+    const [recurringBill, setRecurringBill] = useState("");
     return (
         <>
             <Grid container justifyContent="space-between" spacing={3}>
@@ -46,7 +52,7 @@ export const AddBillFeature = () => {
                             placeholder="Enter Amount"
                             type='number'
                             InputProps={{
-                                startAdornment: <InputAdornment className='flex justify-center align-center font-family-Exo border-radius-5' sx={{ border: '2px solid #777', width: '24px', height: '24px', color: '#777', fontSize: '12px' }}>£</InputAdornment>
+                                startAdornment: <InputAdornment  ><PoundSign /></InputAdornment>
                             }}
                         />
                     </CustomField>
@@ -57,26 +63,42 @@ export const AddBillFeature = () => {
                     </CustomField>
                 </Grid>
                 <Grid item xs={5.5}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={8}>
+                    <Grid container spacing={2} className='justify-center align-end'>
+                        <Grid item xs={8.5}>
                             <CustomField label="Choose a Vendor" id="vendor">
                                 <DashboardSelect id="vendor" placeholder="Select Vendor" fullWidth={true} MenuSx={{ ".MuiMenuItem-root": { color: '#6B6B80', fontSize: '14px', fontWeight: 400 }, marginTop: '10px', boxShadow: '0px 6px 6px 6px #DEDEDE40', borderRadius: '8px', ".MuiList-root": { p: '0', }, ".Mui-selected": { bgcolor: '#F0F0F2 !important' }, ".Mui-selected:hover": { bgcolor: '#F0F0F2' } }} selectSx={{ ".MuiOutlinedInput-notchedOutline": { borderBottom: '1.6px solid #C4C4CC !important' }, '.MuiSelect-select': { p: '10.5px 14px', fontWeight: '400', color: '#40404D', fontSize: '15px' }, '.MuiSelect-icon': { top: '40%' }, }} selectVal={selectBranch} setSelectVal={setSelectBranch} data={["Branch 1", "Branch 2", "Branch 3", "Branch 4"]} />
-                            </CustomField> 
+                            </CustomField>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Button sx={{
-                                variant: 'outlined', sx: {
-                                    mr: 2, whiteSpace: 'nowrap', color: "#40404D", border: "1.5px solid #40404D !important", height: '32px', borderRadius: "8px",
-                                    "&:hover": {
-                                        border: '2px solid #40404D !important'
-                                    },
-                                }, className: 'buttons-filters font-family-Exo font-weight-400 tertiary-title'
+                        <Grid item xs={3.5} className='flex align-end justify-end'>
+                            <Button variant='outlined' className='tertiary-color font-weight-400 border-radius-8' sx={{
+                                border: '2px solid #40404D',
+                                fontWeight: 400,
+                                '&:hover': {
+                                    border: '2px solid #40404D',
+                                },
                             }}>
                                 Create New Vendor
                             </Button>
                         </Grid>
                     </Grid>
-
+                </Grid>
+                <Grid item xs={5.5}>
+                    <CustomField label="Is this a recurring bill?" id="recurringBill">
+                        <Grid container spacing={2} >
+                            <Grid item xs={6} mt="5px">
+                                <ApRadioButton radioState={recurringBill === "Yes"} setRadioState={setRecurringBill} title="Yes" />
+                            </Grid>
+                            <Grid item xs={6} mt="5px">
+                                <ApRadioButton radioState={recurringBill === "No"} setRadioState={setRecurringBill} title="No" />
+                            </Grid>
+                        </Grid>
+                    </CustomField>
+                </Grid>
+                <Grid item xs={12} className='flex justify-end margin-top-3 margin-bottom-3'>
+                    <CustomBtn otherProps={{ endIcon: <AddIcon /> }} onClick={() => { }}>Add Bill</CustomBtn>
+                </Grid>
+                <Grid item xs={12}>
+                    <DragDropFile></DragDropFile>
                 </Grid>
             </Grid>
         </>

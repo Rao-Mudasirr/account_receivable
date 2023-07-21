@@ -10,7 +10,6 @@
           display: flex;
           color: #6B6B80;
           margin-bottom: 1rem;
-          margin-left: -6px;
       }
 
       .vendor_error-icon {
@@ -19,6 +18,10 @@
           font-size: medium;
           transform: rotate(180deg);
           color: rgba(255, 85, 85, 1);
+      }
+
+      .MuiFormHelperText-root {
+        font-family: 'Exo 2', "Roboto", "sans-serif";
       }
 
       .vendor-details-textfield_bold {

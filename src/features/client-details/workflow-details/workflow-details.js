@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   workflowtableheading,
   workflowtabledata,
@@ -30,7 +30,7 @@ import OnDueDate from "../../workflows-page/Model/OnDueDate";
 import AfterDueDate from "../../workflows-page/Model/AfterDueDate";
 import OnPaymentCollectionDate from "../../workflows-page/Model/OnPaymentCollectionDate";
 
-const WorkflowDetails = () => {
+const WorkflowDetails = ({setActiveTab}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("");
@@ -39,6 +39,10 @@ const WorkflowDetails = () => {
   const [openEditModel, setOpenEditModel] = useState(false);
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(1);
+
+  useEffect(()=>{
+    setActiveTab(1);
+  },[])
 
   const handleWorkStatusClick = (index) => {
     setClickedRowIndex(index);
@@ -159,7 +163,7 @@ const WorkflowDetails = () => {
           <GlobalButton
             variant="outlined"
             className="invoice-second-btn"
-            btnText=" More Filter"
+            btnText=" More Filters"
             endIcon={
               <img src={filterIcon} alt="More Filter" width={16} height={16} />
             }

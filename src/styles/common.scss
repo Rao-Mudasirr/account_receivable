@@ -10,6 +10,9 @@
 .font-family-Exo {
   font-family: $font-family-Exo !important;
 }
+.font-family-exo2 {
+  font-family: $font-family-Exo !important;
+}
 
 //font-sizes
 
@@ -92,7 +95,7 @@
 }
 
 .tertiary-color{
-  color: $tertiary-color;
+  color: $tertiary-color !important;
 }
 .yellow-color{
   color:$yellow-color;

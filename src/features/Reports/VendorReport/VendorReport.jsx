@@ -28,21 +28,21 @@ export default function VendorReport() {
 
   const WORKFLOW_REPORT_DATA = [
     {
-      id: 1,
+      id: '01',
       vendorName: "John Doe",
       paidAmount: "1000",
       totalBills: "25",
       pendingAmount: "1000",
     },
     {
-      id: 2,
+      id: '02',
       vendorName: "John Doe",
       paidAmount: "1000",
       totalBills: "25",
       pendingAmount: "1000",
     },
     {
-      id: 3,
+      id: '03',
       vendorName: "John Doe",
       paidAmount: "1000",
       totalBills: "25",
@@ -57,7 +57,7 @@ export default function VendorReport() {
       cell: (info) => info.getValue(),
       header: () => (
         <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-          ID <img src={SrIcon} alt=" Id" />
+          Id <img src={SrIcon} alt=" Id" />
         </span>
       ),
       // isSortable: true,
@@ -104,7 +104,7 @@ export default function VendorReport() {
           </Link>
         </Box>
       ),
-      header: () => <span>Actions</span>,
+      header: () => <span>Action</span>,
       // isSortable: false,
     },
   ];

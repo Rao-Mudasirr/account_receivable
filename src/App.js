@@ -11,7 +11,7 @@ import InvoiceNoDetail from "./features/Invoices/components/invoice-no-detail/In
 import Manager from "./features/user-management/components/role_rights_manager/Manager";
 import Signin from "./features/signin/Signin";
 import MainReport from "./pages/MainReport";
-import ReportInfo from "./pages/report-info";
+import ReportInfo from "./pages/Report-Info";
 import DashboaedSettings from "./pages/dashboard-settings";
 import WorkflowDetail from "./features/Reports/workflow-report/workflow-details/WorkflowDetail";
 import Workflow from "./pages/workflows";
@@ -38,7 +38,7 @@ import DetailsPage from "./features/account-payable/details-bills/DetailsPage";
 import { BillsManagement } from "./pages/bills-management";
 import { AddBill } from "./pages/add-bill";
 import TotalBills from "./features/account-payable/total-bills-dashboard/total-bills";
-// import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
+//  import HomePageCashflow from "./features/home-page/cashflow/HomePageCashflow";
 import { Dashboard } from "./pages/dashboard";
 import LogListing from "./pages/landing-pages/account-payable/LogListing";
 import Forcasting_Reports from "./pages/Forcasting_Reports";
@@ -46,6 +46,18 @@ import SetDefaultBtn from "./components/set-default-btn/SetDefaultBtn";
 import SingleVendorReport from "./features/Reports/VendorReport/SingleVendorReport";
 import CreateWorkflow from "./pages/CreateWorkflow";
 import PaymentSource from "./pages/payment-sources";
+import TransactionsPage from "./pages/transactions-page";
+import ImportTransactionsPage from "./pages/import-transactions-page";
+import {
+  TOTRANSACTIONS,
+  TOIMPORTTRANSACTIONS,
+} from "./constants/routes-constant";
+import PayNowCard from "./components/pay-now/PayNowCard";
+import VTAmanagement from "./pages/VTA-management";
+import SubscriptionInvoices from "./pages/Cashflow-Modules/subscription-invoices";
+import CategoryCashflow from "./pages/CategoryCashflow";
+import KPIs from "./pages/key-performance-indicator";
+import RulesCategory from "./features/cashflow/categories/RulesCategory/RulesCategory";
 
 function App() {
   return (
@@ -61,6 +73,8 @@ function App() {
         {/* <Route path="/sign-up-2" element={<HomeLayout />} > */}
         <Route exact path={"/sign-up-2"} element={<SignUpForm2 />} />
         {/* </Route> */}
+
+        <Route exact path={"/pay-now"} element={<PayNowCard />} />
 
         <Route path="/home" element={<HomeLayout />}>
           <Route path="/home/" element={<Home />} />
@@ -80,7 +94,7 @@ function App() {
         <Route path="/details-page" element={<DetailsPage />} />
 
         <Route path="/cashflow" element={<HomeLayout />}>
-          <Route path="/cashflow" element={<AccountReceivablePage />} />
+          <Route path="/cashflow" element={<AccountReceivablePage />} /> 
         </Route>
 
         <Route exact path={"/"} element={<Layout />}>
@@ -88,6 +102,14 @@ function App() {
           <Route exact path={"/invoices"} element={<InvoiceListing />} />
           <Route exact path={"/total-bills"} element={<TotalBills />} />
           <Route exact path={"/notifications"} element={<Notifications />} />
+          <Route exact path={TOTRANSACTIONS} element={<TransactionsPage />} />
+          <Route
+            exact
+            path={TOIMPORTTRANSACTIONS}
+            element={<ImportTransactionsPage />}
+          />
+          <Route path={"/vta-management"} element={<VTAmanagement />} />
+          <Route exact path={"/key-performance-indicator"} element={<KPIs />} />
           <Route
             exact
             path={"/user-management"}
@@ -96,6 +118,11 @@ function App() {
           <Route
             exact
             path={"/overdue-invoices"}
+            element={<Overdue_Invoice />}
+          />
+          <Route
+            exact
+            path={"/overdue-invoices/:id"}
             element={<Overdue_Invoice />}
           />
           <Route
@@ -142,6 +169,13 @@ function App() {
             path={"/reports/forecasting-report"}
             element={<Forcasting_Reports />}
           />{" "}
+          <Route exact path={"/categories"} element={<CategoryCashflow />}>
+            <Route
+              exact
+              path={"/categories/view-category"}
+              element={<RulesCategory />}
+            />
+          </Route>{" "}
           <Route
             exact
             path={"/clients-details/:id"}
@@ -166,6 +200,12 @@ function App() {
             element={<DSO_Month />}
           />
           <Route exact path={"/settings"} element={<DashboaedSettings />} />
+          {/* Cashflow routes */}
+          <Route
+            exact
+            path={"/subscription-invoices"}
+            element={<SubscriptionInvoices />}
+          />
           <Route path="/not-found" element={<h1>Not Found</h1>} />
           <Route path="*" element={<Navigate to="/not-found" />} />
           <Route path="/invoice-no-detail" element={<InvoiceNoDetail />} />

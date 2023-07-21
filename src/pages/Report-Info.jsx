@@ -16,6 +16,7 @@ const reportsPages = {
   "workflows-report": <WorkflowReport />,
   "total-cash-paid-report": <CashPaidReport />,
   "vendors-report": <VendorReport />,
+  "aging-buckets-report-payable": <AgingBucketsReport payable={true} />
 };
 
 function ReportInfo() {
