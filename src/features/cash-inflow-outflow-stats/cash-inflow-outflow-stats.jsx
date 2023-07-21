@@ -30,7 +30,6 @@ const options = {
         width: 2,
         curve: 'straight',
     },
-
     grid: {
         xaxis: {
             lines: {
@@ -83,7 +82,7 @@ const options = {
             },
         },
         axisBorder: {
-            color: '#6B6B80',
+            color: '#6B6B80', 
             height: 1,
         },
         axisTicks: {
