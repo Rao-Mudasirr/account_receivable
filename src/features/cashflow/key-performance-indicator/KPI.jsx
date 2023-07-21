@@ -22,12 +22,13 @@ import TableAction from "../../../components/Table/TableAction";
 import { ReactComponent as Add } from "../../../assests/svg/add-circle-white.svg";
 import "./kpi.scss";
 import DeletePrompt from "../../../components/Table/prompt/DeletePrompt";
+import EditKeyModal from "./EditKeyModal";
 import KeyPerformanceIndicatorModal from "./key-performance-indicator-modal";
 const KPI = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [clickedRowIndex, setClickedRowIndex] = useState(-1);
   const [selectBranch, setSelectBranch] = useState("");
-
+  const [openEdit, setOpenEdit] = useState(false);
   const [isPerformanceModalOpen, setPerformanceModalOpen] = useState(false);
 
   const handleOpenPerformanceModal = () => {
@@ -41,6 +42,13 @@ const KPI = () => {
   const handleKPIStatusClick = (index) => {
     setClickedRowIndex(index);
   };
+
+  const handleOpenEdit = () => {
+    setOpenEdit(true)
+  }
+  const handleCloseEdit = () => {
+    setOpenEdit(false)
+  }
 
   const filteredData = KPItabledata.filter((data) =>
     Object.values(data).some((value) =>
@@ -182,7 +190,7 @@ const KPI = () => {
                         <DeletePrompt>
                           Selected Category will be Deleted
                         </DeletePrompt>
-                        <TableAction />
+                        <TableAction onClicked={handleOpenEdit}/>
                       </Box>
                     ) : (
                       row.action
@@ -194,6 +202,7 @@ const KPI = () => {
           </Table>
         </TableContainer>
       </div>
+      <EditKeyModal open={openEdit} handleClose={handleCloseEdit}/>
     </>
   );
 };

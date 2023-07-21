@@ -31,7 +31,7 @@ export default function LinkNewCard({ open, handleClose }) {
                   <Grid xs={12} sx={{ mb: 8 }}>
                     <Autocomplete
                       id="search-which-is-on-sidebar-already"
-                      sx={{ transition: 'all .25s linear', ".MuiInputBase-root": { pr: '10px !important' }, width: { sm: '570px', xs: '170px' }, color: 'Black' }}
+                      sx={{ transition: 'all .25s linear', ".MuiInputBase-root": { pr: '10px !important' }, width: { sm: '590px', xs: '170px' }, color: 'Black' }}
                       isOptionEqualToValue={(option, value) => option.id === value.id}
                       ListboxProps={{ className: 'header-search-card', style: { maxHeight: "210px", paddingTop: 0, paddingBottom: 0 } }}
                       size="small"
