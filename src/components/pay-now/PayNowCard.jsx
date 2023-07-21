@@ -292,7 +292,8 @@ const PayNowCard = ({ open, onClose }) => {
                     />
                 </Grid>
             </SimpleDialog>
-            <LinkNewCard open={open2}
+            
+             <LinkNewCard open={open2}
                 handleClose={handleClose}
             />
         </>
