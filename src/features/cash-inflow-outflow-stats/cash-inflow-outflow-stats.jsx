@@ -105,7 +105,7 @@ export const CashInflowOutflowStats = () => {
                 series={[{
                     name: 'Inflow',
                     type: 'bar',
-                    data: [0.4, 0.65, 0.76, 0.88, 1.5, 2.1, 2.9, 3.8, 3.9, 4.2, 4, 4.3]
+                    data: [4.4, 5.65, 4.76, 3.88, 4.5, 2.1, 2.9, 3.8, 3.9, 4.2, 4, 4.3]
                 },
                 {
                     name: 'Inflow Outflow Stats',
@@ -115,7 +115,7 @@ export const CashInflowOutflowStats = () => {
                 {
                     name: 'Outflow',
                     type: 'bar',
-                    data: [-0.8, -1.05, -1.06, -1.18, -1.4, -2.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4]
+                    data: [-4.8, -5.05, -4.06, -4.18, -3.4, -5.2, -2.85, -3.7, -3.96, -4.22, -4.3, -4.4]
                 }
                 ]}
                 type="bar"
