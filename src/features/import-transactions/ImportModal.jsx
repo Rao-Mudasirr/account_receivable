@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { SimpleDialog } from "../../components/modal/simple-dialog";
 import { Box, Grid } from "@mui/material";
 import { toast } from "react-toastify";
@@ -9,17 +9,18 @@ import { ReactComponent as OutflowIcon } from "../../assests/svg/import-transact
 const importModalData = [
   {
     id: "1",
-    title: "Upload a File",
+    title: "Cash Inflow",
     svg: <InflowIcon />,
   },
   {
     id: "2",
-    title: "Add Manually",
+    title: "Cash Outflow",
     svg: <OutflowIcon />,
   },
 ];
 
-export const ImportModal = ({ open, handleClose }) => {
+export const ImportModal = ({open, handleClose }) => {
+
   const fileInputRef = useRef(null);
 
   const handleImportButtonClick = () => {
@@ -40,7 +41,7 @@ export const ImportModal = ({ open, handleClose }) => {
         title="Select"
       >
         <Grid mt="30px" container spacing={3}>
-          {importModalData.map((item) => (
+          {importModalData?.map((item) => (
             <Grid key={item.id} item xs={6}>
               <Box
                 className="border-radius-8 flex align-center flex-column cursor-pointer"
