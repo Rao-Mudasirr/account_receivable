@@ -39,4 +39,34 @@
 
         }
     }
+    
+.exo2-font {
+    font-family: 'Exo 2';
+  }
+  
+    .h5{
+        color: var(--text-light, #6B6B80);
+
+        /* BodyText/Default/Regular - 16 */
+        font-family: 'Exo 2 !important';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+    }
+    .font-family-Exo
+    {
+        padding: "10.5px 14px !important"; 
+    }
+    .usersform_textfield{
+        display: flex;
+        width: 940px !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+    .css-wb57ya-MuiFormControl-root-MuiTextField-root
+    {
+        border-bottom: solid;
+    }
 }

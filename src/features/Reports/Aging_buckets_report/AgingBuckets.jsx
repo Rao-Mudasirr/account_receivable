@@ -71,8 +71,7 @@ export default function AgingBucketsReport({payable}) {
                 onChange={(date) => setEndDate(date)}
               />
             </LocalizationProvider>
-            {
-              !payable && (
+            
                 <CustomPopover
                 mainTitle="Filters"
                 mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"
@@ -83,6 +82,7 @@ export default function AgingBucketsReport({payable}) {
                     mr: 2,
                     whiteSpace: "nowrap",
                     color: "#40404D",
+                    visibility: payable ? 'hidden' : 'show',
                     border: "1.5px solid #40404D !important",
                     height: "32px",
                     borderRadius: "8px",
@@ -204,8 +204,7 @@ export default function AgingBucketsReport({payable}) {
                   </>
                 )}
               </CustomPopover>
-              )
-            }
+             
             <CustomPopover
               mainTitle="Export"
               mainTitleClass="primary-color heading-20 font-weight-600 margin-bottom-1"

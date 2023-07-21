@@ -9,7 +9,7 @@ import filterIcon from "../../../../assests/images/client/filter.png";
 import { DashboardSelect } from "../../../dashboard-select/dashboard-select";
 import { CustomDatePicker } from "../../../../components/custom-date-picker/custom-date-picker";
 import CustomTable from "../../../../components/Table/CustomTable";
-import TransactionModel from '../../../../components/transaction-model/Transaction-Model';
+import TransactionModel from "../../../../components/transaction-model/Transaction-Model";
 
 const PreCategorized = () => {
   const [selectBranch, setSelectBranch] = useState("");
@@ -17,19 +17,18 @@ const PreCategorized = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [openModel, setOpenModel] = useState(false);
-  const [filteredTransactionData, setFilteredTransactionData] = useState()
-
+  const [filteredTransactionData, setFilteredTransactionData] = useState();
 
   const handleOpen = (_id) => {
-    setOpenModel(true)
-    const [filterData] = Pre_categorized_Data?.filter((ele) => ele?.id === _id)
-    setFilteredTransactionData(filterData)
-  }
+    setOpenModel(true);
+    const [filterData] = Pre_categorized_Data?.filter((ele) => ele?.id === _id);
+    setFilteredTransactionData(filterData);
+  };
   // console.log(filteredTransactionData);
 
   const handleClose = () => {
-    setOpenModel(false)
-  }
+    setOpenModel(false);
+  };
 
   const Pre_categorized_Data = [
     {
@@ -92,8 +91,10 @@ const PreCategorized = () => {
       id: "amount",
       cell: (info) => (
         <Box
-          className={info.getValue().startsWith("-") ? "error-color" : "success-color"}
-          sx={{ textDecoration: "underline", cursor: 'pointer' }}
+          className={
+            info.getValue().startsWith("-") ? "error-color" : "success-color"
+          }
+          sx={{ textDecoration: "underline", cursor: "pointer" }}
           onClick={() => handleOpen(info?.row?.original?.id)}
         >
           {info.getValue()}
@@ -104,20 +105,19 @@ const PreCategorized = () => {
     },
   ];
 
-
-
   // const dataElement = filteredTransactionData;
   return (
     <>
-      <Grid xl={12}>
+      <Grid xs={12}>
         <Grid container className="align-end" spacing={2}>
-          <Grid item lg={7} md={12}>
+          <Grid item xl={8.7} lg={7.5} md={12}>
             <GlobalSearchBar />
           </Grid>
 
           <Grid
             item
-            lg={5}
+            xl={3.3}
+            lg={4.5}
             md={12}
             className="flex align-end"
             sx={{ gap: "1.5rem" }}
@@ -163,8 +163,7 @@ const PreCategorized = () => {
                     bgcolor: "#F0F0F2",
                   },
                   ".MuiSelect-icon": { top: "40%" },
-                  // maxWidth: "330px",
-                  // width: "100%"
+                  width: "100%",
                 }}
                 selectVal={selectBranch}
                 setSelectVal={setSelectBranch}
@@ -201,6 +200,7 @@ const PreCategorized = () => {
                       <Grid item sm={6} xs={12}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <CustomDatePicker
+                            width="100%"
                             dateValue={startDate}
                             placeholder="From"
                             setDateValue={setStartDate}
@@ -211,6 +211,7 @@ const PreCategorized = () => {
                       <Grid item sm={6} xs={12}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <CustomDatePicker
+                            width="100%"
                             dateValue={endDate}
                             placeholder="To"
                             setDateValue={setEndDate}
@@ -252,6 +253,7 @@ const PreCategorized = () => {
                               fontSize: "15px",
                             },
                             ".MuiSelect-icon": { top: "40%" },
+                            width: "94%",
                           }}
                           selectVal={selectClient}
                           setSelectVal={setSelectClient}
@@ -299,7 +301,6 @@ const PreCategorized = () => {
           isSuccess={true}
           isPagination={true}
         />
-
       </Grid>
       <TransactionModel
         openModel={openModel}
@@ -311,7 +312,7 @@ const PreCategorized = () => {
         categoryValue={filteredTransactionData?.category}
       />
     </>
-  )
-}
+  );
+};
 
-export default PreCategorized
+export default PreCategorized;

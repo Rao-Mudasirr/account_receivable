@@ -46,7 +46,7 @@ export default function Cashflow() {
                 color='default' />}
               />
               <span style={{fontFamily:'Exo 2'}}>
-                CashFlow
+                CashFlow 
               </span>
             </div>
          

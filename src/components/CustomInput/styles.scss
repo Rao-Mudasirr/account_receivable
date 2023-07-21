@@ -13,6 +13,9 @@
   .usersform_textfield {
     width: 240px;
     text-align: start;
+    &::before {
+      border-bottom: 1.6px solid #c4c4cc !important;
+    }
     .MuiSelect-icon {
       top: calc(50% - 12px);
     }

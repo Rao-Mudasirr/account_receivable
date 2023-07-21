@@ -87,6 +87,7 @@ export const DashboardPayable = () => {
                     >
                         <PaymentShowcaseAreaChart
                             categories={[
+                                "",
                                 "Jan",
                                 "Feb",
                                 "Mar",
@@ -102,7 +103,7 @@ export const DashboardPayable = () => {
                             series={[
                                 {
                                     name: "Payment Collection",
-                                    data: [31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51],
+                                    data: ["", 31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51],
                                 },
                             ]}
                         />
@@ -121,7 +122,7 @@ export const DashboardPayable = () => {
                         <PaymentShowcaseAreaChart
                             categories={
                                 paymentForecastSwitch === "This Month"
-                                    ? ["Week 1", "Week 2", "Week 3", "Week 4"]
+                                    ? ["", "Week 1", "Week 2", "Week 3", "Week 4"]
                                     : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
                             }
                             series={[
@@ -129,7 +130,7 @@ export const DashboardPayable = () => {
                                     name: "Payment Forecasting",
                                     data:
                                         paymentForecastSwitch === "This Month"
-                                            ? [31, 40, 28, 51]
+                                            ? ["", 31, 40, 28, 51]
                                             : [31, 40, 28, 51, 42, 109, 100],
                                 },
                             ]}
