@@ -53,14 +53,14 @@ export default function LinkNewCard({ open, handleClose }) {
       >
         <Box sx={style}>
           <Box className="model-body">
-            <Box className="documentApprovalModel-model">
+            <Box className="LinkNewCard-model">
               <Box className="top-section">
                 <Typography className="h6" >Link New Card</Typography>
                 <IconButton onClick={handleClose} style={{ cursor: "pointer", zIndex: 200 }}>
                   <CloseIcon />
                 </IconButton>
               </Box>
-              <Box className="documentApprovalModel-model-body">
+              <Box className="LinkNewCard-model-body">
                 <Box sx={{ marginBottom: "60px" }}>
 
 
@@ -127,7 +127,7 @@ export default function LinkNewCard({ open, handleClose }) {
                   />
 
                 </Box>
-                <Box className="documentApprovalModel-model-body" sx={{ marginBottom: "60px" }}>
+                <Box className="LinkNewCard-model-body" sx={{ marginBottom: "60px" }}>
                   <CustomInput
                     className="width-100"
                     placeholder="Card Number Format"
@@ -140,7 +140,7 @@ export default function LinkNewCard({ open, handleClose }) {
                     label={<span>*Name on Card</span>}
                   />
                 </Box>
-                <Box className="documentApprovalModel-model-body" sx={{ marginBottom: "60px" }}>
+                <Box className="LinkNewCard-model-body" sx={{ marginBottom: "60px" }}>
                   <CustomInput
                     className="width-100"
                     placeholder="Card Number Format"
